@@ -8,15 +8,17 @@ export function RichText({
   lesson,
   field = 'text',
   theoryId,
+  demo = false,
 }: {
   text: string;
   lesson?: Lesson;
   field?: string;
   theoryId?: string;
+  demo?: boolean;
 }) {
   return (
     <span className="rich-text">
-      {parseCourseText(text, { lesson, field, theoryId }).map((token, i) =>
+      {parseCourseText(text, { lesson, field, theoryId, route: demo ? '/demonstracao' : undefined }).map((token, i) =>
         token.href ? (
           <Link key={`${token.anchor ?? token.href}-${i}`} id={token.anchor} href={token.href}>
             {token.label}

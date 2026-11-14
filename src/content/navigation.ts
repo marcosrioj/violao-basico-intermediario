@@ -55,7 +55,8 @@ export function tokenizeCourseText(text: string, context: TextContext): CourseTe
         result.push({
           kind: 'theory',
           label: `Teoria ${id}`,
-          href: `/teoria/${id}`,
+          href: context.route === '/demonstracao' && lessons[0].theory_refs.includes(id)
+            ? `/demonstracao/teoria/${id}` : `/teoria/${id}`,
           anchor,
           referenceId: id,
         });

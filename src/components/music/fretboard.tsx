@@ -1,17 +1,14 @@
 'use client';
 import { useState } from 'react';
 import { frequency, openMidi, playTone } from './audio';
+import { scaleNotes, scaleRoots, type ScaleKind } from './scales';
 const names = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'];
 export function Fretboard() {
   const [root, setRoot] = useState(0);
-  const [mode, setMode] = useState('major');
+  const [mode, setMode] = useState<ScaleKind>('major');
   const [selected, setSelected] = useState('Toque em uma nota para ouvi-la.');
-  const intervals =
-    mode === 'major'
-      ? [0, 2, 4, 5, 7, 9, 11]
-      : mode === 'minor'
-        ? [0, 2, 3, 5, 7, 8, 10]
-        : [0, 2, 4, 7, 9];
+  const scale = scaleNotes(root, mode);
+  const notesByPitch = new Map(scale.map((note) => [note.pitch, note.name]));
   return (
     <section className="card">
       <div className="section-title">
@@ -25,7 +22,7 @@ export function Fretboard() {
         <label>
           Tônica
           <select value={root} onChange={(e) => setRoot(Number(e.target.value))}>
-            {names.map((n, i) => (
+            {scaleRoots.map((n, i) => (
               <option value={i} key={n}>
                 {n}
               </option>
@@ -34,7 +31,7 @@ export function Fretboard() {
         </label>
         <label>
           Escala
-          <select value={mode} onChange={(e) => setMode(e.target.value)}>
+          <select value={mode} onChange={(e) => setMode(e.target.value as ScaleKind)}>
             <option value="major">Maior</option>
             <option value="minor">Menor natural</option>
             <option value="pentatonic">Pentatônica maior</option>
@@ -42,10 +39,10 @@ export function Fretboard() {
         </label>
       </div>
       <div className="scale-notes">
-        {intervals.map((n, i) => (
-          <span key={n}>
-            {i + 1}
-            <strong>{names[(n + root) % 12]}</strong>
+        {scale.map((note) => (
+          <span key={note.degree}>
+            {note.degree}
+            <strong>{note.name}</strong>
           </span>
         ))}
       </div>
@@ -56,20 +53,21 @@ export function Fretboard() {
               <span>{string + 1}ª</span>
               {Array.from({ length: 13 }, (_, fret) => {
                 const pitch = (midi + fret) % 12;
-                const visible = intervals.includes((pitch - root + 12) % 12);
+                const visible = notesByPitch.has(pitch);
+                const name = notesByPitch.get(pitch) ?? names[pitch];
                 return (
                   <button
                     key={fret}
                     className={`${visible ? 'in-scale' : ''} ${pitch === root ? 'root-note' : ''}`}
-                    aria-label={`${string + 1}ª corda, ${fret === 0 ? 'solta' : `casa ${fret}`}, ${names[pitch]}`}
+                    aria-label={`${string + 1}ª corda, ${fret === 0 ? 'solta' : `casa ${fret}`}, ${name}`}
                     onClick={() => {
                       playTone(frequency(midi + fret));
                       setSelected(
-                        `${names[pitch]} · ${string + 1}ª corda · ${fret === 0 ? 'solta' : `casa ${fret}`}`,
+                        `${name} · ${string + 1}ª corda · ${fret === 0 ? 'solta' : `casa ${fret}`}`,
                       );
                     }}
                   >
-                    {visible ? names[pitch] : <span className="fret-dot">·</span>}
+                    {visible ? name : <span className="fret-dot">·</span>}
                   </button>
                 );
               })}

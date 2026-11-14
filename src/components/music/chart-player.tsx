@@ -4,6 +4,7 @@ import { Play, Square, Repeat2 } from 'lucide-react';
 import type { SongVersion } from '@/content/types';
 import { chords } from '@/content/course';
 import { soundChord, audioContext } from './audio';
+import { scheduleChartBar } from './chart-timing';
 export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initialBpm: number }) {
   const [section, setSection] = useState('all');
   const [bpm, setBpm] = useState(initialBpm);
@@ -32,6 +33,8 @@ export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initial
     let stopped = false;
     let timeout: ReturnType<typeof setTimeout>;
     let index = 0;
+    const ctx = audioContext();
+    let nextBarAt = ctx.currentTime + 0.1;
     const pending: ReturnType<typeof setTimeout>[] = [];
     const voices: (() => void)[] = [];
     function advance() {
@@ -45,23 +48,19 @@ export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initial
         index = 0;
       }
       const bar = bars[index];
-      setPosition(index);
-      let offset = 0;
-      const beatMs = 60000 / bpm;
-      bar.events.forEach((event) => {
-        const delay = offset * beatMs;
-        pending.push(
-          setTimeout(() => {
-            if (!stopped && chords[event.chord])
-              voices.push(
-                soundChord(chords[event.chord].frets, Math.min((event.beats * beatMs) / 1000, 2)),
-              );
-          }, delay),
-        );
-        offset += event.beats;
+      const currentIndex = index;
+      pending.push(setTimeout(() => {
+        if (!stopped) setPosition(currentIndex);
+      }, Math.max(0, (nextBarAt - ctx.currentTime) * 1000)));
+      const scheduled = scheduleChartBar(bar, nextBarAt, bpm);
+      scheduled.events.forEach((event) => {
+        if (chords[event.chord])
+          voices.push(soundChord(chords[event.chord].frets, event.duration, event.at));
       });
+      nextBarAt = scheduled.endAt;
       index++;
-      timeout = setTimeout(advance, offset * beatMs);
+      const lookAhead = index >= bars.length && !loop ? 0 : 0.1;
+      timeout = setTimeout(advance, Math.max(0, (nextBarAt - ctx.currentTime - lookAhead) * 1000));
     }
     advance();
     const stopHidden = () => {
@@ -115,11 +114,11 @@ export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initial
             min="30"
             max="180"
             value={bpm}
-            onChange={(e) => setBpm(Number(e.target.value))}
+            onChange={(e) => { setPlaying(false); setPosition(-1); setBpm(Number(e.target.value)); }}
           />
         </label>
         <label className="checkbox-label">
-          <input type="checkbox" checked={loop} onChange={(e) => setLoop(e.target.checked)} />
+          <input type="checkbox" checked={loop} onChange={(e) => { setPlaying(false); setPosition(-1); setLoop(e.target.checked); }} />
           <Repeat2 size={16} />
           Repetir
         </label>
@@ -127,6 +126,7 @@ export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initial
           className="button"
           onClick={() => {
             void audioContext().resume();
+            if (playing) setPosition(-1);
             setPlaying(!playing);
           }}
         >
