@@ -2,6 +2,21 @@
 
 Registro de **14 de novembro de 2026**. O projeto está na branch `main`. Este documento distingue o código entregue, os testes executados e as configurações que dependem de contas externas.
 
+## Versão consolidada aprovada
+
+O commit `c8402aa8c206d3e15122a03ea73e38a88f4f6304` passou na [execução 43609584947 do GitHub Actions](https://github.com/marcosrioj/violao-basico-intermediario/actions/runs/43609584947), com Node.js 22.23.4:
+
+| Verificação | Resultado confirmado |
+| --- | --- |
+| Instalação pelo lockfile | `npm ci` concluído; audit informou zero vulnerabilidades naquele momento |
+| ESLint | Aprovado |
+| Geração de tipos e TypeScript | Aprovados |
+| Testes automatizados | **42 passaram; zero falhas, cancelamentos ou testes ignorados** |
+| Build Next.js de produção | Aprovado |
+| Smoke HTTP contra o build | **29 verificações passaram** |
+
+A execução inclui os arquivos recuperados e os oito laboratórios teóricos. Os testes cobrem navegação e conteúdo, regras musicais, autenticação, configuração pública e isolamento em banco. O smoke confirma o comportamento sem sessão e sem Supabase configurado; não equivale a login real com contas hospedadas. Alterações posteriores exclusivamente neste relatório não alteram o código testado; cada novo commit continua acionando o mesmo workflow.
+
 ## Evidência da implementação-base
 
 A implementação-base `59908af087c441824e923054ae788b441e1de4fd` passou em instalação reproduzível, ESLint, geração de tipos, TypeScript, **14 testes** e build Next.js de produção. A execução foi confirmada no [GitHub Actions, run 43580731986](https://github.com/marcosrioj/violao-basico-intermediario/actions/runs/43580731986).
