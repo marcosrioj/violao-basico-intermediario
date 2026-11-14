@@ -42,11 +42,21 @@ Para testar a pilha local, usar `supabase start`, depois `supabase db reset` **s
 
 ## 3. Configurar autenticação
 
-No Supabase, abrir **Authentication → URL Configuration**:
+No projeto Supabase correspondente a `NEXT_PUBLIC_SUPABASE_URL` da Vercel, abrir **Authentication → URL Configuration**. Há duas configurações distintas, que precisam ser salvas separadamente.
 
-- Site URL em produção: `https://violao-basico-intermediario-iota.vercel.app` (domínio público atual; em outra instalação, substituir pela origem definitiva).
-- Redirect URLs exatas para o desenvolvimento: `http://localhost:3000/auth/callback`, `http://localhost:3000/auth/callback?next=%2Fredefinir-senha` e `http://localhost:3000/auth/confirm`.
-- Redirect URLs exatas para produção:
+### Site URL: destino padrão
+
+No campo **Site URL**, preencher a origem pública definitiva, sem caminho ou parâmetros:
+
+```text
+https://violao-basico-intermediario-iota.vercel.app
+```
+
+Clicar em **Save changes na seção Site URL** e conferir o valor após recarregar o painel. Esta é a origem desta instalação; em outra instalação, substituir pela origem definitiva. Não colocar `/auth/callback` nem `?code=...` nesse campo. Se o projeto Supabase for exclusivo de desenvolvimento local, usar `http://localhost:3000`; manter a origem de produção quando o mesmo projeto atender o site publicado.
+
+### Redirect URLs: retornos autorizados
+
+Na seção **Redirect URLs**, adicionar e salvar as três entradas exatas de produção:
 
 ```text
 https://violao-basico-intermediario-iota.vercel.app/auth/callback
@@ -54,9 +64,17 @@ https://violao-basico-intermediario-iota.vercel.app/auth/callback?next=%2Fredefi
 https://violao-basico-intermediario-iota.vercel.app/auth/confirm
 ```
 
-- Se testar uma URL de preview, cadastrá-la explicitamente e usar o mesmo valor em `NEXT_PUBLIC_SITE_URL` daquele ambiente. Evitar curingas amplos na lista de produção.
+Para testar localmente, adicionar também as três entradas abaixo à lista, mantendo o Site URL de produção quando o Supabase for compartilhado com o site publicado:
 
-O Site URL é o destino padrão do Supabase; configurar somente a variável na Vercel não altera esse destino. As URLs solicitadas pelo aplicativo também precisam estar autorizadas na lista de redirects. [Configuração oficial de redirects](https://supabase.com/docs/guides/auth/redirect-urls)
+```text
+http://localhost:3000/auth/callback
+http://localhost:3000/auth/callback?next=%2Fredefinir-senha
+http://localhost:3000/auth/confirm
+```
+
+Se testar uma URL de preview, cadastrá-la explicitamente e usar o mesmo valor em `NEXT_PUBLIC_SITE_URL` daquele ambiente. Evitar curingas amplos na lista de produção.
+
+**Salvar as Redirect URLs não atualiza o Site URL.** Configurar somente a variável na Vercel também não altera esse destino padrão do Supabase. As URLs solicitadas pelo aplicativo precisam estar autorizadas na lista de redirects; o callback com `next=%2Fredefinir-senha` encaminha a recuperação para o formulário de nova senha. [Configuração oficial de redirects](https://supabase.com/docs/guides/auth/redirect-urls)
 
 ### Google OAuth para começar sem envio de e-mail
 
@@ -91,13 +109,13 @@ Não desabilitar confirmação para contornar envio. Usar Google OAuth enquanto 
 
 ### E-mail aponta para domínio antigo ou retorna 404
 
-1. Em **Authentication → URL Configuration**, corrigir o **Site URL** e cadastrar as três URLs de produção acima. Não usar o endereço de equipe ou de um deployment temporário.
+1. Em **Authentication → URL Configuration**, corrigir o **Site URL**, clicar em **Save changes nessa seção** e conferir o valor após recarregar o painel. Em seguida, cadastrar e salvar as três Redirect URLs de produção acima. Se as três URLs já estiverem corretas, corrigir somente o Site URL; não é necessário recriá-las.
 2. Em **Email Templates → Confirm signup / Reset Password**, conferir se não existe domínio antigo escrito diretamente no HTML. Usar `{{ .ConfirmationURL }}` ou os modelos `{{ .SiteURL }}` acima. [Variáveis dos templates](https://supabase.com/docs/guides/auth/auth-email-templates)
 3. Na Vercel, **Settings → Environment Variables → Production**, conferir `NEXT_PUBLIC_SITE_URL=https://violao-basico-intermediario-iota.vercel.app`. Se mudar a variável, fazer **Redeploy**: a alteração só vale para novos deployments. Manter `http://localhost:3000` no `.env.local` de desenvolvimento. [Variáveis da Vercel](https://vercel.com/docs/environment-variables)
 4. Publicar a correção de `/auth/callback` pela `main`. Gerar um novo e-mail após salvar as configurações; mensagens antigas não são reescritas. Se o e-mail já foi confirmado antes de ocorrer o erro de redirecionamento, tentar entrar normalmente com e-mail e senha.
 5. Confirmar entrada no painel e testar recuperação de senha no mesmo navegador. Não copiar códigos reais para logs, testes ou Git.
 
-Em 14/11/2026, uma consulta pública com token deliberadamente inválido confirmou que o Supabase ainda retornava o endereço antigo, enquanto o JavaScript publicado já continha a origem `…-iota.vercel.app`. O ajuste administrativo de Site URL/allowlist precisa ser salvo no painel; não é aplicado por migrations nem por commit na `main`.
+No diagnóstico de 14/11/2026, uma consulta pública com token deliberadamente inválido confirmou que o Supabase retornava o endereço antigo, enquanto o JavaScript publicado já continha a origem `…-iota.vercel.app`. Na verificação seguinte, as três Redirect URLs foram aceitas, mas o retorno padrão continuava antigo: ainda faltava salvar o campo Site URL separadamente. Esse registro descreve o estado observado no diagnóstico, não uma confirmação do estado atual da conta. O ajuste administrativo precisa ser salvo no painel; não é aplicado por migrations nem por commit na `main`.
 
 ## 4. Criar o primeiro professor
 
@@ -127,10 +145,20 @@ No repositório público, configurar proteção da `main` e exigir o check do wo
 2. **Add New → Project → Import Git Repository** e selecionar o repositório.
 3. Framework: **Next.js**. Root Directory: raiz do repositório. Node.js: **22.x**.
 4. Install Command: `npm ci`. Build Command: **`npm run check`**. Output Directory: padrão do Next.js.
-5. Em Environment Variables, cadastrar `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` e `NEXT_PUBLIC_SITE_URL`. Para produção, usar a URL final `https://SEU-PROJETO.vercel.app`.
+5. Em **Settings → Environment Variables**, selecionar **Production** e cadastrar as três variáveis da tabela abaixo. URL e chave Supabase devem pertencer ao mesmo projeto configurado na seção 3.
 6. Em **Settings → Environments → Production → Branch Tracking**, confirmar **main**. Publicar e completar as URLs de retorno no Supabase.
 7. Se a URL definitiva só ficou conhecida após a primeira publicação, ajustar `NEXT_PUBLIC_SITE_URL`, Site URL e redirects e fazer redeploy. Variáveis `NEXT_PUBLIC_*` precisam estar corretas no build.
 8. Testar o fluxo com duas contas de alunos e uma de professor. Confirmar o SHA do deployment e o commit de `main` correspondente.
+
+| Variável                               | Valor em Production                                                       |
+| -------------------------------------- | ------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`             | URL HTTPS do projeto Supabase, como `https://SEU_PROJECT_REF.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Chave **publishable** do mesmo projeto, copiada do painel Supabase        |
+| `NEXT_PUBLIC_SITE_URL`                 | `https://violao-basico-intermediario-iota.vercel.app`                     |
+
+O domínio acima corresponde a esta instalação; substituir pela origem definitiva ao publicar outra instalação. Não incluir caminho ou parâmetros em `NEXT_PUBLIC_SITE_URL`. Manter os valores reais fora do Git e usar `.env.example` como referência dos nomes. A aplicação não usa chave `service_role` nem senha do banco na Vercel.
+
+Alterar variáveis de ambiente não modifica um deployment já criado: fazer **Redeploy** ou enviar um novo commit à `main` para gerar outro build. Essa operação não altera Site URL/Redirect URLs no Supabase; salvar essas configurações separadamente, conforme a seção 3. Em `.env.local`, manter `NEXT_PUBLIC_SITE_URL=http://localhost:3000`. [Variáveis de ambiente da Vercel](https://vercel.com/docs/environment-variables)
 
 Depois de conectada a integração, cada novo commit enviado à `main` inicia build e, se `npm run check` passar, deployment de produção. O pipeline do GitHub e o build da Vercel são execuções independentes; a Vercel não aguarda automaticamente o GitHub Actions, razão para repetir os checks no Build Command. [Integração Git](https://vercel.com/docs/git), [builds](https://vercel.com/docs/builds)
 

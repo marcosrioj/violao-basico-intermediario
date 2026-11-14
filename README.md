@@ -81,6 +81,50 @@ Depois dessa conexão, um novo commit enviado à `main` dispara build e publica�
 
 O passo a passo, limites e comportamento em caso de cota esgotada estão em [DEPLOYMENT.md](docs/DEPLOYMENT.md) e [FREE-TIER.md](docs/FREE-TIER.md). Usar Vercel Hobby somente quando o uso for pessoal e não comercial; para uso comercial, seguir a alternativa Netlify Free documentada.
 
+## Configurações de produção e confirmação de cadastro
+
+Endereço público desta instalação: [Violão Vivo](https://violao-basico-intermediario-iota.vercel.app). Em outra instalação, substituir essa origem nos três lugares: variável da Vercel, Site URL do Supabase e Redirect URLs do Supabase.
+
+### 1. Variáveis na Vercel
+
+Em **Settings → Environment Variables**, selecionar o ambiente **Production**:
+
+| Variável                               | Valor                                                                                    |
+| -------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`             | URL do projeto Supabase usado pela aplicação, como `https://SEU_PROJECT_REF.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Chave **publishable** desse mesmo projeto; copiar do painel, sem gravar o valor no Git   |
+| `NEXT_PUBLIC_SITE_URL`                 | `https://violao-basico-intermediario-iota.vercel.app`                                    |
+
+Depois de alterar essas variáveis, fazer **Redeploy** ou publicar um novo commit na `main`: os valores `NEXT_PUBLIC_*` são incorporados ao build. No desenvolvimento, manter `NEXT_PUBLIC_SITE_URL=http://localhost:3000` em `.env.local`. A aplicação não precisa de `service_role` nem da senha do banco. [Variáveis da Vercel](https://vercel.com/docs/environment-variables)
+
+### 2. Site URL no Supabase
+
+No mesmo projeto Supabase usado pela Vercel, abrir **Authentication → URL Configuration**. Preencher o campo **Site URL**, sem caminho ou código de confirmação:
+
+```text
+https://violao-basico-intermediario-iota.vercel.app
+```
+
+**Clicar em Save changes na seção Site URL.** Esse campo controla o retorno padrão e é salvo separadamente da lista abaixo. Salvar somente as Redirect URLs não altera o Site URL; mudar a variável da Vercel também não altera o painel Supabase.
+
+### 3. Redirect URLs no Supabase
+
+Na seção **Redirect URLs**, adicionar e salvar cada uma destas URLs exatas:
+
+```text
+https://violao-basico-intermediario-iota.vercel.app/auth/callback
+https://violao-basico-intermediario-iota.vercel.app/auth/callback?next=%2Fredefinir-senha
+https://violao-basico-intermediario-iota.vercel.app/auth/confirm
+```
+
+As três entradas atendem cadastro/login, recuperação de senha e templates personalizados de confirmação. Os retornos para `localhost` estão no [guia de configuração de autenticação](docs/DEPLOYMENT.md#3-configurar-autenticação). [Redirects do Supabase](https://supabase.com/docs/guides/auth/redirect-urls)
+
+### 4. Templates e teste do e-mail
+
+Manter a confirmação de e-mail habilitada e configurar SMTP para atender os alunos. O template padrão com `{{ .ConfirmationURL }}` usa o callback do aplicativo; abrir o link no mesmo navegador em que o cadastro ou a recuperação foi iniciado. Para confirmação em outro dispositivo, os modelos com `{{ .SiteURL }}` e `{{ .TokenHash }}` estão em [DEPLOYMENT.md](docs/DEPLOYMENT.md#cadastro-confirmação-e-recuperação-por-e-mail).
+
+Se o e-mail abrir um domínio antigo ou retornar 404, conferir primeiro o **Site URL** e seu botão **Save changes**; depois, as Redirect URLs e qualquer domínio escrito diretamente no template. Após salvar, solicitar um novo e-mail e testar cadastro e recuperação: mensagens antigas não são reescritas. Se a conta já tiver sido confirmada antes do erro de redirecionamento, tentar entrar normalmente com e-mail e senha. Essas configurações do painel não são aplicadas por migrations nem por commits na `main`.
+
 ## Documentação
 
 - [Verificações executadas e pendências](docs/VERIFICATION.md)
