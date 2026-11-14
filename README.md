@@ -14,6 +14,7 @@ _Registro visual da primeira versão. A revisão atual exige matrícula confirma
 - **Professor:** turmas com código de entrada, acompanhamento individual, planos das aulas, encontros semanais, feedback e validação da execução.
 - **Apresentação das aulas:** sete etapas por aula, navegação por teclado e resposta revelada pelo professor, usando o conteúdo original das 39 aulas.
 - **Prática:** cifras organizadas por trechos, pausa/continuação, início e repetição de cada passagem; repetição do arranjo e metrônomo acionáveis sem interromper os acordes. Inclui referências de andamento pesquisadas, diagramas, braço interativo, afinação de referência e percepção auditiva. Os controles são responsivos e as instruções de uso ficam em dicas acessíveis por toque ou teclado.
+- **Laboratório musical:** oficinas de pulso de memória, escuta com seis perguntas e comparação sonora, localização de notas sem mapa e ferramentas livres. Resultados da rodada orientam a próxima prática; não concluem aulas nem ficam gravados na conta.
 - **Teoria em ação:** laboratórios ligados a R1–R8 para explorar intervalos, escalas, formação de acordes, campo harmônico, centro modal e empréstimo; exemplos autorais com áudio e perguntas de recuperação.
 - **Conteúdo:** aulas completas, consultas teóricas com navegação de ida e volta, links de vídeos/gravações/cifras e PDFs originais. Primeira pestana no módulo 5, após as 12 aulas iniciais.
 - **Segurança:** papel de professor concedido administrativamente, validação no servidor, RLS por usuário/vínculo de turma e respostas privadas sem cache público.
@@ -152,6 +153,7 @@ Se o e-mail abrir um domínio antigo ou retornar 404, conferir primeiro o **Site
 - [Planos gratuitos e fontes oficiais consultadas](docs/FREE-TIER.md)
 - [Conteúdo, origem e reimportação](docs/CONTENT.md)
 - [Pesquisa pedagógica e limites da evidência](docs/PEDAGOGY-RESEARCH.md)
+- [Laboratório: oito estudos e decisões de aprendizagem](docs/LABORATORY-RESEARCH.md)
 - [Andamentos das 13 gravações, unidades e fontes](docs/TEMPO-RESEARCH.md)
 - [Exportação e exclusão de dados pessoais](docs/DATA-ADMINISTRATION.md)
 

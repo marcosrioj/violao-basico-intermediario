@@ -1,10 +1,25 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { frequency, openMidi, playTone } from './audio';
 import { scaleNotes, scaleRoots, type ScaleKind } from './scales';
 import { Hint } from '@/components/ui/hint';
 const names = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'];
 export function Fretboard() {
+  const voice = useRef<(() => void) | null>(null);
+  useEffect(() => {
+    const stop = () => {
+      voice.current?.();
+      voice.current = null;
+    };
+    const hidden = () => {
+      if (document.hidden) stop();
+    };
+    document.addEventListener('visibilitychange', hidden);
+    return () => {
+      stop();
+      document.removeEventListener('visibilitychange', hidden);
+    };
+  }, []);
   const [root, setRoot] = useState(0);
   const [mode, setMode] = useState<ScaleKind>('major');
   const [selected, setSelected] = useState('');
@@ -67,7 +82,8 @@ export function Fretboard() {
                     className={`${visible ? 'in-scale' : ''} ${pitch === root ? 'root-note' : ''}`}
                     aria-label={`${string + 1}ª corda, ${fret === 0 ? 'solta' : `casa ${fret}`}, ${name}`}
                     onClick={() => {
-                      playTone(frequency(midi + fret));
+                      voice.current?.();
+                      voice.current = playTone(frequency(midi + fret));
                       setSelected(
                         `${name} · ${string + 1}ª corda · ${fret === 0 ? 'solta' : `casa ${fret}`}`,
                       );

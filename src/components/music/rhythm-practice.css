@@ -1,0 +1,58 @@
+.rhythm-practice-controls {
+  margin-block: var(--space-4);
+  align-items: end;
+}
+.rhythm-practice-controls > label {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+.rhythm-practice-controls > .button {
+  flex: 1 1 10rem;
+}
+.rhythm-practice-state {
+  min-height: 3.5em;
+  margin-block: var(--space-3);
+}
+.rhythm-tap-pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: 112px;
+  padding: var(--space-4);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-selected);
+  color: var(--color-primary);
+  touch-action: manipulation;
+  user-select: none;
+}
+.rhythm-tap-pad:active:not(:disabled) {
+  background: var(--color-primary);
+  color: var(--color-surface);
+}
+.rhythm-practice-feedback {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.rhythm-practice-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+.rhythm-practice-metrics p {
+  margin: 0;
+  padding: var(--space-3);
+  background: var(--color-surface-soft);
+  border-radius: var(--radius-sm);
+}
+.rhythm-practice-metrics span,
+.rhythm-practice-metrics strong {
+  display: block;
+}
+.rhythm-practice-metrics strong {
+  font-size: var(--font-size-lg);
+}

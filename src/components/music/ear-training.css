@@ -1,0 +1,43 @@
+.ear-training > * + * {
+  margin-top: var(--space-4);
+}
+.ear-training > .section-title {
+  margin-top: var(--space-2);
+}
+.ear-level {
+  display: grid;
+  gap: var(--space-2);
+}
+.ear-level select {
+  width: 100%;
+  min-width: 0;
+}
+.ear-progress {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+.ear-feedback {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-soft);
+}
+.ear-feedback > * + * {
+  margin-top: var(--space-3);
+}
+.ear-training .choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.ear-training .choice {
+  flex: 1 1 8rem;
+  min-height: 44px;
+  white-space: normal;
+}
+.ear-training .control-row .button {
+  white-space: normal;
+}
+.ear-audio-controls {
+  padding-top: var(--space-2);
+}

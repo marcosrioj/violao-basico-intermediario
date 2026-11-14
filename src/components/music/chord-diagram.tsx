@@ -1,9 +1,25 @@
 'use client';
+import { useEffect, useRef } from 'react';
 import { Volume2 } from 'lucide-react';
 import { chords } from '@/content/chords';
 import { soundChord } from './audio';
 export function ChordDiagram({ name }: { name: string }) {
   const chord = chords[name];
+  const voice = useRef<(() => void) | null>(null);
+  useEffect(() => {
+    const stop = () => {
+      voice.current?.();
+      voice.current = null;
+    };
+    const stopHidden = () => {
+      if (document.hidden) stop();
+    };
+    document.addEventListener('visibilitychange', stopHidden);
+    return () => {
+      stop();
+      document.removeEventListener('visibilitychange', stopHidden);
+    };
+  }, [name]);
   if (!chord) return <span className="badge">{name}</span>;
   const fretted = chord.frets.filter((x): x is number => x !== null && x > 0);
   const start = Math.max(...fretted) > 5 ? Math.min(...fretted) : 1;
@@ -11,7 +27,10 @@ export function ChordDiagram({ name }: { name: string }) {
     <article className="chord-card">
       <button
         type="button"
-        onClick={() => soundChord(chord.frets)}
+        onClick={() => {
+          voice.current?.();
+          voice.current = soundChord(chord.frets);
+        }}
         className="chord-title"
         aria-label={`Ouvir acorde ${name}`}
       >

@@ -53,3 +53,7 @@ As setas de batida e o pulso visual complementam o som. Evitar animação decora
 ## Conteúdo e direitos
 
 Os materiais fornecidos são transformados em conteúdo navegável. Links de gravação e cifra permanecem referências externas; não são promessa de disponibilidade permanente. Não inserir letras completas obtidas de terceiros sem autorização. Arranjos didáticos, instruções e síntese de acordes podem apoiar a aula sem redistribuir gravações comerciais. A conferência final de tom, digitação e andamento deve ocorrer com o professor e a gravação indicada.
+
+## Oficinas do laboratório
+
+A revisão do laboratório está detalhada em [LABORATORY-RESEARCH.md](LABORATORY-RESEARCH.md), com oito estudos primários, resultados positivos e nulos, decisões de interface e limites. As oficinas conectam tentativa, comparação e aplicação nas aulas. Os resultados são locais à rodada, sem gravação na conta ou conclusão automática.

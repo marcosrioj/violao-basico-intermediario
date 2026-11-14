@@ -2,6 +2,14 @@
 
 Registro de **14 de novembro de 2026**. O projeto está na branch `main`. Este documento distingue o código entregue, os testes executados e as configurações que dependem de contas externas.
 
+## Oficinas de aprendizagem musical
+
+A revisão passou em lint, tipos, **97 testes** e build. Oito testes novos cobrem afinação/posições e semitons, rodadas auditivas balanceadas, resumo sem inflação por revisão e análise de pulsos: início deslocado, velocidade, regularidade, pausas, toques duplicados e dados inválidos.
+
+No Chrome com backend sintético local, passaram **24 verificações**: quatro oficinas em 320, 375, 768, 844 (paisagem) e 1440 px; seis posições no braço com erro/revelação sem acerto indevido; seis perguntas auditivas com tônicas diferentes e revisão preservando 5/6; reprodução de oito pulsos por Espaço/Enter com distinção de andamento e regularidade; cancelamento das vozes futuras ao trocar de oficina. Os alvos testados têm pelo menos 44 px; dicas couberam na tela e não houve exceções. A fonte a 200% revelou um rótulo largo, corrigido e revalidado. Capturas móveis foram inspecionadas. Links de aplicação e teoria foram conferidos com o conteúdo real do curso. A verificação adicional confirmou o contraste entre terças, bloqueio da resposta ao parar a primeira escuta antes do fim, liberação após ouvir o par completo e cancelamento ao ocultar a página.
+
+A pesquisa consultou oito trabalhos primários, incluindo resultados nulos, em [LABORATORY-RESEARCH.md](LABORATORY-RESEARCH.md). Testes técnicos não demonstram eficácia pedagógica: a retenção e a aplicação no violão ainda dependem de observação com alunos/professor. Resultados da rodada não são persistidos nem alteram matrícula/progresso. Nenhum serviço, upload ou custo adicional foi introduzido. Alteração local, sem publicação nesta revisão.
+
 ## Revisão móvel e navegação compacta
 
 Passaram lint, tipos, **89 testes** e build. No Chrome com backend sintético, a auditoria geral completou **37 verificações** em nove páginas/estados a 320, 375, 768 e 1440 px, sem transbordamento, erros de página ou controles do produto abaixo de 44 px. O menu passou em **16 combinações de página e viewport**, incluindo paisagem a 844 × 390: abertura, ciclo de foco, Escape, toque fora, retorno de foco, bloqueio/restauração da rolagem, navegação e fechamento ao ampliar para desktop. A barra fechada permaneceu com até 72 px de altura nos tamanhos testados.

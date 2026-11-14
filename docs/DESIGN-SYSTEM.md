@@ -124,3 +124,9 @@ Até 1000 px, a navegação usa uma barra compacta e um menu lateral sob demanda
 No celular, os campos têm fonte de 16 px, alvos de pelo menos 44 px, cards com menos recuo e ações de reprodução lado a lado quando cabem. Atalhos internos da aula rolam horizontalmente dentro de sua faixa, sem alargar a página. Cabeçalhos aceitam texto ampliado. A marca usa os mesmos tokens, tipografia e ícones existentes, sem nova dependência.
 
 Revisão orientada por `ui-ux-pro-max`, `ui-styling`, `design-system`, `design` e `brand`; `banner-design` e `slides` foram consultadas para conferir a hierarquia do hero e a apresentação existente. A revisão inclui retrato, paisagem, teclado, conteúdo ampliado e retorno ao desktop. Não equivale a uma auditoria com leitor de tela ou dispositivos físicos.
+
+## Oficinas do laboratório musical
+
+O laboratório apresenta quatro escolhas com estado `aria-pressed`: ritmo, escuta, notas e prática livre. Cada escolha monta somente sua oficina; a troca encerra áudio e estado transitório. A interface não usa persistência local compartilhada nem gera conclusão de aula. As quatro escolhas permanecem acessíveis por toque/teclado, reorganizando-se no celular e com fonte ampliada. Explicações operacionais ficam em Hint; conteúdo musical, feedback e aplicação no violão permanecem visíveis.
+
+O treino auditivo oferece seis perguntas balanceadas e tônicas distintas. A primeira resposta só é liberada após ouvir o par completo; comparar e revisar não altera o resultado inicial. O treino de notas oculta as posições antes da tentativa, inclusive nos nomes acessíveis; revelar não gera acerto de primeira tentativa. O treino de pulso ancora a medição no primeiro toque e separa regularidade de velocidade. Suas margens são escolhas editoriais documentadas, não um instrumento de avaliação validado. A aplicação nas aulas usa links e conceitos reais do curso. [Pesquisa e limites](LABORATORY-RESEARCH.md).

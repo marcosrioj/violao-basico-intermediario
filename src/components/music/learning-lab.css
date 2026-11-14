@@ -1,0 +1,92 @@
+.learning-lab {
+  display: grid;
+  gap: var(--space-5);
+}
+.lab-navigation {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+.lab-navigation-choice {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  text-align: left;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-foreground);
+}
+.lab-navigation-choice strong {
+  font-size: var(--font-size-base);
+  line-height: 1.4;
+}
+.lab-navigation-choice span {
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  color: var(--color-muted-foreground);
+}
+.lab-navigation-choice[aria-pressed='true'] {
+  background: var(--color-surface-selected);
+  border-color: var(--color-primary);
+  box-shadow: inset 0 -3px 0 var(--color-primary);
+}
+.lab-navigation-choice:hover {
+  border-color: var(--color-primary);
+}
+.lab-method {
+  color: var(--color-muted-foreground);
+}
+.lab-method strong {
+  color: var(--color-foreground);
+}
+.lab-workshop,
+.lab-transfer {
+  display: grid;
+  gap: var(--space-4);
+}
+.lab-fret-choices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+.lab-fret-choices .choice {
+  min-height: 56px;
+}
+.lab-feedback {
+  padding: var(--space-4);
+  background: var(--color-surface-soft);
+  border-radius: var(--radius-sm);
+}
+.lab-map {
+  margin-top: var(--space-4);
+}
+.lab-map > summary {
+  min-height: 48px;
+  padding-block: var(--space-3);
+}
+.lab-transfer h2 {
+  font-size: 1.375rem;
+}
+@media (max-width: 1000px) {
+  .lab-navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 420px) {
+  .lab-navigation {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  }
+  .lab-navigation-choice {
+    padding: var(--space-3);
+  }
+  .lab-navigation-choice span {
+    display: none;
+  }
+  .lab-fret-choices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
