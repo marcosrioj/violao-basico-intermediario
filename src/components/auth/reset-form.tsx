@@ -3,6 +3,7 @@ import { useEffect, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { LoaderCircle } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
+import { Hint } from '@/components/ui/hint';
 import {
   revokeAllSessions,
   updatePasswordAndRevokeSessions,
@@ -71,7 +72,6 @@ export function ResetPasswordForm({ configured }: { configured: boolean }) {
     <>
       <p className="eyebrow">ACESSO À SUA CONTA</p>
       <h1>Uma nova senha.</h1>
-      <p className="muted">Escolha uma senha segura para continuar sua jornada.</p>
       {status === 'loading' && (
         <div className="notice" role="status">
           <LoaderCircle size={17} /> Verificando seu link…
@@ -121,10 +121,14 @@ export function ResetPasswordForm({ configured }: { configured: boolean }) {
               disabled={busy}
             />
           </label>
-          <button className="button" disabled={busy}>
-            {busy ? 'Salvando…' : 'Salvar nova senha'}
-          </button>
-          <small className="muted">Após a alteração, entre novamente com sua nova senha.</small>
+          <div className="control-with-hint">
+            <button className="button" type="submit" disabled={busy}>
+              {busy ? 'Salvando…' : 'Salvar nova senha'}
+            </button>
+            <Hint label="Depois de alterar a senha">
+              Após a alteração, entre novamente com sua nova senha.
+            </Hint>
+          </div>
         </form>
       )}
       {status === 'done' && (

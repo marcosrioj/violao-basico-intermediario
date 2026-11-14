@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Play, Square } from 'lucide-react';
 import { audioContext, playTone } from './audio';
+import { Hint } from '@/components/ui/hint';
 export function Metronome() {
   const [bpm, setBpm] = useState(60);
   const [meter, setMeter] = useState('4/4');
@@ -51,21 +52,23 @@ export function Metronome() {
           <p className="eyebrow">PULSO CONSTANTE</p>
           <h2>Metrônomo</h2>
         </div>
-        <span className="badge">Ritmo</span>
+        <Hint label="Ajustar o metrônomo">
+          Ajuste o andamento pela barra ou pelas setas do teclado. Escolha o compasso e use
+          Iniciar/Parar para controlar o clique. Ao sair desta aba, o som é interrompido.
+        </Hint>
       </div>
       <div className="bpm-readout">
         {bpm}
         <span>BPM</span>
       </div>
-      <label className="sr-only" htmlFor="metronome-bpm">
-        Andamento do metrônomo
-      </label>
+      <label htmlFor="metronome-bpm">Andamento do metrônomo</label>
       <input
         id="metronome-bpm"
         type="range"
         min="30"
         max="180"
         value={bpm}
+        aria-valuetext={`${bpm} BPM por ${compound ? 'semínima pontuada' : 'semínima'}`}
         onChange={(e) => setBpm(Number(e.target.value))}
       />
       <div className="beats" aria-label={`Pulso ${running ? beat + 1 : 0} de ${pulses}`}>
@@ -75,24 +78,30 @@ export function Metronome() {
           </span>
         ))}
       </div>
-      <div className="control-row">
+      <div className="control-row metronome-controls">
         <label>
           Compasso
           <select value={meter} onChange={(e) => setMeter(e.target.value)}>
-            <option value="4/4">4/4 · quatro pulsos</option>
-            <option value="3/4">3/4 · três pulsos</option>
-            <option value="2/4">2/4 · dois pulsos</option>
-            <option value="6/8">6/8 · dois pulsos compostos</option>
+            <option value="4/4">4/4 · 4 pulsos</option>
+            <option value="3/4">3/4 · 3 pulsos</option>
+            <option value="2/4">2/4 · 2 pulsos</option>
+            <option value="6/8">6/8 · 2 pulsos</option>
           </select>
         </label>
         <button
+          type="button"
           className="button"
           onClick={() => {
             void audioContext().resume();
             setRunning(!running);
           }}
         >
-          {running ? <Square size={16} /> : <Play size={16} />} {running ? 'Parar' : 'Iniciar'}
+          {running ? (
+            <Square size={16} aria-hidden="true" />
+          ) : (
+            <Play size={16} aria-hidden="true" />
+          )}{' '}
+          {running ? 'Parar' : 'Iniciar'}
         </button>
       </div>
       <p className="hint">

@@ -41,6 +41,12 @@ button:disabled {
   cursor: not-allowed;
   opacity: 0.65;
 }
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+}
 button,
 a,
 input,
@@ -389,8 +395,10 @@ main {
   white-space: normal;
   text-align: center;
   max-width: 100%;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
 }
-.button:hover {
+.button:hover:not(:disabled):not([aria-disabled='true']) {
   background: var(--button-hover-bg);
   box-shadow: var(--shadow-sm);
 }
@@ -398,7 +406,7 @@ main {
   background: var(--color-cream);
   color: var(--color-inverse);
 }
-.button.cream:hover {
+.button.cream:hover:not(:disabled):not([aria-disabled='true']) {
   background: var(--color-cream-soft);
 }
 .button.secondary {
@@ -406,13 +414,29 @@ main {
   color: var(--green);
   border-color: var(--color-border-strong);
 }
-.button.secondary:hover {
+.button.secondary:hover:not(:disabled):not([aria-disabled='true']) {
   background: var(--color-surface-soft);
 }
 .button.small {
   padding: 7px 11px;
   min-height: var(--touch-target);
   font-size: var(--font-size-sm);
+}
+.button[aria-pressed='true'],
+.choice[aria-pressed='true'] {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+  box-shadow: inset 0 -3px 0 var(--color-primary-hover);
+}
+.button[aria-pressed='true']:hover:not(:disabled):not([aria-disabled='true']),
+.choice[aria-pressed='true']:hover:not(:disabled):not([aria-disabled='true']) {
+  background: var(--color-primary-hover);
+  color: var(--color-on-primary);
+}
+.button[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.65;
 }
 .hero-demo {
   display: inline-flex;
@@ -736,6 +760,14 @@ main {
   flex-shrink: 0;
   white-space: nowrap;
 }
+.section-title:has(> .ui-hint) {
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.section-title:has(> .ui-hint) > :is(h1, h2, h3, div):first-child {
+  flex: 1;
+  min-width: 0;
+}
 .text-link {
   font-size: var(--font-size-sm);
   font-weight: 700;
@@ -954,7 +986,13 @@ main {
 }
 .control-row > label {
   flex: 1;
-  min-width: 130px;
+  min-width: min(100%, 10rem);
+}
+.metronome-controls > label {
+  flex: 1 1 14rem;
+}
+.metronome-controls > .button {
+  flex: 1 1 8rem;
 }
 label {
   font-size: var(--font-size-sm);
@@ -962,6 +1000,7 @@ label {
   display: flex;
   flex-direction: column;
   gap: 7px;
+  min-width: 0;
 }
 input:not([type='checkbox']):not([type='radio']):not([type='range']),
 select,
@@ -974,6 +1013,8 @@ textarea {
   color: var(--ink);
   width: 100%;
   font-size: var(--font-size-base);
+  max-width: 100%;
+  min-width: 0;
 }
 textarea {
   min-height: 100px;
@@ -983,11 +1024,23 @@ input[type='range'] {
   width: 100%;
   accent-color: var(--green);
   min-height: var(--touch-target);
+  margin: 0;
+  cursor: pointer;
 }
-input[type='checkbox'] {
-  width: 17px;
-  height: 17px;
+input[type='checkbox'],
+input[type='radio'] {
+  width: var(--space-5);
+  height: var(--space-5);
   accent-color: var(--green);
+  margin: 0;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 input[aria-invalid='true'],
 select[aria-invalid='true'],
@@ -1003,6 +1056,114 @@ input:read-only {
   align-items: center;
   gap: 9px;
   min-height: var(--touch-target);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  line-height: 1.45;
+  cursor: pointer;
+  max-width: 100%;
+  white-space: normal;
+}
+.checkbox-label:has(input:checked) {
+  border-color: var(--color-primary);
+  background: var(--color-surface-selected);
+  color: var(--color-primary);
+}
+.checkbox-label:has(input:focus-visible) {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+.checkbox-label:has(input:disabled) {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+.label-with-hint,
+.control-with-hint {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  max-width: 100%;
+}
+.label-with-hint > :first-child,
+.control-with-hint > label {
+  min-width: 0;
+  flex: 1;
+}
+.control-with-hint {
+  flex-wrap: wrap;
+}
+.ui-hint {
+  display: inline-flex;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+.ui-hint-trigger,
+.ui-hint-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-primary);
+  flex: 0 0 auto;
+}
+.ui-hint-trigger:hover,
+.ui-hint-trigger[aria-expanded='true'],
+.ui-hint-close:hover {
+  background: var(--color-surface-selected);
+  border-color: var(--color-border-strong);
+}
+.ui-hint-panel {
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  width: 22rem;
+  max-width: calc(100vw - var(--space-4));
+  max-height: calc(100dvh - var(--space-4));
+  overflow: auto;
+  overscroll-behavior: contain;
+  z-index: 1000;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+}
+.ui-hint-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+.ui-hint-heading strong {
+  align-self: center;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.ui-hint-close {
+  margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) 0 0;
+}
+.ui-hint-content {
+  overflow-wrap: anywhere;
+  font-weight: 400;
+}
+.ui-hint-content > * + * {
+  margin-top: var(--space-3);
+}
+.ui-hint-content a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .hint {
   font-size: var(--font-size-sm) !important;
@@ -1011,6 +1172,8 @@ input:read-only {
   line-height: 1.7 !important;
 }
 .choice {
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
   padding: 10px 14px;
   border: 1px solid var(--color-border-strong);
   border-radius: 9px;

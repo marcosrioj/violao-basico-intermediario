@@ -47,9 +47,6 @@ export function EnrollmentPanel({ profile }: { profile: Profile }) {
           </span>
           <h3>Já recebeu seu código?</h3>
           <EnrollmentForm />
-          <p className="hint">
-            Ainda não recebeu? Fale com seu professor pelo canal em que vocês combinaram as aulas.
-          </p>
         </div>
       </section>
     </div>

@@ -1,4 +1,5 @@
 'use client';
+import { Hint } from '@/components/ui/hint';
 import { useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { CalendarPlus, MessageSquare, ArrowLeft } from 'lucide-react';
@@ -194,20 +195,19 @@ export function ClassroomDashboard({
                 <div>
                   <p className="eyebrow">SUA TURMA</p>
                   <h2 className="dashboard-summary-title">{data.classroom.name}</h2>
-                  <p className="dashboard-form-note">
-                    Acompanhe a prática, observe a execução e escolha o próximo passo.
-                  </p>
                 </div>
                 <Invitation code={data.classroom.invite_code} />
               </div>
             </section>
             <div className="two-columns dashboard-section-gap">
               <section className="card">
-                <h2>Alunos e progresso</h2>
-                <p className="dashboard-form-note">
-                  A conclusão é informada pelo aluno. Sua avaliação de execução fica registrada na
-                  devolutiva.
-                </p>
+                <div className="section-title">
+                  <h2>Alunos e progresso</h2>
+                  <Hint label="Acompanhar o progresso">
+                    Acompanhe a prática, observe a execução e escolha o próximo passo. A conclusão é
+                    informada pelo aluno. Sua avaliação de execução fica registrada na devolutiva.
+                  </Hint>
+                </div>
                 {data.members.length ? (
                   data.members.map((member) => {
                     const entries = data.progress.filter(
@@ -315,7 +315,13 @@ export function ClassroomDashboard({
                 <Pagination page={page} hasMore={data.hasMore} onChange={setPage} label="alunos" />
               </section>
               <section className="card" id="feedback-form">
-                <h2>Uma orientação para avançar</h2>
+                <div className="section-title">
+                  <h2>Uma orientação para avançar</h2>
+                  <Hint label="Selecionar o aluno da devolutiva">
+                    O formulário mostra os alunos da página atual. Para selecionar outros alunos,
+                    avance a paginação da lista da turma.
+                  </Hint>
+                </div>
                 {data.members.length ? (
                   <form className="stack" onSubmit={feedback} aria-busy={busy === 'feedback'}>
                     <label htmlFor="feedback-student">
@@ -376,14 +382,14 @@ export function ClassroomDashboard({
                     Depois da primeira matrícula, você poderá enviar orientações individuais.
                   </Empty>
                 )}
-                <p className="hint">
-                  Para selecionar outros alunos, avance a paginação da lista ao lado.
-                </p>
               </section>
             </div>
             <div className="two-columns">
               <section className="card">
-                <h2>Agendar o próximo encontro</h2>
+                <div className="section-title">
+                  <h2>Agendar o próximo encontro</h2>
+                  <span className="badge">60 minutos</span>
+                </div>
                 <form className="stack" onSubmit={schedule} aria-busy={busy === 'session'}>
                   <label htmlFor="meeting-title">
                     Título
@@ -409,8 +415,14 @@ export function ClassroomDashboard({
                   >
                     Preparar esta aula com o plano do professor
                   </Link>
-                  <label htmlFor="meeting-start">
-                    Data e hora em {deviceTimezone}
+                  <div>
+                    <div className="label-with-hint">
+                      <label htmlFor="meeting-start">Data e hora em {deviceTimezone}</label>
+                      <Hint label="Fuso horário do encontro">
+                        Digite o horário do dispositivo. A agenda converte para o fuso de cada
+                        pessoa; o seu perfil usa {profile.timezone}.
+                      </Hint>
+                    </div>
                     <input
                       id="meeting-start"
                       type="datetime-local"
@@ -418,11 +430,7 @@ export function ClassroomDashboard({
                       value={startsAt}
                       onChange={(event) => setStartsAt(event.target.value)}
                     />
-                  </label>
-                  <p className="hint">
-                    Digite o horário do dispositivo. A agenda converte para o fuso de cada pessoa; o
-                    seu perfil usa {profile.timezone}. Cada encontro do curso tem 60 minutos.
-                  </p>
+                  </div>
                   <label htmlFor="meeting-url">
                     Link de encontro on-line (opcional)
                     <input
@@ -442,7 +450,13 @@ export function ClassroomDashboard({
                 </form>
               </section>
               <section className="card">
-                <h2>Agenda da turma</h2>
+                <div className="section-title">
+                  <h2>Agenda da turma</h2>
+                  <Hint label="Encontros exibidos">
+                    Até 20 próximos encontros desta turma. A agenda geral também está na área do
+                    professor.
+                  </Hint>
+                </div>
                 <SessionEntries
                   items={data.sessions}
                   lessons={lessons}
@@ -452,17 +466,15 @@ export function ClassroomDashboard({
                     if (session) setConfirmation({ kind: 'session', id, name: session.title });
                   }}
                 />
-                <p className="hint">
-                  Até 20 próximos encontros desta turma. A agenda geral também está na área do
-                  professor.
-                </p>
               </section>
             </div>
             <section className="card">
-              <h2>Devolutivas recentes</h2>
-              <p className="dashboard-form-note">
-                As 20 devolutivas mais recentes para os alunos desta página.
-              </p>
+              <div className="section-title">
+                <h2>Devolutivas recentes</h2>
+                <Hint label="Devolutivas exibidas">
+                  As 20 devolutivas mais recentes para os alunos desta página.
+                </Hint>
+              </div>
               <FeedbackEntries
                 items={data.feedback}
                 lessons={lessons}

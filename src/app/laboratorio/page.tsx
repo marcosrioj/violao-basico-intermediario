@@ -4,6 +4,7 @@ import { Fretboard } from '@/components/music/fretboard';
 import { EarTraining, TuningReference } from '@/components/music/ear-training';
 import { ChordDiagram } from '@/components/music/chord-diagram';
 import { requireCourseProfile } from '@/lib/auth';
+import { Hint } from '@/components/ui/hint';
 
 export const dynamic = 'force-dynamic';
 export default async function Laboratory() {
@@ -24,16 +25,18 @@ export default async function Laboratory() {
         <EarTraining />
         <section className="card">
           <p className="eyebrow">OS PRIMEIROS ACORDES</p>
-          <h2>Três formas, muitas possibilidades</h2>
+          <div className="section-title">
+            <h2>Três formas, muitas possibilidades</h2>
+            <Hint label="Ouvir os diagramas de acordes">
+              Toque no nome de um acorde para ouvir sua sonoridade de referência.
+            </Hint>
+          </div>
           <div className="chord-grid compact">
             {['D', 'G', 'Em'].map((name) => (
               <ChordDiagram name={name} key={name} />
             ))}
           </div>
-          <p className="hint">
-            Números nos círculos: dedos 1 a 4. ×: não tocar. ○: corda solta. Toque no nome para
-            ouvir.
-          </p>
+          <p className="hint">Números nos círculos: dedos 1 a 4. ×: não tocar. ○: corda solta.</p>
         </section>
       </div>
     </Shell>

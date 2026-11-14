@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, KeyRound, LoaderCircle } from 'lucide-react';
 import { apiFetch } from '@/lib/api-client';
 import { joinInput } from '@/lib/validation';
+import { Hint } from '@/components/ui/hint';
 
 export function EnrollmentForm({ onConfirmed }: { onConfirmed?: () => void }) {
   const router = useRouter();
@@ -65,10 +66,13 @@ export function EnrollmentForm({ onConfirmed }: { onConfirmed?: () => void }) {
 
   return (
     <form className="enrollment-form" onSubmit={submit} noValidate aria-busy={busy}>
-      <label htmlFor="enrollment-code">Código de matrícula</label>
-      <p id="enrollment-help" className="hint">
-        Use o código de 12 caracteres recebido do professor fora do aplicativo.
-      </p>
+      <div className="label-with-hint">
+        <label htmlFor="enrollment-code">Código de matrícula · 12 caracteres</label>
+        <Hint label="Receber o código da turma">
+          Use o código recebido do professor fora do aplicativo. Se ainda não recebeu, fale com ele
+          pelo canal em que vocês combinaram as aulas.
+        </Hint>
+      </div>
       <input
         ref={input}
         id="enrollment-code"
@@ -82,7 +86,7 @@ export function EnrollmentForm({ onConfirmed }: { onConfirmed?: () => void }) {
         value={code}
         placeholder="Ex.: A1B2C3D4E5F6"
         aria-invalid={Boolean(error)}
-        aria-describedby={`enrollment-help${error ? ' enrollment-error' : ''}`}
+        aria-describedby={error ? 'enrollment-error' : undefined}
         onChange={(event) => {
           setCode(event.target.value.trim().toUpperCase());
           setError('');

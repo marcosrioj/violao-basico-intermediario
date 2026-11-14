@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, Check, Music2, BookOpen, AudioLines, Heart, MoveUpRight } from 'lucide-react';
 import { Shell } from '@/components/shell';
 import { courseModules } from '@/content/course';
+import { Hint } from '@/components/ui/hint';
 export default function Home() {
   return (
     <Shell>
@@ -92,8 +93,10 @@ export default function Home() {
               01
             </span>
             <div>
-              <h3>Crie sua conta</h3>
-              <p>Use seu e-mail ou entre com Google.</p>
+              <div className="label-with-hint">
+                <h3>Crie sua conta</h3>
+                <Hint label="Criar sua conta">Use seu e-mail ou entre com Google.</Hint>
+              </div>
             </div>
           </li>
           <li>
@@ -110,8 +113,13 @@ export default function Home() {
               03
             </span>
             <div>
-              <h3>Confirme sua matrícula</h3>
-              <p>Digite o código no seu painel para liberar aulas, repertório e ferramentas.</p>
+              <div className="label-with-hint">
+                <h3>Confirme sua matrícula</h3>
+                <Hint label="Confirmar sua matrícula">
+                  Digite o código no seu painel para liberar aulas, repertório e ferramentas.
+                </Hint>
+              </div>
+              <p>O acesso é liberado após confirmar a matrícula na turma.</p>
             </div>
           </li>
         </ol>

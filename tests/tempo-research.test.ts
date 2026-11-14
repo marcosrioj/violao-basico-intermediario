@@ -3,7 +3,12 @@ import test from 'node:test';
 import rawCourse from '../src/content/course-data.json';
 import research from '../src/content/tempo-research.json';
 import { songs, lessons } from '../src/content/course';
-import { formatBpm, referenceBpm, type TempoResearch } from '../src/content/tempo';
+import {
+  defaultPlaybackBpm,
+  formatBpm,
+  referenceBpm,
+  type TempoResearch,
+} from '../src/content/tempo';
 import { scheduleChartBar, scheduleChartMetronome } from '../src/components/music/chart-timing';
 
 test('every exact recording has a dated, sourced tempo review without changing the syllabus', () => {
@@ -50,15 +55,48 @@ test('6/8 source quarter tempo converts to dotted pulses without rounding audio 
   assert.equal(referenceBpm(songs.ousado_amor.tempo!), 55);
 });
 
-test('tempo research cannot turn uncertain detections into a playback preset', () => {
-  for (const id of ['santo_espirito', 'faz_chover_tna', 'poderoso_deus']) {
-    assert.equal(referenceBpm(songs[id].tempo!), null);
+test('adopted estimates start every lesson of the respective song at the selected pulse', () => {
+  const defaults: Record<string, number> = {
+    santo_espirito: 71.5,
+    faz_chover_tna: 67,
+    poderoso_deus: 62,
+  };
+  for (const [id, song] of Object.entries(songs)) {
+    const expected = defaults[id];
+    assert.equal(song.tempo?.useAsDefault === true, expected !== undefined, id);
+    if (expected !== undefined) {
+      assert.equal(song.tempo!.status, 'estimated', id);
+      assert.equal(referenceBpm(song.tempo!), expected, id);
+      const chart = Object.values(song.versions)[0];
+      const click = scheduleChartMetronome(chart.sections[0].bars[0], chart, 0, expected);
+      assert.ok(Math.abs(click.ticks[1].at - click.ticks[0].at - 60 / expected) < 1e-10, id);
+    }
+    for (const lesson of lessons.filter((lesson) => lesson.song === id)) {
+      assert.equal(defaultPlaybackBpm(lesson.bpm, song.tempo), expected ?? lesson.bpm, lesson.id);
+    }
   }
-  const unresolved = { ...songs.poderoso_deus.tempo!, reference: { bpm: 124, unit: 'quarter' } };
-  assert.equal(referenceBpm(unresolved as TempoResearch), null);
+  assert.equal(formatBpm(defaultPlaybackBpm(48, songs.santo_espirito.tempo)), '71,5');
+  assert.equal(defaultPlaybackBpm(48), 48);
+});
+
+test('unresolved or invalid references cannot become playback defaults', () => {
+  const unresolved: TempoResearch = {
+    ...songs.poderoso_deus.tempo!,
+    status: 'unresolved',
+    reference: { bpm: 124, unit: 'quarter' },
+  };
+  assert.equal(referenceBpm(unresolved), null);
+  assert.equal(defaultPlaybackBpm(48, unresolved), 48);
+  assert.equal(defaultPlaybackBpm(48, { ...unresolved, status: 'estimated', reference: null }), 48);
   const known = songs.bondade_de_deus.tempo!;
   for (const bpm of [0, -68, NaN, Infinity]) {
-    assert.equal(referenceBpm({ ...known, reference: { bpm, unit: 'quarter' } }), null);
+    const invalid: TempoResearch = {
+      ...known,
+      useAsDefault: true,
+      reference: { bpm, unit: 'quarter' },
+    };
+    assert.equal(referenceBpm(invalid), null);
+    assert.equal(defaultPlaybackBpm(48, invalid), 48);
   }
 });
 

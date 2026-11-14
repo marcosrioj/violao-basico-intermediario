@@ -1,5 +1,6 @@
 'use client';
 import { useId, useState, type ReactNode } from 'react';
+import { Hint } from '@/components/ui/hint';
 
 export function TheoryExercise({ exercise, answer }: { exercise: ReactNode; answer: ReactNode }) {
   const [attempt, setAttempt] = useState('');
@@ -8,7 +9,13 @@ export function TheoryExercise({ exercise, answer }: { exercise: ReactNode; answ
   return (
     <section className="card quiz">
       <p className="eyebrow">EXPERIMENTE ANTES DE CONFERIR</p>
-      <h2>Transforme a ideia em música</h2>
+      <div className="section-title">
+        <h2>Transforme a ideia em música</h2>
+        <Hint label="Rascunho do exercício">
+          Este rascunho fica apenas nesta página. Registre uma tentativa antes de conferir a
+          explicação. Pode ser uma dúvida ou o que você conseguiu ouvir.
+        </Hint>
+      </div>
       <p>{exercise}</p>
       <label htmlFor={inputId}>
         Sua tentativa ou o que você ouviu
@@ -23,9 +30,7 @@ export function TheoryExercise({ exercise, answer }: { exercise: ReactNode; answ
           placeholder="Toque o exercício, anote sua resposta e depois compare."
         />
       </label>
-      <p className="hint">
-        Este rascunho fica apenas nesta página. Compare sua execução com o professor.
-      </p>
+      <p className="hint">Compare sua execução com o professor.</p>
       <details className="section">
         <summary
           onClick={(event) => {

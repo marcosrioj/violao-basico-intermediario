@@ -2,11 +2,12 @@
 import { useState } from 'react';
 import { frequency, openMidi, playTone } from './audio';
 import { scaleNotes, scaleRoots, type ScaleKind } from './scales';
+import { Hint } from '@/components/ui/hint';
 const names = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'];
 export function Fretboard() {
   const [root, setRoot] = useState(0);
   const [mode, setMode] = useState<ScaleKind>('major');
-  const [selected, setSelected] = useState('Toque em uma nota para ouvi-la.');
+  const [selected, setSelected] = useState('');
   const scale = scaleNotes(root, mode);
   const notesByPitch = new Map(scale.map((note) => [note.pitch, note.name]));
   return (
@@ -16,7 +17,11 @@ export function Fretboard() {
           <p className="eyebrow">TEORIA QUE VOCÊ PODE OUVIR</p>
           <h2>Explore o braço</h2>
         </div>
-        <span className="badge">Escalas</span>
+        <Hint label="Explorar as notas no braço">
+          Escolha a tônica e a escala. Toque em uma casa para ouvir a nota; o nome e a posição
+          aparecem abaixo do braço. A tônica está destacada em terracota e a 1ª corda fica em cima.
+          Em telas pequenas, deslize o braço na horizontal para alcançar as outras casas.
+        </Hint>
       </div>
       <div className="control-row">
         <label>
@@ -57,6 +62,7 @@ export function Fretboard() {
                 const name = notesByPitch.get(pitch) ?? names[pitch];
                 return (
                   <button
+                    type="button"
                     key={fret}
                     className={`${visible ? 'in-scale' : ''} ${pitch === root ? 'root-note' : ''}`}
                     aria-label={`${string + 1}ª corda, ${fret === 0 ? 'solta' : `casa ${fret}`}, ${name}`}
@@ -82,7 +88,7 @@ export function Fretboard() {
         </div>
       </div>
       <p className="hint" aria-live="polite">
-        {selected} A tônica está destacada em terracota; a 1ª corda está em cima.
+        {selected}
       </p>
     </section>
   );

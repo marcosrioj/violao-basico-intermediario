@@ -6,6 +6,7 @@ import { HashReveal } from '@/components/course/hash-reveal';
 import { studentGuides, theoryReferences } from '@/content/course';
 import type { GuidePage } from '@/content/types';
 import { requireCourseProfile } from '@/lib/auth';
+import { Hint } from '@/components/ui/hint';
 
 export const dynamic = 'force-dynamic';
 function GuideSection({ guides }: { guides: GuidePage[] }) {
@@ -92,11 +93,11 @@ export default async function MaterialsPage() {
             <p className="eyebrow">ANTES, DURANTE E DEPOIS DA AULA</p>
             <h2 id="student-guides">Guias do aluno</h2>
           </div>
+          <Hint label="Consultar os materiais do aluno">
+            Os textos completos estão abaixo. As páginas de cada aula estão na trilha; os diagramas
+            e a diagramação original também estão no PDF.
+          </Hint>
         </div>
-        <p className="hint">
-          Consulte os textos completos abaixo. As páginas de cada aula estão na trilha; os diagramas
-          e a diagramação original também estão no PDF.
-        </p>
         <GuideSection guides={studentGuides} />
       </section>
       {teacher && (
@@ -106,14 +107,14 @@ export default async function MaterialsPage() {
               <p className="eyebrow">PARA QUEM ENSINA</p>
               <h2 id="teacher-guides">Orientação e recursos docentes</h2>
             </div>
+            <Hint label="Encontrar os materiais do professor">
+              Os 39 planos específicos acompanham as aulas. Aqui estão a orientação docente, a
+              rubrica, os mapas e as consultas complementares.
+            </Hint>
             <Link className="text-link" href="/professor">
               Minhas turmas <ArrowRight size={16} />
             </Link>
           </div>
-          <p className="hint">
-            Os 39 planos específicos acompanham as aulas. Aqui estão a orientação docente, a
-            rubrica, os mapas e as consultas complementares.
-          </p>
           <GuideSection guides={teacherGuides} />
         </section>
       )}

@@ -1,5 +1,5 @@
 import { memo, useId, type CSSProperties } from 'react';
-import { Play } from 'lucide-react';
+import { Play, Repeat2 } from 'lucide-react';
 import type { ChartBar, SongVersion } from '@/content/types';
 import { buildChartRows, describeChartBar, type ChartGroup } from './chart-layout';
 
@@ -30,6 +30,8 @@ export const ChartSection = memo(function ChartSection({
   onPreview,
   onStart,
   paused = false,
+  repeating = false,
+  onRepeat,
 }: {
   group: ChartGroup;
   chart: SongVersion;
@@ -40,12 +42,14 @@ export const ChartSection = memo(function ChartSection({
   onPreview?: (bar: ChartBar) => void;
   onStart?: (playbackIndex: number, sectionId: string) => void;
   paused?: boolean;
+  repeating?: boolean;
+  onRepeat?: (group: ChartGroup, enabled: boolean) => void;
 }) {
   const heading = useId();
   const rows = buildChartRows(group.bars, chart);
   return (
     <section
-      className="chart-section"
+      className={`chart-section${repeating ? ' is-repeating' : ''}`}
       aria-labelledby={!reference && group.passages > 1 ? `${heading} ${heading}-passage` : heading}
       id={reference ? `section-${group.sectionId}` : undefined}
     >
@@ -68,16 +72,29 @@ export const ChartSection = memo(function ChartSection({
             )}
           </p>
         </div>
-        {onStart && group.bars.length > 0 && (
-          <button
-            type="button"
-            className="button small secondary chart-start"
-            aria-label={`Tocar daqui: ${group.title}${!reference && group.passages > 1 ? `, passagem ${group.passage}` : ''}`}
-            onClick={() => onStart(group.bars[0].playbackIndex, group.sectionId)}
-          >
-            <Play size={14} aria-hidden="true" /> Tocar daqui
-          </button>
-        )}
+        <div className="chart-section-actions">
+          {onStart && group.bars.length > 0 && (
+            <button
+              type="button"
+              className="button small secondary chart-start"
+              aria-label={`Tocar daqui: ${group.title}${!reference && group.passages > 1 ? `, passagem ${group.passage}` : ''}`}
+              onClick={() => onStart(group.bars[0].playbackIndex, group.sectionId)}
+            >
+              <Play size={14} aria-hidden="true" /> Tocar daqui
+            </button>
+          )}
+          {onRepeat && group.bars.length > 0 && (
+            <label className="checkbox-label chart-repeat">
+              <input
+                type="checkbox"
+                checked={repeating}
+                aria-label={`Repetir trecho: ${group.title}${!reference && group.passages > 1 ? `, passagem ${group.passage}` : ''}`}
+                onChange={(event) => onRepeat(group, event.target.checked)}
+              />
+              <Repeat2 size={16} aria-hidden="true" /> Repetir
+            </label>
+          )}
+        </div>
       </header>
       <div className="chart-rows">
         {rows.map((row) => {

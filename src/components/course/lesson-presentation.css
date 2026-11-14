@@ -23,14 +23,6 @@
   flex: 1 1 18rem;
 }
 
-.lesson-slides-description,
-.lesson-slides-hint {
-  font-size: var(--font-size-sm);
-  color: var(--color-muted-foreground);
-  line-height: 1.65;
-  margin-top: var(--space-2);
-}
-
 .lesson-slides-deck {
   margin-top: var(--space-6);
   min-width: 0;

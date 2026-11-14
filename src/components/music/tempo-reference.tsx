@@ -5,10 +5,12 @@ import {
   tempoUnitLabel,
   type TempoResearch,
 } from '@/content/tempo';
+import { Hint } from '@/components/ui/hint';
 
 export function TempoReference({ tempo }: { tempo: TempoResearch }) {
   const bpm = referenceBpm(tempo);
-  return (
+  if (bpm === null) return null;
+  const details = (
     <div className="tempo-reference">
       <p>
         <strong>
@@ -21,10 +23,13 @@ export function TempoReference({ tempo }: { tempo: TempoResearch }) {
       </p>
       <p className="hint">{tempo.note}</p>
       {tempo.variable && (
-        <p className="hint">
-          A gravação varia de andamento. Este valor é uma referência fixa para praticar; não
-          acompanha todas as mudanças do áudio original.
-        </p>
+        <div className="control-row">
+          <p className="hint">A gravação varia de andamento.</p>
+          <Hint label="Praticar uma gravação com andamento variável">
+            O player mantém o BPM escolhido. Ele não acompanha automaticamente as mudanças de
+            andamento do áudio original; ajuste o BPM ao estudar cada passagem.
+          </Hint>
+        </div>
       )}
       <details>
         <summary>Gravação e fontes do andamento</summary>
@@ -43,4 +48,5 @@ export function TempoReference({ tempo }: { tempo: TempoResearch }) {
       </details>
     </div>
   );
+  return tempo.useAsDefault ? <Hint label="Andamento da música">{details}</Hint> : details;
 }

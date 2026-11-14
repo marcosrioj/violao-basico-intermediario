@@ -5,6 +5,7 @@ import type { Lesson } from '@/content/types';
 import type { Progress } from '@/lib/contracts';
 import { apiFetch } from '@/lib/api-client';
 import { Notice } from '@/components/ui';
+import { Hint } from '@/components/ui/hint';
 export function LessonProgress({
   lesson,
   demo = false,
@@ -65,11 +66,14 @@ export function LessonProgress({
   return (
     <section className="card" id="meu-progresso">
       <p className="eyebrow">SEU PRÓXIMO PASSO</p>
-      <h2>{status === 'completed' ? 'Aula concluída' : 'Como foi sua prática?'}</h2>
-      <p className="hint">
-        Confira tocando no instrumento. Sua conclusão registra o estudo; a validação da execução vem
-        do professor.
-      </p>
+      <div className="section-title">
+        <h2>{status === 'completed' ? 'Aula concluída' : 'Como foi sua prática?'}</h2>
+        <Hint label="Registrar o progresso">
+          Marque os objetivos que conseguiu realizar para concluir a aula. Sua conclusão registra o
+          estudo; a validação da execução vem do professor. Ele pode acompanhar estes registros.
+        </Hint>
+      </div>
+      <p className="hint">Confira cada objetivo tocando no instrumento.</p>
       <ul className="check-list">
         {lesson.checks.map((check, i) => (
           <li key={i}>
@@ -142,7 +146,6 @@ export function LessonProgress({
           </button>
         </div>
       )}
-      <p className="hint">Seu professor da turma pode acompanhar estes registros.</p>
     </section>
   );
 }
@@ -209,7 +212,14 @@ export function PracticeLog({
   return (
     <section className="card">
       <p className="eyebrow">UM MOMENTO PARA TOCAR</p>
-      <h2>Diário de prática</h2>
+      <div className="section-title">
+        <h2>Diário de prática</h2>
+        <Hint label="Usar o diário e o cronômetro">
+          Inicie o cronômetro e pause antes de registrar. Você também pode informar os minutos
+          manualmente. No diário, arredonde o BPM para o inteiro mais próximo: 37,3 vira 37. Isso
+          não altera o andamento do player. As anotações ficam visíveis ao professor da turma.
+        </Hint>
+      </div>
       <div className="bpm-readout" style={{ fontSize: 36 }}>
         {Math.floor(elapsed / 60)
           .toString()
@@ -242,10 +252,6 @@ export function PracticeLog({
           />
         </label>
       </div>
-      <p className="hint">
-        No diário, arredonde o BPM para o inteiro mais próximo: por exemplo, 37,3 vira 37. O
-        andamento do player não é alterado.
-      </p>
       <label>
         O que melhorou?
         <textarea
@@ -275,10 +281,7 @@ export function PracticeLog({
         {busy ? 'Salvando…' : 'Registrar prática'}
       </button>
       {demo && <p className="hint">Abra a aula na trilha para guardar seu diário.</p>}
-      <p className="hint">
-        Tempo de prática é um registro, não uma medida de domínio. Anotações ficam visíveis ao seu
-        professor da turma.
-      </p>
+      <p className="hint">Tempo de prática é um registro, não uma medida de domínio.</p>
     </section>
   );
 }

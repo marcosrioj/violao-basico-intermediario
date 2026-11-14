@@ -42,7 +42,7 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-.chart-section-heading > div {
+.chart-section-heading > div:not(.chart-section-actions) {
   min-width: 0;
   flex: 1 1 10rem;
 }
@@ -50,7 +50,63 @@
 .chart-start {
   min-height: 44px;
   white-space: normal;
+}
+
+.chart-section-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
   margin-left: auto;
+}
+
+.chart-section-actions > :is(.button, .checkbox-label) {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.chart-section.is-repeating {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 3px 0 var(--color-primary);
+}
+
+.chart-tempo-control {
+  flex: 2 1 16rem;
+  min-width: 0;
+}
+
+.chart-player .player-controls > .checkbox-label {
+  flex: 1 1 10rem;
+  min-width: 0;
+  white-space: normal;
+}
+
+.chart-tempo-control > label {
+  display: block;
+}
+
+.chart-tempo-adjust {
+  display: grid;
+  grid-template-columns: var(--touch-target) minmax(0, 1fr) var(--touch-target);
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.chart-tempo-adjust input {
+  width: 100%;
+  min-width: 0;
+}
+
+.chart-transport-actions {
+  flex: 1 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chart-transport-actions > .button {
+  flex: 1 1 8rem;
 }
 
 .chart-section-heading h3 {
@@ -256,8 +312,12 @@ button.chart-bar:hover {
 }
 
 @container chord-chart (max-width: 30rem) {
-  .player-controls > label:not(.checkbox-label) {
+  .player-controls > label:not(.checkbox-label),
+  .chart-tempo-control {
     flex: 1 1 100%;
     min-width: 0;
+  }
+  .chart-section-actions {
+    flex: 1 1 100%;
   }
 }

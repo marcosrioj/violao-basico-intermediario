@@ -10,12 +10,13 @@ export function ChordDiagram({ name }: { name: string }) {
   return (
     <article className="chord-card">
       <button
+        type="button"
         onClick={() => soundChord(chord.frets)}
         className="chord-title"
         aria-label={`Ouvir acorde ${name}`}
       >
         <strong>{chord.display_name ?? name}</strong>
-        <Volume2 size={16} />
+        <Volume2 size={16} aria-hidden="true" />
       </button>
       <svg
         viewBox="0 0 150 155"

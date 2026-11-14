@@ -5,10 +5,13 @@
     "recordingUrl": "https://www.youtube.com/watch?v=Jsr1C6xVhDg",
     "meter": "4/4",
     "playerUnit": "quarter",
-    "status": "unresolved",
-    "reference": null,
+    "status": "estimated",
+    "reference": {
+      "bpm": 71.5,
+      "unit": "quarter"
+    },
     "variable": false,
-    "note": "O analisador do vídeo informa 143 BPM sem identificar a figura musical. Não foi possível confirmar se o pulso do arranjo corresponde a 143 ou à metade, 71,5. O BPM da aula continua sendo um andamento de estudo.",
+    "note": "Estimativa de 71,5 BPM por semínima adotada como padrão para praticar. Usa a metade dos 143 BPM da análise do vídeo; a unidade da detecção não foi confirmada pela fonte.",
     "sources": [
       {
         "title": "Nívea Soares — vídeo oficial selecionado",
@@ -20,7 +23,8 @@
         "url": "https://chordify.net/chords/santo-espirito-nivea-soares-nivea-soares",
         "evidence": "Informa 143 BPM e tom D. A unidade musical não é explícita; não sustenta converter automaticamente para semínima ou para metade do valor."
       }
-    ]
+    ],
+    "useAsDefault": true
   },
   "faz_chover_tna": {
     "reviewedOn": "2026-11-14",
@@ -28,10 +32,13 @@
     "recordingUrl": "https://music.apple.com/br/song/faz-chover-ao-vivo/1675244989",
     "meter": "4/4",
     "playerUnit": "quarter",
-    "status": "unresolved",
-    "reference": null,
+    "status": "estimated",
+    "reference": {
+      "bpm": 67,
+      "unit": "quarter"
+    },
     "variable": false,
-    "note": "As fontes divergem e não há indicação numérica confirmada para a semínima desta gravação. Valores próximos de 67–69 são hipóteses; a análise da prévia não resolveu o pulso com segurança. O player mantém o BPM de estudo.",
+    "note": "Estimativa de 67 BPM por semínima adotada como padrão para praticar, dentro da faixa aproximada de 67–69 já pesquisada. Arredonda a metade dos 133 BPM do analisador; há divergências entre as fontes.",
     "sources": [
       {
         "title": "Apple Music — faixa de 2003 cadastrada",
@@ -48,7 +55,8 @@
         "url": "https://getsongbpm.com/album/toque-no-altar/g81lG",
         "evidence": "Informa 79 BPM para a faixa de 6:18 do álbum de 2003. Conflita com 133/67 e impede tratar os agregadores como confirmação."
       }
-    ]
+    ],
+    "useAsDefault": true
   },
   "me_derramar": {
     "reviewedOn": "2026-11-14",
@@ -160,14 +168,17 @@
   },
   "poderoso_deus": {
     "reviewedOn": "2026-11-14",
-    "recording": "Antônio Cirilo — Poderoso Deus2002, faixa5,14:49.067, distribuição SONORA DIGITAL WORSHIP, vídeoTnKTUZfNafM",
+    "recording": "Antônio Cirilo — Poderoso Deus (2002), faixa 5, 14:49, distribuição SONORA DIGITAL WORSHIP, vídeo TnKTUZfNafM.",
     "recordingUrl": "https://www.youtube.com/watch?v=TnKTUZfNafM",
     "meter": "4/4",
     "playerUnit": "quarter",
-    "status": "unresolved",
-    "reference": null,
+    "status": "estimated",
+    "reference": {
+      "bpm": 62,
+      "unit": "quarter"
+    },
     "variable": false,
-    "note": "A prévia de 2002 e os analisadores sugerem 124–125 batidas/min ou sua metade, 62–62,5. As fontes não resolvem qual corresponde à semínima do arranjo. Use o andamento de estudo até validar a contagem com o professor.",
+    "note": "Estimativa de 62 BPM por semínima adotada como padrão para praticar. Usa a metade dos 124 BPM dos analisadores, próxima à família de pulsos da prévia de 2002; a figura musical não foi confirmada pela fonte.",
     "sources": [
       {
         "title": "Antônio Cirilo — Poderoso Deus, distribuição oficial",
@@ -204,7 +215,8 @@
         "url": "https://multitrackgospel.com/produto/poderoso-deus/",
         "evidence": "Duração7:59 diferente da faixa14:49; não é prova de andamento do fonograma exato."
       }
-    ]
+    ],
+    "useAsDefault": true
   },
   "faz_chover": {
     "reviewedOn": "2026-11-14",

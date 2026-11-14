@@ -8,6 +8,7 @@ import { HashReveal } from '@/components/course/hash-reveal';
 import { TheoryExercise } from '@/components/course/theory-exercise';
 import { TheoryLab } from '@/components/theory-lab';
 import { getDemoTheory } from '@/content/demo';
+import { Hint } from '@/components/ui/hint';
 
 export const dynamic = 'force-dynamic';
 
@@ -83,8 +84,12 @@ export default async function DemoTheoryPage({ params }: { params: Promise<{ id:
         />
         <section className="card" id="retornar">
           <p className="eyebrow">DA IDEIA À PRÁTICA</p>
-          <h2>Retornar ao ponto de estudo</h2>
-          <p className="hint">Cada link volta à menção exata desta teoria na aula demonstrativa.</p>
+          <div className="section-title">
+            <h2>Retornar ao ponto de estudo</h2>
+            <Hint label="Voltar à aula demonstrativa">
+              Cada link volta à menção exata desta teoria na aula demonstrativa.
+            </Hint>
+          </div>
           <div className="review-list">
             {occurrences.map((item) => (
               <Link key={item.anchor} href={item.href}>

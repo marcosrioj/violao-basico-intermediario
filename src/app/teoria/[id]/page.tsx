@@ -9,6 +9,7 @@ import { TheoryLab } from '@/components/theory-lab';
 import { theoryReferences } from '@/content/course';
 import { getReferenceOccurrences } from '@/content/navigation';
 import { requireCourseProfile } from '@/lib/auth';
+import { Hint } from '@/components/ui/hint';
 
 export const dynamic = 'force-dynamic';
 export default async function TheoryPage({ params }: { params: Promise<{ id: string }> }) {
@@ -90,11 +91,13 @@ export default async function TheoryPage({ params }: { params: Promise<{ id: str
         />
         <section className="card" id="retornar">
           <p className="eyebrow">DA IDEIA À PRÁTICA</p>
-          <h2>Retornar ao ponto de estudo</h2>
-          <p className="hint">
-            Cada link volta à menção exata desta teoria. As respostas fechadas se abrem quando
-            necessário.
-          </p>
+          <div className="section-title">
+            <h2>Retornar ao ponto de estudo</h2>
+            <Hint label="Voltar à aula">
+              Cada link volta à menção exata desta teoria. As respostas fechadas se abrem quando
+              necessário.
+            </Hint>
+          </div>
           <div className="review-list">
             {occurrences.map((occurrence) => (
               <Link key={occurrence.anchor} href={occurrence.href}>

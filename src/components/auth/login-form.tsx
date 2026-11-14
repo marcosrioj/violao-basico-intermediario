@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase/client';
 import { siteUrl } from '@/lib/env';
 import { safeRedirect } from '@/lib/validation';
 import { authCallbackUrl } from '@/lib/auth-redirects';
+import { Hint } from '@/components/ui/hint';
 const emailSchema = z.string().trim().email('Informe um e-mail válido.').max(254);
 const passwordSchema = z
   .string()
@@ -123,20 +124,22 @@ export function LoginForm({
   return (
     <>
       <p className="eyebrow">SEU ESPAÇO DE APRENDIZADO</p>
-      <h1>
-        {mode === 'signup'
-          ? 'Vamos começar?'
-          : mode === 'recovery'
-            ? 'Recupere seu acesso'
-            : 'Que bom ter você aqui.'}
-      </h1>
-      <p className="muted">
-        {mode === 'recovery'
-          ? 'Enviaremos um link para você criar uma nova senha.'
-          : mode === 'signup'
-            ? 'Crie sua conta e depois confirme o código da turma enviado pelo professor.'
-            : 'Entre na sua conta. O curso é liberado após confirmar a matrícula na turma.'}
-      </p>
+      <div className="section-title">
+        <h1>
+          {mode === 'signup'
+            ? 'Vamos começar?'
+            : mode === 'recovery'
+              ? 'Recupere seu acesso'
+              : 'Que bom ter você aqui.'}
+        </h1>
+        <Hint label="Acessar sua conta">
+          {mode === 'recovery'
+            ? 'Enviaremos um link para você criar uma nova senha.'
+            : mode === 'signup'
+              ? 'Sua conta começa como aluno. Depois do cadastro, confirme o código da turma enviado pelo professor. O acesso do professor é habilitado pela coordenação do curso.'
+              : 'Entre na sua conta. O curso é liberado após confirmar a matrícula na turma.'}
+        </Hint>
+      </div>
       {!configured && (
         <div className="notice" role="status">
           O acesso às contas ainda está em preparação. Fale com seu professor para saber quando
@@ -146,6 +149,7 @@ export function LoginForm({
       {mode !== 'recovery' && (
         <>
           <button
+            type="button"
             className="button secondary"
             style={{ width: '100%' }}
             onClick={google}
@@ -301,11 +305,6 @@ export function LoginForm({
         <div className="notice" role="status">
           {message}
         </div>
-      )}
-      {mode === 'signup' && (
-        <p className="muted" style={{ fontSize: 11, marginTop: 18 }}>
-          Sua conta começa como aluno. O acesso do professor é habilitado pela coordenação do curso.
-        </p>
       )}
     </>
   );

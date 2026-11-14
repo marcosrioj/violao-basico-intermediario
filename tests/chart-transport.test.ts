@@ -340,3 +340,213 @@ test('pause before scheduled start, paused options and empty or invalid selectio
   assert.equal(empty.voices.length, 0);
   assert.equal(empty.positions.length, 0);
 });
+
+test('arming a two-bar passage while idle is silent and play loops only that passage', () => {
+  const f = fixture([bar('D'), bar('G'), bar('Am'), bar('C')]);
+  f.transport.setLoopRange({ startBar: 1, endBar: 3 });
+  assert.equal(f.voices.length, 0);
+  assert.deepEqual(f.position(), idlePosition);
+  f.transport.play();
+  assert.equal(f.position().bar, 1);
+  close(f.chords()[0].at, 0.04);
+  for (const at of [3.99, 7.99, 11.99, 15.99]) f.step(at);
+  assert.deepEqual(
+    f.chords().map((voice) => voice.name),
+    ['G', 'Am', 'G', 'Am', 'G'],
+  );
+  f.chords().forEach((voice, i) => close(voice.at, 0.04 + i * 4));
+  f.step(16.05);
+  assert.equal(f.position().bar, 1);
+});
+
+test('arming the current or a future passage preserves harmony and reaches its loop naturally', () => {
+  const f = fixture([bar('D'), bar('G'), bar('Am'), bar('C')]);
+  f.transport.play();
+  f.step(1.29);
+  const initial = f.chords()[0];
+  f.transport.setLoopRange({ startBar: 1, endBar: 3 });
+  assert.equal(initial.stops, 0);
+  assert.equal(f.chords().length, 1);
+  assert.equal(f.position().bar, 0);
+  f.step(3.99);
+  f.step(4.29);
+  const current = f.chords().at(-1)!;
+  f.transport.setLoopRange({ startBar: 1, endBar: 2 });
+  assert.equal(current.stops, 0);
+  assert.equal(f.chords().length, 2);
+  for (const at of [7.99, 11.99]) f.step(at);
+  assert.deepEqual(
+    f.chords().map((voice) => voice.name),
+    ['D', 'G', 'G', 'G'],
+  );
+});
+
+test('a later repeated passage uses absolute indexes, and disabling after several loops continues the score', () => {
+  const f = fixture([bar('D'), bar('G'), bar('Am'), bar('G'), bar('C')]);
+  f.transport.setLoopRange({ startBar: 3, endBar: 4 });
+  f.transport.play();
+  assert.equal(f.position().bar, 3);
+  for (const at of [3.99, 7.99, 11.99]) f.step(at);
+  f.step(12.49);
+  const current = f.chords().at(-1)!;
+  const before = f.chords().length;
+  f.transport.setLoopRange(null);
+  assert.equal(current.stops, 0);
+  assert.equal(f.chords().length, before);
+  assert.equal(f.position().bar, 3);
+  f.step(15.99);
+  assert.equal(f.chords().at(-1)!.name, 'C');
+  close(f.chords().at(-1)!.at, 16.04);
+  f.step(16.05);
+  assert.equal(f.position().bar, 4);
+  f.step(20.05);
+  assert.deepEqual(f.position(), idlePosition);
+  assert.ok(f.chords().every((voice) => voice.name === 'G' || voice.name === 'C'));
+});
+
+test('disabling a passage in look-ahead cancels the next loop and schedules its successor', () => {
+  const f = fixture([bar('D'), bar('G'), bar('Am')]);
+  f.transport.setLoopRange({ startBar: 1, endBar: 2 });
+  f.transport.setMetronome(true);
+  f.transport.play();
+  const current = f.chords()[0];
+  f.step(3.99);
+  const nextLoop = f.chords()[1];
+  const nextClick = f.clicks().find((voice) => Math.abs(voice.at - 4.04) < 1e-8)!;
+  assert.ok(nextClick);
+  assert.equal(nextLoop.name, 'G');
+  f.transport.setLoopRange(null);
+  assert.equal(current.stops, 0);
+  assert.equal(nextLoop.stops, 1);
+  assert.equal(nextClick.stops, 1);
+  assert.equal(f.chords().at(-1)!.name, 'Am');
+  close(f.chords().at(-1)!.at, 4.04);
+  f.step(4.05);
+  assert.equal(f.position().bar, 2);
+  f.step(8.05);
+  assert.deepEqual(f.position(), idlePosition);
+});
+
+test('changing the passage and global repetition keeps the clock and makes one loop scope active', () => {
+  const f = fixture([bar('D'), bar('G'), bar('Am'), bar('C')]);
+  f.transport.setLoopRange({ startBar: 1, endBar: 2 });
+  f.transport.play();
+  f.step(1.29);
+  const current = f.chords()[0];
+  f.transport.setLoopRange({ startBar: 2, endBar: 3 });
+  f.transport.setMetronome(true);
+  f.transport.setMetronome(false);
+  assert.equal(current.stops, 0);
+  assert.equal(f.chords().length, 1);
+  assert.equal(f.position().bar, 1);
+  f.step(3.99);
+  f.step(7.99);
+  assert.deepEqual(
+    f.chords().map((voice) => voice.name),
+    ['G', 'Am', 'Am'],
+  );
+  f.step(8.29);
+  const looped = f.chords().at(-1)!;
+  f.transport.setLoop(true);
+  assert.equal(looped.stops, 0);
+  f.step(11.99);
+  assert.equal(f.chords().at(-1)!.name, 'C');
+  f.step(15.99);
+  assert.equal(f.chords().at(-1)!.name, 'D');
+  f.transport.stop();
+  f.transport.play();
+  assert.equal(f.position().bar, 0, 'global repeat clears the previously armed passage');
+});
+
+test('a passed passage waits for the next start instead of jumping backward', () => {
+  const f = fixture([bar('D'), bar('G'), bar('Am')]);
+  f.transport.play(2);
+  f.step(1.29);
+  const current = f.chords()[0];
+  f.transport.setLoopRange({ startBar: 0, endBar: 1 });
+  assert.equal(current.stops, 0);
+  assert.equal(f.position().bar, 2);
+  f.step(4.05);
+  assert.deepEqual(f.position(), idlePosition);
+  assert.equal(f.chords().length, 1);
+  f.transport.play();
+  assert.equal(f.position().bar, 0);
+  assert.equal(f.chords().at(-1)!.name, 'D');
+});
+
+test('pause and resume preserve a fractional position inside a repeated passage', () => {
+  const f = fixture([
+    bar('D'),
+    {
+      events: [
+        { chord: 'G', beats: 1.5 },
+        { chord: 'Am', beats: 2.5 },
+      ],
+    },
+    bar('C'),
+  ]);
+  f.transport.setLoopRange({ startBar: 1, endBar: 2 });
+  f.transport.setMetronome(true);
+  f.transport.play();
+  f.step(3.99);
+  f.step(5.79);
+  f.transport.pause();
+  assert.deepEqual(f.position(), { status: 'paused', bar: 1, tick: 3 });
+  const before = f.voices.length;
+  f.step(40);
+  f.transport.setMetronome(false);
+  f.transport.setMetronome(true);
+  assert.equal(f.voices.length, before);
+  f.transport.play();
+  assert.equal(f.chords().at(-1)!.name, 'Am');
+  close(f.chords().at(-1)!.duration, 2.25);
+  close(f.chords().at(-1)!.at, 40.04);
+  f.step(42.22);
+  assert.equal(f.chords().at(-1)!.name, 'G');
+  close(f.chords().at(-1)!.at, 42.29);
+  assert.ok(f.chords().every((voice) => voice.name === 'G' || voice.name === 'Am'));
+});
+
+test('passage boundaries preserve compound subdivisions and local meter changes', () => {
+  const bpm = 56 / 1.5;
+  const duration = 120 / bpm;
+  const f = fixture(
+    [bar('D', 2), { ...bar('G', 2), meter: '2/4', beats_per_bar: 2 }, bar('Am', 2)],
+    { meter: '6/8', pulses: 2, bpm },
+  );
+  f.transport.setLoopRange({ startBar: 0, endBar: 2 });
+  f.transport.setMetronome(true);
+  f.transport.play();
+  for (let tick = 1; tick < 6; tick++) f.step(0.04 + (tick * duration) / 6 - 0.05);
+  f.step(0.04 + duration - 0.05);
+  f.step(0.04 + duration * 1.5 - 0.05);
+  f.step(0.04 + duration * 2 - 0.05);
+  assert.deepEqual(
+    f.chords().map((voice) => voice.name),
+    ['D', 'G', 'D'],
+  );
+  f.chords().forEach((voice, i) => close(voice.at, 0.04 + i * duration));
+  assert.deepEqual(
+    f.clicks().map((voice) => voice.frequency),
+    [1200, 550, 550, 800, 550, 550, 1200, 800, 1200],
+  );
+  f.step(0.04 + duration * 2 + 0.01);
+  assert.deepEqual(f.position(), { status: 'playing', bar: 0, tick: 0 });
+});
+
+test('invalid passage ranges are rejected without altering playback', () => {
+  const f = fixture([bar('D'), bar('G')]);
+  f.transport.play();
+  for (const range of [
+    { startBar: -1, endBar: 1 },
+    { startBar: 0, endBar: 3 },
+    { startBar: 1, endBar: 1 },
+    { startBar: 0.5, endBar: 2 },
+    { startBar: 0, endBar: NaN },
+  ]) {
+    assert.throws(() => f.transport.setLoopRange(range), { name: 'RangeError' });
+  }
+  assert.equal(f.chords().length, 1);
+  assert.equal(f.chords()[0].stops, 0);
+  assert.equal(f.position().bar, 0);
+});

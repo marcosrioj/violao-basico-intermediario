@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ExternalLink, BookOpen, Music2 } from 'lucide-react';
 import { Shell } from '@/components/shell';
 import { lessons, getChart, getSong } from '@/content/course';
+import { defaultPlaybackBpm, formatBpm } from '@/content/tempo';
 import type { Lesson } from '@/content/types';
 import { ChordDiagram } from '@/components/music/chord-diagram';
 import { ChartPlayer } from '@/components/music/chart-player';
@@ -11,6 +12,7 @@ import { Quiz } from './quiz';
 import { LessonProgress, PracticeLog } from './lesson-progress';
 import { VideoResource } from './video-resource';
 import type { ReactNode } from 'react';
+import { Hint } from '@/components/ui/hint';
 export function LessonView({
   lesson,
   demo = false,
@@ -24,6 +26,7 @@ export function LessonView({
 }) {
   const song = getSong(lesson);
   const chart = getChart(lesson);
+  const defaultBpm = defaultPlaybackBpm(lesson.bpm, song.tempo);
   const prev = lessons[lesson.n - 2];
   const next = lessons[lesson.n];
   const rich = (text: string, field: string) => (
@@ -50,7 +53,7 @@ export function LessonView({
         <div className="lesson-meta">
           <span className="badge">{song.title}</span>
           <span className="badge">Tom {chart.key}</span>
-          <span className="badge">{lesson.bpm} BPM para praticar</span>
+          <span className="badge">{formatBpm(defaultBpm)} BPM para praticar</span>
           <span className="badge">Encontro de 60 min</span>
         </div>
       </header>
@@ -124,15 +127,17 @@ export function LessonView({
           />
           <section className="card" id="consulta">
             <p className="eyebrow">CONECTE AS IDEIAS</p>
-            <h2>Consultas teóricas</h2>
+            <div className="section-title">
+              <h2>Consultas teóricas</h2>
+              <Hint label="Navegar pelas consultas">
+                Cada consulta oferece links para retornar ao ponto em que ela aparece nesta aula.
+              </Hint>
+            </div>
             <div className="stack">
               {lesson.theory_refs.map((ref, i) => (
                 <div key={i}>{rich(ref, `theory_refs-${i}`)}</div>
               ))}
             </div>
-            <p className="hint">
-              Cada consulta oferece links para retornar ao ponto em que ela aparece nesta aula.
-            </p>
           </section>
           <details>
             <summary>Material completo da aula · páginas {lesson.studentPages.join(', ')}</summary>
@@ -222,7 +227,7 @@ export function LessonView({
           <PracticeLog
             key={`practice-${lesson.id}`}
             lessonId={lesson.id}
-            initialBpm={lesson.bpm}
+            initialBpm={Math.round(defaultBpm)}
             demo={demo}
           />
         </aside>

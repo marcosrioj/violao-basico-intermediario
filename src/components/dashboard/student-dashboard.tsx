@@ -15,6 +15,7 @@ import type {
   Progress,
 } from '@/lib/contracts';
 import { Empty, Notice } from '@/components/ui';
+import { Hint } from '@/components/ui/hint';
 import {
   AccountPanel,
   FeedbackEntries,
@@ -71,8 +72,13 @@ function PracticeDiary({ lessons, profile }: { lessons: LessonOption[]; profile:
   }
   return (
     <section className="card">
-      <h2>Seu diário de prática</h2>
-      <p className="muted">Registre o que tocou e escolha um pequeno ajuste para a próxima vez.</p>
+      <div className="section-title">
+        <h2>Seu diário de prática</h2>
+        <Hint label="Registrar uma prática">
+          Escolha a aula, informe os minutos e anote o que tocou. O BPM é opcional e deve ser um
+          inteiro aproximado: por exemplo, 37,3 vira 37.
+        </Hint>
+      </div>
       <details className="dashboard-section-gap">
         <summary>Registrar uma prática</summary>
         <form className="stack" onSubmit={submit} aria-busy={busy}>
@@ -96,12 +102,13 @@ function PracticeDiary({ lessons, profile }: { lessons: LessonOption[]; profile:
               />
             </label>
             <label htmlFor="practice-bpm">
-              Andamento (BPM, opcional)
+              BPM inteiro (opcional)
               <input
                 id="practice-bpm"
                 type="number"
                 min={30}
                 max={240}
+                step={1}
                 value={bpm}
                 onChange={(event) => setBpm(event.target.value)}
                 placeholder="Ex.: 60"
@@ -293,11 +300,13 @@ export function FeedbackHistory({
   const resource = useResource<Page<Feedback>>(`/api/feedback?page=${page}`);
   return (
     <section className="card">
-      <h2>Devolutivas do professor</h2>
-      <p className="dashboard-form-note">
-        A validação registra a execução observada pelo professor, separadamente das aulas que você
-        marcou como concluídas.
-      </p>
+      <div className="section-title">
+        <h2>Devolutivas do professor</h2>
+        <Hint label="Entender a validação do professor">
+          A validação registra a execução observada pelo professor, separadamente das aulas que você
+          marcou como concluídas.
+        </Hint>
+      </div>
       <ResourceState {...resource} retry={resource.reload}>
         {resource.data && (
           <>

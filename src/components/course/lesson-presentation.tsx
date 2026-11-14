@@ -1,4 +1,5 @@
 'use client';
+import { Hint } from '@/components/ui/hint';
 
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import { ArrowLeft, ArrowRight, Eye, EyeOff, Presentation, X } from 'lucide-react';
@@ -73,10 +74,12 @@ export function LessonPresentation({ lesson }: { lesson: Lesson }) {
         <div>
           <p className="eyebrow">CONDUÇÃO DA AULA</p>
           <h3 id={`${id}-heading`}>Apresente uma ideia por vez</h3>
-          <p className="lesson-slides-description">
-            Sete etapas para explicar, experimentar e conversar com a turma, no seu ritmo.
-          </p>
         </div>
+        <Hint label="Usar a apresentação">
+          Sete etapas para conduzir o encontro no seu ritmo. Com o foco na apresentação, use ← e →
+          para navegar, Home/End para ir ao início/fim e Esc para encerrar. Role o conteúdo quando
+          precisar. Nenhuma etapa avança sozinha.
+        </Hint>
         {!open && (
           <button
             ref={trigger}
@@ -123,7 +126,7 @@ export function LessonPresentation({ lesson }: { lesson: Lesson }) {
             tabIndex={0}
             role="region"
             aria-label={`Apresentação de ${lesson.display_id}`}
-            aria-describedby={`${id}-shortcuts`}
+            aria-keyshortcuts="ArrowLeft ArrowRight Home End Escape"
           >
             <article className="lesson-slides-page" aria-labelledby={`${id}-title`}>
               <p className="lesson-slides-kicker">
@@ -199,10 +202,6 @@ export function LessonPresentation({ lesson }: { lesson: Lesson }) {
               Próxima <ArrowRight size={17} aria-hidden="true" />
             </button>
           </nav>
-          <p id={`${id}-shortcuts`} className="lesson-slides-hint">
-            Com o foco na apresentação, use ← e → para navegar, Home/End para ir ao início/fim e Esc
-            para encerrar. Role o conteúdo quando precisar. Nenhuma etapa avança sozinha.
-          </p>
         </div>
       )}
     </section>

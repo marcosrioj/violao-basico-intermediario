@@ -2,7 +2,25 @@
 
 Registro de **14 de novembro de 2026**. O projeto está na branch `main`. Este documento distingue o código entregue, os testes executados e as configurações que dependem de contas externas.
 
-## Transporte contínuo e pesquisa de andamentos — estado atual
+## Estimativas adotadas como andamento padrão
+
+Santo Espírito inicia em **71,5 BPM**, Faz Chover (Toque no Altar) em **67 BPM** e Poderoso Deus em **62 BPM**, por semínima. Os valores vêm das hipóteses já pesquisadas e permanecem classificados como estimados. O preset **Padrão da música**, a indicação da aula e o diário usam essa escolha; somente o diário arredonda para inteiro. O aviso de andamento não confirmado foi retirado das telas, e fontes e limitações ficaram na dica de andamento. A [auditoria musical](TEMPO-RESEARCH.md) registra a decisão e preserva as evidências anteriores.
+
+Passaram lint, tipos, **89 testes** e build. Os testes cobrem os padrões em todas as aulas das três músicas, intervalo dos cliques, ausência de mudança nas demais músicas e fallback para referências ausentes, inválidas ou não resolvidas. Os dados importados da edição 5 permanecem preservados.
+
+No Chrome com backend sintético local, passaram **20 verificações**: três padrões em 320, 375, 768 e 1440 px; ajuste e retorno ao padrão; intervalo real agendado no Web Audio; pausa/retomada; indicação e diário; conversão de Me Derramar; repertório sem aviso e sem transbordamento. A abertura de fontes revelou um painel que crescia para fora da tela; o `Hint` passou a observar mudanças de tamanho e reposicionar-se. A revisão confirmou fontes expandidas dentro da área visível, além de teclado, foco, fechamento, conteúdo longo e fallback sem Popover API. Não houve exceções de página. São verificações locais, sem publicação desta alteração em produção.
+
+## Repetição por passagem e dicas de interface
+
+Passaram lint, tipos, **88 testes**, build e **33 verificações HTTP** contra o build final. A revisão acrescenta nove testes determinísticos do transporte: marcação silenciosa, início na passagem escolhida, preservação do acorde atual, repetição de dois compassos, segunda ocorrência do refrão, saída após várias voltas, cancelamento da próxima volta já agendada, troca entre repetição local/global, pausa e mudanças de fórmula. Os dados musicais e as regras de matrícula/autorização não foram alterados.
+
+No Chrome com dados sintéticos, cada passagem apresentou seu controle de repetição; marcar o Final didático não iniciou áudio, e Ouvir acordes produziu `F1 → F2 → F1`. Pausar/Continuar preservou a execução; desmarcar permitiu o encerramento normal. A segunda passagem do refrão iniciou o compasso de índice 36; marcar Repetir arranjo desmarcou a passagem. Abrir a ajuda durante a execução não pausou os acordes. Controles e cabeçalhos foram verificados em 320, 375, 768 e 1440 px, com alvos de pelo menos 44 px.
+
+A auditoria geral executou **37 verificações** em nove páginas/estados, incluindo laboratório, teorias R4/R6, repertório, professor, materiais, painel com/sem matrícula e login. Não houve transbordamento da página, erros de hidratação ou exceções; as dicas couberam na tela e Escape restaurou o foco. Em R6, abrir uma dica preservou as sete vozes do áudio. O componente Hint também passou em testes de Enter, Tab, botão Fechar, clique fora, painel único, checkbox vizinho, texto longo e fallback sem Popover API. Explicações musicais, resultados, requisitos essenciais e mensagens de estado continuam visíveis; instruções operacionais foram migradas para ajuda contextual.
+
+As capturas locais foram inspecionadas. A revisão visual levou a ajustes específicos nos rótulos das opções do player e no seletor de compasso do laboratório para evitar texto cortado. As verificações são locais e não representam uma nova publicação.
+
+## Transporte contínuo e pesquisa de andamentos — revisão anterior
 
 Passaram lint, tipos, **79 testes** e build. Também passaram **33 verificações HTTP** contra o build final na porta temporária 3004, usando a origem `http://localhost:3000` incorporada ao build local; páginas públicas, rotas protegidas, CSRF e retornos de autenticação mantiveram seus contratos sem sessão autenticada. Dez novos testes do transporte exercitam troca das opções sem interromper acordes, cancelamento apenas dos cliques, desligamento da repetição dentro da janela de antecipação, pausa dentro de um acorde fracionário, retomada pelo tempo restante, início na segunda ocorrência de um trecho, parada/desmontagem, atraso de temporizador sem rajadas, 6/8 e 2/4. Quatro testes da pesquisa verificam cobertura e procedência das 13 gravações, preservação das aulas, conversão exata de unidades, ausência de presets indevidos e duração dos compassos locais.
 
