@@ -1,0 +1,263 @@
+.chart-player {
+  container: chord-chart / inline-size;
+  min-width: 0;
+}
+
+.chart-player > .section-title {
+  flex-wrap: wrap;
+  align-items: start;
+}
+
+.chart-player > .section-title > div {
+  flex: 1 1 15rem;
+  min-width: 0;
+}
+
+.chart-reading-guide {
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.chart-arrangement {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-5);
+  min-width: 0;
+}
+
+.chart-section {
+  min-width: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.chart-section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.chart-section-heading > div {
+  min-width: 0;
+  flex: 1 1 10rem;
+}
+
+.chart-start {
+  min-height: 44px;
+  white-space: normal;
+  margin-left: auto;
+}
+
+.chart-section-heading h3 {
+  font-size: var(--font-size-lg);
+  text-wrap: initial;
+}
+
+.chart-section-heading p,
+.chart-row-label {
+  color: var(--color-muted-foreground);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+.chart-sequence {
+  display: grid;
+  place-items: center;
+  flex: 0 0 2.5rem;
+  min-height: 2.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-muted);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-rows {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-4);
+}
+
+.chart-row-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.chart-meter {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-bars {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+}
+
+.chart-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-soft);
+  color: var(--color-text);
+  text-align: start;
+  font-size: var(--font-size-base);
+}
+
+button.chart-bar:hover {
+  border-color: var(--color-primary);
+}
+
+.chart-bar-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.chart-playing {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+}
+
+.chart-pulses {
+  display: grid;
+  grid-template-columns: repeat(var(--chart-ticks), minmax(0, 1fr));
+  grid-template-rows: 1fr auto;
+  width: 100%;
+  margin-top: auto;
+}
+
+.chart-event {
+  grid-row: 1;
+  min-width: 0;
+  padding: var(--space-1) var(--space-1) var(--space-2);
+  border-inline-start: 2px solid var(--color-primary);
+  overflow-wrap: anywhere;
+}
+
+.chart-event strong {
+  display: block;
+  font-size: var(--font-size-lg);
+  line-height: 1.4;
+  overflow-wrap: normal;
+}
+
+.chart-duration {
+  display: block;
+  color: var(--color-muted-foreground);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.chart-tick {
+  grid-row: 2;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted-foreground);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-tick.strong {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.chart-bar.current {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-focus);
+}
+
+.chart-bar.current :is(.chart-duration, .chart-tick) {
+  color: inherit;
+}
+
+.chart-bar.current :is(.chart-event, .chart-tick) {
+  border-color: currentColor;
+}
+
+.chart-bar.current .chart-tick.active {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  box-shadow: inset 0 -3px 0 var(--color-primary);
+  font-weight: 700;
+}
+
+.chart-reference > .hint {
+  margin-top: var(--space-3);
+}
+
+.chart-tempo {
+  margin-block: var(--space-5);
+  padding-block: var(--space-4);
+  border-block: 1px solid var(--color-border);
+}
+
+.chart-tempo .button {
+  white-space: normal;
+  text-align: left;
+  min-height: 44px;
+}
+
+.chart-tempo .button[aria-pressed='true'] {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 -2px 0 var(--color-primary);
+}
+
+.tempo-reference {
+  margin-block: var(--space-4);
+}
+
+.tempo-sources {
+  padding-left: var(--space-5);
+  overflow-wrap: anywhere;
+}
+
+@container chord-chart (min-width: 30rem) {
+  .chart-bars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container chord-chart (min-width: 56rem) {
+  .chart-bars {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@container chord-chart (max-width: 20rem) {
+  .chart-section {
+    padding: var(--space-3);
+  }
+}
+
+@container chord-chart (max-width: 30rem) {
+  .player-controls > label:not(.checkbox-label) {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+}

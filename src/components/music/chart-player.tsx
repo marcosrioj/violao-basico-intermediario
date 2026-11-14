@@ -1,85 +1,100 @@
 'use client';
-import { useEffect, useMemo, useState } from 'react';
-import { Play, Square, Repeat2 } from 'lucide-react';
-import type { SongVersion } from '@/content/types';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Play, Pause, Square, Repeat2, Metronome } from 'lucide-react';
+import type { ChartBar, SongVersion } from '@/content/types';
 import { chords } from '@/content/chords';
-import { soundChord, audioContext } from './audio';
-import { scheduleChartBar } from './chart-timing';
-export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initialBpm: number }) {
+import { soundChord, audioContext, playTone } from './audio';
+import { ChartTransport, idlePosition } from './chart-transport';
+import { buildChartGroups } from './chart-layout';
+import { ChartSection } from './chart-section';
+import { formatBpm, referenceBpm, tempoUnitLabel, type TempoResearch } from '@/content/tempo';
+import { TempoReference } from './tempo-reference';
+
+function previewFirstChord(bar: ChartBar) {
+  const chord = chords[bar.events[0]?.chord];
+  if (chord) soundChord(chord.frets);
+}
+
+export function ChartPlayer({
+  chart,
+  initialBpm,
+  tempo,
+}: {
+  chart: SongVersion;
+  initialBpm: number;
+  tempo?: TempoResearch;
+}) {
   const [section, setSection] = useState('all');
   const [bpm, setBpm] = useState(initialBpm);
   const [loop, setLoop] = useState(false);
-  const [playing, setPlaying] = useState(false);
-  const [position, setPosition] = useState(-1);
-  const bars = useMemo(() => {
-    if (section !== 'all')
-      return (
-        chart.sections
-          .find((s) => s.id === section)
-          ?.bars.map((bar, i) => ({ ...bar, label: section, number: i + 1 })) ?? []
-      );
-    return chart.order.flatMap((part) =>
-      Array.from(
-        { length: part.repeat },
-        () =>
-          chart.sections
-            .find((s) => s.id === part.section)
-            ?.bars.map((bar, i) => ({ ...bar, label: part.section, number: i + 1 })) ?? [],
-      ).flat(),
+  const [metronome, setMetronome] = useState(false);
+  const [playhead, setPlayhead] = useState(idlePosition);
+  const transport = useRef<ChartTransport | null>(null);
+  const settings = useRef({ loop: false, metronome: false });
+  const pendingStart = useRef<number | null>(null);
+  const playing = playhead.status === 'playing';
+  const researchedBpm = tempo ? referenceBpm(tempo) : null;
+  const groups = useMemo(() => buildChartGroups(chart, section), [chart, section]);
+  const bars = useMemo(() => groups.flatMap((group) => group.bars.map(({ bar }) => bar)), [groups]);
+  const referenceGroups = useMemo(
+    () => chart.sections.flatMap((part) => buildChartGroups(chart, part.id)),
+    [chart],
+  );
+  function stopPlayback() {
+    pendingStart.current = null;
+    transport.current?.stop();
+  }
+  const startAt = useCallback((bar: number) => {
+    void audioContext().resume();
+    transport.current?.play(bar);
+  }, []);
+  function startReference(_bar: number, sectionId: string) {
+    void audioContext().resume();
+    const currentGroup = groups.find((group) => group.sectionId === sectionId);
+    if (currentGroup) startAt(currentGroup.bars[0].playbackIndex);
+    else {
+      stopPlayback();
+      pendingStart.current = 0;
+      setSection(sectionId);
+    }
+  }
+  useEffect(() => {
+    const player = new ChartTransport(
+      bars,
+      chart,
+      bpm,
+      {
+        now: () => audioContext().currentTime,
+        chord: (name, duration, at) =>
+          chords[name] ? soundChord(chords[name].frets, Math.max(0.04, duration), at) : () => {},
+        click: (frequency, volume, at) => playTone(frequency, 0.045, at, volume),
+      },
+      setPlayhead,
     );
-  }, [chart, section]);
+    transport.current = player;
+    player.setLoop(settings.current.loop);
+    player.setMetronome(settings.current.metronome);
+    if (pendingStart.current !== null) {
+      const from = pendingStart.current;
+      pendingStart.current = null;
+      void audioContext().resume();
+      player.play(from);
+    }
+    const pauseHidden = () => {
+      if (document.hidden) player.pause();
+    };
+    document.addEventListener('visibilitychange', pauseHidden);
+    return () => {
+      player.dispose();
+      document.removeEventListener('visibilitychange', pauseHidden);
+      transport.current = null;
+    };
+  }, [bars, chart, bpm]);
   useEffect(() => {
     if (!playing) return;
-    let stopped = false;
-    let timeout: ReturnType<typeof setTimeout>;
-    let index = 0;
-    const ctx = audioContext();
-    let nextBarAt = ctx.currentTime + 0.1;
-    const pending: ReturnType<typeof setTimeout>[] = [];
-    const voices: (() => void)[] = [];
-    function advance() {
-      if (stopped) return;
-      if (index >= bars.length) {
-        if (!loop) {
-          setPlaying(false);
-          setPosition(-1);
-          return;
-        }
-        index = 0;
-      }
-      const bar = bars[index];
-      const currentIndex = index;
-      pending.push(
-        setTimeout(
-          () => {
-            if (!stopped) setPosition(currentIndex);
-          },
-          Math.max(0, (nextBarAt - ctx.currentTime) * 1000),
-        ),
-      );
-      const scheduled = scheduleChartBar(bar, nextBarAt, bpm);
-      scheduled.events.forEach((event) => {
-        if (chords[event.chord])
-          voices.push(soundChord(chords[event.chord].frets, event.duration, event.at));
-      });
-      nextBarAt = scheduled.endAt;
-      index++;
-      const lookAhead = index >= bars.length && !loop ? 0 : 0.1;
-      timeout = setTimeout(advance, Math.max(0, (nextBarAt - ctx.currentTime - lookAhead) * 1000));
-    }
-    advance();
-    const stopHidden = () => {
-      if (document.hidden) setPlaying(false);
-    };
-    document.addEventListener('visibilitychange', stopHidden);
-    return () => {
-      stopped = true;
-      clearTimeout(timeout);
-      pending.forEach(clearTimeout);
-      voices.forEach((stop) => stop());
-      document.removeEventListener('visibilitychange', stopHidden);
-    };
-  }, [playing, bars, bpm, loop]);
+    const timer = setInterval(() => transport.current?.tick(), 25);
+    return () => clearInterval(timer);
+  }, [playing]);
   return (
     <section className="card chart-player">
       <div className="section-title">
@@ -98,8 +113,7 @@ export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initial
           <select
             value={section}
             onChange={(e) => {
-              setPlaying(false);
-              setPosition(-1);
+              stopPlayback();
               setSection(e.target.value);
             }}
           >
@@ -112,16 +126,21 @@ export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initial
           </select>
         </label>
         <label>
-          Andamento · {bpm} BPM
+          Andamento · {formatBpm(bpm)} BPM
+          <span className="hint">
+            {' '}
+            por {tempoUnitLabel(chart.meter === '6/8' ? 'dotted-quarter' : 'quarter')}
+          </span>
           <input
             aria-label="Andamento da cifra"
             type="range"
             min="30"
             max="180"
+            step="any"
+            aria-valuetext={`${formatBpm(bpm)} BPM`}
             value={bpm}
             onChange={(e) => {
-              setPlaying(false);
-              setPosition(-1);
+              stopPlayback();
               setBpm(Number(e.target.value));
             }}
           />
@@ -131,26 +150,92 @@ export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initial
             type="checkbox"
             checked={loop}
             onChange={(e) => {
-              setPlaying(false);
-              setPosition(-1);
+              settings.current.loop = e.target.checked;
+              transport.current?.setLoop(e.target.checked);
               setLoop(e.target.checked);
             }}
           />
-          <Repeat2 size={16} />
+          <Repeat2 size={16} aria-hidden="true" />
           Repetir
+        </label>
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            checked={metronome}
+            onChange={(e) => {
+              settings.current.metronome = e.target.checked;
+              transport.current?.setMetronome(e.target.checked);
+              setMetronome(e.target.checked);
+            }}
+          />
+          <Metronome size={16} aria-hidden="true" />
+          Metrônomo
         </label>
         <button
           className="button"
           onClick={() => {
-            void audioContext().resume();
-            if (playing) setPosition(-1);
-            setPlaying(!playing);
+            if (playing) transport.current?.pause();
+            else {
+              void audioContext().resume();
+              transport.current?.play();
+            }
           }}
         >
-          {playing ? <Square size={16} /> : <Play size={16} />}{' '}
-          {playing ? 'Parar' : 'Ouvir acordes'}
+          {playing ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}{' '}
+          {playing ? 'Pausar' : playhead.status === 'paused' ? 'Continuar' : 'Ouvir acordes'}
+        </button>
+        <button
+          className="button secondary"
+          disabled={playhead.status === 'idle'}
+          onClick={stopPlayback}
+        >
+          <Square size={16} aria-hidden="true" /> Parar
         </button>
       </div>
+      <p className="hint" role="status">
+        {playhead.status === 'paused'
+          ? 'Pausado. Continue do ponto em que parou.'
+          : playing
+            ? 'Reproduzindo.'
+            : 'Pronto para tocar.'}
+      </p>
+      {tempo && (
+        <div className="chart-tempo">
+          <div className="control-row" role="group" aria-label="Escolher andamento">
+            <button
+              type="button"
+              className="button small secondary"
+              aria-pressed={bpm === initialBpm}
+              onClick={() => {
+                stopPlayback();
+                setBpm(initialBpm);
+              }}
+            >
+              Estudo da aula · {formatBpm(initialBpm)} BPM
+            </button>
+            {researchedBpm !== null && (
+              <button
+                type="button"
+                className="button small secondary"
+                aria-pressed={bpm === researchedBpm}
+                onClick={() => {
+                  stopPlayback();
+                  setBpm(researchedBpm);
+                }}
+              >
+                Usar {tempo.status === 'estimated' ? 'estimativa' : 'referência'} ·{' '}
+                {formatBpm(researchedBpm)} BPM
+              </button>
+            )}
+          </div>
+          <TempoReference tempo={tempo} />
+        </div>
+      )}
+      <p className="hint">
+        Ative ou desative Repetir e Metrônomo enquanto toca, sem interromper os acordes. Pausar
+        guarda sua posição; Continuar retoma dali. O primeiro tempo do metrônomo tem um acento mais
+        forte.
+      </p>
       <p className="hint">
         {chart.counting ??
           'Cada bloco é um compasso; o número abaixo do acorde indica sua duração em pulsos.'}{' '}
@@ -159,62 +244,52 @@ export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initial
           : ''}{' '}
         Áudio sintético para referência harmônica.
       </p>
-      <div className="chart-bars">
-        {bars.map((bar, i) => (
-          <button
-            aria-label={`Compasso ${i + 1}: ${bar.events.map((e) => `${e.chord}, ${e.beats} pulsos`).join('; ')}`}
-            className={position === i ? 'chart-bar current' : 'chart-bar'}
-            key={`${bar.label}-${i}`}
-            onClick={() => {
-              const chord = chords[bar.events[0]?.chord];
-              if (chord) soundChord(chord.frets);
-            }}
-          >
-            <small>
-              {bar.label} · {bar.number}
-              {bar.meter ? ` · ${bar.meter}` : ''}
-            </small>
-            <div>
-              {bar.events.map((e, j) => (
-                <span key={j}>
-                  <strong>{e.chord}</strong>
-                  <em>
-                    {e.beats} {e.beats === 1 ? 'pulso' : 'pulsos'}
-                  </em>
-                </span>
-              ))}
-            </div>
-          </button>
+      <p className="hint chart-reading-guide">
+        Leia cada trecho da esquerda para a direita. Cada cartão mantém um compasso inteiro; a
+        contagem abaixo mostra os pulsos e suas subdivisões. As linhas agrupam até quatro compassos
+        e se dividem em duas ou uma coluna quando há menos espaço. Mudanças de compasso começam uma
+        nova linha.
+      </p>
+      <div
+        className="chart-arrangement"
+        role="region"
+        aria-label={section === 'all' ? 'Arranjo completo por trechos' : 'Trecho para praticar'}
+      >
+        {groups.map((group, index) => (
+          <ChartSection
+            key={group.key}
+            group={group}
+            chart={chart}
+            position={playhead.bar}
+            activeTick={
+              metronome && group.bars.some((bar) => bar.playbackIndex === playhead.bar)
+                ? playhead.tick
+                : -1
+            }
+            sequence={section === 'all' ? index + 1 : undefined}
+            onPreview={previewFirstChord}
+            onStart={startAt}
+            paused={playhead.status === 'paused'}
+          />
         ))}
       </div>
-      <details className="section">
+      <details className="section chart-reference">
         <summary>Mapa dos trechos e compassos</summary>
-        {chart.sections.map((s) => (
-          <section key={s.id} id={`section-${s.id}`}>
-            <h3>
-              {s.title} · {s.id}
-            </h3>
-            <div className="chart-bars">
-              {s.bars.map((bar, i) => (
-                <div className="chart-bar" id={`bar-${s.id}-${i}`} key={i}>
-                  <small>
-                    {s.id}
-                    {/\d$/.test(s.id) ? '.' : ''}
-                    {i + 1}
-                  </small>
-                  <div>
-                    {bar.events.map((event, j) => (
-                      <span key={j}>
-                        <strong>{event.chord}</strong>
-                        <em>{event.beats} pulsos</em>
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
+        <p className="hint">
+          Cada trecho aparece uma vez neste mapa. As referências da aula levam ao compasso
+          correspondente.
+        </p>
+        <div className="chart-arrangement">
+          {referenceGroups.map((group) => (
+            <ChartSection
+              key={group.sectionId}
+              group={group}
+              chart={chart}
+              reference
+              onStart={startReference}
+            />
+          ))}
+        </div>
       </details>
     </section>
   );

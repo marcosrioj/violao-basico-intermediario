@@ -1,0 +1,411 @@
+{
+  "santo_espirito": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Nívea Soares — Santo Espírito, vídeo oficial publicado em 2017 (Jsr1C6xVhDg).",
+    "recordingUrl": "https://www.youtube.com/watch?v=Jsr1C6xVhDg",
+    "meter": "4/4",
+    "playerUnit": "quarter",
+    "status": "unresolved",
+    "reference": null,
+    "variable": false,
+    "note": "O analisador do vídeo informa 143 BPM sem identificar a figura musical. Não foi possível confirmar se o pulso do arranjo corresponde a 143 ou à metade, 71,5. O BPM da aula continua sendo um andamento de estudo.",
+    "sources": [
+      {
+        "title": "Nívea Soares — vídeo oficial selecionado",
+        "url": "https://www.youtube.com/watch?v=Jsr1C6xVhDg",
+        "evidence": "Identifica a gravação usada pelo curso; não publica indicação de metrônomo."
+      },
+      {
+        "title": "Chordify — análise do mesmo vídeo",
+        "url": "https://chordify.net/chords/santo-espirito-nivea-soares-nivea-soares",
+        "evidence": "Informa 143 BPM e tom D. A unidade musical não é explícita; não sustenta converter automaticamente para semínima ou para metade do valor."
+      }
+    ]
+  },
+  "faz_chover_tna": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Toque no Altar / Trazendo a Arca — Faz Chover (Ao Vivo), Toque no Altar (2003), 6:18.",
+    "recordingUrl": "https://music.apple.com/br/song/faz-chover-ao-vivo/1675244989",
+    "meter": "4/4",
+    "playerUnit": "quarter",
+    "status": "unresolved",
+    "reference": null,
+    "variable": false,
+    "note": "As fontes divergem e não há indicação numérica confirmada para a semínima desta gravação. Valores próximos de 67–69 são hipóteses; a análise da prévia não resolveu o pulso com segurança. O player mantém o BPM de estudo.",
+    "sources": [
+      {
+        "title": "Apple Music — faixa de 2003 cadastrada",
+        "url": "https://music.apple.com/br/song/faz-chover-ao-vivo/1675244989",
+        "evidence": "A API pública confirma álbum, ano, intérpretes e duração de 378480 ms. Não publica BPM. A autocorrelação de ataques de uma prévia licenciada produziu picos conflitantes e não permitiu confirmar a unidade."
+      },
+      {
+        "title": "SongBPM — Faz Chover, Toque no Altar",
+        "url": "https://songbpm.com/%40toque-no-altar/faz-chover",
+        "evidence": "Informa 133 BPM e duração 6:17; sugere metade aproximada de 67. Análise automatizada, sem figura musical explícita."
+      },
+      {
+        "title": "GetSongBPM — álbum Toque no Altar",
+        "url": "https://getsongbpm.com/album/toque-no-altar/g81lG",
+        "evidence": "Informa 79 BPM para a faixa de 6:18 do álbum de 2003. Conflita com 133/67 e impede tratar os agregadores como confirmação."
+      }
+    ]
+  },
+  "me_derramar": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Ministério Vineyard — Me Derramar, Vem, Esta É a Hora (2001), interpretação de Greta Lira.",
+    "recordingUrl": "https://www.youtube.com/watch?v=LJyK6vZRFSw",
+    "meter": "6/8",
+    "playerUnit": "dotted-quarter",
+    "status": "documented",
+    "reference": {
+      "bpm": 56,
+      "unit": "quarter"
+    },
+    "variable": true,
+    "note": "O catálogo publica 56 BPM em semínimas. No player, com dois pulsos compostos por compasso, isso equivale a 37,3 BPM de semínima pontuada (56 × 2/3). A reprodução conserva a conversão sem arredondar.",
+    "sources": [
+      {
+        "title": "MultiTracks — Me Derramar, Vem, Esta É a Hora",
+        "url": "https://www.multitracks.com/songs/Vineyard-Music/Vem,-Esta-E-A-Hora/Me-Derramar/",
+        "evidence": "Cabeçalho público: 56 BPM, 6/8, G, 5:30. Fornecedor do master; informa variações de andamento. Não confundir com a regravação Vineyard Piratininga."
+      },
+      {
+        "title": "MultiTracks — convenção do clique em 6/8",
+        "url": "https://helpcenter.multitracks.com/en/articles/4720422-how-to-cloud-song-click-tracks",
+        "evidence": "A documentação do Playback define BPM de 6/8 em semínimas. Para converter semínima pontuada em semínima, multiplica por 3/2; o player usa a operação inversa, 2/3."
+      }
+    ]
+  },
+  "sonda_me_usa_me": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Aline Barros — Som de Adoradores (2004), clipe oficial MK Music zUOaDzTmpNA",
+    "recordingUrl": "https://www.youtube.com/watch?v=zUOaDzTmpNA",
+    "meter": "4/4",
+    "playerUnit": "quarter",
+    "status": "documented",
+    "reference": {
+      "bpm": 62,
+      "unit": "quarter"
+    },
+    "variable": true,
+    "note": "62 BPM por semínima na transcrição de bateria do álbum Som de Adoradores (2004). A cifra também indica rallentando no final.",
+    "sources": [
+      {
+        "title": "Portal Daniel Batera — transcrição de Anderson Cleiton Rodrigues",
+        "url": "https://danielbatera.com.br/newsite/wp-content/uploads/2012/03/partitura-gospel-bateria-aline-barros-sonda-me-usa-me-portal-daniel-batera-drum-sheet.pdf",
+        "evidence": "Página 2 renderizada e inspecionada: figura semínima=62 e fórmula 4/4; cabeçalho identifica Som de Adoradores2004 e Ramon Montagner. Publicação 03/2012."
+      },
+      {
+        "title": "MK Music — vídeo oficial de Sonda-me, Usa-me",
+        "url": "https://www.youtube.com/watch?v=zUOaDzTmpNA",
+        "evidence": "Vídeo cadastrado é identificado pela MK Music como faixa do álbum Som de Adoradores. Não publica BPM."
+      },
+      {
+        "title": "Gladstone Leon — cifra dividida em compassos",
+        "url": "https://www.gladstoneleon.com.br/_files/ugd/a0a895_2198813895904e8eb46371c0212d8da0.pdf",
+        "evidence": "Fonte de compassos já cadastrada confirma4/4 e registra rallentando final; não tem indicação numérica de tempo."
+      },
+      {
+        "title": "Chordify — clipe oficial MK Music",
+        "url": "https://chordify.net/pt-BR/chords/aline-barros-songs/sonda-me-usa-me-chords",
+        "evidence": "A análise identifica mesmo álbum e clipe. O valor está aproximadamente no dobro da semínima escrita; não adotado como semínima."
+      },
+      {
+        "title": "GetSongBPM — Som de Adoradores",
+        "url": "https://getsongbpm.com/song/sonda-me-usa-me/4xGpG1",
+        "evidence": "Catálogo automático informa136 para faixa6:39; conflita com a transcrição. Não utilizado."
+      }
+    ]
+  },
+  "renova_me": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Aline Barros — Aline Barros20Anos ao Vivo (2012), faixa13, 4:43.653, vídeoF4lki0EbNCo",
+    "recordingUrl": "https://www.youtube.com/watch?v=F4lki0EbNCo",
+    "meter": "4/4",
+    "playerUnit": "quarter",
+    "status": "estimated",
+    "reference": {
+      "bpm": 94,
+      "unit": "quarter"
+    },
+    "variable": false,
+    "note": "Referência aproximada de 94–95 BPM para a gravação ao vivo de 2012. O botão usa 94; a cifra vinculada ao vídeo indica 95. A diferença entre as fontes não foi resolvida.",
+    "sources": [
+      {
+        "title": "CifrasGospel — Renova-Me Ao Vivo, cifra completa revisada",
+        "url": "https://cifrasgospel.online/aline-barros/renova-me-ao-vivo/",
+        "evidence": "A própria fonte já cadastrada no curso informa95BPM e incorpora exatamenteF4lki0EbNCo. É transcrição independente, não master da gravadora."
+      },
+      {
+        "title": "Apple Music — Aline Barros20Anos ao Vivo",
+        "url": "https://music.apple.com/br/album/renova-me-ao-vivo/547337907?i=547338665",
+        "evidence": "API pública itunes.apple.com/lookup?id=547338665&country=br consultada: faixa13, mesmo álbum e ano. Prévia oficial29.9755s analisada; envelope pouco periódico, não conclusivo para andamento."
+      },
+      {
+        "title": "Tunebat — Renova-Me Ao Vivo",
+        "url": "https://tunebat.com/Info/Renova-Me-Ao-Vivo-Aline-Barros/5fytDMLCSDAxEyITCy2YZR",
+        "evidence": "Coincidem título, álbum, ano, duração e tonalidade com distribuição oficial;BPM automatizado."
+      },
+      {
+        "title": "Chordify — Aline Barros Renova-Me Vídeo Ao Vivo",
+        "url": "https://chordify.net/chords/aline-barros-songs/renova-me-chords",
+        "evidence": "Segundo analisador identifica explicitamente gravação2012 e94BPM; não se trata da versão2000."
+      },
+      {
+        "title": "Gladstone Leon — Renova-me emD",
+        "url": "https://www.gladstoneleon.com.br/_files/ugd/a0a895_d31f26d32c4543ff9a472efef6dff472.pdf",
+        "evidence": "Cifra métrica já cadastrada confirma4/4 e tomD, sem valor de metrônomo."
+      }
+    ]
+  },
+  "poderoso_deus": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Antônio Cirilo — Poderoso Deus2002, faixa5,14:49.067, distribuição SONORA DIGITAL WORSHIP, vídeoTnKTUZfNafM",
+    "recordingUrl": "https://www.youtube.com/watch?v=TnKTUZfNafM",
+    "meter": "4/4",
+    "playerUnit": "quarter",
+    "status": "unresolved",
+    "reference": null,
+    "variable": false,
+    "note": "A prévia de 2002 e os analisadores sugerem 124–125 batidas/min ou sua metade, 62–62,5. As fontes não resolvem qual corresponde à semínima do arranjo. Use o andamento de estudo até validar a contagem com o professor.",
+    "sources": [
+      {
+        "title": "Antônio Cirilo — Poderoso Deus, distribuição oficial",
+        "url": "https://www.youtube.com/watch?v=TnKTUZfNafM",
+        "evidence": "Canal oficial identifica a gravação como2002, disponibilizada pela VirginMusicGroup/SONORA DIGITAL; upload2025 é republicação. Não publica tempo."
+      },
+      {
+        "title": "Apple Music — Poderoso Deus2002",
+        "url": "https://music.apple.com/br/album/poderoso-deus/1835698567?i=1835698738",
+        "evidence": "API pública lookup do álbum1835698567 confirma faixa5 e2002 SONORA DIGITAL WORSHIP. Medição própria da prévia demonstra periodicidade aproximada, sem determinação da figura rítmica."
+      },
+      {
+        "title": "Tunebat — Poderoso Deus2002",
+        "url": "https://tunebat.com/Info/Poderoso-Deus-Antonio-Cirilo/4oIu0drFGyIZTQAFL73lLM",
+        "evidence": "Mesmos artista/álbum2002/duração da fonte oficial; análiseSpotify automatizada, sem informação da figura musical."
+      },
+      {
+        "title": "SongBPM — Poderoso Deus",
+        "url": "https://songbpm.com/%40antonio-cirilo/poderoso-deus-ujplo",
+        "evidence": "Concorda com124 e apresenta62 como half-time; não prova que62 seja semínima da partitura."
+      },
+      {
+        "title": "SongData — Poderoso Deus2002",
+        "url": "https://songdata.io/track/0Uwp58XxP4JiaXDR0FhZzu/Poderoso-Deus-by-Antonio-Cirilo",
+        "evidence": "Catálogo conflitante: mesmo álbum/ano/duração, mas140BPM eBb; desacorda dos dois analisadores e da prévia. Não adotado."
+      },
+      {
+        "title": "LAR Music — cifra já utilizada pelo curso",
+        "url": "https://larmusic.lardejesus.com.br/Cifras/LD0625-O%20-%20PODEROSO%20DEUS%20-%20ANTONIO%20CIRILO.pdf",
+        "evidence": "Confirma intérprete e tomD, mas não publica fórmula de compasso nem indicação numérica de andamento."
+      },
+      {
+        "title": "Multitrack Gospel — playback independente",
+        "url": "https://multitrackgospel.com/produto/poderoso-deus/",
+        "evidence": "Duração7:59 diferente da faixa14:49; não é prova de andamento do fonograma exato."
+      }
+    ]
+  },
+  "faz_chover": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Fernandinho — Faz Chover (Ao Vivo), álbum Faz Chover, 2003, 12:38; YouTube SDzsBXMNlZY",
+    "recordingUrl": "https://www.youtube.com/watch?v=SDzsBXMNlZY",
+    "meter": "4/4",
+    "playerUnit": "quarter",
+    "status": "estimated",
+    "reference": {
+      "bpm": 72,
+      "unit": "quarter"
+    },
+    "variable": false,
+    "note": "Aproximadamente 72 BPM por semínima, estimados a partir de uma prévia de 30 segundos da edição de 2003. A análise é limitada e não confirma o andamento da faixa inteira.",
+    "sources": [
+      {
+        "title": "Apple Music — Fernandinho, Faz Chover (Ao Vivo), edição 2003",
+        "url": "https://music.apple.com/us/album/faz-chover-ao-vivo/1468020851?i=1468021445",
+        "evidence": "Identifica a edição correta e fornece áudio primário curto. Não publica BPM. Análise exploratória do envelope de energia da prévia produziu hipóteses por volta de 71–73 pulsos/min (ou 142–146 subdivisões/min), porém com baixa correlação e ambiguidade; não autoriza publicar BPM exato."
+      },
+      {
+        "title": "Gladstone Leon — Faz chover, Fernandinho, transcrição 188",
+        "url": "https://www.gladstoneleon.com.br/_files/ugd/a0a895_48e8cca6d4b644338bba0936544f1e44.pdf",
+        "evidence": "Corrobora a unidade de contagem e a forma harmônica do curso, mas não fornece BPM."
+      },
+      {
+        "title": "Faz Chover (Ao Vivo) — Fernandinho - Topic",
+        "url": "https://www.youtube.com/watch?v=SDzsBXMNlZY",
+        "evidence": "Referência cadastrada; não contém BPM verificado. Não foi baixado áudio do YouTube."
+      }
+    ]
+  },
+  "lugar_secreto": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Gabriela Rocha — Céu, 2018, Onimusic, MultiTracks mtID 11133; vídeo oficial YnrN0o0lubM",
+    "recordingUrl": "https://www.youtube.com/watch?v=YnrN0o0lubM",
+    "meter": "4/4",
+    "playerUnit": "quarter",
+    "status": "documented",
+    "reference": {
+      "bpm": 69,
+      "unit": "quarter"
+    },
+    "variable": true,
+    "note": "69 BPM nominais, publicados no catálogo do master de Céu (2018), vinculado ao mesmo vídeo do curso.",
+    "sources": [
+      {
+        "title": "MultiTracks — Lugar Secreto, Gabriela Rocha, Céu",
+        "url": "https://www.multitracks.com.br/songs/Gabriela-Rocha/C%C3%A9u/Lugar-Secreto/",
+        "evidence": "Fornecedor de stems da gravação original. 69 é valor nominal da gravação, não sincronização exata da faixa inteira."
+      },
+      {
+        "title": "MultiTracks — detalhes do fonograma Lugar Secreto",
+        "url": "https://www.multitracks.com.br/songs/Gabriela-Rocha/C%C3%A9u/Lugar-Secreto/overview/",
+        "evidence": "Vincula explicitamente metadados de 69 BPM ao mesmo vídeo do curso. O catálogo identifica 2018; a edição v5 preservada informa 2017."
+      },
+      {
+        "title": "MultiTracks — Anunciando Gabriela Rocha, 21/11/2018",
+        "url": "https://www.multitracks.com.br/blog/anunciando-gabriela-rocha",
+        "evidence": "Confirma que se trata de recurso do master original, não recriação comunitária."
+      },
+      {
+        "title": "Cifra Club / Luísa Mitre — Lugar Secreto para piano e voz",
+        "url": "https://akamai.sscdn.co/gcs/cifraclub/contrib/partituras/0725125137-gabriela-rocha-lugar-secreto.pdf",
+        "evidence": "Corrobora contagem lenta em semínimas e a divisão 2+2/4 do mapa do curso."
+      }
+    ]
+  },
+  "rompendo_em_fe": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Comunidade Evangélica Internacional da Zona Sul — Rompendo em Fé, 1998; YouTube 5cUhcZ4jMrw",
+    "recordingUrl": "https://www.youtube.com/watch?v=5cUhcZ4jMrw",
+    "meter": "4/4",
+    "playerUnit": "quarter",
+    "status": "documented",
+    "reference": {
+      "bpm": 68,
+      "unit": "quarter"
+    },
+    "variable": true,
+    "note": "68 BPM por semínima na transcrição que aponta ao mesmo vídeo da gravação de 1998. Há rallentando final.",
+    "sources": [
+      {
+        "title": "Gladstone Leon — Rompendo em Fé, transcrição 1044",
+        "url": "https://www.gladstoneleon.com.br/_files/ugd/a0a895_f34c14fe027a4c188ea4266095aa6648.pdf",
+        "evidence": "A anotação clicável do próprio PDF aponta exatamente para https://music.youtube.com/watch?v=5cUhcZ4jMrw (extraída por pdftohtml); é a mesma gravação cadastrada. Fonte é transcrição assinada, não declaração de BPM pelo artista; distinguir essa qualidade de evidência."
+      },
+      {
+        "title": "Rompendo em Fé — Comunidade Evangélica Internacional da Zona Sul - Topic",
+        "url": "https://www.youtube.com/watch?v=5cUhcZ4jMrw",
+        "evidence": "Vinculação de versão; não contém BPM publicado pelo artista."
+      }
+    ]
+  },
+  "ousado_amor": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Isaías Saad — gravação de 2018-03-08 / clipe oficial wSKKEAnLTDw; comparação com o single/álbum de 5:33,903 da Apple",
+    "recordingUrl": "https://www.youtube.com/watch?v=wSKKEAnLTDw",
+    "meter": "6/8",
+    "playerUnit": "dotted-quarter",
+    "status": "estimated",
+    "reference": {
+      "bpm": 55,
+      "unit": "dotted-quarter"
+    },
+    "variable": false,
+    "note": "Aproximadamente 55 pulsos de semínima pontuada por minuto, estimados na prévia de 2018. Conte 1 la li, 2 la li. Os 164 BPM da cifra não devem ser aplicados diretamente aos dois pulsos do player.",
+    "sources": [
+      {
+        "title": "Apple Music — Ousado Amor, Isaias Saad (2018)",
+        "url": "https://music.apple.com/br/album/ousado-amor/6815818197?i=6815818554",
+        "evidence": "Medição própria apenas da prévia: autocorrelação do crescimento positivo da energia, janelas de 10 ms, mono 8 kHz. Periodicidade principal de compasso ~2,17 s e pulso composto ~1,08 s, compatíveis com cerca de 55 BPM em semínima pontuada. É estimativa da prévia, não BPM publicado pela Apple."
+      },
+      {
+        "title": "Igreja Batista Barcelona — cifra 418, Ousado Amor",
+        "url": "https://batistabarcelona.com.br/wp-content/uploads/2019/05/A0418-Ousado-Amor.pdf",
+        "evidence": "Publicação do próprio ministério de louvor. A unidade do valor 164 não é nomeada. A interpretação em colcheias seria 164/3 = 54,667 pulsos pontuados e é compatível com a prévia, mas essa conversão é inferência e não declaração da partitura."
+      },
+      {
+        "title": "Isaías Saad — Ousado Amor (Clipe Oficial)",
+        "url": "https://www.youtube.com/watch?v=wSKKEAnLTDw",
+        "evidence": "A referência é a gravação de 2018, não as regravações Live (2020), Na Casa (2024) ou arranjos de outros artistas."
+      }
+    ]
+  },
+  "preciso_de_ti": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Diante do Trono 4 — Preciso de Ti (2001), YouTube 7h7t0jzCYIY",
+    "recordingUrl": "https://www.youtube.com/watch?v=7h7t0jzCYIY",
+    "meter": "4/4",
+    "playerUnit": "quarter",
+    "status": "documented",
+    "reference": {
+      "bpm": 68,
+      "unit": "quarter"
+    },
+    "variable": true,
+    "note": "A transcrição da gravação de 2001 indica 68 BPM no início e 71 BPM na entrada da banda forte. O botão usa 68; ajuste para 71 ao estudar essa passagem.",
+    "sources": [
+      {
+        "title": "Gladstone Leon — Preciso de Ti, páginas 81–82",
+        "url": "https://www.gladstoneleon.com.br/_files/ugd/a0a895_8eecd11d4b3b4e2d936b8577ac1d4bc5.pdf",
+        "evidence": "PDF do próprio transcritor, visualizado após renderização. Link interno aponta exatamente para https://music.youtube.com/watch?v=7h7t0jzCYIY. A mudança71 aparece no trecho de banda forte do refrão; a fonte não fornece um mapa temporal completo, nem garante clique constante durante a gravação ao vivo."
+      },
+      {
+        "title": "Diante do Trono — Preciso de Ti, referência da transcrição",
+        "url": "https://www.youtube.com/watch?v=7h7t0jzCYIY",
+        "evidence": "Evita substituir o andamento do registro de2001 por versões mais recentes."
+      }
+    ]
+  },
+  "a_ele_a_gloria": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Diante do Trono — Exaltado DVD (1999), YouTube Q_MerFW9qA4, trecho transcrito até4:27",
+    "recordingUrl": "https://www.youtube.com/watch?v=Q_MerFW9qA4",
+    "meter": "4/4",
+    "playerUnit": "quarter",
+    "status": "documented",
+    "reference": {
+      "bpm": 75,
+      "unit": "quarter"
+    },
+    "variable": false,
+    "note": "75 BPM por semínima na transcrição vinculada ao vídeo Exaltado DVD (1999). A fonte cobre o trecho até 4:27; não determina o andamento de toda a ministração.",
+    "sources": [
+      {
+        "title": "Gladstone Leon — A Ele a Glória, página117",
+        "url": "https://www.gladstoneleon.com.br/_files/ugd/a0a895_784fd276efc54ad69efebc04e7ef9e77.pdf",
+        "evidence": "PDF do próprio transcritor visualizado após renderização. Link interno aponta exatamente para https://music.youtube.com/watch?v=Q_MerFW9qA4. A tonalidade é nomeadaG na fonte, com centro e acordes iniciaisEm7 (relativa menor); isto não altera a unidade do pulso."
+      },
+      {
+        "title": "Diante do Trono — A Ele a Glória, Exaltado DVD",
+        "url": "https://www.youtube.com/watch?v=Q_MerFW9qA4",
+        "evidence": "Correspondência exata de versão; a fonte só cobre o trecho transcrito e não estabelece a pulsação de toda a ministração."
+      }
+    ]
+  },
+  "bondade_de_deus": {
+    "reviewedOn": "2026-11-14",
+    "recording": "Isaías Saad — 2022, YouTube mZ9yZYo9Mmk",
+    "recordingUrl": "https://www.youtube.com/watch?v=mZ9yZYo9Mmk",
+    "meter": "4/4",
+    "playerUnit": "quarter",
+    "status": "documented",
+    "reference": {
+      "bpm": 68,
+      "unit": "quarter"
+    },
+    "variable": false,
+    "note": "68 BPM por semínima na transcrição da gravação cadastrada. Nos compassos em 2/4, mantenha o BPM e conte apenas dois tempos.",
+    "sources": [
+      {
+        "title": "Gladstone Leon — Bondade de Deus, páginas 775–776",
+        "url": "https://www.gladstoneleon.com.br/_files/ugd/a0a895_8d41165bd6304292aafb266969382202.pdf",
+        "evidence": "PDF obtido do site do próprio transcritor e renderizado com Poppler. Cabeçalho68 e compassos confirmados visualmente. Link interno “acessar” aponta exatamente para https://music.youtube.com/watch?v=mZ9yZYo9Mmk. Página2 é transposição paraG, não outra gravação."
+      },
+      {
+        "title": "Isaías Saad — Bondade de Deus, gravação selecionada",
+        "url": "https://www.youtube.com/watch?v=mZ9yZYo9Mmk",
+        "evidence": "Correspondência exata de versão entre o curso e a fonte de andamento."
+      }
+    ]
+  }
+}

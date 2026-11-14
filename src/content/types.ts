@@ -1,3 +1,4 @@
+import type { TempoResearch } from './tempo';
 /** Course source contracts. String fret positions run from sixth to first string. */
 export interface CourseModule {
   n: number;
@@ -53,6 +54,7 @@ export interface Source {
   evidence?: string;
 }
 export interface Song {
+  tempo?: TempoResearch;
   title: string;
   artist: string;
   composers?: string[];

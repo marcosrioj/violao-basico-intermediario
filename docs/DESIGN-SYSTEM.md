@@ -40,6 +40,22 @@ Os aliases anteriores (`--green`, `--deep`, `--muted`, `--line` etc.) são prese
 
 As ferramentas musicais continuam usando Web Audio e os componentes já existentes. O estilo preserva conteúdo, eventos e regras de progressão. Notas características têm borda de acento; notas selecionadas, fundo verde; respostas apresentam texto e estado visual.
 
+### Cifra por trechos e contagem
+
+`ChartSection` apresenta o arranjo completo, o trecho selecionado e o mapa de referências com a mesma estrutura. O arranjo mantém todas as passagens na ordem da música, com título, identificação e número da repetição. O mapa mantém uma única ocorrência de cada trecho e as âncoras `section-*`/`bar-*` usadas pelo conteúdo da aula.
+
+Cada cartão contém um compasso inteiro. Os acordes ocupam uma largura proporcional à duração, e a contagem acompanha a fórmula: quatro pulsos em 4/4, três em 3/4, dois em 2/4 e `1 la li, 2 la li` para os dois pulsos compostos de 6/8. Durações fracionárias preservam suas subdivisões. Mudanças locais de fórmula, como 4/4 → 2/4 → 4/4, começam novas linhas.
+
+As linhas agrupam até quatro compassos, sem misturar trechos. Esse agrupamento é uma escolha de leitura, não significa que a fórmula 4/4 exija quatro compassos por linha. Container queries usam o espaço real da cifra para apresentar uma, duas ou quatro colunas, preservando tamanho legível mesmo quando a aula tem uma coluna lateral. A página usa sua rolagem normal, sem recortar a cifra em uma pequena área com rolagem interna. Estilos ficam em `chart-player.css`, importado pelo layout raiz; regras musicais e ordem de reprodução ficam no helper puro `chart-layout.ts`.
+
+A opção **Metrônomo**, ao lado de **Repetir**, começa desmarcada. Quando ativada, a reprodução acrescenta clique sonoro e destaque de um tempo/subdivisão por vez no compasso atual. O primeiro tempo recebe acento; as subdivisões têm volume menor. A grade do metrônomo é a mesma da cifra: 6/8 mantém dois pulsos compostos com seis subdivisões, sem multiplicar indevidamente o BPM. Acordes, cliques e indicação visual compartilham os mesmos instantes do `AudioContext`.
+
+**Repetir** e **Metrônomo** podem mudar durante a execução sem interromper os acordes nem mover a posição. Desativar o clique cancela somente suas vozes; desativar a repetição deixa a passagem atual terminar e cancela os sons da volta seguinte que já estiverem agendados. **Pausar** guarda a posição dentro do compasso; **Continuar** retoma a harmonia pelo tempo restante. **Parar** volta ao início. Cada trecho tem **Tocar daqui**, inclusive as passagens repetidas: no arranjo completo, a reprodução segue a partir da ocorrência escolhida. No mapa, o botão inicia a primeira ocorrência disponível ou seleciona o trecho isolado.
+
+Alterar o andamento ou o seletor de trecho interrompe e reinicia a posição. Ocultar a página pausa a execução; sair da aula cancela sons e temporizadores. `chart-transport.ts` mantém um único relógio, agenda os próximos 100 ms e recebe atualizações a cada 25 ms somente durante a execução. A indicação visual acompanha o instante atual, não a antecipação do áudio. Referências a vozes encerradas são liberadas durante a repetição. O destaque usa fundo e sublinhado, sem animação nem anúncios a cada tempo; a pausa mantém o compasso destacado com o texto **Pausado**.
+
+As referências de andamento ficam ao lado dos controles, com botões separados para **Estudo da aula** e **Usar referência/estimativa**. A unidade musical aparece junto ao BPM; a precisão interna é preservada mesmo quando a tela arredonda para uma casa decimal. Gravação, fontes e limitações ficam em detalhes expansíveis. As três referências não resolvidas não oferecem preset. O diário mantém BPM inteiro aproximado e explica como registrar um andamento fracionário sem alterar o áudio. [Auditoria das 13 gravações](TEMPO-RESEARCH.md).
+
 ## Acessibilidade e estados
 
 O foco de teclado usa contorno de 3 px e separação clara do fundo. Campos de formulário têm pelo menos 44 px de altura. Checkboxes e radios usam rótulos clicáveis amplos; links dentro de frases seguem o fluxo de leitura. Não use `outline: none` sem substituto visível.

@@ -1212,44 +1212,6 @@ input:read-only {
   flex: 0;
   white-space: nowrap;
 }
-.chart-bars {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: 9px;
-  margin-top: 24px;
-  max-height: 450px;
-  overflow: auto;
-  padding: 3px;
-}
-.chart-bar {
-  border: 1px solid var(--color-border);
-  padding: 12px;
-  background: var(--color-surface-soft);
-  text-align: left;
-  border-radius: 8px;
-}
-.chart-bar.current {
-  background: var(--green);
-  color: var(--color-on-primary);
-  box-shadow: 0 0 0 2px var(--orange);
-}
-.chart-bar > small {
-  font-size: var(--font-size-sm);
-  opacity: 1;
-}
-.chart-bar > div {
-  display: flex;
-  gap: 10px;
-  justify-content: space-around;
-}
-.chart-bar strong {
-  font-size: 1.25rem;
-  display: block;
-}
-.chart-bar em {
-  font-size: var(--font-size-sm);
-  font-style: normal;
-}
 .skip {
   position: fixed;
   left: 0;
@@ -2674,21 +2636,6 @@ th {
   .player-controls .button {
     width: 100%;
   }
-  .chart-bars {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .chart-bar {
-    padding: 8px;
-  }
-  .chart-bar strong {
-    font-size: 1.0625rem;
-  }
-  .chart-bar > div {
-    gap: 5px;
-  }
-  .chart-bar em {
-    font-size: var(--font-size-sm);
-  }
   .profile-strip {
     flex-wrap: wrap;
   }
@@ -2714,9 +2661,6 @@ th {
 @media (max-width: 420px) {
   .tuning-notes {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .chart-bars {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .topbar {
     justify-content: flex-start;

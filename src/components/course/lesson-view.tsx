@@ -87,7 +87,7 @@ export function LessonView({
             </div>
           </section>
           <section id="tocar">
-            <ChartPlayer key={lesson.id} chart={chart} initialBpm={lesson.bpm} />
+            <ChartPlayer key={lesson.id} chart={chart} initialBpm={lesson.bpm} tempo={song.tempo} />
           </section>
           <section className="card" id="praticar">
             <p className="eyebrow">UM PASSO DE CADA VEZ</p>
@@ -191,7 +191,9 @@ export function LessonView({
             </p>
             <details>
               <summary>Fontes e versão</summary>
-              <p className="hint">{song.recording ?? song.identity_note}</p>
+              <p className="hint">
+                {song.tempo?.recording ?? song.recording ?? song.identity_note}
+              </p>
               {song.sources.map((s, i) => (
                 <span key={i}>
                   {s.url ? (

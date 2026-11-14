@@ -1,5 +1,7 @@
 import data from './course-data.json';
 import guides from './student-guides.json';
+import tempoData from './tempo-research.json';
+import type { TempoResearch } from './tempo';
 import type {
   CourseModule,
   Chord,
@@ -24,7 +26,10 @@ export type {
 } from './types';
 export const courseModules: CourseModule[] = data.modules;
 export const lessons: Lesson[] = data.lessons;
-export const songs: Record<string, Song> = data.songs;
+const tempos = tempoData as Record<string, TempoResearch>;
+export const songs: Record<string, Song> = Object.fromEntries(
+  Object.entries(data.songs).map(([id, song]) => [id, { ...song, tempo: tempos[id] }]),
+);
 export const chords: Record<string, Chord> = data.chords;
 export const theoryReferences: TheoryReference[] = data.references;
 export const coursePrinciples: string[] = data.principles;

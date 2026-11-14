@@ -231,16 +231,21 @@ export function PracticeLog({
           />
         </label>
         <label>
-          BPM
+          BPM aproximado (inteiro)
           <input
             type="number"
             min="30"
             max="240"
+            step="1"
             value={bpm}
             onChange={(e) => setBpm(Number(e.target.value))}
           />
         </label>
       </div>
+      <p className="hint">
+        No diário, arredonde o BPM para o inteiro mais próximo: por exemplo, 37,3 vira 37. O
+        andamento do player não é alterado.
+      </p>
       <label>
         O que melhorou?
         <textarea
@@ -254,7 +259,17 @@ export function PracticeLog({
       <Notice message={message} />
       <button
         className="button section"
-        disabled={demo || busy || running || minutes < 1 || minutes > 240 || bpm < 30 || bpm > 240}
+        disabled={
+          demo ||
+          busy ||
+          running ||
+          !Number.isInteger(minutes) ||
+          minutes < 1 ||
+          minutes > 240 ||
+          !Number.isInteger(bpm) ||
+          bpm < 30 ||
+          bpm > 240
+        }
         onClick={save}
       >
         {busy ? 'Salvando…' : 'Registrar prática'}

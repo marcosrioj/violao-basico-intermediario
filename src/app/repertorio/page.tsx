@@ -4,6 +4,7 @@ import { Music2, ExternalLink } from 'lucide-react';
 import { requireCourseProfile } from '@/lib/auth';
 import { songs, lessons } from '@/content/course';
 import { Shell, PageHeading } from '@/components/shell';
+import { TempoReference } from '@/components/music/tempo-reference';
 export default async function Repertoire() {
   const profile = await requireCourseProfile();
   return (
@@ -25,7 +26,8 @@ export default async function Repertoire() {
                 <small className="muted">{s.artist}</small>
               </div>
             </div>
-            <p>{s.recording ?? s.identity_note}</p>
+            <p>{s.tempo?.recording ?? s.recording ?? s.identity_note}</p>
+            {s.tempo && <TempoReference tempo={s.tempo} />}
             <div className="control-row">
               <a
                 className="button small"

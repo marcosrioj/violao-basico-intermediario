@@ -2,6 +2,28 @@
 
 Registro de **14 de novembro de 2026**. O projeto está na branch `main`. Este documento distingue o código entregue, os testes executados e as configurações que dependem de contas externas.
 
+## Transporte contínuo e pesquisa de andamentos — estado atual
+
+Passaram lint, tipos, **79 testes** e build. Também passaram **33 verificações HTTP** contra o build final na porta temporária 3004, usando a origem `http://localhost:3000` incorporada ao build local; páginas públicas, rotas protegidas, CSRF e retornos de autenticação mantiveram seus contratos sem sessão autenticada. Dez novos testes do transporte exercitam troca das opções sem interromper acordes, cancelamento apenas dos cliques, desligamento da repetição dentro da janela de antecipação, pausa dentro de um acorde fracionário, retomada pelo tempo restante, início na segunda ocorrência de um trecho, parada/desmontagem, atraso de temporizador sem rajadas, 6/8 e 2/4. Quatro testes da pesquisa verificam cobertura e procedência das 13 gravações, preservação das aulas, conversão exata de unidades, ausência de presets indevidos e duração dos compassos locais.
+
+No Chrome com backend sintético local, alternar **Repetir/Metrônomo** manteve o mesmo compasso e as mesmas vozes dos acordes, sem chamadas adicionais de parada. **Pausar** congelou R1/tempo 2 e o áudio durante 900 ms; **Continuar** retomou a partir dessa posição. **Tocar daqui** no segundo refrão iniciou o índice 36 da forma completa, sem retornar à primeira ocorrência. O mapa permitiu mudar do trecho isolado A para Ponte e iniciar P1. Ocultar a página pausa; **Parar** reinicia a posição.
+
+A referência de Me Derramar conserva internamente 56/1,5 pulsos por minuto: Web Audio registrou intervalos de 0,5357142857 s entre subdivisões e 1,6071428571 s entre pulsos. Ousado Amor apresenta 55 como estimativa; músicas pendentes não oferecem preset de gravação. O repertório apresenta as 13 pesquisas. O diário bloqueia 37,3 e permite registrar o inteiro aproximado 37. Capturas de celular/desktop foram inspecionadas; não houve overflow em 320, 375, 768 e 1440 px nem erros de página.
+
+A [auditoria](TEMPO-RESEARCH.md) distingue **7 referências documentadas, 3 estimativas e 3 pendências**, sem afirmar BPM exato para toda gravação ao vivo. Os testes usam áudio sintético e instrumentação das chamadas Web Audio; não medem latência dos alto-falantes físicos nem sincronização automática com vídeos. Todas estas verificações são locais; não houve nova publicação na Vercel.
+
+## Metrônomo opcional na cifra
+
+Passaram lint, tipos, **65 testes** e build. Os seis testes novos de metrônomo verificam acentos, índices visuais, intervalos dos cliques, 4/4, 3/4, 2/4, 6/8, subdivisões fracionárias e alinhamento com os acordes em dois ciclos de todos os arranjos do corpus.
+
+No Chrome com backend sintético local, a opção começou desmarcada, sem cliques ou tempos destacados. Ao ativá-la, houve um único tempo destacado por vez, seguindo `F1:1 → F1:2 → F1:3 → F1:4 → F2:1…` e retornando a `F1:1` ao repetir. A instrumentação das chamadas reais de Web Audio confirmou cliques de 1200/800 Hz em 4/4 e 1200/550/550/800/550/550 Hz em 6/8, nos instantes previstos pelo andamento. Após desativar a opção, nenhuma nova voz foi agendada e o marcador permaneceu apagado; trocar de trecho também limpou a posição. Capturas de desktop e celular foram inspecionadas, incluindo o destaque de `la`; controles não excederam a largura em 320, 375, 768 e 1440 px. Não houve exceções de página. Esta verificação não mede latência ou qualidade dos alto-falantes físicos e não representa publicação em produção.
+
+## Cifra organizada por trechos
+
+A revisão da cifra passou localmente em lint, tipos, **59 testes** e build. Os quatro testes novos verificam os arranjos de todo o corpus, preservando ordem, repetições, duração e índices de reprodução; cobrem também linhas interrompidas por mudanças de métrica, 3/4, 6/8 e durações fracionárias.
+
+No navegador com backend sintético local, a aula M1-A1 manteve seis passagens e 46 compassos; foram verificados seleção de trecho, início/parada pelo seletor, indicação do compasso em reprodução, nomes dos refrãos repetidos, âncora `bar-R-2` abrindo o mapa e ausência de IDs duplicados. Aulas M3-A1 e M13-A1 confirmaram a contagem de 6/8 e o compasso local em 2/4. Foram inspecionadas capturas de celular e desktop; testes em 320, 375, 768, 1440 e 1920 px confirmaram ausência de overflow e adaptação de uma a quatro colunas conforme a largura real da cifra. Não houve exceções de página. Estas são verificações locais e não representam publicação na Vercel.
+
 ## Matrícula obrigatória e refinamento da interface
 
 A revisão de matrícula passou localmente em `npm run check`: ESLint, geração de tipos, TypeScript, **55 testes** e build Next.js de produção. Contra esse build, `npm run test:http` passou em **33 verificações**, incluindo negação de acesso anônimo a aulas, demonstração, teoria e laboratório, cabeçalhos privados, validação de origem e regressões dos callbacks de autenticação.
