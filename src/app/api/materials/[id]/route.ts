@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { NextResponse } from 'next/server';
-import { authContext, requireRole } from '@/lib/auth';
+import { authContext, requireCourseAccess, requireRole } from '@/lib/auth';
 import { AppError } from '@/lib/errors';
 
 export const runtime = 'nodejs';
@@ -16,6 +16,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
   const headers = { 'Cache-Control': 'private, no-store', 'X-Request-Id': requestId, 'X-Content-Type-Options': 'nosniff' };
   try {
     const context = await authContext();
+    await requireCourseAccess(context);
     const { id } = await params;
     if (!Object.prototype.hasOwnProperty.call(materials, id)) throw new AppError(404, 'NOT_FOUND', 'Material não encontrado.');
     const material = materials[id as keyof typeof materials];

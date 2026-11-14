@@ -1,13 +1,13 @@
 export const dynamic = 'force-dynamic';
 import { Suspense } from 'react';
-import { requireProfile } from '@/lib/auth';
+import { requireCourseProfile } from '@/lib/auth';
 import { Shell, PageHeading } from '@/components/shell';
 import { courseModules, lessons } from '@/content/course';
 import { Catalog } from '@/components/course/catalog';
 export default async function CoursePage() {
-  const profile = await requireProfile();
+  const profile = await requireCourseProfile();
   return (
-    <Shell active="/curso" teacher={profile.role === 'teacher'}>
+    <Shell active="/curso" courseAccess teacher={profile.role === 'teacher'}>
       <PageHeading
         eyebrow="SEU CAMINHO MUSICAL"
         title="Uma música de cada vez"

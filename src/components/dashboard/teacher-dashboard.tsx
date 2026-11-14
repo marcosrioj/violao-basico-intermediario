@@ -29,13 +29,17 @@ export function Invitation({ code }: { code?: string }) {
   if (!code) return null;
   return (
     <div>
-      <small className="muted">Código para matrícula</small>
+      <small className="muted">Código para liberar o curso aos alunos</small>
       <div className="dashboard-invite-row">
         <code className="membership-code">{code}</code>
         <button type="button" className="button secondary small" onClick={copy}>
           Copiar código
         </button>
       </div>
+      <p className="dashboard-form-note">
+        Envie este código diretamente ao aluno, pelo canal combinado. O curso será liberado quando
+        ele confirmar a matrícula no próprio painel.
+      </p>
       {message && <small role="status">{message}</small>}
     </div>
   );
@@ -63,7 +67,9 @@ export function TeacherDashboard({
       setName('');
       setPage(1);
       resource.reload();
-      setMessage('Turma criada. Compartilhe o código com seus alunos.');
+      setMessage(
+        'Turma criada. Envie o código diretamente aos alunos para que confirmem a matrícula.',
+      );
     } catch (error) {
       setError(messageOf(error));
     } finally {
@@ -76,7 +82,10 @@ export function TeacherDashboard({
       <div className="two-columns">
         <section className="card">
           <h2>Suas turmas</h2>
-          <p className="muted">Um espaço para acompanhar cada aluno, encontro após encontro.</p>
+          <p className="muted">
+            Crie uma turma e envie seu código aos alunos. Cada aluno confirma a matrícula para
+            liberar o curso.
+          </p>
           <form onSubmit={create}>
             <div className="control-row">
               <label htmlFor="class-name">

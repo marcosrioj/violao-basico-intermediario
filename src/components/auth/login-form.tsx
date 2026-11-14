@@ -1,6 +1,5 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import Link from 'next/link';
 import { ArrowRight, LoaderCircle } from 'lucide-react';
 import { z } from 'zod';
 import { createClient } from '@/lib/supabase/client';
@@ -134,19 +133,14 @@ export function LoginForm({
       <p className="muted">
         {mode === 'recovery'
           ? 'Enviaremos um link para você criar uma nova senha.'
-          : 'Entre para continuar suas aulas e guardar o que aprendeu.'}
+          : mode === 'signup'
+            ? 'Crie sua conta e depois confirme o código da turma enviado pelo professor.'
+            : 'Entre na sua conta. O curso é liberado após confirmar a matrícula na turma.'}
       </p>
       {!configured && (
         <div className="notice" role="status">
-          O acesso às contas ainda está em preparação. Você já pode{' '}
-          <Link className="inline-link" href="/demonstracao">
-            conhecer uma aula
-          </Link>{' '}
-          e usar o{' '}
-          <Link className="inline-link" href="/laboratorio">
-            laboratório musical
-          </Link>
-          .
+          O acesso às contas ainda está em preparação. Fale com seu professor para saber quando
+          poderá criar sua conta e confirmar a matrícula.
         </div>
       )}
       {mode !== 'recovery' && (

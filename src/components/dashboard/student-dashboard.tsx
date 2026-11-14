@@ -1,6 +1,8 @@
 'use client';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { EnrollmentForm } from './enrollment-form';
 import { ArrowRight, BookOpen, CheckCircle2, Clock3, Plus } from 'lucide-react';
 import { apiFetch } from '@/lib/api-client';
 import type {
@@ -162,29 +164,11 @@ function PracticeDiary({ lessons, profile }: { lessons: LessonOption[]; profile:
 function StudentClasses({ profile, changed }: { profile: Profile; changed: () => void }) {
   const [page, setPage] = useState(1);
   const resource = useResource<Page<Classroom>>(`/api/classes?page=${page}`);
-  const [code, setCode] = useState('');
+  const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const [leaving, setLeaving] = useState<Classroom | null>(null);
-  async function join(event: React.FormEvent) {
-    event.preventDefault();
-    setBusy(true);
-    setError('');
-    setMessage('');
-    try {
-      await apiFetch('/api/classes/join', { method: 'POST', body: JSON.stringify({ code }) });
-      setMessage('Você entrou na turma. A agenda e as devolutivas estão disponíveis abaixo.');
-      setCode('');
-      setPage(1);
-      resource.reload();
-      changed();
-    } catch (error) {
-      setError(messageOf(error));
-    } finally {
-      setBusy(false);
-    }
-  }
   async function leave() {
     if (!leaving) return;
     setBusy(true);
@@ -193,9 +177,12 @@ function StudentClasses({ profile, changed }: { profile: Profile; changed: () =>
     try {
       await apiFetch(`/api/classes/${leaving.id}?studentId=${profile.id}`, { method: 'DELETE' });
       setLeaving(null);
-      setMessage('Matrícula removida. Seu progresso pessoal foi preservado.');
+      setMessage(
+        'Matrícula removida. Seu histórico foi preservado. O curso exige ao menos uma turma.',
+      );
       resource.reload();
       changed();
+      router.refresh();
     } catch (error) {
       setError(messageOf(error));
     } finally {
@@ -205,28 +192,16 @@ function StudentClasses({ profile, changed }: { profile: Profile; changed: () =>
   return (
     <section className="card">
       <h2>Suas turmas</h2>
-      <form onSubmit={join}>
-        <div className="control-row">
-          <label htmlFor="class-code">
-            Código recebido do professor
-            <input
-              id="class-code"
-              autoCapitalize="characters"
-              autoComplete="off"
-              minLength={12}
-              maxLength={12}
-              pattern="[A-Fa-f0-9]{12}"
-              required
-              placeholder="12 caracteres"
-              value={code}
-              onChange={(event) => setCode(event.target.value.toUpperCase())}
-            />
-          </label>
-          <button className="button" disabled={busy}>
-            {busy ? 'Aguarde…' : 'Entrar na turma'}
-          </button>
-        </div>
-      </form>
+      <details>
+        <summary>Tenho um código para outra turma</summary>
+        <EnrollmentForm
+          onConfirmed={() => {
+            setPage(1);
+            resource.reload();
+            changed();
+          }}
+        />
+      </details>
       <Notice error message={error} />
       <Notice message={message} />
       {leaving && (
@@ -234,7 +209,8 @@ function StudentClasses({ profile, changed }: { profile: Profile; changed: () =>
           <h3>Sair de {leaving.name}?</h3>
           <p>
             Você perde acesso aos encontros e as devolutivas dessa matrícula serão removidas. Seu
-            progresso e diário continuam na conta.
+            progresso e diário ficam preservados. Se esta for sua última turma, o curso será
+            bloqueado até uma nova matrícula.
           </p>
           <div className="dashboard-alert-actions">
             <button className="button" disabled={busy} onClick={leave}>

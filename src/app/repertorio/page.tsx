@@ -1,13 +1,13 @@
 export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import { Music2, ExternalLink } from 'lucide-react';
-import { requireProfile } from '@/lib/auth';
+import { requireCourseProfile } from '@/lib/auth';
 import { songs, lessons } from '@/content/course';
 import { Shell, PageHeading } from '@/components/shell';
 export default async function Repertoire() {
-  const profile = await requireProfile();
+  const profile = await requireCourseProfile();
   return (
-    <Shell active="/repertorio" teacher={profile.role === 'teacher'}>
+    <Shell active="/repertorio" courseAccess teacher={profile.role === 'teacher'}>
       <PageHeading
         eyebrow="MÚSICAS QUE NOS CONECTAM"
         title="Nosso repertório"

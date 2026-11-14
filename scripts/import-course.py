@@ -80,6 +80,7 @@ teacher_guides=guide_pages(teacher,'teacher',teacher_map)
 def write(name,obj):
     (CONTENT/name).write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
 write('course-data.json',data)
+write('chords-data.json',data['chords'])
 write('student-guides.json',student_guides)
 write('teacher-data.json',{'lessons':teacher_lessons,'guides':teacher_guides})
 manifest={'edition':5,'importedOn':'2026-11-14','counts':{'modules':len(data['modules']),'lessons':len(data['lessons']),'songs':len(data['songs']),'chords':len(data['chords']),'theoryReferences':len(data['references']),'studentPages':len(student),'teacherPages':len(teacher)},'sources':[{'file':name,'sha256':hashlib.sha256((MATERIALS/name).read_bytes()).hexdigest()} for name in NAMES]}

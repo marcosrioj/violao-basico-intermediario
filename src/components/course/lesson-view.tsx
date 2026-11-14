@@ -30,15 +30,15 @@ export function LessonView({
     <RichText key={`${lesson.id}-${field}`} text={text} lesson={lesson} field={field} demo={demo} />
   );
   return (
-    <Shell active="/curso" teacher={teacher}>
+    <Shell active="/curso" courseAccess teacher={teacher}>
       <HashReveal />
       <Link className="back-link" href={demo ? '/' : '/curso'}>
         <ArrowLeft size={14} /> {demo ? 'Voltar ao início' : 'Minha trilha de aprendizado'}
       </Link>
       {demo && (
         <div className="banner">
-          Aula demonstrativa · Experimente as ferramentas.{' '}
-          <Link href="/entrar">Entre para salvar sua jornada.</Link>
+          Prévia da primeira aula · Nenhum progresso é gravado nesta prévia.{' '}
+          <Link href={`/aulas/${lesson.id}`}>Abrir a aula e registrar minha prática.</Link>
         </div>
       )}
       <header className="lesson-hero">
@@ -217,7 +217,12 @@ export function LessonView({
             demo={demo}
             checkLabels={lesson.checks.map((text, i) => rich(text, `checks-${i}`))}
           />
-          <PracticeLog key={`practice-${lesson.id}`} lessonId={lesson.id} initialBpm={lesson.bpm} demo={demo} />
+          <PracticeLog
+            key={`practice-${lesson.id}`}
+            lessonId={lesson.id}
+            initialBpm={lesson.bpm}
+            demo={demo}
+          />
         </aside>
       </div>
     </Shell>

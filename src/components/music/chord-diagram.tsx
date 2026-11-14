@@ -1,6 +1,6 @@
 'use client';
 import { Volume2 } from 'lucide-react';
-import { chords } from '@/content/course';
+import { chords } from '@/content/chords';
 import { soundChord } from './audio';
 export function ChordDiagram({ name }: { name: string }) {
   const chord = chords[name];

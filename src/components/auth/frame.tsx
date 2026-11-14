@@ -14,14 +14,7 @@ export function AuthFrame({ children }: { children: ReactNode }) {
         </div>
         <div>
           <AudioLines size={38} aria-hidden="true" />
-          <h2
-            style={{
-              fontFamily: 'Georgia, serif',
-              fontSize: 'clamp(32px,4vw,54px)',
-              fontWeight: 400,
-              marginTop: 24,
-            }}
-          >
+          <h2 className="auth-title">
             Um acorde hoje.
             <br />
             Um novo caminho
@@ -39,7 +32,7 @@ export function AuthFrame({ children }: { children: ReactNode }) {
             <ArrowLeft size={15} /> Voltar ao início
           </Link>
           {children}
-          <p className="muted" style={{ fontSize: 11, marginTop: 26 }}>
+          <p className="auth-privacy muted">
             Seus registros acompanham sua jornada.{' '}
             <Link className="inline-link" href="/privacidade">
               Saiba como cuidamos dos seus dados.

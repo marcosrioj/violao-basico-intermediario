@@ -2,11 +2,24 @@ export const dynamic = 'force-dynamic';
 import { redirect } from 'next/navigation';
 import { Shell, PageHeading } from '@/components/shell';
 import { StudentDashboard } from '@/components/dashboard/student-dashboard';
-import { requireProfile } from '@/lib/auth';
+import { EnrollmentPanel } from '@/components/dashboard/enrollment-panel';
+import { getProfileCourseAccess, requireProfile } from '@/lib/auth';
 import { lessons } from '@/content/course';
 export default async function DashboardPage() {
   const profile = await requireProfile();
   if (profile.role === 'teacher') redirect('/professor');
+  const access = await getProfileCourseAccess(profile);
+  if (!access.allowed)
+    return (
+      <Shell active="/painel">
+        <PageHeading
+          eyebrow="MEU ESPAÇO"
+          title={`Bem-vindo, ${profile.display_name.split(' ')[0]}.`}
+          description="Um passo para começar: confirme sua matrícula com o código do professor."
+        />
+        <EnrollmentPanel profile={profile} />
+      </Shell>
+    );
   const lessonOptions = lessons.map(({ id, display_id, title, goal, module }) => ({
     id,
     display_id,
@@ -15,7 +28,7 @@ export default async function DashboardPage() {
     module,
   }));
   return (
-    <Shell active="/painel">
+    <Shell active="/painel" courseAccess>
       <PageHeading
         eyebrow="MEU ESPAÇO"
         title={`Olá, ${profile.display_name.split(' ')[0]}. Vamos tocar?`}

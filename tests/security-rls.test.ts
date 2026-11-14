@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { PGlite } from '@electric-sql/pglite';
 
 // Real PostgreSQL engine (WASM), with only Supabase's auth.uid() boundary emulated.
@@ -24,12 +24,11 @@ test('PostgreSQL RLS isolates students and classrooms and prevents privilege esc
       create table auth.users(id uuid primary key,raw_user_meta_data jsonb default '{}'::jsonb,email text,email_confirmed_at timestamptz);
       create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub', true),'')::uuid $$;
       grant usage on schema auth,public to anon,authenticated; grant execute on function auth.uid() to anon,authenticated;`);
-    await db.exec(
-      await readFile(
-        new URL('../supabase/migrations/202611140001_initial.sql', import.meta.url),
-        'utf8',
-      ),
-    );
+    const migrations = new URL('../supabase/migrations/', import.meta.url);
+    for (const migration of (await readdir(migrations))
+      .filter((name) => name.endsWith('.sql'))
+      .sort())
+      await db.exec(await readFile(new URL(migration, migrations), 'utf8'));
     await db.query(
       `insert into auth.users(id,raw_user_meta_data) values ($1,'{"display_name":"Teacher A"}'),($2,'{"display_name":"Teacher B"}'),($3,'{"display_name":"Student A","role":"teacher"}'),($4,'{"display_name":"Student B"}'),($5,'{"display_name":"Student C"}')`,
       [teacherA, teacherB, studentA, studentB, studentC],

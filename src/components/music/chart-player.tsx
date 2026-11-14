@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Play, Square, Repeat2 } from 'lucide-react';
 import type { SongVersion } from '@/content/types';
-import { chords } from '@/content/course';
+import { chords } from '@/content/chords';
 import { soundChord, audioContext } from './audio';
 import { scheduleChartBar } from './chart-timing';
 export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initialBpm: number }) {
@@ -49,9 +49,14 @@ export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initial
       }
       const bar = bars[index];
       const currentIndex = index;
-      pending.push(setTimeout(() => {
-        if (!stopped) setPosition(currentIndex);
-      }, Math.max(0, (nextBarAt - ctx.currentTime) * 1000)));
+      pending.push(
+        setTimeout(
+          () => {
+            if (!stopped) setPosition(currentIndex);
+          },
+          Math.max(0, (nextBarAt - ctx.currentTime) * 1000),
+        ),
+      );
       const scheduled = scheduleChartBar(bar, nextBarAt, bpm);
       scheduled.events.forEach((event) => {
         if (chords[event.chord])
@@ -114,11 +119,23 @@ export function ChartPlayer({ chart, initialBpm }: { chart: SongVersion; initial
             min="30"
             max="180"
             value={bpm}
-            onChange={(e) => { setPlaying(false); setPosition(-1); setBpm(Number(e.target.value)); }}
+            onChange={(e) => {
+              setPlaying(false);
+              setPosition(-1);
+              setBpm(Number(e.target.value));
+            }}
           />
         </label>
         <label className="checkbox-label">
-          <input type="checkbox" checked={loop} onChange={(e) => { setPlaying(false); setPosition(-1); setLoop(e.target.checked); }} />
+          <input
+            type="checkbox"
+            checked={loop}
+            onChange={(e) => {
+              setPlaying(false);
+              setPosition(-1);
+              setLoop(e.target.checked);
+            }}
+          />
           <Repeat2 size={16} />
           Repetir
         </label>

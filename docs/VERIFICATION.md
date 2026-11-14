@@ -2,6 +2,24 @@
 
 Registro de **14 de novembro de 2026**. O projeto está na branch `main`. Este documento distingue o código entregue, os testes executados e as configurações que dependem de contas externas.
 
+## Matrícula obrigatória e refinamento da interface
+
+A revisão de matrícula passou localmente em `npm run check`: ESLint, geração de tipos, TypeScript, **55 testes** e build Next.js de produção. Contra esse build, `npm run test:http` passou em **33 verificações**, incluindo negação de acesso anônimo a aulas, demonstração, teoria e laboratório, cabeçalhos privados, validação de origem e regressões dos callbacks de autenticação.
+
+Os testes PostgreSQL/PGlite executaram as duas migrations reais. Confirmaram: cadastro e criação de turma não matriculam automaticamente; aluno não cria turma nem insere vínculo diretamente; código inválido não libera o curso; código válido cria matrícula; outro aluno não herda acesso nem lê registros; remover o último vínculo revoga leitura/escrita e preserva o histórico; uma nova matrícula válida permite retomá-lo. Erros na consulta de autorização bloqueiam a operação. Um teste do grafo de imports também impede o envio dos textos completos e planos docentes nos bundles de componentes clientes.
+
+Em Chrome headless, uma cópia isolada do aplicativo foi ligada a um backend HTTP **sintético local**, sem credenciais ou registros reais. Foram verificados: redirecionamento anônimo, painel do aluno sem turma, mensagens de código ausente/incorreto, confirmação válida, acesso à trilha, saída da última turma, novo bloqueio e acesso do professor sem matrícula. A apresentação foi exercitada com setas, seletor de etapa, revelar/ocultar resposta e Escape com retorno do foco. Não houve exceções de página. Capturas da página inicial, matrícula móvel e apresentação foram inspecionadas visualmente; layout móvel de 375 px e aula de 320 px não alargaram a página.
+
+Essa verificação de interface usa sessões sintéticas somente no ambiente temporário de teste; não existe login simulado no produto. Ela não comprova emissão de sessão, OAuth ou RLS no Supabase hospedado. Os testes SQL complementam a verificação visual, sem substituir a matriz com contas reais.
+
+A revisão adicional cobriu o painel docente com dados carregados, laboratório e consulta R3 em 320 px, materiais/repertório/trilha em 768 px e apresentação aberta em 320 px. O metrônomo alternou para 6/8, iniciou e parou, e uma nota do braço respondeu ao clique. A página inicial também passou na verificação de largura após duplicar o tamanho-base do texto; isso verifica refluxo de texto, não equivale a testar todas as formas de zoom do navegador.
+
+A captura em 320 px revelou diagramas compactos pequenos e quebra de rótulo no laboratório. A grade foi ajustada para preservar ao menos 164 px por card, com diagramas de 150 px, e o rótulo deixou de encolher. A última revisão confirmou esses tamanhos, ausência de overflow e o link de pular ao conteúdo oculto até receber foco por Tab. Os checks completos passaram novamente depois dos ajustes.
+
+Os 141 tokens CSS/JSON foram conferidos, assim como as referências e os contrastes documentados no [sistema de design](DESIGN-SYSTEM.md). As sete skills solicitadas foram aplicadas à identidade, componentes, banners e apresentação das aulas; [brand-guidelines.md](brand-guidelines.md) registra a voz e a identidade preservadas. Não foi realizada auditoria integral com leitores de tela.
+
+**Estado remoto:** o proprietário informou nesta sessão que aplicou `202611140002_course_enrollment.sql` no Supabase. Esta declaração foi registrada, mas não houve acesso administrativo para inspecionar o histórico remoto ou testar contas reais. O procedimento de aplicação, preservação do histórico e validação está em [DEPLOYMENT.md](DEPLOYMENT.md#atualizar-um-projeto-existente-para-exigir-matrícula). Os registros de entregas anteriores abaixo são históricos e não substituem esta verificação.
+
 ## Correção dos links de confirmação em produção
 
 Após incorporar a versão remota `cda8fd9`, a correção de redirects passou localmente em `npm run check`: ESLint, TypeScript, **46 testes** e build Next.js. O smoke HTTP contra esse build passou em **32 verificações**, incluindo os três caminhos antigos de confirmação/recuperação. Os códigos usados nos testes são fictícios; os redirects foram inspecionados sem seguir o callback nem consumir códigos de usuários.

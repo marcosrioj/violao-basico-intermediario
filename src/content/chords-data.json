@@ -1,0 +1,1589 @@
+{
+  "A": {
+    "frets": [
+      null,
+      0,
+      2,
+      2,
+      2,
+      0
+    ],
+    "fingers": [
+      null,
+      0,
+      2,
+      1,
+      3,
+      0
+    ],
+    "code": "x02220",
+    "tip": "Indicador na 3ª corda; ele pode permanecer na troca para D.",
+    "notes": [
+      "A",
+      "E",
+      "A",
+      "C#",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 5
+  },
+  "D": {
+    "frets": [
+      null,
+      null,
+      0,
+      2,
+      3,
+      2
+    ],
+    "fingers": [
+      null,
+      null,
+      0,
+      1,
+      3,
+      2
+    ],
+    "code": "xx0232",
+    "tip": "Comece pela 4ª corda.",
+    "notes": [
+      "D",
+      "A",
+      "D",
+      "F#"
+    ],
+    "barres": [],
+    "bass_string": 4
+  },
+  "G": {
+    "frets": [
+      3,
+      2,
+      0,
+      0,
+      0,
+      3
+    ],
+    "fingers": [
+      2,
+      1,
+      0,
+      0,
+      0,
+      3
+    ],
+    "code": "320003",
+    "tip": "Três dedos separados; baixo na 6ª corda.",
+    "notes": [
+      "G",
+      "B",
+      "D",
+      "G",
+      "B",
+      "G"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "C": {
+    "frets": [
+      null,
+      3,
+      2,
+      0,
+      1,
+      0
+    ],
+    "fingers": [
+      null,
+      3,
+      2,
+      0,
+      1,
+      0
+    ],
+    "code": "x32010",
+    "tip": "Comece pela 5ª corda.",
+    "notes": [
+      "C",
+      "E",
+      "G",
+      "C",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 5
+  },
+  "Am": {
+    "frets": [
+      null,
+      0,
+      2,
+      2,
+      1,
+      0
+    ],
+    "fingers": [
+      null,
+      0,
+      2,
+      3,
+      1,
+      0
+    ],
+    "code": "x02210",
+    "tip": "Indicador e médio podem permanecer na troca C → Am.",
+    "notes": [
+      "A",
+      "E",
+      "A",
+      "C",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 5
+  },
+  "Em": {
+    "frets": [
+      0,
+      2,
+      2,
+      0,
+      0,
+      0
+    ],
+    "fingers": [
+      0,
+      2,
+      3,
+      0,
+      0,
+      0
+    ],
+    "code": "022000",
+    "tip": "Mantenha abertas as cordas 3, 2 e 1.",
+    "notes": [
+      "E",
+      "B",
+      "E",
+      "G",
+      "B",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "F": {
+    "frets": [
+      null,
+      null,
+      3,
+      2,
+      1,
+      null
+    ],
+    "fingers": [
+      null,
+      null,
+      3,
+      2,
+      1,
+      null
+    ],
+    "code": "xx321x",
+    "tip": "SEM PESTANA: toque somente as cordas 4, 3 e 2.",
+    "notes": [
+      "F",
+      "A",
+      "C"
+    ],
+    "barres": [],
+    "bass_string": 4
+  },
+  "Dm": {
+    "frets": [
+      null,
+      null,
+      0,
+      2,
+      3,
+      1
+    ],
+    "fingers": [
+      null,
+      null,
+      0,
+      2,
+      3,
+      1
+    ],
+    "code": "xx0231",
+    "tip": "Indicador na 1ª corda/casa 1; baixo D solto.",
+    "notes": [
+      "D",
+      "A",
+      "D",
+      "F"
+    ],
+    "barres": [],
+    "bass_string": 4
+  },
+  "E": {
+    "frets": [
+      0,
+      2,
+      2,
+      1,
+      0,
+      0
+    ],
+    "fingers": [
+      0,
+      2,
+      3,
+      1,
+      0,
+      0
+    ],
+    "code": "022100",
+    "tip": "Acorde aberto; baixo na 6ª corda.",
+    "notes": [
+      "E",
+      "B",
+      "E",
+      "G#",
+      "B",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "Bm": {
+    "frets": [
+      null,
+      2,
+      4,
+      4,
+      3,
+      2
+    ],
+    "fingers": [
+      null,
+      1,
+      3,
+      4,
+      2,
+      1
+    ],
+    "code": "x24432",
+    "tip": "Indicador da 5ª à 1ª corda na casa 2; deixe a 6ª corda fora do ataque.",
+    "notes": [
+      "B",
+      "F#",
+      "B",
+      "D",
+      "F#"
+    ],
+    "barres": [
+      [
+        2,
+        1,
+        5
+      ]
+    ],
+    "bass_string": 5
+  },
+  "F#m": {
+    "frets": [
+      2,
+      4,
+      4,
+      2,
+      2,
+      2
+    ],
+    "fingers": [
+      1,
+      3,
+      4,
+      1,
+      1,
+      1
+    ],
+    "code": "244222",
+    "tip": "Pestana na casa 2; fundamental na 6ª corda.",
+    "notes": [
+      "F#",
+      "C#",
+      "F#",
+      "A",
+      "C#",
+      "F#"
+    ],
+    "barres": [
+      [
+        2,
+        0,
+        5
+      ]
+    ],
+    "bass_string": 6
+  },
+  "C#m": {
+    "frets": [
+      null,
+      4,
+      6,
+      6,
+      5,
+      4
+    ],
+    "fingers": [
+      null,
+      1,
+      3,
+      4,
+      2,
+      1
+    ],
+    "code": "x46654",
+    "tip": "Mesma família de Bm, duas casas acima.",
+    "notes": [
+      "C#",
+      "G#",
+      "C#",
+      "E",
+      "G#"
+    ],
+    "barres": [
+      [
+        4,
+        1,
+        5
+      ]
+    ],
+    "bass_string": 5
+  },
+  "G/B": {
+    "frets": [
+      null,
+      2,
+      0,
+      0,
+      0,
+      3
+    ],
+    "fingers": [
+      null,
+      1,
+      0,
+      0,
+      0,
+      3
+    ],
+    "code": "x20003",
+    "tip": "A fundamental é G; a nota mais grave é B.",
+    "notes": [
+      "B",
+      "D",
+      "G",
+      "B",
+      "G"
+    ],
+    "barres": [],
+    "bass_string": 5
+  },
+  "C/E": {
+    "frets": [
+      0,
+      3,
+      2,
+      0,
+      1,
+      0
+    ],
+    "fingers": [
+      0,
+      3,
+      2,
+      0,
+      1,
+      0
+    ],
+    "code": "032010",
+    "tip": "Use o desenho de C e inclua o E grave solto.",
+    "notes": [
+      "E",
+      "C",
+      "E",
+      "G",
+      "C",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "Am7/G": {
+    "frets": [
+      3,
+      0,
+      2,
+      0,
+      1,
+      0
+    ],
+    "fingers": [
+      3,
+      0,
+      2,
+      0,
+      1,
+      0
+    ],
+    "code": "302010",
+    "tip": "G no baixo; notas do acorde: A, C, E e G.",
+    "notes": [
+      "G",
+      "A",
+      "E",
+      "G",
+      "C",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "G7/F": {
+    "frets": [
+      null,
+      null,
+      3,
+      4,
+      3,
+      3
+    ],
+    "fingers": [
+      null,
+      null,
+      1,
+      2,
+      1,
+      1
+    ],
+    "code": "xx3433",
+    "tip": "F no baixo; mini-pestana na casa 3.",
+    "notes": [
+      "F",
+      "B",
+      "D",
+      "G"
+    ],
+    "barres": [
+      [
+        3,
+        2,
+        5
+      ]
+    ],
+    "bass_string": 4
+  },
+  "F/A": {
+    "frets": [
+      null,
+      0,
+      3,
+      2,
+      1,
+      null
+    ],
+    "fingers": [
+      null,
+      0,
+      3,
+      2,
+      1,
+      null
+    ],
+    "code": "x0321x",
+    "tip": "F de três notas com a 5ª corda A solta; sem pestana.",
+    "notes": [
+      "A",
+      "F",
+      "A",
+      "C"
+    ],
+    "barres": [],
+    "bass_string": 5
+  },
+  "C/G": {
+    "frets": [
+      3,
+      null,
+      2,
+      0,
+      1,
+      0
+    ],
+    "fingers": [
+      3,
+      null,
+      2,
+      0,
+      1,
+      0
+    ],
+    "code": "3x2010",
+    "tip": "G no baixo; a 5ª corda não soa.",
+    "notes": [
+      "G",
+      "E",
+      "G",
+      "C",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "Gsus4": {
+    "frets": [
+      3,
+      null,
+      0,
+      0,
+      1,
+      3
+    ],
+    "fingers": [
+      2,
+      null,
+      0,
+      0,
+      1,
+      3
+    ],
+    "code": "3x0013",
+    "tip": "O C substitui B; não deixe a 5ª corda soar.",
+    "notes": [
+      "G",
+      "D",
+      "G",
+      "C",
+      "G"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "Dsus4": {
+    "frets": [
+      null,
+      null,
+      0,
+      2,
+      3,
+      3
+    ],
+    "fingers": [
+      null,
+      null,
+      0,
+      1,
+      3,
+      4
+    ],
+    "code": "xx0233",
+    "tip": "G na 1ª corda/casa 3 substitui F#.",
+    "notes": [
+      "D",
+      "A",
+      "D",
+      "G"
+    ],
+    "barres": [],
+    "bass_string": 4
+  },
+  "Fmaj7": {
+    "frets": [
+      null,
+      null,
+      3,
+      2,
+      1,
+      0
+    ],
+    "fingers": [
+      null,
+      null,
+      3,
+      2,
+      1,
+      0
+    ],
+    "code": "xx3210",
+    "tip": "A 1ª corda E solta acrescenta a sétima maior.",
+    "notes": [
+      "F",
+      "A",
+      "C",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 4
+  },
+  "Dm7": {
+    "frets": [
+      null,
+      null,
+      0,
+      2,
+      1,
+      1
+    ],
+    "fingers": [
+      null,
+      null,
+      0,
+      2,
+      1,
+      1
+    ],
+    "code": "xx0211",
+    "tip": "Mini-pestana nas duas cordas agudas.",
+    "notes": [
+      "D",
+      "A",
+      "C",
+      "F"
+    ],
+    "barres": [
+      [
+        1,
+        4,
+        5
+      ]
+    ],
+    "bass_string": 4
+  },
+  "Am7": {
+    "frets": [
+      null,
+      0,
+      2,
+      0,
+      1,
+      0
+    ],
+    "fingers": [
+      null,
+      0,
+      2,
+      0,
+      1,
+      0
+    ],
+    "code": "x02010",
+    "tip": "A corda G solta acrescenta a sétima menor.",
+    "notes": [
+      "A",
+      "E",
+      "G",
+      "C",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 5
+  },
+  "Em7": {
+    "frets": [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "fingers": [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    "code": "020000",
+    "tip": "D solto na 4ª corda é a sétima menor.",
+    "notes": [
+      "E",
+      "B",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "B7": {
+    "frets": [
+      null,
+      2,
+      1,
+      2,
+      0,
+      2
+    ],
+    "fingers": [
+      null,
+      2,
+      1,
+      3,
+      0,
+      4
+    ],
+    "code": "x21202",
+    "tip": "A terça é D#, diferente do D de Bm.",
+    "notes": [
+      "B",
+      "D#",
+      "A",
+      "B",
+      "F#"
+    ],
+    "barres": [],
+    "bass_string": 5
+  },
+  "F/G": {
+    "frets": [
+      3,
+      null,
+      3,
+      2,
+      1,
+      null
+    ],
+    "fingers": [
+      3,
+      null,
+      4,
+      2,
+      1,
+      null
+    ],
+    "code": "3x321x",
+    "tip": "F–A–C sobre G no baixo; quatro dedos separados.",
+    "notes": [
+      "G",
+      "F",
+      "A",
+      "C"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "Cmaj7": {
+    "frets": [
+      null,
+      3,
+      2,
+      0,
+      0,
+      0
+    ],
+    "fingers": [
+      null,
+      3,
+      2,
+      0,
+      0,
+      0
+    ],
+    "code": "x32000",
+    "tip": "B solto na 2ª corda é a sétima maior.",
+    "notes": [
+      "C",
+      "E",
+      "G",
+      "B",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 5
+  },
+  "Dadd9": {
+    "frets": [
+      null,
+      null,
+      0,
+      2,
+      5,
+      2
+    ],
+    "fingers": [
+      null,
+      null,
+      0,
+      1,
+      4,
+      2
+    ],
+    "notes": [
+      "D",
+      "A",
+      "E",
+      "F#"
+    ],
+    "barres": [],
+    "code": "xx0252",
+    "bass_string": 4,
+    "tip": "D–A–E–F#: a nona E permanece junto da terça F#. Dedos separados."
+  },
+  "Bm7": {
+    "frets": [
+      null,
+      2,
+      4,
+      2,
+      3,
+      2
+    ],
+    "fingers": [
+      null,
+      1,
+      3,
+      1,
+      2,
+      1
+    ],
+    "code": "x24232",
+    "tip": "Retire o dedo da 3ª corda do desenho de Bm.",
+    "notes": [
+      "B",
+      "F#",
+      "A",
+      "D",
+      "F#"
+    ],
+    "barres": [
+      [
+        2,
+        1,
+        5
+      ]
+    ],
+    "bass_string": 5
+  },
+  "D/E": {
+    "frets": [
+      0,
+      null,
+      0,
+      2,
+      3,
+      2
+    ],
+    "fingers": [
+      0,
+      null,
+      0,
+      1,
+      3,
+      2
+    ],
+    "code": "0x0232",
+    "tip": "Acorde de D sobre E grave; 5ª corda abafada.",
+    "notes": [
+      "E",
+      "D",
+      "A",
+      "D",
+      "F#"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "D/F#": {
+    "frets": [
+      null,
+      null,
+      4,
+      2,
+      3,
+      2
+    ],
+    "fingers": [
+      null,
+      null,
+      4,
+      1,
+      3,
+      1
+    ],
+    "code": "xx4232",
+    "tip": "F# na 4ª corda é o baixo; mini-pestana na casa 2.",
+    "notes": [
+      "F#",
+      "A",
+      "D",
+      "F#"
+    ],
+    "barres": [
+      [
+        2,
+        3,
+        5
+      ]
+    ],
+    "bass_string": 4
+  },
+  "Esus4": {
+    "frets": [
+      0,
+      2,
+      2,
+      2,
+      0,
+      0
+    ],
+    "fingers": [
+      0,
+      2,
+      3,
+      4,
+      0,
+      0
+    ],
+    "code": "022200",
+    "tip": "A substitui G#; mantenha as cordas abertas indicadas.",
+    "notes": [
+      "E",
+      "B",
+      "E",
+      "A",
+      "B",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "A/C#": {
+    "frets": [
+      null,
+      4,
+      2,
+      2,
+      2,
+      0
+    ],
+    "fingers": [
+      null,
+      4,
+      2,
+      1,
+      3,
+      0
+    ],
+    "code": "x42220",
+    "tip": "Acrescente C# na 5ª corda/casa 4 ao desenho de A.",
+    "notes": [
+      "C#",
+      "E",
+      "A",
+      "C#",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 5
+  },
+  "A/E": {
+    "frets": [
+      0,
+      0,
+      2,
+      2,
+      2,
+      0
+    ],
+    "fingers": [
+      0,
+      0,
+      2,
+      1,
+      3,
+      0
+    ],
+    "code": "002220",
+    "tip": "O E grave solto passa a ser o baixo.",
+    "notes": [
+      "E",
+      "A",
+      "E",
+      "A",
+      "C#",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "A/G": {
+    "frets": [
+      3,
+      null,
+      2,
+      2,
+      2,
+      0
+    ],
+    "fingers": [
+      4,
+      null,
+      2,
+      1,
+      3,
+      0
+    ],
+    "code": "3x2220",
+    "tip": "A tríade de A soa sobre G no baixo.",
+    "notes": [
+      "G",
+      "E",
+      "A",
+      "C#",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "G/F": {
+    "frets": [
+      null,
+      null,
+      3,
+      4,
+      3,
+      3
+    ],
+    "fingers": [
+      null,
+      null,
+      1,
+      2,
+      1,
+      1
+    ],
+    "code": "xx3433",
+    "tip": "Mesmas classes de altura de G7/F.",
+    "notes": [
+      "F",
+      "B",
+      "D",
+      "G"
+    ],
+    "barres": [
+      [
+        3,
+        2,
+        5
+      ]
+    ],
+    "bass_string": 4
+  },
+  "Gadd9": {
+    "frets": [
+      3,
+      null,
+      0,
+      2,
+      0,
+      3
+    ],
+    "fingers": [
+      2,
+      null,
+      0,
+      1,
+      0,
+      3
+    ],
+    "code": "3x0203",
+    "tip": "G, D, A, B e G; a 5ª corda não soa.",
+    "notes": [
+      "G",
+      "D",
+      "A",
+      "B",
+      "G"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "G/D": {
+    "frets": [
+      null,
+      null,
+      0,
+      0,
+      0,
+      3
+    ],
+    "fingers": [
+      null,
+      null,
+      0,
+      0,
+      0,
+      1
+    ],
+    "code": "xx0003",
+    "tip": "Alternativa reduzida de G: D é a nota mais grave.",
+    "notes": [
+      "D",
+      "G",
+      "B",
+      "G"
+    ],
+    "barres": [],
+    "bass_string": 4
+  },
+  "Bm/F#": {
+    "frets": [
+      null,
+      null,
+      4,
+      4,
+      3,
+      2
+    ],
+    "fingers": [
+      null,
+      null,
+      3,
+      4,
+      2,
+      1
+    ],
+    "code": "xx4432",
+    "tip": "Alternativa sem pestana; é Bm com F# no baixo.",
+    "notes": [
+      "F#",
+      "B",
+      "D",
+      "F#"
+    ],
+    "barres": [],
+    "bass_string": 4
+  },
+  "F completo": {
+    "frets": [
+      1,
+      3,
+      3,
+      2,
+      1,
+      1
+    ],
+    "fingers": [
+      1,
+      3,
+      4,
+      2,
+      1,
+      1
+    ],
+    "code": "133211",
+    "tip": "Forma completa para continuidade após as primeiras pestanas.",
+    "notes": [
+      "F",
+      "C",
+      "F",
+      "A",
+      "C",
+      "F"
+    ],
+    "barres": [
+      [
+        1,
+        0,
+        5
+      ]
+    ],
+    "bass_string": 6
+  },
+  "C7": {
+    "frets": [
+      null,
+      3,
+      2,
+      3,
+      1,
+      0
+    ],
+    "fingers": [
+      null,
+      3,
+      2,
+      4,
+      1,
+      0
+    ],
+    "code": "x32310",
+    "tip": "A quinta G foi omitida neste desenho.",
+    "notes": [
+      "C",
+      "E",
+      "Bb",
+      "C",
+      "E"
+    ],
+    "barres": [],
+    "bass_string": 5
+  },
+  "G7": {
+    "frets": [
+      3,
+      2,
+      0,
+      0,
+      0,
+      1
+    ],
+    "fingers": [
+      3,
+      2,
+      0,
+      0,
+      0,
+      1
+    ],
+    "code": "320001",
+    "tip": "F na 1ª corda/casa 1 é a sétima menor.",
+    "notes": [
+      "G",
+      "B",
+      "D",
+      "G",
+      "B",
+      "F"
+    ],
+    "barres": [],
+    "bass_string": 6
+  },
+  "Bm7(b5)": {
+    "frets": [
+      null,
+      2,
+      3,
+      2,
+      3,
+      null
+    ],
+    "fingers": [
+      null,
+      1,
+      3,
+      2,
+      4,
+      null
+    ],
+    "code": "x2323x",
+    "tip": "B–F–A–D; acorde meio diminuto.",
+    "notes": [
+      "B",
+      "F",
+      "A",
+      "D"
+    ],
+    "barres": [],
+    "bass_string": 5
+  },
+  "Bm reduzido": {
+    "frets": [
+      null,
+      null,
+      null,
+      4,
+      3,
+      2
+    ],
+    "fingers": [
+      null,
+      null,
+      null,
+      3,
+      2,
+      1
+    ],
+    "notes": [
+      "B",
+      "D",
+      "F#"
+    ],
+    "barres": [],
+    "code": "xxx432",
+    "bass_string": 3,
+    "tip": "SEM PESTANA: somente cordas 3, 2 e 1; Bm completo em três notas.",
+    "display_name": "Bm • 3 cordas"
+  },
+  "C#7": {
+    "frets": [
+      null,
+      4,
+      6,
+      4,
+      6,
+      4
+    ],
+    "fingers": [
+      null,
+      1,
+      3,
+      1,
+      4,
+      1
+    ],
+    "notes": [
+      "C#",
+      "G#",
+      "B",
+      "E#",
+      "G#"
+    ],
+    "barres": [
+      [
+        4,
+        1,
+        5
+      ]
+    ],
+    "code": "x46464",
+    "bass_string": 5,
+    "tip": "Pestana na casa 4; a terça é E#, mesmo som de F, e a sétima é B."
+  },
+  "G/A": {
+    "frets": [
+      null,
+      0,
+      0,
+      0,
+      0,
+      3
+    ],
+    "fingers": [
+      null,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "notes": [
+      "A",
+      "D",
+      "G",
+      "B",
+      "G"
+    ],
+    "barres": [],
+    "code": "x00003",
+    "bass_string": 5,
+    "tip": "G–B–D sobre A no baixo; forma aberta, uma nota pressionada."
+  },
+  "D/A": {
+    "frets": [
+      null,
+      0,
+      0,
+      2,
+      3,
+      2
+    ],
+    "fingers": [
+      null,
+      0,
+      0,
+      1,
+      3,
+      2
+    ],
+    "notes": [
+      "A",
+      "D",
+      "A",
+      "D",
+      "F#"
+    ],
+    "barres": [],
+    "code": "x00232",
+    "bass_string": 5,
+    "tip": "Inclua a 5ª corda A solta no desenho de D."
+  },
+  "Asus4": {
+    "frets": [
+      null,
+      0,
+      2,
+      2,
+      3,
+      0
+    ],
+    "fingers": [
+      null,
+      0,
+      2,
+      1,
+      3,
+      0
+    ],
+    "notes": [
+      "A",
+      "E",
+      "A",
+      "D",
+      "E"
+    ],
+    "barres": [],
+    "code": "x02230",
+    "bass_string": 5,
+    "tip": "D substitui C# no acorde A; três dedos separados."
+  },
+  "B": {
+    "frets": [
+      null,
+      2,
+      4,
+      4,
+      4,
+      2
+    ],
+    "fingers": [
+      null,
+      1,
+      2,
+      3,
+      4,
+      1
+    ],
+    "notes": [
+      "B",
+      "F#",
+      "B",
+      "D#",
+      "F#"
+    ],
+    "barres": [
+      [
+        2,
+        1,
+        5
+      ]
+    ],
+    "code": "x24442",
+    "bass_string": 5,
+    "tip": "Pestana na casa 2; três dedos separados na casa 4. Deriva da forma A."
+  },
+  "C#": {
+    "frets": [
+      null,
+      4,
+      6,
+      6,
+      6,
+      4
+    ],
+    "fingers": [
+      null,
+      1,
+      2,
+      3,
+      4,
+      1
+    ],
+    "notes": [
+      "C#",
+      "G#",
+      "C#",
+      "E#",
+      "G#"
+    ],
+    "barres": [
+      [
+        4,
+        1,
+        5
+      ]
+    ],
+    "code": "x46664",
+    "bass_string": 5,
+    "tip": "Família de B duas casas acima; E# é a terça maior."
+  },
+  "D#m": {
+    "frets": [
+      null,
+      6,
+      8,
+      8,
+      7,
+      6
+    ],
+    "fingers": [
+      null,
+      1,
+      3,
+      4,
+      2,
+      1
+    ],
+    "notes": [
+      "D#",
+      "A#",
+      "D#",
+      "F#",
+      "A#"
+    ],
+    "barres": [
+      [
+        6,
+        1,
+        5
+      ]
+    ],
+    "code": "x68876",
+    "bass_string": 5,
+    "tip": "Família de Bm na casa 6; fundamental D# na 5ª corda."
+  },
+  "F#": {
+    "frets": [
+      2,
+      4,
+      4,
+      3,
+      2,
+      2
+    ],
+    "fingers": [
+      1,
+      3,
+      4,
+      2,
+      1,
+      1
+    ],
+    "notes": [
+      "F#",
+      "C#",
+      "F#",
+      "A#",
+      "C#",
+      "F#"
+    ],
+    "barres": [
+      [
+        2,
+        0,
+        5
+      ]
+    ],
+    "code": "244322",
+    "bass_string": 6,
+    "tip": "Forma E deslocada duas casas; A# diferencia F# de F#m."
+  }
+}

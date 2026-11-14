@@ -33,6 +33,10 @@ Uma funcionalidade nova deve declarar entrada, papel autorizado, dados consultad
 
 O dono de cada assunto documental é: arquitetura em `ARCHITECTURE.md`; configuração e operação em `DEPLOYMENT.md`; cotas em `FREE-TIER.md`; fidelidade editorial em `CONTENT.md`; evidência didática em `PEDAGOGY-RESEARCH.md`. O README aponta para essas referências.
 
+A liberação do curso é centralizada em `requireCourseProfile` para páginas e `courseApi` para operações protegidas. Ambas consultam a matrícula persistida; o navegador apenas apresenta o estado. A migration de matrícula aplica a mesma exigência às políticas de progresso e prática. Consulta com erro não libera acesso, e a revogação não apaga o histórico pessoal. Conta, adesão por código e autorização do curso são responsabilidades distintas.
+
+Identidade e padrões visuais são mantidos em [brand-guidelines.md](brand-guidelines.md) e [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md). Os tokens compartilham a mesma paleta e escala em todas as folhas de estilo; o modo de apresentação reutiliza os dados da aula, sem duplicar o currículo ou introduzir dependências de execução. Alterações visuais preservam os controles de áudio explícitos e a autorização aplicada no servidor.
+
 ## Dependências de desenvolvimento
 
 O override de `minimatch` 11.0.8 aplica-se somente ao parser do ESLint, para corrigir o advisory GHSA-g3hv-75wg-m249. Lint, tipos e testes foram executados com essa versão. Reavaliar o override quando `typescript-eslint` incorporar a correção no próprio intervalo de dependências. O lockfile fixa as versões resolvidas e `npm ci` garante instalações reproduzíveis.

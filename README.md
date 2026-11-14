@@ -6,16 +6,32 @@ O repositório é **público**, conforme a decisão atual do proprietário. O c�
 
 ![Tela inicial do Violão Vivo](docs/assets/violao-vivo-home.jpg)
 
+_Registro visual da primeira versão. A revisão atual exige matrícula confirmada e está descrita nas [evidências de verificação](docs/VERIFICATION.md)._
+
 ## O que está implementado
 
-- **Aluno:** conta, trilha por módulo, conclusão de aula, confiança e anotações, diário de prática, matrícula em turmas, agenda e devolutivas.
+- **Aluno:** conta e confirmação do código de matrícula enviado pelo professor; após o vínculo, trilha por módulo, conclusão de aula, confiança e anotações, diário de prática, agenda e devolutivas.
 - **Professor:** turmas com código de entrada, acompanhamento individual, planos das aulas, encontros semanais, feedback e validação da execução.
+- **Apresentação das aulas:** sete etapas por aula, navegação por teclado e resposta revelada pelo professor, usando o conteúdo original das 39 aulas.
 - **Prática:** diagramas de acordes, cifras didáticas com reprodução e repetição, metrônomo, braço interativo, afinação de referência e percepção auditiva.
 - **Teoria em ação:** laboratórios ligados a R1–R8 para explorar intervalos, escalas, formação de acordes, campo harmônico, centro modal e empréstimo; exemplos autorais com áudio e perguntas de recuperação.
 - **Conteúdo:** aulas completas, consultas teóricas com navegação de ida e volta, links de vídeos/gravações/cifras e PDFs originais. Primeira pestana no módulo 5, após as 12 aulas iniciais.
 - **Segurança:** papel de professor concedido administrativamente, validação no servidor, RLS por usuário/vínculo de turma e respostas privadas sem cache público.
 
 A conclusão declarada pelo aluno e a execução validada pelo professor são registros distintos. As ferramentas não avaliam automaticamente a execução instrumental.
+
+## Como o curso é liberado
+
+1. O professor cria uma turma na área docente.
+2. Ele envia o código diretamente ao aluno, fora do aplicativo, pelo canal combinado.
+3. O aluno entra na própria conta e confirma o código no painel.
+4. Somente depois da matrícula confirmada são liberados aulas, teoria, repertório, laboratório, materiais, agenda e diário.
+
+Criar uma conta não libera o curso. Sem matrícula, o painel mostra apenas a conta e o formulário de confirmação. A regra é verificada no servidor e no banco, inclusive em acessos diretos às APIs. As antigas rotas de demonstração também exigem matrícula. O professor mantém acesso para preparar e ministrar as aulas.
+
+Ao remover o último vínculo com uma turma, o acesso do aluno é bloqueado novamente; o histórico pessoal fica preservado para uma futura matrícula. A regra controla o acesso pelo aplicativo. Como o repositório permanece público por decisão do proprietário, materiais já publicados no GitHub continuam acessíveis por lá.
+
+**Antes de publicar esta versão:** aplicar também [`202611140002_course_enrollment.sql`](supabase/migrations/202611140002_course_enrollment.sql) no Supabase. Ela complementa a migration inicial e protege progresso/práticas contra acesso direto sem matrícula. O procedimento está no [deployment](docs/DEPLOYMENT.md#atualizar-um-projeto-existente-para-exigir-matrícula).
 
 ## Executar localmente
 
@@ -26,7 +42,7 @@ npm ci
 npm run dev
 ```
 
-Abrir [localhost:3000](http://localhost:3000). **Sem variáveis Supabase**, o conteúdo demonstrativo e os laboratórios funcionam; login e gravação de registros exigem um projeto configurado.
+Abrir [localhost:3000](http://localhost:3000). **Sem variáveis Supabase**, ficam disponíveis somente a apresentação pública e a página de privacidade. Login exige o projeto configurado; conteúdo e ferramentas exigem também matrícula ou papel de professor.
 
 Para usar contas e persistência:
 
@@ -130,6 +146,8 @@ Se o e-mail abrir um domínio antigo ou retornar 404, conferir primeiro o **Site
 - [Verificações executadas e pendências](docs/VERIFICATION.md)
 - [Arquitetura e contratos](docs/ARCHITECTURE.md)
 - [Padrões de engenharia aplicados](docs/ENGINEERING.md)
+- [Identidade e voz do Violão Vivo](docs/brand-guidelines.md)
+- [Sistema visual, componentes e aplicação das skills](docs/DESIGN-SYSTEM.md)
 - [Execução, Supabase, GitHub e publicação](docs/DEPLOYMENT.md)
 - [Planos gratuitos e fontes oficiais consultadas](docs/FREE-TIER.md)
 - [Conteúdo, origem e reimportação](docs/CONTENT.md)

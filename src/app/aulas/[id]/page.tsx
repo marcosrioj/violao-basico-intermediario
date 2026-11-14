@@ -1,13 +1,14 @@
 export const dynamic = 'force-dynamic';
 import { notFound } from 'next/navigation';
-import { requireProfile } from '@/lib/auth';
+import { requireCourseProfile } from '@/lib/auth';
 import { getLesson } from '@/content/course';
 import { getTeacherLesson, weeklyPlan, finalPlan } from '@/content/teacher';
 import { LessonView } from '@/components/course/lesson-view';
 import { RichText } from '@/components/course/rich-text';
+import { LessonPresentation } from '@/components/course/lesson-presentation';
 
 export default async function LessonPage({ params }: { params: Promise<{ id: string }> }) {
-  const profile = await requireProfile();
+  const profile = await requireCourseProfile();
   const { id } = await params;
   const lesson = getLesson(id);
   if (!lesson) notFound();
@@ -23,6 +24,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
           <section className="card" id="plano-professor">
             <p className="eyebrow">ÁREA DO PROFESSOR</p>
             <h2>Condução do encontro</h2>
+            <LessonPresentation key={lesson.id} lesson={lesson} />
             <p>
               <RichText text={plan.teacher} lesson={lesson} field="teacher" />
             </p>

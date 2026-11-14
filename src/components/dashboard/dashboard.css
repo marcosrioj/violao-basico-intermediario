@@ -5,7 +5,7 @@
   margin-bottom: 12px;
 }
 .dashboard-account .profile-strip p {
-  font-size: 11px;
+  font-size: var(--font-size-sm);
 }
 .dashboard-account details {
   padding: 13px 18px;
@@ -27,8 +27,10 @@
   overflow-wrap: anywhere;
 }
 .dashboard-lesson-link {
-  font-size: 12px;
-  display: inline-block;
+  font-size: var(--font-size-sm);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
   max-width: 100%;
   overflow-wrap: anywhere;
 }
@@ -43,13 +45,13 @@
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 20px;
-  background: #fafbf6;
+  background: var(--color-surface);
 }
 .dashboard-class h3 {
-  font-size: 18px;
+  font-size: var(--font-size-lg);
 }
 .dashboard-class p {
-  font-size: 12px;
+  font-size: var(--font-size-base);
 }
 .dashboard-classes {
   display: grid;
@@ -64,13 +66,13 @@
 }
 .dashboard-surface .pagination {
   align-items: center;
-  font-size: 11px;
+  font-size: var(--font-size-sm);
 }
 .dashboard-surface .dashboard-stats {
   margin-top: 24px;
 }
 .dashboard-surface .dashboard-stat {
-  background: #fff;
+  background: var(--color-surface);
   border: 1px solid var(--line);
   border-radius: 12px;
 }
@@ -91,19 +93,19 @@
   border: 1px solid var(--line);
   border-radius: 12px;
   margin-top: 16px;
-  background: #fcfdf9;
+  background: var(--color-surface);
 }
 .dashboard-student-card details {
   margin-top: 12px;
 }
 .dashboard-student-card summary {
-  font-size: 12px;
+  font-size: var(--font-size-sm);
 }
 .dashboard-student-card .progress-track {
   max-width: 260px;
 }
 .dashboard-form-note {
-  font-size: 12px;
+  font-size: var(--font-size-sm);
   color: var(--muted);
   margin: 10px 0 15px;
 }
@@ -127,8 +129,8 @@
   opacity: 0.8;
 }
 .dashboard-summary-title {
-  font-family: Georgia, serif;
-  font-size: 28px;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
 }
 .dashboard-surface .review-list {
   margin-top: 16px;
@@ -138,17 +140,17 @@
   align-items: flex-start;
 }
 .dashboard-surface .review-list small {
-  white-space: nowrap;
+  white-space: normal;
 }
 .dashboard-confirm {
   padding: 20px;
-  background: #fff4eb;
-  border: 1px solid #ddc7b7;
+  background: var(--color-warning-surface);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   margin: 15px 0;
 }
 .dashboard-confirm p {
-  font-size: 13px;
+  font-size: var(--font-size-base);
 }
 .dashboard-confirm h3 {
   margin-bottom: 8px;
@@ -158,13 +160,13 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .dashboard-surface .dashboard-stat strong {
-    font-size: 25px;
+    font-size: 1.5625rem;
   }
   .dashboard-class {
     padding: 16px;
   }
   .dashboard-surface .membership-code {
-    font-size: 16px;
+    font-size: var(--font-size-base);
   }
   .dashboard-surface .next-lesson {
     padding: 25px;
@@ -173,10 +175,20 @@
     white-space: normal;
   }
   .dashboard-invite-row .button {
-    min-height: 40px;
+    min-height: var(--touch-target);
   }
   .dashboard-student-card {
     padding: 14px;
+  }
+}
+@media (max-width: 480px) {
+  .dashboard-surface .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-surface .dashboard-stat {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
   }
 }
 

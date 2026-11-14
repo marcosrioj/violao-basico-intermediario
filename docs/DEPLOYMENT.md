@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Abrir a origem exata definida em `NEXT_PUBLIC_SITE_URL` (por padrão, `http://localhost:3000`). `localhost` e `127.0.0.1` são origens diferentes: usar uma para navegar e outra na variável fará as mutações serem rejeitadas, como previsto. Sem configuração do Supabase, a demonstração permite conhecer o conteúdo; ela não cria contas nem persiste progresso de alunos.
+Abrir a origem exata definida em `NEXT_PUBLIC_SITE_URL` (por padrão, `http://localhost:3000`). `localhost` e `127.0.0.1` são origens diferentes: usar uma para navegar e outra na variável fará as mutações serem rejeitadas, como previsto. Sem configuração do Supabase, ficam públicas somente a apresentação do curso e a privacidade. Aulas, demonstração e laboratório exigem matrícula confirmada ou papel de professor; não há conta simulada no produto.
 
 Para autenticação e persistência, copiar `.env.example` para `.env.local` e substituir os três valores fictícios. Nunca versionar `.env.local`. Use a URL e a chave **publishable** do painel Supabase. `NEXT_PUBLIC_SITE_URL` deve ser a origem exata da aplicação, sem caminho. Em produção com Supabase configurado, essa variável é obrigatória. URLs devem usar HTTPS; HTTP é aceito apenas em loopback para desenvolvimento. Configuração parcial, URL inválida ou chave administrativa em variável pública interrompem o build. A chave publicável nova ou uma chave legada `anon` são aceitas; `service_role` e `sb_secret_` são rejeitadas sem imprimir seu valor.
 
@@ -39,6 +39,27 @@ supabase db push --remote
 Conferir o projeto de destino mostrado pela CLI antes de confirmar. Uma alternativa inicial é executar a migration completa no SQL Editor e registrar essa aplicação no histórico da CLI antes de usá-la depois; não executar a mesma migration duas vezes por métodos diferentes. [Migrations oficiais](https://supabase.com/docs/guides/local-development/database-migrations)
 
 Para testar a pilha local, usar `supabase start`, depois `supabase db reset` **somente local**. Copiar URL/chave local para `.env.local`. O reset apaga o banco local e reaplica as migrations; não executar reset remoto de produção. O e-mail de desenvolvimento aparece no coletor local informado pela CLI.
+
+### Atualizar um projeto existente para exigir matrícula
+
+A migration [`202611140002_course_enrollment.sql`](../supabase/migrations/202611140002_course_enrollment.sql) depende de `202611140001_initial.sql`. Aplicar a segunda migration **antes de publicar a versão com liberação por turma**, usando a CLI vinculada ao projeto correto:
+
+```bash
+supabase migration list --remote
+supabase db push --remote
+```
+
+Se a operação for feita pelo SQL Editor, executar o conteúdo completo de `202611140002_course_enrollment.sql` uma única vez e reconciliar o histórico antes de voltar à CLI. Não reaplicar a migration inicial nem executar reset em produção. A alteração mantém matrículas, progresso e práticas existentes; restringe as políticas de progresso/práticas a alunos com matrícula e professores autorizados. Não exige novas variáveis na Vercel.
+
+Sem essa migration, o aplicativo já pode negar suas próprias rotas, mas a API direta do Supabase ainda usará as políticas antigas. A existência do arquivo no Git não comprova sua aplicação remota. Após aplicar e publicar, conferir com contas reais:
+
+- Conta recém-criada vê o painel de matrícula, sem aulas; `/curso`, `/laboratorio`, `/demonstracao` e `/api/materials/aluno` não liberam conteúdo.
+- Professor cria turma e envia o código fora do app. Código incorreto não cria vínculo; código correto confirmado pelo aluno libera o curso.
+- Aluno sem matrícula não lê nem grava progresso/prática pela API direta do Supabase.
+- Sair da última turma ou ter o vínculo removido revoga o acesso; registros pessoais permanecem no banco e voltam a ser acessíveis após nova matrícula válida.
+- Outro aluno continua sem acesso a esses registros; professor consulta somente seus alunos.
+
+Remover uma matrícula não invalida o código existente. Quem ainda possui um convite válido pode confirmar uma nova matrícula; esta versão não implementa suspensão permanente de conta nem rotação de convites pela interface.
 
 ## 3. Configurar autenticação
 
@@ -121,7 +142,7 @@ No diagnóstico de 14/11/2026, uma consulta pública com token deliberadamente i
 
 A conta se cadastra normalmente e recebe papel `student` pelo banco. Depois da confirmação do e-mail/identidade, o administrador executa `supabase/promote-teacher.sql` no SQL Editor, substituindo o e-mail de exemplo pelo e-mail correto. Conferir a linha resultante. Não editar `user_metadata`, não aceitar papel enviado pelo cliente e não expor uma chave `service_role` para essa tarefa.
 
-O professor entra novamente, abre sua área, cria uma turma e compartilha o código de matrícula com os alunos. O aluno entra com a própria conta e usa esse código. O professor passa a ver somente os alunos vinculados às próprias turmas.
+O professor entra novamente, abre sua área, cria uma turma e envia o código de matrícula diretamente aos alunos, fora do aplicativo. O aluno entra com a própria conta e confirma o código no painel; só então o curso é liberado. O professor passa a ver somente os alunos vinculados às próprias turmas. As aulas incluem um modo de apresentação em sete etapas, disponível na seção do professor e controlado por teclado ou botões.
 
 ## 5. GitHub e publicação automática na main
 

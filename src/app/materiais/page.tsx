@@ -5,7 +5,7 @@ import { RichText } from '@/components/course/rich-text';
 import { HashReveal } from '@/components/course/hash-reveal';
 import { studentGuides, theoryReferences } from '@/content/course';
 import type { GuidePage } from '@/content/types';
-import { requireProfile } from '@/lib/auth';
+import { requireCourseProfile } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
 function GuideSection({ guides }: { guides: GuidePage[] }) {
@@ -25,11 +25,11 @@ function GuideSection({ guides }: { guides: GuidePage[] }) {
   );
 }
 export default async function MaterialsPage() {
-  const profile = await requireProfile();
+  const profile = await requireCourseProfile();
   const teacher = profile.role === 'teacher';
   const teacherGuides = teacher ? (await import('@/content/teacher')).teacherGuides : [];
   return (
-    <Shell active="/materiais" teacher={teacher}>
+    <Shell active="/materiais" courseAccess teacher={teacher}>
       <HashReveal />
       <PageHeading
         eyebrow="CONSULTE, EXPERIMENTE, VOLTE À MÚSICA"

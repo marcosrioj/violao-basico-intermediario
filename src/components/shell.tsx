@@ -8,6 +8,7 @@ import {
   Library,
   GraduationCap,
   ArrowUpRight,
+  LockKeyhole,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
 const links = [
@@ -21,11 +22,11 @@ export function Brand() {
   return (
     <Link className="brand" href="/" aria-label="Violão Vivo — início">
       <span className="brand-mark">
-        <Guitar size={23} />
+        <Guitar size={23} aria-hidden="true" />
       </span>
       <span>
         violão<span className="brand-light">vivo</span>
-        <small>ESCOLA DE MÚSICA & PROPÓSITO</small>
+        <small>MÚSICA & PROPÓSITO</small>
       </span>
     </Link>
   );
@@ -34,11 +35,14 @@ export function Shell({
   children,
   active,
   teacher = false,
+  courseAccess = false,
 }: {
   children: ReactNode;
   active?: string;
   teacher?: boolean;
+  courseAccess?: boolean;
 }) {
+  const unlocked = teacher || courseAccess;
   return (
     <div className="app-shell">
       <a className="skip" href="#conteudo">
@@ -48,33 +52,46 @@ export function Shell({
         <Brand />
         <div className="nav-caption">SEU APRENDIZADO</div>
         <nav aria-label="Principal">
-          {links.map(({ href, label, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              aria-current={active === href ? 'page' : undefined}
-              className={active === href ? 'nav-link active' : 'nav-link'}
-            >
-              <Icon size={19} />
-              {label}
-            </Link>
-          ))}
+          {links.map(({ href, label, icon: Icon }) => {
+            const locked = !unlocked && href !== '/painel';
+            return (
+              <Link
+                key={href}
+                href={locked ? '/painel' : href}
+                aria-current={active === href ? 'page' : undefined}
+                aria-describedby={locked ? 'course-access-hint' : undefined}
+                className={`nav-link${active === href ? ' active' : ''}${locked ? ' locked' : ''}`}
+              >
+                <Icon size={19} aria-hidden="true" />
+                {label}
+                {locked && <LockKeyhole size={14} aria-hidden="true" />}
+              </Link>
+            );
+          })}
           {teacher && (
             <Link
               className={active === '/professor' ? 'nav-link active' : 'nav-link'}
               href="/professor"
+              aria-current={active === '/professor' ? 'page' : undefined}
             >
-              <GraduationCap size={19} />
+              <GraduationCap size={19} aria-hidden="true" />
               Área do professor
             </Link>
           )}
         </nav>
         <div className="sidebar-note">
-          <span className="tiny-label">UM POUCO, TODOS OS DIAS</span>
-          <p>A música cresce com você.</p>
-          <small>Reserve um momento para ouvir, experimentar e tocar.</small>
-          <Link href="/laboratorio">
-            Começar a praticar <ArrowUpRight size={15} />
+          <span className="tiny-label">
+            {unlocked ? 'UM POUCO, TODOS OS DIAS' : 'SEU PRÓXIMO PASSO'}
+          </span>
+          <p>{unlocked ? 'A música cresce com você.' : 'Uma turma. Um novo começo.'}</p>
+          <small id="course-access-hint">
+            {unlocked
+              ? 'Reserve um momento para ouvir, experimentar e tocar.'
+              : 'O curso é liberado após confirmar o código enviado pelo professor.'}
+          </small>
+          <Link href={unlocked ? '/laboratorio' : '/painel'}>
+            {unlocked ? 'Começar a praticar' : 'Confirmar matrícula'}{' '}
+            <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
         </div>
         <div className="sidebar-bottom">
@@ -88,7 +105,7 @@ export function Shell({
           <span>Do primeiro acorde à liberdade de adorar.</span>
           <Link className="account-link" href="/painel">
             <span className="avatar">
-              <Guitar size={18} />
+              <Guitar size={18} aria-hidden="true" />
             </span>
             Minha conta
           </Link>

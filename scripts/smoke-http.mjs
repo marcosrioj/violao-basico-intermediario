@@ -27,7 +27,7 @@ function privateHeaders(response) {
   assert.match(response.headers.get('cache-control') || '', /no-store/);
 }
 async function run() {
-  for (const path of ['/', '/entrar', '/demonstracao', '/laboratorio', '/privacidade']) {
+  for (const path of ['/', '/entrar', '/privacidade']) {
     const response = await request(path);
     assert.equal(response.status, 200, `${path}: status`);
     const body = await response.text();
@@ -35,14 +35,13 @@ async function run() {
     assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
     assert.equal(response.headers.get('x-frame-options'), 'DENY');
     assert.match(response.headers.get('content-security-policy') || '', /frame-ancestors 'none'/);
-    if (path === '/demonstracao') {
-      assert.match(body, /Santo Espírito/);
-      assert.match(body, /Esta é uma aula demonstrativa/);
-      assert.doesNotMatch(body, /plano-professor|Planejamento do professor|private note A/);
+    if (path === '/') {
+      assert.match(body, /Confirme sua matrícula/);
+      assert.doesNotMatch(body, /plano-professor|Material completo da aula|private note A/);
       const ids = [...body.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
-      assert.equal(new Set(ids).size, ids.length, 'demo: duplicate element IDs');
+      assert.equal(new Set(ids).size, ids.length, 'home: duplicate element IDs');
       for (const [, target] of body.matchAll(/href="#([^"]+)"/g)) {
-        assert.ok(ids.includes(target), `demo: missing anchor ${target}`);
+        assert.ok(ids.includes(target), `home: missing anchor ${target}`);
       }
     }
     if (path === '/entrar') {
@@ -60,6 +59,9 @@ async function run() {
     '/materiais',
     '/repertorio',
     '/teoria/R1',
+    '/laboratorio',
+    '/demonstracao',
+    '/demonstracao/teoria/R1',
   ]) {
     const response = await request(path);
     if ([303, 307, 308].includes(response.status))

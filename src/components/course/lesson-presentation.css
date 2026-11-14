@@ -1,0 +1,198 @@
+/* Shared three-layer tokens are loaded from assets/design-tokens.css by the app layout. */
+.lesson-slides {
+  --lesson-slides-bg: var(--slide-bg);
+  --lesson-slides-text: var(--slide-text);
+  --lesson-slides-accent: var(--color-primary);
+  margin-block: var(--space-6);
+  padding: var(--space-6);
+  background: var(--color-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+}
+
+.lesson-slides-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.lesson-slides-header > div {
+  flex: 1 1 18rem;
+}
+
+.lesson-slides-description,
+.lesson-slides-hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted-foreground);
+  line-height: 1.65;
+  margin-top: var(--space-2);
+}
+
+.lesson-slides-deck {
+  margin-top: var(--space-6);
+  min-width: 0;
+}
+
+.lesson-slides-toolbar {
+  display: flex;
+  gap: var(--space-4);
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.lesson-slides-toolbar label {
+  flex: 1 1 12rem;
+  max-width: 22rem;
+}
+
+.lesson-slides-viewport {
+  max-block-size: min(70vh, 48rem);
+  min-block-size: 20rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  background: var(--lesson-slides-bg);
+  color: var(--lesson-slides-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.lesson-slides-page {
+  width: 100%;
+  max-width: 60rem;
+  margin-inline: auto;
+  padding: clamp(var(--space-5), 4vw, var(--space-12));
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.lesson-slides-kicker {
+  color: var(--lesson-slides-accent);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-4);
+}
+
+.lesson-slides-page h4 {
+  margin: 0 0 var(--space-6);
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.lesson-slides-content {
+  display: grid;
+  gap: var(--space-6);
+  max-width: 52ch;
+  margin-inline: auto;
+  font-size: clamp(var(--font-size-base), 1.6vw, var(--font-size-xl));
+}
+
+.lesson-slides-content p,
+.lesson-slides-content li {
+  font-size: inherit;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.lesson-slides-content ol {
+  margin: 0;
+  padding-inline-start: var(--space-6);
+  text-align: start;
+}
+
+.lesson-slides-content li + li {
+  margin-top: var(--space-4);
+}
+
+.lesson-slides-content li::marker {
+  color: var(--lesson-slides-accent);
+  font-weight: 700;
+}
+
+.lesson-slides-content .lesson-slides-label {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-muted-foreground);
+  font-weight: 700;
+}
+
+.lesson-slides-content > .button {
+  justify-self: center;
+}
+
+.lesson-slides-answer {
+  padding: var(--space-5);
+  background: var(--color-muted);
+  border-inline-start: 3px solid var(--lesson-slides-accent);
+  border-radius: var(--radius-sm);
+}
+
+.lesson-slides-progress {
+  display: grid;
+  gap: var(--space-2);
+  color: var(--color-muted-foreground);
+  font-size: var(--font-size-sm);
+  margin-block: var(--space-4);
+}
+
+.lesson-slides-progress progress {
+  display: block;
+  width: 100%;
+  height: var(--space-2);
+  accent-color: var(--lesson-slides-accent);
+}
+
+.lesson-slides-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.lesson-slides .button {
+  min-height: 44px;
+  white-space: normal;
+  text-align: center;
+}
+
+.lesson-slides-status {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .lesson-slides {
+    padding: var(--space-4);
+  }
+
+  .lesson-slides-toolbar label,
+  .lesson-slides-toolbar .button,
+  .lesson-slides-header > .button {
+    width: 100%;
+    max-width: none;
+  }
+
+  .lesson-slides-viewport {
+    max-block-size: 60vh;
+    min-block-size: 15rem;
+  }
+
+  .lesson-slides-navigation .button {
+    flex: 1;
+  }
+}

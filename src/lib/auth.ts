@@ -2,8 +2,9 @@ import 'server-only';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { isSupabaseConfigured } from '@/lib/env';
-import { AppError } from '@/lib/errors';
+import { AppError, databaseError } from '@/lib/errors';
 import type { Profile, Role } from '@/lib/contracts';
+import { assertCourseAccess, evaluateCourseAccess, type CourseAccess } from '@/lib/course-access';
 export async function authContext() {
   if (!isSupabaseConfigured())
     throw new AppError(503, 'SETUP_REQUIRED', 'A autenticação ainda precisa ser configurada.');
@@ -41,5 +42,37 @@ export async function requireProfile(role?: Role): Promise<Profile> {
   const profile = await getCurrentProfile();
   if (!profile) redirect('/entrar');
   if (role && profile.role !== role) redirect('/painel');
+  return profile;
+}
+
+/** Membership is checked on every request, so removing the final link revokes access. */
+export async function getCourseAccess({
+  supabase,
+  profile,
+}: Pick<AuthContext, 'supabase' | 'profile'>): Promise<CourseAccess> {
+  return evaluateCourseAccess(profile, async () => {
+    const { data, error } = await supabase
+      .from('memberships')
+      .select('class_id')
+      .eq('student_id', profile.id)
+      .limit(1)
+      .maybeSingle();
+    databaseError(error);
+    return Boolean(data);
+  });
+}
+
+/** Call only with a profile already obtained through requireProfile/authContext. */
+export async function getProfileCourseAccess(profile: Profile): Promise<CourseAccess> {
+  return getCourseAccess({ supabase: await createClient(), profile });
+}
+
+export async function requireCourseAccess(context: AuthContext): Promise<void> {
+  assertCourseAccess(await getCourseAccess(context));
+}
+
+export async function requireCourseProfile(): Promise<Profile> {
+  const profile = await requireProfile();
+  if (!(await getProfileCourseAccess(profile)).allowed) redirect('/painel?matricula=necessaria');
   return profile;
 }

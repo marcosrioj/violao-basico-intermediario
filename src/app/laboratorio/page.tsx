@@ -3,9 +3,13 @@ import { Metronome } from '@/components/music/metronome';
 import { Fretboard } from '@/components/music/fretboard';
 import { EarTraining, TuningReference } from '@/components/music/ear-training';
 import { ChordDiagram } from '@/components/music/chord-diagram';
-export default function Laboratory() {
+import { requireCourseProfile } from '@/lib/auth';
+
+export const dynamic = 'force-dynamic';
+export default async function Laboratory() {
+  const profile = await requireCourseProfile();
   return (
-    <Shell active="/laboratorio">
+    <Shell active="/laboratorio" courseAccess teacher={profile.role === 'teacher'}>
       <PageHeading
         eyebrow="APRENDER FAZENDO"
         title="Seu laboratório musical"

@@ -117,7 +117,9 @@ export function LessonProgress({
       <Notice message={message} />
       {demo ? (
         <>
-          <p className="hint">Esta é uma aula demonstrativa. Entre para salvar seu progresso.</p>
+          <p className="hint">
+            Esta é uma prévia. Abra a aula na trilha para salvar seu progresso.
+          </p>
           <Link className="button" href="/entrar">
             Criar minha conta
           </Link>
@@ -257,7 +259,7 @@ export function PracticeLog({
       >
         {busy ? 'Salvando…' : 'Registrar prática'}
       </button>
-      {demo && <p className="hint">Entre na sua conta para guardar seu diário.</p>}
+      {demo && <p className="hint">Abra a aula na trilha para guardar seu diário.</p>}
       <p className="hint">
         Tempo de prática é um registro, não uma medida de domínio. Anotações ficam visíveis ao seu
         professor da turma.

@@ -1,19 +1,10 @@
 import Link from 'next/link';
-import {
-  ArrowRight,
-  Play,
-  Check,
-  Music2,
-  BookOpen,
-  AudioLines,
-  Heart,
-  MoveUpRight,
-} from 'lucide-react';
+import { ArrowRight, Check, Music2, BookOpen, AudioLines, Heart, MoveUpRight } from 'lucide-react';
 import { Shell } from '@/components/shell';
 import { courseModules } from '@/content/course';
 export default function Home() {
   return (
-    <Shell active="/painel">
+    <Shell>
       <div className="home-heading">
         <div>
           <p className="eyebrow">BEM-VINDO AO VIOLÃO VIVO</p>
@@ -44,18 +35,15 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <Link className="button cream" href="/entrar">
-              Começar minha jornada <ArrowRight size={18} />
-            </Link>
-            <Link className="hero-demo" href="/demonstracao">
-              <Play size={16} /> Conhecer uma aula
+              Entrar e confirmar matrícula <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </div>
           <div className="hero-proof">
             <span>
-              <Check size={14} /> No seu ritmo
+              <Check size={14} aria-hidden="true" /> Acesso com código da turma
             </span>
             <span>
-              <Check size={14} /> Acompanhamento de professor
+              <Check size={14} aria-hidden="true" /> Acompanhamento de professor
             </span>
           </div>
         </div>
@@ -90,6 +78,43 @@ export default function Home() {
           </div>
           <span className="art-caption">CADA NOTA, UM NOVO COMEÇO.</span>
         </div>
+      </section>
+      <section className="section" aria-labelledby="how-to-start">
+        <div className="section-title">
+          <div>
+            <p className="eyebrow">SEU PRIMEIRO PASSO</p>
+            <h2 id="how-to-start">Entre para a sua turma.</h2>
+          </div>
+        </div>
+        <ol className="enrollment-steps">
+          <li>
+            <span className="number-label" aria-hidden="true">
+              01
+            </span>
+            <div>
+              <h3>Crie sua conta</h3>
+              <p>Use seu e-mail ou entre com Google.</p>
+            </div>
+          </li>
+          <li>
+            <span className="number-label" aria-hidden="true">
+              02
+            </span>
+            <div>
+              <h3>Receba o convite</h3>
+              <p>Seu professor cria a turma e envia o código diretamente a você.</p>
+            </div>
+          </li>
+          <li>
+            <span className="number-label" aria-hidden="true">
+              03
+            </span>
+            <div>
+              <h3>Confirme sua matrícula</h3>
+              <p>Digite o código no seu painel para liberar aulas, repertório e ferramentas.</p>
+            </div>
+          </li>
+        </ol>
       </section>
       <section className="stat-strip" aria-label="O curso">
         <div>
@@ -133,10 +158,12 @@ export default function Home() {
         </div>
         <div className="module-preview-grid">
           {courseModules.slice(0, 3).map((m, i) => (
-            <Link href={i === 0 ? '/demonstracao' : '/curso'} className="preview-card" key={m.n}>
+            <Link href="/painel" className="preview-card" key={m.n}>
               <div className={`module-cover cover-${i}`}>
                 <span>MÓDULO {String(m.n).padStart(2, '0')}</span>
-                <div className="cover-symbol">{['♬', '♩', '♫'][i]}</div>
+                <div className="cover-symbol" aria-hidden="true">
+                  <Music2 />
+                </div>
                 <span className="cover-arrow">
                   <MoveUpRight size={20} />
                 </span>
@@ -156,11 +183,11 @@ export default function Home() {
         </span>
         <div>
           <p className="eyebrow">OUÇA. EXPERIMENTE. TOQUE.</p>
-          <h2>Seu laboratório está sempre aberto.</h2>
-          <p>Metrônomo, acordes com áudio e braço interativo para transformar teoria em som.</p>
+          <h2>Depois da matrícula, pratique no seu ritmo.</h2>
+          <p>Metrônomo, acordes com áudio e braço interativo acompanham sua trilha.</p>
         </div>
-        <Link className="button secondary" href="/laboratorio">
-          Explorar ferramentas <ArrowRight size={17} />
+        <Link className="button secondary" href="/painel">
+          Acessar meu espaço <ArrowRight size={17} aria-hidden="true" />
         </Link>
       </section>
       <section className="section">

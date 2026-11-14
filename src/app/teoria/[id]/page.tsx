@@ -8,11 +8,11 @@ import { TheoryExercise } from '@/components/course/theory-exercise';
 import { TheoryLab } from '@/components/theory-lab';
 import { theoryReferences } from '@/content/course';
 import { getReferenceOccurrences } from '@/content/navigation';
-import { requireProfile } from '@/lib/auth';
+import { requireCourseProfile } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
 export default async function TheoryPage({ params }: { params: Promise<{ id: string }> }) {
-  const profile = await requireProfile();
+  const profile = await requireCourseProfile();
   const { id } = await params;
   const reference = theoryReferences.find((item) => item.id.toLowerCase() === id.toLowerCase());
   if (!reference) notFound();
@@ -24,7 +24,7 @@ export default async function TheoryPage({ params }: { params: Promise<{ id: str
   ];
   const index = theoryReferences.indexOf(reference);
   return (
-    <Shell active="/materiais" teacher={profile.role === 'teacher'}>
+    <Shell active="/materiais" courseAccess teacher={profile.role === 'teacher'}>
       <HashReveal />
       <Link className="back-link" href="/materiais">
         <ArrowLeft size={15} /> Voltar à biblioteca
@@ -34,7 +34,10 @@ export default async function TheoryPage({ params }: { params: Promise<{ id: str
         title={reference.title}
         description="Leia uma ideia, experimente no instrumento e volte à sua música."
       />
-      <nav className="lesson-jumps" aria-label="Nesta consulta"><a href="#laboratorio">Experimentar no laboratório</a><a href="#retornar">Retornar à música</a></nav>
+      <nav className="lesson-jumps" aria-label="Nesta consulta">
+        <a href="#laboratorio">Experimentar no laboratório</a>
+        <a href="#retornar">Retornar à música</a>
+      </nav>
       <div className="stack">
         <section className="card prose">
           <p className="large-quote">
