@@ -1,0 +1,2 @@
+# Preserve supplied course source bytes and provenance hashes exactly.
+materials/* -text -diff

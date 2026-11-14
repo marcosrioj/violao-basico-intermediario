@@ -1,0 +1,27 @@
+{
+  "edition": 5,
+  "importedOn": "2026-11-14",
+  "counts": {
+    "modules": 13,
+    "lessons": 39,
+    "songs": 13,
+    "chords": 52,
+    "theoryReferences": 8,
+    "studentPages": 130,
+    "teacherPages": 73
+  },
+  "sources": [
+    {
+      "file": "Guia_Interativo_Aluno_Violao_v5.html",
+      "sha256": "62bb8d791bd913bd9b32dd5ec7b31fc2420513f7a65b4abbf7c7ae0048b57ff6"
+    },
+    {
+      "file": "Curso_Aluno_Violao_Gospel_v5.pdf",
+      "sha256": "5c0a9d89f3aa2ce70fd48b2e48d95b7e1a1d2cac8febd4ae51c4bf028e8418f3"
+    },
+    {
+      "file": "Manual_Professor_Violao_Gospel_v5.pdf",
+      "sha256": "0d0b13497c5f3c7d177d56c571f0b6110483b5c29b206544f647920b38ddbb8c"
+    }
+  ]
+}

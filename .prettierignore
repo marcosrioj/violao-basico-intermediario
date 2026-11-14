@@ -1,0 +1,13 @@
+node_modules
+.next
+materials
+package-lock.json
+src/content/*-data.json
+src/content/student-guides.json
+src/content/provenance.json
+.agents
+.codex
+.aws
+.git
+*.tsbuildinfo
+next-env.d.ts

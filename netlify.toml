@@ -1,0 +1,9 @@
+# Alternativa para uso comercial. A publicação principal é Vercel Hobby.
+# O adaptador Next.js é detectado e mantido automaticamente pela Netlify.
+[build]
+  command = "npm run check"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NEXT_TELEMETRY_DISABLED = "1"

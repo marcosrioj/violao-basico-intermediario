@@ -1,0 +1,49 @@
+import { Shell, PageHeading } from '@/components/shell';
+export default function Privacy() {
+  return (
+    <Shell>
+      <PageHeading eyebrow="SUA JORNADA, SEUS DADOS" title="Privacidade e uso responsável" />
+      <article className="card prose">
+        <h2>Código e materiais públicos</h2>
+        <p>
+          O código da aplicação e os materiais didáticos, incluindo o manual do professor, estão
+          disponíveis no repositório público do GitHub. Os registros pessoais dos alunos são
+          armazenados separadamente no Supabase e não são enviados ao repositório.
+        </p>
+        <h2>O que fica salvo</h2>
+        <p>
+          Seu perfil, progresso das aulas, anotações, confiança declarada, registros de prática e
+          participação em turmas ficam associados à sua conta. A autenticação e o banco são operados
+          pelo Supabase. O site usa cookies necessários à sessão.
+        </p>
+        <h2>Quem pode acompanhar</h2>
+        <p>
+          Você acessa seus próprios registros. Ao ingressar em uma turma pelo código do professor,
+          esse professor poderá consultar seu perfil, progresso, anotações e diário de prática para
+          orientar o estudo. Outros alunos não têm acesso aos seus registros. Professores de turmas
+          em que você não está matriculado também não têm acesso.
+        </p>
+        <h2>Vídeos e páginas externas</h2>
+        <p>
+          Os vídeos do YouTube são carregados somente após sua ação. Cifras, gravações e outras
+          referências abrem serviços externos com suas próprias políticas. O curso não reproduz
+          letras completas protegidas nem hospeda cópias de gravações. Os áudios dos exercícios são
+          gerados no seu navegador.
+        </p>
+        <h2>Controle da sua conta</h2>
+        <p>
+          Solicite ao responsável pelo curso a exportação ou exclusão da sua conta e dos registros.
+          O procedimento de administração está documentado no projeto. Não escreva dados pessoais
+          sensíveis no diário. Nenhum pagamento é coletado pelo aplicativo.
+        </p>
+        <h2>Estudo e acessibilidade</h2>
+        <p>
+          As ferramentas ajudam a visualizar e ouvir conceitos; não avaliam automaticamente a
+          execução no instrumento. Você pode ajustar o andamento, pausar o áudio e navegar por
+          teclado. Se sentir desconforto ao tocar, interrompa a prática e ajuste a postura com seu
+          professor.
+        </p>
+      </article>
+    </Shell>
+  );
+}
