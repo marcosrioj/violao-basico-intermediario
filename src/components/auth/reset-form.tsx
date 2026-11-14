@@ -3,8 +3,13 @@ import { useEffect, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { LoaderCircle } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
+import {
+  revokeAllSessions,
+  updatePasswordAndRevokeSessions,
+  type PasswordResetOutcome,
+} from '@/lib/auth-operations';
 export function ResetPasswordForm({ configured }: { configured: boolean }) {
-  const [status, setStatus] = useState<'loading' | 'ready' | 'missing' | 'done'>(
+  const [status, setStatus] = useState<'loading' | 'ready' | 'missing' | PasswordResetOutcome>(
     configured ? 'loading' : 'missing',
   );
   const [busy, setBusy] = useState(false);
@@ -42,14 +47,22 @@ export function ResetPasswordForm({ configured }: { configured: boolean }) {
     setBusy(true);
     try {
       const supabase = createClient();
-      const { error: updateError } = await supabase.auth.updateUser({ password });
-      if (updateError) throw updateError;
-      await supabase.auth.signOut({ scope: 'global' });
-      setStatus('done');
+      setStatus(await updatePasswordAndRevokeSessions(supabase.auth, password));
     } catch {
       setError(
         'Não foi possível atualizar a senha. Peça um novo link de recuperação e tente novamente.',
       );
+    } finally {
+      setBusy(false);
+    }
+  };
+  const retryRevocation = async () => {
+    if (busy || status !== 'revocation-pending') return;
+    setBusy(true);
+    try {
+      setStatus(await revokeAllSessions(createClient().auth));
+    } catch {
+      setStatus('revocation-pending');
     } finally {
       setBusy(false);
     }
@@ -120,6 +133,17 @@ export function ResetPasswordForm({ configured }: { configured: boolean }) {
           <Link className="inline-link" href="/entrar">
             Entre novamente para continuar.
           </Link>
+        </div>
+      )}
+      {status === 'revocation-pending' && (
+        <div className="notice" role="alert" aria-busy={busy}>
+          <p>
+            Sua senha já foi atualizada. Não foi possível confirmar o encerramento das sessões.
+            Tente novamente; sua senha não será alterada outra vez.
+          </p>
+          <button className="button" type="button" disabled={busy} onClick={retryRevocation}>
+            {busy ? 'Encerrando sessões…' : 'Tentar encerrar sessões novamente'}
+          </button>
         </div>
       )}
       {error && (

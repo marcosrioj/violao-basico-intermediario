@@ -1,7 +1,14 @@
-import { api } from '@/lib/http';
+import { endpoint } from '@/lib/endpoint';
+import { logoutCurrentSession } from '@/lib/auth-operations';
+import { isSupabaseConfigured } from '@/lib/env';
 import { AppError } from '@/lib/errors';
-export const POST = api(async (_request, { supabase }) => {
-  const { error } = await supabase.auth.signOut({ scope: 'local' });
-  if (error) throw new AppError(503, 'SIGNOUT_FAILED', 'Não foi possível sair. Tente novamente.');
-  return { signedOut: true };
+import { createClient } from '@/lib/supabase/server';
+
+export const POST = endpoint(async () => {
+  if (!isSupabaseConfigured())
+    throw new AppError(503, 'SETUP_REQUIRED', 'A autenticação ainda precisa ser configurada.');
+  // The SSR client operates only on the caller's cookie session. Signing out
+  // must also work when that user's application profile is unavailable.
+  const supabase = await createClient();
+  return logoutCurrentSession(supabase.auth);
 });

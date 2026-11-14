@@ -1,12 +1,16 @@
 import type { NextConfig } from 'next';
+import {
+  isSupabaseConfigured,
+  supabaseEnvironment,
+  validatePublicEnvironment,
+} from './src/lib/env';
+
+// NEXT_PUBLIC values are embedded in browser bundles. Reject administrative
+// credentials and unsafe auth origins before Next.js can compile those bundles.
+validatePublicEnvironment();
+
 const dev = process.env.NODE_ENV !== 'production';
-let supabaseOrigin = 'https://*.supabase.co';
-try {
-  if (process.env.NEXT_PUBLIC_SUPABASE_URL)
-    supabaseOrigin = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).origin;
-} catch {
-  /* The auth environment validates configuration separately. */
-}
+const supabaseOrigin = isSupabaseConfigured() ? supabaseEnvironment().url : 'https://*.supabase.co';
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   outputFileTracingIncludes: { '/api/materials/*': ['./materials/*.pdf'] },
