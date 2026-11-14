@@ -2842,3 +2842,170 @@ th {
     transition: none !important;
   }
 }
+
+/* Compact navigation on phones and tablets; the lesson owns the screen. */
+.mobile-header {
+  display: none;
+}
+.page-heading > div {
+  min-width: 0;
+  max-width: 100%;
+}
+.mobile-drawer {
+  margin: 0 0 0 auto;
+  inset: 0 0 0 auto;
+  width: min(22rem, calc(100% - 24px));
+  height: 100dvh;
+  max-height: 100dvh;
+  max-width: none;
+  border: 0;
+  border-left: 1px solid var(--color-border);
+  padding: max(var(--space-4), env(safe-area-inset-top)) var(--space-5)
+    max(var(--space-5), env(safe-area-inset-bottom));
+  background: var(--color-surface);
+  color: var(--color-foreground);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.mobile-drawer::backdrop {
+  background: rgb(0 0 0 / 45%);
+}
+.mobile-drawer-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+.mobile-drawer .nav-caption {
+  display: block;
+  margin: var(--space-6) 0 var(--space-3);
+}
+.mobile-drawer nav {
+  display: grid;
+  gap: var(--space-2);
+}
+.mobile-drawer .nav-link {
+  margin: 0;
+  padding: var(--space-3);
+  font-size: var(--font-size-base);
+  min-height: 48px;
+}
+.mobile-drawer .sidebar-note {
+  display: none;
+}
+.mobile-drawer .sidebar-bottom {
+  display: block;
+  margin-top: var(--space-6);
+}
+.mobile-drawer .sidebar-bottom a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+@media (max-width: 1000px) {
+  html {
+    scroll-padding-top: 88px;
+  }
+  .sidebar,
+  .topbar {
+    display: none;
+  }
+  .app-shell {
+    display: block;
+  }
+  .app-main {
+    width: 100%;
+    margin-left: 0;
+  }
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    min-height: 64px;
+    padding: max(var(--space-2), env(safe-area-inset-top))
+      max(var(--space-4), env(safe-area-inset-right)) var(--space-2)
+      max(var(--space-4), env(safe-area-inset-left));
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .mobile-header .brand {
+    font-size: 1.375rem;
+    min-height: 44px;
+  }
+  .mobile-header .brand small {
+    display: none;
+  }
+  .mobile-header .brand-mark {
+    width: 28px;
+    height: 36px;
+  }
+  .mobile-menu-button {
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+  }
+  main {
+    padding: var(--space-5) var(--space-4);
+  }
+}
+@media (max-width: 700px) {
+  input:not([type='checkbox']):not([type='radio']),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  .card,
+  .lesson-hero {
+    padding: var(--space-4);
+  }
+  .card h2 {
+    font-size: 1.25rem;
+  }
+  .section-title {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .lesson-jumps {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: var(--space-2);
+    scroll-snap-type: x proximity;
+  }
+  .lesson-jumps a {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+  .control-row {
+    gap: var(--space-2);
+  }
+  .control-row > .button {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+  .player-controls .chart-tempo-adjust .button {
+    width: 44px;
+    flex: 0 0 44px;
+  }
+  .player-controls .chart-transport-actions > .button {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 6rem;
+  }
+  .app-footer {
+    flex-wrap: wrap;
+  }
+  .app-footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .button:active,
+  .choice:active {
+    filter: brightness(0.94);
+  }
+}

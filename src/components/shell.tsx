@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { MobileNavigation } from './mobile-navigation';
 import {
   Guitar,
   LayoutDashboard,
@@ -43,63 +44,69 @@ export function Shell({
   courseAccess?: boolean;
 }) {
   const unlocked = teacher || courseAccess;
+  const navigation = (hintId: string) => (
+    <>
+      <Brand />
+      <div className="nav-caption">SEU APRENDIZADO</div>
+      <nav aria-label="Principal">
+        {links.map(({ href, label, icon: Icon }) => {
+          const locked = !unlocked && href !== '/painel';
+          return (
+            <Link
+              key={href}
+              href={locked ? '/painel' : href}
+              aria-current={active === href ? 'page' : undefined}
+              aria-describedby={locked ? hintId : undefined}
+              className={`nav-link${active === href ? ' active' : ''}${locked ? ' locked' : ''}`}
+            >
+              <Icon size={19} aria-hidden="true" />
+              {label}
+              {locked && <LockKeyhole size={14} aria-hidden="true" />}
+            </Link>
+          );
+        })}
+        {teacher && (
+          <Link
+            className={active === '/professor' ? 'nav-link active' : 'nav-link'}
+            href="/professor"
+            aria-current={active === '/professor' ? 'page' : undefined}
+          >
+            <GraduationCap size={19} aria-hidden="true" />
+            Área do professor
+          </Link>
+        )}
+      </nav>
+      <div className="sidebar-note">
+        <span className="tiny-label">
+          {unlocked ? 'UM POUCO, TODOS OS DIAS' : 'SEU PRÓXIMO PASSO'}
+        </span>
+        <p>{unlocked ? 'A música cresce com você.' : 'Uma turma. Um novo começo.'}</p>
+        <small id={hintId}>
+          {unlocked
+            ? 'Reserve um momento para ouvir, experimentar e tocar.'
+            : 'O curso é liberado após confirmar o código enviado pelo professor.'}
+        </small>
+        <Link href={unlocked ? '/laboratorio' : '/painel'}>
+          {unlocked ? 'Começar a praticar' : 'Confirmar matrícula'}{' '}
+          <ArrowUpRight size={15} aria-hidden="true" />
+        </Link>
+      </div>
+      <div className="sidebar-bottom">
+        <span className="status-dot" /> Do básico ao intermediário
+        <small>13 módulos · 39 encontros</small>
+        <Link href="/privacidade">Privacidade</Link>
+      </div>
+    </>
+  );
   return (
     <div className="app-shell">
       <a className="skip" href="#conteudo">
         Pular para conteúdo
       </a>
-      <aside className="sidebar">
-        <Brand />
-        <div className="nav-caption">SEU APRENDIZADO</div>
-        <nav aria-label="Principal">
-          {links.map(({ href, label, icon: Icon }) => {
-            const locked = !unlocked && href !== '/painel';
-            return (
-              <Link
-                key={href}
-                href={locked ? '/painel' : href}
-                aria-current={active === href ? 'page' : undefined}
-                aria-describedby={locked ? 'course-access-hint' : undefined}
-                className={`nav-link${active === href ? ' active' : ''}${locked ? ' locked' : ''}`}
-              >
-                <Icon size={19} aria-hidden="true" />
-                {label}
-                {locked && <LockKeyhole size={14} aria-hidden="true" />}
-              </Link>
-            );
-          })}
-          {teacher && (
-            <Link
-              className={active === '/professor' ? 'nav-link active' : 'nav-link'}
-              href="/professor"
-              aria-current={active === '/professor' ? 'page' : undefined}
-            >
-              <GraduationCap size={19} aria-hidden="true" />
-              Área do professor
-            </Link>
-          )}
-        </nav>
-        <div className="sidebar-note">
-          <span className="tiny-label">
-            {unlocked ? 'UM POUCO, TODOS OS DIAS' : 'SEU PRÓXIMO PASSO'}
-          </span>
-          <p>{unlocked ? 'A música cresce com você.' : 'Uma turma. Um novo começo.'}</p>
-          <small id="course-access-hint">
-            {unlocked
-              ? 'Reserve um momento para ouvir, experimentar e tocar.'
-              : 'O curso é liberado após confirmar o código enviado pelo professor.'}
-          </small>
-          <Link href={unlocked ? '/laboratorio' : '/painel'}>
-            {unlocked ? 'Começar a praticar' : 'Confirmar matrícula'}{' '}
-            <ArrowUpRight size={15} aria-hidden="true" />
-          </Link>
-        </div>
-        <div className="sidebar-bottom">
-          <span className="status-dot" /> Do básico ao intermediário
-          <small>13 módulos · 39 encontros</small>
-          <Link href="/privacidade">Privacidade</Link>
-        </div>
-      </aside>
+      <aside className="sidebar">{navigation('course-access-hint')}</aside>
+      <MobileNavigation brand={<Brand />}>
+        {navigation('mobile-course-access-hint')}
+      </MobileNavigation>
       <div className="app-main">
         <header className="topbar">
           <span>Do primeiro acorde à liberdade de adorar.</span>

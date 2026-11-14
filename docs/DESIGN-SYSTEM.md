@@ -116,3 +116,11 @@ As referências consultadas das skills incluem arquitetura de tokens, componente
 Nesta alteração, o catálogo foi conferido contra o CSS, as referências de variáveis foram verificadas e os pares de contraste acima foram calculados. Os estilos globais, dashboard e laboratório não contêm cores hexadecimais avulsas; cores ficam nos tokens. O registro de validação da entrega deve informar separadamente o build, os testes funcionais e as telas efetivamente inspecionadas, sem confundir estas verificações estáticas com QA visual completo.
 
 Para próximas alterações, confira landing, login, matrícula pendente, matrícula concluída, painel do professor, curso, aula, teoria e materiais nas larguras 320, 768 e 1440 px. Verifique zoom a 200%, foco por teclado, mensagens de erro, nomes longos e scroll local das tabelas/instrumentos. Execute os checks já definidos no repositório; evite acrescentar testes que apenas repitam valores de CSS sem validar comportamento relevante.
+
+## Navegação e controles móveis
+
+Até 1000 px, a navegação usa uma barra compacta e um menu lateral sob demanda. O `MobileNavigation` recebe a mesma navegação renderizada no servidor que a sidebar desktop, preservando permissões, rótulos e página atual; os IDs de descrição são distintos. Um `dialog` nativo torna o fundo inerte. Tab/Shift+Tab circulam pelos links, Escape, botão Fechar, toque fora e seleção de destino encerram o menu. A rolagem do fundo é restaurada no fechamento/desmontagem; ampliar para desktop fecha o painel. O drawer tem rolagem própria e considera áreas seguras.
+
+No celular, os campos têm fonte de 16 px, alvos de pelo menos 44 px, cards com menos recuo e ações de reprodução lado a lado quando cabem. Atalhos internos da aula rolam horizontalmente dentro de sua faixa, sem alargar a página. Cabeçalhos aceitam texto ampliado. A marca usa os mesmos tokens, tipografia e ícones existentes, sem nova dependência.
+
+Revisão orientada por `ui-ux-pro-max`, `ui-styling`, `design-system`, `design` e `brand`; `banner-design` e `slides` foram consultadas para conferir a hierarquia do hero e a apresentação existente. A revisão inclui retrato, paisagem, teclado, conteúdo ampliado e retorno ao desktop. Não equivale a uma auditoria com leitor de tela ou dispositivos físicos.

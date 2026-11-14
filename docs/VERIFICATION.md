@@ -2,6 +2,12 @@
 
 Registro de **14 de novembro de 2026**. O projeto está na branch `main`. Este documento distingue o código entregue, os testes executados e as configurações que dependem de contas externas.
 
+## Revisão móvel e navegação compacta
+
+Passaram lint, tipos, **89 testes** e build. No Chrome com backend sintético, a auditoria geral completou **37 verificações** em nove páginas/estados a 320, 375, 768 e 1440 px, sem transbordamento, erros de página ou controles do produto abaixo de 44 px. O menu passou em **16 combinações de página e viewport**, incluindo paisagem a 844 × 390: abertura, ciclo de foco, Escape, toque fora, retorno de foco, bloqueio/restauração da rolagem, navegação e fechamento ao ampliar para desktop. A barra fechada permaneceu com até 72 px de altura nos tamanhos testados.
+
+O hero inicial e as sete etapas da apresentação foram conferidos em 320, 375, 844 e 1440 px. O teste com texto a 200% identificou e corrigiu refluxo do cabeçalho; a revisão final passou. Capturas de menu, trilha e aula foram inspecionadas visualmente. Skills e decisões estão registradas no sistema de design. Não houve teste em aparelho físico ou leitor de tela, nem publicação desta alteração.
+
 ## Estimativas adotadas como andamento padrão
 
 Santo Espírito inicia em **71,5 BPM**, Faz Chover (Toque no Altar) em **67 BPM** e Poderoso Deus em **62 BPM**, por semínima. Os valores vêm das hipóteses já pesquisadas e permanecem classificados como estimados. O preset **Padrão da música**, a indicação da aula e o diário usam essa escolha; somente o diário arredonda para inteiro. O aviso de andamento não confirmado foi retirado das telas, e fontes e limitações ficaram na dica de andamento. A [auditoria musical](TEMPO-RESEARCH.md) registra a decisão e preserva as evidências anteriores.
