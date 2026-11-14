@@ -27,7 +27,7 @@ export function LessonView({
   const prev = lessons[lesson.n - 2];
   const next = lessons[lesson.n];
   const rich = (text: string, field: string) => (
-    <RichText key={`${lesson.id}-${field}`} text={text} lesson={lesson} field={field} />
+    <RichText key={`${lesson.id}-${field}`} text={text} lesson={lesson} field={field} demo={demo} />
   );
   return (
     <Shell active="/curso" teacher={teacher}>
@@ -212,12 +212,12 @@ export function LessonView({
             </details>
           </section>
           <LessonProgress
-            key={lesson.id}
+            key={`progress-${lesson.id}`}
             lesson={lesson}
             demo={demo}
             checkLabels={lesson.checks.map((text, i) => rich(text, `checks-${i}`))}
           />
-          <PracticeLog key={lesson.id} lessonId={lesson.id} initialBpm={lesson.bpm} demo={demo} />
+          <PracticeLog key={`practice-${lesson.id}`} lessonId={lesson.id} initialBpm={lesson.bpm} demo={demo} />
         </aside>
       </div>
     </Shell>

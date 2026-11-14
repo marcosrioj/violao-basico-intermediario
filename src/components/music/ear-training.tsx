@@ -1,14 +1,21 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { playTone, frequency, audioContext } from './audio';
 export function EarTraining() {
   const [interval, setIntervalValue] = useState<number | null>(null);
   const [result, setResult] = useState('');
   const [answered, setAnswered] = useState(false);
+  const voices = useRef<(() => void)[]>([]);
+  useEffect(() => {
+    const stop = () => { voices.current.forEach((cancel) => cancel()); voices.current = []; };
+    const stopHidden = () => { if (document.hidden) stop(); };
+    document.addEventListener('visibilitychange', stopHidden);
+    return () => { stop(); document.removeEventListener('visibilitychange', stopHidden); };
+  }, []);
   function listen(value: number) {
+    voices.current.forEach((cancel) => cancel());
     const ctx = audioContext();
-    playTone(frequency(60), 0.6);
-    playTone(frequency(60 + value), 0.9, ctx.currentTime + 0.75);
+    voices.current = [playTone(frequency(60), 0.6), playTone(frequency(60 + value), 0.9, ctx.currentTime + 0.75)];
   }
   return (
     <section className="card">

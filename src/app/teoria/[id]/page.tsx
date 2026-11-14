@@ -5,6 +5,7 @@ import { Shell, PageHeading } from '@/components/shell';
 import { RichText } from '@/components/course/rich-text';
 import { HashReveal } from '@/components/course/hash-reveal';
 import { TheoryExercise } from '@/components/course/theory-exercise';
+import { TheoryLab } from '@/components/theory-lab';
 import { theoryReferences } from '@/content/course';
 import { getReferenceOccurrences } from '@/content/navigation';
 import { requireProfile } from '@/lib/auth';
@@ -33,6 +34,7 @@ export default async function TheoryPage({ params }: { params: Promise<{ id: str
         title={reference.title}
         description="Leia uma ideia, experimente no instrumento e volte à sua música."
       />
+      <nav className="lesson-jumps" aria-label="Nesta consulta"><a href="#laboratorio">Experimentar no laboratório</a><a href="#retornar">Retornar à música</a></nav>
       <div className="stack">
         <section className="card prose">
           <p className="large-quote">
@@ -78,6 +80,7 @@ export default async function TheoryPage({ params }: { params: Promise<{ id: str
             </table>
           </div>
         </section>
+        <TheoryLab referenceId={reference.id} />
         <TheoryExercise
           exercise={<RichText text={reference.exercise} theoryId={reference.id} field="exercise" />}
           answer={<RichText text={reference.answer} theoryId={reference.id} field="answer" />}

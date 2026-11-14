@@ -6,7 +6,7 @@ export function audioContext() {
 export function playTone(frequency: number, duration = 0.8, when?: number, volume = 0.15) {
   const ctx = audioContext();
   void ctx.resume();
-  const start = when ?? ctx.currentTime;
+  const start = Math.max(when ?? ctx.currentTime, ctx.currentTime);
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
   osc.type = 'triangle';
@@ -34,12 +34,13 @@ export function playTone(frequency: number, duration = 0.8, when?: number, volum
 }
 export const openMidi = [40, 45, 50, 55, 59, 64];
 export const frequency = (midi: number) => 440 * 2 ** ((midi - 69) / 12);
-export function soundChord(frets: (number | null)[], duration = 1) {
+export function soundChord(frets: (number | null)[], duration = 1, when?: number) {
   const ctx = audioContext();
+  const start = when ?? ctx.currentTime;
   const stop: (() => void)[] = [];
   frets.forEach((f, i) => {
     if (f !== null && f >= 0)
-      stop.push(playTone(frequency(openMidi[i] + f), duration, ctx.currentTime + i * 0.022, 0.075));
+      stop.push(playTone(frequency(openMidi[i] + f), duration, start + i * 0.022, 0.075));
   });
   return () => stop.forEach((cancel) => cancel());
 }
