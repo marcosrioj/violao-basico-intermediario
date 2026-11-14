@@ -32,7 +32,7 @@ O teste de banco cria identidades sintéticas e emula somente a fronteira `auth.
 
 ## Cookies, cache e cabeçalhos
 
-O cliente oficial `@supabase/ssr` gerencia cookies com `SameSite=Lax`, domínio restrito ao host e `Secure` em produção. A biblioteca precisa permitir que o cliente JavaScript leia a sessão; não se alega uso de cookies `HttpOnly`. Cada operação protegida usa `getUser()` para validar a identidade e consulta o perfil no banco. A renovação pelo Proxy cobre todas as páginas protegidas e APIs.
+O cliente oficial `@supabase/ssr` gerencia cookies com `SameSite=Lax`, domínio restrito ao host e `Secure` em produção. A biblioteca precisa permitir que o cliente JavaScript leia a sessão; não se alega uso de cookies `HttpOnly`. As operações protegidas de dados usam `getUser()` para validar a identidade e consultam o perfil no banco. O logout verifica a origem e encerra a sessão SSR local sem depender da leitura do perfil; a fronteira de erro, os cabeçalhos privados e o identificador de requisição são preservados. A renovação pelo Proxy cobre todas as páginas protegidas e APIs.
 
 Respostas de APIs, callbacks e arquivos usam `Cache-Control: private, no-store`. Nenhuma chave administrativa é usada pela aplicação. As consultas selecionam campos explícitos; listas usam paginação. Os logs contêm operação, status, duração e identificador da requisição, sem corpo, e-mail, tokens ou dados de estudo.
 
@@ -48,8 +48,14 @@ npm run test:http
 
 Para outra URL, configure `SMOKE_BASE_URL`; `SMOKE_ORIGIN` deve corresponder exatamente à origem pública autorizada por `NEXT_PUBLIC_SITE_URL`. O script não inicia servidor, não envia cookies, não cria conta, não grava dados e não simula autenticação.
 
+## Regressões adicionais
+
+`tests/security-env.test.ts` cobre URLs públicas, configuração parcial, exigência da origem de produção e rejeição de chaves administrativas antes do build. `tests/auth-operations.test.ts` cobre saída sem consulta ao perfil e a recuperação em duas etapas: depois que a senha é atualizada, uma falha ao revogar sessões permite repetir somente a revogação, sem enviar a senha novamente. Esses testes usam portas simuladas; não comprovam o comportamento de um provedor hospedado.
+
+A CI também executa `npm run test:http:ci`: o wrapper inicia o build de produção, roda o smoke sem credenciais e encerra o processo. O script original `test:http` continua disponível para um servidor já iniciado.
+
 ## Pendente de configuração externa
 
 Depois de aplicar a migration no Supabase escolhido e configurar os provedores, executar o fluxo real com duas contas de aluno e duas de professor: login Google, cadastro confirmado, recuperação, logout, matrícula, gravação e releitura do progresso, diário, feedback, encontros e downloads. Repetir os ataques negativos de acesso direto à API usando os JWTs reais. Confirmar a allowlist de redirects e os templates de e-mail de `DEPLOYMENT.md`.
 
-A revisão e os testes fornecem evidência das fronteiras implementadas; não são uma auditoria externa nem uma garantia de ausência de vulnerabilidades. Não foi possível validar navegador, áudio, cookies reais de Supabase, entrega de e-mail ou implantação remota sem esses ambientes.
+A revisão e os testes fornecem evidência das fronteiras implementadas; não são uma auditoria externa nem uma garantia de ausência de vulnerabilidades. A navegação e os controles de áudio foram inspecionados posteriormente em navegador desktop, conforme `VERIFICATION.md`. Cookies reais de Supabase, entrega de e-mail, consentimento Google e implantação remota ainda não foram validados.

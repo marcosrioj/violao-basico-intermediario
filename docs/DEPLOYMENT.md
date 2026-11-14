@@ -1,6 +1,6 @@
 # Executar e publicar o Violão Vivo
 
-A publicação principal é **Vercel Hobby**, para o uso pessoal e não comercial confirmado. O código é um único projeto Next.js: frontend, Route Handlers, dados editoriais, migrations e documentação. O banco e as contas ficam no Supabase Free. Não há compra de domínio ou upgrade pago no procedimento.
+O projeto está preparado para **Vercel Hobby** quando o uso for pessoal e não comercial. Para uso comercial, usar a alternativa **Netlify Free** da seção 7. O código é um único projeto Next.js: frontend, Route Handlers, dados editoriais, migrations e documentação. O banco e as contas ficam no Supabase Free. Não há compra de domínio ou upgrade pago no procedimento.
 
 ## 1. Executar localmente
 
@@ -11,16 +11,16 @@ npm ci
 npm run dev
 ```
 
-Abrir `http://localhost:3000`. Sem configuração do Supabase, a demonstração permite conhecer o conteúdo; ela não cria contas nem persiste progresso de alunos.
+Abrir a origem exata definida em `NEXT_PUBLIC_SITE_URL` (por padrão, `http://localhost:3000`). `localhost` e `127.0.0.1` são origens diferentes: usar uma para navegar e outra na variável fará as mutações serem rejeitadas, como previsto. Sem configuração do Supabase, a demonstração permite conhecer o conteúdo; ela não cria contas nem persiste progresso de alunos.
 
-Para autenticação e persistência, copiar `.env.example` para `.env.local` e substituir os três valores fictícios. Nunca versionar `.env.local`. Use a URL e a chave **publishable** do painel Supabase. `NEXT_PUBLIC_SITE_URL` deve ser a origem exata da aplicação, sem caminho.
+Para autenticação e persistência, copiar `.env.example` para `.env.local` e substituir os três valores fictícios. Nunca versionar `.env.local`. Use a URL e a chave **publishable** do painel Supabase. `NEXT_PUBLIC_SITE_URL` deve ser a origem exata da aplicação, sem caminho. Em produção com Supabase configurado, essa variável é obrigatória. URLs devem usar HTTPS; HTTP é aceito apenas em loopback para desenvolvimento. Configuração parcial, URL inválida ou chave administrativa em variável pública interrompem o build. A chave publicável nova ou uma chave legada `anon` são aceitas; `service_role` e `sb_secret_` são rejeitadas sem imprimir seu valor.
 
 ```bash
 cp .env.example .env.local
 npm run check
 ```
 
-`check` executa lint, tipos, testes e build. A aplicação não usa chave administrativa em execução. Senha do banco e tokens de CLI servem exclusivamente para operação, fora do código.
+`check` executa lint, tipos, testes e build. `npm run test:http:ci` inicia uma instância local do build de produção, executa as verificações HTTP sem contas e encerra o processo. O launcher de desenvolvimento aceita `--host` como alias de `--hostname` e ignora `--strictPort`; um port explícito ocupado já causa falha no Next.js. A aplicação não usa chave administrativa em execução. Senha do banco e tokens de CLI servem exclusivamente para operação, fora do código.
 
 ## 2. Preparar o banco Supabase
 
@@ -86,7 +86,7 @@ O professor entra novamente, abre sua área, cria uma turma e compartilha o cód
 
 ## 5. GitHub e publicação automática na main
 
-O remoto é `https://github.com/marcosrioj/violao-basico-intermediario`. A decisão atual do proprietário é manter o **repositório público**, com todo o código e os materiais editoriais versionados acessíveis, e a branch padrão **main**. Credenciais e registros reais de alunos/professores continuam fora do Git, no Supabase. A proteção de uma rota de download no aplicativo não torna confidencial um PDF disponível no repositório público.
+O remoto é `https://github.com/marcosrioj/violao-basico-intermediario`. O estado atual é **repositório público**, com código e materiais editoriais versionados acessíveis, e branch **main**. Para cumprir a preferência por repositório privado, alterar a visibilidade em **Settings → General → Danger Zone → Change repository visibility**. A permissão disponível nesta entrega permite commits, mas não a alteração dessa configuração. Ao privatizar, conferir a franquia de Actions e manter o orçamento configurado para interromper uso pago. Credenciais e registros reais de alunos/professores continuam fora do Git, no Supabase. A proteção de uma rota de download no aplicativo não torna confidencial um PDF disponível no repositório público.
 
 ```bash
 npm run check
@@ -117,7 +117,7 @@ Mudanças de banco são aplicadas por migrations antes de publicar código que d
 
 ## 7. Alternativa Netlify Free
 
-Se o uso passar a comercial, revisar a elegibilidade Vercel e usar a alternativa Netlify Free. Importar o mesmo repositório pessoal no painel, confirmar production branch `main`, Node 22 e variáveis iguais; usar a URL `*.netlify.app` em `NEXT_PUBLIC_SITE_URL` e nos redirects Supabase. O `netlify.toml` executa `npm run check`; o adaptador oficial detecta App Router, SSR e Route Handlers. Não fixar uma versão antiga do adaptador. [Suporte Next.js](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/)
+Se o uso for comercial, usar a alternativa Netlify Free e conferir as condições atuais do plano antes de conectar a conta. Importar o mesmo repositório pessoal no painel, confirmar production branch `main`, Node 22 e variáveis iguais; usar a URL `*.netlify.app` em `NEXT_PUBLIC_SITE_URL` e nos redirects Supabase. O `netlify.toml` executa `npm run check`; o adaptador oficial detecta App Router, SSR e Route Handlers. Não fixar uma versão antiga do adaptador. [Suporte Next.js](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/)
 
 O plano atual tem 300 créditos mensais compartilhados e pode pausar os projetos ao esgotar a cota. Conferir [FREE-TIER.md](FREE-TIER.md) antes da migração. Não habilitar recarga automática nem plano de avaliação. Contas antigas podem ter limites diferentes dos planos atuais.
 
@@ -154,7 +154,7 @@ Os testes automatizados locais não substituem essa validação da configuraçã
 
 | Configuração externa                | Resultado esperado                                                                   |
 | ----------------------------------- | ------------------------------------------------------------------------------------ |
-| GitHub: acesso, push e visibilidade | Código na `main` do remoto e repositório público, conforme a decisão do proprietário |
+| GitHub: acesso, push e visibilidade | Código entregue na `main`; visibilidade atual pública; ajuste para privado pendente no painel |
 | Supabase Free                       | Projeto criado, migrations aplicadas, URL e chave publicável disponíveis             |
 | Google e/ou SMTP                    | Provedor habilitado, callbacks e entrega real validados                              |
 | Promoção administrativa             | Conta correta com papel professor                                                    |

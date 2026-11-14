@@ -22,14 +22,14 @@ flowchart LR
 - `src/lib/contracts.ts` e `validation.ts`: DTOs e schemas de entrada.
 - `src/lib/application`: comandos de escrita e consultas de leitura.
 - `src/lib/supabase`: clientes oficiais separados por ambiente; o cliente de servidor carrega a sessão da requisição.
-- `src/lib/auth.ts`, `http.ts` e `errors.ts`: autenticação, papel, origem, limite de corpo, respostas e registro seguro.
+- `src/lib/auth.ts`, `endpoint.ts`, `http.ts` e `errors.ts`: autenticação, papel, origem, limite de corpo, respostas e registro seguro.
 - `supabase/migrations`: esquema, funções e políticas. `supabase/promote-teacher.sql` é operação administrativa separada.
 
 A escolha de Next.js/React e as versões efetivamente instaladas estão no manifesto e lockfile. A linha Next.js 16 recebeu correções relevantes em novembro de 2026; atualizações futuras devem preservar os testes de isolamento e a ausência de cache compartilhado de dados privados. [Release oficial de segurança](https://nextjs.org/blog/november-2026-security-release)
 
 ## Autenticação e autorização
 
-Supabase Auth verifica identidade. O servidor usa `getUser()` e carrega o perfil protegido no banco; sessão presente em cookie não basta para permitir operação. O papel padrão criado pelo trigger é `student`, mesmo se metadados enviados pelo cliente disserem outra coisa. A promoção é administrativa, sem endpoint público.
+Supabase Auth verifica identidade. Nas operações de dados, o servidor usa `getUser()` e carrega o perfil protegido no banco; sessão presente em cookie não basta para permitir acesso aos registros. O logout verifica a origem e usa o cliente SSR associado aos cookies para encerrar a sessão local, sem depender de consulta a `profiles` ou de `getUser()`. O papel padrão criado pelo trigger é `student`, mesmo se metadados enviados pelo cliente disserem outra coisa. A promoção é administrativa, sem endpoint público.
 
 O professor administra as próprias turmas. O aluno acessa os próprios registros. O professor pode consultar o progresso e as práticas dos alunos matriculados em uma de suas turmas, para acompanhar o curso; esse progresso pertence ao aluno, e não a uma turma específica. Feedback e encontros pertencem à turma. A remoção de um vínculo pelo próprio aluno ou pelo professor proprietário deve ser considerada junto com os efeitos de cascata documentados na migration: feedback daquela matrícula é removido; progresso pessoal permanece.
 
@@ -80,7 +80,7 @@ O curso preserva 13 módulos com três aulas, encontro semanal de uma hora e a e
 
 Diagramas, braço do instrumento, metrônomo, reprodução de sequências e percepção auditiva executam localmente no navegador. A Web Audio API sintetiza sons para demonstração; não há streaming de gravação comercial nem serviço de IA. O aluno inicia o áudio e pode pará-lo. A precisão do relógio de áudio depende do dispositivo e das limitações do navegador; metrônomo não avalia a execução do aluno.
 
-PDFs são materiais editoriais de leitura, fora da pasta `public`, com entrega por rota autorizada no aplicativo. Como o repositório GitHub é público por decisão do proprietário, os PDFs em `materials/` e os textos do manual do professor também podem ser consultados diretamente no GitHub. A autorização organiza a experiência do app; não fornece sigilo para conteúdo editorial público. Não há upload de dados pessoais nesta versão; Supabase Storage é dispensável. Adicionar gravações de alunos exigiria bucket privado, políticas, limites de tipo/tamanho e ciclo de vida próprios.
+PDFs são materiais editoriais de leitura, fora da pasta `public`, com entrega por rota autorizada no aplicativo. Como o repositório GitHub está público no estado atual, os PDFs em `materials/` e os textos do manual do professor também podem ser consultados diretamente no GitHub. A autorização organiza a experiência do app; não fornece sigilo para conteúdo editorial público. Não há upload de dados pessoais nesta versão; Supabase Storage é dispensável. Adicionar gravações de alunos exigiria bucket privado, políticas, limites de tipo/tamanho e ciclo de vida próprios.
 
 ## Verificação e limites
 

@@ -2,13 +2,16 @@
 
 **Do primeiro acorde à liberdade de adorar.** Aplicação web de ensino de violão gospel, do básico ao intermediário, baseada nos materiais v5 do curso: **13 módulos, 39 aulas e um encontro semanal de 60 minutos**.
 
-O repositório é **público**, por decisão do proprietário. O código e os materiais editoriais estão disponíveis no GitHub; contas, progresso e anotações pessoais ficam no Supabase, protegidos por autenticação e políticas de acesso.
+O repositório está **público** no estado atual. A preferência por repositório privado requer ajustar sua visibilidade nas configurações do GitHub. O código e os materiais editoriais estão disponíveis no GitHub; contas, progresso e anotações pessoais ficam no Supabase, protegidos por autenticação e políticas de acesso.
+
+![Tela inicial do Violão Vivo](docs/assets/violao-vivo-home.jpg)
 
 ## O que está implementado
 
 - **Aluno:** conta, trilha por módulo, conclusão de aula, confiança e anotações, diário de prática, matrícula em turmas, agenda e devolutivas.
 - **Professor:** turmas com código de entrada, acompanhamento individual, planos das aulas, encontros semanais, feedback e validação da execução.
 - **Prática:** diagramas de acordes, cifras didáticas com reprodução e repetição, metrônomo, braço interativo, afinação de referência e percepção auditiva.
+- **Teoria em ação:** laboratórios ligados a R1–R8 para explorar intervalos, escalas, formação de acordes, campo harmônico, centro modal e empréstimo; exemplos autorais com áudio e perguntas de recuperação.
 - **Conteúdo:** aulas completas, consultas teóricas com navegação de ida e volta, links de vídeos/gravações/cifras e PDFs originais. Primeira pestana no módulo 5, após as 12 aulas iniciais.
 - **Segurança:** papel de professor concedido administrativamente, validação no servidor, RLS por usuário/vínculo de turma e respostas privadas sem cache público.
 
@@ -36,6 +39,7 @@ Editar `.env.local` com a URL e a chave publicável do seu Supabase; definir `NE
 ```bash
 npm run check  # lint, tipos, testes e build
 npm start     # depois de um build bem-sucedido
+npm run test:http:ci # inicia o servidor de produção, testa as rotas e encerra
 ```
 
 Os testes cobrem contratos, casos negativos, integridade do conteúdo e RLS em PostgreSQL/PGlite com usuários sintéticos. O teste de banco local não comprova callbacks OAuth, SMTP ou configuração do Supabase hospedado; a matriz de validação externa está no guia de publicação.
@@ -75,7 +79,7 @@ docs/                 arquitetura, operação, cotas e metodologia
 
 Depois dessa conexão, um novo commit enviado à `main` dispara build e publicação, se os checks passarem. Nenhum upgrade, domínio pago ou cobrança automática por consumo é necessário ao desenho inicial. A integração com contas, migrations remotas, OAuth/SMTP, promoção do professor e primeiro deployment são configurações externas; os arquivos do projeto não as executam sozinhos.
 
-O passo a passo, limites e comportamento em caso de cota esgotada estão em [DEPLOYMENT.md](docs/DEPLOYMENT.md) e [FREE-TIER.md](docs/FREE-TIER.md). Netlify Free está documentado como alternativa se o uso se tornar comercial.
+O passo a passo, limites e comportamento em caso de cota esgotada estão em [DEPLOYMENT.md](docs/DEPLOYMENT.md) e [FREE-TIER.md](docs/FREE-TIER.md). Usar Vercel Hobby somente quando o uso for pessoal e não comercial; para uso comercial, seguir a alternativa Netlify Free documentada.
 
 ## Documentação
 

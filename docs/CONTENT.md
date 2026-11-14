@@ -8,7 +8,7 @@ O conteúdo canônico importado é a edição 5 fornecida pelo proprietário em 
 | `Curso_Aluno_Violao_Gospel_v5.pdf`      | 130 páginas                                                        | Conteúdo por aula em `studentText`, suplementos em `student-guides.json` e original em `materials/` |
 | `Manual_Professor_Violao_Gospel_v5.pdf` | 73 páginas                                                         | Planos das 39 aulas e suplementos em `teacher-data.json`, original em `materials/`                  |
 
-`src/content/provenance.json` registra os SHA-256 e as contagens. Os materiais de professor são importados por `teacher.ts`, marcado `server-only`; a autorização deve acontecer antes da renderização. Os originais não ficam na pasta `public/` do Next.js. Porém, o repositório GitHub é público por escolha do proprietário: PDFs, HTML e dados editoriais, incluindo o manual do professor, ficam visíveis no GitHub. A separação de papéis protege a interface do app e os registros pessoais, não o sigilo desses materiais editoriais.
+`src/content/provenance.json` registra os SHA-256 e as contagens. Os materiais de professor são importados por `teacher.ts`, marcado `server-only`; a autorização deve acontecer antes da renderização. Os originais não ficam na pasta `public/` do Next.js. Porém, o repositório GitHub está público no estado atual: PDFs, HTML e dados editoriais, incluindo o manual do professor, ficam visíveis no GitHub. A separação de papéis protege a interface do app e os registros pessoais, não o sigilo desses materiais editoriais.
 
 ## Importação reproduzível
 
@@ -37,4 +37,4 @@ A extração de PDF preserva texto e número de página. Diagramas e cifras são
 
 As URLs de gravações, letras/cifras e referências teóricas foram preservadas do material fornecido. O app não copia letras integrais de páginas externas nem armazena gravações comerciais. “Letra e cifra” abre a fonte original. Os mapas harmônicos e arranjos didáticos fornecidos ficam disponíveis no app. Links e disponibilidade de reprodução podem mudar; o professor deve conferir a gravação antes da aula. O importador valida estrutura e coerência interna, não realiza verificação musicológica independente de cada gravação.
 
-Os PDFs fornecidos têm fontes de pesquisa e referências já incluídas. Fontes adicionais consultadas para a aplicação estão em `PEDAGOGY.md`, distinguindo resultados publicados das decisões de desenho deste curso.
+Os PDFs fornecidos têm fontes de pesquisa e referências já incluídas. Fontes adicionais consultadas para a aplicação estão em `PEDAGOGY-RESEARCH.md`, distinguindo resultados publicados das decisões de desenho deste curso.
