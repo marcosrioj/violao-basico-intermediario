@@ -121,6 +121,22 @@ async function run() {
   privateHeaders(sameOrigin);
   assert.ok(['UNAUTHENTICATED', 'SETUP_REQUIRED'].includes((await sameOrigin.json()).error.code));
   passed('same-origin mutation still requires an authenticated session');
+  // Synthetic codes are only relayed: redirect: 'manual' prevents exchanging them with Auth.
+  for (const [path, next] of [
+    ['/?code=smoke-fixture-code&next=https://untrusted.example', '/painel'],
+    ['/auth/confirm?code=smoke-fixture-code&next=/aulas/m1-a1', '/aulas/m1-a1'],
+    ['/redefinir-senha?code=smoke-fixture-code&next=//untrusted.example', '/redefinir-senha'],
+  ]) {
+    const response = await request(path);
+    assert.equal(response.status, 307);
+    privateHeaders(response);
+    const location = new URL(response.headers.get('location'), base);
+    assert.equal(location.origin, base.origin, 'legacy code must stay on its cookie origin');
+    assert.equal(location.pathname, '/auth/callback');
+    assert.equal(location.searchParams.get('code'), 'smoke-fixture-code');
+    assert.equal(location.searchParams.get('next'), next);
+    passed(`${path.split('?')[0]} relays legacy PKCE codes on the same origin`);
+  }
   for (const [path, code] of [
     ['/auth/callback?next=https://untrusted.example', 'autenticacao'],
     ['/auth/confirm?type=invalid&next=//untrusted.example', 'link'],

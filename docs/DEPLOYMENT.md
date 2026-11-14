@@ -44,10 +44,19 @@ Para testar a pilha local, usar `supabase start`, depois `supabase db reset` **s
 
 No Supabase, abrir **Authentication → URL Configuration**:
 
-- Site URL em produção: `https://SEU-PROJETO.vercel.app`.
-- Redirect URLs exatas para o desenvolvimento: `http://localhost:3000/auth/callback` e `http://localhost:3000/auth/confirm`.
-- Redirect URLs exatas para produção: `https://SEU-PROJETO.vercel.app/auth/callback` e `https://SEU-PROJETO.vercel.app/auth/confirm`.
+- Site URL em produção: `https://violao-basico-intermediario-iota.vercel.app` (domínio público atual; em outra instalação, substituir pela origem definitiva).
+- Redirect URLs exatas para o desenvolvimento: `http://localhost:3000/auth/callback`, `http://localhost:3000/auth/callback?next=%2Fredefinir-senha` e `http://localhost:3000/auth/confirm`.
+- Redirect URLs exatas para produção:
+
+```text
+https://violao-basico-intermediario-iota.vercel.app/auth/callback
+https://violao-basico-intermediario-iota.vercel.app/auth/callback?next=%2Fredefinir-senha
+https://violao-basico-intermediario-iota.vercel.app/auth/confirm
+```
+
 - Se testar uma URL de preview, cadastrá-la explicitamente e usar o mesmo valor em `NEXT_PUBLIC_SITE_URL` daquele ambiente. Evitar curingas amplos na lista de produção.
+
+O Site URL é o destino padrão do Supabase; configurar somente a variável na Vercel não altera esse destino. As URLs solicitadas pelo aplicativo também precisam estar autorizadas na lista de redirects. [Configuração oficial de redirects](https://supabase.com/docs/guides/auth/redirect-urls)
 
 ### Google OAuth para começar sem envio de e-mail
 
@@ -59,7 +68,9 @@ A URI do Google e `/auth/callback` do app são etapas diferentes. O Google retor
 
 Manter confirmação de e-mail habilitada. O SMTP padrão não é serviço de produção: o limite consultado é 2 mensagens/hora e destinatários da equipe do projeto. Antes de liberar cadastro/recuperação a todos os alunos, configurar host, porta, remetente, usuário e senha de SMTP no Supabase, conferir cotas do fornecedor e testar a entrega. Domínio/verificação do remetente podem gerar custo; nenhum serviço foi contratado por este projeto. [Limitações e SMTP](https://supabase.com/docs/guides/auth/auth-smtp)
 
-Em **Email Templates**, usar links compatíveis com o handler de confirmação. Exemplo para confirmação de cadastro:
+O modelo padrão com `{{ .ConfirmationURL }}` funciona com `/auth/callback`, que troca o código PKCE pela sessão. Abra esse link no mesmo navegador usado para iniciar cadastro/recuperação, pois o verificador fica no navegador. Links antigos recebidos na raiz, em `/auth/confirm` ou em `/redefinir-senha` com `code` são encaminhados ao callback no mesmo domínio, sem cache. Isso não corrige um domínio inexistente no e-mail: o Site URL e a lista de redirects precisam ser corrigidos no Supabase.
+
+Para confirmação em outro navegador/dispositivo, em **Email Templates**, usar o handler que valida `token_hash`. Exemplo para confirmação de cadastro:
 
 ```html
 <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&amp;type=signup&amp;next=/painel"
@@ -78,6 +89,16 @@ Para **Reset Password**:
 
 Não desabilitar confirmação para contornar envio. Usar Google OAuth enquanto SMTP não estiver pronto. Testar links expirados, link já utilizado e recuperação em outro navegador.
 
+### E-mail aponta para domínio antigo ou retorna 404
+
+1. Em **Authentication → URL Configuration**, corrigir o **Site URL** e cadastrar as três URLs de produção acima. Não usar o endereço de equipe ou de um deployment temporário.
+2. Em **Email Templates → Confirm signup / Reset Password**, conferir se não existe domínio antigo escrito diretamente no HTML. Usar `{{ .ConfirmationURL }}` ou os modelos `{{ .SiteURL }}` acima. [Variáveis dos templates](https://supabase.com/docs/guides/auth/auth-email-templates)
+3. Na Vercel, **Settings → Environment Variables → Production**, conferir `NEXT_PUBLIC_SITE_URL=https://violao-basico-intermediario-iota.vercel.app`. Se mudar a variável, fazer **Redeploy**: a alteração só vale para novos deployments. Manter `http://localhost:3000` no `.env.local` de desenvolvimento. [Variáveis da Vercel](https://vercel.com/docs/environment-variables)
+4. Publicar a correção de `/auth/callback` pela `main`. Gerar um novo e-mail após salvar as configurações; mensagens antigas não são reescritas. Se o e-mail já foi confirmado antes de ocorrer o erro de redirecionamento, tentar entrar normalmente com e-mail e senha.
+5. Confirmar entrada no painel e testar recuperação de senha no mesmo navegador. Não copiar códigos reais para logs, testes ou Git.
+
+Em 14/11/2026, uma consulta pública com token deliberadamente inválido confirmou que o Supabase ainda retornava o endereço antigo, enquanto o JavaScript publicado já continha a origem `…-iota.vercel.app`. O ajuste administrativo de Site URL/allowlist precisa ser salvo no painel; não é aplicado por migrations nem por commit na `main`.
+
 ## 4. Criar o primeiro professor
 
 A conta se cadastra normalmente e recebe papel `student` pelo banco. Depois da confirmação do e-mail/identidade, o administrador executa `supabase/promote-teacher.sql` no SQL Editor, substituindo o e-mail de exemplo pelo e-mail correto. Conferir a linha resultante. Não editar `user_metadata`, não aceitar papel enviado pelo cliente e não expor uma chave `service_role` para essa tarefa.
@@ -86,7 +107,7 @@ O professor entra novamente, abre sua área, cria uma turma e compartilha o cód
 
 ## 5. GitHub e publicação automática na main
 
-O remoto é `https://github.com/marcosrioj/violao-basico-intermediario`. O estado atual é **repositório público**, com código e materiais editoriais versionados acessíveis, e branch **main**. Para cumprir a preferência por repositório privado, alterar a visibilidade em **Settings → General → Danger Zone → Change repository visibility**. A permissão disponível nesta entrega permite commits, mas não a alteração dessa configuração. Ao privatizar, conferir a franquia de Actions e manter o orçamento configurado para interromper uso pago. Credenciais e registros reais de alunos/professores continuam fora do Git, no Supabase. A proteção de uma rota de download no aplicativo não torna confidencial um PDF disponível no repositório público.
+O remoto é `https://github.com/marcosrioj/violao-basico-intermediario`. A decisão atual do proprietário é manter o **repositório público**, com código e materiais editoriais versionados acessíveis, e branch **main**. Credenciais e registros reais de alunos/professores continuam fora do Git, no Supabase. A proteção de uma rota de download no aplicativo não torna confidencial um PDF disponível no repositório público.
 
 ```bash
 npm run check
@@ -152,14 +173,14 @@ Os testes automatizados locais não substituem essa validação da configuraçã
 
 ## 10. O que depende das contas
 
-| Configuração externa                | Resultado esperado                                                                   |
-| ----------------------------------- | ------------------------------------------------------------------------------------ |
-| GitHub: acesso, push e visibilidade | Código entregue na `main`; visibilidade atual pública; ajuste para privado pendente no painel |
-| Supabase Free                       | Projeto criado, migrations aplicadas, URL e chave publicável disponíveis             |
-| Google e/ou SMTP                    | Provedor habilitado, callbacks e entrega real validados                              |
-| Promoção administrativa             | Conta correta com papel professor                                                    |
-| Vercel Hobby                        | Repositório conectado, variáveis, `main`, Build Command e domínio configurados       |
-| Teste em produção                   | Duas contas isoladas, um professor e progresso persistente                           |
+| Configuração externa                | Resultado esperado                                                              |
+| ----------------------------------- | ------------------------------------------------------------------------------- |
+| GitHub: acesso, push e visibilidade | Código entregue na `main`; repositório público conforme decisão do proprietário |
+| Supabase Free                       | Projeto criado, migrations aplicadas, URL e chave publicável disponíveis        |
+| Google e/ou SMTP                    | Provedor habilitado, callbacks e entrega real validados                         |
+| Promoção administrativa             | Conta correta com papel professor                                               |
+| Vercel Hobby                        | Repositório conectado, variáveis, `main`, Build Command e domínio configurados  |
+| Teste em produção                   | Duas contas isoladas, um professor e progresso persistente                      |
 
 A presença destes arquivos configura o projeto para a publicação; somente o estado retornado pelos serviços confirma que cada etapa externa foi executada.
 

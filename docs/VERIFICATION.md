@@ -2,18 +2,26 @@
 
 Registro de **14 de novembro de 2026**. O projeto está na branch `main`. Este documento distingue o código entregue, os testes executados e as configurações que dependem de contas externas.
 
+## Correção dos links de confirmação em produção
+
+Após incorporar a versão remota `cda8fd9`, a correção de redirects passou localmente em `npm run check`: ESLint, TypeScript, **46 testes** e build Next.js. O smoke HTTP contra esse build passou em **32 verificações**, incluindo os três caminhos antigos de confirmação/recuperação. Os códigos usados nos testes são fictícios; os redirects foram inspecionados sem seguir o callback nem consumir códigos de usuários.
+
+Cadastro e recuperação agora usam `/auth/callback`; links personalizados por `token_hash` continuam compatíveis. O relay de links antigos preserva a origem do navegador e remove parâmetros alheios ao fluxo. O teste HTTP também detectou e corrigiu o uso do hostname interno do servidor em `/auth/confirm`, com um `Location` relativo.
+
+A inspeção pública confirmou que `https://violao-basico-intermediario-iota.vercel.app` responde e contém a origem correta no JavaScript. Um token deliberadamente inválido confirmou que o retorno padrão do Supabase ainda apontava ao domínio antigo no momento do diagnóstico. A correção administrativa de Site URL/Redirect URLs está descrita em [DEPLOYMENT.md](DEPLOYMENT.md); ela não é aplicada pelo código. O fluxo completo com e-mail real e sessão autenticada permanece pendente de validação após salvar essa configuração.
+
 ## Versão consolidada aprovada
 
 O commit `c8402aa8c206d3e15122a03ea73e38a88f4f6304` passou na [execução 43609584947 do GitHub Actions](https://github.com/marcosrioj/violao-basico-intermediario/actions/runs/43609584947), com Node.js 22.23.4:
 
-| Verificação | Resultado confirmado |
-| --- | --- |
-| Instalação pelo lockfile | `npm ci` concluído; audit informou zero vulnerabilidades naquele momento |
-| ESLint | Aprovado |
-| Geração de tipos e TypeScript | Aprovados |
-| Testes automatizados | **42 passaram; zero falhas, cancelamentos ou testes ignorados** |
-| Build Next.js de produção | Aprovado |
-| Smoke HTTP contra o build | **29 verificações passaram** |
+| Verificação                   | Resultado confirmado                                                     |
+| ----------------------------- | ------------------------------------------------------------------------ |
+| Instalação pelo lockfile      | `npm ci` concluído; audit informou zero vulnerabilidades naquele momento |
+| ESLint                        | Aprovado                                                                 |
+| Geração de tipos e TypeScript | Aprovados                                                                |
+| Testes automatizados          | **42 passaram; zero falhas, cancelamentos ou testes ignorados**          |
+| Build Next.js de produção     | Aprovado                                                                 |
+| Smoke HTTP contra o build     | **29 verificações passaram**                                             |
 
 A execução inclui os arquivos recuperados e os oito laboratórios teóricos. Os testes cobrem navegação e conteúdo, regras musicais, autenticação, configuração pública e isolamento em banco. O smoke confirma o comportamento sem sessão e sem Supabase configurado; não equivale a login real com contas hospedadas. Alterações posteriores exclusivamente neste relatório não alteram o código testado; cada novo commit continua acionando o mesmo workflow.
 
@@ -74,10 +82,10 @@ npm run test:http:ci
 2. Habilitar Google OAuth e configurar Site URL e redirects. Para cadastro/recuperação por e-mail fora da equipe, configurar SMTP.
 3. Cadastrar o professor e promover o papel pelo script administrativo.
 4. Conectar o repositório à hospedagem elegível, cadastrar as três variáveis e definir `main` como branch de produção.
-5. Ajustar a visibilidade do GitHub para privado, conforme a preferência expressa, usando o painel da conta. O estado observado nesta entrega é público.
+5. Manter o GitHub público, conforme a decisão atual do proprietário; credenciais e registros pessoais permanecem fora do repositório.
 6. Executar a matriz real com duas contas de aluno e duas de professor após a configuração.
 
-Não foram criados projetos remotos de Supabase/Vercel/Netlify, contratados serviços, instaladas credenciais reais ou efetuada publicação da aplicação. Código de autenticação implementado e testes locais não equivalem a um serviço de login já ativado.
+Essas pendências registram o estado da entrega inicial. Posteriormente, foi observada uma publicação em `https://violao-basico-intermediario-iota.vercel.app` com Supabase configurado. A verificação pública não comprova a aplicação integral das migrations, as configurações administrativas ou o isolamento de contas reais. Não foram contratados serviços pagos nesta sessão.
 
 Após conectar as contas, verificar: login, renovação, recuperação e logout; aluno A conclui aula e retoma após novo login; aluno B não lê seus registros; professor correto vê progresso/diário e envia feedback; outro professor recebe negação; matrícula e saída atualizam acesso; agenda respeita fuso; aluno não baixa manual pela rota do app; vídeos carregam somente após clique; áudio para ao navegar; referências de teoria retornam ao trecho exato.
 

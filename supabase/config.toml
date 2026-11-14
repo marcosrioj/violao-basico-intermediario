@@ -14,7 +14,7 @@ major_version = 17
 [auth]
 enabled = true
 site_url = "http://localhost:3000"
-additional_redirect_urls = ["http://localhost:3000/auth/callback", "http://localhost:3000/auth/confirm", "http://localhost:3000/redefinir-senha"]
+additional_redirect_urls = ["http://localhost:3000/auth/callback", "http://localhost:3000/auth/callback?next=%2Fredefinir-senha", "http://localhost:3000/auth/confirm", "http://localhost:3000/redefinir-senha"]
 enable_signup = true
 minimum_password_length = 10
 

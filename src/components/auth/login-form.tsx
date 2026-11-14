@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { createClient } from '@/lib/supabase/client';
 import { siteUrl } from '@/lib/env';
 import { safeRedirect } from '@/lib/validation';
+import { authCallbackUrl } from '@/lib/auth-redirects';
 const emailSchema = z.string().trim().email('Informe um e-mail válido.').max(254);
 const passwordSchema = z
   .string()
@@ -40,7 +41,7 @@ export function LoginForm({
     try {
       const { error: oauthError } = await createClient().auth.signInWithOAuth({
         provider: 'google',
-        options: { redirectTo: `${siteUrl()}/auth/callback` },
+        options: { redirectTo: authCallbackUrl(siteUrl()) },
       });
       if (oauthError) throw oauthError;
     } catch {
@@ -82,7 +83,7 @@ export function LoginForm({
       const supabase = createClient();
       if (mode === 'recovery') {
         const { error: resetError } = await supabase.auth.resetPasswordForEmail(email.data, {
-          redirectTo: `${siteUrl()}/redefinir-senha`,
+          redirectTo: authCallbackUrl(siteUrl(), '/redefinir-senha'),
         });
         if (resetError) throw resetError;
         setMessage(
@@ -94,7 +95,7 @@ export function LoginForm({
           password: password.data,
           options: {
             data: { display_name: displayName.data },
-            emailRedirectTo: `${siteUrl()}/auth/confirm`,
+            emailRedirectTo: authCallbackUrl(siteUrl()),
           },
         });
         if (signupError) throw signupError;

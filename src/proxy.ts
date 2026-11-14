@@ -1,7 +1,18 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 import { isSupabaseConfigured, supabaseEnvironment } from '@/lib/env';
+import { legacyPkceCallbackUrl } from '@/lib/auth-redirects';
 export async function proxy(request: NextRequest) {
+  if (
+    request.method === 'GET' &&
+    (request.nextUrl.pathname === '/' || request.nextUrl.pathname === '/redefinir-senha')
+  ) {
+    const callback = legacyPkceCallbackUrl(request.nextUrl);
+    if (callback)
+      return NextResponse.redirect(callback, {
+        headers: { 'Cache-Control': 'private, no-store' },
+      });
+  }
   if (!isSupabaseConfigured()) return NextResponse.next({ request });
   let response = NextResponse.next({ request });
   const { url, key } = supabaseEnvironment();
@@ -25,6 +36,7 @@ export async function proxy(request: NextRequest) {
 }
 export const config = {
   matcher: [
+    { source: '/', has: [{ type: 'query', key: 'code' }] },
     '/painel/:path*',
     '/professor/:path*',
     '/aulas/:path*',

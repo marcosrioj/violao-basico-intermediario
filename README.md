@@ -2,7 +2,7 @@
 
 **Do primeiro acorde à liberdade de adorar.** Aplicação web de ensino de violão gospel, do básico ao intermediário, baseada nos materiais v5 do curso: **13 módulos, 39 aulas e um encontro semanal de 60 minutos**.
 
-O repositório está **público** no estado atual. A preferência por repositório privado requer ajustar sua visibilidade nas configurações do GitHub. O código e os materiais editoriais estão disponíveis no GitHub; contas, progresso e anotações pessoais ficam no Supabase, protegidos por autenticação e políticas de acesso.
+O repositório é **público**, conforme a decisão atual do proprietário. O código e os materiais editoriais estão disponíveis no GitHub; contas, progresso e anotações pessoais ficam no Supabase, protegidos por autenticação e políticas de acesso.
 
 ![Tela inicial do Violão Vivo](docs/assets/violao-vivo-home.jpg)
 
