@@ -90,3 +90,32 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+.chord-library .filter-bar {
+  margin-top: var(--space-5);
+}
+.chord-library-groups {
+  display: grid;
+  gap: var(--space-4);
+  margin-block: var(--space-5);
+}
+.chord-library-groups summary {
+  overflow-wrap: anywhere;
+}
+.chord-library-groups summary .badge {
+  margin-inline-start: var(--space-2);
+}
+.chord-library-groups .chord-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  margin-top: var(--space-4);
+  align-items: start;
+}
+.chord-library-groups .chord-title {
+  min-height: var(--touch-target);
+  flex-wrap: wrap;
+  overflow-wrap: anywhere;
+}
+
+.chord-library > :is(.section-title, .filter-bar, .control-row, .chord-library-groups) {
+  margin-block: 0;
+}

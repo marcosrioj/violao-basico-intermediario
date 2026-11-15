@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { Volume2 } from 'lucide-react';
 import { chords } from '@/content/chords';
 import { soundChord } from './audio';
-export function ChordDiagram({ name }: { name: string }) {
+export function ChordDiagram({ name, onPlay }: { name: string; onPlay?: () => void }) {
   const chord = chords[name];
   const voice = useRef<(() => void) | null>(null);
   useEffect(() => {
@@ -29,7 +29,8 @@ export function ChordDiagram({ name }: { name: string }) {
         type="button"
         onClick={() => {
           voice.current?.();
-          voice.current = soundChord(chord.frets);
+          if (onPlay) onPlay();
+          else voice.current = soundChord(chord.frets);
         }}
         className="chord-title"
         aria-label={`Ouvir acorde ${name}`}

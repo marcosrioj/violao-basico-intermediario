@@ -4,6 +4,12 @@ Registro de **14 de novembro de 2026**. O projeto está na branch `main`. Este d
 
 Os registros abaixo são históricos de versões e ambientes específicos. URLs e execuções do GitHub citadas como evidência pertencem à instância/repositório do mantenedor; não são valores para copiar em sua instalação. Para instalar do zero, siga o [README](../README.md) e [DEPLOYMENT.md](DEPLOYMENT.md). Para usar a instância compartilhada, veja [TEACHERS.md](TEACHERS.md).
 
+## Biblioteca completa de acordes no laboratório
+
+Lint, tipos, **99 testes** e build passaram. Os testes novos garantem cobertura exata das 52 posições sem duplicações, nota base válida, distinção de sustenidos/baixos e busca com acentos e posições. A verificação musical existente continua conferindo digitações e alturas do áudio.
+
+No Chrome com backend sintético, foram conferidos os 52 diagramas, cinco grupos, filtros, busca, ausência de resultados, limpeza, reprodução por teclado, parada e cancelamento ao sair da oficina. Layout e alvos foram verificados em 320, 375, 768, 844 e 1440 px, além de texto a 200%, sem transbordamento ou exceções de página. Capturas de celular e desktop foram inspecionadas; não houve validação em aparelho físico/leitor de tela nem publicação.
+
 ## Cards recolhíveis na aula, trilha e repertório
 
 Passaram lint, tipos, **97 testes** e build. O componente compartilhado começa fechado: somente título nos cards da aula; número, título e objetivo nos módulos; ícone, música e intérprete no repertório. A abertura mantém o conteúdo e os controles existentes. O contrato está em [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md#cards-recolhíveis).

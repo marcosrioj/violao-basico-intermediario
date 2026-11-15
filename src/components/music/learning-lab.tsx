@@ -8,7 +8,7 @@ import { RhythmPractice } from './rhythm-practice';
 import { Fretboard } from './fretboard';
 import { FretboardRecall } from './fretboard-recall';
 import { Metronome } from './metronome';
-import { ChordDiagram } from './chord-diagram';
+import { ChordLibrary } from './chord-library';
 import { Hint } from '@/components/ui/hint';
 import './learning-lab.css';
 
@@ -110,23 +110,7 @@ export function LearningLab() {
               <Metronome />
               <TuningReference />
             </div>
-            <section className="card lab-workshop section">
-              <div className="section-title">
-                <h2>Ouça os primeiros acordes</h2>
-                <Hint label="Ouvir os acordes">
-                  Toque no nome do acorde para ouvir sua sonoridade de referência.
-                </Hint>
-              </div>
-              <div className="chord-grid compact">
-                {['D', 'G', 'Em'].map((name) => (
-                  <ChordDiagram name={name} key={name} />
-                ))}
-              </div>
-              <p>
-                Monte cada forma no violão e toque uma corda de cada vez para conferir a clareza do
-                som.
-              </p>
-            </section>
+            <ChordLibrary />
           </>
         )}
       </div>
