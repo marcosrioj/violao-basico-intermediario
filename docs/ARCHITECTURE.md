@@ -1,6 +1,8 @@
 # Arquitetura do Violão Vivo
 
-O projeto reúne o curso gospel básico ao intermediário e o acompanhamento semanal em um monólito modular. O conteúdo editorial é versionado; o progresso e as relações entre pessoas são persistidos no Supabase. Não há servidor continuamente ativo nem dependência de disco local para guardar dados de usuários.
+Para instalar e operar uma cópia independente, use [DEPLOYMENT.md](DEPLOYMENT.md). Para utilizar a instância compartilhada como professor, veja [TEACHERS.md](TEACHERS.md). Cada instância tem seu próprio Supabase, contas e origem pública.
+
+O projeto reúne o curso gospel básico ao intermediário e o acompanhamento semanal em um monólito modular. O conteúdo editorial é versionado; o progresso e as relações entre pessoas são persistidos no Supabase. O backend pode executar em funções da hospedagem ou em um servidor Next.js contínuo. Não depende de processos de fundo nem de disco local para guardar dados de usuários.
 
 ```mermaid
 flowchart LR
@@ -10,7 +12,7 @@ flowchart LR
   U --> C[Comandos e consultas]
   C --> P[PostgreSQL com RLS e constraints]
   E[Conteúdo v5 versionado] --> N
-  G[GitHub main] --> V[Vercel: npm run check]
+  G[GitHub main] --> V[Build na hospedagem: npm run check]
   V --> N
 ```
 

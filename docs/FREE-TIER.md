@@ -12,6 +12,12 @@ Consulta às fontes oficiais em **14 de novembro de 2026**, para uso **pessoal e
 | Supabase — envio de e-mail                             | SMTP padrão de testes    | Apenas destinatários autorizados da equipe do projeto; 2 mensagens/hora, sem SLA                                                                                                                                          | Não atende cadastro/recuperação de todos os alunos. Usar OAuth Google para começar; e-mail requer SMTP próprio.                                                                            | [SMTP](https://supabase.com/docs/guides/auth/auth-smtp)                                                                                                                                                                          |
 | Netlify — alternativa frontend/API para uso comercial  | Free, modelo de créditos | 300 créditos/mês compartilhados: deploy produção 15; tráfego 20/GB; compute 10/GB-h; 2 por 10 mil requisições; 1 build concorrente                                                                                        | Ao esgotar, projetos da conta podem pausar até o próximo ciclo. Free tem teto rígido sem excedente cobrado.                                                                                | [Preços](https://www.netlify.com/pricing/), [uso comercial permitido](https://www.netlify.com/blog/introducing-netlify-free-plan/), [Next.js](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/) |
 
+## Usar sem administrar hospedagem
+
+Quem quer ministrar aulas pode criar uma turma gratuitamente na instância compartilhada, após cadastrar uma conta comum e solicitar acesso conforme o [guia do professor](TEACHERS.md). Não precisa configurar GitHub, Vercel ou Supabase para usar essa opção.
+
+Quem instala uma cópia administra suas próprias contas e cotas; siga [DEPLOYMENT.md](DEPLOYMENT.md). A gratuidade da turma na instância compartilhada não paga infraestrutura, domínio ou SMTP de uma instalação própria.
+
 ## Regras operacionais
 
 - Usar apenas os planos acima; não ativar testes Pro, domínios pagos, recursos de IA cobrados, compute extra ou recarga automática.

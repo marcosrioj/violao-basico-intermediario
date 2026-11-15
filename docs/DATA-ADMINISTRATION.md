@@ -1,5 +1,7 @@
 # Administração de dados pessoais
 
+Este guia é executado pelo administrador do Supabase **da instância em uso**. Para criar sua própria instalação, consulte [DEPLOYMENT.md](DEPLOYMENT.md); para pedir acesso de professor na instância compartilhada, consulte [TEACHERS.md](TEACHERS.md). Contas e turmas de instalações distintas são independentes.
+
 Procedimento do responsável pelo curso para as solicitações descritas na página de privacidade. A aplicação não oferece exclusão administrativa por endpoint público e não precisa de `service_role` no frontend ou nas variáveis normais da hospedagem.
 
 ## O que é público e o que é pessoal

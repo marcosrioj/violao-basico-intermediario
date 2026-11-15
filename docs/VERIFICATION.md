@@ -2,6 +2,14 @@
 
 Registro de **14 de novembro de 2026**. O projeto está na branch `main`. Este documento distingue o código entregue, os testes executados e as configurações que dependem de contas externas.
 
+Os registros abaixo são históricos de versões e ambientes específicos. URLs e execuções do GitHub citadas como evidência pertencem à instância/repositório do mantenedor; não são valores para copiar em sua instalação. Para instalar do zero, siga o [README](../README.md) e [DEPLOYMENT.md](DEPLOYMENT.md). Para usar a instância compartilhada, veja [TEACHERS.md](TEACHERS.md).
+
+## Documentação para instalações independentes
+
+README e guia de instalação foram revisados para usar o Supabase e a origem de cada administrador. O endereço da instância compartilhada aparece como opção de uso gratuito e nos registros históricos, não nos exemplos de configuração. O guia do professor inclui cadastro prévio, solicitação por e-mail com identificação da conta e liberação administrativa.
+
+Foram conferidos os comandos do projeto, nomes das três variáveis, ordem das duas migrations, SQL de promoção, caminhos de arquivos, links e âncoras Markdown. Prettier e `git diff --check` passaram. A revisão cobre Supabase hospedado/local, Vercel, Netlify e servidor Node; fontes oficiais estão no guia. Não foram criadas contas, enviado e-mail, executadas migrations remotas ou publicadas novas instâncias para esta alteração documental.
+
 ## Oficinas de aprendizagem musical
 
 A revisão passou em lint, tipos, **97 testes** e build. Oito testes novos cobrem afinação/posições e semitons, rodadas auditivas balanceadas, resumo sem inflação por revisão e análise de pulsos: início deslocado, velocidade, regularidade, pausas, toques duplicados e dados inválidos.
