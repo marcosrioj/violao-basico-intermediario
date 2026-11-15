@@ -4,6 +4,16 @@ Registro de **14 de novembro de 2026**. O projeto está na branch `main`. Este d
 
 Os registros abaixo são históricos de versões e ambientes específicos. URLs e execuções do GitHub citadas como evidência pertencem à instância/repositório do mantenedor; não são valores para copiar em sua instalação. Para instalar do zero, siga o [README](../README.md) e [DEPLOYMENT.md](DEPLOYMENT.md). Para usar a instância compartilhada, veja [TEACHERS.md](TEACHERS.md).
 
+## Cards recolhíveis na aula, trilha e repertório
+
+Passaram lint, tipos, **97 testes** e build. O componente compartilhado começa fechado: somente título nos cards da aula; número, título e objetivo nos módulos; ícone, música e intérprete no repertório. A abertura mantém o conteúdo e os controles existentes. O contrato está em [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md#cards-recolhíveis).
+
+No Chrome com backend sintético local, passaram **45 verificações**: páginas em 320, 375, 768, 844 × 390 e 1440 px, cards fechados/abertos, Enter/Espaço/Tab, foco visível, texto a 200%, movimento reduzido, filtro da trilha, plano do professor e componente nativo isolado sem JavaScript. A árvore de acessibilidade do Chrome expõe nome e estado de expansão. Atalhos da aula e uma referência interna da cifra abrem seus ancestrais. Recolher/reabrir preservou anotações, checklist, rascunho, cronômetro, BPM, metrônomo e reprodução/pausa; a aula seguinte começou fechada. Não houve erros de página/console nem gravações nas APIs durante esses testes.
+
+Uma rodada adicional passou em **18 verificações**: todos os cards abertos nas cinco larguras, card vizinho permanecendo compacto, IDs sem duplicação e apresentação do professor com avanço, preservação da etapa ao recolher e retorno de foco ao encerrar. A área interna da cifra continua sendo a referência das container queries, e as dicas acompanham os cabeçalhos mesmo na coluna lateral. Após esses ajustes de CSS, as duas rodadas e o build foram executados novamente com sucesso.
+
+As capturas de aula, trilha e repertório foram inspecionadas em celular e desktop. Não houve teste em aparelho físico ou leitor de tela, nem publicação nesta revisão.
+
 ## Documentação para instalações independentes
 
 README e guia de instalação foram revisados para usar o Supabase e a origem de cada administrador. O endereço da instância compartilhada aparece como opção de uso gratuito e nos registros históricos, não nos exemplos de configuração. O guia do professor inclui cadastro prévio, solicitação por e-mail com identificação da conta e liberação administrativa.

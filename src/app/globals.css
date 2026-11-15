@@ -1769,7 +1769,7 @@ details summary {
   font-weight: 600;
   font-size: var(--font-size-sm);
 }
-details[open] summary {
+details[open] > summary {
   margin-bottom: 17px;
 }
 .source-text {

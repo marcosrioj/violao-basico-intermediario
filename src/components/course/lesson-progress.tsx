@@ -1,4 +1,5 @@
 'use client';
+import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import type { Lesson } from '@/content/types';
@@ -64,10 +65,12 @@ export function LessonProgress({
     }
   }
   return (
-    <section className="card" id="meu-progresso">
-      <p className="eyebrow">SEU PRÓXIMO PASSO</p>
+    <CollapsibleCard
+      id="meu-progresso"
+      title={status === 'completed' ? 'Aula concluída' : 'Como foi sua prática?'}
+    >
       <div className="section-title">
-        <h2>{status === 'completed' ? 'Aula concluída' : 'Como foi sua prática?'}</h2>
+        <p className="eyebrow">SEU PRÓXIMO PASSO</p>
         <Hint label="Registrar o progresso">
           Marque os objetivos que conseguiu realizar para concluir a aula. Sua conclusão registra o
           estudo; a validação da execução vem do professor. Ele pode acompanhar estes registros.
@@ -146,7 +149,7 @@ export function LessonProgress({
           </button>
         </div>
       )}
-    </section>
+    </CollapsibleCard>
   );
 }
 export function PracticeLog({
@@ -210,10 +213,9 @@ export function PracticeLog({
     }
   }
   return (
-    <section className="card">
-      <p className="eyebrow">UM MOMENTO PARA TOCAR</p>
+    <CollapsibleCard title="Diário de prática">
       <div className="section-title">
-        <h2>Diário de prática</h2>
+        <p className="eyebrow">UM MOMENTO PARA TOCAR</p>
         <Hint label="Usar o diário e o cronômetro">
           Inicie o cronômetro e pause antes de registrar. Você também pode informar os minutos
           manualmente. No diário, arredonde o BPM para o inteiro mais próximo: 37,3 vira 37. Isso
@@ -282,6 +284,6 @@ export function PracticeLog({
       </button>
       {demo && <p className="hint">Abra a aula na trilha para guardar seu diário.</p>}
       <p className="hint">Tempo de prática é um registro, não uma medida de domínio.</p>
-    </section>
+    </CollapsibleCard>
   );
 }

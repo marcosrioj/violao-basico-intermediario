@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import '@/components/music/chart-player.css';
+import '@/components/ui/collapsible-card.css';
 export const metadata: Metadata = {
   title: { default: 'Violão Vivo — Música com propósito', template: '%s | Violão Vivo' },
   description:

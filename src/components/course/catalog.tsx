@@ -1,4 +1,5 @@
 'use client';
+import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -55,14 +56,14 @@ export function Catalog({ modules, lessons }: { modules: CourseModule[]; lessons
       {modules
         .filter((m) => filtered.some((l) => l.module === m.n))
         .map((m) => (
-          <section className="card course-module" key={m.n} id={`modulo-${m.n}`}>
-            <div className="module-header">
-              <span className="module-number">{String(m.n).padStart(2, '0')}</span>
-              <div>
-                <h2>{m.title}</h2>
-                <p>{m.goal}</p>
-              </div>
-            </div>
+          <CollapsibleCard
+            className="course-module"
+            key={m.n}
+            id={`modulo-${m.n}`}
+            title={m.title}
+            description={m.goal}
+            leading={<span className="module-number">{String(m.n).padStart(2, '0')}</span>}
+          >
             {filtered
               .filter((l) => l.module === m.n)
               .map((l) => {
@@ -83,7 +84,7 @@ export function Catalog({ modules, lessons }: { modules: CourseModule[]; lessons
                   </Link>
                 );
               })}
-          </section>
+          </CollapsibleCard>
         ))}
       {filtered.length === 0 && (
         <div className="empty">Nenhuma aula com esse filtro. Experimente outro termo.</div>

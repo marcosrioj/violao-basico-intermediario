@@ -1,14 +1,17 @@
 .chart-player {
-  container: chord-chart / inline-size;
   min-width: 0;
 }
 
-.chart-player > .section-title {
+.chart-player > .collapsible-card-body {
+  container: chord-chart / inline-size;
+}
+
+.chart-player > .collapsible-card-body > .section-title {
   flex-wrap: wrap;
   align-items: start;
 }
 
-.chart-player > .section-title > div {
+.chart-player > .collapsible-card-body > .section-title > div {
   flex: 1 1 15rem;
   min-width: 0;
 }

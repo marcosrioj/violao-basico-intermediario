@@ -1,3 +1,4 @@
+import { CollapsibleCard } from '@/components/ui/collapsible-card';
 export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import { Music2, ExternalLink } from 'lucide-react';
@@ -16,16 +17,17 @@ export default async function Repertoire() {
       />
       <div className="theory-grid">
         {Object.entries(songs).map(([id, s]) => (
-          <article className="card song-card" key={id}>
-            <div className="song-title">
+          <CollapsibleCard
+            className="song-card"
+            key={id}
+            title={s.title}
+            description={s.artist}
+            leading={
               <span className="song-mark">
-                <Music2 />
+                <Music2 aria-hidden="true" />
               </span>
-              <div>
-                <h2>{s.title}</h2>
-                <small className="muted">{s.artist}</small>
-              </div>
-            </div>
+            }
+          >
             <p>{s.tempo?.recording ?? s.recording ?? s.identity_note}</p>
             {s.tempo && <TempoReference tempo={s.tempo} />}
             <div className="control-row">
@@ -56,7 +58,7 @@ export default async function Repertoire() {
                   </Link>
                 ))}
             </div>
-          </article>
+          </CollapsibleCard>
         ))}
       </div>
     </Shell>

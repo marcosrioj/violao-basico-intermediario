@@ -1,4 +1,5 @@
 'use client';
+import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { Play, Pause, Square, Repeat2, Metronome, Minus, Plus } from 'lucide-react';
 import type { ChartBar, SongVersion } from '@/content/types';
@@ -155,24 +156,21 @@ export function ChartPlayer({
     return () => clearInterval(timer);
   }, [playing]);
   return (
-    <section className="card chart-player">
+    <CollapsibleCard className="chart-player" id="tocar" title="Cifra de acompanhamento">
       <div className="section-title">
-        <div>
+        <div className="label-with-hint">
           <p className="eyebrow">TOQUE JUNTO</p>
-          <div className="label-with-hint">
-            <h2>Cifra de acompanhamento</h2>
-            <Hint label="Controles da cifra">
-              <p>
-                Pausar guarda o ponto dentro do compasso; Continuar retoma dali. Parar volta ao
-                início.
-              </p>
-              <p>
-                Metrônomo e repetição podem mudar enquanto os acordes tocam. Ajustar o andamento ou
-                o seletor de trecho volta ao início.
-              </p>
-              <p>O áudio é sintético. Toque em um compasso para ouvir seu primeiro acorde.</p>
-            </Hint>
-          </div>
+          <Hint label="Controles da cifra">
+            <p>
+              Pausar guarda o ponto dentro do compasso; Continuar retoma dali. Parar volta ao
+              início.
+            </p>
+            <p>
+              Metrônomo e repetição podem mudar enquanto os acordes tocam. Ajustar o andamento ou o
+              seletor de trecho volta ao início.
+            </p>
+            <p>O áudio é sintético. Toque em um compasso para ouvir seu primeiro acorde.</p>
+          </Hint>
         </div>
         <span className="badge">
           {chart.key} · {chart.meter}
@@ -403,6 +401,6 @@ export function ChartPlayer({
           ))}
         </div>
       </details>
-    </section>
+    </CollapsibleCard>
   );
 }

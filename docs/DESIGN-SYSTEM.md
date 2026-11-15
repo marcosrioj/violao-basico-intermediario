@@ -40,6 +40,16 @@ Os aliases anteriores (`--green`, `--deep`, `--muted`, `--line` etc.) são prese
 
 As ferramentas musicais continuam usando Web Audio e os componentes já existentes. O estilo preserva conteúdo, eventos e regras de progressão. Notas características têm borda de acento; notas selecionadas, fundo verde; respostas apresentam texto e estado visual.
 
+### Cards recolhíveis
+
+`CollapsibleCard` usa `details`/`summary` nativos, começa fechado e mantém o conteúdo montado. Nas aulas, o resumo mostra somente o título; na trilha, número, título e objetivo do módulo; no repertório, ícone, música e intérprete. Cada card abre independentemente pelo cabeçalho inteiro, por clique, Enter ou Espaço. A seta acompanha o estado nativo de expansão, sem substituir seu nome acessível.
+
+O componente reutiliza os tokens de card, tipografia, cor, foco e movimento. O foco fica dentro da borda para não ser cortado; títulos quebram naturalmente; os alvos têm pelo menos 44 px e a preferência por movimento reduzido desativa as transições. O CSS é importado uma única vez no layout principal. Não coloque links, botões, campos ou dicas dentro do resumo: essas ações pertencem ao corpo expandido.
+
+Recolher não apaga rascunhos, marcações ou configurações, nem pausa automaticamente o áudio ou o cronômetro. Seus controles continuam disponíveis ao reabrir. A navegação para outra aula inicia seus cards fechados. `HashReveal` abre os ancestrais de um destino, inclusive a cifra e suas referências internas, antes de rolar e focar; mantenha os IDs dos destinos nos elementos recolhíveis correspondentes.
+
+Nesta revisão, `ui-ux-pro-max` orientou teclado, foco e responsividade; `design`, `brand`, `design-system` e `ui-styling` orientaram composição, consistência e reutilização. As skills `banner-design` e `slides` foram conferidas quanto ao escopo: o cabeçalho editorial mantém sua função e a apresentação continua dentro da condução do professor, sem novos banners ou slides. A busca local inicial sobre disclosure retornou um resultado de tipografia fora do foco; a busca refinada sobre navegação por teclado retornou diretrizes aplicáveis. As evidências estão em [VERIFICATION.md](VERIFICATION.md#cards-recolhíveis-na-aula-trilha-e-repertório).
+
 ### Ajuda contextual e controles
 
 `Hint` (`src/components/ui/hint.tsx`) reúne explicações opcionais da interface em um botão de ajuda com alvo de 44 × 44 px. O contrato é `label`, `children` e `className` opcional. O rótulo identifica o assunto no nome acessível e no título do painel. Toque, clique ou teclado abrem a ajuda; Escape, clique fora e **Fechar ajuda** a dispensam. Escape e o botão de fechar devolvem o foco ao acionador. O painel não é modal e permite seguir para outros controles.

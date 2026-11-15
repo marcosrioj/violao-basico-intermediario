@@ -1,3 +1,4 @@
+import { CollapsibleCard } from '@/components/ui/collapsible-card';
 export const dynamic = 'force-dynamic';
 import { notFound } from 'next/navigation';
 import { requireCourseProfile } from '@/lib/auth';
@@ -21,9 +22,8 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
       teacher={teacher}
       teacherPlan={
         plan ? (
-          <section className="card" id="plano-professor">
+          <CollapsibleCard id="plano-professor" title="Condução do encontro">
             <p className="eyebrow">ÁREA DO PROFESSOR</p>
-            <h2>Condução do encontro</h2>
             <LessonPresentation key={lesson.id} lesson={lesson} />
             <p>
               <RichText text={plan.teacher} lesson={lesson} field="teacher" />
@@ -66,7 +66,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
                 Adapte o apoio à execução observada. Reserve tempo para a forma inteira da música.
               </p>
             </details>
-          </section>
+          </CollapsibleCard>
         ) : undefined
       }
     />

@@ -1,3 +1,4 @@
+import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ExternalLink, BookOpen, Music2 } from 'lucide-react';
 import { Shell } from '@/components/shell';
@@ -65,20 +66,18 @@ export function LessonView({
         <a href="#consulta">Teoria</a>
         {teacher && <a href="#plano-professor">Plano do professor</a>}
       </nav>
-      <div className="lesson-layout">
+      <div className="lesson-layout" key={lesson.id}>
         <div className="lesson-content">
-          <section className="card" id="entender">
+          <CollapsibleCard id="entender" title="A música como ponto de partida">
             <p className="eyebrow">PRIMEIRO, ENTENDA</p>
-            <h2>A música como ponto de partida</h2>
             {rich(lesson.explain, 'explain')}
             <p className="eyebrow section">NOSSO FOCO</p>
             {rich(lesson.focus, 'focus')}
             <p className="eyebrow section">RETOMADA</p>
             {rich(lesson.review, 'review')}
-          </section>
-          <section className="card" id="acordes">
+          </CollapsibleCard>
+          <CollapsibleCard id="acordes" title="Os acordes desta aula">
             <p className="eyebrow">MÃOS NO INSTRUMENTO</p>
-            <h2>Os acordes desta aula</h2>
             <p className="hint">
               × não tocar · ○ corda solta · 1 indicador, 2 médio, 3 anelar, 4 mínimo. Cordas da 6ª à
               1ª, da esquerda para a direita.
@@ -88,13 +87,15 @@ export function LessonView({
                 <ChordDiagram key={name} name={name} />
               ))}
             </div>
-          </section>
-          <section id="tocar">
-            <ChartPlayer key={lesson.id} chart={chart} initialBpm={lesson.bpm} tempo={song.tempo} />
-          </section>
-          <section className="card" id="praticar">
+          </CollapsibleCard>
+          <ChartPlayer
+            key={`chart-${lesson.id}`}
+            chart={chart}
+            initialBpm={lesson.bpm}
+            tempo={song.tempo}
+          />
+          <CollapsibleCard id="praticar" title="Da explicação à prática">
             <p className="eyebrow">UM PASSO DE CADA VEZ</p>
-            <h2>Da explicação à prática</h2>
             <ol className="steps">
               {lesson.steps.map((s, i) => (
                 <li key={i}>{rich(s, `steps-${i}`)}</li>
@@ -119,16 +120,15 @@ export function LessonView({
                 } as Record<string, string>
               )[lesson.pattern] ?? lesson.pattern}
             </p>
-          </section>
+          </CollapsibleCard>
           <Quiz
-            key={lesson.id}
+            key={`quiz-${lesson.id}`}
             question={rich(lesson.question, 'question')}
             answer={rich(lesson.answer, 'answer')}
           />
-          <section className="card" id="consulta">
-            <p className="eyebrow">CONECTE AS IDEIAS</p>
+          <CollapsibleCard id="consulta" title="Consultas teóricas">
             <div className="section-title">
-              <h2>Consultas teóricas</h2>
+              <p className="eyebrow">CONECTE AS IDEIAS</p>
               <Hint label="Navegar pelas consultas">
                 Cada consulta oferece links para retornar ao ponto em que ela aparece nesta aula.
               </Hint>
@@ -138,7 +138,7 @@ export function LessonView({
                 <div key={i}>{rich(ref, `theory_refs-${i}`)}</div>
               ))}
             </div>
-          </section>
+          </CollapsibleCard>
           <details>
             <summary>Material completo da aula · páginas {lesson.studentPages.join(', ')}</summary>
             <div className="source-text">{rich(lesson.studentText, 'studentText')}</div>
@@ -172,9 +172,8 @@ export function LessonView({
           </div>
         </div>
         <aside className="lesson-aside">
-          <section className="card">
+          <CollapsibleCard title={song.title}>
             <p className="eyebrow">NOSSO REPERTÓRIO</p>
-            <h2>{song.title}</h2>
             <p>{song.artist}</p>
             <VideoResource
               key={lesson.id}
@@ -217,7 +216,7 @@ export function LessonView({
                 </span>
               ))}
             </details>
-          </section>
+          </CollapsibleCard>
           <LessonProgress
             key={`progress-${lesson.id}`}
             lesson={lesson}
