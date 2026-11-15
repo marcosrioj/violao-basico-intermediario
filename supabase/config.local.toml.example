@@ -1,3 +1,4 @@
+# Local development only. Copy to supabase/config.toml; never commit that copy.
 project_id = "violao-vivo"
 
 [api]

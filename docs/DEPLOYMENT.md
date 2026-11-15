@@ -79,6 +79,8 @@ Instale a [Supabase CLI](https://supabase.com/docs/guides/local-development/cli/
 Para um projeto novo que **ainda não recebeu SQL pelo painel**:
 
 ```bash
+# Crie a configuração local se ainda não existir.
+cp -n supabase/config.local.toml.example supabase/config.toml
 supabase login
 supabase link --project-ref SEU_PROJECT_REF
 supabase migration list --remote
@@ -91,7 +93,13 @@ Confira o projeto de destino antes de confirmar. A CLI aplica os arquivos na ord
 
 Essa opção permite usar contas, banco e confirmação de e-mail no computador, sem projeto Supabase hospedado ou provedor SMTP externo. Instale a CLI e mantenha o Docker (ou runtime compatível indicado pela CLI) em execução. A primeira inicialização baixa imagens; requer conexão e recursos disponíveis no computador.
 
-O arquivo `supabase/config.toml` **já existe**. Na raiz do repositório:
+O modelo `supabase/config.local.toml.example` preserva a configuração local. Antes de iniciar, copie-o para `supabase/config.toml` somente se esse arquivo ainda não existir:
+
+```bash
+cp -n supabase/config.local.toml.example supabase/config.toml
+```
+
+No Windows, copie pelo explorador de arquivos e renomeie a cópia para `config.toml`, preservando qualquer configuração local existente. O arquivo de uso local é ignorado pelo Git. Na raiz do repositório:
 
 ```bash
 supabase start
@@ -357,3 +365,13 @@ Os testes automatizados locais não substituem essa validação da configuraçã
 A presença destes arquivos configura o projeto para a publicação; somente o estado retornado pelos serviços confirma que cada etapa externa foi executada.
 
 O `vercel.json` também fixa `npm ci` e `npm run check`, conforme a [configuração oficial de projetos Vercel](https://vercel.com/docs/project-configuration). A conexão da conta e a branch de produção continuam sendo configuradas no painel.
+
+## Preservar as URLs de Auth entre publicações
+
+`supabase/config.toml` não é versionado. Suas URLs locais ficam no modelo `supabase/config.local.toml.example`; cada instalação gera a cópia ignorada pelo Git. As migrations permanecem em `supabase/migrations/`. O workflow de verificação rejeita a reintrodução do arquivo local no Git. Não force sua inclusão com `git add -f` nem execute `supabase config push` contra produção quando as configurações forem administradas no painel.
+
+A integração do Supabase procura o nome exato `config.toml`. Segundo a [documentação oficial](https://supabase.com/docs/guides/deployment/branching/github-integration), sem esse arquivo a etapa Configure apenas habilita Database Webhooks, sem aplicar as configurações locais de Auth. As migrations são processadas separadamente. O GitHub Action deste repositório executa verificações, testes e build; ele não altera as URLs de autenticação.
+
+No Supabase hospedado, Site URL e Redirect URLs são administrados em Authentication → URL Configuration. Use o endereço público do app, correspondente a `NEXT_PUBLIC_SITE_URL`, e os callbacks da seção de autenticação deste guia. Se uma publicação anterior já substituiu esses valores, restaure-os uma vez no painel após enviar a correção ao GitHub: retirar o arquivo não recupera configurações anteriores. Verifique também se outra automação executa `config push` ou altera Auth pela Management API.
+
+Para conferir uma publicação, abra os logs da integração Supabase e verifique que a etapa Configure não aplica `site_url` nem `additional_redirect_urls`. O painel e as configurações remotas exigem acesso administrativo; uma verificação local não confirma os valores efetivos no projeto hospedado.

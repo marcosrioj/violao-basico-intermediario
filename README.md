@@ -47,6 +47,14 @@ cp .env.example .env.local
 
 No Windows, você também pode copiar `.env.example` para `.env.local` pelo explorador de arquivos. Para publicar automaticamente na sua conta, faça um **fork** e conecte esse fork à hospedagem.
 
+**Se for usar a Supabase CLI**, para migrations ou para executar o Supabase no computador, crie também a configuração local, preservando qualquer arquivo existente:
+
+```bash
+cp -n supabase/config.local.toml.example supabase/config.toml
+```
+
+No Windows, copie o modelo pelo explorador de arquivos e renomeie a cópia para `config.toml`, sem substituir um arquivo existente. Essa cópia é ignorada pelo Git; as URLs de autenticação do projeto hospedado são configuradas no painel Supabase. Se usar apenas o painel, essa cópia não é necessária. [Detalhes sobre as URLs entre publicações](docs/DEPLOYMENT.md#preservar-as-urls-de-auth-entre-publicações).
+
 ### 2. Preparar o Supabase
 
 Crie seu projeto no [Supabase](https://supabase.com/dashboard). No **SQL Editor**, execute estes arquivos completos, uma vez cada e nesta ordem:
