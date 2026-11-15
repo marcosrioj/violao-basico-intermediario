@@ -17,6 +17,7 @@ import { Hint } from '@/components/ui/hint';
 import { getLessonEnrichment } from '@/content/curriculum';
 import { LessonTechniques, LessonUnderstanding, LessonWeeklyPractice } from './learning-content';
 import { TheoryExercise } from './theory-exercise';
+import { InitialLessonCards } from './initial-lesson-cards';
 export function LessonView({
   lesson,
   demo = false,
@@ -99,7 +100,7 @@ export function LessonView({
           </CollapsibleCard>
           <CollapsibleCard
             id="tecnica"
-            title="2. Preparar as mãos e treinar"
+            title="2. Treinar a técnica"
             description="Acordes e estudos técnicos aplicados ao objetivo desta aula."
           >
             <details id="acordes" className="lesson-chords">
@@ -119,72 +120,73 @@ export function LessonView({
             </details>
             {!demo && <LessonTechniques lessonId={lesson.id} />}
           </CollapsibleCard>
-          <section
+          <CollapsibleCard
             id="aplicar"
-            className="lesson-application stack"
-            aria-labelledby="aplicar-heading"
+            title="3. Aplicar na música"
+            description="Toque com a cifra e leve a técnica ao repertório."
           >
-            <h2 id="aplicar-heading">3. Aplicar na música</h2>
-            <ChartPlayer
-              key={`chart-${lesson.id}`}
-              chart={chart}
-              initialBpm={lesson.bpm}
-              tempo={song.tempo}
-            />
-            <CollapsibleCard
-              id="praticar"
-              title="Prática guiada no repertório"
-              description="Comece por um trecho curto e amplie quando estiver estável."
-            >
-              <p className="eyebrow">UM PASSO DE CADA VEZ</p>
-              <ol className="steps">
-                {lesson.steps.map((s, i) => (
-                  <li key={i}>{rich(s, `steps-${i}`)}</li>
-                ))}
-              </ol>
-              {enrichment && !demo && (
+            <div className="stack">
+              <ChartPlayer
+                key={`chart-${lesson.id}`}
+                chart={chart}
+                initialBpm={lesson.bpm}
+                tempo={song.tempo}
+              />
+              <CollapsibleCard
+                id="praticar"
+                title="Prática guiada no repertório"
+                description="Comece por um trecho curto e amplie quando estiver estável."
+              >
+                <p className="eyebrow">UM PASSO DE CADA VEZ</p>
+                <ol className="steps">
+                  {lesson.steps.map((s, i) => (
+                    <li key={i}>{rich(s, `steps-${i}`)}</li>
+                  ))}
+                </ol>
+                {enrichment && !demo && (
+                  <details className="section">
+                    <summary>Experimentar e escutar com mais atenção</summary>
+                    <ol className="steps">
+                      {enrichment.guidedPractice.map((step, i) => (
+                        <li key={i}>{step}</li>
+                      ))}
+                    </ol>
+                  </details>
+                )}
                 <details className="section">
-                  <summary>Experimentar e escutar com mais atenção</summary>
+                  <summary>Modelo para uma sessão de prática</summary>
+                  <p className="hint">
+                    {enrichment && !demo
+                      ? 'Use este modelo nos momentos de estudo da semana, ajustando o foco ao roteiro disponível em Revisar.'
+                      : 'Use este modelo nos momentos de estudo da semana e ajuste o foco com seu professor.'}{' '}
+                    Os tempos são sugestões flexíveis.
+                  </p>
                   <ol className="steps">
-                    {enrichment.guidedPractice.map((step, i) => (
-                      <li key={i}>{step}</li>
+                    {lesson.practice.map((s, i) => (
+                      <li key={i}>{rich(s, `practice-${i}`)}</li>
                     ))}
                   </ol>
                 </details>
-              )}
-              <details className="section">
-                <summary>Modelo para uma sessão de prática</summary>
                 <p className="hint">
-                  {enrichment && !demo
-                    ? 'Use este modelo nos momentos de estudo da semana, ajustando o foco ao roteiro disponível em Revisar.'
-                    : 'Use este modelo nos momentos de estudo da semana e ajuste o foco com seu professor.'}{' '}
-                  Os tempos são sugestões flexíveis.
+                  Padrão rítmico:{' '}
+                  {(
+                    {
+                      one: 'Um ataque no início de cada compasso; deixe o acorde soar.',
+                      quarters: 'Ataques regulares em semínimas: conte os pulsos em voz alta.',
+                      eighths: 'Colcheias: divida cada pulso em duas partes iguais (1 e, 2 e…).',
+                      finger4:
+                        'Dedilhado em quatro pulsos: observe o baixo e a ordem dos dedos na apostila.',
+                      finger6:
+                        'Dedilhado em 6/8: dois grupos de três subdivisões (1 la li, 2 la li).',
+                    } as Record<string, string>
+                  )[lesson.pattern] ?? lesson.pattern}
                 </p>
-                <ol className="steps">
-                  {lesson.practice.map((s, i) => (
-                    <li key={i}>{rich(s, `practice-${i}`)}</li>
-                  ))}
-                </ol>
-              </details>
-              <p className="hint">
-                Padrão rítmico:{' '}
-                {(
-                  {
-                    one: 'Um ataque no início de cada compasso; deixe o acorde soar.',
-                    quarters: 'Ataques regulares em semínimas: conte os pulsos em voz alta.',
-                    eighths: 'Colcheias: divida cada pulso em duas partes iguais (1 e, 2 e…).',
-                    finger4:
-                      'Dedilhado em quatro pulsos: observe o baixo e a ordem dos dedos na apostila.',
-                    finger6:
-                      'Dedilhado em 6/8: dois grupos de três subdivisões (1 la li, 2 la li).',
-                  } as Record<string, string>
-                )[lesson.pattern] ?? lesson.pattern}
-              </p>
-            </CollapsibleCard>
-          </section>
+              </CollapsibleCard>
+            </div>
+          </CollapsibleCard>
           <CollapsibleCard
             id="revisar"
-            title="4. Conferir e retomar"
+            title="4. Revisar a aprendizagem"
             description="Explique o que aprendeu, observe sua execução e planeje a próxima prática."
           >
             <Quiz
@@ -262,7 +264,8 @@ export function LessonView({
           </div>
         </div>
         <aside className="lesson-aside">
-          <CollapsibleCard title={song.title}>
+          <InitialLessonCards key={lesson.id} />
+          <CollapsibleCard id="repertorio-aula" title={song.title}>
             <p className="eyebrow">NOSSO REPERTÓRIO</p>
             <p>{song.artist}</p>
             <VideoResource
