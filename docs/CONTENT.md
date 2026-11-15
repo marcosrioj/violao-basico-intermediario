@@ -4,7 +4,7 @@ O conteúdo do **Violão Vivo** foi aprofundado em 15/11/2026. A base canônica 
 
 ## Conteúdo aprofundado
 
-A atualização é uma reformulação integrada por associação aos IDs existentes. `lesson-enrichment.json` aprofunda as 39 aulas; `technique-data.json` contém nove eixos e 27 estudos autorais; `teacher-enrichment.json` contém princípios de ensino, rubrica e 39 planos individualizados de 60 minutos. `curriculum.ts` associa os estudos às aulas sem alterar os mapas harmônicos ou chaves de progresso. O carregamento docente permanece em `teacher.ts`, com `server-only`, e só é renderizado após autorização.
+A atualização é uma reformulação integrada por associação aos IDs existentes. `lesson-enrichment.json` aprofunda as 39 aulas; `technique-data.json` contém nove eixos e 27 estudos autorais; `teacher-enrichment.json` contém princípios de ensino, rubrica e 39 planos individualizados de 60 minutos. `lesson-journey.json` organiza 86 aplicações, com 27 introduções únicas, retomadas e foco específico por aula. `curriculum.ts` usa esse mapa canônico sem alterar os mapas harmônicos ou chaves de progresso. O carregamento docente permanece em `teacher.ts`, com `server-only`, e só é renderizado após autorização. [Contrato e progressão](INTEGRATED-LEARNING.md).
 
 Os nove eixos cobrem fundamentos, acordes e notação, intervalos/escalas/pestana, palhetada, articulações, expressão, ritmos, CAGED e campos harmônicos/cadências. A ementa pública de Fábio Lima é referência de abrangência; os exercícios, exemplos e planos são autorais. Não há atribuição de aulas privadas ao artista nem reprodução de seu curso. As fontes especializadas consultadas e os limites da pesquisa estão em [pesquisa musical](CURRICULUM-RESEARCH.md) e [pesquisa pedagógica](TEACHING-RESEARCH.md).
 
@@ -12,17 +12,17 @@ Cada estudo inclui pré-requisitos, explicação, exemplo trabalhado, prática g
 
 ### Navegação e acompanhamento
 
-- `/curso`: os 13 módulos e acesso aos nove eixos técnicos.
-- `/aulas/[id]`: conteúdo original e aprofundamento específico; exemplos e perguntas de recuperação entram na apresentação docente.
-- `/tecnica` e `/tecnica/[id]`: estudos autorais com aplicação nas aulas e acesso ao laboratório.
+- `/curso`: uma trilha com os 13 módulos, ação de continuar e busca por aula, música ou técnica.
+- `/aulas/[id]`: quatro etapas (entender, treinar, aplicar, revisar), com os estudos completos na própria aula. Introduções e retomadas mostram o foco atual; `#estudo-{id}` abre diretamente o estudo e seus painéis ancestrais. Os conteúdos originais e ampliados permanecem disponíveis.
+- `/tecnica` e `/tecnica/[id]`: índice complementar e consulta completa, com entrada principal para a introdução do estudo na trilha e retorno às aplicações posteriores.
 - `/professor/metodologia`: princípios, rubrica e acesso aos 39 planos, somente para professores.
 - `/materiais`: PDFs completos atualizados, consultas R1–R8, guias preservados e arquivos V5.
 
-Os estudos são registrados no diário da aula de aplicação, com seu código no texto. O curso mantém o modelo existente de progresso das 39 aulas; não cria conclusão automática de habilidade ou de estudo técnico. Quiz e autorrelato não substituem observação instrumental.
+Os estudos são registrados no diário da aula de aplicação. O curso mantém o modelo existente de progresso das 39 aulas; não cria conclusão automática de habilidade ou de estudo técnico. Quiz e autorrelato não substituem observação instrumental. A apresentação docente preserva as etapas anteriores e acrescenta demonstração, prática, critérios e pergunta de recuperação dos estudos selecionados para aquela aula; as respostas dependem de revelação explícita.
 
 ### PDFs completos e reprodução
 
-`materials/Curso_Aluno_Violao_Gospel_v6.pdf` e `materials/Manual_Professor_Violao_Gospel_v6.pdf` são os downloads ativos, com cópias idênticas em `output/pdf/`. A parte principal reorganiza as aulas e os novos aprofundamentos, além de reunir os estudos, diagramas, mapas e teoria. Cada livro termina com seu PDF V5 integral, identificado como acervo. `pdf-manifest.json` contém total de páginas, posições de aulas/estudos e início do acervo; as páginas originais são convertidas por `legacyStartPage + páginaV5 - 1`.
+`materials/Curso_Aluno_Violao_Gospel_v6.pdf` e `materials/Manual_Professor_Violao_Gospel_v6.pdf` são os downloads ativos, com cópias idênticas em `output/pdf/`. A edição permanece a mesma: o sufixo aparece somente nos nomes dos PDFs. Cada estudo completo entra na primeira aula canônica; as retomadas indicam foco e página para revisão. O índice técnico conserva os nove eixos, e diagramas, mapas e teoria continuam completos. Cada livro termina com seu PDF V5 integral, identificado como acervo. `pdf-manifest.json` contém total de páginas, posições de aulas/estudos e início do acervo; as páginas originais são convertidas por `legacyStartPage + páginaV5 - 1`.
 
 Os endpoints originais `/api/materials/aluno` e `/api/materials/professor` entregam os livros atualizados. As rotas adicionais `aluno-v5` e `professor-v5` preservam o download dos originais, com as mesmas regras de matrícula e papel. Os PDFs não ficam em `public/`.
 

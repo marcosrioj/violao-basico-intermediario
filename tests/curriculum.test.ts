@@ -10,7 +10,11 @@ import { lessons } from '../src/content/course';
 import {
   getLessonEnrichment,
   getLessonStudies,
+  getLessonTechniqueEntries,
+  getModuleTechniqueCount,
   getStudyLessonIds,
+  getTechniqueStudyIntroduction,
+  lessonJourneys,
   techniqueModules,
   techniqueStudies,
   techniqueSources,
@@ -111,6 +115,80 @@ test('all 27 studies have an application, prerequisites, corrections and traceab
     assert.equal(new URL(source.url).protocol, 'https:');
     assert.ok(source.scope.trim() && source.limitation.trim());
   }
+});
+
+test('the integrated journey gives every study one introduction and ordered, focused reviews', () => {
+  assert.deepEqual(
+    lessonJourneys.map((journey) => journey.lessonId),
+    lessons.map((lesson) => lesson.id),
+  );
+  const introduced = new Set<string>();
+  for (const journey of lessonJourneys) {
+    const studyIds = journey.techniques.map((entry) => entry.studyId);
+    assert.equal(new Set(studyIds).size, studyIds.length, journey.lessonId);
+    assert.deepEqual(studyIds, getLessonEnrichment(journey.lessonId)!.techniqueStudyIds);
+    const entries = getLessonTechniqueEntries(journey.lessonId);
+    assert.equal(entries.length, studyIds.length);
+    for (const [index, entry] of journey.techniques.entries()) {
+      assert.equal(entry.stage, introduced.has(entry.studyId) ? 'retomada' : 'introducao');
+      assert.ok(entry.focus.trim().length >= 40, `${journey.lessonId}: actionable focus`);
+      assert.equal(entries[index].study.id, entry.studyId);
+      assert.equal(entries[index].stage, entry.stage);
+      assert.equal(entries[index].focus, entry.focus);
+      assert.ok(entries[index].study.moduleTitle.trim());
+      assert.ok(getStudyLessonIds(entry.studyId).includes(journey.lessonId));
+      if (entry.stage === 'introducao') {
+        assert.deepEqual(getTechniqueStudyIntroduction(entry.studyId), {
+          lessonId: journey.lessonId,
+          focus: entry.focus,
+        });
+      }
+      introduced.add(entry.studyId);
+    }
+  }
+  assert.deepEqual([...introduced].sort(), techniqueStudies.map((study) => study.id).sort());
+  assert.equal(introduced.size, 27);
+  for (const courseModule of base.modules) {
+    const expected = new Set(
+      lessons
+        .filter((lesson) => lesson.module === courseModule.n)
+        .flatMap((lesson) => getLessonTechniqueEntries(lesson.id).map((entry) => entry.study.id)),
+    );
+    assert.equal(getModuleTechniqueCount(courseModule.n), expected.size);
+  }
+});
+
+test('canonical placements honor prerequisites and do not inherit premature study backlinks', () => {
+  const lessonIndex = (studyId: string) => {
+    const introduction = getTechniqueStudyIntroduction(studyId);
+    assert.ok(introduction, studyId);
+    return lessons.findIndex((lesson) => lesson.id === introduction.lessonId);
+  };
+  const dependencies: [string, string][] = [
+    ['t4-e1', 't4-e2'],
+    ['t4-e2', 't4-e3'],
+    ['t5-e1', 't5-e2'],
+    ['t5-e2', 't6-e2'],
+    ['t3-e1', 't8-e1'],
+    ['t8-e1', 't8-e2'],
+    ['t8-e2', 't8-e3'],
+    ['t3-e1', 't9-e1'],
+    ['t3-e2', 't9-e1'],
+    ['t9-e1', 't9-e2'],
+  ];
+  for (const [prerequisite, study] of dependencies) {
+    assert.ok(lessonIndex(prerequisite) < lessonIndex(study), `${prerequisite} before ${study}`);
+  }
+  assert.equal(getTechniqueStudyIntroduction('t1-e3')?.lessonId, 'm1-a2');
+  assert.equal(getTechniqueStudyIntroduction('t3-e3')?.lessonId, 'm5-a1');
+  assert.equal(getTechniqueStudyIntroduction('t6-e3')?.lessonId, 'm9-a2');
+  assert.equal(getTechniqueStudyIntroduction('t8-e1')?.lessonId, 'm10-a1');
+  assert.ok(!getStudyLessonIds('t4-e3').includes('m6-a2'));
+  assert.ok(!getStudyLessonIds('t8-e3').includes('m11-a3'));
+  assert.deepEqual(getLessonTechniqueEntries('missing'), []);
+  assert.deepEqual(getStudyLessonIds('missing'), []);
+  assert.equal(getTechniqueStudyIntroduction('missing'), undefined);
+  assert.equal(getModuleTechniqueCount(99), 0);
 });
 
 test('Enriched presentations retain the original steps and hide both retrieval answers', () => {

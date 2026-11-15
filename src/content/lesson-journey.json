@@ -1,0 +1,630 @@
+{
+  "edition": 6,
+  "lessons": [
+    {
+      "lessonId": "m1-a1",
+      "techniques": [
+        {
+          "studyId": "t1-e1",
+          "stage": "introducao",
+          "focus": "Reconhecer cordas, casas e apoios; manter o violão estável sem sustentá-lo com a mão dos acordes."
+        },
+        {
+          "studyId": "t1-e2",
+          "stage": "introducao",
+          "focus": "Numerar as cordas e conferir a afinação padrão com apoio do afinador. A localização de outras notas será aprofundada nos módulos 4 e 6."
+        },
+        {
+          "studyId": "t2-e1",
+          "stage": "introducao",
+          "focus": "Ler D, G e Em: distinguir corda solta, corda que não deve soar, casa e dedo antes de tocar a primeira progressão."
+        }
+      ]
+    },
+    {
+      "lessonId": "m1-a2",
+      "techniques": [
+        {
+          "studyId": "t1-e3",
+          "stage": "introducao",
+          "focus": "Coordenar pressão, ataque e interrupção do som em tentativas curtas antes de conectar D, G e Em."
+        },
+        {
+          "studyId": "t2-e2",
+          "stage": "introducao",
+          "focus": "Preparar as trocas entre D, G e Em durante a contagem; usar somente os acordes já apresentados."
+        },
+        {
+          "studyId": "t7-e1",
+          "stage": "introducao",
+          "focus": "Sustentar quatro pulsações por compasso e conservar a contagem quando há silêncio ou preparação da troca."
+        }
+      ]
+    },
+    {
+      "lessonId": "m1-a3",
+      "techniques": [
+        {
+          "studyId": "t2-e1",
+          "stage": "retomada",
+          "focus": "Reconstruir D, G e Em antes de conferir os diagramas e usar a cifra para acompanhar a ordem das partes."
+        },
+        {
+          "studyId": "t7-e1",
+          "stage": "retomada",
+          "focus": "Manter o pulso na passagem entre seções e planejar um término conjunto, sem acrescentar batidas ao final."
+        }
+      ]
+    },
+    {
+      "lessonId": "m2-a1",
+      "techniques": [
+        {
+          "studyId": "t2-e1",
+          "stage": "retomada",
+          "focus": "Ler os diagramas de C, Am e F de três cordas, conferindo quais cordas entram no ataque."
+        },
+        {
+          "studyId": "t2-e2",
+          "stage": "retomada",
+          "focus": "Acrescentar C, Am e F de três cordas às trocas conhecidas e comparar o som de acordes maiores e menores."
+        }
+      ]
+    },
+    {
+      "lessonId": "m2-a2",
+      "techniques": [
+        {
+          "studyId": "t7-e1",
+          "stage": "retomada",
+          "focus": "Distribuir oito ataques sobre quatro tempos, separando a contagem dos pulsos da subdivisão do movimento."
+        },
+        {
+          "studyId": "t1-e3",
+          "stage": "retomada",
+          "focus": "Coordenar a mão do ritmo e a preparação dos acordes para manter ataques regulares nas mudanças."
+        }
+      ]
+    },
+    {
+      "lessonId": "m2-a3",
+      "techniques": [
+        {
+          "studyId": "t7-e1",
+          "stage": "retomada",
+          "focus": "Alterar a intensidade dos ataques sem acelerar a subdivisão nem encurtar as pausas."
+        },
+        {
+          "studyId": "t2-e2",
+          "stage": "retomada",
+          "focus": "Retomar as transições de Faz Chover e conservar o tempo disponível mesmo quando o trecho ganha intensidade."
+        }
+      ]
+    },
+    {
+      "lessonId": "m3-a1",
+      "techniques": [
+        {
+          "studyId": "t7-e2",
+          "stage": "introducao",
+          "focus": "Sentir dois pulsos, cada um com três subdivisões, e localizar as entradas dos acordes em Me Derramar."
+        }
+      ]
+    },
+    {
+      "lessonId": "m3-a2",
+      "techniques": [
+        {
+          "studyId": "t7-e2",
+          "stage": "retomada",
+          "focus": "Distribuir seis notas do dedilhado em dois grupos de três, destacando o início de cada pulso composto."
+        },
+        {
+          "studyId": "t1-e3",
+          "stage": "retomada",
+          "focus": "Coordenar a troca do acorde com o início do próximo grupo, preservando a duração das seis notas."
+        }
+      ]
+    },
+    {
+      "lessonId": "m3-a3",
+      "techniques": [
+        {
+          "studyId": "t7-e2",
+          "stage": "retomada",
+          "focus": "Recuperar a sensação de dois pulsos antes de tocar a forma completa; manter a contagem nas transições e no final."
+        }
+      ]
+    },
+    {
+      "lessonId": "m4-a1",
+      "techniques": [
+        {
+          "studyId": "t2-e3",
+          "stage": "introducao",
+          "focus": "Ler corda e casa em uma tablatura curta com ritmo declarado, relacionando o desenho às notas tocadas."
+        },
+        {
+          "studyId": "t1-e2",
+          "stage": "retomada",
+          "focus": "Localizar as notas naturais usadas em Dm e relacionar corda solta, casa e nome da nota."
+        },
+        {
+          "studyId": "t4-e1",
+          "stage": "introducao",
+          "focus": "Experimentar ataques alternados com palheta em uma corda, com movimento curto e som regular."
+        }
+      ]
+    },
+    {
+      "lessonId": "m4-a2",
+      "techniques": [
+        {
+          "studyId": "t3-e1",
+          "stage": "introducao",
+          "focus": "Identificar fundamental, terça e quinta em C e Dm e ouvir a diferença entre terça maior e menor."
+        },
+        {
+          "studyId": "t2-e2",
+          "stage": "retomada",
+          "focus": "Retomar os acordes conhecidos explicando sua qualidade maior ou menor e conferir a clareza das trocas."
+        }
+      ]
+    },
+    {
+      "lessonId": "m4-a3",
+      "techniques": [
+        {
+          "studyId": "t3-e2",
+          "stage": "introducao",
+          "focus": "Construir a escala maior por tons e semitons e reconhecer as notas usadas na formação dos acordes. A comparação com a menor será retomada no módulo 6."
+        }
+      ]
+    },
+    {
+      "lessonId": "m5-a1",
+      "techniques": [
+        {
+          "studyId": "t3-e3",
+          "stage": "introducao",
+          "focus": "Preparar o Bm gradualmente, conferir notas e apoios e entrar na progressão sem apertar além do necessário."
+        }
+      ]
+    },
+    {
+      "lessonId": "m5-a2",
+      "techniques": [
+        {
+          "studyId": "t3-e3",
+          "stage": "retomada",
+          "focus": "Firmar a entrada e a saída do Bm, conferindo o baixo previsto e as cordas que devem soar."
+        },
+        {
+          "studyId": "t4-e1",
+          "stage": "retomada",
+          "focus": "Retomar ataques alternados e precisão na escolha da corda para preparar baixos sem perder a regularidade."
+        }
+      ]
+    },
+    {
+      "lessonId": "m5-a3",
+      "techniques": [
+        {
+          "studyId": "t7-e1",
+          "stage": "retomada",
+          "focus": "Contar a duração real de cada frase e conservar o pulso quando a mudança não coincide com o início da próxima frase."
+        },
+        {
+          "studyId": "t3-e2",
+          "stage": "retomada",
+          "focus": "Reconhecer percursos de notas já estudados e pontos de chegada nas frases, sem antecipar um estudo completo de novas escalas."
+        }
+      ]
+    },
+    {
+      "lessonId": "m6-a1",
+      "techniques": [
+        {
+          "studyId": "t1-e2",
+          "stage": "retomada",
+          "focus": "Percorrer as doze notas em uma corda, relacionando casas, semitons e nomes equivalentes usados no curso."
+        },
+        {
+          "studyId": "t3-e1",
+          "stage": "retomada",
+          "focus": "Medir distâncias entre notas e explicar como elas ajudam a reconhecer a qualidade dos acordes."
+        },
+        {
+          "studyId": "t4-e1",
+          "stage": "retomada",
+          "focus": "Repetir uma pequena sequência de notas com alternância estável e comparar clareza, movimento e duração."
+        }
+      ]
+    },
+    {
+      "lessonId": "m6-a2",
+      "techniques": [
+        {
+          "studyId": "t3-e2",
+          "stage": "retomada",
+          "focus": "Construir G maior no braço e relacionar suas notas ao repertório de Me Derramar."
+        },
+        {
+          "studyId": "t7-e2",
+          "stage": "retomada",
+          "focus": "Retomar dois pulsos ternários ao aplicar as notas e os acordes em Me Derramar."
+        },
+        {
+          "studyId": "t4-e2",
+          "stage": "introducao",
+          "focus": "Manter a alternância da palheta ao passar entre cordas em um percurso curto de escala, depois de retomar o ataque em uma corda."
+        },
+        {
+          "studyId": "t9-e1",
+          "stage": "introducao",
+          "focus": "Construir tríades de G maior e reconhecer seus graus na música. As inversões serão aprofundadas no módulo 8."
+        }
+      ]
+    },
+    {
+      "lessonId": "m6-a3",
+      "techniques": [
+        {
+          "studyId": "t3-e2",
+          "stage": "retomada",
+          "focus": "Comparar as notas de C maior e Am e ouvir como a escolha do centro altera a sensação de chegada."
+        },
+        {
+          "studyId": "t9-e2",
+          "stage": "introducao",
+          "focus": "Reconhecer o campo menor e comparar chegadas em maior e menor. A dominante maior do tom menor será aprofundada no módulo 10."
+        }
+      ]
+    },
+    {
+      "lessonId": "m7-a1",
+      "techniques": [
+        {
+          "studyId": "t3-e3",
+          "stage": "retomada",
+          "focus": "Transferir o Bm já preparado para Faz Chover de Fernandinho, conferindo a entrada no novo contexto."
+        },
+        {
+          "studyId": "t7-e1",
+          "stage": "retomada",
+          "focus": "Reconhecer o pulso e as durações dos acordes antes de juntar as trocas ao acompanhamento."
+        }
+      ]
+    },
+    {
+      "lessonId": "m7-a2",
+      "techniques": [
+        {
+          "studyId": "t3-e3",
+          "stage": "retomada",
+          "focus": "Preparar a pestana para mudanças a cada dois tempos e praticar a transição com entrada e saída."
+        },
+        {
+          "studyId": "t7-e1",
+          "stage": "retomada",
+          "focus": "Conservar os quatro tempos do compasso enquanto dois acordes dividem sua duração."
+        }
+      ]
+    },
+    {
+      "lessonId": "m7-a3",
+      "techniques": [
+        {
+          "studyId": "t7-e3",
+          "stage": "introducao",
+          "focus": "Executar mudanças nos tempos 1, 2 e 4, distinguindo duração, síncope e antecipação. Os compassos curtos serão trabalhados no módulo 13."
+        }
+      ]
+    },
+    {
+      "lessonId": "m8-a1",
+      "techniques": [
+        {
+          "studyId": "t9-e1",
+          "stage": "retomada",
+          "focus": "Retomar os graus e identificar o baixo de cada acorde antes de comparar as inversões de Sonda-me."
+        },
+        {
+          "studyId": "t7-e1",
+          "stage": "retomada",
+          "focus": "Conservar a contagem enquanto o baixo prepara a próxima mudança, sem criar um tempo extra."
+        }
+      ]
+    },
+    {
+      "lessonId": "m8-a2",
+      "techniques": [
+        {
+          "studyId": "t9-e1",
+          "stage": "retomada",
+          "focus": "Relacionar a linha de baixo descendente aos acordes e reconhecer quando o baixo é diferente da fundamental."
+        },
+        {
+          "studyId": "t5-e1",
+          "stage": "introducao",
+          "focus": "Comparar a mesma sequência com continuidade e separação intencional, controlando o fim de cada nota do baixo."
+        }
+      ]
+    },
+    {
+      "lessonId": "m8-a3",
+      "techniques": [
+        {
+          "studyId": "t9-e1",
+          "stage": "retomada",
+          "focus": "Distinguir fundamental, terça, quinta e sétima no baixo e explicar a inversão pelo que realmente soa."
+        },
+        {
+          "studyId": "t5-e3",
+          "stage": "introducao",
+          "focus": "Comparar baixo ressonante e timbre abafado, mantendo altura reconhecível e duração planejada."
+        }
+      ]
+    },
+    {
+      "lessonId": "m9-a1",
+      "techniques": [
+        {
+          "studyId": "t9-e1",
+          "stage": "retomada",
+          "focus": "Relacionar as tétrades aos graus e aos baixos de Lugar Secreto, partindo das tríades já conhecidas."
+        },
+        {
+          "studyId": "t3-e1",
+          "stage": "retomada",
+          "focus": "Reconhecer os intervalos que acrescentam a sétima e explicar a diferença sonora em relação à tríade."
+        }
+      ]
+    },
+    {
+      "lessonId": "m9-a2",
+      "techniques": [
+        {
+          "studyId": "t4-e3",
+          "stage": "introducao",
+          "focus": "Aplicar a alternância já estudada às notas de um acorde arpejado com palheta e comparar com o dedilhado da aula."
+        },
+        {
+          "studyId": "t7-e1",
+          "stage": "retomada",
+          "focus": "Distribuir o dedilhado em quatro pulsos, respeitando silêncios e duração da mudança harmônica."
+        },
+        {
+          "studyId": "t6-e3",
+          "stage": "introducao",
+          "focus": "Escolher um ponto de chegada para uma frase curta e variar intensidade e timbre sem alterar o andamento."
+        }
+      ]
+    },
+    {
+      "lessonId": "m9-a3",
+      "techniques": [
+        {
+          "studyId": "t2-e3",
+          "stage": "retomada",
+          "focus": "Ler a tablatura de uma resposta autoral curta e conferir cordas, casas e ritmo antes de tocar."
+        },
+        {
+          "studyId": "t5-e2",
+          "stage": "introducao",
+          "focus": "Experimentar ligado ascendente e descendente em duas notas, preservando a duração e o espaço da resposta."
+        },
+        {
+          "studyId": "t6-e1",
+          "stage": "introducao",
+          "focus": "Comparar uma nota sustentada estável com vibrato suave, escolhendo o efeito que serve à frase."
+        }
+      ]
+    },
+    {
+      "lessonId": "m10-a1",
+      "techniques": [
+        {
+          "studyId": "t3-e3",
+          "stage": "retomada",
+          "focus": "Transferir o controle da pestana para C#m e F#m e praticar as mudanças de Rompendo em Fé no tom A."
+        },
+        {
+          "studyId": "t8-e1",
+          "stage": "introducao",
+          "focus": "Distinguir o nome da forma e o nome do acorde, localizando as tônicas nas posições fechadas usadas na música."
+        }
+      ]
+    },
+    {
+      "lessonId": "m10-a2",
+      "techniques": [
+        {
+          "studyId": "t9-e2",
+          "stage": "retomada",
+          "focus": "Explicar C#7 como dominante de F#m e ouvir a tensão e a resolução em uma tonalidade menor."
+        },
+        {
+          "studyId": "t6-e2",
+          "stage": "introducao",
+          "focus": "Comparar um motivo simples com mordente e apogiatura, usando os ligados já preparados e declarando notas e durações."
+        }
+      ]
+    },
+    {
+      "lessonId": "m10-a3",
+      "techniques": [
+        {
+          "studyId": "t9-e2",
+          "stage": "retomada",
+          "focus": "Identificar as notas que conduzem à resolução e comparar chegadas harmônicas antes de tocar a frase inteira."
+        },
+        {
+          "studyId": "t8-e2",
+          "stage": "introducao",
+          "focus": "Comparar disposições do mesmo acorde em regiões diferentes, conferindo fundamental, terça, quinta e nota mais aguda."
+        },
+        {
+          "studyId": "t5-e1",
+          "stage": "retomada",
+          "focus": "Escolher continuidade ou separação entre notas para tornar audível a direção da frase até a chegada."
+        }
+      ]
+    },
+    {
+      "lessonId": "m11-a1",
+      "techniques": [
+        {
+          "studyId": "t8-e1",
+          "stage": "retomada",
+          "focus": "Reconhecer tônicas e formas móveis nas posições reais de Ousado Amor em F#, sem confundir forma com tonalidade."
+        },
+        {
+          "studyId": "t8-e2",
+          "stage": "retomada",
+          "focus": "Comparar regiões e disposições dos acordes e escolher uma posição executável para a sequência do repertório."
+        },
+        {
+          "studyId": "t7-e2",
+          "stage": "retomada",
+          "focus": "Recuperar os dois pulsos ternários de 6/8 antes de coordená-los com as novas posições fechadas."
+        }
+      ]
+    },
+    {
+      "lessonId": "m11-a2",
+      "techniques": [
+        {
+          "studyId": "t7-e2",
+          "stage": "retomada",
+          "focus": "Manter os dois grupos de três subdivisões enquanto o dedilhado atravessa as mudanças harmônicas."
+        },
+        {
+          "studyId": "t3-e3",
+          "stage": "retomada",
+          "focus": "Preparar cada pestana antes de sua entrada, conferindo as notas necessárias ao padrão do dedilhado."
+        },
+        {
+          "studyId": "t4-e3",
+          "stage": "retomada",
+          "focus": "Comparar o arpejo com palheta e o dedilhado nas posições já preparadas, preservando as mesmas durações."
+        }
+      ]
+    },
+    {
+      "lessonId": "m11-a3",
+      "techniques": [
+        {
+          "studyId": "t6-e3",
+          "stage": "retomada",
+          "focus": "Construir a dinâmica entre as seções da forma e variar o timbre sem mudar involuntariamente o pulso."
+        },
+        {
+          "studyId": "t9-e2",
+          "stage": "retomada",
+          "focus": "Retomar a escuta das chegadas e a comparação entre centros maior e menor para justificar a direção de cada seção."
+        }
+      ]
+    },
+    {
+      "lessonId": "m12-a1",
+      "techniques": [
+        {
+          "studyId": "t7-e3",
+          "stage": "retomada",
+          "focus": "Conferir entradas, antecipações e durações locais ao planejar a forma inteira de Preciso de Ti."
+        },
+        {
+          "studyId": "t8-e3",
+          "stage": "introducao",
+          "focus": "Escolher notas próximas entre acordes e uma resposta curta, usando as regiões do braço já estudadas."
+        }
+      ]
+    },
+    {
+      "lessonId": "m12-a2",
+      "techniques": [
+        {
+          "studyId": "t3-e2",
+          "stage": "retomada",
+          "focus": "Ouvir o centro musical e comparar suas notas de apoio antes de atribuir um nome à escala ou ao modo."
+        },
+        {
+          "studyId": "t9-e2",
+          "stage": "retomada",
+          "focus": "Distinguir uma chegada local de uma mudança de centro e explicar a função da cadência no trecho."
+        },
+        {
+          "studyId": "t6-e2",
+          "stage": "retomada",
+          "focus": "Retomar mordente e apogiatura em uma frase autoral, conferindo se o ornamento preserva o centro e o espaço musical."
+        }
+      ]
+    },
+    {
+      "lessonId": "m12-a3",
+      "techniques": [
+        {
+          "studyId": "t9-e2",
+          "stage": "retomada",
+          "focus": "Reconhecer acordes emprestados e distinguir sua cor local de uma mudança real de tonalidade."
+        },
+        {
+          "studyId": "t8-e3",
+          "stage": "retomada",
+          "focus": "Conectar acordes e notas próximas para tornar audível o movimento harmônico sem saltos desnecessários pelo braço."
+        }
+      ]
+    },
+    {
+      "lessonId": "m13-a1",
+      "techniques": [
+        {
+          "studyId": "t7-e3",
+          "stage": "retomada",
+          "focus": "Contar a duração real dos compassos de Bondade de Deus, incluindo os trechos em 2/4, sem completar tempos que não existem."
+        },
+        {
+          "studyId": "t9-e3",
+          "stage": "introducao",
+          "focus": "Planejar forma, acordes, baixos e pontos de atenção do arranjo antes de executar a música completa."
+        }
+      ]
+    },
+    {
+      "lessonId": "m13-a2",
+      "techniques": [
+        {
+          "studyId": "t6-e3",
+          "stage": "retomada",
+          "focus": "Combinar intensidade, timbre e direção das frases com o conjunto, reservando espaço para a voz e as repetições."
+        },
+        {
+          "studyId": "t9-e3",
+          "stage": "retomada",
+          "focus": "Ensaiar entradas, sinais e repetições com o grupo e registrar evidências para ajustar o arranjo."
+        }
+      ]
+    },
+    {
+      "lessonId": "m13-a3",
+      "techniques": [
+        {
+          "studyId": "t9-e3",
+          "stage": "retomada",
+          "focus": "Apresentar os arranjos preparados, explicar escolhas e selecionar a próxima prática a partir do que foi ouvido."
+        },
+        {
+          "studyId": "t6-e3",
+          "stage": "retomada",
+          "focus": "Comparar a intenção expressiva e o resultado gravado, identificando um ajuste de dinâmica ou timbre por vez."
+        },
+        {
+          "studyId": "t8-e3",
+          "stage": "retomada",
+          "focus": "Justificar a escolha das posições e das respostas melódicas pelo movimento das notas e pela clareza do conjunto."
+        }
+      ]
+    }
+  ]
+}

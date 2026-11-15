@@ -10,6 +10,7 @@ import {
   presentationIndex,
   visibleSlideBlocks,
   type PresentationMove,
+  type TechniquePresentationEntry,
 } from '@/lib/lesson-presentation';
 import './lesson-presentation.css';
 
@@ -17,9 +18,11 @@ import './lesson-presentation.css';
 export function LessonPresentation({
   lesson,
   enrichment,
+  techniques = [],
 }: {
   lesson: Lesson;
   enrichment?: LessonEnrichment;
+  techniques?: TechniquePresentationEntry[];
 }) {
   const id = useId();
   const [open, setOpen] = useState(false);
@@ -28,7 +31,7 @@ export function LessonPresentation({
   const trigger = useRef<HTMLButtonElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
   const wasOpen = useRef(false);
-  const slides = buildLessonPresentation(lesson, enrichment);
+  const slides = buildLessonPresentation(lesson, enrichment, techniques);
   const slide = slides[index];
 
   useEffect(() => {
@@ -152,6 +155,15 @@ export function LessonPresentation({
                     {block.label && <p className="lesson-slides-label">{block.label}</p>}
                     {block.kind === 'text' ? (
                       <p>{block.text}</p>
+                    ) : block.kind === 'tab' ? (
+                      <pre
+                        className="learning-tab"
+                        tabIndex={0}
+                        role="region"
+                        aria-label="Tablatura do exemplo"
+                      >
+                        <code>{block.text}</code>
+                      </pre>
                     ) : (
                       <ol>
                         {block.items.map((item, position) => (

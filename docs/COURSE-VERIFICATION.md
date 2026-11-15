@@ -1,41 +1,51 @@
-# Verificação da atualização do curso
+# Verificação da trilha integrada
 
-Verificação realizada em 15/11/2026.
+Verificação realizada em 15/11/2026. A edição permanece a mesma, identificada apenas pelo sufixo dos PDFs.
 
 ## Conteúdo e preservação
 
-- Os 13 módulos e as 39 aulas conservam seus IDs, repertório, versões harmônicas, posições de acordes e andamento pesquisado.
+- Os 13 módulos e as 39 aulas conservam seus IDs, títulos, repertório, versões harmônicas, posições de acordes e andamento pesquisado.
 - Os oito arquivos legados registrados em `src/content/content-preservation.json` conservam seus SHA-256, incluindo os PDFs e o guia interativo originais.
-- As 39 ampliações de aula têm exemplos próprios, prática guiada, pergunta de recuperação, quatro momentos flexíveis de revisão e critérios observáveis.
-- Os 39 planos docentes somam 60 minutos cada. Os nove eixos oferecem 27 estudos, todos vinculados ao repertório e a fontes identificadas.
-- Validação de pré-requisitos: primeira pestana completa no módulo 5, palheta a partir do módulo 4, articulações a partir do módulo 8, expressão a partir do módulo 9 e CAGED a partir do módulo 10.
-- Testes conferem integridade dos PDFs, mapas de páginas, sincronização de conteúdo com os livros e alinhamento das seis linhas de tablatura.
+- Os 27 estudos completos estão integrados às aulas. `lesson-journey.json` define 86 aplicações: 27 introduções únicas e 59 retomadas, cada uma com foco específico.
+- As 39 ampliações de aula, perguntas, exemplos, práticas semanais, critérios e planos docentes de 60 minutos permanecem disponíveis.
+- A primeira pestana completa continua no módulo 5; palheta a partir do módulo 4, articulações a partir do módulo 8, expressão a partir do módulo 9 e CAGED a partir do módulo 10.
+- Testes de renderização conferem cada campo dos 27 estudos, suas tablaturas e fontes, todos os textos originais e ampliados das 39 aulas, IDs únicos e âncoras válidas. A demonstração conserva seu escopo limitado.
+- A apresentação docente mantém as sete etapas originais e as cinco ampliadas, acrescentando duas etapas por estudo da aula. As respostas ficam ocultas até revelação explícita.
 
 ## Código e produção
 
-`npm run check` passou: ESLint, geração de tipos Next.js, TypeScript, **104 testes** e build de produção Next.js 16.4.6. A configuração de segurança inclui um subprocesso; a execução inicial dentro do sandbox restringiu esse subprocesso. A execução final com a permissão de processo necessária passou integralmente, usando valores fictícios nos testes.
+`npm run check` passou: ESLint, geração de tipos Next.js, TypeScript, **112 testes** e build de produção Next.js 16.4.6.
 
-O runner HTTP padrão encontrou a porta 3000 ocupada. Para evitar validar outro processo, foi iniciado um servidor próprio do build na porta 3008. O comando `SMOKE_BASE_URL=http://127.0.0.1:3008 SMOKE_ORIGIN=http://localhost:3000 npm run test:http` passou em **38 verificações**. Inclui páginas técnicas, metodologia docente e PDFs novos e originais; acesso anônimo negado, cabeçalhos, origem de mutações e redirecionamentos conferidos. O servidor existente não foi encerrado.
+A execução inicial identificou os PDFs ainda em regeneração e a restrição do sandbox ao subprocesso do teste de configuração. Depois da publicação dos PDFs e com a permissão de processo necessária, a verificação completa passou. A configuração de segurança é testada com valores fictícios; nenhum segredo é impresso.
+
+Um servidor exclusivo do build foi iniciado na porta 3008. `SMOKE_BASE_URL=http://127.0.0.1:3008 SMOKE_ORIGIN=http://localhost:3000 npm run test:http` passou em **38 verificações**: cabeçalhos, acesso anônimo negado, materiais novos e originais, origem de mutações e redirecionamentos. O servidor existente na porta 3000 não foi encerrado.
 
 ## Navegação e interface
 
-Foi usada uma cópia isolada da aplicação na porta 3007, sem arquivos de ambiente do projeto, com serviço local de autenticação fictícia na porta 54398. O navegador bloqueou tráfego externo. Essa verificação não utilizou contas reais nem modificou o Supabase remoto.
+A revisão usou uma cópia isolada na porta 3007, sem arquivos de ambiente do projeto, e autenticação fictícia local na porta 54398. O navegador bloqueou tráfego externo. Não foram usadas contas reais nem feitas alterações no Supabase remoto.
 
-**51 verificações registradas**, sem exceções de JavaScript:
+Cobertura efetivamente executada:
 
-- Visões de aluno e professor em curso, técnica, estudos, aulas e biblioteca; metodologia somente para professor.
-- Larguras de 320, 768 e 1440 px, sem extravasamento horizontal da página; texto ampliado a 200% também conferido.
-- Links de aplicação abrem o aprofundamento da aula e expandem o painel correto.
-- A resposta de recuperação exige uma tentativa e é exibida por ação explícita.
-- A apresentação docente oferece 12 etapas, preserva as sete originais, acrescenta o plano de quatro momentos e oculta respostas até a revelação; Escape encerra a apresentação.
-- O estudo de 6/8 inicia o metrônomo com dois pulsos de semínima pontuada.
-- Aluno recebe o PDF do aluno e recebe 403 ao solicitar o manual docente; professor recebe ambos.
-- Não há rótulo de versão no nome do produto ou nas telas novas. O sufixo de versão fica nos nomes dos PDFs.
+- **39 aulas visitadas**, incluindo todos os estudos associados, com **86 aplicações técnicas** verificadas contra o conteúdo canônico.
+- **117 combinações de aula e largura**: 320, 768 e 1440 px. Seções foram expandidas para conferir o conteúdo completo, cifras, campos e tablaturas.
+- **27 navegações** do índice/estudo para a aula de introdução: a âncora correta e todos os seus ancestrais se abriram automaticamente.
+- Catálogo: busca por técnica, música e módulo; ausência de resultados; texto ampliado a 200% em 375 px; acesso a todas as aulas.
+- Continuidade: primeira aula, próxima aula, aula em andamento mais recente, revisão após concluir as 39 e falha de carregamento sem inventar progresso.
+- Aluno e professor: etapas entender/treinar/aplicar/revisar, resposta técnica condicionada a tentativa, foco após link profundo, ampliação a 200%, consultas, biblioteca, laboratório e repertório.
+- Professor: apresentação integrada de M9-A3 com 18 etapas, resposta técnica oculta até ação explícita e fechamento por Escape. Aluno não recebe plano docente.
+- Downloads finais conferidos por papel e SHA-256: aluno recebe seu livro e 403 para o manual; professor recebe ambos. Nomes continuam com `_v6.pdf`.
+- Atalhos por teclado abrem a etapa e posicionam o foco. IDs únicos e ausência de exceções JavaScript foram verificados.
 
-Capturas de estudo técnico, aula, metodologia, biblioteca e tela móvel foram inspecionadas. Essa revisão não equivale a auditoria integral com leitor de tela ou dispositivos físicos.
+Foram encontrados e corrigidos dois problemas durante a visita: o número da aula encolhia no catálogo móvel; rótulos longos de compassos de Bondade de Deus alargavam a cifra a 320 px. Ambos foram revalidados. As bordas dos disclosures internos dos estudos foram reduzidas para facilitar a leitura. Cores, foco, espaçamento e tipografia continuam usando os tokens existentes.
+
+A revisão adicional do console identificou a expansão nativa de `details` antes da hidratação nos links com fragmento. O tratamento foi limitado aos atributos dos disclosures envolvidos, preservando a verificação do conteúdo descendente. Links técnicos e legados foram conferidos novamente sem avisos de hidratação. No catálogo móvel, módulo e aula também passaram a ocupar uma linha própria para evitar um número isolado na quebra.
+
+Capturas desktop e móveis de catálogo, estudos dentro da aula, revisão, apresentação e cifras foram inspecionadas. A revisão não equivale a certificação de acessibilidade, teste com leitor de tela ou dispositivos físicos. Detalhes da navegação estão em [Navegação da trilha](COURSE-NAVIGATION.md), e o contrato editorial em [Trilha integrada](INTEGRATED-LEARNING.md).
 
 ## Livros
 
-O livro do aluno tem 351 páginas: 221 páginas principais e 130 páginas do acervo original. O manual do professor tem 310 páginas: 237 páginas principais e 73 páginas do acervo original. Os dois incluem todos os estudos técnicos, mapas e consultas. As cópias para download e entrega são idênticas.
+O livro do aluno tem **371 páginas**: 241 principais e 130 do acervo original. O manual do professor tem **341 páginas**: 268 principais e 73 do acervo original.
 
-Renderização, fontes, sobreposições, links internos, preservação de todas as páginas originais e hashes estão registrados em [Verificação dos PDFs](PDF-VERIFICATION.md). A fundamentação está em [Pesquisa musical](CURRICULUM-RESEARCH.md) e [Pesquisa pedagógica](TEACHING-RESEARCH.md).
+Cada estudo completo aparece na primeira aula canônica; as retomadas trazem o foco e a página de referência. O índice técnico mantém os nove eixos. Todos os mapas, diagramas, consultas e páginas originais foram preservados. As cópias para download e entrega são idênticas.
+
+As **509 páginas principais** foram renderizadas e revisadas visualmente; as **203 páginas originais** foram comparadas sem diferenças. Cobertura textual dos 27 estudos, 86 focos, referências de páginas, links internos, fontes e hashes foram conferidos. Registro completo em [Verificação dos PDFs](PDF-VERIFICATION.md).

@@ -10,7 +10,7 @@ import {
   weeklyPlan,
   finalPlan,
 } from '@/content/teacher';
-import { getLessonEnrichment } from '@/content/curriculum';
+import { getLessonEnrichment, getLessonTechniqueEntries } from '@/content/curriculum';
 import { TeacherDeepening } from '@/components/course/learning-content';
 import Link from 'next/link';
 import { LessonView } from '@/components/course/lesson-view';
@@ -26,6 +26,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
   const plan = teacher ? getTeacherLesson(lesson.id) : undefined;
   const enrichedPlan = teacher ? getTeacherEnrichment(lesson.id) : undefined;
   const schedule = lesson.n === 39 ? finalPlan : weeklyPlan;
+  const techniques = teacher ? getLessonTechniqueEntries(lesson.id) : [];
   return (
     <LessonView
       lesson={lesson}
@@ -38,7 +39,36 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
               key={lesson.id}
               lesson={lesson}
               enrichment={getLessonEnrichment(lesson.id)}
+              techniques={techniques.map(({ study, stage, focus }) => ({
+                study: {
+                  id: study.id,
+                  title: study.title,
+                  workedExample: study.workedExample,
+                  steps: study.steps,
+                  checks: study.checks,
+                  retrieval: study.retrieval,
+                },
+                stage,
+                focus,
+              }))}
             />
+            <details className="section">
+              <summary>Foco técnico deste encontro</summary>
+              <p>
+                Distribua os estudos dentro do plano de 60 minutos. Demonstre o foco indicado,
+                observe uma tentativa e leve o movimento ao repertório.
+              </p>
+              <ul>
+                {techniques.map(({ study, stage, focus }) => (
+                  <li key={study.id}>
+                    <a href={`#estudo-${study.id}`}>
+                      {stage === 'introducao' ? 'Começar' : 'Retomar'}: {study.title}
+                    </a>
+                    <p>{focus}</p>
+                  </li>
+                ))}
+              </ul>
+            </details>
             {enrichedPlan && <TeacherDeepening content={enrichedPlan} sources={teachingSources} />}
             <Link className="resource-link section" href="/professor/metodologia">
               Consultar princípios de ensino e rubrica

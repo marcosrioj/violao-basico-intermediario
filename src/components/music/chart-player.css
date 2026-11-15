@@ -141,6 +141,10 @@
   gap: var(--space-5);
   margin-top: var(--space-4);
 }
+.chart-rows,
+.chart-row {
+  min-width: 0;
+}
 
 .chart-row-label {
   display: flex;
@@ -148,6 +152,11 @@
   justify-content: space-between;
   gap: var(--space-3);
   margin-bottom: var(--space-2);
+}
+.chart-row-label > span:first-child,
+.chart-bar-heading > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .chart-meter {

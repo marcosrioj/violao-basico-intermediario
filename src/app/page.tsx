@@ -16,7 +16,7 @@ export default function Home() {
           </h1>
           <p className="muted">Um caminho de aprendizado, uma música de cada vez.</p>
           <p className="hint">
-            39 aulas de repertório e 27 estudos técnicos, com orientação do professor.
+            39 aulas com repertório e 27 estudos técnicos integrados, com orientação do professor.
           </p>
         </div>
         <span className="edition-pill">

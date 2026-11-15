@@ -1,15 +1,26 @@
 import techniqueData from './technique-data.json';
 import lessonData from './lesson-enrichment.json';
-import type { LessonEnrichment, ResearchSource, TechniqueModule } from './curriculum-types';
+import journeyData from './lesson-journey.json';
+import type {
+  LessonEnrichment,
+  LessonJourney,
+  LessonTechniqueEntry,
+  ResearchSource,
+  TechniqueModule,
+  TechniqueStudyIntroduction,
+  TechniqueStudyWithModule,
+} from './curriculum-types';
 
 // Editorial data is read by server pages. Client components receive only the selected content.
 export const techniqueModules: TechniqueModule[] = techniqueData.modules;
 export const techniqueSources: ResearchSource[] = techniqueData.sources;
 export const techniqueIntroduction = techniqueData.introduction;
 export const lessonEnrichments: LessonEnrichment[] = lessonData.lessons;
+/** Shared by the course, study index, teaching material and PDFs. */
+export const lessonJourneys = journeyData.lessons as LessonJourney[];
 export const practicePrinciples = lessonData.practicePrinciples;
 export const practiceIntroduction = lessonData.introduction;
-export const techniqueStudies = techniqueModules.flatMap((module) =>
+export const techniqueStudies: TechniqueStudyWithModule[] = techniqueModules.flatMap((module) =>
   module.studies.map((study) => ({ ...study, moduleId: module.id, moduleTitle: module.title })),
 );
 
@@ -22,17 +33,39 @@ export function getTechniqueStudy(id: string) {
 }
 
 export function getLessonStudies(lessonId: string) {
-  const ids = new Set(getLessonEnrichment(lessonId)?.techniqueStudyIds ?? []);
-  return techniqueStudies.filter((study) => ids.has(study.id));
+  return getLessonTechniqueEntries(lessonId).map((entry) => entry.study);
 }
 
 export function getStudyLessonIds(studyId: string) {
-  return [
-    ...new Set([
-      ...(getTechniqueStudy(studyId)?.relatedLessons ?? []),
-      ...lessonEnrichments
-        .filter((lesson) => lesson.techniqueStudyIds.includes(studyId))
-        .map((lesson) => lesson.lessonId),
-    ]),
-  ];
+  return lessonJourneys
+    .filter((lesson) => lesson.techniques.some((entry) => entry.studyId === studyId.toLowerCase()))
+    .map((lesson) => lesson.lessonId);
+}
+
+export function getLessonTechniqueEntries(lessonId: string): LessonTechniqueEntry[] {
+  const journey = lessonJourneys.find((lesson) => lesson.lessonId === lessonId.toLowerCase());
+  return (journey?.techniques ?? []).flatMap(({ studyId, stage, focus }) => {
+    const study = getTechniqueStudy(studyId);
+    return study ? [{ study, stage, focus }] : [];
+  });
+}
+
+export function getTechniqueStudyIntroduction(
+  studyId: string,
+): TechniqueStudyIntroduction | undefined {
+  for (const lesson of lessonJourneys) {
+    const introduction = lesson.techniques.find(
+      (entry) => entry.studyId === studyId.toLowerCase() && entry.stage === 'introducao',
+    );
+    if (introduction) return { lessonId: lesson.lessonId, focus: introduction.focus };
+  }
+  return undefined;
+}
+
+export function getModuleTechniqueCount(moduleNumber: number): number {
+  return new Set(
+    lessonJourneys
+      .filter((lesson) => lesson.lessonId.startsWith(`m${moduleNumber}-`))
+      .flatMap((lesson) => lesson.techniques.map((entry) => entry.studyId)),
+  ).size;
 }

@@ -1,8 +1,15 @@
 import type { Lesson } from '../content/types';
-import type { LessonEnrichment } from '../content/curriculum-types';
+import type { LessonEnrichment, TechniqueStudy } from '../content/curriculum-types';
+
+export interface TechniquePresentationEntry {
+  study: Pick<TechniqueStudy, 'id' | 'title' | 'workedExample' | 'steps' | 'checks' | 'retrieval'>;
+  stage: 'introducao' | 'retomada';
+  focus: string;
+}
 
 export type LessonSlideBlock =
   | { id: string; label?: string; kind: 'text'; text: string }
+  | { id: string; label?: string; kind: 'tab'; text: string }
   | { id: string; label?: string; kind: 'list'; items: readonly string[] };
 
 export interface LessonSlide {
@@ -17,6 +24,7 @@ export interface LessonSlide {
 export function buildLessonPresentation(
   lesson: Lesson,
   enrichment?: LessonEnrichment,
+  techniques: readonly TechniquePresentationEntry[] = [],
 ): readonly LessonSlide[] {
   const review: LessonSlideBlock[] = [];
   if (lesson.review.trim())
@@ -110,6 +118,53 @@ export function buildLessonPresentation(
       ],
     });
   }
+  // Technical practice happens before applying the same movement to the repertoire.
+  const techniqueSlides: LessonSlide[] = techniques.flatMap(({ study, stage, focus }) => [
+    {
+      id: `technique-${study.id}`,
+      label: stage === 'introducao' ? 'Começar técnica' : 'Retomar técnica',
+      title: study.title,
+      blocks: [
+        { id: `focus-${study.id}`, label: 'Foco nesta aula', kind: 'text', text: focus },
+        {
+          id: `example-${study.id}`,
+          label: study.workedExample.title,
+          kind: 'text',
+          text: study.workedExample.text,
+        },
+        ...(study.workedExample.tab
+          ? [{ id: `tab-${study.id}`, kind: 'tab' as const, text: study.workedExample.tab }]
+          : []),
+      ],
+    },
+    {
+      id: `technique-practice-${study.id}`,
+      label: 'Praticar técnica',
+      title: study.title,
+      blocks: [
+        {
+          id: `steps-${study.id}`,
+          label: 'Escolha os passos adequados ao foco de hoje',
+          kind: 'list',
+          items: [...study.steps],
+        },
+        {
+          id: `checks-${study.id}`,
+          label: 'O que observar',
+          kind: 'list',
+          items: [...study.checks],
+        },
+        {
+          id: `question-${study.id}`,
+          label: 'Tente antes de conferir',
+          kind: 'text',
+          text: study.retrieval.question,
+        },
+      ],
+      answer: study.retrieval.answer,
+    },
+  ]);
+  slides.splice(3, 0, ...techniqueSlides);
   return slides;
 }
 

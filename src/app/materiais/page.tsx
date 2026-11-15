@@ -46,29 +46,29 @@ export default async function MaterialsPage() {
       <PageHeading
         eyebrow="CONSULTE, EXPERIMENTE, VOLTE À MÚSICA"
         title="Sua biblioteca musical"
-        description="O material reúne as 39 aulas, os 27 estudos técnicos, as consultas de teoria e o acervo integral da edição anterior."
+        description="Acompanhe a trilha com as 39 aulas e os 27 estudos técnicos integrados. Consulte também teoria, diagramas e o acervo integral da edição anterior."
       />
       <section className="material-list section" aria-label="Apostilas para baixar">
         <article className="card material-item">
           <span className="round-icon">
-            <BookOpen />
+            <BookOpen aria-hidden="true" />
           </span>
           <div>
             <p className="eyebrow">MATERIAL COMPLETO · {pdfManifest.student.pages} PÁGINAS</p>
             <h2>Apostila do aluno</h2>
             <p>
-              Aulas aprofundadas, exemplos, estudos técnicos, diagramas, cifras e roteiros de
-              prática.
+              Aulas com técnica e repertório na mesma sequência, exemplos, diagramas, cifras e
+              roteiros de prática.
             </p>
           </div>
           <a className="button secondary" href="/api/materials/aluno" download>
-            <Download size={17} /> Baixar PDF
+            <Download size={17} aria-hidden="true" /> Baixar PDF
           </a>
         </article>
         {teacher && (
           <article className="card material-item">
             <span className="round-icon">
-              <GraduationCap />
+              <GraduationCap aria-hidden="true" />
             </span>
             <div>
               <p className="eyebrow">MATERIAL COMPLETO · {pdfManifest.teacher.pages} PÁGINAS</p>
@@ -79,7 +79,7 @@ export default async function MaterialsPage() {
               </p>
             </div>
             <a className="button secondary" href="/api/materials/professor" download>
-              <Download size={17} /> Baixar PDF
+              <Download size={17} aria-hidden="true" /> Baixar PDF
             </a>
           </article>
         )}
@@ -95,7 +95,7 @@ export default async function MaterialsPage() {
         ))}
         <div className="learning-paths">
           <Link className="button secondary" href="/tecnica">
-            Explorar os nove eixos técnicos
+            Consultar o índice de técnicas
           </Link>
           {teacher && (
             <Link className="button secondary" href="/professor/metodologia">
@@ -105,7 +105,8 @@ export default async function MaterialsPage() {
         </div>
       </section>
       <section className="section" aria-labelledby="technical-library">
-        <h2 id="technical-library">Técnica aplicada ao repertório</h2>
+        <h2 id="technical-library">Consulte as técnicas por assunto</h2>
+        <p>Os mesmos estudos presentes nas aulas, reunidos aqui para revisão.</p>
         <div className="learning-module-list section">
           {techniqueModules.map((module) => (
             <Link className="card" href={`/tecnica#${module.id}`} key={module.id}>
@@ -113,7 +114,7 @@ export default async function MaterialsPage() {
               <h3>{module.title}</h3>
               <p>{module.goal}</p>
               <span className="text-link">
-                Abrir estudos <ArrowRight size={16} />
+                Abrir estudos <ArrowRight size={16} aria-hidden="true" />
               </span>
             </Link>
           ))}
@@ -133,7 +134,7 @@ export default async function MaterialsPage() {
               <h3>{reference.title}</h3>
               <p>{reference.lead}</p>
               <span className="text-link">
-                Explorar a consulta <ArrowRight size={15} />
+                Explorar a consulta <ArrowRight size={15} aria-hidden="true" />
               </span>
             </Link>
           ))}
@@ -167,7 +168,7 @@ export default async function MaterialsPage() {
               rubrica, os mapas e as consultas complementares.
             </Hint>
             <Link className="text-link" href="/professor">
-              Minhas turmas <ArrowRight size={16} />
+              Minhas turmas <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>
           <GuideSection

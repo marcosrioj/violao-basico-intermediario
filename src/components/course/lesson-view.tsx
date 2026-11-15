@@ -14,8 +14,9 @@ import { LessonProgress, PracticeLog } from './lesson-progress';
 import { VideoResource } from './video-resource';
 import type { ReactNode } from 'react';
 import { Hint } from '@/components/ui/hint';
-import { getLessonEnrichment, getLessonStudies } from '@/content/curriculum';
-import { LessonDeepening } from './learning-content';
+import { getLessonEnrichment } from '@/content/curriculum';
+import { LessonTechniques, LessonUnderstanding, LessonWeeklyPractice } from './learning-content';
+import { TheoryExercise } from './theory-exercise';
 export function LessonView({
   lesson,
   demo = false,
@@ -61,84 +62,158 @@ export function LessonView({
           <span className="badge">Encontro de 60 min</span>
         </div>
       </header>
-      <nav className="lesson-jumps" aria-label="Nesta aula">
-        <a href="#entender">Entender</a>
-        <a href="#acordes">Acordes</a>
-        <a href="#tocar">Tocar junto</a>
-        <a href="#praticar">Praticar</a>
-        {enrichment && !demo && <a href="#aprofundar">Aprofundar</a>}
-        <a href="#consulta">Teoria</a>
-        {teacher && <a href="#plano-professor">Plano do professor</a>}
+      <nav className="lesson-jumps lesson-journey" aria-label="Percurso desta aula">
+        <a href="#entender">
+          <span aria-hidden="true">1</span> Entender
+        </a>
+        <a href="#tecnica">
+          <span aria-hidden="true">2</span> Treinar
+        </a>
+        <a href="#aplicar">
+          <span aria-hidden="true">3</span> Aplicar
+        </a>
+        <a href="#revisar">
+          <span aria-hidden="true">4</span> Revisar
+        </a>
       </nav>
+      {teacher && (
+        <a className="resource-link lesson-teacher-shortcut" href="#plano-professor">
+          Abrir plano do professor
+        </a>
+      )}
       <div className="lesson-layout" key={lesson.id}>
         <div className="lesson-content">
-          <CollapsibleCard id="entender" title="A música como ponto de partida">
+          <CollapsibleCard
+            id="entender"
+            title="1. Entender a música"
+            description="Retome o que já sabe e conheça o foco de hoje."
+            defaultOpen
+          >
             <p className="eyebrow">PRIMEIRO, ENTENDA</p>
             {rich(lesson.explain, 'explain')}
             <p className="eyebrow section">NOSSO FOCO</p>
             {rich(lesson.focus, 'focus')}
             <p className="eyebrow section">RETOMADA</p>
             {rich(lesson.review, 'review')}
+            {enrichment && !demo && <LessonUnderstanding content={enrichment} />}
           </CollapsibleCard>
-          <CollapsibleCard id="acordes" title="Os acordes desta aula">
-            <p className="eyebrow">MÃOS NO INSTRUMENTO</p>
-            <p className="hint">
-              × não tocar · ○ corda solta · 1 indicador, 2 médio, 3 anelar, 4 mínimo. Cordas da 6ª à
-              1ª, da esquerda para a direita.
-            </p>
-            <div className="chord-grid">
-              {lesson.chords.map((name) => (
-                <ChordDiagram key={name} name={name} />
-              ))}
-            </div>
+          <CollapsibleCard
+            id="tecnica"
+            title="2. Preparar as mãos e treinar"
+            description="Acordes e estudos técnicos aplicados ao objetivo desta aula."
+          >
+            <details id="acordes" className="lesson-chords">
+              <summary>
+                <h3>Os acordes desta aula</h3>
+              </summary>
+              <p className="eyebrow">MÃOS NO INSTRUMENTO</p>
+              <p className="hint">
+                × não tocar · ○ corda solta · 1 indicador, 2 médio, 3 anelar, 4 mínimo. Cordas da 6ª
+                à 1ª, da esquerda para a direita.
+              </p>
+              <div className="chord-grid">
+                {lesson.chords.map((name) => (
+                  <ChordDiagram key={name} name={name} />
+                ))}
+              </div>
+            </details>
+            {!demo && <LessonTechniques lessonId={lesson.id} />}
           </CollapsibleCard>
-          <ChartPlayer
-            key={`chart-${lesson.id}`}
-            chart={chart}
-            initialBpm={lesson.bpm}
-            tempo={song.tempo}
-          />
-          <CollapsibleCard id="praticar" title="Da explicação à prática">
-            <p className="eyebrow">UM PASSO DE CADA VEZ</p>
-            <ol className="steps">
-              {lesson.steps.map((s, i) => (
-                <li key={i}>{rich(s, `steps-${i}`)}</li>
-              ))}
-            </ol>
-            <h3>Modelo para uma sessão de prática</h3>
-            <p className="hint">
-              {enrichment && !demo
-                ? 'Use este modelo nos momentos de estudo da semana, ajustando o foco ao roteiro de quatro dias abaixo.'
-                : 'Use este modelo nos momentos de estudo da semana e ajuste o foco com seu professor.'}{' '}
-              Os tempos são sugestões flexíveis.
-            </p>
-            <ol className="steps">
-              {lesson.practice.map((s, i) => (
-                <li key={i}>{rich(s, `practice-${i}`)}</li>
-              ))}
-            </ol>
-            <p className="hint">
-              Padrão rítmico:{' '}
-              {(
-                {
-                  one: 'Um ataque no início de cada compasso; deixe o acorde soar.',
-                  quarters: 'Ataques regulares em semínimas: conte os pulsos em voz alta.',
-                  eighths: 'Colcheias: divida cada pulso em duas partes iguais (1 e, 2 e…).',
-                  finger4:
-                    'Dedilhado em quatro pulsos: observe o baixo e a ordem dos dedos na apostila.',
-                  finger6: 'Dedilhado em 6/8: dois grupos de três subdivisões (1 la li, 2 la li).',
-                } as Record<string, string>
-              )[lesson.pattern] ?? lesson.pattern}
-            </p>
+          <section
+            id="aplicar"
+            className="lesson-application stack"
+            aria-labelledby="aplicar-heading"
+          >
+            <h2 id="aplicar-heading">3. Aplicar na música</h2>
+            <ChartPlayer
+              key={`chart-${lesson.id}`}
+              chart={chart}
+              initialBpm={lesson.bpm}
+              tempo={song.tempo}
+            />
+            <CollapsibleCard
+              id="praticar"
+              title="Prática guiada no repertório"
+              description="Comece por um trecho curto e amplie quando estiver estável."
+            >
+              <p className="eyebrow">UM PASSO DE CADA VEZ</p>
+              <ol className="steps">
+                {lesson.steps.map((s, i) => (
+                  <li key={i}>{rich(s, `steps-${i}`)}</li>
+                ))}
+              </ol>
+              {enrichment && !demo && (
+                <details className="section">
+                  <summary>Experimentar e escutar com mais atenção</summary>
+                  <ol className="steps">
+                    {enrichment.guidedPractice.map((step, i) => (
+                      <li key={i}>{step}</li>
+                    ))}
+                  </ol>
+                </details>
+              )}
+              <details className="section">
+                <summary>Modelo para uma sessão de prática</summary>
+                <p className="hint">
+                  {enrichment && !demo
+                    ? 'Use este modelo nos momentos de estudo da semana, ajustando o foco ao roteiro disponível em Revisar.'
+                    : 'Use este modelo nos momentos de estudo da semana e ajuste o foco com seu professor.'}{' '}
+                  Os tempos são sugestões flexíveis.
+                </p>
+                <ol className="steps">
+                  {lesson.practice.map((s, i) => (
+                    <li key={i}>{rich(s, `practice-${i}`)}</li>
+                  ))}
+                </ol>
+              </details>
+              <p className="hint">
+                Padrão rítmico:{' '}
+                {(
+                  {
+                    one: 'Um ataque no início de cada compasso; deixe o acorde soar.',
+                    quarters: 'Ataques regulares em semínimas: conte os pulsos em voz alta.',
+                    eighths: 'Colcheias: divida cada pulso em duas partes iguais (1 e, 2 e…).',
+                    finger4:
+                      'Dedilhado em quatro pulsos: observe o baixo e a ordem dos dedos na apostila.',
+                    finger6:
+                      'Dedilhado em 6/8: dois grupos de três subdivisões (1 la li, 2 la li).',
+                  } as Record<string, string>
+                )[lesson.pattern] ?? lesson.pattern}
+              </p>
+            </CollapsibleCard>
+          </section>
+          <CollapsibleCard
+            id="revisar"
+            title="4. Conferir e retomar"
+            description="Explique o que aprendeu, observe sua execução e planeje a próxima prática."
+          >
+            <Quiz
+              key={`quiz-${lesson.id}`}
+              question={rich(lesson.question, 'question')}
+              answer={rich(lesson.answer, 'answer')}
+              compact
+            />
+            {enrichment && !demo && (
+              <>
+                <details className="section">
+                  <summary>Aplicar a ideia em uma nova tentativa</summary>
+                  <TheoryExercise
+                    exercise={enrichment.retrieval.question}
+                    answer={enrichment.retrieval.answer}
+                    compact
+                  />
+                </details>
+                <LessonWeeklyPractice content={enrichment} />
+              </>
+            )}
+            <a className="resource-link section" href="#meu-progresso">
+              Conferir objetivos e registrar meu progresso{' '}
+              <ArrowRight size={16} aria-hidden="true" />
+            </a>
+            <a className="resource-link" href="#diario-pratica">
+              Anotar no diário de prática <ArrowRight size={16} aria-hidden="true" />
+            </a>
           </CollapsibleCard>
-          <Quiz
-            key={`quiz-${lesson.id}`}
-            question={rich(lesson.question, 'question')}
-            answer={rich(lesson.answer, 'answer')}
-          />
-          {enrichment && !demo && (
-            <LessonDeepening content={enrichment} studies={getLessonStudies(lesson.id)} />
-          )}
           <CollapsibleCard id="consulta" title="Consultas teóricas">
             <div className="section-title">
               <p className="eyebrow">CONECTE AS IDEIAS</p>

@@ -22,7 +22,7 @@ export default async function Laboratory() {
           ligados às músicas das aulas.
         </p>
         <Link className="button secondary section" href="/tecnica">
-          Explorar os 27 estudos
+          Consultar índice de técnicas
         </Link>
       </section>
     </Shell>

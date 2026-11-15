@@ -1620,6 +1620,7 @@ input:read-only {
   background: var(--color-surface);
 }
 .lesson-row .lesson-number {
+  flex-shrink: 0;
   width: 30px;
   height: 30px;
   display: grid;
@@ -1638,8 +1639,12 @@ input:read-only {
   color: var(--muted);
 }
 .lesson-row .row-arrow {
+  flex-shrink: 0;
   margin-left: auto;
   color: var(--green);
+}
+.lesson-row > div {
+  min-width: 0;
 }
 .filter-bar {
   display: flex;

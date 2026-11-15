@@ -2,15 +2,26 @@
 import { useId, useState, type ReactNode } from 'react';
 import { Hint } from '@/components/ui/hint';
 
-export function TheoryExercise({ exercise, answer }: { exercise: ReactNode; answer: ReactNode }) {
+export function TheoryExercise({
+  exercise,
+  answer,
+  compact = false,
+  headingLevel = 3,
+}: {
+  exercise: ReactNode;
+  answer: ReactNode;
+  compact?: boolean;
+  headingLevel?: 3 | 4;
+}) {
   const [attempt, setAttempt] = useState('');
   const [notice, setNotice] = useState('');
   const inputId = useId();
+  const Heading = compact ? (headingLevel === 4 ? 'h4' : 'h3') : 'h2';
   return (
-    <section className="card quiz">
+    <section className={compact ? 'quiz section' : 'card quiz'}>
       <p className="eyebrow">EXPERIMENTE ANTES DE CONFERIR</p>
       <div className="section-title">
-        <h2>Transforme a ideia em música</h2>
+        <Heading>Transforme a ideia em música</Heading>
         <Hint label="Rascunho do exercício">
           Este rascunho fica apenas nesta página. Registre uma tentativa antes de conferir a
           explicação. Pode ser uma dúvida ou o que você conseguiu ouvir.

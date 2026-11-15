@@ -37,6 +37,36 @@ export interface TechniqueModule {
   studies: TechniqueStudy[];
 }
 
+export type TechniqueLearningStage = 'introducao' | 'retomada';
+
+/** A study may span several lessons; focus defines the portion used at this point. */
+export interface LessonTechniquePlacement {
+  studyId: string;
+  stage: TechniqueLearningStage;
+  focus: string;
+}
+
+export interface LessonJourney {
+  lessonId: string;
+  techniques: LessonTechniquePlacement[];
+}
+
+export interface TechniqueStudyWithModule extends TechniqueStudy {
+  moduleId: string;
+  moduleTitle: string;
+}
+
+export interface LessonTechniqueEntry {
+  study: TechniqueStudyWithModule;
+  stage: TechniqueLearningStage;
+  focus: string;
+}
+
+export interface TechniqueStudyIntroduction {
+  lessonId: string;
+  focus: string;
+}
+
 export interface LessonEnrichment {
   lessonId: string;
   techniqueStudyIds: string[];

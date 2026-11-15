@@ -48,6 +48,95 @@
   flex-wrap: wrap;
   margin-block: var(--space-5);
 }
+.lesson-journey {
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.lesson-journey a {
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--card-radius);
+  background: var(--color-surface-soft);
+  font-weight: 600;
+}
+.lesson-journey a > span {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted-foreground);
+}
+.lesson-teacher-shortcut {
+  margin-bottom: var(--space-5);
+}
+.lesson-application > h2 {
+  margin: 0;
+}
+.lesson-chords > summary h3,
+.integrated-study > summary h3 {
+  display: inline;
+  font-size: var(--font-size-base);
+  margin: 0;
+}
+.integrated-studies {
+  margin-top: var(--space-5);
+}
+.integrated-study {
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-3);
+  scroll-margin-top: var(--space-6);
+}
+.integrated-study > summary {
+  min-height: var(--touch-target);
+  padding-block: var(--space-2);
+}
+.integrated-study-stage {
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  margin-right: var(--space-2);
+}
+.integrated-study-title {
+  font-weight: 600;
+}
+.integrated-study-focus {
+  display: block;
+  margin-top: var(--space-2);
+  color: var(--color-muted-foreground);
+  font-weight: 400;
+  line-height: 1.6;
+}
+.integrated-study-content {
+  padding-top: var(--space-4);
+}
+.integrated-study-content h4 {
+  font: 600 var(--font-size-base) / 1.5 var(--font-body);
+}
+.integrated-study-content > p,
+.integrated-study-content details > p {
+  margin-block: var(--space-3);
+}
+.integrated-study-content .learning-tab {
+  margin-block: var(--space-4);
+}
+.integrated-study-content details {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  margin-block: var(--space-4);
+}
+.integrated-study-content details > summary {
+  padding-block: var(--space-2);
+}
+.lesson-journey a:focus-visible,
+.integrated-study > summary:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+@media (hover: hover) {
+  .lesson-journey a:hover,
+  .integrated-study > summary:hover {
+    background: var(--color-surface-selected);
+  }
+}
 .learning-module-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

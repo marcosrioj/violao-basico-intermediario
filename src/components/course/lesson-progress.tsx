@@ -213,7 +213,7 @@ export function PracticeLog({
     }
   }
   return (
-    <CollapsibleCard title="Diário de prática">
+    <CollapsibleCard id="diario-pratica" title="Diário de prática">
       <div className="section-title">
         <p className="eyebrow">UM MOMENTO PARA TOCAR</p>
         <Hint label="Usar o diário e o cronômetro">

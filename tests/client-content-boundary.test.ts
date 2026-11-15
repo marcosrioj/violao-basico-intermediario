@@ -42,6 +42,7 @@ test('client module dependency graph cannot bundle course texts or teacher plans
     'teacher-data.json',
     'technique-data.json',
     'lesson-enrichment.json',
+    'lesson-journey.json',
     'teacher-enrichment.json',
   ]);
   const visited = new Set<string>();

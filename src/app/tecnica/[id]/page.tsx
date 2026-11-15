@@ -9,6 +9,7 @@ import { HashReveal } from '@/components/course/hash-reveal';
 import { Metronome } from '@/components/music/metronome';
 import {
   getTechniqueStudy,
+  getTechniqueStudyIntroduction,
   getStudyLessonIds,
   techniqueSources,
   techniqueStudies,
@@ -27,17 +28,34 @@ export default async function TechniqueStudyPage({ params }: { params: Promise<{
   const related = lessons.filter((lesson) => relatedIds.has(lesson.id));
   const siblings = techniqueStudies.filter((item) => item.moduleId === study.moduleId);
   const index = siblings.findIndex((item) => item.id === study.id);
+  const introduction = getTechniqueStudyIntroduction(study.id);
+  const firstLesson = lessons.find((lesson) => lesson.id === introduction?.lessonId);
   return (
     <Shell active="/curso" courseAccess teacher={profile.role === 'teacher'}>
       <HashReveal />
       <Link href={`/tecnica#${study.moduleId}`} className="back-link">
-        <ArrowLeft size={16} /> {study.moduleTitle}
+        <ArrowLeft size={16} aria-hidden="true" /> Índice de técnicas · {study.moduleTitle}
       </Link>
       <PageHeading
         eyebrow={`${study.moduleId} · ESTUDO ${index + 1} DE ${siblings.length}`}
         title={study.title}
         description={study.goal}
       />
+      {firstLesson && introduction && (
+        <section className="card learning-reading" aria-labelledby="study-in-course">
+          <p className="eyebrow">ESTE ESTUDO FAZ PARTE DA SUA TRILHA</p>
+          <h2 id="study-in-course">
+            Módulo {firstLesson.module}, aula {firstLesson.local_n} · {firstLesson.title}
+          </h2>
+          <p>{introduction.focus}</p>
+          <div className="learning-paths">
+            <Link className="button" href={`/aulas/${firstLesson.id}#estudo-${study.id}`}>
+              Aprender dentro da aula <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+          <p>O conteúdo completo também está abaixo para consulta e revisão.</p>
+        </section>
+      )}
       <nav className="lesson-jumps" aria-label="Neste estudo">
         <a href="#compreender">Compreender</a>
         <a href="#experimentar">Experimentar</a>
@@ -122,14 +140,14 @@ export default async function TechniqueStudyPage({ params }: { params: Promise<{
           </CollapsibleCard>
           <section className="card" id="aplicar">
             <p className="eyebrow">TÉCNICA DENTRO DA MÚSICA</p>
-            <h2>Retorne ao repertório</h2>
+            <h2>Pratique este estudo nas aulas</h2>
             <div className="review-list">
               {related.map((lesson) => (
-                <Link key={lesson.id} href={`/aulas/${lesson.id}#aprofundar`}>
+                <Link key={lesson.id} href={`/aulas/${lesson.id}#estudo-${study.id}`}>
                   <span>
                     {lesson.display_id} · {lesson.title}
                   </span>
-                  <ArrowRight size={16} />
+                  <ArrowRight size={16} aria-hidden="true" />
                 </Link>
               ))}
             </div>
@@ -144,12 +162,12 @@ export default async function TechniqueStudyPage({ params }: { params: Promise<{
             <h2>Ouça e confira</h2>
             <p>Explore notas, intervalos e acordes no laboratório, depois repita no instrumento.</p>
             <Link className="button secondary section" href="/laboratorio">
-              Abrir laboratório <ArrowRight size={16} />
+              Abrir laboratório <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </section>
           <section className="card">
             <h2>Leve o estudo com você</h2>
-            <p>A apostila reúne os estudos técnicos e as aulas do repertório.</p>
+            <p>A apostila acompanha a trilha, com os estudos técnicos integrados às aulas.</p>
             <a className="resource-link" href="/api/materials/aluno" download>
               Baixar apostila do aluno
             </a>
@@ -159,7 +177,7 @@ export default async function TechniqueStudyPage({ params }: { params: Promise<{
       <nav className="lesson-nav" aria-label="Estudos deste eixo">
         {index > 0 ? (
           <Link className="button secondary" href={`/tecnica/${siblings[index - 1].id}`}>
-            <ArrowLeft size={16} /> Estudo anterior
+            <ArrowLeft size={16} aria-hidden="true" /> Estudo anterior
           </Link>
         ) : (
           <Link className="button secondary" href={`/tecnica#${study.moduleId}`}>
@@ -167,8 +185,8 @@ export default async function TechniqueStudyPage({ params }: { params: Promise<{
           </Link>
         )}
         {index + 1 < siblings.length && (
-          <Link className="button" href={`/tecnica/${siblings[index + 1].id}`}>
-            Próximo estudo <ArrowRight size={16} />
+          <Link className="button secondary" href={`/tecnica/${siblings[index + 1].id}`}>
+            Próximo estudo <ArrowRight size={16} aria-hidden="true" />
           </Link>
         )}
       </nav>

@@ -54,7 +54,7 @@ INK = colors.HexColor("#24372F")
 CREAM = colors.HexColor("#F4F2EB")
 LINE = colors.HexColor("#D9E2DB")
 WHITE = colors.white
-SOURCE_NAMES = ["course-data", "teacher-data", "tempo-research", "technique-data", "lesson-enrichment", "teacher-enrichment"]
+SOURCE_NAMES = ["course-data", "teacher-data", "tempo-research", "technique-data", "lesson-enrichment", "teacher-enrichment", "lesson-journey"]
 
 
 def load(name):
@@ -92,6 +92,7 @@ def styles():
         "h1": dict(fontName="VivoBold", fontSize=21, leading=27, textColor=GREEN, spaceAfter=13, keepWithNext=True),
         "h2": dict(fontName="VivoBold", fontSize=15, leading=20, textColor=GREEN, spaceBefore=10, spaceAfter=9, keepWithNext=True),
         "h3": dict(fontName="VivoBold", fontSize=11, leading=15.5, textColor=GREEN, spaceBefore=8, spaceAfter=4, keepWithNext=True),
+        "study": dict(fontName="VivoBold", fontSize=13, leading=18, textColor=GREEN, spaceBefore=10, spaceAfter=8, keepWithNext=True),
         "eyebrow": dict(fontName="VivoBold", fontSize=8.5, leading=12, textColor=SAGE, spaceAfter=8, keepWithNext=True),
         "cover": dict(fontName="VivoBold", fontSize=36, leading=43, textColor=GREEN, spaceAfter=22),
         "subtitle": dict(fontName="Vivo", fontSize=18, leading=25, textColor=GREEN, spaceAfter=20),
@@ -100,6 +101,7 @@ def styles():
         "mono": dict(fontName="VivoMono", fontSize=8.3, leading=11.5, textColor=INK, spaceAfter=10),
         "toc0": dict(fontName="VivoBold", fontSize=10, leading=15, textColor=GREEN, spaceBefore=8, leftIndent=0, firstLineIndent=0),
         "toc1": dict(fontName="Vivo", fontSize=9.2, leading=13.2, textColor=INK, spaceBefore=3, leftIndent=12, firstLineIndent=0),
+        "toc2": dict(fontName="Vivo", fontSize=8.8, leading=12.5, textColor=INK, spaceBefore=3, leftIndent=24, firstLineIndent=0),
     }
     return {name: ParagraphStyle(name, **props) for name, props in configs.items()}
 
@@ -111,12 +113,12 @@ def p(text, style="body", markup=False):
     return Paragraph(text if markup else esc(text).replace("\n", "<br/>"), STYLES[style])
 
 
-def heading(text, level=1, anchor=None, toc=True, category=None, item_id=None):
-    item = p(text, f"h{level}")
+def heading(text, level=1, anchor=None, toc=True, category=None, item_id=None, toc_level=None, style=None):
+    item = p(text, style or f"h{level}")
     if anchor:
         item._anchor = anchor
         item._toc = toc
-        item._toclevel = min(level - 1, 1)
+        item._toclevel = min(level - 1, 1) if toc_level is None else toc_level
         item._category = category
         item._item_id = item_id
     return item
@@ -137,6 +139,12 @@ def label(text, body, style="body"):
 def link(text, dest, external=False):
     href = dest if external else f"#{dest}"
     return f'<a href="{html.escape(href, quote=True)}" color="#173F35"><u>{esc(text)}</u></a>'
+
+
+def study_link(study, page_refs, with_title=True):
+    page = page_refs.get("studies", {}).get(study["id"], "000")
+    text = study["id"].upper() + (f" · {study['title']}" if with_title else "")
+    return link(f"{text} · p. {page}", study["id"])
 
 
 def box(title, text):
@@ -295,7 +303,7 @@ def cover(audience):
         p("Curso do aluno" if student else "Manual do professor", "subtitle"),
         p("Do primeiro acorde à autonomia musical", "h2"),
         Spacer(1, 8 * mm),
-        p("13 módulos de repertório\n39 aulas progressivas\n9 eixos de técnica\n27 estudos guiados", "subtitle"),
+        p("13 módulos de repertório\n39 aulas progressivas\n27 estudos integrados às aulas\n9 eixos para consulta", "subtitle"),
         Spacer(1, 6 * mm),
         p("Uma formação que conecta escuta, execução, compreensão e prática. "
           + ("Cada estudo prepara uma decisão que você pode ouvir na música." if student else
@@ -312,9 +320,10 @@ def opening(course, technique, lesson_extra, teacher_extra, audience):
     story = cover(audience)
     story += [heading("Como usar esta edição", anchor="how-to")]
     story += [p(lesson_extra["introduction"] if student else teacher_extra["introduction"])]
-    story += box("A música orienta a técnica", "Percorra as 39 aulas na ordem dos 13 módulos. "
-                 "Abra os estudos técnicos vinculados à tarefa do momento e volte ao repertório. "
-                 "T1 a T9 são eixos de consulta e prática: sua numeração não obriga estudar todos em sequência antes de tocar.")
+    story += box("Uma sequência para ouvir, entender e tocar", "Percorra as 39 aulas na ordem dos 13 módulos. "
+                 "A técnica aparece dentro da aula em que começa a ser trabalhada, seguida da aplicação no repertório. "
+                 "Nas retomadas, o foco da aula indica o que recuperar e fornece a página da explicação completa. "
+                 "T1 a T9 organizam o índice de consulta; a ordem de aprendizagem é a das aulas.")
     story += bullets([
         "Escolha um objetivo observável, ouça o resultado esperado e tente uma passagem curta antes de aumentar a dificuldade.",
         "Após compreender um movimento, retome-o em outros dias e experimente sem consultar a resposta primeiro. Ajuste o intervalo ao que consegue lembrar e executar.",
@@ -346,7 +355,7 @@ def opening(course, technique, lesson_extra, teacher_extra, audience):
                      "e, quando possível, em outro dia; uma execução isolada não estabelece retenção.")
     story += [PageBreak(), heading("Sumário", anchor="contents", toc=False)]
     toc = TableOfContents()
-    toc.levelStyles = [STYLES["toc0"], STYLES["toc1"]]
+    toc.levelStyles = [STYLES["toc0"], STYLES["toc1"], STYLES["toc2"]]
     toc.dotsMinLevel = 0
     story += [toc, PageBreak(), heading("Mapa de integração", anchor="integration")]
     story += [p(technique["introduction"])]
@@ -372,12 +381,13 @@ def tempo_note(song_id, lesson, chart, tempo_data):
     return result
 
 
-def lesson_sections(course, lesson_extra, teacher_legacy, teacher_extra, technique, tempo_data, audience):
+def lesson_sections(course, lesson_extra, teacher_legacy, teacher_extra, technique, tempo_data, journey, audience, page_refs):
     student = audience == "aluno"
     enrichments = {x["lessonId"]: x for x in lesson_extra["lessons"]}
     teaching = {x["lessonId"]: x for x in teacher_extra["lessons"]}
     legacy = {x["lessonId"]: x for x in teacher_legacy["lessons"]}
     studies = {s["id"]: s for module in technique["modules"] for s in module["studies"]}
+    journey_by_id = {x["lessonId"]: x for x in journey["lessons"]}
     story = []
     for module in course["modules"]:
         story += [PageBreak(), p(f"REPERTÓRIO · MÓDULO {module['n']:02}", "eyebrow"),
@@ -397,9 +407,11 @@ def lesson_sections(course, lesson_extra, teacher_legacy, teacher_extra, techniq
                         link("Consultar letra e cifra na fonte", song["lyrics_chords_url"], True), "small", markup=True)]
             story += [p(link("Mapa harmônico completo desta versão", f"chart-{lesson['song']}-{lesson['version']}") + " · " +
                         "Foco: " + esc(lesson["focus"]), "small", markup=True)]
-            if extra["techniqueStudyIds"]:
-                refs = [link(f"{sid.upper()} · {studies[sid]['title']}", sid) for sid in extra["techniqueStudyIds"]]
-                story += [p("<b>Estudos relacionados:</b> " + "; ".join(refs), "small", markup=True)]
+            entries = journey_by_id[lesson["id"]]["techniques"]
+            if entries:
+                refs = [study_link(studies[item["studyId"]], page_refs, with_title=False) +
+                        (" (introdução)" if item["stage"] == "introducao" else " (retomada)") for item in entries]
+                story += [p("<b>Técnica nesta aula:</b> " + "; ".join(refs), "small", markup=True)]
             if lesson["review"]:
                 story += [heading("Retome antes de começar", level=3), p(lesson["review"])]
             story += [heading("Entenda na própria música", level=3), p(lesson["explain"])]
@@ -411,6 +423,7 @@ def lesson_sections(course, lesson_extra, teacher_legacy, teacher_extra, techniq
                 story += chord_grid(lesson["chords"], course["chords"])
                 story += [p("Da esquerda para a direita: 6ª a 1ª corda. x = não tocar; o = corda solta. "
                             "Os números nos pontos indicam os dedos. O número lateral indica a primeira casa representada.", "micro")]
+                story += lesson_technique(entries, studies, audience, page_refs)
                 story += [heading("Percurso da aula", level=3)] + bullets(lesson["steps"], numbered=True)
                 story += [heading("Experimente com atenção", level=3)] + bullets(extra["guidedPractice"], numbered=True)
                 story += [heading("Recupere antes de consultar", level=3), p(lesson["question"]), p(extra["retrieval"]["question"])]
@@ -439,6 +452,7 @@ def lesson_sections(course, lesson_extra, teacher_legacy, teacher_extra, techniq
                                  [[f"{x['minutes']} min", x["title"], x["action"]] for x in teacher["sequence"]],
                                  [48, 105, TEXT_W - 153])
                 story += [heading("Exemplo para explicar e tocar", level=3), p(extra["workedExample"]["title"]), p(extra["workedExample"]["text"])]
+                story += lesson_technique(entries, studies, audience, page_refs)
                 story += [heading("Tarefa instrumental do aluno", level=3)] + bullets(lesson["steps"], numbered=True)
                 story += [heading("Prática guiada do aluno", level=3)] + bullets(extra["guidedPractice"], numbered=True)
                 story += [heading("Intervenha sobre uma dificuldade", level=3),
@@ -463,47 +477,89 @@ def lesson_sections(course, lesson_extra, teacher_legacy, teacher_extra, techniq
     return story
 
 
-def technical_sections(technique, audience):
-    story = [PageBreak(), heading("Estudos de técnica e compreensão", anchor="technical-studies"),
-             p("Trabalhe um estudo por vez, conforme a conexão indicada na aula. As perguntas de recuperação "
-               "aparecem antes do caderno de respostas; tente explicar ou tocar antes de conferir.")]
+def integrated_study(study, audience):
+    """Print the complete study once, nested within its introductory lesson."""
+    story = [heading(f"{study['id'].upper()}  {study['title']}", level=3,
+                     anchor=study["id"], category="studies", item_id=study["id"],
+                     toc_level=2, style="study"),
+             label("Ao final do percurso deste estudo.", study["goal"]),
+             label("Antes de praticar.", "; ".join(study["prerequisites"]))]
+    story += [p(x) for x in study["explanation"]]
+    example = study["workedExample"]
+    story += [heading(example["title"], level=3), p(example["text"])]
+    if example.get("tab"):
+        max_line = max(len(x) for x in example["tab"].splitlines())
+        mono_style = STYLES["mono"]
+        if max_line > 90:
+            mono_style = ParagraphStyle("long-tab", parent=mono_style, fontSize=7, leading=10)
+        story += [XPreformatted(esc(example["tab"]), mono_style)]
+    story += [heading("Prática guiada do estudo", level=3)] + bullets(study["steps"], numbered=True)
+    story += [heading("Ajuste a dificuldade", level=3), label("Apoio.", study["easier"]), label("Ampliação.", study["harder"])]
+    story += [heading("Escute o problema e ajuste", level=3)]
+    for mistake in study["mistakes"]:
+        story += [label(mistake["symptom"], mistake["adjustment"])]
+    story += [heading("Critérios de execução do estudo", level=3)] + bullets(study["checks"])
+    story += [heading("Lembre antes de abrir a resposta", level=3), p(study["retrieval"]["question"])]
+    if audience == "professor":
+        story += [label("Resposta esperada.", study["retrieval"]["answer"])]
+    else:
+        story += [p(link("Conferir resposta", f"answer-{study['id']}"), "small", markup=True)]
+    tail_start = len(story)
+    story += [heading("Retome em outros momentos", level=3)] + bullets(study["spacing"])
+    if study["relatedLessons"]:
+        story += [p("<b>Conexões no repertório:</b> " + " · ".join(link(x.upper(), x) for x in study["relatedLessons"]), "small", markup=True)]
+    story += [p("Fontes de consulta: " + ", ".join(study["sourceIds"]), "micro")]
+    story[tail_start:] = [KeepTogether(story[tail_start:])]
+    return story
+
+
+def lesson_technique(entries, studies, audience, page_refs):
+    if not entries:
+        return []
+    story = [heading("Prepare a técnica e leve para a música", level=3),
+             p("Siga o foco de cada etapa abaixo dentro do tempo de prática da aula. "
+               "Na introdução, a explicação completa fica aqui para acompanhar as próximas retomadas; "
+               "as ampliações entram conforme a prontidão e os pré-requisitos.", "small")]
+    for item in entries:
+        study = studies[item["studyId"]]
+        story += [CondPageBreak(150), Spacer(1, 8)]
+        if item["stage"] == "introducao":
+            story += [p(f"INTRODUÇÃO · {study['id'].upper()}", "eyebrow"),
+                      label("Foco nesta aula.", item["focus"])]
+            story += integrated_study(study, audience)
+        else:
+            story += [heading(f"Retomada · {study['id'].upper()} · {study['title']}", level=3),
+                      p(item["focus"]),
+                      p("Tente recuperar o movimento ou a explicação antes de consultar. "
+                        "Se precisar de apoio, volte ao estudo completo e depois repita o trecho musical.", "small"),
+                      p(study_link(study, page_refs), "small", markup=True)]
+    story += [heading("Aplique no repertório desta aula", level=3),
+              p("Retome o trecho indicado e use a técnica no percurso a seguir. "
+                "Compare o som com o objetivo da aula e escolha um ajuste observável.")]
+    return story
+
+
+def technical_index(technique, journey, page_refs):
+    introductions = {item["studyId"]: lesson["lessonId"] for lesson in journey["lessons"]
+                     for item in lesson["techniques"] if item["stage"] == "introducao"}
+    story = [PageBreak(), heading("Índice de técnica e compreensão", anchor="technical-studies"),
+             p("As explicações completas dos 27 estudos estão inseridas nas aulas em que são introduzidas. "
+               "Use este índice para reencontrar o conceito, a primeira aplicação e as retomadas. "
+               "As perguntas de recuperação aparecem antes do caderno de respostas; tente explicar ou tocar antes de conferir.")]
     for module in technique["modules"]:
-        story += [PageBreak(), p(f"TÉCNICA · {module['id']}", "eyebrow"),
-                  heading(f"{module['id']}  {module['title']}", anchor=module["id"]), p(module["introduction"])]
+        story += [CondPageBreak(230), heading(f"{module['id']}  {module['title']}", level=2, anchor=module["id"]),
+                  p(module["introduction"])]
         story += box("Objetivo do eixo", module["goal"])
         story += [label("Preparação.", "; ".join(module["prerequisites"])),
                   p("Conexões: " + ", ".join(f"módulo {n}" for n in module["relatedModules"]), "small")]
-        for i, study in enumerate(module["studies"]):
-            if i:
-                story += [CondPageBreak(180), Spacer(1, 14)]
-            story += [heading(f"{study['id'].upper()}  {study['title']}", level=2, anchor=study["id"], category="studies", item_id=study["id"]),
-                      label("Ao final.", study["goal"]), label("Antes de praticar.", "; ".join(study["prerequisites"]))]
-            story += [p(x) for x in study["explanation"]]
-            example = study["workedExample"]
-            story += [heading(example["title"], level=3), p(example["text"])]
-            if example.get("tab"):
-                max_line = max(len(x) for x in example["tab"].splitlines())
-                mono_style = STYLES["mono"]
-                if max_line > 90:
-                    mono_style = ParagraphStyle("long-tab", parent=mono_style, fontSize=7, leading=10)
-                story += [XPreformatted(esc(example["tab"]), mono_style)]
-            story += [heading("Prática guiada", level=3)] + bullets(study["steps"], numbered=True)
-            story += [heading("Ajuste a dificuldade", level=3), label("Apoio.", study["easier"]), label("Ampliação.", study["harder"])]
-            story += [heading("Escute o problema e ajuste", level=3)]
-            for mistake in study["mistakes"]:
-                story += [label(mistake["symptom"], mistake["adjustment"])]
-            story += [heading("Critérios de execução", level=3)] + bullets(study["checks"])
-            story += [heading("Lembre antes de abrir a resposta", level=3), p(study["retrieval"]["question"])]
-            if audience == "professor":
-                story += [label("Resposta esperada.", study["retrieval"]["answer"])]
-            else:
-                story += [p(link("Conferir resposta", f"answer-{study['id']}"), "small", markup=True)]
-            tail_start = len(story)
-            story += [heading("Retome em outros momentos", level=3)] + bullets(study["spacing"])
-            if study["relatedLessons"]:
-                story += [p("<b>Aplicar no repertório:</b> " + " · ".join(link(x.upper(), x) for x in study["relatedLessons"]), "small", markup=True)]
-            story += [p("Fontes de consulta: " + ", ".join(study["sourceIds"]), "micro")]
-            story[tail_start:] = [KeepTogether(story[tail_start:])]
+        for study in module["studies"]:
+            intro = introductions[study["id"]]
+            reviews = [lesson["lessonId"] for lesson in journey["lessons"]
+                       if any(x["studyId"] == study["id"] and x["stage"] == "retomada" for x in lesson["techniques"])]
+            row = [p(study_link(study, page_refs), "small", markup=True),
+                   p("<b>Introdução:</b> " + link(intro.upper(), intro) +
+                     (". <b>Retomadas:</b> " + " · ".join(link(x.upper(), x) for x in reviews) if reviews else ""), "small", markup=True)]
+            story += [KeepTogether(row)]
     return story
 
 
@@ -704,30 +760,62 @@ def build(audience):
     teacher_extra = load("teacher-enrichment")
     teacher_legacy = load("teacher-data")
     tempo_data = load("tempo-research")
+    journey = load("lesson-journey")
     ids = {x["id"] for x in course["lessons"]}
     assert len(course["modules"]) == 13 and len(ids) == 39
     assert ids == {x["lessonId"] for x in lesson_extra["lessons"]}
     assert ids == {x["lessonId"] for x in teacher_extra["lessons"]}
     assert len(technique["modules"]) == 9
     assert sum(len(x["studies"]) for x in technique["modules"]) == 27
+    assert ids == {x["lessonId"] for x in journey["lessons"]}
+    assert len(journey["lessons"]) == 39
+    study_ids = {s["id"] for module in technique["modules"] for s in module["studies"]}
+    study_lessons = {}
+    journey_by_id = {x["lessonId"]: x for x in journey["lessons"]}
+    for lesson in course["lessons"]:
+        entries = journey_by_id[lesson["id"]]["techniques"]
+        assert len({x["studyId"] for x in entries}) == len(entries), lesson["id"]
+        for item in entries:
+            sid = item["studyId"]
+            assert sid in study_ids and item["focus"].strip(), item
+            if item["stage"] == "introducao":
+                assert sid not in study_lessons, f"Repeated introduction: {sid}"
+                study_lessons[sid] = lesson["id"]
+            else:
+                assert item["stage"] == "retomada" and sid in study_lessons, f"Review before introduction: {sid}"
+    assert study_ids == set(study_lessons), "Every study must be introduced exactly once."
     for lesson in teacher_extra["lessons"]:
         assert sum(x["minutes"] for x in lesson["sequence"]) == 60, lesson["lessonId"]
-    story = opening(course, technique, lesson_extra, teacher_extra, audience)
-    story += lesson_sections(course, lesson_extra, teacher_legacy, teacher_extra, technique, tempo_data, audience)
-    story += technical_sections(technique, audience)
-    story += chart_sections(course, tempo_data)
-    story += theory_sections(course)
-    story += answer_sections(course, lesson_extra, technique)
-    story += source_sections(course, technique, teacher_extra, tempo_data)
-    story += archive_intro(audience)
     filename = "Curso_Aluno_Violao_Gospel_v6.pdf" if audience == "aluno" else "Manual_Professor_Violao_Gospel_v6.pdf"
     main_path = TMP / f"{audience}-main.pdf"
-    doc = BookTemplate(str(main_path), audience, title=f"Violão Vivo - {audience}", author="Violão Vivo")
-    doc.multiBuild(story)
+    page_refs = {}
+    # Printed page references can change wrapping; converge both them and the TOC.
+    for _ in range(5):
+        story = opening(course, technique, lesson_extra, teacher_extra, audience)
+        story += lesson_sections(course, lesson_extra, teacher_legacy, teacher_extra, technique, tempo_data, journey, audience, page_refs)
+        story += technical_index(technique, journey, page_refs)
+        story += chart_sections(course, tempo_data)
+        story += theory_sections(course)
+        story += answer_sections(course, lesson_extra, technique)
+        story += source_sections(course, technique, teacher_extra, tempo_data)
+        story += archive_intro(audience)
+        doc = BookTemplate(str(main_path), audience, title=f"Violão Vivo - {audience}", author="Violão Vivo")
+        doc.multiBuild(story)
+        if doc.page_map == page_refs:
+            break
+        page_refs = doc.page_map
+    else:
+        raise RuntimeError("Printed page references did not converge.")
     result = append_archive(main_path, TMP / filename, audience, doc.page_map, course, teacher_legacy)
     assert len(result["lessons"]) == 39
     assert len(result["studies"]) == 27
     assert len(result["charts"]) == sum(len(song["versions"]) for song in course["songs"].values())
+    ordered_lessons = [lesson["id"] for lesson in course["lessons"]]
+    for sid, lesson_id in study_lessons.items():
+        index = ordered_lessons.index(lesson_id)
+        after = result["lessons"][ordered_lessons[index + 1]] if index + 1 < len(ordered_lessons) else result["mainPages"] + 1
+        assert result["lessons"][lesson_id] <= result["studies"][sid] < after, (sid, lesson_id)
+    result["studyLessons"] = study_lessons
     return result
 
 

@@ -1,6 +1,6 @@
 {
   "edition": 6,
-  "introduction": "As 39 aulas conectam repertório, técnica e compreensão. Use os estudos relacionados no momento em que seus pré-requisitos estiverem preparados. Cada aula acrescenta uma explicação, um exemplo, uma tentativa guiada, uma pergunta e um roteiro flexível de retomada. O repertório e as consultas já estudados continuam sendo a base do percurso.",
+  "introduction": "As 39 aulas reúnem repertório, técnica e compreensão em uma única sequência. Os 27 estudos entram dentro das aulas, com um foco definido para a primeira introdução e para cada retomada. Avance conforme os pré-requisitos e pratique a parte indicada antes de ampliar o estudo. Cada aula mantém a explicação, o exemplo, a tentativa guiada, a pergunta e o roteiro flexível de revisão. O repertório e as consultas já estudados continuam sendo a base do percurso.",
   "practicePrinciples": [
     {
       "title": "Uma meta que pode ser ouvida",
@@ -30,7 +30,7 @@
   "lessons": [
     {
       "lessonId": "m1-a1",
-      "techniqueStudyIds": ["t1-e1", "t1-e2", "t1-e3", "t2-e1"],
+      "techniqueStudyIds": ["t1-e1", "t1-e2", "t2-e1"],
       "understanding": [
         "O instrumento deve permanecer apoiado quando você solta a mão que monta os acordes. Ajuste cadeira e apoio antes de procurar força nos dedos. Observe o traste metálico: pressione a corda perto dele, sem ficar sobre o metal, e escute o resultado.",
         "D, G e Em são nomes de acordes; cada desenho reúne várias notas. O símbolo x impede o ataque daquela corda, enquanto 0 permite a corda solta. Contar continua necessário quando o acorde está apenas ressoando."
@@ -1255,7 +1255,7 @@
     },
     {
       "lessonId": "m9-a2",
-      "techniqueStudyIds": ["t4-e3", "t7-e1"],
+      "techniqueStudyIds": ["t4-e3", "t7-e1", "t6-e3"],
       "understanding": [
         "Oito colcheias em 4/4 formam quatro pares, enquanto o dedilhado de Me Derramar distribuía seis colcheias em dois grupos ternários. A quantidade de gestos e o agrupamento precisam corresponder à métrica da música.",
         "Neste padrão, p–i–m–a se repete duas vezes. Cada grupo de quatro gestos ocupa dois tempos. O segundo polegar, portanto, acontece no tempo 3, onde a harmonia de V1 muda para Am7."

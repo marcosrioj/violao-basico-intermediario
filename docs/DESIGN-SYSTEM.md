@@ -123,6 +123,16 @@ As referências consultadas das skills incluem arquitetura de tokens, componente
 
 ## Verificação e manutenção
 
+### Trilha com técnica integrada
+
+O curso tem uma entrada principal de continuidade e um índice técnico complementar. As aulas usam quatro etapas estáveis: entender, treinar, aplicar e revisar. A primeira abre inicialmente; acordes, estudos completos, práticas adicionais, consultas e acervo continuam montados em disclosures nativos. Cada estudo apresenta título, indicação textual de começar/retomar e foco da aplicação antes de abrir o conteúdo. Isso reduz a exposição inicial sem remover texto ou depender somente de cores.
+
+`HashReveal` expande todos os ancestrais de `/aulas/{id}#estudo-{id}`, rola até o alvo e transfere o foco. Os atalhos legados `#acordes`, `#tocar`, `#praticar` e `#aprofundar` permanecem válidos. Os inputs usam IDs únicos, e as respostas dos estudos continuam ocultas até uma tentativa e uma ação explícita. A cifra, o diário e o progresso permanecem vinculados à aula.
+
+A navegação nativa por fragmentos pode abrir `details` antes da hidratação. `CollapsibleCard` e o disclosure de cada estudo aceitam essa diferença de atributos com `suppressHydrationWarning` somente no próprio elemento; títulos e corpo descendentes continuam sujeitos à verificação do React. Essa exceção segue o guia local do Next.js `preventing-flash-before-hydration.md` e foi verificada com recarga direta e console do navegador, incluindo âncoras legadas.
+
+A revisão usou `ui-ux-pro-max`, sua referência geral de acessibilidade/interação/performance e os documentos locais do Next.js sobre componentes de servidor/cliente. A busca específica de progressive disclosure retornou orientação de tipografia sem correspondência; a escolha de seções expansíveis usa os padrões nativos existentes e o guia geral da skill, sem atribuir recomendação específica à busca. Cores, foco, tipografia e espaçamento reutilizam os tokens atuais. A evidência de navegação, larguras e preservação está em [verificação do curso](COURSE-VERIFICATION.md).
+
 Nesta alteração, o catálogo foi conferido contra o CSS, as referências de variáveis foram verificadas e os pares de contraste acima foram calculados. Os estilos globais, dashboard e laboratório não contêm cores hexadecimais avulsas; cores ficam nos tokens. O registro de validação da entrega deve informar separadamente o build, os testes funcionais e as telas efetivamente inspecionadas, sem confundir estas verificações estáticas com QA visual completo.
 
 Para próximas alterações, confira landing, login, matrícula pendente, matrícula concluída, painel do professor, curso, aula, teoria e materiais nas larguras 320, 768 e 1440 px. Verifique zoom a 200%, foco por teclado, mensagens de erro, nomes longos e scroll local das tabelas/instrumentos. Execute os checks já definidos no repositório; evite acrescentar testes que apenas repitam valores de CSS sem validar comportamento relevante.
