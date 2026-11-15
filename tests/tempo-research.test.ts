@@ -55,25 +55,26 @@ test('6/8 source quarter tempo converts to dotted pulses without rounding audio 
   assert.equal(referenceBpm(songs.ousado_amor.tempo!), 55);
 });
 
-test('adopted estimates start every lesson of the respective song at the selected pulse', () => {
+test('all 39 lessons start at the recording reference, preserving exact compound pulses', () => {
   const defaults: Record<string, number> = {
     santo_espirito: 71.5,
     faz_chover_tna: 67,
+    me_derramar: 56 / 1.5,
+    sonda_me_usa_me: 62,
+    renova_me: 94,
     poderoso_deus: 62,
+    faz_chover: 72,
+    lugar_secreto: 69,
+    rompendo_em_fe: 68,
+    ousado_amor: 55,
+    preciso_de_ti: 68,
+    a_ele_a_gloria: 75,
+    bondade_de_deus: 68,
   };
-  for (const [id, song] of Object.entries(songs)) {
-    const expected = defaults[id];
-    assert.equal(song.tempo?.useAsDefault === true, expected !== undefined, id);
-    if (expected !== undefined) {
-      assert.equal(song.tempo!.status, 'estimated', id);
-      assert.equal(referenceBpm(song.tempo!), expected, id);
-      const chart = Object.values(song.versions)[0];
-      const click = scheduleChartMetronome(chart.sections[0].bars[0], chart, 0, expected);
-      assert.ok(Math.abs(click.ticks[1].at - click.ticks[0].at - 60 / expected) < 1e-10, id);
-    }
-    for (const lesson of lessons.filter((lesson) => lesson.song === id)) {
-      assert.equal(defaultPlaybackBpm(lesson.bpm, song.tempo), expected ?? lesson.bpm, lesson.id);
-    }
+  assert.deepEqual(Object.keys(defaults).sort(), Object.keys(songs).sort());
+  for (const lesson of lessons) {
+    const song = songs[lesson.song];
+    assert.equal(defaultPlaybackBpm(lesson.bpm, song.tempo), defaults[lesson.song], lesson.id);
   }
   assert.equal(formatBpm(defaultPlaybackBpm(48, songs.santo_espirito.tempo)), '71,5');
   assert.equal(defaultPlaybackBpm(48), 48);
@@ -92,7 +93,6 @@ test('unresolved or invalid references cannot become playback defaults', () => {
   for (const bpm of [0, -68, NaN, Infinity]) {
     const invalid: TempoResearch = {
       ...known,
-      useAsDefault: true,
       reference: { bpm, unit: 'quarter' },
     };
     assert.equal(referenceBpm(invalid), null);

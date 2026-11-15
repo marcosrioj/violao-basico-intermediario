@@ -48,5 +48,5 @@ export function TempoReference({ tempo }: { tempo: TempoResearch }) {
       </details>
     </div>
   );
-  return tempo.useAsDefault ? <Hint label="Andamento da música">{details}</Hint> : details;
+  return <Hint label="Andamento da música">{details}</Hint>;
 }

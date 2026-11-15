@@ -1,7 +1,7 @@
 'use client';
 import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
-import { Play, Pause, Square, Repeat2, Metronome, Minus, Plus } from 'lucide-react';
+import { Play, Pause, Square, Metronome, Minus, Plus } from 'lucide-react';
 import type { ChartBar, SongVersion } from '@/content/types';
 import { chords } from '@/content/chords';
 import { soundChord, audioContext, playTone } from './audio';
@@ -19,7 +19,6 @@ import { TempoReference } from './tempo-reference';
 import { Hint } from '@/components/ui/hint';
 import { chartLyricsKey, projectLyricCues, totalChartBeats } from './chart-lyrics';
 import { useChartLyrics } from './chart-lyrics-storage';
-import { ChartLyricsEditor } from './chart-lyrics-editor';
 import { ChartPlaybackReadout } from './chart-playback-readout';
 import { createLyricsClock } from './chart-lyrics-clock';
 import type { LessonLyrics } from '@/content/song-lyrics-types';
@@ -48,10 +47,9 @@ export function ChartPlayer({
 }) {
   const defaultBpm = defaultPlaybackBpm(initialBpm, tempo);
   const researchedBpm = tempo ? referenceBpm(tempo) : null;
-  const referenceIsDefault = tempo?.useAsDefault === true && researchedBpm !== null;
   const [section, setSection] = useState('all');
   const [bpm, setBpm] = useState(defaultBpm);
-  const [loop, setLoop] = useState(false);
+  const [showLyrics, setShowLyrics] = useState(true);
   const [metronome, setMetronome] = useState(false);
   const [repeatGroup, setRepeatGroup] = useState<string | null>(null);
   const [playhead, setPlayhead] = useState(idlePosition);
@@ -59,7 +57,7 @@ export function ChartPlayer({
   const arrangement = useRef<HTMLDivElement>(null);
   const tempoId = useId();
   const transport = useRef<ChartTransport | null>(null);
-  const settings = useRef({ loop: false, metronome: false, range: null as LoopRange | null });
+  const settings = useRef({ metronome: false, range: null as LoopRange | null });
   const pendingStart = useRef<number | null>(null);
   const playing = playhead.status === 'playing';
   const groups = useMemo(() => buildChartGroups(chart, section), [chart, section]);
@@ -72,9 +70,6 @@ export function ChartPlayer({
   const storageKey = useMemo(() => chartLyricsKey(chart, songId), [chart, songId]);
   const lyrics = useChartLyrics(storageKey, totalBeats, lyricsContent?.cues ?? noLyrics);
   const syllabicLyrics = useMemo(() => withLyricSyllables(lyrics.cues), [lyrics.cues]);
-  const estimatedTiming = syllabicLyrics.some((cue) =>
-    cue.syllables?.some((part) => part.timing === 'estimated'),
-  );
   const projectedLyrics = useMemo(
     () => projectLyricCues(chart, groups, syllabicLyrics),
     [chart, groups, syllabicLyrics],
@@ -131,8 +126,6 @@ export function ChartPlayer({
         transport.current?.setLoopRange(null);
         return;
       }
-      settings.current.loop = false;
-      setLoop(false);
       const active =
         groups.find((part) => part.key === group.key) ??
         groups.find((part) => part.sectionId === group.sectionId);
@@ -166,18 +159,6 @@ export function ChartPlayer({
       transport.current?.play();
     }
   }
-  function prepareLyricsPlayback() {
-    stopPlayback();
-    clearPassageRepeat();
-    settings.current.loop = false;
-    setLoop(false);
-    transport.current?.setLoop(false);
-    if (section === 'all') startAt(0);
-    else {
-      pendingStart.current = 0;
-      setSection('all');
-    }
-  }
   useEffect(() => {
     const player = new ChartTransport(
       bars,
@@ -192,7 +173,6 @@ export function ChartPlayer({
       setPlayhead,
     );
     transport.current = player;
-    player.setLoop(settings.current.loop);
     player.setLoopRange(settings.current.range);
     player.setMetronome(settings.current.metronome);
     if (pendingStart.current !== null) {
@@ -256,7 +236,7 @@ export function ChartPlayer({
       </div>
       <p>{chart.adaptations}</p>
       <div className="player-controls">
-        <label>
+        <label className="chart-section-control">
           Trecho
           <select
             value={section}
@@ -316,19 +296,10 @@ export function ChartPlayer({
         <label className="checkbox-label">
           <input
             type="checkbox"
-            checked={loop}
-            onChange={(e) => {
-              settings.current.loop = e.target.checked;
-              if (e.target.checked) {
-                settings.current.range = null;
-                setRepeatGroup(null);
-              }
-              transport.current?.setLoop(e.target.checked);
-              setLoop(e.target.checked);
-            }}
+            checked={showLyrics}
+            onChange={(event) => setShowLyrics(event.target.checked)}
           />
-          <Repeat2 size={16} aria-hidden="true" />
-          {section === 'all' ? 'Repetir arranjo' : 'Repetir seleção'}
+          Mostrar letra
         </label>
         <label className="checkbox-label">
           <input
@@ -372,79 +343,19 @@ export function ChartPlayer({
         duration={(totalChartBeats(bars) * 60) / bpm}
         bars={bars.length}
       />
-      <p className="hint">
-        As passagens escritas já incluem as repetições do arranjo didático. Marcar “Repetir” cria um
-        ciclo de estudo adicional.
-      </p>
-      <ChartLyricsEditor
-        cues={syllabicLyrics}
-        storageKey={storageKey}
-        totalBeats={totalBeats}
-        bpm={bpm}
-        canMark={section === 'all' && !loop && !repeatGroup && playhead.status !== 'idle'}
-        readPosition={readPosition}
-        onPrepare={prepareLyricsPlayback}
-        onPause={togglePlayback}
-        onSave={lyrics.save}
-        notice={lyrics.notice}
-        baseAvailable={Boolean(lyricsContent)}
-        customized={lyrics.customized}
-      />
-      {lyrics.cues.length > 0 && (
-        <p className="hint">
-          A letra aparece abaixo dos compassos; o negrito avança suavemente pela sílaba em curso.
-          {section !== 'all' && ' No trecho isolado, é usada a letra da primeira passagem.'}
-        </p>
-      )}
-      {lyricsContent && (
-        <div className="chart-lyrics-source label-with-hint">
-          <span className="badge">
-            {estimatedTiming
-              ? 'Prévia silábica · tempos estimados'
-              : lyrics.customized
-                ? 'Suas marcações silábicas'
-                : 'Letra no arranjo da aula'}
-          </span>
-          <Hint label="Sobre o alinhamento da letra">
-            <p>{lyricsContent.alignmentNote}</p>
-            <p>
-              O movimento acompanha o relógio dos acordes. A divisão escrita em sílabas e os tempos
-              estimados não reproduzem automaticamente a voz da gravação. Sustentações, pausas e
-              uniões de vogais precisam de marcações individuais conferidas.
-            </p>
-          </Hint>
-        </div>
-      )}
-      {tempo && (
+      {tempo && researchedBpm !== null && (
         <div className="chart-tempo">
-          <div className="control-row" role="group" aria-label="Escolher andamento">
+          <div className="control-row">
             <button
               type="button"
               className="button small secondary"
-              aria-pressed={bpm === defaultBpm}
-              onClick={() => {
-                changeBpm(defaultBpm);
-              }}
+              aria-pressed={bpm === researchedBpm}
+              onClick={() => changeBpm(researchedBpm)}
             >
-              {referenceIsDefault ? 'Padrão da música' : 'Estudo da aula'} · {formatBpm(defaultBpm)}{' '}
-              BPM
+              Usar referência · {formatBpm(researchedBpm)} BPM
             </button>
-            {researchedBpm !== null && researchedBpm !== defaultBpm && (
-              <button
-                type="button"
-                className="button small secondary"
-                aria-pressed={bpm === researchedBpm}
-                onClick={() => {
-                  changeBpm(researchedBpm);
-                }}
-              >
-                Usar {tempo.status === 'estimated' ? 'estimativa' : 'referência'} ·{' '}
-                {formatBpm(researchedBpm)} BPM
-              </button>
-            )}
-            {referenceIsDefault && <TempoReference tempo={tempo} />}
+            <TempoReference tempo={tempo} />
           </div>
-          {!referenceIsDefault && <TempoReference tempo={tempo} />}
         </div>
       )}
       <p className="hint">
@@ -466,10 +377,7 @@ export function ChartPlayer({
             a música continua até chegar ali; use Tocar daqui para ir direto a ela. Sem reprodução
             em andamento, Ouvir acordes começa no trecho marcado.
           </p>
-          <p>
-            Uma passagem repete por vez. Desmarque para continuar aos próximos trechos. Repetir
-            arranjo substitui a repetição de uma passagem.
-          </p>
+          <p>Uma passagem repete por vez. Desmarque para continuar aos próximos trechos.</p>
         </Hint>
       </div>
       <div
@@ -486,7 +394,7 @@ export function ChartPlayer({
             bpm={bpm}
             maxBars={barsPerRow}
             lyrics={projectedLyrics}
-            lyricsClock={lyricsClock}
+            lyricsClock={showLyrics ? lyricsClock : undefined}
             position={playhead.bar}
             activeTick={
               metronome && group.bars.some((bar) => bar.playbackIndex === playhead.bar)
@@ -502,7 +410,7 @@ export function ChartPlayer({
           />
         ))}
       </div>
-      {lyricsContent && (
+      {showLyrics && lyricsContent && (
         <details className="section chart-full-lyrics">
           <summary>Letra completa fornecida</summary>
           <p className="hint">

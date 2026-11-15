@@ -57,6 +57,7 @@ function fixture(
   );
   return {
     transport,
+    wholeRange: bars.length ? { startBar: 0, endBar: bars.length } : null,
     voices,
     positions,
     chords: () => voices.filter((voice) => voice.kind === 'chord'),
@@ -104,7 +105,7 @@ test('loop and metronome options preserve playing chords; disabling clicks cance
   f.transport.play();
   const harmony = f.chords()[0];
   f.step(1.29);
-  f.transport.setLoop(true);
+  f.transport.setLoopRange(f.wholeRange);
   f.transport.setMetronome(true);
   assert.equal(f.clicks().length, 0, 'enabling between beats does not replay the last click');
   assert.deepEqual(f.position(), { status: 'playing', bar: 0, tick: 1 });
@@ -113,7 +114,7 @@ test('loop and metronome options preserve playing chords; disabling clicks cance
   assert.equal(f.clicks().length, 1);
   close(f.clicks()[0].at, 2.04);
   f.transport.setMetronome(false);
-  f.transport.setLoop(false);
+  f.transport.setLoopRange(null);
   assert.equal(f.clicks()[0].stops, 1, 'a click already scheduled ahead must be cancelled');
   assert.equal(harmony.stops, 0);
   assert.equal(f.chords().length, 1);
@@ -128,7 +129,7 @@ test('loop and metronome options preserve playing chords; disabling clicks cance
 
 test('turning repeat off at the loop boundary cancels the prefetched next cycle, not this chord', () => {
   const f = fixture([bar('D', 2)], { meter: '2/4', pulses: 2 });
-  f.transport.setLoop(true);
+  f.transport.setLoopRange(f.wholeRange);
   f.transport.setMetronome(true);
   f.transport.play();
   const current = f.chords()[0];
@@ -138,7 +139,7 @@ test('turning repeat off at the loop boundary cancels the prefetched next cycle,
   const nextClick = f.clicks().find((voice) => Math.abs(voice.at - 2.04) < 1e-8)!;
   assert.ok(nextClick);
 
-  f.transport.setLoop(false);
+  f.transport.setLoopRange(null);
   assert.equal(current.stops, 0);
   assert.equal(f.chords()[1].stops, 1);
   assert.equal(nextClick.stops, 1);
@@ -221,7 +222,7 @@ test('stop resets the sequence and disposal cancels scheduled voices and prevent
   f.transport.dispose();
   f.transport.play(1);
   f.transport.setMetronome(true);
-  f.transport.setLoop(true);
+  f.transport.setLoopRange(f.wholeRange);
   f.transport.pause();
   f.transport.stop();
   f.step(100);
@@ -234,7 +235,7 @@ test('stop resets the sequence and disposal cancels scheduled voices and prevent
 
 test('a delayed timer skips stale clicks and chords and resumes the current chord once', () => {
   const f = fixture([bar('D'), bar('G'), bar('Am'), bar('C')]);
-  f.transport.setLoop(true);
+  f.transport.setLoopRange(f.wholeRange);
   f.transport.setMetronome(true);
   f.transport.play();
   f.step(38.39);
@@ -315,8 +316,8 @@ test('pause before scheduled start, paused options and empty or invalid selectio
   assert.equal(f.chords()[0].stops, 1);
   assert.deepEqual(f.position(), { status: 'paused', bar: 0, tick: -1 });
   f.transport.setMetronome(true);
-  f.transport.setLoop(true);
-  f.transport.setLoop(false);
+  f.transport.setLoopRange(f.wholeRange);
+  f.transport.setLoopRange(null);
   f.step(20);
   assert.equal(f.voices.length, 1);
   f.transport.play(-1);
@@ -329,8 +330,8 @@ test('pause before scheduled start, paused options and empty or invalid selectio
   assert.equal(f.clicks().length, 1);
 
   const empty = fixture([]);
-  empty.transport.setLoop(true);
-  empty.transport.setLoop(false);
+  empty.transport.setLoopRange(empty.wholeRange);
+  empty.transport.setLoopRange(null);
   empty.transport.setMetronome(true);
   empty.transport.play();
   empty.transport.play(0);
@@ -428,7 +429,7 @@ test('disabling a passage in look-ahead cancels the next loop and schedules its 
   assert.deepEqual(f.position(), idlePosition);
 });
 
-test('changing the passage and global repetition keeps the clock and makes one loop scope active', () => {
+test('changing from a short passage to a longer passage preserves the clock and the current chord', () => {
   const f = fixture([bar('D'), bar('G'), bar('Am'), bar('C')]);
   f.transport.setLoopRange({ startBar: 1, endBar: 2 });
   f.transport.play();
@@ -448,7 +449,7 @@ test('changing the passage and global repetition keeps the clock and makes one l
   );
   f.step(8.29);
   const looped = f.chords().at(-1)!;
-  f.transport.setLoop(true);
+  f.transport.setLoopRange(f.wholeRange);
   assert.equal(looped.stops, 0);
   f.step(11.99);
   assert.equal(f.chords().at(-1)!.name, 'C');
@@ -456,7 +457,7 @@ test('changing the passage and global repetition keeps the clock and makes one l
   assert.equal(f.chords().at(-1)!.name, 'D');
   f.transport.stop();
   f.transport.play();
-  assert.equal(f.position().bar, 0, 'global repeat clears the previously armed passage');
+  assert.equal(f.position().bar, 0, 'the longer passage replaces the previously armed range');
 });
 
 test('a passed passage waits for the next start instead of jumping backward', () => {

@@ -186,3 +186,11 @@ Essas pendências registram o estado da entrega inicial. Posteriormente, foi obs
 Após conectar as contas, verificar: login, renovação, recuperação e logout; aluno A conclui aula e retoma após novo login; aluno B não lê seus registros; professor correto vê progresso/diário e envia feedback; outro professor recebe negação; matrícula e saída atualizam acesso; agenda respeita fuso; aluno não baixa manual pela rota do app; vídeos carregam somente após clique; áudio para ao navegar; referências de teoria retornam ao trecho exato.
 
 O passo a passo está em [DEPLOYMENT.md](DEPLOYMENT.md), incluindo publicação automática por commit e validação do SHA publicado.
+
+## Controles da cifra e referência como padrão
+
+A cifra inicia no BPM de referência em todas as 39 aulas, com conversão exata para semínimas pontuadas em 6/8 e fallback para o BPM de estudo quando não há referência válida. O seletor Trecho ocupa metade da grade ampla ou toda a largura no celular. Mostrar letra controla a letra sincronizada e o texto integral; alternar sua visibilidade mantém reprodução, pausa e repetição por passagem. O único preset de andamento restaura a referência da música.
+
+Passaram lint, tipos, **131 testes** e build. Os testes cobrem os padrões das 13 músicas em todas as aulas, conversões, referências inválidas e a execução das repetições. Os arquivos de conteúdo preservados e os PDFs mantiveram seus hashes.
+
+No Chromium com dados fictícios locais, passaram **11 verificações**: três padrões representativos (incluindo 37,3 e 71,5 BPM), alteração e retorno exato à referência; controles e seletor em 320, 375, 768, 844 e 1440 px; visibilidade da letra durante reprodução e pausa; seleção e repetição por passagem. Nenhum erro de página ou console foi observado. Evidências locais em `/tmp/violao-controls-qa/results.json` e `controls-*.png`.

@@ -9,8 +9,6 @@ export interface TempoResearch {
   playerUnit: TempoUnit;
   status: 'documented' | 'estimated' | 'unresolved';
   reference: { bpm: number; unit: TempoUnit } | null;
-  /** Explicit editorial choice; an estimate does not become a confirmed measurement. */
-  useAsDefault?: boolean;
   variable: boolean;
   note: string;
   sources: { title: string; url: string; evidence: string }[];
@@ -30,7 +28,7 @@ export function referenceBpm(tempo: TempoResearch): number | null {
 }
 
 export function defaultPlaybackBpm(studyBpm: number, tempo?: TempoResearch): number {
-  return tempo?.useAsDefault ? (referenceBpm(tempo) ?? studyBpm) : studyBpm;
+  return tempo ? (referenceBpm(tempo) ?? studyBpm) : studyBpm;
 }
 
 export function formatBpm(bpm: number): string {

@@ -48,7 +48,7 @@ interface Route {
 
 export const idlePosition: PlaybackPosition = { status: 'idle', bar: -1, tick: -1 };
 
-/** A monotonic audio clock maps onto the score, with optional full or passage repetition. */
+/** A monotonic audio clock maps onto the score, with optional passage repetition. */
 export class ChartTransport {
   private timeline;
   private duration: number;
@@ -57,7 +57,6 @@ export class ChartTransport {
   private elapsedStart = 0;
   private anchor = 0;
   private finishAt: number;
-  private loop = false;
   private loopRange: LoopRange | null = null;
   private metronome = false;
   private disposed = false;
@@ -177,7 +176,7 @@ export class ChartTransport {
       from: score,
       repeatFrom: inReach ? rangeStart : 0,
       to: inReach ? rangeEnd : this.duration,
-      repeat: inReach || this.loop,
+      repeat: inReach,
     };
     this.finishAt = this.route.repeat ? Infinity : at + this.duration - score;
   }
@@ -231,14 +230,6 @@ export class ChartTransport {
     this.publish();
   }
 
-  setLoop(enabled: boolean) {
-    if (this.disposed || !this.duration || (this.loop === enabled && !(enabled && this.loopRange)))
-      return;
-    this.loop = enabled;
-    if (enabled) this.loopRange = null;
-    this.replan();
-  }
-
   setLoopRange(range: LoopRange | null) {
     if (this.disposed || !this.duration) return;
     if (
@@ -254,7 +245,6 @@ export class ChartTransport {
     if (range?.startBar === this.loopRange?.startBar && range?.endBar === this.loopRange?.endBar)
       return;
     this.loopRange = range ? { ...range } : null;
-    if (range) this.loop = false;
     this.replan();
   }
 

@@ -87,53 +87,6 @@
   margin: 0;
 }
 
-.chart-lyrics-source {
-  margin-block: var(--space-3);
-}
-
-.chart-lyrics-editor > .stack {
-  margin-top: var(--space-4);
-}
-
-.chart-lyrics-editor :is(textarea, select, input) {
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
-  font-size: 1rem;
-}
-
-.chart-lyrics-editor .button {
-  min-height: 44px;
-  white-space: normal;
-}
-
-.chart-lyrics-editor :is(.control-row, .chart-lyrics-files, .chart-lyrics-markers) {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.chart-lyrics-editor :is(.control-row, .chart-lyrics-files, .chart-lyrics-markers) > * {
-  flex: 1 1 10rem;
-  min-width: 0;
-}
-
-.chart-lyrics-fields {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
-  gap: var(--space-4);
-}
-
-.chart-lyrics-fields .control-row {
-  margin-top: var(--space-2);
-}
-
-.chart-lyrics-timing {
-  padding: var(--space-3);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-}
-
 .chart-player > .collapsible-card-body {
   container: chord-chart / inline-size;
 }
@@ -205,13 +158,32 @@
   box-shadow: inset 0 3px 0 var(--color-primary);
 }
 
+.chart-player .player-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+  gap: var(--space-4);
+}
+
+.chart-player .chart-section-control {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.chart-section-control select {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  font-size: 1rem;
+}
+
 .chart-tempo-control {
-  flex: 2 1 16rem;
   min-width: 0;
 }
 
 .chart-player .player-controls > .checkbox-label {
-  flex: 1 1 10rem;
+  min-height: var(--touch-target);
   min-width: 0;
   white-space: normal;
 }
@@ -234,7 +206,7 @@
 }
 
 .chart-transport-actions {
-  flex: 1 1 100%;
+  grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
@@ -438,6 +410,10 @@ button.chart-bar:hover {
 }
 
 @container chord-chart (min-width: 30rem) {
+  .chart-player .player-controls {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
   .chart-bars {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -456,11 +432,6 @@ button.chart-bar:hover {
 }
 
 @container chord-chart (max-width: 30rem) {
-  .player-controls > label:not(.checkbox-label),
-  .chart-tempo-control {
-    flex: 1 1 100%;
-    min-width: 0;
-  }
   .chart-section-actions {
     flex: 1 1 100%;
   }
