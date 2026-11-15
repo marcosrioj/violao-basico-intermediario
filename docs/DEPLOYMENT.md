@@ -268,6 +268,12 @@ Depois de conectada a integração, cada novo commit enviado à `main` inicia bu
 
 Mudanças de banco são aplicadas por migrations antes de publicar código que dependa delas. Não há migration automática privilegiada no build. Isso evita entregar senha do banco à hospedagem e exige planejar alterações compatíveis com a versão anterior.
 
+### Web Analytics e Speed Insights
+
+O layout raiz integra `@vercel/analytics/next` e `@vercel/speed-insights/next` em todas as páginas, incluindo a navegação interna. No painel do projeto na Vercel, habilitar **Web Analytics** e conferir a ativação de **Speed Insights**, depois gerar um novo deployment. Visitar o site publicado e consultar os respectivos painéis para confirmar o recebimento de visitas e métricas de desempenho. [Web Analytics](https://vercel.com/docs/analytics/quickstart), [Speed Insights](https://vercel.com/docs/speed-insights/quickstart).
+
+Na configuração padrão, os scripts e a coleta de produção usam rotas da própria hospedagem Vercel (`/_vercel/insights/*` e `/_vercel/speed-insights/*`). Não é necessário adicionar chaves ao `.env.local`. Em desenvolvimento, os SDKs usam scripts de diagnóstico de `https://va.vercel-scripts.com`, liberados pela CSP apenas nesse ambiente. Outras hospedagens precisam de configuração específica para coletar essas métricas.
+
 ## 7. Alternativa Netlify Free
 
 Se o uso for comercial, usar a alternativa Netlify Free e conferir as condições atuais do plano antes de conectar a conta. Importar o mesmo repositório pessoal no painel, confirmar production branch `main`, Node 22 e variáveis iguais; usar a URL `*.netlify.app` em `NEXT_PUBLIC_SITE_URL` e nos redirects Supabase. O `netlify.toml` executa `npm run check`; o adaptador oficial detecta App Router, SSR e Route Handlers. Não fixar uma versão antiga do adaptador. [Suporte Next.js](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/)
