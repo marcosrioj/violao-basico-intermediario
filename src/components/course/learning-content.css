@@ -1,0 +1,76 @@
+.learning-reading {
+  min-width: 0;
+}
+.learning-reading p,
+.learning-reading li {
+  max-width: 80ch;
+}
+.learning-reading h3 + p {
+  margin-top: var(--space-2);
+}
+.learning-link-description {
+  display: block;
+  font-weight: 400;
+  color: var(--color-muted-foreground);
+}
+.learning-example {
+  padding: var(--space-5);
+  border-radius: var(--card-radius);
+  background: var(--color-surface-soft);
+  border-left: 3px solid var(--color-primary);
+}
+.learning-example h3 {
+  margin-bottom: var(--space-2);
+}
+.learning-week {
+  padding-left: var(--space-5);
+}
+.learning-week li {
+  padding: var(--space-3) 0;
+}
+.learning-tab {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+  padding: var(--space-4);
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.learning-module-intro {
+  margin-block: var(--space-4);
+}
+.learning-paths {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-block: var(--space-5);
+}
+.learning-module-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+.learning-module-list .card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.learning-module-list .text-link {
+  margin-top: auto;
+}
+@media (max-width: 1200px) {
+  .learning-module-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .learning-module-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .learning-example {
+    padding: var(--space-4);
+  }
+}

@@ -1,0 +1,1943 @@
+{
+  "edition": 6,
+  "introduction": "As 39 aulas conectam repertório, técnica e compreensão. Use os estudos relacionados no momento em que seus pré-requisitos estiverem preparados. Cada aula acrescenta uma explicação, um exemplo, uma tentativa guiada, uma pergunta e um roteiro flexível de retomada. O repertório e as consultas já estudados continuam sendo a base do percurso.",
+  "practicePrinciples": [
+    {
+      "title": "Uma meta que pode ser ouvida",
+      "text": "Antes de tocar, escolha um resultado específico: uma entrada, uma duração, um baixo ou uma frase. Ao terminar, descreva o que aconteceu nesse ponto. Evite usar tocar melhor como única meta."
+    },
+    {
+      "title": "Demonstração seguida de tentativa",
+      "text": "Escute e observe um exemplo curto. Diga o que percebeu e tente reproduzi-lo. Depois compare uma característica por vez; consultar o mapa é um apoio, e reconstruir antes de consultar mostra o que ficou disponível."
+    },
+    {
+      "title": "Revisão em dias diferentes",
+      "text": "O roteiro oferece quatro oportunidades de prática, ajustáveis à rotina e à fadiga. Elas podem ocupar dias diferentes e não precisam ter duração idêntica. Depois de preparar o instrumento e o corpo, retome uma passagem antes de rever a explicação para observar o que foi retido."
+    },
+    {
+      "title": "Trecho pequeno com entrada e saída",
+      "text": "Escolha uma dificuldade e inclua o que vem antes e depois. Faça tentativas curtas, intercaladas com pausas. Quando entender o gesto, alterne com outro trecho conhecido e volte à música inteira."
+    },
+    {
+      "title": "Apoio que pode mudar",
+      "text": "Use contagem, diagrama, andamento mais lento ou acompanhamento do professor conforme a tarefa. Retire um apoio por vez quando ele deixar de ser necessário. Dor pede interrupção e revisão do gesto, não aumento de resistência."
+    },
+    {
+      "title": "Evidência para escolher o próximo passo",
+      "text": "Registre andamento, trecho, apoio e uma ocorrência observável. A conclusão de uma aula registra percurso; o domínio é observado ao tocar, ouvir, explicar e retomar a habilidade em outra ocasião."
+    }
+  ],
+  "lessons": [
+    {
+      "lessonId": "m1-a1",
+      "techniqueStudyIds": ["t1-e1", "t1-e2", "t1-e3", "t2-e1"],
+      "understanding": [
+        "O instrumento deve permanecer apoiado quando você solta a mão que monta os acordes. Ajuste cadeira e apoio antes de procurar força nos dedos. Observe o traste metálico: pressione a corda perto dele, sem ficar sobre o metal, e escute o resultado.",
+        "D, G e Em são nomes de acordes; cada desenho reúne várias notas. O símbolo x impede o ataque daquela corda, enquanto 0 permite a corda solta. Contar continua necessário quando o acorde está apenas ressoando."
+      ],
+      "workedExample": {
+        "title": "Som, silêncio e quatro pulsações",
+        "text": "Em um compasso de D, ataque no 1 e diga 2, 3 e 4 enquanto o som decai. No compasso seguinte faça o mesmo. Só então entre em G: os dois compassos anteriores somaram oito pulsações."
+      },
+      "guidedPractice": [
+        "Apoie o violão e compare uma corda livre com outra pressionada; ajuste um contato por vez.",
+        "Monte D e teste apenas as cordas 4, 3, 2 e 1, lentamente.",
+        "Faça dois compassos de D e dois de G; depois experimente G seguido de Em."
+      ],
+      "retrieval": {
+        "question": "Uma corda marcada x deve soar baixinho?",
+        "answer": "Não. Ela fica fora do ataque; em D, o primeiro baixo permitido é a 4ª corda."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Reconheça as partes do violão e confira Em, D e G no diagrama."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Em outro dia, monte D antes de abrir o desenho; confira e corrija."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne a introdução com G–Em do refrão, conservando a contagem."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a forma com apoio e registre uma corda que ficou clara e uma a ajustar."
+        }
+      ],
+      "successCriteria": [
+        "Distingo x de 0 no diagrama.",
+        "Mantenho oito pulsações antes de sair de D na introdução.",
+        "Localizo a corda que precisa de ajuste."
+      ],
+      "nextStep": "Preparar a troca sem interromper o pulso."
+    },
+    {
+      "lessonId": "m1-a2",
+      "techniqueStudyIds": ["t1-e3", "t2-e2", "t7-e1"],
+      "understanding": [
+        "A troca tem duas tarefas: a mão dos acordes prepara a próxima posição e a mão do ritmo conserva a passagem do tempo. Primeiro descubra o trajeto dos dedos; só depois peça que ele caiba no compasso.",
+        "Uma nota falha e uma pausa extra são dificuldades diferentes. Durante a execução inteira, continue contando e procure a próxima entrada. Reserve a correção detalhada para a repetição curta do trecho."
+      ],
+      "workedExample": {
+        "title": "Antecipar a preparação, conservar a entrada",
+        "text": "Em R4, Em dura 1–2–3–4. Pense no destino D antes de terminar o compasso, mas faça D soar no 1 de R5. Acrescentar um quinto tempo deslocaria todos os acontecimentos seguintes."
+      },
+      "guidedPractice": [
+        "Sem batida, encontre um caminho confortável entre Em e D.",
+        "Conte R4 e R5 com ataques no 1; depois acrescente os quatro ataques leves.",
+        "Toque o refrão e, se atrasar, continue contando até a próxima entrada combinada."
+      ],
+      "retrieval": {
+        "question": "Quando uma troca atrasou, o compasso passa a ter cinco tempos?",
+        "answer": "Não. O pulso continua; a recuperação acontece dentro da contagem compartilhada."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Isole Em–D e observe quais dedos saem primeiro."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Retome a troca sem demonstração inicial e compare com o diagrama."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne Em–D com D–G e volte aos oito compassos do refrão."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave o refrão e escute se o espaço entre os ataques permaneceu regular."
+        }
+      ],
+      "successCriteria": [
+        "Não acrescento um tempo para corrigir o acorde.",
+        "Separo ensaio da troca e execução do refrão.",
+        "Retomo numa entrada combinada."
+      ],
+      "nextStep": "Reconhecer as partes e preparar o final."
+    },
+    {
+      "lessonId": "m1-a3",
+      "techniqueStudyIds": ["t2-e1", "t7-e1"],
+      "understanding": [
+        "As letras das seções são endereços no mapa. Elas ajudam a reencontrar uma parte sem tocar desde o início. Nesta música, F identifica o final e não determina um acorde de Fá.",
+        "Dinâmica é uma escolha de intensidade. Um refrão mais presente pode ter ataques um pouco mais definidos, sem encurtar o intervalo entre eles. A mão dos acordes conserva o contato necessário, sem pressionar mais para aumentar o volume."
+      ],
+      "workedExample": {
+        "title": "O retorno da ponte",
+        "text": "Leia P8 seguido de R1 como uma única passagem. Conte o último compasso da ponte e entre no refrão sem pausa. No final, os dois compassos de D ainda precisam de oito tempos antes do corte combinado."
+      },
+      "guidedPractice": [
+        "Diga a ordem das seções apontando cada uma no mapa.",
+        "Ensaie P8–R1 com uma mudança discreta de intensidade.",
+        "Faça os dois compassos finais de D e combine um gesto de encerramento."
+      ],
+      "retrieval": {
+        "question": "Como distinguir a seção F de um acorde F?",
+        "answer": "Pelo contexto: F é o endereço da seção; os símbolos dentro dos compassos dizem quais acordes soam."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Marque a entrada da ponte e os dois compassos finais."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Diga a ordem de memória e confirme no mapa."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne o retorno P8–R1 e o final antes de tocar tudo."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Apresente a música e avalie uma mudança de intensidade e o corte."
+        }
+      ],
+      "successCriteria": [
+        "Encontro uma seção sem reiniciar a música.",
+        "Faço contraste de intensidade conservando o pulso.",
+        "Termino após os oito tempos previstos."
+      ],
+      "nextStep": "Ampliar o vocabulário de acordes em outra canção."
+    },
+    {
+      "lessonId": "m2-a1",
+      "techniqueStudyIds": ["t2-e1", "t2-e2"],
+      "understanding": [
+        "O F desta etapa é uma tríade em três cordas: xx321x. Anelar, médio e indicador pressionam cordas diferentes; não há pestana. Limitar o ataque às cordas 4, 3 e 2 faz parte do desenho sonoro.",
+        "Ao passar de C para Am, dois dedos podem permanecer como referência. Isso reduz movimentos desnecessários, mas o som deve confirmar a escolha: um dedo que fica não pode abafar a corda vizinha."
+      ],
+      "workedExample": {
+        "title": "Um dedo muda, o acorde muda",
+        "text": "C contém C–E–G; Am contém A–C–E. Na posição aberta, indicador na 2ª corda/casa 1 e médio na 4ª/casa 2 permanecem. O anelar deixa a 5ª corda/casa 3 e chega à 3ª/casa 2."
+      },
+      "guidedPractice": [
+        "Compare C e Am sem ritmo, observando o trajeto do anelar.",
+        "No F, toque separadamente F, A e C nas três cordas permitidas.",
+        "Conte quatro tempos em cada acorde de Am–F–C–G e complete o ciclo."
+      ],
+      "retrieval": {
+        "question": "Por que não atacar a 1ª corda solta no F desta aula?",
+        "answer": "Porque a forma escolhida é xx321x; a 1ª corda acrescentaria E, que não faz parte dessa tríade."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Monte C e Am e identifique os dois dedos de referência."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Reconstrua F sem olhar e confira suas três cordas."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne F–C e o ciclo completo, sem introduzir pestana."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a música e registre se o ataque respeitou o F parcial."
+        }
+      ],
+      "successCriteria": [
+        "Uso três dedos separados em F.",
+        "Escolho as cordas permitidas antes do ataque.",
+        "Completo o ciclo com quatro tempos por acorde."
+      ],
+      "nextStep": "Dividir cada pulso em duas partes iguais."
+    },
+    {
+      "lessonId": "m2-a2",
+      "techniqueStudyIds": ["t7-e1", "t1-e3"],
+      "understanding": [
+        "O pulso continua sendo a unidade que você marca com o pé ou com a voz. As colcheias dividem cada pulso em duas partes iguais. O movimento pode continuar mesmo quando um ataque é omitido, o que prepara ritmos futuros.",
+        "A regularidade nasce da relação entre os ataques. A subida não precisa soar tão forte quanto a descida. Escute se o par número–e cabe inteiro antes do próximo número, especialmente quando a mão dos acordes muda."
+      ],
+      "workedExample": {
+        "title": "Oito subdivisões em quatro pulsos",
+        "text": "Fale 1 e 2 e 3 e 4 e. Desça nos números e suba nos e. A troca para o próximo acorde só chega no próximo 1; o último e ainda pertence ao compasso anterior."
+      },
+      "guidedPractice": [
+        "Faça o movimento nas cordas abafadas antes de montar acordes.",
+        "Use Am durante dois compassos, com subdivisões iguais.",
+        "Aplique Am–F–C–G, encurtando o ataque no F sem acelerar a mão."
+      ],
+      "retrieval": {
+        "question": "O último e do compasso já pertence ao próximo acorde?",
+        "answer": "Não. Nesta aula a mudança acontece no próximo tempo 1."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Conte os pares número–e sem instrumento."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Reproduza dois compassos em Am antes de abrir o roteiro."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne um ciclo com quatro ataques e outro com oito."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Escute uma gravação e confira a última subdivisão antes de cada troca."
+        }
+      ],
+      "successCriteria": [
+        "Distingo quatro pulsos de oito ataques.",
+        "Faço o último e antes de mudar o acorde.",
+        "Mantenho o ataque restrito no F."
+      ],
+      "nextStep": "Usar densidade rítmica para construir intensidade."
+    },
+    {
+      "lessonId": "m2-a3",
+      "techniqueStudyIds": ["t7-e1", "t2-e2"],
+      "understanding": [
+        "Quando várias partes compartilham os mesmos acordes, a forma pode ser comunicada pela intensidade, pela textura e pelo espaço. Planejar esses contrastes ajuda a tocar com intenção, sem inventar acordes para diferenciar as seções.",
+        "Aumentar a quantidade de ataques exige atenção ao pulso, porque a sensação de energia pode provocar pressa. Compare o intervalo entre os números da contagem nas duas texturas. O acorde deve continuar confortável em ambas."
+      ],
+      "workedExample": {
+        "title": "Mesma harmonia, outra textura",
+        "text": "Faça Am–F–C–G com quatro ataques leves por compasso na estrofe. No refrão, mantenha o mesmo ciclo e preencha os e. A mudança está na textura; cada acorde continua durando quatro tempos."
+      },
+      "guidedPractice": [
+        "Escolha uma textura para A e outra para R e anote no mapa.",
+        "Ensaie a fronteira A–R com contagem constante.",
+        "Toque a forma inteira e mantenha o final escrito, mesmo se o refrão ganhar energia."
+      ],
+      "retrieval": {
+        "question": "Aumentar a intensidade exige apertar mais a mão dos acordes?",
+        "answer": "Não. O contato mantém as notas claras; a mão que ataca regula intensidade e textura."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Defina duas intensidades que consiga reproduzir."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Retome o contraste sem ouvir a demonstração primeiro."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne a fronteira A–R com um ciclo suave para testar o retorno."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave duas seções e descreva o contraste ouvido sem usar apenas mais rápido."
+        }
+      ],
+      "successCriteria": [
+        "Diferencio intensidade de andamento.",
+        "Retomo uma textura suave depois de um refrão.",
+        "Mantenho quatro tempos por acorde."
+      ],
+      "nextStep": "Experimentar o agrupamento ternário do 6/8."
+    },
+    {
+      "lessonId": "m3-a1",
+      "techniqueStudyIds": ["t7-e2"],
+      "understanding": [
+        "Em 6/8, seis colcheias se organizam em dois grupos de três. A contagem 1-la-li 2-la-li evidencia os dois apoios; ela não equivale a seis pulsações de semínima. O BPM do player desta música se refere ao pulso de semínima pontuada.",
+        "Um compasso pode conter um acorde durante os dois pulsos ou uma mudança entre eles. Leia a duração escrita antes de repetir uma batida conhecida. A versão inicial conserva G como tom e usa os baixos simplificados já indicados."
+      ],
+      "workedExample": {
+        "title": "Uma mudança depois de três subdivisões",
+        "text": "Em P1, Am acompanha 1-la-li e G acompanha 2-la-li. Em P2, C ocupa o primeiro grupo e D o segundo. Quatro acordes, portanto, cabem em dois compassos."
+      },
+      "guidedPractice": [
+        "Marque dois apoios com a mão e fale três sílabas em cada um.",
+        "Toque o ciclo G–D–Em–C com um ataque no início de cada compasso.",
+        "Isole P1–P2, mudando exatamente na sílaba 2."
+      ],
+      "retrieval": {
+        "question": "Quantas colcheias cabem antes da mudança Am–G em P1?",
+        "answer": "Três; a mudança ocorre no segundo pulso pontuado."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Ouça e marque os dois apoios do compasso."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Reconstrua P1 pela contagem antes de consultar a cifra."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne o ciclo principal e os dois compassos do pré."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a versão inicial e confira se as mudanças do pré ficaram no segundo apoio."
+        }
+      ],
+      "successCriteria": [
+        "Conto dois grupos de três por compasso.",
+        "Distingo mudança por compasso e por pulso.",
+        "Mantenho o tom e a versão de base."
+      ],
+      "nextStep": "Organizar seis gestos de dedilhado nesse agrupamento."
+    },
+    {
+      "lessonId": "m3-a2",
+      "techniqueStudyIds": ["t7-e2", "t1-e3"],
+      "understanding": [
+        "As letras p, i, m e a identificam os dedos que tocam, não as cordas fixas de todos os acordes. O polegar precisa escolher o baixo de cada desenho. Já i, m e a permanecem nas cordas 3, 2 e 1 neste estudo.",
+        "O padrão p–i–m–a–m–i ocupa as seis colcheias. Sua metade não começa com outro polegar: começa com a. Preparar a troca apenas quando ouvir um baixo novo atrasaria os acordes do pré-refrão."
+      ],
+      "workedExample": {
+        "title": "Troca harmônica no gesto a",
+        "text": "Em P1, p–i–m pertencem a Am. Antes de a, monte G; a–m–i já pertencem ao segundo acorde. O polegar não precisa atacar de novo para que a mudança harmônica aconteça."
+      },
+      "guidedPractice": [
+        "Dedilhe Em lentamente e escute cada corda separadamente.",
+        "Alterne G e D, escolhendo respectivamente a 6ª e a 4ª corda para o polegar.",
+        "Em P1–P2, fale o nome do novo acorde antes do gesto a e mantenha o padrão."
+      ],
+      "retrieval": {
+        "question": "O segundo pulso precisa começar sempre com o polegar?",
+        "answer": "Não. Neste padrão ele começa com a, a quarta colcheia do compasso."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Memorize a sequência dos seis gestos em Em."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Retome o padrão e nomeie os baixos sem consultar."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne um compasso estável e um compasso com mudança no gesto a."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave o pré e escute se alguma nota do acorde anterior permaneceu por atraso."
+        }
+      ],
+      "successCriteria": [
+        "Escolho o baixo correto de cada acorde.",
+        "Mudo a harmonia antes da quarta colcheia.",
+        "Mantenho dois apoios por compasso."
+      ],
+      "nextStep": "Conectar o pré ao refrão sem pausa."
+    },
+    {
+      "lessonId": "m3-a3",
+      "techniqueStudyIds": ["t7-e2"],
+      "understanding": [
+        "Uma passagem entre seções precisa ser estudada com contexto dos dois lados. Repetir apenas a parte difícil pode deixar sem ensaio o movimento que chega nela ou sai dela. P2–R1 é um bom recorte porque contém uma chegada musical completa.",
+        "Apresentar permite observar continuidade, escolhas e recuperação. Você pode usar o mapa e uma textura simples. O apoio empregado deve ser registrado para que a próxima meta seja reduzir uma ajuda específica, sem confundir apresentação com tocar tudo de memória."
+      ],
+      "workedExample": {
+        "title": "Preparar a chegada em G",
+        "text": "Em P2, C ocupa o primeiro pulso e D o segundo. No início de R1, G inicia o ciclo seguinte. Conte os dois grupos de P2 e o primeiro grupo de R1 como um fluxo só."
+      },
+      "guidedPractice": [
+        "Ensaie P2–R1 com ataques nos apoios.",
+        "Pratique G–C–D–G do final, um compasso para cada acorde.",
+        "Escolha a textura mais estável e apresente toda a forma com o apoio combinado."
+      ],
+      "retrieval": {
+        "question": "Por que ensaiar somente R1 pode não resolver a pausa antes do refrão?",
+        "answer": "Porque a preparação vem de P2; é necessário praticar a fronteira entre as duas partes."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Localize os pontos de chegada e decida a textura da apresentação."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Em outro dia, tente P2–R1 antes de repetir a explicação."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne a passagem e o final, depois toque a música inteira."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Apresente e registre uma passagem contínua e uma ajuda que ainda precisa."
+        }
+      ],
+      "successCriteria": [
+        "Emendo pré e refrão sem tempo extra.",
+        "Completo os quatro compassos finais.",
+        "Identifico o apoio usado na apresentação."
+      ],
+      "nextStep": "Relacionar notas dos acordes a pequenos intervalos."
+    },
+    {
+      "lessonId": "m4-a1",
+      "techniqueStudyIds": ["t2-e3", "t1-e2", "t4-e1"],
+      "understanding": [
+        "A casa indica uma posição física, e o nome da nota indica a altura que soa. Na 1ª corda, E solto e F na casa 1 estão separados por um semitom. A tablatura informa corda e casa; a duração precisa vir do ritmo escrito ou da contagem combinada.",
+        "Em Dm, D é a fundamental, F a terça e A a quinta. Reconhecer uma dessas notas dentro do acorde aproxima a leitura da escuta. O novo desenho deve entrar respeitando as durações já indicadas na música."
+      ],
+      "workedExample": {
+        "title": "A4 não se divide ao meio",
+        "text": "Conte Dm no 1, continue 2 e 3, e toque G no 4. Dm ocupa três pulsações; G ocupa uma. O símbolo do segundo acorde não informa sozinho uma divisão em duas metades."
+      },
+      "guidedPractice": [
+        "Toque E solto e F na casa 1 da 1ª corda e nomeie a distância.",
+        "Monte Dm e confira sua nota F sem atacar as cordas graves excluídas.",
+        "Pratique A3–A4, sustentando Dm por três tempos antes de G."
+      ],
+      "retrieval": {
+        "question": "O número 1 numa linha de tablatura informa um tempo de duração?",
+        "answer": "Não. Ele indica a casa 1 naquela corda; a duração é outra informação."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Localize F isolado e dentro de Dm."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Sem abrir a cifra, diga em qual tempo G entra em A4; depois confira."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne a troca F–Dm e o compasso Dm(3) G(1)."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a forma de base e registre se o tempo 4 permaneceu disponível para G."
+        }
+      ],
+      "successCriteria": [
+        "Relaciono F à casa correta.",
+        "Distingo posição e duração.",
+        "Respeito a divisão 3+1."
+      ],
+      "nextStep": "Ouvir a terça que diferencia maior e menor."
+    },
+    {
+      "lessonId": "m4-a2",
+      "techniqueStudyIds": ["t3-e1", "t2-e2"],
+      "understanding": [
+        "Uma tríade reúne três classes de nota, mesmo quando uma delas aparece em mais de uma corda. Em C, as notas C, E e G podem ser duplicadas. A quantidade de dedos ou cordas não determina se o acorde é maior ou menor.",
+        "A terça é contada desde a fundamental. C–E mede quatro semitons; D–F mede três. A comparação fica mais clara quando você ouve o intervalo separadamente e depois o reconhece no acorde completo."
+      ],
+      "workedExample": {
+        "title": "Construir e ouvir a terça",
+        "text": "Na 2ª corda, C está na casa 1 e E na casa 5: quatro casas de distância. D está na casa 3 e F na casa 6: três. Toque as notas sucessivamente e retorne aos desenhos conhecidos de C e Dm."
+      },
+      "guidedPractice": [
+        "Ouça C–E e D–F tocados pelo professor antes de nomear os intervalos.",
+        "Conte os semitons em uma corda sem contar a casa inicial como um passo.",
+        "Toque a ponte e reconheça C e Dm dentro da sequência."
+      ],
+      "retrieval": {
+        "question": "Um C tocado em cinco cordas deixa de ser tríade?",
+        "answer": "Não. Continua tendo as três classes C, E e G, com repetições."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Separe fundamental e terça dos dois acordes."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Em outro dia, diga suas notas antes de consultar R3."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne intervalos isolados e acordes completos."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a canção e explique uma terça usando nome, distância e som."
+        }
+      ],
+      "successCriteria": [
+        "Conto distâncias sem incluir o ponto de partida.",
+        "Nomeio C–E e D–F.",
+        "Reconheço que notas podem se repetir no acorde."
+      ],
+      "nextStep": "Relacionar a coleção de notas a vários acordes."
+    },
+    {
+      "lessonId": "m4-a3",
+      "techniqueStudyIds": ["t3-e2"],
+      "understanding": [
+        "A escala organiza notas em uma sequência, enquanto o campo harmônico organiza acordes construídos com essa coleção. Em C maior não há sustenidos ou bemóis, mas isso não torna todos os acordes maiores.",
+        "Para formar uma tríade por terças diatônicas, escolha uma nota, pule a seguinte, escolha outra e pule novamente. A distância real entre essas notas produz as qualidades maior, menor ou diminuta. Os graus ajudam a enxergar relações sem substituir os nomes concretos."
+      ],
+      "workedExample": {
+        "title": "D–F–A nasce da coleção de C",
+        "text": "Comece em D, pule E, escolha F, pule G e escolha A. A tríade resultante é Dm, o ii grau de C. Aplique a mesma ideia a B–D–F e reconheça a quinta diminuída do vii°."
+      },
+      "guidedPractice": [
+        "Escreva C–D–E–F–G–A–B e forme C, Dm e G.",
+        "Diga I–vi–IV–ii–IV–V enquanto lê C–Am–F–Dm–F–G na ponte.",
+        "Toque a ponte e ouça o movimento de G de volta a C."
+      ],
+      "retrieval": {
+        "question": "Por que o acorde do sétimo grau não é Bm?",
+        "answer": "Porque B–D–F contém quinta diminuta; Bm precisaria de F#."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Construa três tríades a partir da escala."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Recupere as notas de Dm e G sem consultar."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne a leitura por nomes e por graus na ponte."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Explique um acorde da música e confirme suas notas no instrumento."
+        }
+      ],
+      "successCriteria": [
+        "Distingo escala de campo harmônico.",
+        "Relaciono Dm ao ii grau.",
+        "Reconheço B diminuto sem precisar tocá-lo na música."
+      ],
+      "nextStep": "Preparar a primeira pestana na próxima etapa."
+    },
+    {
+      "lessonId": "m5-a1",
+      "techniqueStudyIds": ["t3-e3"],
+      "understanding": [
+        "A pestana permite que um dedo pressione mais de uma corda, mas o desenho completo continua exigindo contatos específicos. Em Bm x24432, o indicador está na casa 2, e os outros dedos completam as casas 4, 4 e 3. A 6ª corda fica fora do ataque.",
+        "O objetivo inicial é obter notas identificáveis com esforço sustentável. Faça tentativas curtas, solte a pressão e escute uma corda por vez. Uma nota abafada pede ajuste de contato ou posição; apertar indiscriminadamente pode aumentar a tensão sem resolver a causa."
+      ],
+      "workedExample": {
+        "title": "Ouvir o Bm por dentro",
+        "text": "Ataque da 5ª para a 1ª corda: B–F#–B–D–F#. As notas B e F# aparecem mais de uma vez. Se a 1ª corda falhar, investigue o contato do indicador nessa região em vez de refazer todos os dedos."
+      },
+      "guidedPractice": [
+        "Monte A aberto com três dedos separados e confira suas cordas.",
+        "Forme Bm, teste uma corda, ajuste e solte a pressão entre tentativas.",
+        "Pratique A–Bm com quatro tempos por acorde antes de percorrer a forma."
+      ],
+      "retrieval": {
+        "question": "Qual é a nota grave de Bm nesta posição?",
+        "answer": "B, na 5ª corda/casa 2; a 6ª corda não participa."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Compare o desenho de A com o de Bm sem ritmo."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Reconstrua Bm em outro dia e identifique uma corda a ajustar."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne tentativas curtas de A–Bm com uma passagem já confortável."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a versão de base e registre em que andamento e com qual apoio conseguiu a troca."
+        }
+      ],
+      "successCriteria": [
+        "Seleciono o baixo B correto.",
+        "Reconheço uma corda que precisa de ajuste.",
+        "Solto a pressão entre tentativas."
+      ],
+      "nextStep": "Consolidar Bm em uma duração maior."
+    },
+    {
+      "lessonId": "m5-a2",
+      "techniqueStudyIds": ["t3-e3", "t4-e1"],
+      "understanding": [
+        "Dois compassos de Bm oferecem tempo para escutar o acorde e preparar sua saída. Isso não significa sustentar força máxima por oito pulsações. O contato deve produzir som claro e permitir a passagem para G com mobilidade.",
+        "O baixo diferencia a região de ataque: D começa na 4ª corda; Bm e A na 5ª; G e Em na 6ª. Tocar as notas separadamente com dedos ou, após estudar T4, com palheta ajuda a localizar cordas indevidas."
+      ],
+      "workedExample": {
+        "title": "Baixo e duração no ciclo",
+        "text": "Em D–D–Bm–Bm–G–Em–A–A, D, Bm e A ocupam pares de compassos, enquanto G e Em ocupam um cada. Nomeie o baixo na entrada de cada acorde sem acrescentar ataques à contagem."
+      },
+      "guidedPractice": [
+        "Aponte a corda grave de cada desenho antes de tocar.",
+        "Faça D–Bm–G com ataques leves e liberação de pressão nas mudanças.",
+        "Toque o ciclo completo e use o segundo compasso de Bm para antecipar o destino G."
+      ],
+      "retrieval": {
+        "question": "Dois compassos de Bm obrigam a atacar todas as cordas a cada tempo?",
+        "answer": "Não. A duração harmônica e a quantidade de ataques são escolhas diferentes."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Confira os baixos D, B, G, E e A nas posições do curso."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Retome Bm sem demonstração e escute as cordas individualmente."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne o ciclo com uma passagem fácil de Renova-me."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave oito compassos e observe seleção de baixos e continuidade."
+        }
+      ],
+      "successCriteria": [
+        "Escolho a corda grave antes de atacar.",
+        "Mantenho a duração dos pares de compassos.",
+        "Preparo a saída do Bm sem interromper a contagem."
+      ],
+      "nextStep": "Ler frases com números diferentes de compassos."
+    },
+    {
+      "lessonId": "m5-a3",
+      "techniqueStudyIds": ["t7-e1", "t3-e2"],
+      "understanding": [
+        "As frases musicais não precisam ocupar sempre quatro ou oito compassos. Ler o mapa significa aceitar suas durações reais. R1 tem nove compassos e R2 tem oito; cortar um deles altera a relação com a voz.",
+        "F# e C# pertencem à escala de D maior e aos acordes usados aqui. Um sustenido é parte do nome da nota; não indica automaticamente uma técnica mais difícil. Reconheça essas notas em posições já tocadas."
+      ],
+      "workedExample": {
+        "title": "Dois acordes dentro do compasso",
+        "text": "Em R2.6, conte Em no 1–2 e A no 3–4. A chegada em D vem depois, no compasso seguinte. Separar essa pequena ligação evita que a frase longa esconda a troca interna."
+      },
+      "guidedPractice": [
+        "Percorra R1 apontando os nove compassos antes de tocar.",
+        "Ensaie Em(2)–A(2) e a chegada em D.",
+        "Localize F# em D e C# em A e retorne à forma completa."
+      ],
+      "retrieval": {
+        "question": "Por que R1 não deve ser encurtado para oito compassos?",
+        "answer": "Porque o nono compasso pertence ao mapa da frase; sua retirada muda a forma."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Marque a diferença entre R1 e R2."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Diga os acidentes de D maior e confira no instrumento."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne a ligação Em–A–D com o final."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a música e registre se contou o nono compasso sem comando."
+        }
+      ],
+      "successCriteria": [
+        "Conservo os nove compassos de R1.",
+        "Faço a divisão 2+2 de R2.6.",
+        "Localizo F# e C# em acordes conhecidos."
+      ],
+      "nextStep": "Comparar notas naturais e alteradas no braço."
+    },
+    {
+      "lessonId": "m6-a1",
+      "techniqueStudyIds": ["t1-e2", "t3-e1", "t4-e1"],
+      "understanding": [
+        "Cada casa sobe um semitom em uma mesma corda. A relação entre posições permite reconstruir nomes, em vez de decorar o braço como uma imagem. E–F e B–C já são pares de semitom sem precisar acrescentar sustenido entre eles.",
+        "Uma altura pode receber nomes diferentes conforme a escrita e a função. C# e Db coincidem no temperamento igual usado no instrumento, mas o nome escolhido continua importante para explicar uma escala ou um acorde."
+      ],
+      "workedExample": {
+        "title": "Uma nota comum entre dois acordes",
+        "text": "C e F compartilham C. Na forma do curso, encontre C na 2ª corda/casa 1. Toque C maior, depois F parcial, escutando essa nota enquanto as outras mudam. O exercício cromático separado não altera a tonalidade da canção."
+      },
+      "guidedPractice": [
+        "Toque E–F na 4ª corda, casas 2–3.",
+        "Na 2ª corda, toque casas 1–2–3 e nomeie C–C#/Db–D.",
+        "Compare C e F da música e identifique o C comum."
+      ],
+      "retrieval": {
+        "question": "Há uma casa extra entre E e F para uma nota intermediária?",
+        "answer": "Não. E e F já estão separados por um semitom, portanto por uma casa."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Reconstrua três nomes a partir de uma corda conhecida."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Em outro dia, encontre E e F sem abrir o mapa."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne cromatismo isolado e os acordes C–F da canção."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Explique por que a nota C pode permanecer enquanto o nome do acorde muda."
+        }
+      ],
+      "successCriteria": [
+        "Relaciono uma casa a um semitom.",
+        "Distingo nome de nota e nome de acorde.",
+        "Localizo uma nota comum."
+      ],
+      "nextStep": "Construir a escala de G com seu F#."
+    },
+    {
+      "lessonId": "m6-a2",
+      "techniqueStudyIds": ["t3-e2", "t7-e2", "t4-e2", "t9-e1"],
+      "understanding": [
+        "A escala maior conserva uma sequência de tons e semitons a partir de qualquer nota inicial. Em G maior, o sétimo grau precisa ser F# para que o último passo F#–G seja um semitom.",
+        "A nota F# também integra D maior, o V grau de G. Assim, a escala ajuda a explicar um acorde que você já toca. A forma ampliada da música exige atenção às repetições, mas conserva os desenhos e o agrupamento em dois pulsos ternários."
+      ],
+      "workedExample": {
+        "title": "E, F e F# na mesma corda",
+        "text": "Na 1ª corda, toque 0–1–2: E–F–F#. Depois monte D e encontre F# na casa 2. Em G maior, F natural fica fora da coleção principal; o acorde D pede F# como sua terça."
+      },
+      "guidedPractice": [
+        "Diga G–A–B–C–D–E–F# e confira os dois semitons da escala.",
+        "Localize F# em D e toque o ciclo G–D–Em–C.",
+        "Leia os retornos da forma ampliada antes de tocar em 6/8."
+      ],
+      "retrieval": {
+        "question": "Qual intervalo encerra a escala de G maior?",
+        "answer": "F#–G, um semitom; usar F natural alteraria a fórmula da escala maior."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Construa G maior a partir da fórmula de distâncias."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Encontre F# de memória e confira no acorde D."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne o ciclo principal e o pré, preservando dois pulsos."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a forma ampliada e marque um retorno que conseguiu conduzir."
+        }
+      ],
+      "successCriteria": [
+        "Justifico o F# pela escala e pelo acorde.",
+        "Mantenho o 6/8 na forma ampliada.",
+        "Leio os retornos sem omitir seções."
+      ],
+      "nextStep": "Comparar uma coleção comum com centros diferentes."
+    },
+    {
+      "lessonId": "m6-a3",
+      "techniqueStudyIds": ["t3-e2", "t9-e2"],
+      "understanding": [
+        "C maior e A menor natural compartilham sete classes de nota. A diferença de centro depende de como a música organiza apoios, duração, melodia e chegadas. Tocar a mesma coleção começando em outra nota não basta para estabelecer uma nova tonalidade.",
+        "A leitura em graus muda conforme a referência escolhida. Usar duas leituras pode esclarecer o parentesco, mas a execução permanece no tom e nos acordes da versão estudada. Ouça antes de decidir qual centro descreve melhor o trecho."
+      ],
+      "workedExample": {
+        "title": "Duas leituras do mesmo ciclo",
+        "text": "Am–F–C–G corresponde a i–VI–III–VII tomando A como centro menor. Tomando C como referência maior, corresponde a vi–IV–I–V. Nenhum acorde foi transposto: mudou apenas o referencial analítico."
+      },
+      "guidedPractice": [
+        "Toque o ciclo e escute para onde a frase parece conduzir.",
+        "Diga A–B–C–D–E–F–G e compare com a coleção de C.",
+        "Leia o ciclo nas duas referências e retorne ao roteiro ampliado."
+      ],
+      "retrieval": {
+        "question": "Relativo menor significa mover todos os acordes para outro tom?",
+        "answer": "Não. A relação de relativos envolve coleção compartilhada; transpor altera as alturas mantendo relações."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Compare as duas escalas sem mudar as notas do arranjo."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Em outro dia, explique a diferença entre relativo e transposição."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne o ciclo e seu final, escutando os pontos de apoio."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave um trecho e justifique uma hipótese de centro com acontecimentos musicais."
+        }
+      ],
+      "successCriteria": [
+        "Reconheço a coleção compartilhada.",
+        "Distingo análise de transposição.",
+        "Justifico o centro com contexto."
+      ],
+      "nextStep": "Transferir a pestana para mudanças mais próximas."
+    },
+    {
+      "lessonId": "m7-a1",
+      "techniqueStudyIds": ["t3-e3", "t7-e1"],
+      "understanding": [
+        "Transferir uma habilidade significa usá-la numa situação nova. O Bm continua sendo x24432, mas agora aparece em outra música e com menos tempo para preparar a saída. A posição conhecida reduz uma parte da dificuldade; a duração exige outra estratégia.",
+        "Esta canção é Faz Chover de Fernandinho. Reconhecer a versão evita misturá-la com a música de mesmo nome do Toque no Altar. Leia os compassos da versão atual antes de trazer padrões memorizados de outra canção."
+      ],
+      "workedExample": {
+        "title": "A pestana ocupa metade do compasso",
+        "text": "Em R1, Bm dura os tempos 1 e 2, e G entra no 3, permanecendo no 4. O ciclo Bm–G–D–A ocupa dois compassos quando cada acorde dura dois tempos."
+      },
+      "guidedPractice": [
+        "Retome Bm e encontre sua fundamental B na 5ª corda.",
+        "Fale Bm–Bm–G–G sobre quatro pulsações.",
+        "Toque R1–R2 com ataques nas mudanças e mantenha a forma da nova canção."
+      ],
+      "retrieval": {
+        "question": "O mesmo desenho de Bm garante que a nova passagem já esteja aprendida?",
+        "answer": "Não. A duração, a preparação de entrada e a saída precisam ser praticadas no novo contexto."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Identifique a gravação e confira a forma de Bm."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Em outro dia, recupere a divisão 2+2 antes de tocar."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne Bm longo de Poderoso Deus e Bm curto desta música."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque o refrão e registre se G entrou no terceiro tempo."
+        }
+      ],
+      "successCriteria": [
+        "Distingo as duas músicas Faz Chover.",
+        "Uso o mesmo Bm com outra duração.",
+        "Entro em G no tempo 3."
+      ],
+      "nextStep": "Preparar entradas e saídas da pestana dentro do compasso."
+    },
+    {
+      "lessonId": "m7-a2",
+      "techniqueStudyIds": ["t3-e3", "t7-e1"],
+      "understanding": [
+        "Uma transição começa antes da mudança audível. O olhar pode localizar o próximo desenho e os dedos podem conhecer o destino enquanto o acorde atual ainda dura. Antecipar a preparação não significa antecipar a entrada musical.",
+        "A ida e a volta têm trajetos diferentes. Bm–G e A–Bm precisam de ensaios próprios; repetir somente o acorde difícil deixa sem treino os movimentos que o conectam aos demais."
+      ],
+      "workedExample": {
+        "title": "Duas fronteiras para estudar",
+        "text": "No refrão, Bm(2)–G(2) ocupa R1 e D(2)–A(2) ocupa R2. Na estrofe, pratique também A–Bm de A2. Faça a última metade de um compasso junto da primeira metade do seguinte."
+      },
+      "guidedPractice": [
+        "Ensaie Bm–G sem batida e observe a liberação da pestana.",
+        "Conte A2–A3 com ataques nos tempos previstos.",
+        "Junte R1–R2 e recupere o pulso sem reiniciar após uma nota falha."
+      ],
+      "retrieval": {
+        "question": "Preparar G antes do tempo 3 significa fazê-lo soar no tempo 2?",
+        "answer": "Não. A preparação é antecipada, mas a entrada deve respeitar a duração de Bm."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Escolha a transição mais difícil e descreva o trajeto."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Retome A–Bm sem a demonstração do professor."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne A–Bm e Bm–G, depois una os compassos."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave o refrão e observe as quatro entradas de dois tempos."
+        }
+      ],
+      "successCriteria": [
+        "Distingo preparação e ataque.",
+        "Pratico entrada e saída do Bm.",
+        "Mantenho a divisão 2+2."
+      ],
+      "nextStep": "Ler três eventos com durações desiguais."
+    },
+    {
+      "lessonId": "m7-a3",
+      "techniqueStudyIds": ["t7-e3"],
+      "understanding": [
+        "O número de símbolos no compasso não determina uma divisão igual. A duração de cada evento precisa ser somada para conferir o total. Em S3, três acordes ocupam quatro pulsações como 1+2+1.",
+        "O mapa é uma adaptação didática que estabiliza uma antecipação da gravação. Aprender a versão escrita com clareza vem antes de comparar a antecipação original; a comparação não altera silenciosamente o exercício."
+      ],
+      "workedExample": {
+        "title": "Um acorde atravessa dois números",
+        "text": "Conte Bm no 1, G no 2 e continue G no 3; A entra no 4. Em seguida mantenha A no compasso S4 conforme o mapa. Os ataques de S3 acontecem em 1, 2 e 4."
+      },
+      "guidedPractice": [
+        "Fale os nomes dos acordes sobre uma pulsação constante.",
+        "Toque somente as entradas 1, 2 e 4 de S3.",
+        "Emende S3–S4 e depois retorne à forma inteira."
+      ],
+      "retrieval": {
+        "question": "Em S3, o terceiro acorde entra obrigatoriamente no tempo 3?",
+        "answer": "Não. A entra no tempo 4 porque G ocupa os tempos 2 e 3."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Marque os quatro pulsos e escreva 1+2+1 abaixo."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Recupere os tempos de entrada sem consultar."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne S3–S4 e R1–R2 para comparar 1+2+1 com 2+2."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave as duas divisões e explique o que mudou sem alterar o compasso."
+        }
+      ],
+      "successCriteria": [
+        "Somo as durações até quatro.",
+        "Sustento G no tempo 3.",
+        "Distingo mapa didático e gravação."
+      ],
+      "nextStep": "Retomar uma forma conhecida antes de acrescentar baixos."
+    },
+    {
+      "lessonId": "m8-a1",
+      "techniqueStudyIds": ["t9-e1", "t7-e1"],
+      "understanding": [
+        "Revisar uma música conhecida permite descobrir o que permaneceu disponível depois de um intervalo. Faça a primeira tentativa antes de reler toda a explicação. O que não vier de imediato mostra onde um apoio ainda é útil.",
+        "Nesta retomada, a versão de base continua importante. Ela oferece uma referência para ouvir depois os baixos acrescentados. A ponte tem cinco compassos por ciclo; sua forma precisa estar estável antes de novas posições receberem atenção."
+      ],
+      "workedExample": {
+        "title": "Um ciclo de cinco compassos",
+        "text": "Leia P1–P5 apontando cada compasso e diga onde a sequência retorna. Compare essa duração com os quatro compassos de A1–A4, sem encurtar a ponte para torná-las iguais."
+      },
+      "guidedPractice": [
+        "Tente A1–A4 sem demonstração e confira Dm(3)–G(1).",
+        "Conte os cinco compassos da ponte e pratique sua saída.",
+        "Toque a versão de base e escolha um ponto de referência para reencontrar a forma."
+      ],
+      "retrieval": {
+        "question": "Por que tocar primeiro a versão básica antes de incluir inversões?",
+        "answer": "Porque ela permite separar a leitura da forma da novidade dos baixos e comparar o efeito das duas versões."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Faça uma tentativa de memória e marque onde precisou consultar."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Retome o ciclo de cinco compassos em outro dia."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne estrofe e ponte, distinguindo suas durações."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque tudo e registre um ponto já consolidado e outro a recuperar."
+        }
+      ],
+      "successCriteria": [
+        "Identifico o que lembro sem consultar.",
+        "Conservo cinco compassos na ponte.",
+        "Mantenho a divisão 3+1 em A4."
+      ],
+      "nextStep": "Ouvir uma linha de baixo descendente."
+    },
+    {
+      "lessonId": "m8-a2",
+      "techniqueStudyIds": ["t9-e1", "t5-e1"],
+      "understanding": [
+        "A nota depois da barra indica o baixo desejado. Em G/B, B está no grave, mas G continua sendo a fundamental do acorde. Ouvir a linha grave separadamente ajuda a perceber uma direção que pode ficar escondida no acorde completo.",
+        "C–B–A–G é uma descida do baixo. Em Am7/G, G acrescenta a sétima ao conjunto A–C–E. Por isso essa passagem envolve tanto inversão quanto uma nota adicional; nem todo símbolo com barra é apenas uma tríade invertida."
+      ],
+      "workedExample": {
+        "title": "Primeiro a linha, depois os acordes",
+        "text": "No refrão, toque os baixos de C, G/B, Am e Am7/G na ordem C–B–A–G. Depois acrescente os demais sons, mantendo a mesma duração de cada evento e ouvindo se a descida continua reconhecível."
+      },
+      "guidedPractice": [
+        "Leia a nota depois da barra e localize-a no diagrama.",
+        "Toque apenas C–B–A–G no grave, sem acelerar a descida.",
+        "Acrescente os acordes e compare continuidade das notas com a versão de base."
+      ],
+      "retrieval": {
+        "question": "Em G/B, a fundamental passou a ser B?",
+        "answer": "Não. B é o baixo; G permanece a fundamental da harmonia."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Localize cada baixo antes de montar o acorde completo."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Reproduza a linha descendente sem olhar a sequência."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne versão de base e versão com baixos, ouvindo a diferença."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave o refrão e descreva se a linha grave ficou perceptível."
+        }
+      ],
+      "successCriteria": [
+        "Distingo baixo e fundamental.",
+        "Ouço a descida C–B–A–G.",
+        "Mantenho as durações ao acrescentar notas."
+      ],
+      "nextStep": "Distinguir inversão de acréscimo de sétima."
+    },
+    {
+      "lessonId": "m8-a3",
+      "techniqueStudyIds": ["t9-e1", "t5-e3"],
+      "understanding": [
+        "Uma inversão reorganiza a posição das notas sem mudar o conjunto básico. C/E continua contendo C, E e G. Já Am7/G inclui G, uma quarta classe de nota além da tríade; o símbolo 7 comunica essa informação.",
+        "Controlar a ressonância significa decidir quais notas continuam e quais precisam parar. Cordas graves indevidas podem esconder o baixo escrito. O exercício de pizzicato é uma exploração técnica separada; sua sonoridade não precisa ser imposta à canção."
+      ],
+      "workedExample": {
+        "title": "Comparar dois baixos com funções diferentes",
+        "text": "Em C/E, E é a terça da tríade de C. Em G7/F, F é a sétima do acorde G–B–D–F. Nos dois casos há baixo indicado por barra, mas a posição dessa nota na estrutura é diferente."
+      },
+      "guidedPractice": [
+        "Nomeie as notas de C/E e localize seu E mais grave.",
+        "Compare Am e Am7/G, escutando o G acrescentado.",
+        "Toque a versão completa e confira se cordas indevidas não encobrem os baixos."
+      ],
+      "retrieval": {
+        "question": "A barra informa sozinha se o acorde tem três ou quatro classes de nota?",
+        "answer": "Não. É preciso ler também o símbolo antes da barra e identificar todas as notas."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Construa verbalmente C/E, Am7/G e G7/F."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Em outro dia, explique qual deles acrescenta uma sétima."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne dois baixos difíceis e reintegre a frase."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a música com contraste de intensidade e grave a clareza do grave."
+        }
+      ],
+      "successCriteria": [
+        "Distingo tríade e tétrade nas cifras.",
+        "Identifico a função da nota do baixo.",
+        "Controlo cordas que não devem soar."
+      ],
+      "nextStep": "Explorar sétimas dentro de outra canção."
+    },
+    {
+      "lessonId": "m9-a1",
+      "techniqueStudyIds": ["t9-e1", "t3-e1"],
+      "understanding": [
+        "A sétima acrescenta outra classe de nota à tríade. O nome dessa sétima depende da distância desde a fundamental. Em Fmaj7, E é sétima maior; em Dm7, C é sétima menor. Os símbolos maj7 e 7 não são intercambiáveis.",
+        "A sonoridade deve ser aprendida junto da duração. Na estrofe, Fmaj7 e Am7 dividem um compasso; no refrão, cada acorde ocupa um compasso. Reconhecer os mesmos desenhos não dispensa ler onde mudam."
+      ],
+      "workedExample": {
+        "title": "Abrir a 1ª corda muda o conjunto",
+        "text": "O F parcial xx321x contém F–A–C. Em Fmaj7 xx3210, a 1ª corda solta acrescenta E. A mão fica semelhante, mas o conjunto passa a ter quatro classes de nota; F7 exigiria Eb."
+      },
+      "guidedPractice": [
+        "Compare F parcial e Fmaj7, ouvindo a nota E acrescentada.",
+        "Toque Fmaj7(2)–Am7(2) em V1 e Gsus4 em V2.",
+        "No refrão, dê um compasso a cada acorde e identifique Em7."
+      ],
+      "retrieval": {
+        "question": "Fmaj7 e F7 têm a mesma sétima?",
+        "answer": "Não. Fmaj7 usa E e F7 usa Eb."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Nomeie as quatro notas de Fmaj7 e Dm7."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Reconstrua a diferença entre maj7 e 7 sem consultar."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne V1–V2 e R1–R4, lendo as durações."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave o trecho e confira se a 1ª corda de Fmaj7 soa com clareza."
+        }
+      ],
+      "successCriteria": [
+        "Distingo sétima maior e menor.",
+        "Ouço a nota acrescentada em Fmaj7.",
+        "Respeito as durações diferentes entre seções."
+      ],
+      "nextStep": "Coordenar oito colcheias com a troca no tempo 3."
+    },
+    {
+      "lessonId": "m9-a2",
+      "techniqueStudyIds": ["t4-e3", "t7-e1"],
+      "understanding": [
+        "Oito colcheias em 4/4 formam quatro pares, enquanto o dedilhado de Me Derramar distribuía seis colcheias em dois grupos ternários. A quantidade de gestos e o agrupamento precisam corresponder à métrica da música.",
+        "Neste padrão, p–i–m–a se repete duas vezes. Cada grupo de quatro gestos ocupa dois tempos. O segundo polegar, portanto, acontece no tempo 3, onde a harmonia de V1 muda para Am7."
+      ],
+      "workedExample": {
+        "title": "Contagem e dedos alinhados",
+        "text": "Leia 1(p), e(i), 2(m), e(a), 3(p), e(i), 4(m), e(a). Em V1, os quatro primeiros gestos pertencem a Fmaj7 e os quatro últimos a Am7. Em V2, todos pertencem a Gsus4."
+      },
+      "guidedPractice": [
+        "Toque o padrão em um acorde estável e fale os números dos pulsos.",
+        "Prepare Am7 antes do segundo p em V1.",
+        "Junte V1–V2 sem reiniciar a mão que dedilha."
+      ],
+      "retrieval": {
+        "question": "O segundo p é o segundo tempo do compasso?",
+        "answer": "Não. Ele é a quinta colcheia e inicia o tempo 3."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Alinhe os oito gestos com a contagem 1 e 2 e 3 e 4 e."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Retome a mudança no segundo p sem demonstração."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne V1 com dois acordes e V2 com um acorde."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave a estrofe e compare clareza do baixo e regularidade das colcheias."
+        }
+      ],
+      "successCriteria": [
+        "Localizo o segundo p no tempo 3.",
+        "Preparo a troca sem interromper o padrão.",
+        "Distingo este 4/4 do dedilhado em 6/8."
+      ],
+      "nextStep": "Criar uma frase curta sem ocupar todo o espaço."
+    },
+    {
+      "lessonId": "m9-a3",
+      "techniqueStudyIds": ["t2-e3", "t5-e2", "t6-e1"],
+      "understanding": [
+        "Uma resposta instrumental funciona quando tem lugar, duração e chegada definidos. Comece com poucas notas e uma pausa, combinando o espaço com quem canta. A frase autoral não reproduz a melodia da gravação.",
+        "A pentatônica de A menor oferece A–C–D–E–G, mas a chegada precisa dialogar com o acorde. Sobre Dm7, D ou F evidencia notas da harmonia; F pertence à coleção diatônica completa, mesmo sem estar naquela pentatônica."
+      ],
+      "workedExample": {
+        "title": "Uma resposta que chega em D",
+        "text": "Em um exercício separado sobre Dm7, toque E–D e deixe uma pausa antes de voltar ao acompanhamento. E cria movimento e D chega à fundamental. Só acrescente um ligado ou vibrato após conseguir a duração e a entrada de retorno."
+      },
+      "guidedPractice": [
+        "Escolha um espaço de dois compassos com o professor e toque primeiro só a base.",
+        "Crie duas ou três notas, escolhendo a chegada pelo acorde.",
+        "Registre a frase em tablatura simples e volte ao acompanhamento no ponto combinado."
+      ],
+      "retrieval": {
+        "question": "Por que uma nota da escala pode soar instável sobre um acorde?",
+        "answer": "Porque pertencer à coleção não significa pertencer ao acorde que está soando naquele instante."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Crie uma frase curta e anote cordas, casas e ritmo."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Em outro dia, reproduza a frase antes de consultar a anotação."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne frase e acompanhamento, preservando uma pausa."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave e avalie chegada, espaço e retorno antes de adicionar ornamentação."
+        }
+      ],
+      "successCriteria": [
+        "Escolho uma chegada ligada à harmonia.",
+        "Deixo espaço para a voz.",
+        "Retorno à base sem perder a forma."
+      ],
+      "nextStep": "Explorar posições móveis e resoluções harmônicas."
+    },
+    {
+      "lessonId": "m10-a1",
+      "techniqueStudyIds": ["t3-e3", "t8-e1"],
+      "understanding": [
+        "Uma forma móvel mantém relações entre notas quando é deslocada corretamente. C#m usa a família de Bm duas casas acima; F#m usa a família de Em fechada na casa 2. Localizar a fundamental explica o nome novo e evita depender apenas da aparência.",
+        "C#m e C#7 têm a mesma fundamental, mas diferem em notas estruturais. C#m contém E; C#7 contém E# e acrescenta B. E# corresponde à altura de F no temperamento igual, porém sua escrita revela a terça do acorde de C#."
+      ],
+      "workedExample": {
+        "title": "Deslocar a forma e verificar o nome",
+        "text": "Na 5ª corda, B está na casa 2 e C# na casa 4. Desloque a família menor mantendo suas distâncias e confira a fundamental C#. Depois compare as notas de C#m e C#7, sem tratar a mudança como mero deslocamento."
+      },
+      "guidedPractice": [
+        "Encontre C# e F# nas cordas graves antes de montar suas formas.",
+        "Compare Bm–C#m e Em–F#m, respeitando as cordas permitidas.",
+        "Ensaie C#m–C#7–F#m lentamente e aplique à versão de base."
+      ],
+      "retrieval": {
+        "question": "Mover Bm duas casas acima produz C# maior?",
+        "answer": "Não. A forma menor conserva sua qualidade e produz C#m."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Localize as fundamentais e monte cada posição com pausas."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Reconstrua C#m a partir de Bm sem consultar."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne a mudança de forma e uma passagem conhecida com pestana."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a versão de base e registre a transição que ainda exige preparação."
+        }
+      ],
+      "successCriteria": [
+        "Nomeio a forma pela fundamental.",
+        "Conservo a qualidade menor ao deslocá-la.",
+        "Distingo C#m de C#7 pelas notas."
+      ],
+      "nextStep": "Ouvir a resolução de C#7 em F#m."
+    },
+    {
+      "lessonId": "m10-a2",
+      "techniqueStudyIds": ["t9-e2", "t6-e2"],
+      "understanding": [
+        "Uma dominante secundária direciona temporariamente a escuta a um acorde que não é a tônica principal. Em A maior, F#m é o vi grau. C#7 pode funcionar como V7 desse vi, criando uma chegada local sem exigir mudança do tom de toda a música.",
+        "A escrita E# mostra a atração por F#. O intervalo entre essas alturas é um semitom. Ouvir e cantar esse movimento, numa região confortável, torna a função mais concreta do que memorizar apenas a sigla V7/vi."
+      ],
+      "workedExample": {
+        "title": "Duas chegadas dentro do mesmo tom",
+        "text": "Compare C#7–F#m e Bm–E–A. A primeira chega ao relativo menor; a segunda organiza ii–V–I de A. C#7 traz E#, enquanto o E maior da segunda sequência contém G#."
+      },
+      "guidedPractice": [
+        "Toque C#7–F#m e destaque E#–F# em voz ou instrumento.",
+        "Compare Bm–E–A e descreva a mudança de apoio.",
+        "Encontre B6 no mapa e toque a canção sem interromper para explicar."
+      ],
+      "retrieval": {
+        "question": "Uma nota fora de A maior prova que toda a música mudou de tom?",
+        "answer": "Não. Ela pode integrar uma função local, como a dominante de F#m."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Nomeie C#–E#–G#–B e ouça sua resolução."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Em outro dia, explique V7/vi usando o acorde de chegada."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne as duas cadências antes de voltar à canção."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave B5–B8 e avalie se a chegada em F#m ficou clara."
+        }
+      ],
+      "successCriteria": [
+        "Relaciono C#7 ao alvo F#m.",
+        "Localizo o movimento E#–F#.",
+        "Distingo chegada local e tom global."
+      ],
+      "nextStep": "Recuperar baixos e suspensão na versão completa."
+    },
+    {
+      "lessonId": "m10-a3",
+      "techniqueStudyIds": ["t9-e2", "t8-e2", "t5-e1"],
+      "understanding": [
+        "Conduzir vozes significa acompanhar o caminho de notas específicas entre acordes. Um movimento curto pode tornar uma resolução perceptível mesmo dentro de uma textura cheia. E#–F# é um exemplo de semitom que participa da chegada em F#m.",
+        "Baixos, suspensões e notas externas têm papéis diferentes. D/A e A/C# reorganizam o grave; Esus4 substitui a terça por uma quarta na sonoridade indicada. G/A combina G–B–D sobre A e deve ser compreendido no contexto, sem receber automaticamente o rótulo de C#7."
+      ],
+      "workedExample": {
+        "title": "Uma nota externa, duas situações",
+        "text": "Em C#7–F#m, E# aproxima-se de F#. Em G/A, G natural e B soam sobre A, contrastando com G# da coleção de A maior. Identifique primeiro o conjunto e o baixo; depois descreva o efeito na passagem."
+      },
+      "guidedPractice": [
+        "Encontre os baixos de D/A e A/C# antes de tocar os acordes.",
+        "Compare Esus4 com E em exercício isolado e escute A–G#.",
+        "Execute a versão completa e destaque uma resolução sem exagerar sua intensidade."
+      ],
+      "retrieval": {
+        "question": "Toda nota externa à escala tem a mesma função?",
+        "answer": "Não. Dominantes secundárias, empréstimos, suspensões e outros movimentos pedem análise do contexto."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Localize as notas que mudam entre as formas."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Recupere E#–F# e explique sua chegada sem consultar."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne B6 e R4 para comparar duas cores harmônicas."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque o arranjo completo e justifique uma escolha de duração ou intensidade."
+        }
+      ],
+      "successCriteria": [
+        "Leio os baixos sem trocar a fundamental.",
+        "Distingo suspensão e dominante secundária.",
+        "Explico uma alteração por suas notas e contexto."
+      ],
+      "nextStep": "Usar posições móveis em F# mantendo o 6/8."
+    },
+    {
+      "lessonId": "m11-a1",
+      "techniqueStudyIds": ["t8-e1", "t8-e2", "t7-e2"],
+      "understanding": [
+        "As posições fechadas permitem tocar os acordes que realmente soam em F#. D#m deriva da família menor usada em Bm, com fundamental na 5ª corda/casa 6. B e C# usam a família de A nas casas 2 e 4; F# usa a família de E na casa 2.",
+        "Conhecer a família não dispensa ouvir as cordas. Em posições maiores móveis, dedos próximos podem encostar em cordas vizinhas. Confira o desenho escolhido e mantenha apenas o esforço necessário para obter clareza."
+      ],
+      "workedExample": {
+        "title": "O quarto compasso revela a seção",
+        "text": "A estrofe usa D#m–C#–B–B, enquanto o refrão usa D#m–C#–B–F#. As três primeiras harmonias são iguais; ouvir e ler a quarta evita tocar o mesmo ciclo em todas as partes."
+      },
+      "guidedPractice": [
+        "Localize B, C#, D# e F# nas cordas graves.",
+        "Monte as quatro formas, testando uma corda por vez e fazendo pausas.",
+        "Toque estrofe e refrão com um ataque por compasso em dois pulsos ternários."
+      ],
+      "retrieval": {
+        "question": "Desenhos parecidos fazem B e C# terem a mesma altura?",
+        "answer": "Não. A família conserva relações, mas o deslocamento muda as alturas e a fundamental."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Associe cada posição à sua fundamental e família."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Reconstrua B e C# em outro dia, sem abrir o desenho."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne o quarto compasso da estrofe e o do refrão."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a forma e registre qual posição precisou de apoio."
+        }
+      ],
+      "successCriteria": [
+        "Identifico as quatro fundamentais.",
+        "Distingo o quarto acorde entre seções.",
+        "Conservo dois pulsos por compasso."
+      ],
+      "nextStep": "Preparar os baixos das posições antes do dedilhado."
+    },
+    {
+      "lessonId": "m11-a2",
+      "techniqueStudyIds": ["t7-e2", "t3-e3", "t4-e3"],
+      "understanding": [
+        "A mão dos acordes precisa chegar antes da primeira nota do novo compasso, especialmente quando o polegar toca o baixo. A clareza do primeiro som ajuda a comunicar a harmonia; corrigir a forma somente depois dele deixa a chegada indefinida.",
+        "O padrão continua p–i–m–a–m–i. D#m, C# e B começam na 5ª corda; F# começa na 6ª. A mudança de região da mão dos acordes e a escolha do polegar são tarefas relacionadas, mas podem ser preparadas separadamente."
+      ],
+      "workedExample": {
+        "title": "Da família de A à família de E",
+        "text": "Na passagem B–F#, o baixo muda de B na 5ª corda para F# na 6ª. Faça somente esses baixos nos primeiros pulsos dos compassos; depois acrescente as cinco colcheias restantes de cada dedilhado."
+      },
+      "guidedPractice": [
+        "Dedilhe cada posição isolada e identifique uma corda abafada.",
+        "Ensaie B–F# com os baixos antes de completar o padrão.",
+        "Toque o refrão e use ataques simples no ponto que ainda precisar de apoio."
+      ],
+      "retrieval": {
+        "question": "Qual acorde exige o polegar na 6ª corda?",
+        "answer": "F#, na posição adotada; os outros três usam a 5ª corda."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Confira os quatro baixos e as cordas agudas."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Retome B–F# sem a demonstração inicial."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne compassos com dedilhado e ataques simples mantendo o mesmo pulso."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave o refrão e escute a clareza de cada primeiro baixo."
+        }
+      ],
+      "successCriteria": [
+        "Preparo a posição antes do baixo.",
+        "Escolho a corda grave correta.",
+        "Mantenho o agrupamento ternário ao simplificar."
+      ],
+      "nextStep": "Conduzir a forma com contrastes de intensidade."
+    },
+    {
+      "lessonId": "m11-a3",
+      "techniqueStudyIds": ["t6-e3", "t9-e2"],
+      "understanding": [
+        "A forma pode ser reconhecida por diferenças pequenas. Em Ousado Amor, a estrofe sustenta B no quarto compasso e o refrão chega a F#. Ouvir essa mudança ajuda a localizar a seção mesmo quando o mapa fica momentaneamente difícil de acompanhar.",
+        "D#m e F# compartilham a coleção, mas o primeiro acorde não decide sozinho o centro. As chegadas e os apoios de cada trecho precisam ser considerados. A dinâmica pode reforçar a direção das repetições sem mudar o andamento."
+      ],
+      "workedExample": {
+        "title": "Planejar três intensidades possíveis",
+        "text": "Escolha uma intensidade confortável para a estrofe, outra mais presente para o refrão e um crescimento gradual na ponte. Teste se consegue voltar à intensidade inicial; controlar a volta mostra que o contraste foi intencional."
+      },
+      "guidedPractice": [
+        "Ouça dois ciclos e identifique B ou F# no quarto compasso.",
+        "Marque uma intenção de intensidade para cada repetição da ponte.",
+        "Toque a forma inteira e prepare o final em F#."
+      ],
+      "retrieval": {
+        "question": "Começar em D#m prova que toda a música está centrada em D#?",
+        "answer": "Não. É necessário observar apoios, duração e chegadas no contexto."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Reconheça as duas terminações de ciclo pelo som."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Em outro dia, reproduza uma delas e diga qual seção representa."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne intensidade suave e mais presente no mesmo ciclo."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave a ponte e descreva o crescimento sem confundi-lo com aceleração."
+        }
+      ],
+      "successCriteria": [
+        "Reconheço a diferença do quarto compasso.",
+        "Planejo contrastes que consigo reproduzir.",
+        "Justifico o centro por acontecimentos musicais."
+      ],
+      "nextStep": "Ler formas mais longas e alterações locais."
+    },
+    {
+      "lessonId": "m12-a1",
+      "techniqueStudyIds": ["t7-e3", "t8-e3"],
+      "understanding": [
+        "Uma forma longa exige pontos de referência. Identifique seções, retornos e passagens que mudam o padrão, em vez de memorizar uma sequência contínua sem endereços. As posições C#m, Bm e F#m já conhecidas liberam atenção para essa organização.",
+        "Na divisão 1,5+1,5+1, o segundo acorde entra entre pulsações. A contagem de colcheias permite localizar esse ponto: o 1 inicia o primeiro acorde, o e de 2 inicia o segundo e o 4 inicia o terceiro. A soma continua sendo quatro tempos."
+      ],
+      "workedExample": {
+        "title": "Contar uma entrada entre pulsos",
+        "text": "Fale 1 e 2 e 3 e 4 e e marque ataques no 1, no e de 2 e no 4. Primeiro use cordas abafadas; depois aplique aos acordes escritos no trecho. Não substitua essa divisão por três durações iguais."
+      },
+      "guidedPractice": [
+        "Revise A–F#m e C#m–Bm sem alterar seus desenhos.",
+        "Marque as seções de entrada e retorno no roteiro.",
+        "Pratique a divisão rítmica isolada e ligue os dois lados da passagem."
+      ],
+      "retrieval": {
+        "question": "O segundo evento de 1,5+1,5+1 começa no tempo 2?",
+        "answer": "Não. Ele começa no e de 2, depois de um tempo e meio."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Leia a ordem completa e escolha duas fronteiras de seção."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Recupere a contagem das entradas em outro dia."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne as fronteiras ensaiadas e uma seção já estável."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque a forma inteira e registre onde precisou consultar o mapa."
+        }
+      ],
+      "successCriteria": [
+        "Localizo a entrada no e de 2.",
+        "Conservo as durações da versão básica.",
+        "Uso pontos de referência na forma longa."
+      ],
+      "nextStep": "Ouvir centro e coleção em outra canção."
+    },
+    {
+      "lessonId": "m12-a2",
+      "techniqueStudyIds": ["t3-e2", "t9-e2", "t6-e2"],
+      "understanding": [
+        "Coleção é o conjunto de notas disponível; centro é a nota ou acorde que organiza a sensação de apoio em um contexto. Em7–Cmaj7–D–Em7 usa a coleção de G maior, mas o retorno a E pode sustentar uma leitura de E eólio nessa célula.",
+        "Nomear o modo é uma consequência da escuta e da análise. Percorrer a escala de G começando em E não demonstra sozinho um centro em E. Compare a célula inicial com a passagem por G no refrão antes de generalizar a descrição para toda a música."
+      ],
+      "workedExample": {
+        "title": "Uma coleção, apoios distintos",
+        "text": "Toque Em7–Cmaj7–D–Em7 e sustente E numa região confortável. Depois escute o refrão e sua passagem por G. As notas comuns não apagam a diferença de organização entre os trechos."
+      },
+      "guidedPractice": [
+        "Toque a célula inicial e localize a nota E de repouso.",
+        "Nomeie Em7 como E–G–B–D e Cmaj7 como C–E–G–B.",
+        "Compare o refrão e retorne à forma inteira antes de escolher uma descrição."
+      ],
+      "retrieval": {
+        "question": "Qual alteração aparece na coleção compartilhada de G maior e E menor natural?",
+        "answer": "F#; a coleção é a mesma, mas o centro pode ser diferente."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Localize E nos acordes da célula inicial."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Explique coleção e centro sem consultar os nomes dos modos."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne célula inicial e refrão, observando os apoios."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave um trecho e sustente sua análise com uma chegada ou duração concreta."
+        }
+      ],
+      "successCriteria": [
+        "Distingo coleção e centro.",
+        "Reconheço F# na coleção.",
+        "Limito a análise ao contexto observado."
+      ],
+      "nextStep": "Comparar empréstimos do menor paralelo em A maior."
+    },
+    {
+      "lessonId": "m12-a3",
+      "techniqueStudyIds": ["t9-e2", "t8-e3"],
+      "understanding": [
+        "O menor paralelo conserva a tônica e muda parte da coleção. A menor natural usa C, F e G naturais onde A maior usa C#, F# e G#. Isso permite compreender F e G maiores como cores emprestadas nesse contexto.",
+        "Em relação a A, F é bVI e G é bVII. O bemol no grau indica a posição da fundamental comparada à escala maior; não significa que o acorde seja menor. O retorno a A e a organização do trecho continuam relevantes para a análise."
+      ],
+      "workedExample": {
+        "title": "Comparar a chegada F–G–A",
+        "text": "F contém F–A–C, G contém G–B–D e A contém A–C#–E. Escute C natural em F e C# em A. A mudança de uma nota ajuda a ouvir o contraste, sem transformar toda a passagem numa nova escala fixa."
+      },
+      "guidedPractice": [
+        "Diga as notas de A maior e compare com A menor natural.",
+        "Toque F–G–A do final e identifique bVI e bVII.",
+        "Execute J e os finais F1 e F2 com os baixos escritos."
+      ],
+      "retrieval": {
+        "question": "bVI significa um acorde menor no sexto grau?",
+        "answer": "Não. Indica a fundamental abaixada em relação ao VI de A maior; F é maior neste trecho."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Compare as notas que mudam entre as coleções paralelas."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Recupere as notas de F e A e escute C–C#."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne a chegada F–G–A e uma passagem diatônica conhecida."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Toque o arranjo e explique uma cor externa sem mudar as cifras."
+        }
+      ],
+      "successCriteria": [
+        "Distingo relativo e paralelo.",
+        "Leio bVI e bVII corretamente.",
+        "Relaciono a análise às notas reais."
+      ],
+      "nextStep": "Consolidar forma, baixos e mudanças de compasso."
+    },
+    {
+      "lessonId": "m13-a1",
+      "techniqueStudyIds": ["t7-e3", "t9-e3"],
+      "understanding": [
+        "A duração do compasso é local. Em Bondade de Deus, V2 tem dois tempos, e o compasso seguinte volta a quatro. O último compasso de P2 também tem dois. Manter o pulso não significa manter sempre a mesma quantidade de pulsos por caixa.",
+        "As divisões internas também variam. Em V3, D dura três tempos e A/C# dura um; em V7, D e A/C# duram um cada, seguidos por dois tempos de Bm7. Ler essas proporções permite acompanhar a frase real."
+      ],
+      "workedExample": {
+        "title": "Quatro, dois, quatro, quatro",
+        "text": "Conte V1–V4 como 1–2–3–4, depois 1–2, depois dois compassos de 1–2–3–4. No compasso curto não há tempos 3 e 4 esperando para ser preenchidos."
+      },
+      "guidedPractice": [
+        "Bata o pulso e aponte os compassos V1–V4.",
+        "Toque V3 como 3+1 e V7 como 1+1+2.",
+        "Ensaie o último compasso de P2 com a entrada da seção seguinte."
+      ],
+      "retrieval": {
+        "question": "Depois de V2 em 2/4, toda a música continua em dois tempos?",
+        "answer": "Não. A indicação local do próximo compasso devolve o 4/4."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Marque os dois compassos curtos e suas saídas."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Recupere V1–V4 pela contagem antes de consultar."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne 3+1 de V3 e 1+1+2 de V7."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Grave a forma e confira se não acrescentou tempos nos compassos curtos."
+        }
+      ],
+      "successCriteria": [
+        "Respeito a métrica local.",
+        "Distingo 3+1 de 1+1+2.",
+        "Emendo o compasso curto sem pausa adicional."
+      ],
+      "nextStep": "Combinar sinais e recuperação para tocar em conjunto."
+    },
+    {
+      "lessonId": "m13-a2",
+      "techniqueStudyIds": ["t6-e3", "t9-e3"],
+      "understanding": [
+        "Tocar em conjunto exige acordos sobre entrada, passagem e final. Um gesto só funciona quando seu significado é combinado antes. A escuta da voz ou de outro instrumento ajuda a ajustar intensidade e espaço sem perder a responsabilidade pelo próprio pulso.",
+        "Recuperar uma falha faz parte da execução. Reduza os ataques, conserve a contagem e procure um ponto de retorno conhecido. Interromper todos para corrigir uma nota geralmente rompe a forma que o grupo tenta sustentar."
+      ],
+      "workedExample": {
+        "title": "Pontes com saídas diferentes",
+        "text": "P1 chega a D; P2 termina num A de dois tempos e segue para L. Marque os dois finais no mapa e ensaie P1–P2–L–R. A repetição do início não autoriza repetir também a mesma saída."
+      },
+      "guidedPractice": [
+        "Combine um gesto de passagem e outro de encerramento.",
+        "Ensaie apenas a ligação das pontes até o refrão.",
+        "Toque em duo, simplificando a textura quando precisar recuperar a posição."
+      ],
+      "retrieval": {
+        "question": "Se você perdeu uma mudança, qual informação ajuda mais a voltar?",
+        "answer": "A contagem e um ponto conhecido da forma, junto da escuta do parceiro."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Marque as saídas diferentes de P1 e P2."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Em outro dia, descreva os sinais sem consultar o roteiro."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Alterne refrões suave e mais presente, mantendo o andamento."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Faça uma execução em conjunto e registre uma recuperação ou decisão de escuta."
+        }
+      ],
+      "successCriteria": [
+        "Reconheço as duas saídas de ponte.",
+        "Uso sinais combinados.",
+        "Recupero a forma sem impor reinício ao grupo."
+      ],
+      "nextStep": "Preparar o portfólio e uma explicação musical."
+    },
+    {
+      "lessonId": "m13-a3",
+      "techniqueStudyIds": ["t9-e3", "t6-e3", "t8-e3"],
+      "understanding": [
+        "A apresentação reúne evidências de habilidades desenvolvidas em momentos diferentes. Prepare Bondade de Deus e duas músicas do portfólio, incluindo batida e dedilhado. Informe andamento, versão, apoio de leitura e decisões de intensidade para que a observação tenha contexto.",
+        "A avaliação também pergunta como você estuda. Reconhecer uma dificuldade, escolher um recorte e testar uma estratégia mostra autonomia. Uma execução isolada não prova retenção permanente; o próximo plano deve prever retomada em outro dia."
+      ],
+      "workedExample": {
+        "title": "Uma evidência e um próximo ajuste",
+        "text": "Em vez de registrar apenas preciso melhorar, escreva: mantive V2 com dois tempos, mas antecipei A/C# em V3. O próximo estudo será contar D por três tempos e A/C# por um, ligando o compasso anterior e o seguinte."
+      },
+      "guidedPractice": [
+        "Confira instrumentos, três andamentos, mapas e sinais de entrada.",
+        "Apresente os três arranjos com as escolhas preparadas.",
+        "Explique um exemplo harmônico e transponha somente o exercício autoral combinado de R4."
+      ],
+      "retrieval": {
+        "question": "Concluir as aulas ou acertar um quiz comprova todo o domínio instrumental?",
+        "answer": "Não. São necessárias evidências de execução, escuta, compreensão aplicada e organização da prática."
+      },
+      "weeklyPlan": [
+        {
+          "day": 1,
+          "title": "Preparar e descobrir",
+          "task": "Selecione três arranjos e uma prioridade de preparação para cada um."
+        },
+        {
+          "day": 2,
+          "title": "Recuperar antes de consultar",
+          "task": "Retome os trechos críticos sem demonstração inicial e confira depois."
+        },
+        {
+          "day": 3,
+          "title": "Alternar e aplicar",
+          "task": "Faça uma apresentação de ensaio com as entradas e finais combinados."
+        },
+        {
+          "day": 4,
+          "title": "Rever a execução",
+          "task": "Compare a execução com os critérios e escreva um plano de continuidade com data de retomada."
+        }
+      ],
+      "successCriteria": [
+        "Apresento três arranjos nas versões preparadas.",
+        "Explico uma decisão com notas e contexto.",
+        "Escolho uma próxima ação de estudo observável."
+      ],
+      "nextStep": "Retomar o portfólio e desenvolver a habilidade escolhida com o professor."
+    }
+  ]
+}

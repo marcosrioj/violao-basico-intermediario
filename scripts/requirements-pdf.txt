@@ -1,0 +1,6 @@
+# Reproducible PDF authoring and verification environment.
+reportlab==5.1.0
+pypdf==7.1.0
+Pillow==13.0.0
+charset-normalizer==3.5.2
+PyMuPDF==2.1

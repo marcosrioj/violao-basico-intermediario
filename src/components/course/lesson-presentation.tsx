@@ -4,6 +4,7 @@ import { Hint } from '@/components/ui/hint';
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import { ArrowLeft, ArrowRight, Eye, EyeOff, Presentation, X } from 'lucide-react';
 import type { Lesson } from '@/content/types';
+import type { LessonEnrichment } from '@/content/curriculum-types';
 import {
   buildLessonPresentation,
   presentationIndex,
@@ -13,7 +14,13 @@ import {
 import './lesson-presentation.css';
 
 /** Render only after the server authorizes the teacher and resolves this lesson. */
-export function LessonPresentation({ lesson }: { lesson: Lesson }) {
+export function LessonPresentation({
+  lesson,
+  enrichment,
+}: {
+  lesson: Lesson;
+  enrichment?: LessonEnrichment;
+}) {
   const id = useId();
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
@@ -21,7 +28,7 @@ export function LessonPresentation({ lesson }: { lesson: Lesson }) {
   const trigger = useRef<HTMLButtonElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
   const wasOpen = useRef(false);
-  const slides = buildLessonPresentation(lesson);
+  const slides = buildLessonPresentation(lesson, enrichment);
   const slide = slides[index];
 
   useEffect(() => {
@@ -76,8 +83,8 @@ export function LessonPresentation({ lesson }: { lesson: Lesson }) {
           <h3 id={`${id}-heading`}>Apresente uma ideia por vez</h3>
         </div>
         <Hint label="Usar a apresentação">
-          Sete etapas para conduzir o encontro no seu ritmo. Com o foco na apresentação, use ← e →
-          para navegar, Home/End para ir ao início/fim e Esc para encerrar. Role o conteúdo quando
+          Etapas para conduzir o encontro no seu ritmo. Com o foco na apresentação, use ← e → para
+          navegar, Home/End para ir ao início/fim e Esc para encerrar. Role o conteúdo quando
           precisar. Nenhuma etapa avança sozinha.
         </Hint>
         {!open && (

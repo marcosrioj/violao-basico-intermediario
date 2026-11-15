@@ -14,6 +14,8 @@ import { LessonProgress, PracticeLog } from './lesson-progress';
 import { VideoResource } from './video-resource';
 import type { ReactNode } from 'react';
 import { Hint } from '@/components/ui/hint';
+import { getLessonEnrichment, getLessonStudies } from '@/content/curriculum';
+import { LessonDeepening } from './learning-content';
 export function LessonView({
   lesson,
   demo = false,
@@ -28,6 +30,7 @@ export function LessonView({
   const song = getSong(lesson);
   const chart = getChart(lesson);
   const defaultBpm = defaultPlaybackBpm(lesson.bpm, song.tempo);
+  const enrichment = getLessonEnrichment(lesson.id);
   const prev = lessons[lesson.n - 2];
   const next = lessons[lesson.n];
   const rich = (text: string, field: string) => (
@@ -63,6 +66,7 @@ export function LessonView({
         <a href="#acordes">Acordes</a>
         <a href="#tocar">Tocar junto</a>
         <a href="#praticar">Praticar</a>
+        {enrichment && !demo && <a href="#aprofundar">Aprofundar</a>}
         <a href="#consulta">Teoria</a>
         {teacher && <a href="#plano-professor">Plano do professor</a>}
       </nav>
@@ -101,7 +105,13 @@ export function LessonView({
                 <li key={i}>{rich(s, `steps-${i}`)}</li>
               ))}
             </ol>
-            <h3>Seu roteiro durante a semana</h3>
+            <h3>Modelo para uma sessão de prática</h3>
+            <p className="hint">
+              {enrichment && !demo
+                ? 'Use este modelo nos momentos de estudo da semana, ajustando o foco ao roteiro de quatro dias abaixo.'
+                : 'Use este modelo nos momentos de estudo da semana e ajuste o foco com seu professor.'}{' '}
+              Os tempos são sugestões flexíveis.
+            </p>
             <ol className="steps">
               {lesson.practice.map((s, i) => (
                 <li key={i}>{rich(s, `practice-${i}`)}</li>
@@ -126,6 +136,9 @@ export function LessonView({
             question={rich(lesson.question, 'question')}
             answer={rich(lesson.answer, 'answer')}
           />
+          {enrichment && !demo && (
+            <LessonDeepening content={enrichment} studies={getLessonStudies(lesson.id)} />
+          )}
           <CollapsibleCard id="consulta" title="Consultas teóricas">
             <div className="section-title">
               <p className="eyebrow">CONECTE AS IDEIAS</p>
@@ -140,7 +153,9 @@ export function LessonView({
             </div>
           </CollapsibleCard>
           <details>
-            <summary>Material completo da aula · páginas {lesson.studentPages.join(', ')}</summary>
+            <summary>
+              Texto integral da base · páginas originais {lesson.studentPages.join(', ')}
+            </summary>
             <div className="source-text">{rich(lesson.studentText, 'studentText')}</div>
             <a
               className="resource-link"
@@ -149,7 +164,7 @@ export function LessonView({
               rel="noopener noreferrer"
             >
               <BookOpen size={16} />
-              Abrir apostila do aluno <ExternalLink size={14} />
+              Abrir apostila com acervo integral <ExternalLink size={14} />
             </a>
           </details>
           {teacherPlan}

@@ -93,7 +93,10 @@ export function Shell({
       </div>
       <div className="sidebar-bottom">
         <span className="status-dot" /> Do básico ao intermediário
-        <small>13 módulos · 39 encontros</small>
+        <small>
+          13 módulos · 39 encontros
+          <br />9 eixos de técnica · 27 estudos
+        </small>
         <Link href="/privacidade">Privacidade</Link>
       </div>
     </>

@@ -3,7 +3,16 @@ export const dynamic = 'force-dynamic';
 import { notFound } from 'next/navigation';
 import { requireCourseProfile } from '@/lib/auth';
 import { getLesson } from '@/content/course';
-import { getTeacherLesson, weeklyPlan, finalPlan } from '@/content/teacher';
+import {
+  getTeacherLesson,
+  getTeacherEnrichment,
+  teachingSources,
+  weeklyPlan,
+  finalPlan,
+} from '@/content/teacher';
+import { getLessonEnrichment } from '@/content/curriculum';
+import { TeacherDeepening } from '@/components/course/learning-content';
+import Link from 'next/link';
 import { LessonView } from '@/components/course/lesson-view';
 import { RichText } from '@/components/course/rich-text';
 import { LessonPresentation } from '@/components/course/lesson-presentation';
@@ -15,6 +24,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
   if (!lesson) notFound();
   const teacher = profile.role === 'teacher';
   const plan = teacher ? getTeacherLesson(lesson.id) : undefined;
+  const enrichedPlan = teacher ? getTeacherEnrichment(lesson.id) : undefined;
   const schedule = lesson.n === 39 ? finalPlan : weeklyPlan;
   return (
     <LessonView
@@ -24,18 +34,29 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
         plan ? (
           <CollapsibleCard id="plano-professor" title="Condução do encontro">
             <p className="eyebrow">ÁREA DO PROFESSOR</p>
-            <LessonPresentation key={lesson.id} lesson={lesson} />
+            <LessonPresentation
+              key={lesson.id}
+              lesson={lesson}
+              enrichment={getLessonEnrichment(lesson.id)}
+            />
+            {enrichedPlan && <TeacherDeepening content={enrichedPlan} sources={teachingSources} />}
+            <Link className="resource-link section" href="/professor/metodologia">
+              Consultar princípios de ensino e rubrica
+            </Link>
+            <h3 className="section">Orientação do plano original</h3>
             <p>
               <RichText text={plan.teacher} lesson={lesson} field="teacher" />
             </p>
             <details className="section">
-              <summary>Plano completo · páginas {plan.teacherPages.join(', ')}</summary>
+              <summary>
+                Plano original completo · páginas originais {plan.teacherPages.join(', ')}
+              </summary>
               <div className="source-text">
                 <RichText text={plan.teacherText} lesson={lesson} field="teacherText" />
               </div>
             </details>
             <details className="section">
-              <summary>Roteiro de 60 minutos</summary>
+              <summary>Roteiro original de referência · 60 minutos</summary>
               <div className="table-scroll">
                 <table>
                   <thead>

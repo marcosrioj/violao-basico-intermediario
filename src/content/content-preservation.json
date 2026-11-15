@@ -1,0 +1,39 @@
+{
+  "edition": 6,
+  "recordedOn": "2026-11-15",
+  "purpose": "Base integral preservada na expansão do curso; novas aulas explicativas e planos são associados pelos IDs existentes.",
+  "files": [
+    {
+      "path": "src/content/course-data.json",
+      "sha256": "59f81c9006218d804821ac5cf933dd4a6dbeaf1e06de78b5fe924b88ebe7d331"
+    },
+    {
+      "path": "src/content/teacher-data.json",
+      "sha256": "dc23e4823956d50987459c922d1a27496962c1338cc38e965c417b4261a1c562"
+    },
+    {
+      "path": "src/content/student-guides.json",
+      "sha256": "cfb96ded540f262f9f1830cb1c3106b2162dca67d8b614772ff05a4ec1824236"
+    },
+    {
+      "path": "src/content/chords-data.json",
+      "sha256": "aabfc7c19d3dfc8ebf3b96d53b61b493244e5e74d446d01023f4986aa35a5c4f"
+    },
+    {
+      "path": "src/content/tempo-research.json",
+      "sha256": "b3e2a26aab29cfd74e16a9ae62811cc83aa2c11d268fac8be0ec4b9e9faa6997"
+    },
+    {
+      "path": "materials/Curso_Aluno_Violao_Gospel_v5.pdf",
+      "sha256": "5c0a9d89f3aa2ce70fd48b2e48d95b7e1a1d2cac8febd4ae51c4bf028e8418f3"
+    },
+    {
+      "path": "materials/Manual_Professor_Violao_Gospel_v5.pdf",
+      "sha256": "0d0b13497c5f3c7d177d56c571f0b6110483b5c29b206544f647920b38ddbb8c"
+    },
+    {
+      "path": "materials/Guia_Interativo_Aluno_Violao_v5.html",
+      "sha256": "62bb8d791bd913bd9b32dd5ec7b31fc2420513f7a65b4abbf7c7ae0048b57ff6"
+    }
+  ]
+}

@@ -46,6 +46,7 @@ export const config = {
     '/repertorio/:path*',
     '/materiais/:path*',
     '/teoria/:path*',
+    '/tecnica/:path*',
     '/api/:path*',
     '/auth/:path*',
     '/entrar',

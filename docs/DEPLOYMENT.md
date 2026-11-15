@@ -13,6 +13,8 @@ Este guia é para instalar **sua própria aplicação**, com seu Supabase e seu 
 
 O frontend e o backend formam um único projeto Next.js. Contas e dados usam **Supabase Auth + API + PostgreSQL**; não basta apontar para um PostgreSQL isolado. Os PDFs e dados do curso já estão versionados, sem importação adicional, seed de conteúdo ou buckets de Storage. As contas e turmas serão criadas pela interface.
 
+A atualização mantém os IDs das 39 aulas e usa o mesmo esquema de contas, turmas e progresso. Não exige migration de banco. Os downloads ativos são os PDFs completos atualizados em `materials/`; `next.config.ts` inclui esses arquivos no pacote do servidor. Ao editar conteúdo editorial, regenere os PDFs e o manifesto antes do build conforme [Conteúdo](CONTENT.md).
+
 ## 1. Executar localmente
 
 Instale Git, **Node.js 22** e npm. Use o lockfile para instalar as versões do projeto:

@@ -1,6 +1,14 @@
 import 'server-only';
 import data from './teacher-data.json';
+import enrichment from './teacher-enrichment.json';
 import type { TeacherLesson, GuidePage } from './types';
+import type { TeacherEnrichment, ResearchSource } from './curriculum-types';
+
+export const teachingGuide = enrichment;
+export const teachingSources: ResearchSource[] = enrichment.sources;
+export function getTeacherEnrichment(lessonId: string): TeacherEnrichment | undefined {
+  return enrichment.lessons.find((lesson) => lesson.lessonId === lessonId);
+}
 
 /** Import only from a server component after teacher authorization. */
 export const teacherLessons: TeacherLesson[] = data.lessons;

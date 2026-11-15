@@ -1,0 +1,1878 @@
+{
+  "edition": 6,
+  "introduction": "Os nove eixos técnicos ampliam a formação dentro dos 13 módulos e 39 aulas de repertório do Violão Vivo. Estude o eixo indicado pela aula, respeite seus pré-requisitos e retorne à música após a experiência curta. Os 27 estudos são autorais: a ementa pública de Fábio Lima orienta a cobertura temática, e as referências identificadas sustentam os conceitos. Não se trata de reprodução das aulas privadas de outro curso. Durações, exemplos e critérios são propostas adaptáveis, e não garantias universais de aprendizagem.",
+  "sources": [
+    {
+      "id": "FL-EMENTA",
+      "title": "Violão do Zero ao Intermediário - ementa pública",
+      "author": "Fábio Lima",
+      "url": "https://promocao.fabiolimacursos.com.br/",
+      "accessed": "2026-11-15",
+      "scope": "Identificação dos nove eixos e dos assuntos anunciados.",
+      "limitation": "A página comercial não disponibiliza o conteúdo interno; o curso contém explicações e exercícios próprios, sem atribuí-los ao método pago."
+    },
+    {
+      "id": "BW-POSTURA",
+      "title": "Sitting and Guitar Position for Classical Guitar",
+      "author": "Bradford Werner",
+      "url": "https://www.thisisclassicalguitar.com/basic-posture-and-sitting-position-guitar/",
+      "accessed": "2026-11-15",
+      "scope": "Apoio do instrumento, acesso ao braço e observação da postura.",
+      "limitation": "Orientação profissional de violão clássico; configurações devem ser adaptadas ao instrumento e à pessoa, sem diagnóstico clínico."
+    },
+    {
+      "id": "BW-MAOS",
+      "title": "Left Hand Technique for Classical Guitar",
+      "author": "Bradford Werner",
+      "url": "https://www.thisisclassicalguitar.com/left-hand-technique-and-position/",
+      "accessed": "2026-11-15",
+      "scope": "Posição dos dedos, proximidade dos trastes e economia de pressão.",
+      "limitation": "Demonstração pedagógica, não ensaio experimental nem prescrição de postura única."
+    },
+    {
+      "id": "BW-DIREITA",
+      "title": "Right Hand Position and Technique",
+      "author": "Bradford Werner",
+      "url": "https://www.thisisclassicalguitar.com/right-hand-technique-for-classical-guitar/",
+      "accessed": "2026-11-15",
+      "scope": "Ataque, dedos e controle de ressonância.",
+      "limitation": "A abordagem clássica com dedos não substitui os estudos próprios de palheta."
+    },
+    {
+      "id": "BW-AFINACAO",
+      "title": "Tuning the Classical Guitar",
+      "author": "Bradford Werner",
+      "url": "https://www.thisisclassicalguitar.com/tuning-the-classical-guitar/",
+      "accessed": "2026-11-15",
+      "scope": "Afinação padrão e uso de referências sonoras.",
+      "limitation": "O curso não mede afinação automaticamente; a conferência depende de escuta, afinador e orientação."
+    },
+    {
+      "id": "BW-PESTANA",
+      "title": "Barre Lessons and Exercises for Guitar",
+      "author": "Bradford Werner",
+      "url": "https://www.thisisclassicalguitar.com/barre-lessons-and-exercises-for-guitar/",
+      "accessed": "2026-11-15",
+      "scope": "Preparação progressiva e observação da pestana.",
+      "limitation": "A entrada no módulo 5 e as tarefas aqui propostas são decisões curriculares do Violão Vivo."
+    },
+    {
+      "id": "BW-ARTICULACAO",
+      "title": "Right Hand Articulation for Classical Guitar",
+      "author": "Bradford Werner",
+      "url": "https://www.thisisclassicalguitar.com/right-hand-articulation-classical-guitar/",
+      "accessed": "2026-11-15",
+      "scope": "Distinção entre legato, staccato, pizzicato e controle da duração.",
+      "limitation": "O texto e o vídeo explicam técnica; os motivos, tempos e critérios desta edição são autorais."
+    },
+    {
+      "id": "BW-LIGADOS",
+      "title": "Slurs on Classical Guitar - Hammer-Ons and Pull-Offs",
+      "author": "Bradford Werner",
+      "url": "https://www.thisisclassicalguitar.com/lesson-slurs-for-classical-guitar/",
+      "accessed": "2026-11-15",
+      "scope": "Ligados de mão esquerda e sua relação com o som.",
+      "limitation": "Não foram reproduzidos estudos ou partituras do autor."
+    },
+    {
+      "id": "BW-VIBRATO",
+      "title": "Vibrato Lesson for Classical Guitar",
+      "author": "Bradford Werner",
+      "url": "https://www.thisisclassicalguitar.com/vibrato-lesson-classical-guitar/",
+      "accessed": "2026-11-15",
+      "scope": "Vibrato em contexto musical e atenção à afinação.",
+      "limitation": "A referência é orientação de execução, não promessa de resultado em prazo fixo."
+    },
+    {
+      "id": "JG-PALHETA",
+      "title": "Beginner Alternate Picking - texto do autor no índice de aulas",
+      "author": "Justin Sandercoe",
+      "url": "https://www.justinguitar.com/advanced_search?q=pick",
+      "accessed": "2026-11-15",
+      "scope": "Alternância dos ataques, observação da palheta e prática inicial lenta.",
+      "limitation": "O índice público reproduz a explicação do autor; comentários da comunidade não foram usados como autoridade."
+    },
+    {
+      "id": "OMT-INTERVALOS",
+      "title": "Intervals",
+      "author": "Chelsey Hamm e Bryn Hughes - Open Music Theory",
+      "url": "https://viva.pressbooks.pub/openmusictheory/chapter/intervals/",
+      "accessed": "2026-11-15",
+      "scope": "Número e qualidade de intervalos; relação entre nomes e semitons.",
+      "limitation": "Terminologia teórica geral; a aplicação às posições de violão é desenvolvimento autoral."
+    },
+    {
+      "id": "OMT-CIFRAS",
+      "title": "Chord Symbols",
+      "author": "Open Music Theory",
+      "url": "https://viva.pressbooks.pub/openmusictheory/chapter/chord-symbols/",
+      "accessed": "2026-11-15",
+      "scope": "Leitura de qualidade, sétimas e baixo indicado após a barra.",
+      "limitation": "Sistemas de cifras têm variantes; o curso explicita a convenção usada."
+    },
+    {
+      "id": "OMT-MAIOR",
+      "title": "Major Scales, Scale Degrees, and Key Signatures",
+      "author": "Chelsey Hamm e Bryn Hughes - Open Music Theory",
+      "url": "https://viva.pressbooks.pub/openmusictheory/chapter/major-scales/",
+      "accessed": "2026-11-15",
+      "scope": "Estrutura da escala maior e graus.",
+      "limitation": "As sequências de casas, exemplos e tarefas deste curso são próprios."
+    },
+    {
+      "id": "OMT-MENOR",
+      "title": "Minor Scales, Scale Degrees, and Key Signatures",
+      "author": "Chelsey Hamm e Bryn Hughes - Open Music Theory",
+      "url": "https://viva.pressbooks.pub/openmusictheory/chapter/minor-scales/",
+      "accessed": "2026-11-15",
+      "scope": "Menor natural, harmônica e melódica; relativos e paralelos.",
+      "limitation": "As três formas não devem ser tratadas como três tonalidades diferentes nem como regra fixa de toda música popular."
+    },
+    {
+      "id": "OMT-COMPASSO",
+      "title": "Compound Meter and Time Signatures",
+      "author": "Mark Gotham e Chelsey Hamm - Open Music Theory",
+      "url": "https://viva.pressbooks.pub/openmusictheory/chapter/compound-meters-and-time-signatures/",
+      "accessed": "2026-11-15",
+      "scope": "Divisão ternária do pulso e leitura de 6/8.",
+      "limitation": "A interpretação dos mapas e andamentos específicos do repertório continua seguindo a pesquisa do curso."
+    },
+    {
+      "id": "OMT-RITMO",
+      "title": "Other Rhythmic Essentials",
+      "author": "Mark Gotham, Chelsey Hamm e Bryn Hughes - Open Music Theory",
+      "url": "https://viva.pressbooks.pub/openmusictheory/chapter/other-rhythmic-essentials/",
+      "accessed": "2026-11-15",
+      "scope": "Deslocamento de acentos e síncope.",
+      "limitation": "Os padrões de estudo não pretendem representar integralmente um gênero musical."
+    },
+    {
+      "id": "OMT-CADENCIAS",
+      "title": "Introduction to Harmony, Cadences, and Phrase Endings",
+      "author": "John Peterson - Open Music Theory",
+      "url": "https://viva.pressbooks.pub/openmusictheory/chapter/intro-to-harmony/",
+      "accessed": "2026-11-15",
+      "scope": "Cadência como encerramento de frase e relação entre dominante e tônica.",
+      "limitation": "A terminologia clássica precisa de contexto; um ciclo de acordes popular não é automaticamente uma cadência."
+    },
+    {
+      "id": "OMT-ORNAMENTO",
+      "title": "Embellishing Tones",
+      "author": "Open Music Theory",
+      "url": "https://viva.pressbooks.pub/openmusictheory/chapter/embellishing-tones/",
+      "accessed": "2026-11-15",
+      "scope": "Notas ornamentais e relação entre tensão e resolução.",
+      "limitation": "O texto indexado foi consultado; a página retornou 403 em abertura direta. Não sustenta sozinho convenções históricas de ornamentos."
+    },
+    {
+      "id": "BW-ORNAMENTO",
+      "title": "Weiss Sonata IX - Preface and Ornamentation",
+      "author": "Bradford Werner",
+      "url": "https://www.thisisclassicalguitar.com/wp-content/uploads/2019/10/Weiss-Sonata-IX-Preface.pdf",
+      "accessed": "2026-11-15",
+      "scope": "Variação contextual na leitura de ornamentos.",
+      "limitation": "Fonte de uma edição específica barroca; os motivos do curso têm notas e durações explicitadas para evitar transferir convenções históricas indiscriminadamente."
+    },
+    {
+      "id": "FENDER-CAGED",
+      "title": "Learn Major Guitar Scales with the CAGED System",
+      "author": "Ben Nemeroff - Fender",
+      "url": "https://www.fender.com/articles/scales/major-guitar-scales",
+      "accessed": "2026-11-15",
+      "scope": "CAGED como organização de formas, notas e escalas no braço.",
+      "limitation": "Material educacional de fabricante; não demonstra superioridade do sistema sobre outras abordagens."
+    },
+    {
+      "id": "WM-CAGED",
+      "title": "Guide to C-A-G-E-D",
+      "author": "Wolf Marshall - D’Addario",
+      "url": "https://www.daddario.com/globalassets/pdfs/guitar/caged_system.pdf",
+      "accessed": "2026-11-15",
+      "scope": "Relação entre formas de acordes e notas melódicas.",
+      "limitation": "Não foram copiados diagramas; formas parciais e tarefas são construídas a partir das notas do curso."
+    },
+    {
+      "id": "BERKLEE-ACORDES",
+      "title": "Guitar Chords 101",
+      "author": "Rick Peckham - Berklee Online",
+      "url": "https://online.berklee.edu/courses/guitar-chords-101/",
+      "accessed": "2026-11-15",
+      "scope": "Construção por notas, inversões e condução de vozes.",
+      "limitation": "Foi consultada a ementa pública, não as aulas restritas do curso."
+    },
+    {
+      "id": "BERKLEE-INICIO",
+      "title": "Guitar for Beginners",
+      "author": "Kim Perlak - Berklee Online",
+      "url": "https://online.berklee.edu/courses/guitar-for-beginners",
+      "accessed": "2026-11-15",
+      "scope": "Integração entre técnica, leitura, acordes e criação.",
+      "limitation": "Ementa pública; a organização do curso e seus exercícios não pertencem à Berklee."
+    }
+  ],
+  "modules": [
+    {
+      "id": "T1",
+      "title": "Fundamentos do instrumento e do som",
+      "goal": "Preparar o violão, localizar referências e produzir notas com controle.",
+      "prerequisites": [
+        "Nenhuma experiência anterior."
+      ],
+      "relatedModules": [
+        1,
+        2,
+        3
+      ],
+      "introduction": "Comece este eixo junto à primeira música. Aprender o nome de uma peça do instrumento deve ajudar a executar uma tarefa: afinar, apoiar, encontrar uma nota ou esclarecer por que uma corda não soa. Observe conforto e resultado sonoro, adaptando a posição com o professor.",
+      "studies": [
+        {
+          "id": "t1-e1",
+          "title": "Instrumento, postura e apoio",
+          "goal": "Identificar as partes do violão e encontrar um apoio que permita tocar sem segurar o instrumento com a mão dos acordes.",
+          "prerequisites": [
+            "Ter o instrumento e um assento ou apoio estável."
+          ],
+          "relatedLessons": [
+            "m1-a1",
+            "m1-a2"
+          ],
+          "explanation": [
+            "O corpo inclui tampo, laterais e fundo; a boca permite acesso visual à cavidade, e o cavalete ancora as cordas. O rastilho delimita uma extremidade do trecho vibrante. No outro lado estão pestana fixa, braço, escala, trastes e tarraxas. Casas são espaços entre trastes: pressionar uma corda encurta seu trecho vibrante e altera a nota. Não confunda a peça chamada pestana com a técnica de apertar várias cordas usando um dedo.",
+            "O apoio deve deixar as duas mãos disponíveis para tocar. Experimente a altura da cadeira, o ângulo do braço e, quando necessário, um suporte adequado. Mantenha a respiração livre e observe se ombros sobem quando um acorde fica difícil. Não existe uma fotografia que sirva a todos; o professor verifica alcance e estabilidade ao executar, e não apenas em repouso."
+          ],
+          "workedExample": {
+            "title": "Preparar antes do primeiro D",
+            "text": "Apoie o instrumento, tire a mão esquerda por um instante e verifique se o braço permanece em posição útil. Recoloque a mão e localize a 4ª corda solta. Toque D somente nas quatro cordas agudas, sem alterar o apoio para olhar cada dedo."
+          },
+          "steps": [
+            "Aponte corpo, cavalete, rastilho, trastes e tarraxas; diga que tarefa cada parte ajuda a realizar.",
+            "Compare dois ângulos de braço e escolha aquele em que alcança a 2ª casa sem elevar o ombro.",
+            "Toque a 4ª corda quatro vezes, descansando as mãos entre as tentativas; mantenha o instrumento apoiado.",
+            "Monte D, escute corda por corda e descreva uma diferença entre a preparação e a execução."
+          ],
+          "easier": "Faça a primeira comparação apenas em cordas soltas. O professor pode demonstrar o apoio sem movimentar as mãos do aluno.",
+          "harder": "Prepare o violão novamente após levantar e sentar, tentando recuperar a posição sem copiar uma fotografia.",
+          "mistakes": [
+            {
+              "symptom": "O braço cai quando a mão esquerda se afasta.",
+              "adjustment": "Reorganize os pontos de apoio antes de trabalhar acordes; segurar o braço acrescenta uma tarefa desnecessária."
+            },
+            {
+              "symptom": "O aluno inclina o corpo para enxergar a escala inteira.",
+              "adjustment": "Ajuste a posição da estante e use as bordas dos trastes como referência; confira o acorde pelo som."
+            }
+          ],
+          "checks": [
+            "Explica a função de quatro partes do instrumento.",
+            "Recupera uma posição estável e toca a corda escolhida."
+          ],
+          "retrieval": {
+            "question": "Qual é a diferença entre uma casa e um traste?",
+            "answer": "A casa é o espaço de posicionamento do dedo; o traste é a barra que delimita o comprimento vibrante da corda."
+          },
+          "spacing": [
+            "Na próxima prática, prepare o apoio antes de abrir o guia.",
+            "Na aula seguinte, descreva o ajuste que facilitou tocar D."
+          ],
+          "sourceIds": [
+            "BW-POSTURA",
+            "BERKLEE-INICIO"
+          ]
+        },
+        {
+          "id": "t1-e2",
+          "title": "Afinar e localizar as notas",
+          "goal": "Reconhecer a afinação padrão e encontrar notas vizinhas na mesma corda.",
+          "prerequisites": [
+            "Conhecer a numeração das cordas."
+          ],
+          "relatedLessons": [
+            "m1-a1",
+            "m4-a1",
+            "m6-a1"
+          ],
+          "explanation": [
+            "As cordas são numeradas da mais aguda para a mais grave. Na afinação padrão, da 6ª à 1ª, os nomes são E, A, D, G, B, E: mi, lá, ré, sol, si, mi. Os dois E pertencem a registros diferentes. Antes de girar uma tarraxa, identifique qual corda ela movimenta e escute uma nota de cada vez.",
+            "Com afinador, observe a letra e depois o desvio de altura: uma leitura de outra nota não se resolve apenas centralizando o ponteiro. Ajuste em movimentos pequenos e confira novamente. Sem afinador, compare uma referência confiável com ajuda do professor; o áudio do aplicativo é referência sonora, não uma medição do instrumento.",
+            "Na mesma corda, uma casa corresponde a um semitom e duas a um tom. Entre E e F e entre B e C há um semitom. Sustenidos e bemóis nomeiam alterações; o contexto musical determina a grafia, mesmo quando duas grafias correspondem à mesma altura no instrumento temperado."
+          ],
+          "workedExample": {
+            "title": "Uma pequena exploração na primeira corda",
+            "text": "Toque a 1ª corda solta E, a casa 1 F e a casa 3 G. Entre E e F percorreu uma casa; entre F e G, duas. Volte G, F, E e tente antecipar o som de chegada antes de tocar."
+          },
+          "steps": [
+            "Diga os seis nomes do grave para o agudo e aponte a corda enquanto fala.",
+            "Confira uma corda no afinador, identificando nota e direção do desvio antes de ajustar.",
+            "Execute E, F e G lentamente; compare a distância física e a sonora.",
+            "Feche o mapa e encontre F novamente; depois aplique o mesmo raciocínio a B e C na 2ª corda."
+          ],
+          "easier": "Trabalhe somente as cordas 1 e 2 e peça ao professor para conferir a afinação inicial.",
+          "harder": "Encontre C também na 5ª corda, casa 3, e explique por que o nome pode repetir em outro registro.",
+          "mistakes": [
+            {
+              "symptom": "A corda está centralizada no afinador, mas o acorde continua estranho.",
+              "adjustment": "Confira se a letra é a nota-alvo da corda, não outra nota afinada."
+            },
+            {
+              "symptom": "O aluno conta a corda solta como casa 1.",
+              "adjustment": "Marque verbalmente zero para corda solta e comece a contagem no primeiro espaço."
+            }
+          ],
+          "checks": [
+            "Nomeia a afinação padrão sem confundir a ordem.",
+            "Localiza E-F-G e explica quais pares estão separados por semitom."
+          ],
+          "retrieval": {
+            "question": "Onde está C na segunda corda, se a corda solta é B?",
+            "answer": "Na casa 1: B e C estão separados por um semitom."
+          },
+          "spacing": [
+            "Recupere os nomes de duas cordas antes de cada prática.",
+            "Depois de dois dias, encontre as notas sem olhar o exemplo e confira."
+          ],
+          "sourceIds": [
+            "BW-AFINACAO",
+            "OMT-INTERVALOS"
+          ]
+        },
+        {
+          "id": "t1-e3",
+          "title": "Coordenar as mãos e controlar o som",
+          "goal": "Produzir e interromper notas deliberadamente, distinguindo problemas de ataque e de pressão.",
+          "prerequisites": [
+            "Localizar a 1ª e a 2ª cordas."
+          ],
+          "relatedLessons": [
+            "m1-a2",
+            "m2-a1",
+            "m3-a2"
+          ],
+          "explanation": [
+            "Na mão que dedilha, p é polegar, i indicador, m médio e a anelar. Na mão das casas, 1 é indicador, 2 médio, 3 anelar e 4 mínimo. Essas convenções descrevem funções; alunos canhotos com instrumento invertido podem relacionar os nomes à mão que dedilha e à que forma notas.",
+            "Para uma nota presa, coloque a ponta do dedo próxima ao traste seguinte, sem ficar sobre ele, e teste somente a pressão necessária ao som claro. Um dedo inclinado pode tocar uma corda vizinha e abafá-la. Na outra mão, o ataque deve liberar a corda; apoiar um dedo cedo demais interrompe a vibração. O ouvido ajuda a distinguir nota que nunca começou de nota que começou e foi cortada.",
+            "Coordenação não é apertar mais forte ao tocar mais rápido. Separe temporariamente as tarefas, junte-as em andamento confortável e faça pausas. Dor não é um critério de avanço: interrompa a execução e reveja apoio e demanda com o professor."
+          ],
+          "workedExample": {
+            "title": "Ouvir três fases de uma nota",
+            "text": "Toque C na 2ª corda, casa 1. Conte quatro pulsos: ataque no 1, sustente no 2 e 3, interrompa no 4 encostando suavemente um dedo da mão direita. Compare com uma tentativa em que você interrompe o C antes do pulso 3."
+          },
+          "steps": [
+            "Toque a 2ª corda solta alternando i e m, com uma nota por pulso.",
+            "Acrescente o dedo 1 na casa 1 e compare o som antes e depois da pressão.",
+            "Faça o ataque, sustentação e silêncio planejados no exemplo; não antecipe a interrupção.",
+            "Leve a observação para D: toque cada corda separadamente e ajuste apenas a que apresenta problema."
+          ],
+          "easier": "Use apenas o indicador no ataque e uma corda solta; acrescente a outra mão quando a duração estiver clara.",
+          "harder": "Alterne B solto e C preso mantendo a mesma duração e intensidade aproximada.",
+          "mistakes": [
+            {
+              "symptom": "A nota trasteja somente ao atacar forte.",
+              "adjustment": "Reduza primeiro a intensidade do ataque e confira a posição perto do traste."
+            },
+            {
+              "symptom": "Uma corda do acorde fica muda.",
+              "adjustment": "Toque-a isoladamente e verifique se outro dedo encosta nela; mude um elemento por vez."
+            }
+          ],
+          "checks": [
+            "Distingue ataque, sustentação e silêncio no exemplo.",
+            "Identifica uma corda problemática e faz um ajuste específico."
+          ],
+          "retrieval": {
+            "question": "Uma nota curta é sempre um erro?",
+            "answer": "Não. Pode ser uma escolha de duração; é erro quando termina antes do momento planejado."
+          },
+          "spacing": [
+            "Repita a comparação após uma pausa, sem aumentar a velocidade.",
+            "Na semana, teste o mesmo controle em um acorde já conhecido."
+          ],
+          "sourceIds": [
+            "BW-MAOS",
+            "BW-DIREITA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "title": "Acordes e leitura para tocar com compreensão",
+      "goal": "Relacionar cifras, diagramas, notas e movimentos em exemplos curtos.",
+      "prerequisites": [
+        "T1 ou preparação equivalente."
+      ],
+      "relatedModules": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "introduction": "A leitura deve resolver uma ação musical. Comece com os acordes efetivamente usados na aula e só acrescente outra representação quando a primeira estiver compreendida. Os diagramas iniciais preservam as posições didáticas da edição anterior.",
+      "studies": [
+        {
+          "id": "t2-e1",
+          "title": "Cifras e diagramas sem adivinhação",
+          "goal": "Traduzir uma cifra e um diagrama em cordas e casas, conferindo o resultado pelo ouvido.",
+          "prerequisites": [
+            "Reconhecer cordas e casas."
+          ],
+          "relatedLessons": [
+            "m1-a1",
+            "m2-a1",
+            "m4-a1"
+          ],
+          "explanation": [
+            "As letras A, B, C, D, E, F, G representam lá, si, dó, ré, mi, fá, sol. A letra sozinha indica uma tríade maior na convenção adotada; m indica menor. Outros sinais acrescentam informações: Dm é ré menor, enquanto D/F# indica ré maior com fá sustenido no baixo. A cifra informa a harmonia, mas não determina sozinha ritmo, registro ou desenho dos dedos.",
+            "Os códigos do curso são lidos da 6ª para a 1ª corda. Em xx0232, os dois x excluem as cordas graves; 0 é corda solta; 2, 3 e 2 são as casas das três cordas seguintes. Dedos e casas são informações diferentes: um algarismo dentro de um diagrama pode indicar o dedo conforme a legenda, enquanto o código descreve a casa.",
+            "Antes de tocar uma batida completa, confira baixo e cordas permitidas. A mesma cifra pode admitir posições diferentes; no início, use a posição que a aula ensina para manter uma dificuldade de cada vez."
+          ],
+          "workedExample": {
+            "title": "Decodificar D e Em",
+            "text": "D = xx0232: toque 4ª solta, 3ª casa 2, 2ª casa 3 e 1ª casa 2. Em = 022000: todas as cordas podem soar, com casas 2 na 5ª e 4ª. Observe que a quantidade de cordas tocadas mudou junto com a forma."
+          },
+          "steps": [
+            "Leia cada símbolo de D em voz alta, começando pela 6ª corda.",
+            "Monte o acorde sem atacar e indique qual será a primeira corda sonora.",
+            "Toque corda por corda; depois reúna o acorde em um ataque tranquilo.",
+            "Faça a mesma tradução com Em e explique a diferença de baixo e de cordas permitidas."
+          ],
+          "easier": "Use apenas D e cubra temporariamente os outros diagramas. O professor lê o código enquanto o aluno aponta as cordas.",
+          "harder": "Ao chegar ao M2, leia C x32010 sem demonstração prévia e confira cada nota com o mapa de braço.",
+          "mistakes": [
+            {
+              "symptom": "O aluno toca os x como cordas soltas.",
+              "adjustment": "Compare x com 0 usando o som de D; x é exclusão, não ausência de dedo."
+            },
+            {
+              "symptom": "O acorde começa pela 6ª corda por hábito.",
+              "adjustment": "Prepare a mão de ataque diretamente na primeira corda permitida antes da contagem."
+            }
+          ],
+          "checks": [
+            "Diferencia símbolo de acorde, casa e dedo.",
+            "Monta D e Em respeitando as cordas indicadas."
+          ],
+          "retrieval": {
+            "question": "O símbolo m quer dizer que o acorde deve soar mais baixo?",
+            "answer": "Não. Indica qualidade menor; volume é uma decisão de dinâmica."
+          },
+          "spacing": [
+            "Leia novamente um código após fechar o diagrama por um minuto.",
+            "Em outro dia, explique o código a alguém antes de tocar."
+          ],
+          "sourceIds": [
+            "OMT-CIFRAS",
+            "BERKLEE-INICIO"
+          ]
+        },
+        {
+          "id": "t2-e2",
+          "title": "Acordes maiores, menores e trocas",
+          "goal": "Ouvir a qualidade dos acordes e preparar transições sem interromper a contagem.",
+          "prerequisites": [
+            "Formar D, G e Em; acrescentar C, Am e F somente conforme M2."
+          ],
+          "relatedLessons": [
+            "m1-a2",
+            "m2-a1",
+            "m4-a2"
+          ],
+          "explanation": [
+            "Uma tríade reúne fundamental, terça e quinta. Na tríade maior, a terça fica quatro semitons acima da fundamental; na menor, três. D contém D-F#-A; Dm contém D-F-A. A diferença não é simplesmente tocar devagar ou produzir um som triste: é uma relação entre alturas. O caráter da música também depende do ritmo, registro e contexto.",
+            "Uma troca começa antes do ataque seguinte: reconheça a chegada, reduza movimentos sem função e prepare o novo baixo. O objetivo inicial é entrar no pulso combinado, mesmo com poucos ataques. Procure manter dedos comuns somente quando isso favorecer a posição; um dedo não deve ser preso artificialmente se impedir os outros.",
+            "No M2, F continua sendo xx321x: três cordas, três dedos, sem pestana. Sua primeira corda sonora é a 4ª, casa 3. O conjunto F-A-C já contém a tríade completa, embora não use todas as cordas. Mais cordas não significam automaticamente melhor acorde."
+          ],
+          "workedExample": {
+            "title": "Um ciclo curto com sentido harmônico",
+            "text": "Depois de aprender os acordes do M2, toque Am-F-C-G, quatro pulsos por acorde e um ataque no primeiro pulso. F usa apenas as cordas 4, 3 e 2. Antes de cada chegada, diga o nome do próximo acorde; deixe o último G durar seus quatro pulsos."
+          },
+          "steps": [
+            "Compare D e Dm quando Dm entrar no M4; encontre a nota que mudou.",
+            "Escolha somente duas posições já aprendidas e faça a troca sem batida.",
+            "Conte quatro pulsos e ataque na chegada; use os pulsos seguintes para preparar a próxima posição.",
+            "Reintegre o par ao ciclo da aula, mantendo as durações mesmo se precisar simplificar os ataques."
+          ],
+          "easier": "Mantenha um acorde por dois compassos ou toque apenas o baixo correto nas chegadas difíceis.",
+          "harder": "Toque quatro ataques por compasso mantendo a mesma duração total e a qualidade dos acordes.",
+          "mistakes": [
+            {
+              "symptom": "O aluno acelera durante o acorde fácil.",
+              "adjustment": "Conte sem tocar por uma rodada e retome o ataque somente nas chegadas."
+            },
+            {
+              "symptom": "O F é substituído por pestana antes da hora.",
+              "adjustment": "Retome xx321x e restrinja o ataque às três cordas indicadas; a pestana terá preparação própria."
+            }
+          ],
+          "checks": [
+            "A partir do M4, explica a diferença entre D e Dm por suas notas.",
+            "Mantém o ciclo sem encurtar o acorde que acabou de aprender."
+          ],
+          "retrieval": {
+            "question": "Por que três cordas podem bastar para F maior?",
+            "answer": "Porque F, A e C já são suas três notas constituintes; dobramentos são possibilidades de disposição."
+          },
+          "spacing": [
+            "No dia seguinte, comece pelo par de acordes mais difícil.",
+            "Após tocar outra música, volte ao ciclo sem ensaiar a troca primeiro."
+          ],
+          "sourceIds": [
+            "OMT-INTERVALOS",
+            "BERKLEE-ACORDES"
+          ]
+        },
+        {
+          "id": "t2-e3",
+          "title": "Ler e executar uma tablatura",
+          "goal": "Ler corda e casa e associar a tablatura a um ritmo explicitamente indicado.",
+          "prerequisites": [
+            "Localizar as três cordas agudas e contar quatro pulsos."
+          ],
+          "relatedLessons": [
+            "m4-a1",
+            "m6-a1",
+            "m9-a3"
+          ],
+          "explanation": [
+            "Uma tablatura de seis linhas representa as seis cordas; a linha superior é a 1ª, mais aguda, e a inferior é a 6ª. Os números indicam casas, não dedos. A leitura avança da esquerda para a direita. Números alinhados verticalmente podem indicar notas simultâneas; números sucessivos indicam uma sequência.",
+            "A tablatura simples não informa necessariamente quanto cada nota dura. Antes de tocar, encontre a indicação de ritmo na partitura, nas hastes, na contagem ou na instrução do exercício. Neste estudo, cada número corresponde a uma semínima em 4/4. Um traço mantém o alinhamento gráfico e não deve ser interpretado automaticamente como pausa.",
+            "Use a tablatura como ponte para o som e os nomes. Dizer C-D-E ao tocar ajuda a reconhecer a mesma ideia em outro lugar. Não é preciso abandonar a tablatura para pensar musicalmente, mas copiar números sem ouvir a frase limita a transferência."
+          ],
+          "workedExample": {
+            "title": "Quatro notas e uma volta",
+            "text": "Na 2ª corda, execute casas 1, 3, 1, 0: C-D-C-B, uma nota por pulso, durante um compasso de 4/4. No compasso seguinte, toque C na casa 1 por quatro pulsos. Esta frase é autoral e serve para estudar leitura; não é uma transcrição de uma canção.",
+            "tab": "e|-----------------|-----------------|\nB|--1---3---1---0--|--1--------------|\nG|-----------------|-----------------|\nD|-----------------|-----------------|\nA|-----------------|-----------------|\nE|-----------------|-----------------|\n    1   2   3   4     1   2   3   4"
+          },
+          "steps": [
+            "Aponte a 2ª linha de cima e diga por que ela corresponde à corda B.",
+            "Leia os quatro números sem tocar; depois diga os nomes das notas.",
+            "Conte um compasso de preparação e execute a sequência com o ritmo definido.",
+            "Cubra a tablatura, repita de memória e confira se conservou a duração do C final."
+          ],
+          "easier": "Use apenas 1-0 na 2ª corda, com duas pulsações para cada nota.",
+          "harder": "Escreva uma resposta de quatro notas usando as mesmas casas e informe seu ritmo por extenso.",
+          "mistakes": [
+            {
+              "symptom": "O aluno começa pela linha inferior como se fosse a 1ª corda.",
+              "adjustment": "Compare a tablatura com as cordas reais e marque os nomes E-B-G-D-A-E do alto para baixo."
+            },
+            {
+              "symptom": "Os traços são contados como pausas.",
+              "adjustment": "Recupere a regra de uma nota por pulso; o espaçamento do texto apenas organiza os eventos."
+            }
+          ],
+          "checks": [
+            "Traduz linha e número para corda e casa.",
+            "Explica como descobriu o ritmo e executa a nota sustentada."
+          ],
+          "retrieval": {
+            "question": "Uma tablatura sem hastes e sem legenda garante a duração das notas?",
+            "answer": "Não. É preciso obter o ritmo de outra indicação ou de uma referência sonora identificada."
+          },
+          "spacing": [
+            "Depois de uma pausa, leia a frase começando pela nomeação das notas.",
+            "Na próxima aula, leia uma sequência autoral diferente antes de ouvir a demonstração."
+          ],
+          "sourceIds": [
+            "BERKLEE-INICIO",
+            "OMT-CIFRAS"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T3",
+      "title": "Intervalos, escalas e primeira pestana",
+      "goal": "Relacionar a organização das notas a decisões de execução.",
+      "prerequisites": [
+        "Acordes abertos de M1-M4; pestana somente a partir de M5."
+      ],
+      "relatedModules": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "introduction": "O braço torna visível a distância entre notas, mas o nome do intervalo também depende das letras. Os estudos alternam ouvir, nomear e tocar. A pestana é preparada no ponto já previsto no curso e não é requisito para estudar as escalas iniciais.",
+      "studies": [
+        {
+          "id": "t3-e1",
+          "title": "Intervalos que explicam os acordes",
+          "goal": "Identificar fundamental, terça e quinta usando som, letras e distâncias.",
+          "prerequisites": [
+            "Conhecer C, Dm e as notas naturais."
+          ],
+          "relatedLessons": [
+            "m4-a2",
+            "m6-a1",
+            "m8-a3"
+          ],
+          "explanation": [
+            "Intervalo é a relação entre duas alturas. Para nomeá-lo, conte primeiro as letras, incluindo partida e chegada: C até E envolve C-D-E, portanto é uma terça. Depois verifique a distância em semitons para determinar sua qualidade. C-E tem quatro semitons, terça maior; C-Eb tem três, terça menor. C-D# também tem três semitons, mas a grafia descreve uma segunda aumentada, não uma terça.",
+            "Uma tríade maior combina fundamental, terça maior e quinta justa; a menor mantém fundamental e quinta, alterando a terça. Ouça os intervalos sucessivamente e depois simultaneamente, se a posição permitir. Um desenho no braço só é útil quando você consegue dizer que notas estão representadas.",
+            "No acompanhamento, a nota mais grave pode deixar de ser a fundamental sem mudar a identidade do acorde. C/E ainda contém C-E-G: o E está no baixo. Reserve a inversão para o M8, mas comece agora a distinguir a nota que dá nome ao acorde da nota mais grave que você ouve."
+          ],
+          "workedExample": {
+            "title": "Conferir C e Dm",
+            "text": "Toque C na 5ª corda, casa 3, E na 4ª corda, casa 2, e G na 3ª corda solta. Depois encontre D na 4ª corda solta, F na 1ª corda, casa 1, e A na 3ª corda, casa 2. Diga quais são as terças antes de montar os acordes."
+          },
+          "steps": [
+            "Escreva as letras de C até E e de D até F para encontrar o número do intervalo.",
+            "Conte semitons no mapa de uma corda; confira quatro para C-E e três para D-F.",
+            "Toque as tríades nota a nota e depois como acordes, tentando reconhecer a terça na sonoridade.",
+            "Explique ao professor por que trocar F por F# transforma Dm em D maior."
+          ],
+          "easier": "Trabalhe apenas C-E e C-Eb em uma corda, sem montar acordes completos.",
+          "harder": "Compare C/E com C e identifique o que mudou no baixo e o que permaneceu no conjunto de notas.",
+          "mistakes": [
+            {
+              "symptom": "O aluno usa apenas a quantidade de casas para nomear qualquer intervalo.",
+              "adjustment": "Peça as letras de partida e chegada antes da contagem de semitons."
+            },
+            {
+              "symptom": "Confunde fundamental com baixo.",
+              "adjustment": "Cante ou toque primeiro o baixo de C/E e depois a fundamental C, nomeando suas funções."
+            }
+          ],
+          "checks": [
+            "Nomeia terça maior e menor justificando letras e distância.",
+            "Identifica a terça nos acordes C e Dm."
+          ],
+          "retrieval": {
+            "question": "Se o baixo de C/E é E, a cifra deveria ser Em?",
+            "answer": "Não. O acorde continua C-E-G; Em precisaria E-G-B. O baixo sozinho não determina a qualidade."
+          },
+          "spacing": [
+            "No próximo estudo, nomeie as três notas de um acorde antes de consultar.",
+            "Depois de alguns dias, compare D e Dm sem olhar as respostas."
+          ],
+          "sourceIds": [
+            "OMT-INTERVALOS",
+            "BERKLEE-ACORDES"
+          ]
+        },
+        {
+          "id": "t3-e2",
+          "title": "Escalas maior e menor no braço",
+          "goal": "Construir percursos simples de escala e reconhecer o centro musical.",
+          "prerequisites": [
+            "Contar tons e semitons e ler casas."
+          ],
+          "relatedLessons": [
+            "m4-a3",
+            "m6-a2",
+            "m6-a3"
+          ],
+          "explanation": [
+            "A escala maior segue a ordem de distâncias tom-tom-semitom-tom-tom-tom-semitom. Em C: C-D-E-F-G-A-B-C. A menor natural organiza tom-semitom-tom-tom-semitom-tom-tom; em A: A-B-C-D-E-F-G-A. As duas coleções compartilham notas, mas a sensação de repouso e a organização das frases podem estabelecer centros diferentes.",
+            "Comece em uma corda para visualizar as distâncias. Depois distribua as mesmas notas por cordas próximas, verificando cada posição. Um padrão de dedos é uma solução de execução, não a definição da escala. Cantar ou antecipar a chegada evita que a prática se reduza a subir e descer mecanicamente.",
+            "Em G maior, a sétima nota é F#, permitindo o semitom F#-G. Ao estudar Me Derramar, isso ajuda a explicar o F# do acorde D. Conserve o tom da música: mudar o exercício para outra tonalidade é uma tarefa separada, que não altera a cifra original."
+          ],
+          "workedExample": {
+            "title": "C maior na quinta corda",
+            "text": "Na 5ª corda, C-D-E-F-G-A-B-C ocupa as casas 3-5-7-8-10-12-14-15. Esse percurso demonstra a fórmula; não precisa ser tocado rapidamente nem com extensão fixa da mão. Para começar, execute somente C-D-E-F nas casas 3-5-7-8, reposicionando a mão com calma."
+          },
+          "steps": [
+            "Diga as distâncias C-D, D-E e E-F antes de tocar o primeiro grupo.",
+            "Toque o grupo de quatro notas, pare e recupere a primeira nota sem consultar.",
+            "Compare uma frase que termina em C com outra que termina em A, usando notas comuns.",
+            "Encontre F# na 1ª corda, casa 2, e G na casa 3; explique a chegada na escala de G."
+          ],
+          "easier": "Use apenas C-D-E-F em uma corda e permita pausas para reposicionar a mão.",
+          "harder": "Toque C maior em posição aberta, nomeando as notas; depois construa um motivo que termine em A.",
+          "mistakes": [
+            {
+              "symptom": "Toda sequência que começa em A é chamada automaticamente de lá menor.",
+              "adjustment": "Ouça a frase completa e seus apoios; a primeira nota isolada não determina o centro."
+            },
+            {
+              "symptom": "O aluno tenta alcançar todas as casas sem mover a mão.",
+              "adjustment": "Reposicione o conjunto da mão; o exercício demonstra distâncias e não exige abertura extrema."
+            }
+          ],
+          "checks": [
+            "Reconstrói o primeiro tetracorde de C maior.",
+            "Explica por que G maior usa F# e distingue coleção de notas e centro."
+          ],
+          "retrieval": {
+            "question": "C maior e A menor natural têm as mesmas notas; isso torna toda música equivalente?",
+            "answer": "Não. Centro, fraseado e harmonia organizam as mesmas notas de maneiras diferentes."
+          },
+          "spacing": [
+            "No dia seguinte, reconstrua as distâncias sem olhar a fórmula.",
+            "Retome na música e localize uma nota da escala dentro de um acorde."
+          ],
+          "sourceIds": [
+            "OMT-MAIOR",
+            "OMT-MENOR"
+          ]
+        },
+        {
+          "id": "t3-e3",
+          "title": "Pestana em uma progressão conhecida",
+          "goal": "Formar Bm e entrar na mudança prevista sem usar força excessiva.",
+          "prerequisites": [
+            "Ter chegado a m5-a1 e consolidado acordes abertos."
+          ],
+          "relatedLessons": [
+            "m5-a1",
+            "m5-a2",
+            "m7-a2"
+          ],
+          "explanation": [
+            "Na pestana, um dedo atende a mais de uma corda. O objetivo é produzir as notas necessárias, não esmagar todas as cordas igualmente. Em Bm x24432, a 6ª corda fica fora: o indicador cobre da 5ª à 1ª na casa 2, enquanto outros dedos formam as casas 4, 4 e 3. A fundamental B está na 5ª corda, casa 2.",
+            "Ajuste o contato do indicador perto do traste e observe quais cordas realmente dependem dele. Teste o som com ataques leves e solte a pressão entre tentativas. Se houver dor, pare e reveja a posição e o instrumento com o professor. A clareza deve aparecer com organização e prática progressiva; resistência física não é uma prova de mérito.",
+            "Aprenda a entrar e sair da posição dentro de uma música conhecida. Primeiro toque somente na chegada e deixe os outros pulsos para preparar a troca. Só acrescente ataques quando a entrada estiver previsível. Nas primeiras doze aulas, continuam valendo os acordes sem pestana e o F de três cordas."
+          ],
+          "workedExample": {
+            "title": "Preparar Bm a partir de D",
+            "text": "Em um exercício de 4/4, toque D por um compasso e Bm por outro, com ataque somente no pulso 1. Em Bm, confira B-F#-B-D-F# nas cinco cordas permitidas. A transição serve de preparação para a aula; não substitui a ordem dos acordes de Renova-me."
+          },
+          "steps": [
+            "Localize B na 5ª corda, casa 2, e toque-o sozinho.",
+            "Monte Bm e teste separadamente 5ª, 2ª e 1ª cordas, depois as cordas internas.",
+            "Solte a pressão, descanse e remonte; procure repetir a solução com o mesmo contato.",
+            "Faça D-Bm com contagem; depois retorne ao trecho exato de Renova-me indicado na aula."
+          ],
+          "easier": "Prepare Bm sem limite de tempo e toque um grupo menor de cordas sob orientação antes da forma completa.",
+          "harder": "No M7, mantenha o mesmo Bm e alterne acordes a cada dois pulsos sem antecipar a chegada.",
+          "mistakes": [
+            {
+              "symptom": "O indicador aperta mais a cada falha.",
+              "adjustment": "Isole a corda muda e ajuste contato e proximidade do traste antes de aumentar pressão."
+            },
+            {
+              "symptom": "A 6ª corda soa por acidente.",
+              "adjustment": "Prepare o ataque a partir da 5ª corda e pratique a trajetória sem mudar o acorde."
+            }
+          ],
+          "checks": [
+            "Identifica a fundamental e exclui a 6ª corda.",
+            "Entra em Bm no pulso combinado em duas tentativas separadas."
+          ],
+          "retrieval": {
+            "question": "Por que o indicador não precisa resolver sozinho todas as notas de Bm?",
+            "answer": "Porque dedos nas casas 4, 4 e 3 já determinam as notas de três cordas; cada contato tem uma função."
+          },
+          "spacing": [
+            "Recomece em outro dia com uma montagem lenta, avaliando conforto e som.",
+            "Após tocar uma música fácil, retome D-Bm e observe se a preparação foi lembrada."
+          ],
+          "sourceIds": [
+            "BW-PESTANA",
+            "BW-MAOS"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T4",
+      "title": "Palheta e coordenação de ataques",
+      "goal": "Usar a palheta em notas isoladas, mudanças de corda e arpejos com pulso estável.",
+      "prerequisites": [
+        "Conhecer a contagem e pequenas sequências de notas; começar junto a M4."
+      ],
+      "relatedModules": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "introduction": "A palheta amplia as opções de articulação. Estude suas demandas separadamente das posições novas da mão esquerda. A alternância descendente e ascendente será uma convenção deliberada de treino; outras soluções podem ser discutidas depois, quando houver controle suficiente para compará-las.",
+      "studies": [
+        {
+          "id": "t4-e1",
+          "title": "Palheta e ataques alternados",
+          "goal": "Alternar ataques em uma corda com som regular e movimento confortável.",
+          "prerequisites": [
+            "Sustentar uma nota e contar quatro pulsos."
+          ],
+          "relatedLessons": [
+            "m4-a1",
+            "m5-a2"
+          ],
+          "explanation": [
+            "Segure a palheta entre polegar e indicador deixando uma porção pequena disponível para tocar a corda. A quantidade exposta e a inclinação afetam a resistência. Experimente sem apertar o braço inteiro: a mão precisa controlar o objeto, mas a força deve responder à tarefa. Compare a sensação nas cordas graves e agudas.",
+            "Palhetada alternada significa suceder um ataque para baixo e outro para cima. Neste estudo, baixo quer dizer em direção às cordas agudas e cima em direção às graves, em relação ao instrumento. A orientação não determina o volume: um ataque ascendente pode soar tão claro quanto o descendente.",
+            "Comece com corda solta para observar uma única tarefa. Um metrônomo indica pontos de encontro, não toca o ritmo por você. Conte antes de entrar, escute o clique e use um andamento em que consiga perceber cada ataque. Aumentar velocidade só faz sentido se o movimento e a regularidade permanecerem reconhecíveis."
+          ],
+          "workedExample": {
+            "title": "Oito ataques em uma corda",
+            "text": "Na 2ª corda solta, toque oito colcheias em 4/4: baixo-cima em cada pulso, contando 1 e 2 e 3 e 4 e. Repita o compasso e faça um compasso de silêncio, continuando a contar. Reentre no 1 sem compensar o silêncio com pressa."
+          },
+          "steps": [
+            "Faça quatro ataques descendentes e quatro ascendentes isolados, comparando a clareza.",
+            "Una baixo-cima lentamente, com uma pequena pausa entre pares para observar o movimento.",
+            "Toque o compasso do exemplo e mantenha a mesma intensidade aproximada nos dois sentidos.",
+            "Repita com silêncio e registre se a entrada seguinte coincidiu com o pulso planejado."
+          ],
+          "easier": "Toque uma nota por pulso, alternando baixo-cima nos números 1-2-3-4, antes de usar colcheias.",
+          "harder": "Comece um compasso com ataque ascendente e explique como a alternância foi preservada.",
+          "mistakes": [
+            {
+              "symptom": "A palheta prende ao retornar.",
+              "adjustment": "Reduza a porção que entra na corda e compare uma pequena mudança de inclinação."
+            },
+            {
+              "symptom": "O ataque para cima fica quase inaudível.",
+              "adjustment": "Treine-o isoladamente e volte ao par sem aumentar a velocidade do movimento."
+            }
+          ],
+          "checks": [
+            "Mantém baixo-cima em oito ataques sem reiniciar a direção.",
+            "Conserva o pulso durante o silêncio e na reentrada."
+          ],
+          "retrieval": {
+            "question": "Alternar quer dizer tocar forte e fraco?",
+            "answer": "Não. Alternar descreve a direção dos ataques; acentuação e volume são escolhas independentes."
+          },
+          "spacing": [
+            "Após uma pausa, reinicie o padrão sem olhar as instruções.",
+            "Em outro dia, compare a mesma tarefa em uma corda grave."
+          ],
+          "sourceIds": [
+            "JG-PALHETA"
+          ]
+        },
+        {
+          "id": "t4-e2",
+          "title": "Alternância em escalas e mudanças de corda",
+          "goal": "Conservar a alternância quando a sequência passa para outra corda.",
+          "prerequisites": [
+            "T4-E1 e leitura de uma pequena sequência em C maior."
+          ],
+          "relatedLessons": [
+            "m6-a1",
+            "m6-a2",
+            "m9-a3"
+          ],
+          "explanation": [
+            "A mudança de corda acrescenta uma deslocação à alternância. Se a última nota de uma corda foi tocada para baixo, a primeira da seguinte será para cima quando a regra escolhida é alternância estrita. Isso pode parecer menos direto do que repetir a direção, mas aqui o objetivo é reconhecer e controlar a sequência.",
+            "Estude as notas e os dedos antes de somar a palheta. C-D-E-F pode ser tocado como C e D na 2ª corda, casas 1 e 3, e E e F na 1ª corda, casas 0 e 1. Não altere o ritmo para atravessar a fronteira. Uma nota presa exige que o dedo esteja preparado quando a palheta libera a corda.",
+            "A direção do ataque e a direção da melodia são coisas diferentes. A melodia pode subir enquanto a palheta faz baixo-cima-baixo-cima. Ao retornar, mantenha a alternância sem atribuir automaticamente o ataque descendente a toda nota mais grave. O teste útil é conseguir explicar e repetir o encontro das duas mãos."
+          ],
+          "workedExample": {
+            "title": "Uma fronteira entre duas cordas",
+            "text": "Toque C-D-E-F em quatro semínimas, com baixo-cima-baixo-cima. Faça F-E-D-C no compasso seguinte, também em quatro semínimas, continuando baixo-cima-baixo-cima. Identifique a passagem entre D e E nos dois sentidos; ela é o trecho de observação."
+          },
+          "steps": [
+            "Localize as quatro notas e execute sem pulso fixo para conferir a sequência.",
+            "Toque apenas D-E, depois E-D, mantendo alternância e intensidade aproximada.",
+            "Una os dois compassos do exemplo, começando com uma contagem de preparação.",
+            "Compare uma tentativa seguida de pausa com outra feita após um exercício diferente; observe a recuperação."
+          ],
+          "easier": "Use duas cordas soltas, quatro ataques em cada, antes de juntar mudanças de nota e de corda.",
+          "harder": "Execute o mesmo percurso em colcheias, sem alterar o andamento do pulso e sem acrescentar notas.",
+          "mistakes": [
+            {
+              "symptom": "A direção reinicia sempre para baixo ao mudar de corda.",
+              "adjustment": "Diga a sequência baixo-cima sobre o par de fronteira e reduza o percurso a duas notas."
+            },
+            {
+              "symptom": "A mão esquerda chega depois do ataque.",
+              "adjustment": "Prepare a nota de destino sem tocar; junte ataque e chegada lentamente, uma vez por tentativa."
+            }
+          ],
+          "checks": [
+            "Explica a direção do primeiro ataque na nova corda.",
+            "Mantém quatro durações iguais em cada compasso do exemplo."
+          ],
+          "retrieval": {
+            "question": "Subir na escala significa usar apenas ataques para cima?",
+            "answer": "Não. Altura da melodia e direção da palheta são dimensões diferentes."
+          },
+          "spacing": [
+            "No próximo dia, comece pelo par D-E sem tocar a escala inteira.",
+            "Mais tarde, recupere a sequência sem nomear as direções em voz alta e confira."
+          ],
+          "sourceIds": [
+            "JG-PALHETA",
+            "OMT-MAIOR"
+          ]
+        },
+        {
+          "id": "t4-e3",
+          "title": "Acordes arpejados com palheta",
+          "goal": "Percorrer as notas de um acorde com palheta e conservar as durações na mudança harmônica.",
+          "prerequisites": [
+            "T4-E2 e acordes abertos consolidados."
+          ],
+          "relatedLessons": [
+            "m6-a2",
+            "m9-a2",
+            "m9-a3"
+          ],
+          "explanation": [
+            "Arpejar um acorde é apresentar suas notas sucessivamente. Uma escala segue outra organização: inclui notas de passagem entre as notas do acorde. Em D maior, D-F#-A são notas da tríade; D-E-F#-G é um segmento de escala. A palavra arpejo descreve a organização das alturas, não obriga a usar dedos ou palheta.",
+            "No arpejo de uma posição, decida se as notas anteriores devem continuar soando. Manter o acorde formado pode conservar a ressonância; retirar um dedo cedo altera o resultado. Em mudanças harmônicas, observe também os baixos: prolongar o baixo anterior pode criar um encontro que não foi planejado.",
+            "A alternância estrita é o foco deste estudo. Ela se distingue de varrer várias cordas no mesmo sentido. Não há necessidade de escolher uma técnica para toda a vida; primeiro aprenda a ouvir o que cada solução produz e a repetir a que foi combinada."
+          ],
+          "workedExample": {
+            "title": "D e Em em quatro eventos",
+            "text": "Em D xx0232, percorra as cordas 4-3-2-1: D-A-D-F#, uma semínima por corda, ataques baixo-cima-baixo-cima. No compasso seguinte, monte Em e toque 6-4-3-2: E-E-G-B com o mesmo ritmo. Controle o início do novo baixo e respeite quatro pulsos por acorde."
+          },
+          "steps": [
+            "Monte D e identifique cada nota antes de executar o percurso.",
+            "Toque as quatro cordas mantendo o acorde e escute a sobreposição das notas.",
+            "Prepare Em e pratique somente o último evento de D seguido do primeiro de Em.",
+            "Execute os dois compassos e compare o arpejo com um único ataque de cada acorde."
+          ],
+          "easier": "Repita D por dois compassos e use somente 4-3-2-3, evitando inicialmente o salto até a 1ª corda.",
+          "harder": "Crie outro percurso de quatro eventos usando apenas cordas permitidas e declare se pretende sustentar as notas.",
+          "mistakes": [
+            {
+              "symptom": "O aluno toca as cordas em ordem automática e inclui uma proibida.",
+              "adjustment": "Marque a primeira corda sonora e diga a sequência de cordas antes de cada tentativa."
+            },
+            {
+              "symptom": "A última nota do compasso é omitida para trocar.",
+              "adjustment": "Reduza o andamento e prepare a mudança depois de dar à última nota sua duração."
+            }
+          ],
+          "checks": [
+            "Distingue arpejo de escala por meio das notas.",
+            "Mantém os quatro eventos e controla a troca de baixo."
+          ],
+          "retrieval": {
+            "question": "Um acorde arpejado deixa de ser um acorde?",
+            "answer": "Não. Suas notas são apresentadas em sequência; a identidade harmônica depende das notas e do contexto."
+          },
+          "spacing": [
+            "Retome D sozinho após uma pausa e antecipe mentalmente a sequência.",
+            "Em outro dia, leve um percurso simples a um trecho autorizado pelo professor."
+          ],
+          "sourceIds": [
+            "BERKLEE-ACORDES",
+            "JG-PALHETA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T5",
+      "title": "Articulações e controle da duração",
+      "goal": "Escolher como as notas começam, continuam e terminam.",
+      "prerequisites": [
+        "Coordenação básica consolidada e chegada ao M8."
+      ],
+      "relatedModules": [
+        8,
+        9,
+        10
+      ],
+      "introduction": "Articulação modifica a relação entre notas. Os exercícios usam motivos autorais pequenos para que seja possível escutar duração e ressonância antes de aplicar a técnica ao repertório. Não acrescente todos os efeitos à mesma frase: uma escolha clara já pode transformar a interpretação.",
+      "studies": [
+        {
+          "id": "t5-e1",
+          "title": "Legato e staccato como escolhas de duração",
+          "goal": "Executar a mesma sequência com continuidade e com separação intencional.",
+          "prerequisites": [
+            "Controlar o início e o fim de notas isoladas."
+          ],
+          "relatedLessons": [
+            "m8-a1",
+            "m9-a3"
+          ],
+          "explanation": [
+            "Legato descreve uma ligação sonora entre notas; staccato, uma separação que encurta a duração soante. Ambos podem existir sem mudar o instante dos ataques. Não confunda legato com tocar rápido nem staccato com tocar forte. A comparação deve manter notas, pulso e intensidade semelhantes.",
+            "No violão, cada nova ação pode interromper ou permitir a ressonância. Para continuidade na mesma corda, coordene a chegada da mão esquerda com o ataque e evite encostar a mão direita cedo demais. Entre cordas, a nota anterior pode continuar, mas a sobreposição deve ser ouvida e escolhida. Legato de frase não exige que todas as notas sejam produzidas por ligados de mão esquerda.",
+            "Para separar uma nota, interrompa sua vibração de maneira controlada. Em corda solta, um dedo da mão que toca pode encostar para abafar; em nota presa, relaxar pressão sem soltar totalmente o contato pode ajudar. Experimente devagar com o professor para evitar produzir involuntariamente outra nota ao retirar o dedo."
+          ],
+          "workedExample": {
+            "title": "Uma melodia com duas durações",
+            "text": "Na 2ª corda, toque C-D-E-D nas casas 1-3-5-3, uma nota por pulso em 4/4. Na primeira passagem, conecte cada nota à seguinte. Na segunda, sustente cada nota por aproximadamente meia pulsação e preserve silêncio até o próximo ataque. O desenho rítmico dos ataques é o mesmo."
+          },
+          "steps": [
+            "Cante o motivo de forma contínua e depois com separação para imaginar a diferença.",
+            "Execute a versão conectada lentamente, escutando possíveis buracos.",
+            "Execute a versão destacada e conte os silêncios sem acelerar.",
+            "Peça ao professor para ouvir sem olhar e identificar qual articulação foi escolhida."
+          ],
+          "easier": "Repita uma única nota quatro vezes, alternando um compasso conectado e outro separado.",
+          "harder": "Crie uma versão mista: duas notas conectadas, duas destacadas; explique o efeito na frase.",
+          "mistakes": [
+            {
+              "symptom": "O staccato vira uma sequência mais rápida.",
+              "adjustment": "Mantenha os ataques nos números da contagem e coloque o silêncio dentro de cada pulso."
+            },
+            {
+              "symptom": "O legato vira sobreposição confusa.",
+              "adjustment": "Isole duas notas, escute a duração de cada uma e planeje onde a anterior deve terminar."
+            }
+          ],
+          "checks": [
+            "Produz duas articulações reconhecíveis com o mesmo pulso.",
+            "Explica a diferença entre duração soante e distância entre ataques."
+          ],
+          "retrieval": {
+            "question": "É necessário fazer hammer-on em toda frase legato?",
+            "answer": "Não. Legato é o resultado de continuidade; diferentes técnicas podem produzi-lo."
+          },
+          "spacing": [
+            "Após tocar outra tarefa, execute uma versão sem anunciar qual é.",
+            "No próximo encontro, aplique a escolha a uma frase própria de dois compassos."
+          ],
+          "sourceIds": [
+            "BW-ARTICULACAO"
+          ]
+        },
+        {
+          "id": "t5-e2",
+          "title": "Ligados ascendentes e descendentes",
+          "goal": "Produzir duas notas com um único ataque inicial, preservando ritmo e clareza.",
+          "prerequisites": [
+            "T5-E1 e controle de notas presas."
+          ],
+          "relatedLessons": [
+            "m9-a3",
+            "m10-a3"
+          ],
+          "explanation": [
+            "No ligado ascendente, também chamado hammer-on, um dedo da mão das casas chega a uma casa mais aguda depois do ataque inicial e faz a segunda nota soar. No descendente, pull-off, um dedo deixa a nota aguda de forma controlada para que a nota inferior, já preparada ou solta, continue soando. Apenas levantar o dedo pode produzir um som fraco ou nenhum som.",
+            "O ligado é uma técnica de produção de notas; o resultado precisa respeitar o ritmo escrito. A segunda nota não deve ser espremida entre dois pulsos se a tarefa lhe reserva uma duração inteira. Compare as duas notas atacadas separadamente com a versão ligada para perceber quanto de clareza e equilíbrio foi conservado.",
+            "Prepare a nota inferior antes do descendente e evite puxar a corda para fora do braço. Use movimentos pequenos e pausas entre tentativas. A nota ligada pode ter um timbre diferente da atacada; o objetivo não é apagar toda diferença, mas torná-la utilizável na frase."
+          ],
+          "workedExample": {
+            "title": "Subir e descer no mesmo par",
+            "text": "Na 2ª corda, C-D corresponde às casas 1-3. Prenda C com o dedo 1, ataque e faça o dedo 3 produzir D: 1h3. Para voltar, deixe o dedo 1 preparado, ataque D e faça 3p1. Nesta etapa cada nota dura um pulso; cada par ocupa dois pulsos."
+          },
+          "steps": [
+            "Toque C-D e D-C com ataques separados para estabelecer som e ritmo de referência.",
+            "Faça o ascendente uma vez, pare e compare a nitidez da segunda nota.",
+            "Faça o descendente mantendo C preparado; escute se alguma corda vizinha foi atingida.",
+            "Una os dois pares em quatro pulsos e depois use apenas um deles em uma frase autoral curta."
+          ],
+          "easier": "Trabalhe um único par por tentativa, com pausa suficiente para reorganizar os dedos.",
+          "harder": "Execute os pares em colcheias mantendo o pulso e crie uma frase que termine com uma nota sustentada.",
+          "mistakes": [
+            {
+              "symptom": "A segunda nota chega cedo demais.",
+              "adjustment": "Fale os dois pulsos e mova o dedo somente na segunda contagem."
+            },
+            {
+              "symptom": "O pull-off dispara uma corda vizinha.",
+              "adjustment": "Reduza o gesto e observe a direção da liberação; pratique lentamente sob supervisão."
+            }
+          ],
+          "checks": [
+            "Produz as duas notas sem segundo ataque da mão direita.",
+            "Mantém o valor rítmico e controla ruídos vizinhos."
+          ],
+          "retrieval": {
+            "question": "Qual nota precisa estar preparada antes de um pull-off de D para C?",
+            "answer": "O C na casa 1 da 2ª corda, para que apareça com clareza quando o dedo do D deixar a corda."
+          },
+          "spacing": [
+            "No próximo dia, toque primeiro as notas separadas e depois ligadas.",
+            "Após uma tarefa de acordes, recupere o par sem demonstração imediata."
+          ],
+          "sourceIds": [
+            "BW-LIGADOS"
+          ]
+        },
+        {
+          "id": "t5-e3",
+          "title": "Pizzicato e controle de ressonância",
+          "goal": "Criar um timbre abafado com altura reconhecível e compará-lo a uma nota curta comum.",
+          "prerequisites": [
+            "Interromper notas deliberadamente e controlar o ataque."
+          ],
+          "relatedLessons": [
+            "m8-a2",
+            "m9-a3",
+            "m10-a3"
+          ],
+          "explanation": [
+            "Na prática do violão clássico, pizzicato costuma designar um efeito abafado produzido com contato da mão direita próximo ao cavalete. O uso difere do pizzicato dos instrumentos de arco, que significa pinçar a corda. Aqui é importante explicitar o resultado pretendido: som mais seco, ainda com altura identificável.",
+            "Aproxime a região lateral da mão do ponto em que as cordas passam pelo rastilho, sem pressionar o cavalete ou deslocar peças. Um contato leve altera a ressonância. Mais perto ou mais longe do rastilho, o resultado muda; muito contato pode apagar a nota. O professor demonstra e o aluno ajusta observando som, não procurando uma distância universal.",
+            "Pizzicato e staccato não são sinônimos. Pizzicato envolve uma qualidade de timbre e ressonância; staccato organiza notas separadas. Uma nota pode ser curta sem ter timbre abafado, e o efeito abafado ainda precisa cumprir a duração e o lugar rítmico da frase."
+          ],
+          "workedExample": {
+            "title": "Um baixo com duas cores",
+            "text": "Toque E na 6ª corda solta, quatro semínimas em 4/4, primeiro com som livre. Repita com contato leve junto ao rastilho e ataque com o polegar. Compare se ainda reconhece E e se os quatro ataques mantêm o mesmo pulso. Depois experimente A na 5ª corda."
+          },
+          "steps": [
+            "Ouça a nota livre e descreva sua sustentação antes de mudar a mão.",
+            "Encontre um contato que reduza a ressonância sem apagar a altura.",
+            "Faça o compasso do exemplo e retire o contato para comparar imediatamente.",
+            "Crie uma resposta de dois pulsos com timbre abafado e deixe o restante do compasso em silêncio."
+          ],
+          "easier": "Use uma única corda solta e compare somente dois ataques, com pausa entre eles.",
+          "harder": "Alterne E e A em dois compassos e escolha onde o efeito contribui para uma frase autoral.",
+          "mistakes": [
+            {
+              "symptom": "Só se ouve ruído sem nota definida.",
+              "adjustment": "Diminua o contato e aproxime-o do rastilho, comparando com a corda livre."
+            },
+            {
+              "symptom": "O braço direito enrijece para manter o efeito.",
+              "adjustment": "Interrompa, reorganize o apoio e teste uma duração menor; não sustente tensão para prolongar o exercício."
+            }
+          ],
+          "checks": [
+            "Obtém contraste de timbre com altura reconhecível.",
+            "Distingue pizzicato de staccato ao explicar e demonstrar."
+          ],
+          "retrieval": {
+            "question": "Por que uma nota curta nem sempre é pizzicato?",
+            "answer": "Porque encurtar a duração não implica produzir o timbre abafado característico deste efeito no violão."
+          },
+          "spacing": [
+            "Depois de uma pausa, reencontre o contato pelo som.",
+            "Na aula seguinte, compare uma nota livre, uma destacada e uma abafada."
+          ],
+          "sourceIds": [
+            "BW-ARTICULACAO",
+            "BW-DIREITA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T6",
+      "title": "Expressão e fraseado",
+      "goal": "Escolher recursos expressivos que favoreçam a intenção da frase.",
+      "prerequisites": [
+        "Notas claras, pulso estável e início de M9."
+      ],
+      "relatedModules": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "introduction": "A expressão começa ao ouvir a direção de uma frase. Vibrato e ornamentos são possibilidades, não uma obrigação em toda nota. Defina a versão simples, decida o que deseja destacar e compare uma alteração por vez. Preserve a melodia vocal e use respostas instrumentais apenas nos espaços combinados.",
+      "studies": [
+        {
+          "id": "t6-e1",
+          "title": "Vibrato com intenção musical",
+          "goal": "Variar suavemente a altura de uma nota sustentada e comparar seu efeito com o som estável.",
+          "prerequisites": [
+            "Sustentar notas presas sem ruídos e interrompê-las no momento escolhido."
+          ],
+          "relatedLessons": [
+            "m9-a3",
+            "m11-a3"
+          ],
+          "explanation": [
+            "Vibrato é uma pequena oscilação de altura ao redor de uma nota. Não é repetir ataques rápidos nem deslocar a nota definitivamente para outra altura. No violão de nylon, um movimento longitudinal sutil, na direção da corda, é uma possibilidade comum. Há outras técnicas e respostas diferentes entre instrumentos; escolha com o professor um gesto confortável e controlável.",
+            "Antes de acrescentar vibrato, produza uma nota estável e escute seu centro. Mantenha o contato sem prender o braço inteiro. Comece com oscilação pequena e lenta e observe se a afinação retorna à região da nota pretendida. Intensidade e velocidade do vibrato podem mudar a sensação de tensão; aumentá-las não é automaticamente melhorar a interpretação.",
+            "Use o recurso onde existe tempo para ouvir seu desenvolvimento. Em uma frase curta, uma única nota final pode receber vibrato depois do ataque. Compare com a mesma frase sem efeito e escolha a versão que comunica melhor a intenção, sem invadir a próxima entrada."
+          ],
+          "workedExample": {
+            "title": "Uma chegada sustentada em E",
+            "text": "Toque E na 2ª corda, casa 5, durante quatro pulsos. No primeiro compasso, deixe a nota estável. No segundo, mantenha o primeiro pulso estável e acrescente um vibrato discreto nos pulsos 2 e 3, encerrando no 4. O momento da interrupção permanece igual nas duas versões."
+          },
+          "steps": [
+            "Confira a altura de E e escute uma sustentação sem efeito.",
+            "Experimente um pequeno movimento longitudinal com o dedo ainda apoiado, sem atacar novamente.",
+            "Faça as duas versões do exemplo e compare centro de altura, duração e esforço.",
+            "Escolha uma nota final de frase autoral e justifique o uso ou a ausência de vibrato."
+          ],
+          "easier": "Comece com uma oscilação discreta e retire o efeito se a nota ou a posição deixarem de ficar estáveis.",
+          "harder": "Varie o momento de início do vibrato e descreva a diferença expressiva, mantendo a mesma nota e duração.",
+          "mistakes": [
+            {
+              "symptom": "A nota sobe e não retorna.",
+              "adjustment": "Reduza a amplitude e compare novamente com o E estável antes de repetir."
+            },
+            {
+              "symptom": "O efeito aparece em toda nota por hábito.",
+              "adjustment": "Toque a frase inteira sem vibrato e selecione apenas uma chegada para comparação."
+            }
+          ],
+          "checks": [
+            "Mantém a nota reconhecível e o final planejado.",
+            "Explica uma escolha expressiva por comparação de duas versões."
+          ],
+          "retrieval": {
+            "question": "Vibrato muda o ritmo dos ataques?",
+            "answer": "Não necessariamente. Neste estudo há um único ataque; o efeito modifica a sustentação da nota."
+          },
+          "spacing": [
+            "Em outro dia, recupere primeiro o som estável e só depois o efeito.",
+            "Retome a frase com o professor e compare a intenção declarada com o que foi ouvido."
+          ],
+          "sourceIds": [
+            "BW-VIBRATO"
+          ]
+        },
+        {
+          "id": "t6-e2",
+          "title": "Mordente e apogiatura em frases autorais",
+          "goal": "Distinguir dois ornamentos e executá-los com notas e durações declaradas.",
+          "prerequisites": [
+            "T5-E2 e capacidade de tocar um motivo simples sem ornamentação."
+          ],
+          "relatedLessons": [
+            "m9-a3",
+            "m12-a2"
+          ],
+          "explanation": [
+            "Ornamentos acrescentam movimento à frase sem dispensar sua organização rítmica. Neste estudo, mordente inferior significa nota principal, vizinha inferior e retorno à principal. Existem convenções históricas diferentes para símbolos semelhantes; por isso escrevemos as notas e o ritmo completos em vez de depender apenas de um sinal.",
+            "A apogiatura simples acrescenta uma nota de apoio que resolve por grau conjunto na nota principal. Sua posição e duração dependem do estilo e da edição. No exemplo autoral abaixo, escolhemos explicitamente uma nota acentuada no pulso e uma resolução posterior; essa escolha não deve ser generalizada como leitura obrigatória de toda apogiatura.",
+            "Aprenda primeiro o esqueleto da frase. Depois redistribua parte do tempo para incluir o ornamento. Se cada repetição aumenta o tamanho do compasso, o gesto está sendo acrescentado fora da contagem. A relação de tensão e resolução deve continuar audível mesmo em andamento lento."
+          ],
+          "workedExample": {
+            "title": "Dois ornamentos sobre a nota E",
+            "text": "Sobre um C maior sustentado pelo professor, use E como principal. Mordente inferior: E-D-E, na 2ª corda casas 5-3-5; toque E e D como duas semicolcheias e o E final como colcheia, totalizando um pulso. Apogiatura: no pulso 1 toque F, casa 6 da 2ª corda, e resolva em E, casa 5, no pulso 2; sustente E até o final do compasso. São duas tarefas separadas."
+          },
+          "steps": [
+            "Toque E sem ornamento e identifique sua relação com o acorde C.",
+            "Conte 1-ta-e-ta em quatro subdivisões iguais e encaixe os três eventos do mordente nas três primeiras subdivisões; a última nota continua soando na quarta subdivisão.",
+            "Faça F-E em dois pulsos, ouvindo o apoio inicial e a resolução para uma nota do acorde.",
+            "Insira apenas uma opção em uma frase própria e confira que a entrada seguinte continua no mesmo lugar."
+          ],
+          "easier": "Toque as três notas do mordente com durações iguais, declarando que é preparação motora e ainda não o ritmo final.",
+          "harder": "Use ligados para o mordente depois de dominar as durações e compare com três ataques separados.",
+          "mistakes": [
+            {
+              "symptom": "O ornamento ocupa tempo extra fora do compasso.",
+              "adjustment": "Toque a versão sem ornamento, reserve o espaço exato e reconte as subdivisões."
+            },
+            {
+              "symptom": "Todo símbolo de ornamento é lido do mesmo modo.",
+              "adjustment": "Confira a convenção da edição e escreva a realização pretendida em notas completas."
+            }
+          ],
+          "checks": [
+            "Distingue o retorno do mordente da resolução da apogiatura.",
+            "Executa os eventos dentro da duração prevista."
+          ],
+          "retrieval": {
+            "question": "Qual nota é principal no exemplo F-E sobre C maior?",
+            "answer": "E é a chegada pertencente ao acorde; F funciona como apoio ornamental que resolve em E neste exemplo."
+          },
+          "spacing": [
+            "Após uma pausa, toque o esqueleto e escolha apenas um ornamento.",
+            "Na próxima aula, explique notas e ritmo antes de executar a opção escolhida."
+          ],
+          "sourceIds": [
+            "BW-ORNAMENTO",
+            "OMT-ORNAMENTO"
+          ]
+        },
+        {
+          "id": "t6-e3",
+          "title": "Dinâmica, timbre e direção da frase",
+          "goal": "Construir uma frase com ponto de chegada sem alterar involuntariamente o andamento.",
+          "prerequisites": [
+            "Executar uma frase ou seção curta com segurança."
+          ],
+          "relatedLessons": [
+            "m9-a2",
+            "m11-a3",
+            "m13-a2"
+          ],
+          "explanation": [
+            "Dinâmica trata da intensidade; timbre, da qualidade sonora; andamento, da velocidade do pulso. Essas dimensões interagem na execução, mas podem ser observadas separadamente. Um crescendo não precisa acelerar, e tocar suavemente não exige perder a clareza do ataque. Compare versões mantendo constantes notas e ritmo.",
+            "Uma frase costuma ter preparação, direção e chegada. Marque onde deseja ouvir o ponto de maior energia e como quer encerrar. A decisão pode partir do texto cantado, do movimento harmônico ou da forma do arranjo. O acompanhamento deve deixar espaço para a voz: aumentar densidade de ataques em toda parte pode esconder o contraste entre seções.",
+            "No dedilhado, diferencie baixo, notas internas e eventual melodia. Ouça se a nota que pretende destacar é realmente percebida. Mudar o ponto de ataque mais perto ou mais longe do cavalete pode alterar o timbre; faça pequenas comparações sem transformar a observação em mudança de postura forçada."
+          ],
+          "workedExample": {
+            "title": "Quatro compassos com uma chegada",
+            "text": "Crie um estudo em 4/4 com C-Am-Dm-G, um acorde por compasso. Toque suavemente o primeiro, aumente um pouco a intensidade no segundo e terceiro e prepare uma chegada clara no quarto. Repita em intensidade uniforme e compare. Esse ciclo é exercício próprio, não substituição de uma cifra do repertório."
+          },
+          "steps": [
+            "Escolha uma intensidade confortável e toque os quatro compassos sem variação.",
+            "Marque o ponto de chegada e cante ou fale a direção da frase antes de executar.",
+            "Faça a curva de dinâmica conservando o pulso e a mesma quantidade de ataques.",
+            "Leve a ideia a uma seção de Ousado Amor ou Bondade de Deus, respeitando seu mapa e sua métrica."
+          ],
+          "easier": "Use um único acorde por quatro compassos e altere somente a intensidade, com um ataque por pulso.",
+          "harder": "Mantenha a dinâmica e compare duas cores de timbre; depois escolha uma combinação para duas seções contrastantes.",
+          "mistakes": [
+            {
+              "symptom": "O crescendo acelera junto com o volume.",
+              "adjustment": "Volte a um único acorde com metrônomo e mantenha as distâncias entre os ataques."
+            },
+            {
+              "symptom": "Todas as notas do dedilhado disputam destaque.",
+              "adjustment": "Toque primeiro só a linha que deve sobressair, depois acrescente as outras em menor intensidade."
+            }
+          ],
+          "checks": [
+            "Produz contraste audível sem perder o pulso.",
+            "Relaciona sua escolha à forma ou à função de acompanhamento."
+          ],
+          "retrieval": {
+            "question": "Qual é a diferença entre tocar mais forte e tocar mais rápido?",
+            "answer": "Mais forte altera intensidade; mais rápido encurta o intervalo temporal entre pulsos. São decisões distintas."
+          },
+          "spacing": [
+            "No dia seguinte, recorde o ponto de chegada antes de abrir a anotação.",
+            "Após alguns dias, escute uma gravação própria curta e verifique se a intenção continua audível."
+          ],
+          "sourceIds": [
+            "BW-VIBRATO",
+            "BW-DIREITA",
+            "BERKLEE-ACORDES"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T7",
+      "title": "Ritmos aplicados ao acompanhamento",
+      "goal": "Manter o pulso, perceber agrupamentos e executar mudanças no momento correto.",
+      "prerequisites": [
+        "Começar com contagem e cordas soltas; cada estudo indica seu momento."
+      ],
+      "relatedModules": [
+        1,
+        2,
+        3,
+        7,
+        11,
+        13
+      ],
+      "introduction": "Ritmo acompanha o curso desde a primeira aula. Este eixo reúne a prática que começa simples e reaparece com novas exigências. Preserve a unidade do pulso ao escolher BPM; em 6/8, o curso usa dois pulsos de semínima pontuada, cada um dividido em três colcheias.",
+      "studies": [
+        {
+          "id": "t7-e1",
+          "title": "Pulso, subdivisão e pausas em 4/4",
+          "goal": "Sustentar quatro pulsos e distinguir a contagem dos ataques realmente executados.",
+          "prerequisites": [
+            "Reconhecer um acorde do M1."
+          ],
+          "relatedLessons": [
+            "m1-a2",
+            "m2-a2",
+            "m2-a3"
+          ],
+          "explanation": [
+            "Pulso é a referência regular que ajuda a organizar o tempo. Compasso agrupa pulsos; neste estudo de 4/4, há quatro semínimas por compasso. Subdividir cada pulso em duas colcheias permite contar 1 e 2 e 3 e 4 e. A mão não precisa atacar em todas as sílabas para que a subdivisão continue existindo.",
+            "Uma pausa é tempo organizado sem ataque ou sem som, conforme a duração e a articulação indicadas. Conte durante o silêncio para conservar o lugar da próxima entrada. Se a mão faz um movimento contínuo de batida, ela pode passar sem tocar as cordas em uma subdivisão; movimento e ataque não são a mesma coisa.",
+            "Comece com um acorde para ouvir o ritmo. Depois acrescente a troca no primeiro pulso do compasso seguinte. Quando ritmo e posição forem novos ao mesmo tempo, simplifique um deles. Isso permite descobrir se a dificuldade está na contagem, no ataque ou na preparação da mão esquerda."
+          ],
+          "workedExample": {
+            "title": "Ataques e espaços em um compasso",
+            "text": "Em D, conte 1 e 2 e 3 e 4 e. Ataque nas posições 1, 2, e depois do 2, 3 e 4; não ataque nas outras subdivisões. Deixe cada ataque soar até o próximo. Em seguida, compare com oito colcheias regulares e perceba que o compasso tem a mesma duração."
+          },
+          "steps": [
+            "Conte quatro pulsos e bata palmas apenas nos números.",
+            "Fale todas as subdivisões e execute o padrão do exemplo com palmas.",
+            "Toque o padrão em um acorde conhecido, distinguindo os movimentos sem ataque.",
+            "Use dois acordes já estudados, um por compasso, mantendo a entrada no primeiro pulso."
+          ],
+          "easier": "Mantenha somente um ataque no pulso 1 e conte os quatro pulsos antes de acrescentar outros.",
+          "harder": "Acrescente um compasso inteiro sem tocar e reentre no seguinte mantendo a contagem interna.",
+          "mistakes": [
+            {
+              "symptom": "O aluno deixa de contar quando não há ataque.",
+              "adjustment": "Retome a voz ou uma marcação corporal leve durante os espaços."
+            },
+            {
+              "symptom": "A troca de acorde ocupa um pulso adicional.",
+              "adjustment": "Reduza a quantidade de ataques e prepare a posição dentro da duração já existente."
+            }
+          ],
+          "checks": [
+            "Mantém a duração do compasso em padrões diferentes.",
+            "Distingue subdivisão contada de ataque executado."
+          ],
+          "retrieval": {
+            "question": "Oito subdivisões em 4/4 significam oito pulsos principais?",
+            "answer": "Não. Neste caso são quatro pulsos, cada um dividido em duas colcheias."
+          },
+          "spacing": [
+            "No próximo dia, recupere o padrão primeiro com palmas.",
+            "Depois de praticar uma troca, retome o padrão sem alterar o pulso."
+          ],
+          "sourceIds": [
+            "OMT-RITMO",
+            "BERKLEE-INICIO"
+          ]
+        },
+        {
+          "id": "t7-e2",
+          "title": "Dois pulsos ternários em 6/8",
+          "goal": "Sentir e executar dois grupos de três subdivisões sem confundir 6/8 com 3/4.",
+          "prerequisites": [
+            "Contar e manter uma sequência simples; iniciar no M3."
+          ],
+          "relatedLessons": [
+            "m3-a1",
+            "m3-a2",
+            "m11-a2"
+          ],
+          "explanation": [
+            "Em 6/8, a leitura adotada no curso tem dois pulsos de semínima pontuada. Cada pulso contém três colcheias: 1-la-li, 2-la-li. Embora o compasso totalize seis colcheias, o agrupamento é 3+3. Em 3/4, seis colcheias normalmente se organizam em três pulsos de duas: 2+2+2. A duração total pode coincidir, mas os apoios são diferentes.",
+            "Quando o metrônomo marca o pulso principal em 6/8, cada clique corresponde a uma semínima pontuada. Se decidir ouvir cada colcheia, o número de cliques por minuto será três vezes maior para a mesma velocidade musical. Sempre diga a unidade ao anotar o andamento: um número de BPM sozinho não basta.",
+            "No dedilhado, associe uma ação a cada subdivisão e mantenha os dois apoios. Uma troca de acorde deve ocorrer no ponto do mapa, não necessariamente após completar um padrão decorado. Primeiro pratique a mão direita isolada; depois acrescente as mudanças que a música exige."
+          ],
+          "workedExample": {
+            "title": "Seis notas em G",
+            "text": "Com G 320003, toque as cordas 6-3-2-1-2-3 usando p-i-m-a-m-i, uma colcheia em cada sílaba: 1-la-li 2-la-li. O primeiro evento é G grave; o quarto coincide com o segundo pulso. Esse padrão autoral prepara a coordenação; na música, siga a ordem e as trocas indicadas na aula."
+          },
+          "steps": [
+            "Conte as seis sílabas e marque apenas 1 e 2 com palmas.",
+            "Compare oralmente 3+3 com 2+2+2 para reconhecer o agrupamento.",
+            "Toque o padrão em G e mantenha os dois pulsos sem acentuar todas as notas igualmente.",
+            "Leve a contagem a Me Derramar e observe uma mudança de acorde do mapa real."
+          ],
+          "easier": "Toque somente nos pulsos 1 e 2, mantendo as três subdivisões faladas entre eles.",
+          "harder": "No M11, execute o mesmo princípio nas posições já aprendidas de Ousado Amor, sem mudar seu tom.",
+          "mistakes": [
+            {
+              "symptom": "São sentidos seis pulsos pesados em vez de dois apoios.",
+              "adjustment": "Marque os dois grupos com a voz e diminua o peso das subdivisões intermediárias."
+            },
+            {
+              "symptom": "O aluno copia um BPM de semínima para semínima pontuada.",
+              "adjustment": "Confira a unidade e use a conversão indicada na pesquisa do curso antes de ajustar o player."
+            }
+          ],
+          "checks": [
+            "Demonstra 3+3 e diferencia de 2+2+2.",
+            "Executa seis eventos distribuídos em dois pulsos."
+          ],
+          "retrieval": {
+            "question": "A 60 semínimas pontuadas por minuto, quantas colcheias ocorrem por minuto?",
+            "answer": "180 colcheias por minuto: três subdivisões para cada um dos 60 pulsos."
+          },
+          "spacing": [
+            "No dia seguinte, recupere a contagem antes de tocar.",
+            "Após estudar uma música em 4/4, faça uma preparação falada de 6/8 antes de voltar ao dedilhado."
+          ],
+          "sourceIds": [
+            "OMT-COMPASSO"
+          ]
+        },
+        {
+          "id": "t7-e3",
+          "title": "Síncope, antecipação e compassos curtos",
+          "goal": "Executar mudanças fora do início do compasso e ajustar a contagem à duração local.",
+          "prerequisites": [
+            "Pulso em 4/4 consolidado; estudos avançam do M7 ao M13."
+          ],
+          "relatedLessons": [
+            "m7-a3",
+            "m13-a1",
+            "m13-a2"
+          ],
+          "explanation": [
+            "Síncope desloca a percepção de apoio, por exemplo quando um som começa em parte fraca e se prolonga sobre uma parte forte sem novo ataque. Antecipação pode descrever a entrada de uma nota ou harmonia antes do ponto esperado. Os termos dependem do contexto; qualquer ataque no contratempo não é automaticamente uma antecipação harmônica.",
+            "Para estudar um deslocamento, mantenha uma grade de subdivisões e marque os ataques. Primeiro execute com palmas ou uma única nota; acrescente a troca de acorde depois. Um acorde que entra no e do 4 deve estar pronto naquele momento, mesmo que o compasso seguinte só comece na subdivisão seguinte.",
+            "Compassos curtos exigem outra atenção: uma passagem de 4/4 para 2/4 reduz o número de pulsos daquele compasso, sem obrigar a mudar a velocidade da semínima. Em Bondade de Deus, siga os compassos locais do mapa. Repetir uma batida de quatro tempos por hábito acrescenta duração que não pertence ao arranjo."
+          ],
+          "workedExample": {
+            "title": "Duas tarefas de contagem",
+            "text": "Tarefa A: conte 1 e 2 e 3 e 4 e, ataque C no e do 4 e deixe soar sobre o 1 seguinte sem novo ataque. Tarefa B: toque D por quatro pulsos, G por dois e Em por quatro, em compassos 4/4, 2/4 e 4/4. São exercícios autorais separados; não são transcrições dos mapas das músicas."
+          },
+          "steps": [
+            "Faça a tarefa A com palmas, mantendo a contagem até depois do 1 sem ataque.",
+            "Acrescente o acorde C somente quando o deslocamento puder ser repetido.",
+            "Na tarefa B, diga 1-2-3-4, 1-2, 1-2-3-4 sem estender o compasso central.",
+            "Abra o trecho correspondente do repertório e confira as durações reais antes de aplicar a habilidade."
+          ],
+          "easier": "Estude apenas uma das tarefas por sessão e mantenha um único acorde para a contagem dos compassos curtos.",
+          "harder": "Pratique uma entrada falhada: mantenha a contagem e retorne no próximo ponto combinado sem reiniciar a música.",
+          "mistakes": [
+            {
+              "symptom": "Um novo ataque é acrescentado no 1 por reflexo.",
+              "adjustment": "Sustente a nota iniciada no contratempo enquanto fala o 1 sem tocar."
+            },
+            {
+              "symptom": "O compasso de 2/4 recebe quatro pulsos.",
+              "adjustment": "Marque visualmente a mudança de métrica e ensaie a contagem sem instrumento."
+            }
+          ],
+          "checks": [
+            "Mantém o pulso durante a sustentação atravessada.",
+            "Respeita dois pulsos no compasso curto e retoma o seguinte corretamente."
+          ],
+          "retrieval": {
+            "question": "Mudar de 4/4 para 2/4 exige dobrar a velocidade?",
+            "answer": "Não. Se a unidade permanece a semínima, pode-se conservar sua velocidade e mudar apenas o número de pulsos do compasso."
+          },
+          "spacing": [
+            "Retome a tarefa escolhida depois de uma pausa sem ouvir o modelo primeiro.",
+            "Na semana seguinte, encontre no mapa uma mudança de duração e explique como vai contá-la."
+          ],
+          "sourceIds": [
+            "OMT-RITMO",
+            "OMT-COMPASSO"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T8",
+      "title": "Sistema CAGED e caminhos pelo braço",
+      "goal": "Relacionar formas móveis às notas e escolher posições que favoreçam o arranjo.",
+      "prerequisites": [
+        "Pestanas e posições móveis já preparadas; iniciar a partir de M10."
+      ],
+      "relatedModules": [
+        10,
+        11,
+        12
+      ],
+      "introduction": "CAGED organiza o braço por cinco famílias de formas maiores, associadas às posições abertas C, A, G, E e D. O objetivo é reconhecer notas comuns e conexões. Não é necessário montar todas as formas completas: fragmentos de duas ou três cordas podem tornar uma relação visível sem exigir extensões desnecessárias.",
+      "studies": [
+        {
+          "id": "t8-e1",
+          "title": "Tônicas e formas do sistema CAGED",
+          "goal": "Distinguir o nome da forma do nome do acorde e localizar suas fundamentais.",
+          "prerequisites": [
+            "T3-E1 e experiência com posições fechadas."
+          ],
+          "relatedLessons": [
+            "m10-a1",
+            "m11-a1"
+          ],
+          "explanation": [
+            "Uma forma é um desenho relativo entre cordas e casas; o acorde depende das notas que esse desenho produz no lugar onde foi colocado. Uma forma de E deslocada até a casa 3 pode produzir G maior. Portanto, forma de E não significa necessariamente acorde E. As cordas originalmente soltas precisam ser consideradas ao deslocar o desenho.",
+            "As cinco famílias C-A-G-E-D se conectam por regiões que compartilham notas. Em vez de decorar cinco blocos independentes, encontre primeiro a fundamental. Depois identifique terça e quinta e verifique se a forma realmente produz a qualidade desejada. O sistema descreve uma organização possível do braço, sem substituir a leitura de notas ou a escuta.",
+            "Observe as formas completas no mapa, mas toque inicialmente os fragmentos acessíveis. Algumas posições de C e G móveis podem exigir abertura grande; enxergar a relação não obriga a executar todas as seis cordas. Preserve as posições didáticas do repertório enquanto explora alternativas em exercícios separados."
+          ],
+          "workedExample": {
+            "title": "O mesmo C em cinco famílias",
+            "text": "Mapa de C maior, da 6ª para a 1ª corda: família C = x-3-2-0-1-0; A = x-3-5-5-5-3; G = 8-7-5-5-5-8; E = 8-10-10-9-8-8; D = x-x-10-12-13-12. Estes são mapas de referência, não uma tarefa de executar todas as formas completas. Localize C nas casas 3 da 5ª corda, 8 da 6ª e 10 da 4ª."
+          },
+          "steps": [
+            "Escolha uma fundamental C no mapa e confirme seu nome pela corda e casa.",
+            "Compare as famílias C e A e localize uma nota em comum entre elas.",
+            "Toque somente três notas acessíveis de uma região, verificando que pertencem a C-E-G.",
+            "Diga o nome da família e o nome do acorde separadamente, usando um exemplo deslocado."
+          ],
+          "easier": "Use apenas as famílias E e A já relacionadas às posições estudadas, tocando a fundamental e uma terça.",
+          "harder": "Encontre duas fundamentais de G e indique quais famílias poderiam se organizar ao redor delas.",
+          "mistakes": [
+            {
+              "symptom": "O aluno chama todo desenho da família E de acorde E.",
+              "adjustment": "Peça a nota da fundamental no ponto atual antes de nomear o acorde."
+            },
+            {
+              "symptom": "Tenta tocar a forma G inteira com tensão.",
+              "adjustment": "Use um fragmento e mantenha a forma completa apenas como referência visual."
+            }
+          ],
+          "checks": [
+            "Separa nome de família e nome de acorde.",
+            "Localiza pelo menos duas fundamentais do mesmo acorde."
+          ],
+          "retrieval": {
+            "question": "Ao mover uma forma de E maior dois semitons acima, que acorde se obtém se todas as notas forem movidas?",
+            "answer": "F# maior. Todas as notas sobem dois semitons, inclusive as que eram cordas soltas."
+          },
+          "spacing": [
+            "No próximo dia, encontre duas notas C antes de abrir o mapa.",
+            "Após estudar uma música, identifique a família de uma posição já usada."
+          ],
+          "sourceIds": [
+            "FENDER-CAGED",
+            "WM-CAGED"
+          ]
+        },
+        {
+          "id": "t8-e2",
+          "title": "O mesmo acorde em regiões diferentes",
+          "goal": "Comparar três disposições de C maior e reconhecer suas inversões.",
+          "prerequisites": [
+            "T8-E1 e identificação de fundamental, terça e quinta."
+          ],
+          "relatedLessons": [
+            "m10-a3",
+            "m11-a1",
+            "m12-a1"
+          ],
+          "explanation": [
+            "Um acorde pode ter as mesmas classes de notas em ordens e registros diferentes. Voicing ou disposição descreve essa organização. Inversão identifica qual nota do acorde está no baixo: fundamental, terça ou quinta. Uma mudança de disposição pode mudar a inversão ou apenas o registro e os dobramentos.",
+            "Trabalhar somente nas três cordas agudas permite escutar essas diferenças com pouca pressão. Confira cada nota antes de tocar o conjunto. Ao comparar duas posições, observe qual voz subiu, qual desceu e qual permaneceu. Essa escuta prepara escolhas de acompanhamento que preservam a harmonia com movimentos menores.",
+            "Uma posição mais aguda não é automaticamente melhor ou mais avançada. Ela pode combinar com uma seção leve, enquanto uma região grave pode apoiar outra textura. No curso, alterações de posição são experimentadas primeiro em estudos; a versão principal da música continua sendo o mapa acordado com o professor."
+          ],
+          "workedExample": {
+            "title": "Três C maiores nas cordas agudas",
+            "text": "Da 6ª à 1ª corda: x-x-x-0-1-0 produz G-C-E, portanto C/G; x-x-x-5-5-3 produz C-E-G, portanto C em posição fundamental; x-x-x-9-8-8 produz E-G-C, portanto C/E. Toque cada conjunto nota a nota e depois simultaneamente, sem incluir cordas graves."
+          },
+          "steps": [
+            "Leia as três posições e encontre o nome de cada nota pelo mapa do braço.",
+            "Toque cada disposição por quatro pulsos e nomeie a nota mais grave do conjunto.",
+            "Compare a primeira e a segunda sem mudar a intensidade; descreva a alteração de registro.",
+            "Escolha uma disposição para responder a um acorde grave tocado pelo professor e justifique a escolha."
+          ],
+          "easier": "Trabalhe apenas a posição aberta G-C-E e a posição C-E-G, com pausas para reposicionar.",
+          "harder": "Encontre uma quarta disposição e classifique sua inversão pela nota mais grave realmente tocada.",
+          "mistakes": [
+            {
+              "symptom": "O aluno inclui cordas graves e nomeia a inversão pelas três agudas.",
+              "adjustment": "Restrinja o ataque às cordas previstas; a inversão depende do baixo que efetivamente soa."
+            },
+            {
+              "symptom": "Uma posição é escolhida só porque está longe da pestana.",
+              "adjustment": "Compare função sonora, conforto e registro em relação ao acompanhamento."
+            }
+          ],
+          "checks": [
+            "Identifica as três disposições como C maior.",
+            "Nomeia a inversão de acordo com o baixo real."
+          ],
+          "retrieval": {
+            "question": "C/E contém outras notas que C em posição fundamental?",
+            "answer": "As classes básicas continuam C-E-G; o que define a inversão é E estar no baixo."
+          },
+          "spacing": [
+            "No dia seguinte, tente reconstruir uma posição a partir das notas, sem copiar o código.",
+            "Depois de um intervalo maior, compare duas posições e recupere seus baixos."
+          ],
+          "sourceIds": [
+            "BERKLEE-ACORDES",
+            "WM-CAGED"
+          ]
+        },
+        {
+          "id": "t8-e3",
+          "title": "Conectar acordes e melodias pelo braço",
+          "goal": "Escolher notas próximas para acompanhar e criar uma resposta curta.",
+          "prerequisites": [
+            "T8-E2 e controle de uma frase autoral simples."
+          ],
+          "relatedLessons": [
+            "m11-a3",
+            "m12-a3",
+            "m13-a2"
+          ],
+          "explanation": [
+            "CAGED pode servir de referência para enxergar notas de acordes perto de uma posição já conhecida. Para criar uma frase, comece por notas que você consegue explicar e ouvir em relação à harmonia. Escalas ampliam as possibilidades, mas não é necessário percorrer todas as notas para construir uma resposta musical.",
+            "Condução de vozes observa como cada nota passa de um acorde ao seguinte. Uma nota pode permanecer enquanto outras se movem por grau conjunto. No violão, manter uma voz não significa obrigatoriamente manter o mesmo dedo: a digitação precisa permitir o próximo evento. Compare a facilidade física com a continuidade sonora.",
+            "A frase de resposta ocupa um espaço definido. Determine início, duração e retorno ao acompanhamento antes de escolher ornamentos. Se o cantor ou outro instrumento já usa esse espaço, reduza a resposta ou permaneça em silêncio. A autonomia inclui saber quando não acrescentar notas."
+          ],
+          "workedExample": {
+            "title": "C-F-G com notas próximas",
+            "text": "Nas três cordas agudas, use C = x-x-x-5-5-3 (C-E-G), F/C = x-x-x-5-6-5 (C-F-A) e G/D = x-x-x-7-8-7 (D-G-B). Toque um compasso de cada em 4/4. Observe C permanecendo na terceira corda na primeira mudança. Como resposta separada, sobre C toque E-G-E-C em quatro semínimas, usando apenas notas desse acorde."
+          },
+          "steps": [
+            "Confira as nove notas dos três conjuntos e identifique os baixos.",
+            "Toque C-F/C e ouça a nota C mantida enquanto E e G se movem.",
+            "Complete a sequência com G/D, sem acelerar no deslocamento.",
+            "Execute a resposta de quatro notas e retorne a C no compasso seguinte; depois escolha um espaço real de aplicação com o professor."
+          ],
+          "easier": "Use apenas dois acordes e toque suas notas uma por vez, com pausa para analisar a mudança.",
+          "harder": "Crie outra resposta de um compasso que termine em uma nota do próximo acorde e explique a escolha.",
+          "mistakes": [
+            {
+              "symptom": "A frase continua depois da volta do acompanhamento.",
+              "adjustment": "Marque a duração com contagem e pratique a última nota junto à primeira entrada do acorde."
+            },
+            {
+              "symptom": "Toda mudança vira um salto grande pelo braço.",
+              "adjustment": "Procure primeiro uma nota comum e confira se uma disposição próxima resolve a passagem."
+            }
+          ],
+          "checks": [
+            "Explica uma nota comum ou movimento entre vozes.",
+            "Executa a resposta e retorna no ponto combinado."
+          ],
+          "retrieval": {
+            "question": "Por que uma frase de quatro notas pode funcionar melhor do que uma escala inteira?",
+            "answer": "Porque pode caber no espaço disponível, destacar a harmonia e preservar a entrada do acompanhamento."
+          },
+          "spacing": [
+            "No próximo encontro, recupere as notas de um dos acordes antes do desenho.",
+            "Após alguns dias, crie uma nova resposta com a mesma duração e compare sua função."
+          ],
+          "sourceIds": [
+            "WM-CAGED",
+            "BERKLEE-ACORDES"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T9",
+      "title": "Campo harmônico, cadências e repertório",
+      "goal": "Usar notas, funções e forma para planejar um acompanhamento consciente.",
+      "prerequisites": [
+        "Acordes e escalas iniciais; aprofundar do M6 ao M13."
+      ],
+      "relatedModules": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "introduction": "A teoria organiza perguntas que nascem da música: quais notas pertencem ao acorde, o que cria expectativa, onde a frase chega e como o acompanhamento participa. Analise primeiro trechos pequenos e volte à execução. Uma explicação correta precisa resultar em uma escolha musical que possa ser ouvida.",
+      "studies": [
+        {
+          "id": "t9-e1",
+          "title": "Campo maior, graus e inversões",
+          "goal": "Construir tríades de uma escala maior e reconhecer seus graus em uma progressão.",
+          "prerequisites": [
+            "T3-E1 e T3-E2."
+          ],
+          "relatedLessons": [
+            "m6-a2",
+            "m8-a3",
+            "m9-a1"
+          ],
+          "explanation": [
+            "Para construir o campo harmônico em tríades, escolha cada grau da escala e empilhe duas terças diatônicas, isto é, usando apenas suas notas. Em C maior, C-E-G forma C; D-F-A forma Dm; E-G-B forma Em. Continuando, surgem F, G, Am e B diminuto. A ordem das qualidades é maior, menor, menor, maior, maior, menor e diminuta.",
+            "Graus relacionam acordes a um centro: em C, I=C, ii=Dm, iii=Em, IV=F, V=G, vi=Am e vii°=Bdim. Letras maiúsculas ou minúsculas ajudam a indicar a qualidade. A sequência I-V-vi-IV pode ser realizada em C-G-Am-F ou em G-D-Em-C. Esta transposição pertence ao exercício; os tons definidos para as canções permanecem preservados.",
+            "Acrescentar uma sétima ou inverter um acorde muda sua disposição ou cor, mas não elimina a necessidade de identificar suas notas. Em C maior, Cmaj7 contém C-E-G-B; C7 contém Bb e, portanto, não é a tétrade diatônica do primeiro grau. Em C/E, a terça está no baixo. Escute cada mudança em vez de tratar símbolos parecidos como equivalentes."
+          ],
+          "workedExample": {
+            "title": "Construir antes de decorar",
+            "text": "Escreva C-D-E-F-G-A-B. Começando em D, selecione D, pule E, selecione F, pule G e selecione A: D-F-A = Dm. Começando em G, obtenha G-B-D = G. Toque Dm-G-C em um compasso de 4/4 para cada acorde e identifique ii-V-I em C."
+          },
+          "steps": [
+            "Construa três tríades por seleção alternada de notas e diga sua qualidade.",
+            "Reconheça os graus de C-G-Am-F e explique a função do centro C.",
+            "Toque Dm-G-C e escute a chegada sem alterar a duração dos compassos.",
+            "No M8, compare C e C/E; no M9, compare as notas de uma tétrade já usada no repertório."
+          ],
+          "easier": "Construa apenas I, IV e V em C e execute com um ataque por compasso.",
+          "harder": "Reconstrua ii-V-I em G, verificando Am-D-G e o F# necessário à tonalidade.",
+          "mistakes": [
+            {
+              "symptom": "O aluno aplica a mesma qualidade maior a todos os graus.",
+              "adjustment": "Escreva as notas de cada tríade e confira suas terças antes de nomeá-la."
+            },
+            {
+              "symptom": "Confunde C7 com Cmaj7.",
+              "adjustment": "Compare Bb e B sobre a mesma tríade C-E-G e nomeie a sétima em cada caso."
+            }
+          ],
+          "checks": [
+            "Constrói tríades por notas e não só por memória da lista.",
+            "Identifica graus e distingue inversão de mudança de qualidade."
+          ],
+          "retrieval": {
+            "question": "Por que o acorde do segundo grau de C maior é Dm?",
+            "answer": "Porque D-F-A usa a terça menor D-F e a quinta justa D-A, mantendo somente notas de C maior."
+          },
+          "spacing": [
+            "No próximo dia, reconstrua um grau sorteado sem olhar a lista.",
+            "Mais tarde, identifique dois graus dentro de uma música já tocada."
+          ],
+          "sourceIds": [
+            "OMT-MAIOR",
+            "OMT-CIFRAS",
+            "BERKLEE-ACORDES"
+          ]
+        },
+        {
+          "id": "t9-e2",
+          "title": "Campo menor e cadências",
+          "goal": "Explicar a dominante maior em uma tonalidade menor e reconhecer chegadas de frase.",
+          "prerequisites": [
+            "T9-E1 e comparação entre maior e menor."
+          ],
+          "relatedLessons": [
+            "m6-a3",
+            "m10-a2",
+            "m12-a3"
+          ],
+          "explanation": [
+            "A menor natural contém A-B-C-D-E-F-G. Suas tríades são Am, Bdim, C, Dm, Em, F e G. Em muitas práticas tonais, G sobe para G# em passagens de dominante, produzindo E ou E7 e fortalecendo a chegada a Am. A menor harmônica explicita esse sétimo grau elevado. A menor melódica clássica ascendente eleva também F para F#; seu uso depende do contexto, e músicas populares não precisam seguir uma regra fixa de subida e descida.",
+            "Cadência é uma articulação de frase, não apenas uma lista de acordes. E7-Am pode participar de uma chegada em A menor; G-C, de uma chegada em C maior. A duração, a melodia e o lugar na forma ajudam a ouvir conclusão. Um ciclo repetido pode conter as mesmas relações sem encerrar uma frase naquele ponto.",
+            "Uma dominante secundária aponta temporariamente para outro acorde. Em A maior, C#7 contém C#-E#-G#-B e resolve para F#m. Escrever E# explicita sua função de terça maior; no instrumento temperado, sua altura coincide com F. Esse movimento local não prova sozinho uma modulação permanente para F# menor. A distinção aparece em Rompendo em Fé."
+          ],
+          "workedExample": {
+            "title": "Duas chegadas que usam quase as mesmas notas",
+            "text": "Compare Am-Dm-Em-Am com Am-Dm-E7-Am, um compasso de 4/4 por acorde. E7 pode ser tocado 020100 e inclui G# na 3ª corda, casa 1. Ouça o G# subir para A na chegada. Trata-se de um exercício autoral, separado dos arranjos do repertório."
+          },
+          "steps": [
+            "Construa Em e E7 por suas notas e localize a diferença G/G#.",
+            "Toque os dois ciclos e descreva a expectativa antes do último Am.",
+            "No M10, escreva as notas de C#7 e encontre sua resolução para F#m.",
+            "Compare uma chegada de frase com uma repetição do ciclo, observando melodia e forma além das cifras."
+          ],
+          "easier": "Ouça o professor alternar Em-Am e E7-Am; toque apenas a nota A de chegada.",
+          "harder": "Explique uma alteração do M12 distinguindo empréstimo modal, dominante local e mudança de centro quando houver evidência.",
+          "mistakes": [
+            {
+              "symptom": "Toda nota de fora é chamada de erro.",
+              "adjustment": "Verifique o acorde e sua função antes de compará-lo com uma única escala."
+            },
+            {
+              "symptom": "Uma dominante secundária é chamada imediatamente de modulação.",
+              "adjustment": "Observe se o novo centro se estabelece por mais evidências na frase e na forma."
+            }
+          ],
+          "checks": [
+            "Explica a função de G# na chegada a Am.",
+            "Distingue uma resolução local de uma mudança de centro estabelecida."
+          ],
+          "retrieval": {
+            "question": "Por que C#7 em A maior contém E# e não a terça menor E?",
+            "answer": "Porque é um acorde maior com sétima menor: C#-E#-G#-B, capaz de atuar como dominante de F#m."
+          },
+          "spacing": [
+            "No dia seguinte, recupere a diferença Em/E7 sem consultar.",
+            "Na semana seguinte, explique a chegada escolhida e toque-a em contexto."
+          ],
+          "sourceIds": [
+            "OMT-MENOR",
+            "OMT-CADENCIAS",
+            "OMT-INTERVALOS"
+          ]
+        },
+        {
+          "id": "t9-e3",
+          "title": "Planejar, executar e explicar um arranjo",
+          "goal": "Preparar uma apresentação completa e usar evidências para decidir a próxima prática.",
+          "prerequisites": [
+            "Ter estudado a forma e os acordes de três arranjos do curso."
+          ],
+          "relatedLessons": [
+            "m12-a1",
+            "m13-a2",
+            "m13-a3"
+          ],
+          "explanation": [
+            "Um arranjo de acompanhamento reúne escolhas de harmonia, registro, ritmo, textura e dinâmica ao longo de uma forma. Comece pelo mapa já definido: tom, métrica, ordem das seções, repetições e duração dos compassos. Depois escolha onde uma técnica complementar ajuda. Mudar vários elementos de uma vez dificulta saber o que melhorou ou prejudicou a execução.",
+            "Prepare pontos de referência para iniciar e retomar. Uma apresentação real pode ter distrações; saber voltar na próxima entrada combinada é parte da autonomia. O objetivo não é esconder todo erro, mas conservar a escuta, o pulso e a relação com o conjunto. Combine sinais de entrada e final com quem toca ou canta.",
+            "A avaliação precisa observar execução e compreensão. Registre o andamento com sua unidade, os apoios usados, um trecho em que houve continuidade e um ajuste prioritário. Um quiz correto ou um botão de conclusão não comprovam domínio instrumental. Compare tentativas realizadas em dias diferentes e escolha metas proporcionais ao estágio atual."
+          ],
+          "workedExample": {
+            "title": "Um plano para três apresentações",
+            "text": "Escolha com o professor três arranjos já preparados, incluindo ao menos um contraste de métrica ou textura. Para cada um, escreva início, seção de maior dificuldade, repetição importante, final e técnica complementar escolhida. Em Bondade de Deus, marque os compassos de dois pulsos do mapa; em uma música de 6/8, escreva a unidade de semínima pontuada."
+          },
+          "steps": [
+            "Faça uma leitura silenciosa da forma e diga a sequência de seções sem tocar.",
+            "Ensaie o trecho difícil, depois acrescente os compassos anteriores e posteriores.",
+            "Execute a forma inteira com os apoios combinados, incluindo entrada e final.",
+            "Após a tentativa, descreva uma evidência concreta e escolha uma única mudança para a próxima sessão."
+          ],
+          "easier": "Apresente uma seção completa com apoio visual e um padrão de acompanhamento reduzido, mantendo sua forma real.",
+          "harder": "Conduza uma repetição com outro músico e recupere uma entrada após silêncio planejado sem reiniciar o arranjo.",
+          "mistakes": [
+            {
+              "symptom": "O aluno reinicia sempre desde o começo após falhar.",
+              "adjustment": "Pratique pontos de retomada e preserve a contagem até a próxima entrada definida."
+            },
+            {
+              "symptom": "O feedback é apenas bom ou ruim.",
+              "adjustment": "Nomeie trecho, comportamento observado, apoio utilizado e próxima ação verificável."
+            }
+          ],
+          "checks": [
+            "Executa entrada, forma e final com o apoio acordado.",
+            "Justifica uma escolha técnica e identifica uma prioridade de prática."
+          ],
+          "retrieval": {
+            "question": "Qual é uma evidência melhor do que dizer pratiquei muito?",
+            "answer": "Descrever um resultado observável, como manter a mudança de métrica em duas execuções separadas, informando o andamento e os apoios."
+          },
+          "spacing": [
+            "No dia seguinte, teste primeiro o ponto de retomada antes de ensaiar a música inteira.",
+            "Após alguns dias, apresente novamente e compare a mesma evidência, sem exigir velocidade maior."
+          ],
+          "sourceIds": [
+            "BERKLEE-ACORDES",
+            "OMT-CADENCIAS",
+            "OMT-COMPASSO"
+          ]
+        }
+      ]
+    }
+  ]
+}

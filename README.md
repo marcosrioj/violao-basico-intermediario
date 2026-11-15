@@ -1,6 +1,8 @@
 # Violão Vivo
 
-Curso de violão gospel do básico ao intermediário: **13 módulos, 39 aulas**, cifras interativas, laboratório musical e acompanhamento de alunos por turma. Feito com Next.js, TypeScript e Supabase.
+Curso de violão gospel do básico ao intermediário, **13 módulos, 39 aulas aprofundadas e 27 estudos em nove eixos técnicos**, cifras interativas, laboratório musical e acompanhamento de alunos por turma. Feito com Next.js, TypeScript e Supabase.
+
+O curso conecta cada aula a explicações, exemplos autorais, prática gradual e revisão em quatro momentos flexíveis. O professor dispõe de 39 planos de 60 minutos, diagnóstico, adaptações, apresentação de aula e rubrica de execução. Os PDFs completos do aluno e do professor incluem o acervo integral V5. [Conteúdo e geração dos materiais](docs/CONTENT.md) · [Pesquisa musical](docs/CURRICULUM-RESEARCH.md) · [Pesquisa pedagógica](docs/TEACHING-RESEARCH.md).
 
 ## Quero usar como professor, sem instalar
 
@@ -118,6 +120,8 @@ Escolha o guia:
 O endereço da instância compartilhada serve apenas para quem quer usá-la. **Não copie esse endereço para configurar sua instalação.** Consulte [cotas e condições dos serviços gratuitos](docs/FREE-TIER.md).
 
 ## Documentação
+
+Confira a [verificação da atualização do curso](docs/COURSE-VERIFICATION.md), incluindo preservação dos materiais, testes da aplicação e revisão dos PDFs.
 
 | Preciso de…                                       | Guia                                                                                                |
 | ------------------------------------------------- | --------------------------------------------------------------------------------------------------- |

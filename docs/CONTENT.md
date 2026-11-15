@@ -1,6 +1,43 @@
 # Conteúdo do Violão Vivo
 
-O conteúdo canônico importado é a edição 5 fornecida pelo proprietário em 14/11/2026. O nome de produto adotado é **Violão Vivo**, proposto no contexto anterior. O texto das fontes permanece preservado em `materials/`; instruções operacionais contidas no histórico ou nos documentos não foram tratadas como comandos do sistema.
+O conteúdo do **Violão Vivo** foi aprofundado em 15/11/2026. A base canônica importada continua sendo a edição 5 fornecida pelo proprietário em 14/11/2026. Seus 13 módulos, 39 aulas, músicas, acordes, textos e arquivos permanecem integralmente preservados. Instruções operacionais contidas no histórico ou nos documentos não foram tratadas como comandos do sistema.
+
+## Conteúdo aprofundado
+
+A atualização é uma reformulação integrada por associação aos IDs existentes. `lesson-enrichment.json` aprofunda as 39 aulas; `technique-data.json` contém nove eixos e 27 estudos autorais; `teacher-enrichment.json` contém princípios de ensino, rubrica e 39 planos individualizados de 60 minutos. `curriculum.ts` associa os estudos às aulas sem alterar os mapas harmônicos ou chaves de progresso. O carregamento docente permanece em `teacher.ts`, com `server-only`, e só é renderizado após autorização.
+
+Os nove eixos cobrem fundamentos, acordes e notação, intervalos/escalas/pestana, palhetada, articulações, expressão, ritmos, CAGED e campos harmônicos/cadências. A ementa pública de Fábio Lima é referência de abrangência; os exercícios, exemplos e planos são autorais. Não há atribuição de aulas privadas ao artista nem reprodução de seu curso. As fontes especializadas consultadas e os limites da pesquisa estão em [pesquisa musical](CURRICULUM-RESEARCH.md) e [pesquisa pedagógica](TEACHING-RESEARCH.md).
+
+Cada estudo inclui pré-requisitos, explicação, exemplo trabalhado, prática gradual, simplificação, ampliação, erros observáveis, critérios de execução, pergunta de recuperação e revisões. As quatro práticas semanais são uma organização flexível. Os estudos entram nos encontros existentes e na prática entre encontros; os 27 estudos não equivalem automaticamente a 27 semanas extras. Não há garantia universal de domínio em prazo fixo.
+
+### Navegação e acompanhamento
+
+- `/curso`: os 13 módulos e acesso aos nove eixos técnicos.
+- `/aulas/[id]`: conteúdo original e aprofundamento específico; exemplos e perguntas de recuperação entram na apresentação docente.
+- `/tecnica` e `/tecnica/[id]`: estudos autorais com aplicação nas aulas e acesso ao laboratório.
+- `/professor/metodologia`: princípios, rubrica e acesso aos 39 planos, somente para professores.
+- `/materiais`: PDFs completos atualizados, consultas R1–R8, guias preservados e arquivos V5.
+
+Os estudos são registrados no diário da aula de aplicação, com seu código no texto. O curso mantém o modelo existente de progresso das 39 aulas; não cria conclusão automática de habilidade ou de estudo técnico. Quiz e autorrelato não substituem observação instrumental.
+
+### PDFs completos e reprodução
+
+`materials/Curso_Aluno_Violao_Gospel_v6.pdf` e `materials/Manual_Professor_Violao_Gospel_v6.pdf` são os downloads ativos, com cópias idênticas em `output/pdf/`. A parte principal reorganiza as aulas e os novos aprofundamentos, além de reunir os estudos, diagramas, mapas e teoria. Cada livro termina com seu PDF V5 integral, identificado como acervo. `pdf-manifest.json` contém total de páginas, posições de aulas/estudos e início do acervo; as páginas originais são convertidas por `legacyStartPage + páginaV5 - 1`.
+
+Os endpoints originais `/api/materials/aluno` e `/api/materials/professor` entregam os livros atualizados. As rotas adicionais `aluno-v5` e `professor-v5` preservam o download dos originais, com as mesmas regras de matrícula e papel. Os PDFs não ficam em `public/`.
+
+```bash
+python3 -m venv /tmp/violao-pdf-env
+. /tmp/violao-pdf-env/bin/activate
+python -m pip install -r scripts/requirements-pdf.txt
+npm run pdf:build
+```
+
+O builder lê os JSONs editoriais e os PDFs originais; não precisa de rede depois de instalar as dependências. Após alterar conteúdo, regenere os PDFs, confira a paginação e o manifesto e execute `npm run check`. [Registro de verificação gráfica](PDF-VERIFICATION.md).
+
+`content-preservation.json` registra SHA-256 de todos os dados e fontes legadas preservados. O teste de integridade confere esses hashes, a cobertura de 39 aulas, 27 estudos, planos de 60 minutos, referências válidas e os mapas de páginas dos PDFs. O importador abaixo continua importando exclusivamente a base V5 e não sobrescreve os arquivos de aprofundamento.
+
+## Base importada da edição 5
 
 | Fonte                                   | Páginas / conteúdo                                                 | Destino                                                                                             |
 | --------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
@@ -21,7 +58,7 @@ python3 scripts/import-course.py /caminho/para/fontes
 
 O importador lê o objeto JSON do HTML sem executar JavaScript. Ele verifica a presença das 39 aulas nos dois PDFs, três aulas por módulo, todas as referências teóricas, acordes existentes, duração de cada compasso, soma dos compassos e pulsos na forma completa e ausência de pestanas nas primeiras 12 aulas. A primeira introdução de Bm completo permanece em M5-A1. A numeração visual reinicia a cada módulo. O identificador persistido é `m1-a1` a `m13-a3`; `sourceId` preserva `A01` a `A39` para rastreamento, sem usar esses números como nome da aula.
 
-A extração de PDF preserva texto e número de página. Diagramas e cifras são reconstruídos com os dados estruturados do HTML, pois texto extraído não preserva a disposição visual do PDF. Os PDFs originais continuam sendo a referência gráfica completa. Não foram criados nem modificados PDFs nesta implementação.
+A extração de PDF preserva texto e número de página. Diagramas e cifras são reconstruídos com os dados estruturados do HTML, pois texto extraído não preserva a disposição visual do PDF. Os PDFs originais continuam sendo a referência gráfica completa. Na implementação inicial V5, não foram criados nem modificados PDFs; a geração dos livros atualizados está descrita acima.
 
 A pesquisa de andamentos fica separada em `src/content/tempo-research.json` e é associada às músicas por ID em `course.ts`. O importador não escreve esse arquivo: reimportar a edição 5 preserva a pesquisa. O valor bruto de `lesson.bpm` continua sendo o andamento de estudo de cada aula na edição 5. `defaultPlaybackBpm(studyBpm, tempo?)` usa a referência convertida somente quando `useAsDefault: true` estiver presente e a referência for válida; caso contrário, mantém o andamento de estudo. A [auditoria dos andamentos](TEMPO-RESEARCH.md) registra versões, unidades, fontes, conversões e incertezas das 13 músicas.
 

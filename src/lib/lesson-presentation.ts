@@ -1,4 +1,5 @@
 import type { Lesson } from '../content/types';
+import type { LessonEnrichment } from '../content/curriculum-types';
 
 export type LessonSlideBlock =
   | { id: string; label?: string; kind: 'text'; text: string }
@@ -13,14 +14,17 @@ export interface LessonSlide {
 }
 
 /** Derive the presentation from the authorized lesson; never import the course catalog here. */
-export function buildLessonPresentation(lesson: Lesson): readonly LessonSlide[] {
+export function buildLessonPresentation(
+  lesson: Lesson,
+  enrichment?: LessonEnrichment,
+): readonly LessonSlide[] {
   const review: LessonSlideBlock[] = [];
   if (lesson.review.trim())
     review.push({ id: 'review', label: 'Retomada', kind: 'text', text: lesson.review });
   if (lesson.focus.trim())
     review.push({ id: 'focus', label: 'Nosso foco', kind: 'text', text: lesson.focus });
 
-  return [
+  const slides: LessonSlide[] = [
     {
       id: 'goal',
       label: 'Objetivo',
@@ -50,7 +54,7 @@ export function buildLessonPresentation(lesson: Lesson): readonly LessonSlide[] 
     {
       id: 'practice',
       label: 'Praticar',
-      title: 'Leve a prática para a semana',
+      title: 'Organize uma sessão de prática',
       blocks: [{ id: 'practice', kind: 'list', items: [...lesson.practice] }],
     },
     {
@@ -60,6 +64,53 @@ export function buildLessonPresentation(lesson: Lesson): readonly LessonSlide[] 
       blocks: [{ id: 'checks', kind: 'list', items: [...lesson.checks] }],
     },
   ];
+  if (enrichment) {
+    slides.splice(
+      4,
+      0,
+      {
+        id: 'learning-example',
+        label: 'Aprofundar',
+        title: enrichment.workedExample.title,
+        blocks: [{ id: 'learning-example', kind: 'text', text: enrichment.workedExample.text }],
+      },
+      {
+        id: 'learning-practice',
+        label: 'Aplicar',
+        title: 'Experimente e escute o resultado',
+        blocks: [{ id: 'learning-practice', kind: 'list', items: [...enrichment.guidedPractice] }],
+      },
+      {
+        id: 'learning-retrieval',
+        label: 'Recuperar',
+        title: 'Tente explicar antes de conferir',
+        blocks: [{ id: 'learning-question', kind: 'text', text: enrichment.retrieval.question }],
+        answer: enrichment.retrieval.answer,
+      },
+    );
+    slides.push({
+      id: 'learning-week',
+      label: 'Distribuir',
+      title: 'Quatro momentos para retomar e aplicar',
+      blocks: [
+        {
+          id: 'learning-week',
+          kind: 'list',
+          items: enrichment.weeklyPlan.map((day) => `Dia ${day.day} · ${day.title}: ${day.task}`),
+        },
+      ],
+    });
+    slides.push({
+      id: 'learning-transfer',
+      label: 'Continuar',
+      title: 'O próximo passo de aprendizagem',
+      blocks: [
+        { id: 'learning-evidence', kind: 'list', items: [...enrichment.successCriteria] },
+        { id: 'learning-next', kind: 'text', text: enrichment.nextStep },
+      ],
+    });
+  }
+  return slides;
 }
 
 /** Answer visibility is a teaching control, not an authorization boundary. */

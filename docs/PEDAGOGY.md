@@ -1,5 +1,15 @@
 # Pesquisa pedagógica e aplicação no Violão Vivo
 
+## Integração dos estudos técnicos
+
+O curso mantém o repertório e a progressão dos 13 módulos e reformula a condução das 39 aulas com explicações específicas, exemplos trabalhados, tentativa guiada, recuperação antes da resposta e aplicação musical. Os nove eixos técnicos se distribuem pelas aulas conforme os pré-requisitos; não constituem uma sequência obrigatória de nove blocos antes de tocar músicas.
+
+Cada plano docente oferece diagnóstico, demonstração, intervenção diante de uma dificuldade concreta, redução e ampliação do desafio, observação e nova tentativa em outro dia. O roteiro de 60 minutos substitui a distribuição de tempo daquela aula, sem somar um segundo encontro. O plano original permanece disponível para consulta. A apresentação docente permite mostrar um exemplo ou uma pergunta por vez, com resposta revelada por decisão do professor.
+
+As propostas de prática em quatro dias são flexíveis. Regularidade, dificuldade adequada, explicação e feedback orientam a escolha; a literatura não estabelece um único método superior para todo aluno e toda habilidade. Os critérios do curso são rubricas autorais para as tarefas do curso, não testes validados nem equivalência a exames externos. Observe a execução sem ajuda e depois de um intervalo antes de inferir retenção.
+
+Fontes, aplicações e limites adicionais estão em [Pesquisa pedagógica](TEACHING-RESEARCH.md). A fundamentação anterior permanece a seguir.
+
 Fontes consultadas em 14/11/2026. O material v5 define a sequência do curso; a pesquisa abaixo orienta a interação e a prática. Nenhuma dessas fontes avaliou o Violão Vivo nem comprova que todos chegarão ao nível intermediário em 39 encontros. As decisões de aplicação são inferências de projeto e devem ser revistas com observação de alunos reais.
 
 | Evidência ou orientação                                                                                                                                                                                                                                                                                                    | Aplicação ao curso                                                                                                                               | Limite da interpretação                                                                                                                                          |

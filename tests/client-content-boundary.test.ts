@@ -36,7 +36,14 @@ test('client module dependency graph cannot bundle course texts or teacher plans
   assert.ok(clients.length > 0);
   const config = ts.readConfigFile('tsconfig.json', ts.sys.readFile);
   const options = ts.parseJsonConfigFileContent(config.config, ts.sys, process.cwd()).options;
-  const forbidden = new Set(['course-data.json', 'student-guides.json', 'teacher-data.json']);
+  const forbidden = new Set([
+    'course-data.json',
+    'student-guides.json',
+    'teacher-data.json',
+    'technique-data.json',
+    'lesson-enrichment.json',
+    'teacher-enrichment.json',
+  ]);
   const visited = new Set<string>();
   function visit(file: string, chain: string[]) {
     assert.ok(

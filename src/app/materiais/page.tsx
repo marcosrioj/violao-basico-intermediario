@@ -7,15 +7,26 @@ import { studentGuides, theoryReferences } from '@/content/course';
 import type { GuidePage } from '@/content/types';
 import { requireCourseProfile } from '@/lib/auth';
 import { Hint } from '@/components/ui/hint';
+import pdfManifest from '@/content/pdf-manifest.json';
+import { practicePrinciples, techniqueModules } from '@/content/curriculum';
 
 export const dynamic = 'force-dynamic';
-function GuideSection({ guides }: { guides: GuidePage[] }) {
+function GuideSection({
+  guides,
+  legacyStartPage,
+}: {
+  guides: GuidePage[];
+  legacyStartPage: number;
+}) {
   return (
     <div className="stack">
       {guides.map((guide) => (
         <details id={guide.id} key={guide.id}>
           <summary>
-            {guide.title} <span className="badge">Página {guide.page}</span>
+            {guide.title}{' '}
+            <span className="badge">
+              PDF p. {legacyStartPage + guide.page - 1} · original p. {guide.page}
+            </span>
           </summary>
           <div className="source-text">
             <RichText text={guide.text} field={guide.id} />
@@ -35,7 +46,7 @@ export default async function MaterialsPage() {
       <PageHeading
         eyebrow="CONSULTE, EXPERIMENTE, VOLTE À MÚSICA"
         title="Sua biblioteca musical"
-        description="O material completo do curso, as consultas de teoria e os guias para acompanhar cada etapa."
+        description="O material reúne as 39 aulas, os 27 estudos técnicos, as consultas de teoria e o acervo integral da edição anterior."
       />
       <section className="material-list section" aria-label="Apostilas para baixar">
         <article className="card material-item">
@@ -43,9 +54,12 @@ export default async function MaterialsPage() {
             <BookOpen />
           </span>
           <div>
-            <p className="eyebrow">EDIÇÃO 5 · 130 PÁGINAS</p>
+            <p className="eyebrow">MATERIAL COMPLETO · {pdfManifest.student.pages} PÁGINAS</p>
             <h2>Apostila do aluno</h2>
-            <p>Preparação, diagramas, cifras didáticas, teoria e registros de prática.</p>
+            <p>
+              Aulas aprofundadas, exemplos, estudos técnicos, diagramas, cifras e roteiros de
+              prática.
+            </p>
           </div>
           <a className="button secondary" href="/api/materials/aluno" download>
             <Download size={17} /> Baixar PDF
@@ -57,15 +71,53 @@ export default async function MaterialsPage() {
               <GraduationCap />
             </span>
             <div>
-              <p className="eyebrow">EDIÇÃO 5 · 73 PÁGINAS</p>
+              <p className="eyebrow">MATERIAL COMPLETO · {pdfManifest.teacher.pages} PÁGINAS</p>
               <h2>Manual do professor</h2>
-              <p>Planos de 60 minutos, demonstrações, avaliação e devolutivas.</p>
+              <p>
+                39 planos de 60 minutos, diagnóstico, demonstrações, adaptações e avaliação da
+                execução.
+              </p>
             </div>
             <a className="button secondary" href="/api/materials/professor" download>
               <Download size={17} /> Baixar PDF
             </a>
           </article>
         )}
+      </section>
+      <section className="card section learning-reading">
+        <p className="eyebrow">ESTUDAR COM INTENÇÃO</p>
+        <h2>Da explicação para uma tentativa observável</h2>
+        {practicePrinciples.map((principle) => (
+          <details key={principle.title} className="section">
+            <summary>{principle.title}</summary>
+            <p>{principle.text}</p>
+          </details>
+        ))}
+        <div className="learning-paths">
+          <Link className="button secondary" href="/tecnica">
+            Explorar os nove eixos técnicos
+          </Link>
+          {teacher && (
+            <Link className="button secondary" href="/professor/metodologia">
+              Guia para lecionar
+            </Link>
+          )}
+        </div>
+      </section>
+      <section className="section" aria-labelledby="technical-library">
+        <h2 id="technical-library">Técnica aplicada ao repertório</h2>
+        <div className="learning-module-list section">
+          {techniqueModules.map((module) => (
+            <Link className="card" href={`/tecnica#${module.id}`} key={module.id}>
+              <p className="eyebrow">{module.id}</p>
+              <h3>{module.title}</h3>
+              <p>{module.goal}</p>
+              <span className="text-link">
+                Abrir estudos <ArrowRight size={16} />
+              </span>
+            </Link>
+          ))}
+        </div>
       </section>
       <section className="section" aria-labelledby="theory-index">
         <div className="section-title">
@@ -98,7 +150,10 @@ export default async function MaterialsPage() {
             e a diagramação original também estão no PDF.
           </Hint>
         </div>
-        <GuideSection guides={studentGuides} />
+        <GuideSection
+          guides={studentGuides}
+          legacyStartPage={pdfManifest.student.legacyStartPage}
+        />
       </section>
       {teacher && (
         <section className="section" aria-labelledby="teacher-guides">
@@ -115,9 +170,23 @@ export default async function MaterialsPage() {
               Minhas turmas <ArrowRight size={16} />
             </Link>
           </div>
-          <GuideSection guides={teacherGuides} />
+          <GuideSection
+            guides={teacherGuides}
+            legacyStartPage={pdfManifest.teacher.legacyStartPage}
+          />
         </section>
       )}
+      <details className="section">
+        <summary>Consultar os arquivos originais</summary>
+        <a className="resource-link" href="/api/materials/aluno-v5" download>
+          Apostila original do aluno · 130 páginas
+        </a>
+        {teacher && (
+          <a className="resource-link" href="/api/materials/professor-v5" download>
+            Manual original do professor · 73 páginas
+          </a>
+        )}
+      </details>
     </Shell>
   );
 }

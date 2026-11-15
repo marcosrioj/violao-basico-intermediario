@@ -3,9 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 import { Play, Square } from 'lucide-react';
 import { audioContext, playTone } from './audio';
 import { Hint } from '@/components/ui/hint';
-export function Metronome() {
+export function Metronome({
+  initialMeter = '4/4',
+}: {
+  initialMeter?: '2/4' | '3/4' | '4/4' | '6/8';
+}) {
   const [bpm, setBpm] = useState(60);
-  const [meter, setMeter] = useState('4/4');
+  const [meter, setMeter] = useState<string>(initialMeter);
   const [running, setRunning] = useState(false);
   const [beat, setBeat] = useState(-1);
   const tick = useRef(0);

@@ -17,3 +17,5 @@ dist/
 supabase/.temp/
 supabase/.branches/
 *.log
+tmp/pdfs/
+__pycache__/

@@ -15,6 +15,9 @@ export default function Home() {
             começa aqui<span className="green">.</span>
           </h1>
           <p className="muted">Um caminho de aprendizado, uma música de cada vez.</p>
+          <p className="hint">
+            39 aulas de repertório e 27 estudos técnicos, com orientação do professor.
+          </p>
         </div>
         <span className="edition-pill">
           <span className="status-dot" /> DO BÁSICO AO INTERMEDIÁRIO

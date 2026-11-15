@@ -1,6 +1,7 @@
 import { Shell, PageHeading } from '@/components/shell';
 import { LearningLab } from '@/components/music/learning-lab';
 import { requireCourseProfile } from '@/lib/auth';
+import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 export default async function Laboratory() {
@@ -13,6 +14,17 @@ export default async function Laboratory() {
         description="Dê som à teoria. Experimente, escute e leve a descoberta para o violão."
       />
       <LearningLab />
+      <section className="card section">
+        <p className="eyebrow">APLICAR COM UM OBJETIVO</p>
+        <h2>Encontre um estudo para sua técnica</h2>
+        <p>
+          Pratique leitura, palhetada, articulações, expressão e harmonia com exemplos graduais
+          ligados às músicas das aulas.
+        </p>
+        <Link className="button secondary section" href="/tecnica">
+          Explorar os 27 estudos
+        </Link>
+      </section>
     </Shell>
   );
 }

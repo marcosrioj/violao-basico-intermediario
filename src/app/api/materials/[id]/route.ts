@@ -7,8 +7,10 @@ import { AppError } from '@/lib/errors';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 const materials = {
-  aluno: { filename: 'Curso_Aluno_Violao_Gospel_v5.pdf', teacherOnly: false },
-  professor: { filename: 'Manual_Professor_Violao_Gospel_v5.pdf', teacherOnly: true },
+  aluno: { filename: 'Curso_Aluno_Violao_Gospel_v6.pdf', teacherOnly: false },
+  professor: { filename: 'Manual_Professor_Violao_Gospel_v6.pdf', teacherOnly: true },
+  'aluno-v5': { filename: 'Curso_Aluno_Violao_Gospel_v5.pdf', teacherOnly: false },
+  'professor-v5': { filename: 'Manual_Professor_Violao_Gospel_v5.pdf', teacherOnly: true },
 } as const;
 
 export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {

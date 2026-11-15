@@ -73,9 +73,11 @@ export function getModuleLessons(module: number): Lesson[] {
 export const courseInfo = {
   name: 'Violão Vivo',
   tagline: 'Do primeiro acorde à liberdade de adorar.',
-  edition: 5,
+  edition: 6,
   modules: 13,
   lessons: 39,
   weeklyMinutes: 60,
   practiceDaysPerWeek: 4,
+  techniqueModules: 9,
+  techniqueStudies: 27,
 };
