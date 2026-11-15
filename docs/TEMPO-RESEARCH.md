@@ -14,6 +14,8 @@ Nas três músicas adotadas, o preset principal do player se chama **Padrão da 
 
 O metrônomo e a marcação visual acompanham a grade didática. Não há sincronização automática com o vídeo, detecção de batidas em tempo real nem mapa de mudanças de andamento da gravação. O ajuste manual continua necessário para estudar trechos específicos, rubato, rallentando ou entradas de banda.
 
+O player inclui as letras fornecidas pelo usuário para as 13 músicas e mapas iniciais de frases nas 19 versões, disponíveis nas 39 aulas. A posição é registrada em pulsos e acompanha a mudança do BPM de estudo pelo mesmo relógio do áudio. Todas as marcações atuais permanecem `draft`: associar uma frase à célula harmônica não confirma seu instante vocal na gravação. Isso não amplia a evidência dos BPMs nem transforma as formas abreviadas em transcrições integrais. A [verificação do acompanhamento](PLAYBACK-VERIFICATION.md) compara também a duração de cinco vídeos oficiais vinculados com a duração calculada de seus arranjos nos BPMs de referência; as diferenças de forma impedem tratar a reprodução da aula como uma faixa idêntica aos vídeos.
+
 ## Resultado por gravação
 
 Os valores da coluna “Player” são **pulsos por minuto na unidade indicada**. Nos compassos simples, o pulso é a semínima; em 6/8, o player conta duas semínimas pontuadas por compasso.

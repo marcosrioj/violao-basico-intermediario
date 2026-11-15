@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { ChartBar, SongVersion } from '../src/content/types';
+import { songs } from '../src/content/course';
 import {
   ChartTransport,
   idlePosition,
@@ -549,4 +550,182 @@ test('invalid passage ranges are rejected without altering playback', () => {
   assert.equal(f.chords().length, 1);
   assert.equal(f.chords()[0].stops, 0);
   assert.equal(f.position().bar, 0);
+});
+
+test('continuous snapshot follows fractional audio-clock beats even with silent metronome', () => {
+  const f = fixture([bar('D'), { ...bar('G', 2), meter: '2/4', beats_per_bar: 2 }, bar('Am')], {
+    bpm: 120,
+  });
+  assert.deepEqual(f.transport.snapshot(), {
+    ...idlePosition,
+    waitingForAudio: false,
+    beat: -1,
+    scoreSeconds: 0,
+    durationSeconds: 5,
+    elapsedSeconds: 0,
+  });
+  f.transport.play();
+  assert.equal(f.transport.snapshot().waitingForAudio, true);
+  f.time(0.039);
+  assert.equal(f.transport.snapshot().waitingForAudio, true);
+  f.time(0.04);
+  assert.equal(f.transport.snapshot().waitingForAudio, false);
+  const events = f.voices.length;
+  f.time(0.79);
+  let snapshot = f.transport.snapshot();
+  assert.equal(snapshot.bar, 0);
+  assert.equal(snapshot.tick, -1);
+  close(snapshot.beat, 1.5);
+  close(snapshot.scoreSeconds, 0.75);
+  close(snapshot.elapsedSeconds, 0.75);
+  assert.equal(f.voices.length, events, 'reading a frame does not schedule sound');
+  assert.equal(f.positions.length, 1, 'continuous frames do not flood coarse position subscribers');
+
+  f.time(2.29);
+  snapshot = f.transport.snapshot();
+  assert.equal(snapshot.bar, 1);
+  close(snapshot.beat, 0.5);
+  f.transport.pause();
+  f.time(50);
+  assert.deepEqual(f.transport.snapshot(), { ...snapshot, status: 'paused' });
+  f.transport.play();
+  assert.equal(
+    f.transport.snapshot().waitingForAudio,
+    true,
+    'resume has its own scheduling lead-in',
+  );
+  f.time(50.29);
+  snapshot = f.transport.snapshot();
+  close(snapshot.scoreSeconds, 2.5);
+  close(snapshot.elapsedSeconds, 2.5);
+  close(snapshot.beat, 1);
+  f.transport.stop();
+  assert.equal(f.transport.snapshot().beat, -1);
+  f.transport.dispose();
+  assert.equal(f.transport.snapshot().status, 'idle');
+});
+
+test('snapshot tracks the exact occurrence through loops without counting skipped bars as elapsed', () => {
+  const f = fixture([bar('D'), bar('G'), bar('Am'), bar('G'), bar('C')]);
+  f.transport.setLoopRange({ startBar: 3, endBar: 4 });
+  f.transport.play();
+  close(f.transport.snapshot().scoreSeconds, 12);
+  close(f.transport.snapshot().elapsedSeconds, 0);
+  f.time(12.54);
+  const looped = f.transport.snapshot();
+  assert.equal(looped.bar, 3);
+  close(looped.beat, 0.5);
+  close(looped.scoreSeconds, 12.5);
+  close(looped.elapsedSeconds, 12.5);
+  f.transport.setLoopRange(null);
+  f.time(16.29);
+  const continued = f.transport.snapshot();
+  assert.equal(continued.bar, 4);
+  close(continued.beat, 0.25);
+  close(continued.elapsedSeconds, 16.25);
+  f.time(20.04);
+  assert.equal(
+    f.transport.snapshot().status,
+    'idle',
+    'frame ends even before the next scheduler tick',
+  );
+});
+
+test('snapshot keeps compound fractional pulses and duration at noninteger tempos', () => {
+  const bpm = 56 / 1.5;
+  const f = fixture([bar('G', 2)], { meter: '6/8', pulses: 2, bpm });
+  f.transport.play();
+  f.time(0.04 + 60 / bpm / 3);
+  const snapshot = f.transport.snapshot();
+  close(snapshot.beat, 1 / 3);
+  close(snapshot.durationSeconds, 120 / bpm);
+  assert.equal(snapshot.tick, -1);
+});
+
+test('fractional-tempo loop boundaries remain readable without another scheduling lead-in', () => {
+  const bpm = 56 / 1.5;
+  const length = 120 / bpm;
+  const f = fixture([bar('D', 2), bar('G', 2), bar('Am', 2)], {
+    meter: '6/8',
+    pulses: 2,
+    bpm,
+  });
+  f.transport.setLoopRange({ startBar: 1, endBar: 3 });
+  f.transport.play();
+  for (const cycle of [1, 2, 17, 1000]) {
+    for (const delta of [-0.000001, 0, 0.000001]) {
+      f.time(0.04 + cycle * 2 * length + delta);
+      const snapshot = f.transport.snapshot();
+      assert.equal(snapshot.status, 'playing');
+      assert.equal(snapshot.waitingForAudio, false);
+      assert.ok(snapshot.bar === 1 || snapshot.bar === 2);
+      assert.ok(snapshot.beat >= 0 && snapshot.beat < 2);
+    }
+  }
+  f.transport.setLoopRange(null);
+  const remaining = 3 * length - f.transport.snapshot().scoreSeconds;
+  f.time(0.04 + 1000 * 2 * length + 0.000001 + remaining + 1e-8);
+  assert.doesNotThrow(() => f.transport.snapshot());
+  assert.equal(f.transport.snapshot().status, 'idle');
+});
+
+test('every course arrangement plays each written repeat in order and ends without an extra cycle', () => {
+  for (const song of Object.values(songs)) {
+    for (const [version, score] of Object.entries(song.versions)) {
+      const label = `${song.title} / ${version}`;
+      const bars = score.order.flatMap((part) =>
+        Array.from(
+          { length: part.repeat },
+          () => score.sections.find((section) => section.id === part.section)!.bars,
+        ).flat(),
+      );
+      const bpm = score.practice_bpm ?? 73;
+      const expected: { name: string; duration: number; at: number }[] = [];
+      let duration = 0;
+      for (const bar of bars)
+        for (const event of bar.events) {
+          const length = (event.beats * 60) / bpm;
+          expected.push({ name: event.chord, duration: length, at: 0.04 + duration });
+          duration += length;
+        }
+      let now = 0;
+      const actual: typeof expected = [];
+      const player = new ChartTransport(
+        bars,
+        score,
+        bpm,
+        {
+          now: () => now,
+          chord: (name, duration, at) => {
+            actual.push({ name, duration, at });
+            return () => {};
+          },
+          click: () => () => {},
+        },
+        () => {},
+      );
+      player.play();
+      close(player.snapshot().durationSeconds, duration);
+      for (const event of expected.slice(1)) {
+        now = event.at - 0.05;
+        player.tick();
+        now = event.at + 0.001;
+        player.tick();
+      }
+      now = 0.04 + duration - 0.001;
+      player.tick();
+      assert.equal(player.snapshot().status, 'playing', label);
+      assert.equal(player.snapshot().bar, bars.length - 1, label);
+      now += 0.002;
+      player.tick();
+      assert.equal(player.snapshot().status, 'idle', label);
+      assert.equal(actual.length, expected.length, label);
+      actual.forEach((event, index) => {
+        assert.equal(event.name, expected[index].name, label);
+        close(event.at, expected[index].at);
+        close(event.duration, expected[index].duration);
+      });
+      player.dispose();
+    }
+  }
 });

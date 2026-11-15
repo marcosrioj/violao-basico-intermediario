@@ -17,6 +17,16 @@ import {
 } from '@/content/tempo';
 import { TempoReference } from './tempo-reference';
 import { Hint } from '@/components/ui/hint';
+import { chartLyricsKey, projectLyricCues, totalChartBeats } from './chart-lyrics';
+import { useChartLyrics } from './chart-lyrics-storage';
+import { ChartLyricsEditor } from './chart-lyrics-editor';
+import { ChartPlaybackReadout } from './chart-playback-readout';
+import { createLyricsClock } from './chart-lyrics-clock';
+import type { LessonLyrics } from '@/content/song-lyrics-types';
+import type { LyricCue } from './chart-lyrics';
+import { withLyricSyllables } from './lyric-syllables';
+
+const noLyrics: LyricCue[] = [];
 
 function previewFirstChord(bar: ChartBar) {
   const chord = chords[bar.events[0]?.chord];
@@ -27,10 +37,14 @@ export function ChartPlayer({
   chart,
   initialBpm,
   tempo,
+  songId,
+  lyricsContent,
 }: {
   chart: SongVersion;
   initialBpm: number;
   tempo?: TempoResearch;
+  songId: string;
+  lyricsContent?: LessonLyrics;
 }) {
   const defaultBpm = defaultPlaybackBpm(initialBpm, tempo);
   const researchedBpm = tempo ? referenceBpm(tempo) : null;
@@ -41,6 +55,8 @@ export function ChartPlayer({
   const [metronome, setMetronome] = useState(false);
   const [repeatGroup, setRepeatGroup] = useState<string | null>(null);
   const [playhead, setPlayhead] = useState(idlePosition);
+  const [barsPerRow, setBarsPerRow] = useState(4);
+  const arrangement = useRef<HTMLDivElement>(null);
   const tempoId = useId();
   const transport = useRef<ChartTransport | null>(null);
   const settings = useRef({ loop: false, metronome: false, range: null as LoopRange | null });
@@ -48,24 +64,49 @@ export function ChartPlayer({
   const playing = playhead.status === 'playing';
   const groups = useMemo(() => buildChartGroups(chart, section), [chart, section]);
   const bars = useMemo(() => groups.flatMap((group) => group.bars.map(({ bar }) => bar)), [groups]);
+  const fullBars = useMemo(
+    () => buildChartGroups(chart).flatMap((group) => group.bars.map(({ bar }) => bar)),
+    [chart],
+  );
+  const totalBeats = totalChartBeats(fullBars);
+  const storageKey = useMemo(() => chartLyricsKey(chart, songId), [chart, songId]);
+  const lyrics = useChartLyrics(storageKey, totalBeats, lyricsContent?.cues ?? noLyrics);
+  const syllabicLyrics = useMemo(() => withLyricSyllables(lyrics.cues), [lyrics.cues]);
+  const estimatedTiming = syllabicLyrics.some((cue) =>
+    cue.syllables?.some((part) => part.timing === 'estimated'),
+  );
+  const projectedLyrics = useMemo(
+    () => projectLyricCues(chart, groups, syllabicLyrics),
+    [chart, groups, syllabicLyrics],
+  );
+  const readPosition = useCallback(() => transport.current?.snapshot() ?? null, []);
+  const lyricsClock = useMemo(
+    () => createLyricsClock(projectedLyrics, bpm),
+    [projectedLyrics, bpm],
+  );
   const referenceGroups = useMemo(
     () => chart.sections.flatMap((part) => buildChartGroups(chart, part.id)),
     [chart],
   );
   const stopPlayback = useCallback(() => {
     pendingStart.current = null;
+    lyricsClock.reset();
     transport.current?.stop();
-  }, []);
-  const startAt = useCallback((bar: number) => {
-    const range = settings.current.range;
-    if (range && (bar < range.startBar || bar >= range.endBar)) {
-      settings.current.range = null;
-      setRepeatGroup(null);
-      transport.current?.setLoopRange(null);
-    }
-    void audioContext().resume();
-    transport.current?.play(bar);
-  }, []);
+  }, [lyricsClock]);
+  const startAt = useCallback(
+    (bar: number) => {
+      const range = settings.current.range;
+      if (range && (bar < range.startBar || bar >= range.endBar)) {
+        settings.current.range = null;
+        setRepeatGroup(null);
+        transport.current?.setLoopRange(null);
+      }
+      lyricsClock.reset();
+      void audioContext().resume();
+      transport.current?.play(bar);
+    },
+    [lyricsClock],
+  );
   function clearPassageRepeat() {
     settings.current.range = null;
     setRepeatGroup(null);
@@ -117,6 +158,26 @@ export function ChartPlayer({
     stopPlayback();
     setBpm(Math.min(180, Math.max(30, value)));
   }
+  function togglePlayback() {
+    if (playing) transport.current?.pause();
+    else {
+      if (playhead.status === 'idle') lyricsClock.reset();
+      void audioContext().resume();
+      transport.current?.play();
+    }
+  }
+  function prepareLyricsPlayback() {
+    stopPlayback();
+    clearPassageRepeat();
+    settings.current.loop = false;
+    setLoop(false);
+    transport.current?.setLoop(false);
+    if (section === 'all') startAt(0);
+    else {
+      pendingStart.current = 0;
+      setSection('all');
+    }
+  }
   useEffect(() => {
     const player = new ChartTransport(
       bars,
@@ -125,7 +186,7 @@ export function ChartPlayer({
       {
         now: () => audioContext().currentTime,
         chord: (name, duration, at) =>
-          chords[name] ? soundChord(chords[name].frets, Math.max(0.04, duration), at) : () => {},
+          chords[name] ? soundChord(chords[name].frets, duration, at) : () => {},
         click: (frequency, volume, at) => playTone(frequency, 0.045, at, volume),
       },
       setPlayhead,
@@ -155,6 +216,23 @@ export function ChartPlayer({
     const timer = setInterval(() => transport.current?.tick(), 25);
     return () => clearInterval(timer);
   }, [playing]);
+  useEffect(
+    () => lyricsClock.follow(playing, readPosition),
+    [playing, playhead.status, lyricsClock, readPosition],
+  );
+  useEffect(() => {
+    const element = arrangement.current?.parentElement;
+    if (!element) return;
+    // Match the chart's container breakpoints so phrases stay beside their bars on phones.
+    const observer = new ResizeObserver(([entry]) => {
+      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      setBarsPerRow(
+        entry.contentRect.width >= 56 * rem ? 4 : entry.contentRect.width >= 30 * rem ? 2 : 1,
+      );
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
   return (
     <CollapsibleCard className="chart-player" id="tocar" title="Cifra de acompanhamento">
       <div className="section-title">
@@ -266,16 +344,7 @@ export function ChartPlayer({
           Metrônomo
         </label>
         <div className="chart-transport-actions">
-          <button
-            className="button"
-            onClick={() => {
-              if (playing) transport.current?.pause();
-              else {
-                void audioContext().resume();
-                transport.current?.play();
-              }
-            }}
-          >
+          <button className="button" onClick={togglePlayback}>
             {playing ? (
               <Pause size={16} aria-hidden="true" />
             ) : (
@@ -297,6 +366,55 @@ export function ChartPlayer({
         {repeatGroup &&
           ` · Repetição: ${groups.find((group) => group.key === repeatGroup)?.title ?? 'trecho selecionado'}`}
       </p>
+      <ChartPlaybackReadout
+        status={playhead.status}
+        readPosition={readPosition}
+        duration={(totalChartBeats(bars) * 60) / bpm}
+        bars={bars.length}
+      />
+      <p className="hint">
+        As passagens escritas já incluem as repetições do arranjo didático. Marcar “Repetir” cria um
+        ciclo de estudo adicional.
+      </p>
+      <ChartLyricsEditor
+        cues={syllabicLyrics}
+        storageKey={storageKey}
+        totalBeats={totalBeats}
+        bpm={bpm}
+        canMark={section === 'all' && !loop && !repeatGroup && playhead.status !== 'idle'}
+        readPosition={readPosition}
+        onPrepare={prepareLyricsPlayback}
+        onPause={togglePlayback}
+        onSave={lyrics.save}
+        notice={lyrics.notice}
+        baseAvailable={Boolean(lyricsContent)}
+        customized={lyrics.customized}
+      />
+      {lyrics.cues.length > 0 && (
+        <p className="hint">
+          A letra aparece abaixo dos compassos; o negrito avança suavemente pela sílaba em curso.
+          {section !== 'all' && ' No trecho isolado, é usada a letra da primeira passagem.'}
+        </p>
+      )}
+      {lyricsContent && (
+        <div className="chart-lyrics-source label-with-hint">
+          <span className="badge">
+            {estimatedTiming
+              ? 'Prévia silábica · tempos estimados'
+              : lyrics.customized
+                ? 'Suas marcações silábicas'
+                : 'Letra no arranjo da aula'}
+          </span>
+          <Hint label="Sobre o alinhamento da letra">
+            <p>{lyricsContent.alignmentNote}</p>
+            <p>
+              O movimento acompanha o relógio dos acordes. A divisão escrita em sílabas e os tempos
+              estimados não reproduzem automaticamente a voz da gravação. Sustentações, pausas e
+              uniões de vogais precisam de marcações individuais conferidas.
+            </p>
+          </Hint>
+        </div>
+      )}
       {tempo && (
         <div className="chart-tempo">
           <div className="control-row" role="group" aria-label="Escolher andamento">
@@ -356,6 +474,7 @@ export function ChartPlayer({
       </div>
       <div
         className="chart-arrangement"
+        ref={arrangement}
         role="region"
         aria-label={section === 'all' ? 'Arranjo completo por trechos' : 'Trecho para praticar'}
       >
@@ -364,6 +483,10 @@ export function ChartPlayer({
             key={group.key}
             group={group}
             chart={chart}
+            bpm={bpm}
+            maxBars={barsPerRow}
+            lyrics={projectedLyrics}
+            lyricsClock={lyricsClock}
             position={playhead.bar}
             activeTick={
               metronome && group.bars.some((bar) => bar.playbackIndex === playhead.bar)
@@ -379,6 +502,20 @@ export function ChartPlayer({
           />
         ))}
       </div>
+      {lyricsContent && (
+        <details className="section chart-full-lyrics">
+          <summary>Letra completa fornecida</summary>
+          <p className="hint">
+            Texto integral, incluindo repetições e falas que podem não fazer parte do arranjo
+            abreviado desta aula.
+          </p>
+          <div className="chart-provided-lyrics">
+            {lyricsContent.providedLines.map((line, index) => (
+              <p key={index}>{line}</p>
+            ))}
+          </div>
+        </details>
+      )}
       <details className="section chart-reference">
         <summary>Mapa dos trechos e compassos</summary>
         <Hint label="Mapa de referências">
@@ -391,6 +528,8 @@ export function ChartPlayer({
               key={group.sectionId}
               group={group}
               chart={chart}
+              bpm={bpm}
+              maxBars={barsPerRow}
               reference
               onStart={startReference}
               repeating={groups.some(

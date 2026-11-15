@@ -1,0 +1,58 @@
+{
+  "source": "Letras fornecidas pelo usuário nesta conversa em 2026-11-15. Títulos e artistas estão no catálogo de músicas; estas contagens cobrem as linhas de letra, sem cabeçalhos.",
+  "normalization": "UTF-8; linhas preservadas na ordem recebida, separadas por LF, sem quebra após a última linha.",
+  "songs": {
+    "santo_espirito": {
+      "lines": 49,
+      "sha256": "179f920422d486aab977013c6671c90e72e83ebcac247dfdaf525d9cd4d613eb"
+    },
+    "faz_chover_tna": {
+      "lines": 60,
+      "sha256": "ed1444ffe4524c13bb943ba1c4626f0504f3a651ddbf43ca0361b674d32dac36"
+    },
+    "me_derramar": {
+      "lines": 36,
+      "sha256": "49022df0c4f59a3dea6f06d05e79b7b0e5991a5a8119c0104f81e2d8c53cea0a"
+    },
+    "sonda_me_usa_me": {
+      "lines": 69,
+      "sha256": "764ff0b3782d9cd735586b4867a2b43445e12e27ddc6670d61745d7ba39c7aaf"
+    },
+    "renova_me": {
+      "lines": 19,
+      "sha256": "b246d8cf6b0e0b5fab2da2b3f1169e8fce94ec404d734e90a0e16e09a2880233"
+    },
+    "poderoso_deus": {
+      "lines": 66,
+      "sha256": "20c308ed68cbba58a6a632ab24ef27625993ba77098502ad7815c3cb1963221b"
+    },
+    "faz_chover": {
+      "lines": 30,
+      "sha256": "03ee2b730634203511bd269a5c2ffad2962c9347e186ff1e70a9fe40bba5c639"
+    },
+    "lugar_secreto": {
+      "lines": 66,
+      "sha256": "966327aeeaf32175ad867063aa7990ca6e36febcdc8ccaa3e55c2f66b58418a9"
+    },
+    "rompendo_em_fe": {
+      "lines": 46,
+      "sha256": "ed8b297d868f6217c1ffcc4c24f5c5f3d0bdfb23945e4dd8015a2139865cac70"
+    },
+    "ousado_amor": {
+      "lines": 40,
+      "sha256": "e3f3bf04399f7829fb979e5636d703430bb5ca999c5e8a027c2a0ecf9d007c2a"
+    },
+    "preciso_de_ti": {
+      "lines": 137,
+      "sha256": "630023b4e0dd39ae2abd4c2ad168f1cf73dd2d77027eb7051a71b925d6262cd1"
+    },
+    "a_ele_a_gloria": {
+      "lines": 36,
+      "sha256": "a52f98e013decc65d22303d6f57705e00663c688ca78046dbf10078c1bc05137"
+    },
+    "bondade_de_deus": {
+      "lines": 58,
+      "sha256": "24b138323f8227e0d8db13d2fdb65817d39c9ce76e92f843ead68581580c289d"
+    }
+  }
+}

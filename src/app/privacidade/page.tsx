@@ -16,6 +16,12 @@ export default function Privacy() {
           participação em turmas ficam associados à sua conta. A autenticação e o banco são operados
           pelo Supabase. O site usa cookies necessários à sessão.
         </p>
+        <p>
+          Letras e marcações de acompanhamento que você adicionar ficam apenas no armazenamento
+          deste navegador, compartilhadas entre as aulas da mesma versão musical neste dispositivo.
+          Elas não são enviadas ao Supabase nem compartilhadas automaticamente com a turma. Você
+          pode removê-las na cifra ou exportar uma cópia antes de limpar os dados do navegador.
+        </p>
         <h2>Quem pode acompanhar</h2>
         <p>
           Você acessa seus próprios registros. Ao ingressar em uma turma pelo código do professor,
@@ -26,9 +32,10 @@ export default function Privacy() {
         <h2>Vídeos e páginas externas</h2>
         <p>
           Os vídeos do YouTube são carregados somente após sua ação. Cifras, gravações e outras
-          referências abrem serviços externos com suas próprias políticas. O curso não reproduz
-          letras completas protegidas nem hospeda cópias de gravações. Os áudios dos exercícios são
-          gerados no seu navegador.
+          referências abrem serviços externos com suas próprias políticas. As letras do repertório
+          foram fornecidas pelo responsável pelo curso; suas personalizações ficam neste navegador.
+          O curso não hospeda cópias das gravações. Os áudios dos exercícios são gerados no seu
+          navegador.
         </p>
         <h2>Controle da sua conta</h2>
         <p>

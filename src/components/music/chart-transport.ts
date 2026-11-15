@@ -7,6 +7,21 @@ export interface PlaybackPosition {
   tick: number;
 }
 
+/** A read-only view of the audio clock, suitable for animation-frame lyric highlighting. */
+export interface PlaybackSnapshot extends PlaybackPosition {
+  /** The scheduled start is still ahead of the audio clock; do not highlight a new lyric yet. */
+  waitingForAudio: boolean;
+  /** Zero-based fractional pulse within the current bar; -1 when idle. */
+  beat: number;
+  /** Position in the expanded arrangement, including its written repeats. */
+  scoreSeconds: number;
+  durationSeconds: number;
+  /** Time actually played since this start, excluding pauses and including practice loops. */
+  elapsedSeconds: number;
+  /** Start of the current traversal (explicit start or practice-loop return); absent when idle. */
+  passStartSeconds?: number;
+}
+
 /** End is exclusive, so repeated occurrences keep their own absolute bar indexes. */
 export interface LoopRange {
   startBar: number;
@@ -39,6 +54,7 @@ export class ChartTransport {
   private duration: number;
   private status: PlaybackPosition['status'] = 'idle';
   private offset = 0;
+  private elapsedStart = 0;
   private anchor = 0;
   private finishAt: number;
   private loop = false;
@@ -52,7 +68,7 @@ export class ChartTransport {
   constructor(
     bars: ChartBar[],
     chart: SongVersion,
-    bpm: number,
+    private bpm: number,
     private audio: AudioPort,
     private onPosition: (position: PlaybackPosition) => void,
   ) {
@@ -69,10 +85,8 @@ export class ChartTransport {
     this.route = { at: 0, from: 0, repeatFrom: 0, to: start, repeat: false };
   }
 
-  private position() {
-    return this.status === 'playing'
-      ? this.offset + Math.max(0, this.audio.now() - this.anchor)
-      : this.offset;
+  private position(now = this.audio.now()) {
+    return this.status === 'playing' ? this.offset + Math.max(0, now - this.anchor) : this.offset;
   }
 
   private segmentAt(at: number) {
@@ -88,6 +102,39 @@ export class ChartTransport {
   private scoreAt(at: number) {
     const segment = this.segmentAt(at);
     return segment ? segment.from + Math.max(0, at - segment.at) : this.duration;
+  }
+
+  /** Reading the position never schedules audio or advances a separate visual timer. */
+  snapshot(): PlaybackSnapshot {
+    const now = this.audio.now();
+    const at = this.position(now);
+    const inactive: PlaybackSnapshot = {
+      ...idlePosition,
+      waitingForAudio: false,
+      beat: -1,
+      scoreSeconds: 0,
+      durationSeconds: this.duration,
+      elapsedSeconds: 0,
+    };
+    if (this.disposed || this.status === 'idle' || !this.duration || at >= this.finishAt) {
+      return inactive;
+    }
+    const scoreSeconds = this.scoreAt(at);
+    const bar = this.timeline.findIndex((item) => scoreSeconds < item.end);
+    const item = this.timeline[bar];
+    // Floating-point arithmetic can reach the final score boundary just before finishAt.
+    if (!item) return inactive;
+    return {
+      status: this.status,
+      waitingForAudio: this.status === 'playing' && now < this.anchor,
+      bar,
+      tick: this.metronome ? item.ticks.findLastIndex((tick) => tick.at <= scoreSeconds) : -1,
+      beat: ((scoreSeconds - item.start) * this.bpm) / 60,
+      scoreSeconds,
+      durationSeconds: this.duration,
+      elapsedSeconds: Math.max(0, at - this.elapsedStart),
+      passStartSeconds: this.segmentAt(at)?.from,
+    };
   }
 
   private clearVoices(predicate: (voice: Voice) => boolean = () => true) {
@@ -151,10 +198,12 @@ export class ChartTransport {
       if (!bar) return;
       this.clearVoices();
       this.offset = bar.start;
+      this.elapsedStart = this.offset;
       this.plan(this.offset, bar.start);
     } else if (this.status === 'playing') return;
     else if (this.status === 'idle') {
       this.offset = this.loopRange ? this.timeline[this.loopRange.startBar].start : 0;
+      this.elapsedStart = this.offset;
       this.plan(this.offset, this.offset);
     }
     this.anchor = this.audio.now() + 0.04;
@@ -176,6 +225,7 @@ export class ChartTransport {
     if (this.disposed) return;
     this.status = 'idle';
     this.offset = 0;
+    this.elapsedStart = 0;
     this.clearVoices();
     this.plan(0, 0);
     this.publish();

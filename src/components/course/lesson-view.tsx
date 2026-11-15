@@ -7,6 +7,7 @@ import { defaultPlaybackBpm, formatBpm } from '@/content/tempo';
 import type { Lesson } from '@/content/types';
 import { ChordDiagram } from '@/components/music/chord-diagram';
 import { ChartPlayer } from '@/components/music/chart-player';
+import { getLessonLyrics } from '@/content/song-lyrics';
 import { RichText } from '@/components/course/rich-text';
 import { HashReveal } from '@/components/course/hash-reveal';
 import { Quiz } from './quiz';
@@ -131,6 +132,8 @@ export function LessonView({
                 chart={chart}
                 initialBpm={lesson.bpm}
                 tempo={song.tempo}
+                songId={lesson.song}
+                lyricsContent={getLessonLyrics(lesson.song, lesson.version)}
               />
               <CollapsibleCard
                 id="praticar"

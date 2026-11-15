@@ -2,6 +2,138 @@
   min-width: 0;
 }
 
+.chart-playback-readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted-foreground);
+}
+
+.chart-playback-readout progress {
+  flex: 1 1 100%;
+  width: 100%;
+  height: var(--space-2);
+  accent-color: var(--color-primary);
+}
+
+/* Plain lyric text; no card, background, caption or highlighted rectangle. */
+.karaoke-text {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+
+.karaoke-word {
+  display: inline-block;
+  max-inline-size: 100%;
+}
+
+.karaoke-syllable {
+  display: inline-grid;
+  vertical-align: baseline;
+  white-space: pre;
+}
+
+/* Reserve bold width without painting or exposing a second copy of the lyric. */
+.karaoke-syllable::after {
+  content: attr(data-text);
+  grid-area: 1 / 1;
+  font-weight: 800;
+  visibility: hidden;
+  user-select: none;
+  pointer-events: none;
+}
+
+.karaoke-glyph {
+  grid-area: 1 / 1;
+  font-weight: 400;
+}
+
+:is([data-active-syllable], [data-sung-syllable]) > .karaoke-glyph {
+  font-weight: 800;
+}
+
+/* The sweep colors the single visible glyph; no regular/bold layers overlap. */
+@supports (background-clip: text) {
+  .karaoke-fill {
+    background-image: linear-gradient(
+      to right,
+      var(--color-text) calc(var(--karaoke-fill, 0%) - 0.18em),
+      var(--color-muted-foreground) calc(var(--karaoke-fill, 0%) + 0.08em)
+    );
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), (forced-colors: active) {
+  .karaoke-fill {
+    background: none;
+    color: inherit;
+  }
+}
+
+.chart-provided-lyrics {
+  padding-block: var(--space-4);
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.chart-provided-lyrics p {
+  margin: 0;
+}
+
+.chart-lyrics-source {
+  margin-block: var(--space-3);
+}
+
+.chart-lyrics-editor > .stack {
+  margin-top: var(--space-4);
+}
+
+.chart-lyrics-editor :is(textarea, select, input) {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 1rem;
+}
+
+.chart-lyrics-editor .button {
+  min-height: 44px;
+  white-space: normal;
+}
+
+.chart-lyrics-editor :is(.control-row, .chart-lyrics-files, .chart-lyrics-markers) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chart-lyrics-editor :is(.control-row, .chart-lyrics-files, .chart-lyrics-markers) > * {
+  flex: 1 1 10rem;
+  min-width: 0;
+}
+
+.chart-lyrics-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: var(--space-4);
+}
+
+.chart-lyrics-fields .control-row {
+  margin-top: var(--space-2);
+}
+
+.chart-lyrics-timing {
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
 .chart-player > .collapsible-card-body {
   container: chord-chart / inline-size;
 }

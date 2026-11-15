@@ -2,6 +2,11 @@ import { memo, useId, type CSSProperties } from 'react';
 import { Play, Repeat2 } from 'lucide-react';
 import type { ChartBar, SongVersion } from '@/content/types';
 import { buildChartRows, describeChartBar, type ChartGroup } from './chart-layout';
+import type { ProjectedLyricCue } from './chart-lyrics';
+import { totalChartBeats } from './chart-lyrics';
+import { formatPlaybackTime } from './chart-playback-readout';
+import { ChartLyricsRow } from './chart-lyrics-row';
+import type { LyricsClock } from './chart-lyrics-clock';
 
 function barReference(sectionId: string, index: number) {
   return `${sectionId}${/\d$/.test(sectionId) ? '.' : ''}${index + 1}`;
@@ -32,6 +37,10 @@ export const ChartSection = memo(function ChartSection({
   paused = false,
   repeating = false,
   onRepeat,
+  bpm,
+  maxBars = 4,
+  lyrics = [],
+  lyricsClock,
 }: {
   group: ChartGroup;
   chart: SongVersion;
@@ -44,9 +53,13 @@ export const ChartSection = memo(function ChartSection({
   paused?: boolean;
   repeating?: boolean;
   onRepeat?: (group: ChartGroup, enabled: boolean) => void;
+  bpm?: number;
+  maxBars?: number;
+  lyrics?: ProjectedLyricCue[];
+  lyricsClock?: LyricsClock;
 }) {
   const heading = useId();
-  const rows = buildChartRows(group.bars, chart);
+  const rows = buildChartRows(group.bars, chart, maxBars);
   return (
     <section
       className={`chart-section${repeating ? ' is-repeating' : ''}`}
@@ -64,6 +77,8 @@ export const ChartSection = memo(function ChartSection({
           <p>
             {group.sectionId} · {group.bars.length}{' '}
             {group.bars.length === 1 ? 'compasso' : 'compassos'}
+            {bpm &&
+              ` · ${formatPlaybackTime((totalChartBeats(group.bars.map(({ bar }) => bar)) * 60) / bpm)}`}
             {!reference && group.passages > 1 && (
               <span id={`${heading}-passage`}>
                 {' '}
@@ -186,6 +201,14 @@ export const ChartSection = memo(function ChartSection({
                   );
                 })}
               </div>
+              {!reference && lyricsClock && (
+                <ChartLyricsRow
+                  clock={lyricsClock}
+                  cues={lyrics}
+                  firstBar={first.playbackIndex}
+                  lastBar={last.playbackIndex}
+                />
+              )}
             </div>
           );
         })}
