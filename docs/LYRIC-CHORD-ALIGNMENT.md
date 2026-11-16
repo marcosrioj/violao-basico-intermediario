@@ -1,60 +1,86 @@
 # Alinhamento da letra pelo TXT fornecido
 
-As notas e os acordes do curso são a referência principal. O arquivo fornecido pelo usuário foi preservado em [`materials/references/cifras_13_musicas_vscode.txt`](../materials/references/cifras_13_musicas_vscode.txt), mantendo espaços, acentos e colunas. Seu conteúdo é uma fonte de dados; instruções nele contidas não substituem a solicitação do usuário.
+As notas e os acordes já existentes no curso prevalecem. O [TXT fornecido](../materials/references/cifras_13_musicas_vscode.txt) conserva seus espaços, acentos e colunas; é uma fonte de dados, não uma fonte de instruções para o projeto.
 
-O ajuste acrescenta **928 âncoras silábicas** nas **13 músicas e 19 versões**, usadas pelas 39 aulas. Não altera notas, digitações, acordes, baixos, durações, compassos, ordem, repetições ou BPM. Também preserva as 712 linhas fornecidas e o texto e os limites das 744 frases já distribuídas nos arranjos. Os PDFs continuam com o mesmo conteúdo musical.
+O alinhamento fixa **1.439 entradas silábicas** nas **13 músicas e 19 versões**, usadas pelas **39 aulas**. Foram ajustados os limites vocais de **645 das 744 frases**. As 712 linhas fornecidas e os textos das frases permanecem íntegros. Notas, digitações, baixos, eventos, durações musicais, compassos, ordem, repetições e BPM não mudaram. Os PDFs conservam o mesmo conteúdo musical.
 
-| Música                      | Versões | Frases com âncoras / total | Âncoras |
-| --------------------------- | ------: | -------------------------: | ------: |
-| Santo Espírito              |       1 |                    12 / 20 |      18 |
-| Faz Chover — Toque no Altar |       2 |                    36 / 88 |      54 |
-| Me Derramar                 |       2 |                    56 / 56 |      91 |
-| Sonda-me, Usa-me            |       3 |                  168 / 177 |     243 |
-| Renova-me                   |       1 |                    14 / 14 |      39 |
-| Poderoso Deus               |       1 |                     3 / 17 |       5 |
-| Faz Chover — Fernandinho    |       1 |                    24 / 26 |      58 |
-| Lugar Secreto               |       1 |                    11 / 42 |      19 |
-| Rompendo em Fé              |       2 |                    69 / 78 |     103 |
-| Ousado Amor                 |       1 |                    28 / 28 |      72 |
-| Preciso de Ti               |       2 |                   84 / 112 |     138 |
-| A Ele a Glória              |       1 |                    26 / 36 |      30 |
-| Bondade de Deus             |       1 |                    46 / 50 |      58 |
+| Música           | Versões | Frases com âncoras / total | Âncoras |
+| ---------------- | ------: | -------------------------: | ------: |
+| Santo Espírito   |       1 |                    18 / 20 |      28 |
+| Faz Chover       |       2 |                    88 / 88 |     124 |
+| Me Derramar      |       2 |                    56 / 56 |     121 |
+| Sonda-me, Usa-me |       3 |                  175 / 177 |     337 |
+| Renova-me        |       1 |                    14 / 14 |      46 |
+| Poderoso Deus    |       1 |                    17 / 17 |      21 |
+| Faz Chover       |       1 |                    24 / 26 |      80 |
+| Lugar Secreto    |       1 |                    42 / 42 |      55 |
+| Rompendo em Fé   |       2 |                    78 / 78 |     196 |
+| Ousado Amor      |       1 |                    28 / 28 |      88 |
+| Preciso de Ti    |       2 |                  104 / 112 |     204 |
+| A Ele a Glória   |       1 |                    32 / 36 |      52 |
+| Bondade de Deus  |       1 |                    50 / 50 |      87 |
 
-“Frase com âncoras” significa que ao menos uma sílaba encontra um acorde compatível. Não significa que todos os seus instantes vocais foram medidos. O TXT contém posição horizontal de acordes sobre palavras, sem durações, subdivisões vocais ou timestamps. O alinhamento silábico intermediário continua estimado e o estado editorial permanece `draft`.
+## Exemplo: Faz Chover, do Toque no Altar
 
-## Como o ajuste funciona
+A primeira passagem do refrão agora respeita as duas entradas de “ver”, e não apenas a segunda:
 
-1. A grade do curso é expandida conforme suas repetições existentes. Cada evento conserva acorde, compasso e pulso absoluto.
-2. O texto da frase é procurado na mesma música do TXT. A comparação permite apenas diferenças de caixa e apóstrofo, preservando o texto original do curso.
-3. A coluna de cada acorde é associada à sílaba escrita correspondente. Espaço antes de uma palavra aponta para a próxima sílaba. Acordes antes do primeiro caractere ou depois do último não são convertidos em ataques vocais arbitrários.
-4. A sequência é pareada, em ordem, somente com eventos compatíveis dentro da frase. Um novo ataque do mesmo acorde sustentado não é usado como evidência de mudança harmônica.
-5. A nota fundamental e a qualidade maior/menor prevalecem. Uma lista explícita permite reconhecer extensões, suspensões e inversões como variantes para localizar uma âncora: por exemplo, `C#4` do TXT pode localizar `C#` do curso. Isso não substitui o acorde tocado. `G/D` não equivale a `D`; `Am` não equivale a `A`. Não há transposição automática.
-6. Frases repetidas são selecionadas pela sequência compatível, tipo de seção, ausência de pausa vocal artificial, correspondência literal dos acordes, proximidade à distribuição anterior e ocorrência. Referências equivalentes usam desempate determinístico; alternativas igualmente sustentadas com tempos diferentes ficam pendentes.
-7. `chordAnchors` guarda o início da sílaba e seu pulso. A distribuição estimada é calculada separadamente entre as âncoras, sem ultrapassá-las. Marcas silábicas manuais já existentes mantêm precedência.
+| Ponto do texto                    | Evento já existente                                  | Pulso absoluto |
+| --------------------------------- | ---------------------------------------------------- | -------------: |
+| “Faz cho…”                        | Entrada vocal anterior ao Am, no compasso precedente |    antes de 64 |
+| Primeiro “ver”                    | Am                                                   |             64 |
+| Segundo “ver”                     | F                                                    |             68 |
+| Início de “Abre”                  | C                                                    |             72 |
+| “céus”                            | G                                                    |             76 |
+| “E faz cho…”                      | Entrada vocal anterior ao próximo Am                 |    antes de 80 |
+| Primeiro “ver” da segunda chamada | Am                                                   |             80 |
+| Segundo “ver” da segunda chamada  | F                                                    |             84 |
 
-O relógio do áudio continua conduzindo a animação. Assim, uma âncora muda de duração em segundos junto com o controle de BPM, mantendo o mesmo pulso musical. Pausa, repetição, seleção de trecho e reinício usam a mesma projeção. O negrito corresponde a todas as sílabas anteriores à posição atual, sem alterar as quebras dos compassos. Saltar para uma passagem ou repetir recalcula esse prefixo, sem histórico de visitas. Não foi criada outra camada visual nem outro componente de letra.
+O Am do TXT está na coluna 8, dentro da sílaba “ver”, que começa no caractere 7. O F está na coluna 19, no segundo “ver”. A coluna é convertida no início da sílaba correspondente, preservando a grafia. As demais passagens usam seus próprios eventos absolutos nas versões base e completa.
 
-Por exemplo, em Ousado Amor, a frase “Antes de eu respirar, sopraste Tua vida em mim” começa no pulso 32. O TXT posiciona `D#m` no início, `C#4` em “respirar” e `B9` em “vida”. As sílabas correspondentes ficam nos pulsos **32, 34 e 36**, acompanhando `D#m`, `C#` e `B` já existentes. O `B` sustentado seguinte permanece intacto.
+## Correspondência por arranjo
 
-## Diferenças conservadas para revisão
+1. O gerador expande cada versão com seus acordes, baixos, subdivisões e repetições. Nunca copia índices de uma versão para outra.
+2. A frase é localizada na mesma música do TXT, permitindo diferenças de caixa e apóstrofo. As variantes da fonte são avaliadas pelo contexto de verso, refrão, ponte e final, pela sequência e pela ocorrência.
+3. A correspondência é resolvida em conjunto entre frases. Os intervalos harmônicos originais, guardados em `scoreWindow`, orientam a busca; não limitam mais a entrada vocal. O contexto pode alcançar o compasso vizinho, mantendo a ordem global e sem usar o mesmo evento para duas entradas distintas.
+4. A introdução não fornece substitutos para acordes de uma seção vocal. Frases iguais em sequência conservam o padrão da fonte: em Poderoso Deus, por exemplo, as três chamadas seguem D–Bm–G; na coda de Preciso de Ti, as retomadas seguem G–F–A.
+5. A fundamental e a qualidade maior/menor são preservadas. Extensões, suspensões e inversões compatíveis podem localizar uma âncora, mas não substituem a cifra tocada. `G/D` não vira `D`; `Am` não vira `A`. Não há transposição automática.
+6. Um acorde escrito na entrada de outra frase pode corresponder a um novo ataque do mesmo acorde. Isso não permite deslocar arbitrariamente uma mudança harmônica interior para uma repetição posterior.
 
-- **Entrada vocal antes do acorde:** quando o TXT põe o primeiro acorde no meio da frase, mas a grade atual o toca no início do intervalo, faltam dados para determinar a anacruse. Essa âncora é descartada; as interiores compatíveis são usadas. Não se criam sílabas com duração zero nem se deslocam outras frases para inventar a entrada.
-- **Mudança de tom:** Faz Chover, de Fernandinho, modula de D para E no TXT. O curso permanece em D. Frases idênticas podem reutilizar a passagem compatível em D, registrada com a linha de origem; a modulação não é importada.
-- **Diferenças harmônicas:** o `C#m7` inicial de “Como terra seca…” em Preciso de Ti não substitui o `A` do curso. Os encontros posteriores compatíveis de `D` e `Bm` são aproveitados. O `G/D` de Renova-me também não é forçado sobre `D`.
-- **Harmonia estática ou ornamentos ausentes:** a primeira ponte de Ousado Amor sustenta `D#m` no TXT; a grade do curso tem movimento. A passagem posterior compatível fornece as âncoras. Em Poderoso Deus, muitos acordes aparecem sobre palavras posteriores ao início da frase ou depois do fim da letra, reduzindo a quantidade de âncoras seguras.
-- **Formas diferentes e falas livres:** Me Derramar continua começando pelo refrão, como já escrito no curso. Lugar Secreto mantém sua forma didática. As ministrações sem duração definida não são comprimidas em compassos adicionais. O texto integral continua preservado.
+O relatório registra a linha e seção do TXT, a coluna, a sílaba, o acorde escrito, o acorde tocado, o compasso, o evento e o pulso. As alternativas que continuam empatadas recebem `ambiguous-reference-occurrence`; o desempate é determinístico e a ambiguidade permanece explícita.
 
-As pendências por frase ficam no [relatório reproduzível](lyric-chord-alignment.json). Ele registra linha da letra e seção do TXT, coluna relativa à letra sem indentação, acorde da fonte, acorde efetivamente tocado, compasso, índice do evento, pulso e regra de correspondência. Linhas são contadas a partir de 1; colunas, compassos, eventos e pulsos, a partir de 0. As colunas originais podem ser recuperadas somando a indentação da linha da letra.
+## Tempos vocais e pausas
+
+As sílabas são distribuídas entre as âncoras de um bloco vocal inteiro. Isso permite antecipar o começo da próxima frase e encurtar a sustentação anterior, mantendo ambos os acordes nos seus pulsos exatos. O sistema não descarta mais um acorde apenas porque a frase antiga começava junto dele.
+
+Pausas menores que quatro pulsos conservam sua duração e podem mudar de posição entre as frases. Pausas instrumentais maiores e marcações manuais delimitam blocos independentes. A primeira antecipação usa o espaço disponível antes do acorde, sem criar tempos negativos. Limites incompatíveis causam erro de geração em vez de sílabas com duração zero.
+
+O resultado é guardado como limites vocais e `chordAnchors`. O gerador verifica que a interpolação local de cada frase reproduz o cálculo global; não persiste milhares de sílabas estimadas redundantes. `scoreWindow` conserva a célula original para reprodução do processo e migração de dados antigos. `alignmentNote` documenta a base editorial desse mapa original.
+
+Os pesos entre âncoras continuam sendo uma aproximação: 1 por sílaba, 1,25 com acento gráfico/nasalização e 2 na última sílaba da frase. O TXT não fornece todas as durações vocais. Os mapas permanecem `draft`; não são uma medição silábica do fonograma.
+
+## Leitura na aula e dados antigos
+
+As frases completas mantêm sua posição anterior abaixo dos compassos, definida por `scoreWindow`. Os novos tempos alteram somente o destaque: não recortam palavras entre linhas nem deslocam as frases para a linha de uma antecipação. O agrupamento de 1, 2 ou 4 compassos, as mudanças de fórmula, o negrito anterior à posição atual e a animação contínua são preservados. Quando a frase aparece em mais de uma linha, apenas a cópia correspondente recebe o preenchimento ativo; uma sílaba sustentada não salta entre cópias.
+
+Letra, compasso e cronômetro compartilham a mesma amostra do relógio de áudio. Começar diretamente em um trecho segue a sílaba correspondente àquele pulso. A antecipação é cantada no tempo anterior ao acorde, com destaque na frase completa em sua posição original. Pausar e continuar preservam a posição; Reiniciar volta ao início da passagem e recalcula o negrito, assim como cada retorno de repetição.
+
+Marcações antigas do navegador são reconhecidas pelo texto e pela janela atual ou por `scoreWindow`. Estimativas antigas recebem os limites e âncoras atuais. Textos, intervalos pessoais e sílabas manuais são preservados. Se uma atualização colide com uma anotação pessoal, apenas o grupo conflitante conserva suas marcações antigas; os demais podem ser atualizados. Nada é apagado ou gravado no armazenamento pessoal.
+
+## Diferenças explicitamente conservadas
+
+- Cifras fora dos caracteres cantados representam contexto ou sustentação, sem um início silábico identificável na coluna. Não são deslocadas para uma palavra arbitrária.
+- Acordes de passagem ausentes no arranjo da aula não são acrescentados. Modulações da fonte também não mudam o tom existente.
+- Dois acordes sobre a mesma sílaba não criam duas entradas vocais simultâneas. A sustentação e a ordem musical prevalecem.
+- Letras de ministrações livres e partes fora da forma didática continuam no texto integral; não são comprimidas em novos compassos.
+- Restam seis ambiguidades declaradas em ocorrências de Preciso de Ti, além das diferenças de contexto, sustentações e cifras incompatíveis listadas por frase.
 
 ## Reprodução e verificação
 
 ```bash
 npm run lyrics:align             # prévia, sem gravar
-npm run lyrics:align -- --write  # atualiza somente mapas de letra e relatório
-npm run lyrics:check             # confere que os arquivos correspondem à fonte
+npm run lyrics:align -- --write  # atualiza mapas vocais e relatório
+npm run lyrics:check             # confere fonte e idempotência
 npm test
 ```
 
-O gerador lê a cópia versionada do TXT, sem depender da pasta Downloads ou de serviços externos. O relatório inclui hashes da fonte, arquivos musicais e textos/intervalos originais das frases. Os testes verificam a correspondência de cada âncora com o evento musical, os instantes após interpolação e projeção, anacruses, sustentações, repetições, rejeição de notas incompatíveis e a preservação dos dados musicais.
-
-Para sincronização vocal exata com uma gravação, ainda é necessário conferir auditivamente suas entradas, sustentação e elisões. O TXT sozinho não fornece essa informação. Os limites da forma didática continuam descritos em [PLAYBACK-VERIFICATION.md](PLAYBACK-VERIFICATION.md).
+Todos os arranjos são validados antes de gravar os arquivos gerados. O [relatório reproduzível](lyric-chord-alignment.json) inclui hashes do TXT, dos arquivos musicais e dos textos com suas janelas harmônicas originais. Os testes cobrem colunas, eventos, ordem, antecipações, pausas, versões distintas, repetições, dados antigos e a conservação das frases e de sua posição original em todas as larguras. A conferência de reprodução está em [PLAYBACK-VERIFICATION.md](PLAYBACK-VERIFICATION.md).

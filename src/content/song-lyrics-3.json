@@ -145,28 +145,76 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 17.5,
-            "endBeat": 24
+            "endBeat": 22.166666666666668,
+            "scoreWindow": {
+              "startBeat": 17.5,
+              "endBeat": 24
+            },
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 20
+              }
+            ]
           },
           {
             "text": "Preciso do Teu perdão",
-            "startBeat": 25.5,
-            "endBeat": 32
+            "startBeat": 23.666666666666668,
+            "endBeat": 31.25,
+            "scoreWindow": {
+              "startBeat": 25.5,
+              "endBeat": 32
+            },
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 28
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 33.5,
-            "endBeat": 40
+            "startBeat": 32.75,
+            "endBeat": 38.166666666666664,
+            "scoreWindow": {
+              "startBeat": 33.5,
+              "endBeat": 40
+            },
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 36
+              }
+            ]
           },
           {
             "text": "Quebranta meu coração",
-            "startBeat": 41.5,
-            "endBeat": 48
+            "startBeat": 39.666666666666664,
+            "endBeat": 46.285714285714285,
+            "scoreWindow": {
+              "startBeat": 41.5,
+              "endBeat": 48
+            },
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 44
+              }
+            ]
           },
           {
             "text": "Como a corça anseia por águas, assim tenho sede",
-            "startBeat": 48,
-            "endBeat": 62,
+            "startBeat": 46.285714285714285,
+            "endBeat": 59.42857142857143,
+            "scoreWindow": {
+              "startBeat": 48,
+              "endBeat": 62
+            },
             "chordAnchors": [
+              {
+                "from": 7,
+                "beat": 48
+              },
               {
                 "from": 24,
                 "beat": 52
@@ -179,8 +227,12 @@
           },
           {
             "text": "Como terra seca, assim é minh'alma",
-            "startBeat": 62,
+            "startBeat": 59.42857142857143,
             "endBeat": 70,
+            "scoreWindow": {
+              "startBeat": 62,
+              "endBeat": 70
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -195,7 +247,11 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 70,
-            "endBeat": 78,
+            "endBeat": 76,
+            "scoreWindow": {
+              "startBeat": 70,
+              "endBeat": 78
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -205,9 +261,17 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 78,
-            "endBeat": 88,
+            "startBeat": 76,
+            "endBeat": 89.65517241379311,
+            "scoreWindow": {
+              "startBeat": 78,
+              "endBeat": 88
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 78
+              },
               {
                 "from": 12,
                 "beat": 79
@@ -218,14 +282,18 @@
               },
               {
                 "from": 34,
-                "beat": 83
+                "beat": 88
               }
             ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 88,
-            "endBeat": 94,
+            "startBeat": 89.65517241379311,
+            "endBeat": 93.71428571428571,
+            "scoreWindow": {
+              "startBeat": 88,
+              "endBeat": 94
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -235,9 +303,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 94,
-            "endBeat": 99,
+            "startBeat": 93.71428571428571,
+            "endBeat": 97,
+            "scoreWindow": {
+              "startBeat": 94,
+              "endBeat": 99
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 94
+              },
               {
                 "from": 13,
                 "beat": 96
@@ -246,9 +322,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 99,
+            "startBeat": 97,
             "endBeat": 102,
+            "scoreWindow": {
+              "startBeat": 99,
+              "endBeat": 102
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 99
+              },
               {
                 "from": 26,
                 "beat": 100
@@ -258,7 +342,11 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 102,
-            "endBeat": 108,
+            "endBeat": 106.66666666666667,
+            "scoreWindow": {
+              "startBeat": 102,
+              "endBeat": 108
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -272,9 +360,17 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 110,
-            "endBeat": 120,
+            "startBeat": 108.66666666666667,
+            "endBeat": 121.65517241379311,
+            "scoreWindow": {
+              "startBeat": 110,
+              "endBeat": 120
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 110
+              },
               {
                 "from": 12,
                 "beat": 111
@@ -285,14 +381,18 @@
               },
               {
                 "from": 34,
-                "beat": 115
+                "beat": 120
               }
             ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 120,
-            "endBeat": 126,
+            "startBeat": 121.65517241379311,
+            "endBeat": 125.71428571428572,
+            "scoreWindow": {
+              "startBeat": 120,
+              "endBeat": 126
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -302,9 +402,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 126,
-            "endBeat": 131,
+            "startBeat": 125.71428571428572,
+            "endBeat": 129,
+            "scoreWindow": {
+              "startBeat": 126,
+              "endBeat": 131
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 126
+              },
               {
                 "from": 13,
                 "beat": 128
@@ -313,9 +421,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 131,
+            "startBeat": 129,
             "endBeat": 134,
+            "scoreWindow": {
+              "startBeat": 131,
+              "endBeat": 134
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 131
+              },
               {
                 "from": 26,
                 "beat": 132
@@ -326,6 +442,10 @@
             "text": "Preciso de Ti",
             "startBeat": 134,
             "endBeat": 140,
+            "scoreWindow": {
+              "startBeat": 134,
+              "endBeat": 140
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -340,28 +460,76 @@
           {
             "text": "Não posso esquecer",
             "startBeat": 145.5,
-            "endBeat": 152
+            "endBeat": 152.33333333333334,
+            "scoreWindow": {
+              "startBeat": 145.5,
+              "endBeat": 152
+            },
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 148
+              }
+            ]
           },
           {
             "text": "O que fizeste por mim (o que fizeste por mim)",
-            "startBeat": 153.5,
-            "endBeat": 160
+            "startBeat": 153.83333333333334,
+            "endBeat": 160.3896103896104,
+            "scoreWindow": {
+              "startBeat": 153.5,
+              "endBeat": 160
+            },
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 156
+              }
+            ]
           },
           {
             "text": "Como alto é o céu",
-            "startBeat": 161.5,
-            "endBeat": 168
+            "startBeat": 161.8896103896104,
+            "endBeat": 167.25,
+            "scoreWindow": {
+              "startBeat": 161.5,
+              "endBeat": 168
+            },
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 164
+              }
+            ]
           },
           {
             "text": "Tua misericórdia é sem fim (misericórdia sem fim)",
-            "startBeat": 169.5,
-            "endBeat": 176
+            "startBeat": 168.75,
+            "endBeat": 175.39240506329114,
+            "scoreWindow": {
+              "startBeat": 169.5,
+              "endBeat": 176
+            },
+            "chordAnchors": [
+              {
+                "from": 4,
+                "beat": 172
+              }
+            ]
           },
           {
             "text": "Como um pai se compadece dos filhos, assim Tu me amas (me amas)",
-            "startBeat": 176,
-            "endBeat": 190,
+            "startBeat": 175.39240506329114,
+            "endBeat": 188.8,
+            "scoreWindow": {
+              "startBeat": 176,
+              "endBeat": 190
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 176
+              },
               {
                 "from": 29,
                 "beat": 180
@@ -374,8 +542,12 @@
           },
           {
             "text": "Afasta as minhas transgressões",
-            "startBeat": 190,
+            "startBeat": 188.8,
             "endBeat": 198,
+            "scoreWindow": {
+              "startBeat": 190,
+              "endBeat": 198
+            },
             "chordAnchors": [
               {
                 "from": 10,
@@ -390,7 +562,11 @@
           {
             "text": "Preciso de Ti (Senhor)",
             "startBeat": 198,
-            "endBeat": 206,
+            "endBeat": 204.8,
+            "scoreWindow": {
+              "startBeat": 198,
+              "endBeat": 206
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -400,9 +576,17 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 206,
-            "endBeat": 216,
+            "startBeat": 204.8,
+            "endBeat": 217.6551724137931,
+            "scoreWindow": {
+              "startBeat": 206,
+              "endBeat": 216
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 206
+              },
               {
                 "from": 12,
                 "beat": 207
@@ -413,14 +597,18 @@
               },
               {
                 "from": 34,
-                "beat": 211
+                "beat": 216
               }
             ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 216,
-            "endBeat": 222,
+            "startBeat": 217.6551724137931,
+            "endBeat": 221.71428571428572,
+            "scoreWindow": {
+              "startBeat": 216,
+              "endBeat": 222
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -430,9 +618,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 222,
-            "endBeat": 227,
+            "startBeat": 221.71428571428572,
+            "endBeat": 225,
+            "scoreWindow": {
+              "startBeat": 222,
+              "endBeat": 227
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 222
+              },
               {
                 "from": 13,
                 "beat": 224
@@ -441,9 +637,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 227,
+            "startBeat": 225,
             "endBeat": 230,
+            "scoreWindow": {
+              "startBeat": 227,
+              "endBeat": 230
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 227
+              },
               {
                 "from": 26,
                 "beat": 228
@@ -453,7 +657,11 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 230,
-            "endBeat": 236,
+            "endBeat": 234.66666666666666,
+            "scoreWindow": {
+              "startBeat": 230,
+              "endBeat": 236
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -467,9 +675,17 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 238,
-            "endBeat": 248,
+            "startBeat": 236.66666666666666,
+            "endBeat": 248.9795918367347,
+            "scoreWindow": {
+              "startBeat": 238,
+              "endBeat": 248
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 238
+              },
               {
                 "from": 12,
                 "beat": 239
@@ -480,14 +696,18 @@
               },
               {
                 "from": 34,
-                "beat": 243
+                "beat": 248
               }
             ]
           },
           {
             "text": "Não vale a pena existir (não vale a pena)",
-            "startBeat": 248,
-            "endBeat": 254,
+            "startBeat": 248.9795918367347,
+            "endBeat": 253.75757575757575,
+            "scoreWindow": {
+              "startBeat": 248,
+              "endBeat": 254
+            },
             "chordAnchors": [
               {
                 "from": 25,
@@ -497,9 +717,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 254,
-            "endBeat": 259,
+            "startBeat": 253.75757575757575,
+            "endBeat": 257,
+            "scoreWindow": {
+              "startBeat": 254,
+              "endBeat": 259
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 254
+              },
               {
                 "from": 13,
                 "beat": 256
@@ -508,9 +736,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 259,
+            "startBeat": 257,
             "endBeat": 262,
+            "scoreWindow": {
+              "startBeat": 259,
+              "endBeat": 262
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 259
+              },
               {
                 "from": 26,
                 "beat": 260
@@ -521,6 +757,10 @@
             "text": "Preciso de Ti",
             "startBeat": 262,
             "endBeat": 268,
+            "scoreWindow": {
+              "startBeat": 262,
+              "endBeat": 268
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -534,9 +774,17 @@
           },
           {
             "text": "E as lutas vêm tentando me afastar de Ti",
-            "startBeat": 272,
+            "startBeat": 270.8965517241379,
             "endBeat": 280,
+            "scoreWindow": {
+              "startBeat": 272,
+              "endBeat": 280
+            },
             "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 272
+              },
               {
                 "from": 27,
                 "beat": 276
@@ -546,7 +794,11 @@
           {
             "text": "Frieza, escuridão procuram me cegar",
             "startBeat": 280,
-            "endBeat": 288,
+            "endBeat": 285.92,
+            "scoreWindow": {
+              "startBeat": 280,
+              "endBeat": 288
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -564,9 +816,17 @@
           },
           {
             "text": "Mas eu não vou desistir",
-            "startBeat": 288,
+            "startBeat": 285.92,
             "endBeat": 292,
+            "scoreWindow": {
+              "startBeat": 288,
+              "endBeat": 292
+            },
             "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 288
+              },
               {
                 "from": 15,
                 "beat": 289.5
@@ -576,7 +836,11 @@
           {
             "text": "Ajuda-me, Senhor",
             "startBeat": 292,
-            "endBeat": 296,
+            "endBeat": 295,
+            "scoreWindow": {
+              "startBeat": 292,
+              "endBeat": 296
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -594,9 +858,17 @@
           },
           {
             "text": "Eu quero permanecer Contigo até o fim",
-            "startBeat": 296,
+            "startBeat": 295,
             "endBeat": 304,
+            "scoreWindow": {
+              "startBeat": 296,
+              "endBeat": 304
+            },
             "chordAnchors": [
+              {
+                "from": 9,
+                "beat": 296
+              },
               {
                 "from": 20,
                 "beat": 297.5
@@ -609,23 +881,35 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 330,
-            "endBeat": 340,
+            "startBeat": 328,
+            "endBeat": 341.6551724137931,
+            "scoreWindow": {
+              "startBeat": 330,
+              "endBeat": 340
+            },
             "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 330
+              },
               {
                 "from": 18,
                 "beat": 331
               },
               {
                 "from": 34,
-                "beat": 335
+                "beat": 340
               }
             ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 340,
-            "endBeat": 346,
+            "startBeat": 341.6551724137931,
+            "endBeat": 345.7142857142857,
+            "scoreWindow": {
+              "startBeat": 340,
+              "endBeat": 346
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -635,9 +919,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 346,
-            "endBeat": 351,
+            "startBeat": 345.7142857142857,
+            "endBeat": 349,
+            "scoreWindow": {
+              "startBeat": 346,
+              "endBeat": 351
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 346
+              },
               {
                 "from": 13,
                 "beat": 348
@@ -646,9 +938,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro (mais)",
-            "startBeat": 351,
+            "startBeat": 349,
             "endBeat": 354,
+            "scoreWindow": {
+              "startBeat": 351,
+              "endBeat": 354
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 351
+              },
               {
                 "from": 26,
                 "beat": 352
@@ -658,7 +958,11 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 354,
-            "endBeat": 360,
+            "endBeat": 358.6666666666667,
+            "scoreWindow": {
+              "startBeat": 354,
+              "endBeat": 360
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -672,9 +976,17 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver (Senhor)",
-            "startBeat": 362,
-            "endBeat": 372,
+            "startBeat": 360.6666666666667,
+            "endBeat": 369.9591836734694,
+            "scoreWindow": {
+              "startBeat": 362,
+              "endBeat": 372
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 362
+              },
               {
                 "from": 12,
                 "beat": 363
@@ -695,8 +1007,12 @@
           },
           {
             "text": "Não vale a pena existir (não vale a pena estar aqui)",
-            "startBeat": 372,
-            "endBeat": 378,
+            "startBeat": 369.9591836734694,
+            "endBeat": 377.83673469387753,
+            "scoreWindow": {
+              "startBeat": 372,
+              "endBeat": 378
+            },
             "chordAnchors": [
               {
                 "from": 25,
@@ -706,9 +1022,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 378,
-            "endBeat": 383,
+            "startBeat": 377.83673469387753,
+            "endBeat": 381,
+            "scoreWindow": {
+              "startBeat": 378,
+              "endBeat": 383
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 378
+              },
               {
                 "from": 13,
                 "beat": 380
@@ -717,9 +1041,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 383,
+            "startBeat": 381,
             "endBeat": 386,
+            "scoreWindow": {
+              "startBeat": 383,
+              "endBeat": 386
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 383
+              },
               {
                 "from": 26,
                 "beat": 384
@@ -730,6 +1062,10 @@
             "text": "Preciso de Ti",
             "startBeat": 386,
             "endBeat": 392,
+            "scoreWindow": {
+              "startBeat": 386,
+              "endBeat": 392
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -743,44 +1079,84 @@
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 396,
-            "endBeat": 404
-          },
-          {
-            "text": "Preciso de Ti",
-            "startBeat": 404,
-            "endBeat": 412,
+            "startBeat": 392,
+            "endBeat": 398.6666666666667,
+            "scoreWindow": {
+              "startBeat": 396,
+              "endBeat": 404
+            },
             "chordAnchors": [
               {
                 "from": 11,
-                "beat": 408
+                "beat": 396
               }
             ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 412,
-            "endBeat": 420
+            "startBeat": 398.6666666666667,
+            "endBeat": 406.6666666666667,
+            "scoreWindow": {
+              "startBeat": 404,
+              "endBeat": 412
+            },
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 404
+              }
+            ]
+          },
+          {
+            "text": "Preciso de Ti",
+            "startBeat": 406.6666666666667,
+            "endBeat": 413.38461538461536,
+            "scoreWindow": {
+              "startBeat": 412,
+              "endBeat": 420
+            },
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 412
+              }
+            ]
           },
           {
             "text": "Preciso, eu preciso tanto",
-            "startBeat": 420,
-            "endBeat": 428
+            "startBeat": 413.38461538461536,
+            "endBeat": 420.3076923076923,
+            "scoreWindow": {
+              "startBeat": 420,
+              "endBeat": 428
+            }
           },
           {
             "text": "Preciso de Ti (precisamos de Ti a cada instante)",
-            "startBeat": 428,
-            "endBeat": 436
+            "startBeat": 420.3076923076923,
+            "endBeat": 432.7692307692308,
+            "scoreWindow": {
+              "startBeat": 428,
+              "endBeat": 436
+            }
           },
           {
             "text": "Preciso de Ti (precisamos Senhor)",
-            "startBeat": 436,
-            "endBeat": 444
+            "startBeat": 432.7692307692308,
+            "endBeat": 441.0769230769231,
+            "scoreWindow": {
+              "startBeat": 436,
+              "endBeat": 444
+            }
           },
           {
             "text": "Preciso de Ti (ah, Senhor)",
-            "startBeat": 444,
-            "endBeat": 448
+            "startBeat": 441.0769230769231,
+            "endBeat": 448,
+            "scoreWindow": {
+              "startBeat": 444,
+              "endBeat": 448
+            }
           }
         ],
         "alignmentNote": "Mapa de estudo por frases e cadências da cifra de referência: as entradas do refrão começam nos dois pulsos anteriores ao trecho R; suas saídas e a última frase da ponte atravessam a mudança de seção. As duas versões mantêm a mesma forma. O final didático seleciona retomadas do texto fornecido; toda a ministração permanece na letra completa. Entradas vocais e pausas ainda precisam de conferência auditiva na gravação: este mapa não reproduz a mudança de 68 para 71 BPM nem certifica sincronização com o vídeo.",
@@ -791,28 +1167,76 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 17.5,
-            "endBeat": 24
+            "endBeat": 22.166666666666668,
+            "scoreWindow": {
+              "startBeat": 17.5,
+              "endBeat": 24
+            },
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 20
+              }
+            ]
           },
           {
             "text": "Preciso do Teu perdão",
-            "startBeat": 25.5,
-            "endBeat": 32
+            "startBeat": 23.666666666666668,
+            "endBeat": 31.25,
+            "scoreWindow": {
+              "startBeat": 25.5,
+              "endBeat": 32
+            },
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 28
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 33.5,
-            "endBeat": 40
+            "startBeat": 32.75,
+            "endBeat": 38.166666666666664,
+            "scoreWindow": {
+              "startBeat": 33.5,
+              "endBeat": 40
+            },
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 36
+              }
+            ]
           },
           {
             "text": "Quebranta meu coração",
-            "startBeat": 41.5,
-            "endBeat": 48
+            "startBeat": 39.666666666666664,
+            "endBeat": 46.285714285714285,
+            "scoreWindow": {
+              "startBeat": 41.5,
+              "endBeat": 48
+            },
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 44
+              }
+            ]
           },
           {
             "text": "Como a corça anseia por águas, assim tenho sede",
-            "startBeat": 48,
-            "endBeat": 62,
+            "startBeat": 46.285714285714285,
+            "endBeat": 59.42857142857143,
+            "scoreWindow": {
+              "startBeat": 48,
+              "endBeat": 62
+            },
             "chordAnchors": [
+              {
+                "from": 7,
+                "beat": 48
+              },
               {
                 "from": 24,
                 "beat": 52
@@ -825,8 +1249,12 @@
           },
           {
             "text": "Como terra seca, assim é minh'alma",
-            "startBeat": 62,
+            "startBeat": 59.42857142857143,
             "endBeat": 70,
+            "scoreWindow": {
+              "startBeat": 62,
+              "endBeat": 70
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -841,7 +1269,11 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 70,
-            "endBeat": 78,
+            "endBeat": 76,
+            "scoreWindow": {
+              "startBeat": 70,
+              "endBeat": 78
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -851,9 +1283,17 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 78,
-            "endBeat": 88,
+            "startBeat": 76,
+            "endBeat": 89.65517241379311,
+            "scoreWindow": {
+              "startBeat": 78,
+              "endBeat": 88
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 78
+              },
               {
                 "from": 12,
                 "beat": 79
@@ -864,14 +1304,18 @@
               },
               {
                 "from": 34,
-                "beat": 83
+                "beat": 88
               }
             ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 88,
-            "endBeat": 94,
+            "startBeat": 89.65517241379311,
+            "endBeat": 93.71428571428571,
+            "scoreWindow": {
+              "startBeat": 88,
+              "endBeat": 94
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -881,9 +1325,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 94,
-            "endBeat": 99,
+            "startBeat": 93.71428571428571,
+            "endBeat": 97,
+            "scoreWindow": {
+              "startBeat": 94,
+              "endBeat": 99
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 94
+              },
               {
                 "from": 13,
                 "beat": 96
@@ -892,9 +1344,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 99,
+            "startBeat": 97,
             "endBeat": 102,
+            "scoreWindow": {
+              "startBeat": 99,
+              "endBeat": 102
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 99
+              },
               {
                 "from": 26,
                 "beat": 100
@@ -904,7 +1364,11 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 102,
-            "endBeat": 108,
+            "endBeat": 106.66666666666667,
+            "scoreWindow": {
+              "startBeat": 102,
+              "endBeat": 108
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -918,9 +1382,17 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 110,
-            "endBeat": 120,
+            "startBeat": 108.66666666666667,
+            "endBeat": 121.65517241379311,
+            "scoreWindow": {
+              "startBeat": 110,
+              "endBeat": 120
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 110
+              },
               {
                 "from": 12,
                 "beat": 111
@@ -931,14 +1403,18 @@
               },
               {
                 "from": 34,
-                "beat": 115
+                "beat": 120
               }
             ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 120,
-            "endBeat": 126,
+            "startBeat": 121.65517241379311,
+            "endBeat": 125.71428571428572,
+            "scoreWindow": {
+              "startBeat": 120,
+              "endBeat": 126
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -948,9 +1424,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 126,
-            "endBeat": 131,
+            "startBeat": 125.71428571428572,
+            "endBeat": 129,
+            "scoreWindow": {
+              "startBeat": 126,
+              "endBeat": 131
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 126
+              },
               {
                 "from": 13,
                 "beat": 128
@@ -959,9 +1443,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 131,
+            "startBeat": 129,
             "endBeat": 134,
+            "scoreWindow": {
+              "startBeat": 131,
+              "endBeat": 134
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 131
+              },
               {
                 "from": 26,
                 "beat": 132
@@ -972,6 +1464,10 @@
             "text": "Preciso de Ti",
             "startBeat": 134,
             "endBeat": 140,
+            "scoreWindow": {
+              "startBeat": 134,
+              "endBeat": 140
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -986,28 +1482,76 @@
           {
             "text": "Não posso esquecer",
             "startBeat": 145.5,
-            "endBeat": 152
+            "endBeat": 152.33333333333334,
+            "scoreWindow": {
+              "startBeat": 145.5,
+              "endBeat": 152
+            },
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 148
+              }
+            ]
           },
           {
             "text": "O que fizeste por mim (o que fizeste por mim)",
-            "startBeat": 153.5,
-            "endBeat": 160
+            "startBeat": 153.83333333333334,
+            "endBeat": 160.3896103896104,
+            "scoreWindow": {
+              "startBeat": 153.5,
+              "endBeat": 160
+            },
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 156
+              }
+            ]
           },
           {
             "text": "Como alto é o céu",
-            "startBeat": 161.5,
-            "endBeat": 168
+            "startBeat": 161.8896103896104,
+            "endBeat": 167.25,
+            "scoreWindow": {
+              "startBeat": 161.5,
+              "endBeat": 168
+            },
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 164
+              }
+            ]
           },
           {
             "text": "Tua misericórdia é sem fim (misericórdia sem fim)",
-            "startBeat": 169.5,
-            "endBeat": 176
+            "startBeat": 168.75,
+            "endBeat": 175.39240506329114,
+            "scoreWindow": {
+              "startBeat": 169.5,
+              "endBeat": 176
+            },
+            "chordAnchors": [
+              {
+                "from": 4,
+                "beat": 172
+              }
+            ]
           },
           {
             "text": "Como um pai se compadece dos filhos, assim Tu me amas (me amas)",
-            "startBeat": 176,
-            "endBeat": 190,
+            "startBeat": 175.39240506329114,
+            "endBeat": 188.8,
+            "scoreWindow": {
+              "startBeat": 176,
+              "endBeat": 190
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 176
+              },
               {
                 "from": 29,
                 "beat": 180
@@ -1020,8 +1564,12 @@
           },
           {
             "text": "Afasta as minhas transgressões",
-            "startBeat": 190,
+            "startBeat": 188.8,
             "endBeat": 198,
+            "scoreWindow": {
+              "startBeat": 190,
+              "endBeat": 198
+            },
             "chordAnchors": [
               {
                 "from": 10,
@@ -1036,7 +1584,11 @@
           {
             "text": "Preciso de Ti (Senhor)",
             "startBeat": 198,
-            "endBeat": 206,
+            "endBeat": 204.8,
+            "scoreWindow": {
+              "startBeat": 198,
+              "endBeat": 206
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -1046,9 +1598,17 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 206,
-            "endBeat": 216,
+            "startBeat": 204.8,
+            "endBeat": 217.6551724137931,
+            "scoreWindow": {
+              "startBeat": 206,
+              "endBeat": 216
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 206
+              },
               {
                 "from": 12,
                 "beat": 207
@@ -1059,14 +1619,18 @@
               },
               {
                 "from": 34,
-                "beat": 211
+                "beat": 216
               }
             ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 216,
-            "endBeat": 222,
+            "startBeat": 217.6551724137931,
+            "endBeat": 221.71428571428572,
+            "scoreWindow": {
+              "startBeat": 216,
+              "endBeat": 222
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -1076,9 +1640,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 222,
-            "endBeat": 227,
+            "startBeat": 221.71428571428572,
+            "endBeat": 225,
+            "scoreWindow": {
+              "startBeat": 222,
+              "endBeat": 227
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 222
+              },
               {
                 "from": 13,
                 "beat": 224
@@ -1087,9 +1659,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 227,
+            "startBeat": 225,
             "endBeat": 230,
+            "scoreWindow": {
+              "startBeat": 227,
+              "endBeat": 230
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 227
+              },
               {
                 "from": 26,
                 "beat": 228
@@ -1099,7 +1679,11 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 230,
-            "endBeat": 236,
+            "endBeat": 234.66666666666666,
+            "scoreWindow": {
+              "startBeat": 230,
+              "endBeat": 236
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -1113,9 +1697,17 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 238,
-            "endBeat": 248,
+            "startBeat": 236.66666666666666,
+            "endBeat": 248.9795918367347,
+            "scoreWindow": {
+              "startBeat": 238,
+              "endBeat": 248
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 238
+              },
               {
                 "from": 12,
                 "beat": 239
@@ -1126,14 +1718,18 @@
               },
               {
                 "from": 34,
-                "beat": 243
+                "beat": 248
               }
             ]
           },
           {
             "text": "Não vale a pena existir (não vale a pena)",
-            "startBeat": 248,
-            "endBeat": 254,
+            "startBeat": 248.9795918367347,
+            "endBeat": 253.75757575757575,
+            "scoreWindow": {
+              "startBeat": 248,
+              "endBeat": 254
+            },
             "chordAnchors": [
               {
                 "from": 25,
@@ -1143,9 +1739,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 254,
-            "endBeat": 259,
+            "startBeat": 253.75757575757575,
+            "endBeat": 257,
+            "scoreWindow": {
+              "startBeat": 254,
+              "endBeat": 259
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 254
+              },
               {
                 "from": 13,
                 "beat": 256
@@ -1154,9 +1758,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 259,
+            "startBeat": 257,
             "endBeat": 262,
+            "scoreWindow": {
+              "startBeat": 259,
+              "endBeat": 262
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 259
+              },
               {
                 "from": 26,
                 "beat": 260
@@ -1167,6 +1779,10 @@
             "text": "Preciso de Ti",
             "startBeat": 262,
             "endBeat": 268,
+            "scoreWindow": {
+              "startBeat": 262,
+              "endBeat": 268
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -1180,9 +1796,17 @@
           },
           {
             "text": "E as lutas vêm tentando me afastar de Ti",
-            "startBeat": 272,
+            "startBeat": 270.8965517241379,
             "endBeat": 280,
+            "scoreWindow": {
+              "startBeat": 272,
+              "endBeat": 280
+            },
             "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 272
+              },
               {
                 "from": 27,
                 "beat": 276
@@ -1192,7 +1816,11 @@
           {
             "text": "Frieza, escuridão procuram me cegar",
             "startBeat": 280,
-            "endBeat": 288,
+            "endBeat": 285.92,
+            "scoreWindow": {
+              "startBeat": 280,
+              "endBeat": 288
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -1210,9 +1838,17 @@
           },
           {
             "text": "Mas eu não vou desistir",
-            "startBeat": 288,
+            "startBeat": 285.92,
             "endBeat": 292,
+            "scoreWindow": {
+              "startBeat": 288,
+              "endBeat": 292
+            },
             "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 288
+              },
               {
                 "from": 15,
                 "beat": 289.5
@@ -1222,7 +1858,11 @@
           {
             "text": "Ajuda-me, Senhor",
             "startBeat": 292,
-            "endBeat": 296,
+            "endBeat": 295,
+            "scoreWindow": {
+              "startBeat": 292,
+              "endBeat": 296
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -1240,9 +1880,17 @@
           },
           {
             "text": "Eu quero permanecer Contigo até o fim",
-            "startBeat": 296,
+            "startBeat": 295,
             "endBeat": 304,
+            "scoreWindow": {
+              "startBeat": 296,
+              "endBeat": 304
+            },
             "chordAnchors": [
+              {
+                "from": 9,
+                "beat": 296
+              },
               {
                 "from": 20,
                 "beat": 297.5
@@ -1255,23 +1903,35 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 330,
-            "endBeat": 340,
+            "startBeat": 328,
+            "endBeat": 341.6551724137931,
+            "scoreWindow": {
+              "startBeat": 330,
+              "endBeat": 340
+            },
             "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 330
+              },
               {
                 "from": 18,
                 "beat": 331
               },
               {
                 "from": 34,
-                "beat": 335
+                "beat": 340
               }
             ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 340,
-            "endBeat": 346,
+            "startBeat": 341.6551724137931,
+            "endBeat": 345.7142857142857,
+            "scoreWindow": {
+              "startBeat": 340,
+              "endBeat": 346
+            },
             "chordAnchors": [
               {
                 "from": 11,
@@ -1281,9 +1941,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 346,
-            "endBeat": 351,
+            "startBeat": 345.7142857142857,
+            "endBeat": 349,
+            "scoreWindow": {
+              "startBeat": 346,
+              "endBeat": 351
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 346
+              },
               {
                 "from": 13,
                 "beat": 348
@@ -1292,9 +1960,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro (mais)",
-            "startBeat": 351,
+            "startBeat": 349,
             "endBeat": 354,
+            "scoreWindow": {
+              "startBeat": 351,
+              "endBeat": 354
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 351
+              },
               {
                 "from": 26,
                 "beat": 352
@@ -1304,7 +1980,11 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 354,
-            "endBeat": 360,
+            "endBeat": 358.6666666666667,
+            "scoreWindow": {
+              "startBeat": 354,
+              "endBeat": 360
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -1318,9 +1998,17 @@
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver (Senhor)",
-            "startBeat": 362,
-            "endBeat": 372,
+            "startBeat": 360.6666666666667,
+            "endBeat": 369.9591836734694,
+            "scoreWindow": {
+              "startBeat": 362,
+              "endBeat": 372
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 362
+              },
               {
                 "from": 12,
                 "beat": 363
@@ -1341,8 +2029,12 @@
           },
           {
             "text": "Não vale a pena existir (não vale a pena estar aqui)",
-            "startBeat": 372,
-            "endBeat": 378,
+            "startBeat": 369.9591836734694,
+            "endBeat": 377.83673469387753,
+            "scoreWindow": {
+              "startBeat": 372,
+              "endBeat": 378
+            },
             "chordAnchors": [
               {
                 "from": 25,
@@ -1352,9 +2044,17 @@
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 378,
-            "endBeat": 383,
+            "startBeat": 377.83673469387753,
+            "endBeat": 381,
+            "scoreWindow": {
+              "startBeat": 378,
+              "endBeat": 383
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 378
+              },
               {
                 "from": 13,
                 "beat": 380
@@ -1363,9 +2063,17 @@
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 383,
+            "startBeat": 381,
             "endBeat": 386,
+            "scoreWindow": {
+              "startBeat": 383,
+              "endBeat": 386
+            },
             "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 383
+              },
               {
                 "from": 26,
                 "beat": 384
@@ -1376,6 +2084,10 @@
             "text": "Preciso de Ti",
             "startBeat": 386,
             "endBeat": 392,
+            "scoreWindow": {
+              "startBeat": 386,
+              "endBeat": 392
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -1389,44 +2101,84 @@
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 396,
-            "endBeat": 404
-          },
-          {
-            "text": "Preciso de Ti",
-            "startBeat": 404,
-            "endBeat": 412,
+            "startBeat": 392,
+            "endBeat": 398.6666666666667,
+            "scoreWindow": {
+              "startBeat": 396,
+              "endBeat": 404
+            },
             "chordAnchors": [
               {
                 "from": 11,
-                "beat": 408
+                "beat": 396
               }
             ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 412,
-            "endBeat": 420
+            "startBeat": 398.6666666666667,
+            "endBeat": 406.6666666666667,
+            "scoreWindow": {
+              "startBeat": 404,
+              "endBeat": 412
+            },
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 404
+              }
+            ]
+          },
+          {
+            "text": "Preciso de Ti",
+            "startBeat": 406.6666666666667,
+            "endBeat": 413.38461538461536,
+            "scoreWindow": {
+              "startBeat": 412,
+              "endBeat": 420
+            },
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 412
+              }
+            ]
           },
           {
             "text": "Preciso, eu preciso tanto",
-            "startBeat": 420,
-            "endBeat": 428
+            "startBeat": 413.38461538461536,
+            "endBeat": 420.3076923076923,
+            "scoreWindow": {
+              "startBeat": 420,
+              "endBeat": 428
+            }
           },
           {
             "text": "Preciso de Ti (precisamos de Ti a cada instante)",
-            "startBeat": 428,
-            "endBeat": 436
+            "startBeat": 420.3076923076923,
+            "endBeat": 432.7692307692308,
+            "scoreWindow": {
+              "startBeat": 428,
+              "endBeat": 436
+            }
           },
           {
             "text": "Preciso de Ti (precisamos Senhor)",
-            "startBeat": 436,
-            "endBeat": 444
+            "startBeat": 432.7692307692308,
+            "endBeat": 441.0769230769231,
+            "scoreWindow": {
+              "startBeat": 436,
+              "endBeat": 444
+            }
           },
           {
             "text": "Preciso de Ti (ah, Senhor)",
-            "startBeat": 444,
-            "endBeat": 448
+            "startBeat": 441.0769230769231,
+            "endBeat": 448,
+            "scoreWindow": {
+              "startBeat": 444,
+              "endBeat": 448
+            }
           }
         ],
         "alignmentNote": "Mapa de estudo por frases e cadências da cifra de referência: as entradas do refrão começam nos dois pulsos anteriores ao trecho R; suas saídas e a última frase da ponte atravessam a mudança de seção. As duas versões mantêm a mesma forma. O final didático seleciona retomadas do texto fornecido; toda a ministração permanece na letra completa. Entradas vocais e pausas ainda precisam de conferência auditiva na gravação: este mapa não reproduz a mudança de 68 para 71 BPM nem certifica sincronização com o vídeo.",
@@ -1478,9 +2230,17 @@
         "cues": [
           {
             "text": "Porque Dele e por Ele",
-            "startBeat": 45,
-            "endBeat": 52,
+            "startBeat": 44,
+            "endBeat": 50.4,
+            "scoreWindow": {
+              "startBeat": 45,
+              "endBeat": 52
+            },
             "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 44
+              },
               {
                 "from": 18,
                 "beat": 48
@@ -1489,9 +2249,17 @@
           },
           {
             "text": "Para Ele são todas as coisas",
-            "startBeat": 52,
-            "endBeat": 59.5,
+            "startBeat": 50.4,
+            "endBeat": 58.5,
+            "scoreWindow": {
+              "startBeat": 52,
+              "endBeat": 59.5
+            },
             "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 52
+              },
               {
                 "from": 22,
                 "beat": 56
@@ -1500,9 +2268,17 @@
           },
           {
             "text": "Porque Dele e por Ele",
-            "startBeat": 61,
-            "endBeat": 68,
+            "startBeat": 60,
+            "endBeat": 66.4,
+            "scoreWindow": {
+              "startBeat": 61,
+              "endBeat": 68
+            },
             "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 60
+              },
               {
                 "from": 18,
                 "beat": 64
@@ -1511,9 +2287,17 @@
           },
           {
             "text": "Para Ele são todas as coisas",
-            "startBeat": 68,
+            "startBeat": 66.4,
             "endBeat": 75.5,
+            "scoreWindow": {
+              "startBeat": 68,
+              "endBeat": 75.5
+            },
             "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 68
+              },
               {
                 "from": 22,
                 "beat": 72
@@ -1522,24 +2306,70 @@
           },
           {
             "text": "Porque Dele e por Ele",
-            "startBeat": 80,
-            "endBeat": 88
+            "startBeat": 75.5,
+            "endBeat": 82.4,
+            "scoreWindow": {
+              "startBeat": 80,
+              "endBeat": 88
+            },
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 80
+              }
+            ]
           },
           {
             "text": "Para Ele são todas as coisas",
-            "startBeat": 88,
-            "endBeat": 95.5
+            "startBeat": 82.4,
+            "endBeat": 91.5,
+            "scoreWindow": {
+              "startBeat": 88,
+              "endBeat": 95.5
+            },
+            "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 84
+              },
+              {
+                "from": 22,
+                "beat": 88
+              }
+            ]
           },
           {
             "text": "Porque Dele e por Ele",
-            "startBeat": 96,
-            "endBeat": 100
+            "startBeat": 92,
+            "endBeat": 98.4,
+            "scoreWindow": {
+              "startBeat": 96,
+              "endBeat": 100
+            },
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 92
+              },
+              {
+                "from": 18,
+                "beat": 96
+              }
+            ]
           },
           {
             "text": "Para Ele são todas as coisas",
-            "startBeat": 100,
-            "endBeat": 107,
+            "startBeat": 98.4,
+            "endBeat": 106.57142857142857,
+            "scoreWindow": {
+              "startBeat": 100,
+              "endBeat": 107
+            },
             "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 100
+              },
               {
                 "from": 22,
                 "beat": 104
@@ -1548,12 +2378,16 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 107,
-            "endBeat": 116,
+            "startBeat": 106.57142857142857,
+            "endBeat": 114,
+            "scoreWindow": {
+              "startBeat": 107,
+              "endBeat": 116
+            },
             "chordAnchors": [
               {
                 "from": 8,
-                "beat": 108
+                "beat": 110
               },
               {
                 "from": 11,
@@ -1563,8 +2397,12 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 116,
-            "endBeat": 124,
+            "startBeat": 114,
+            "endBeat": 120.6896551724138,
+            "scoreWindow": {
+              "startBeat": 116,
+              "endBeat": 124
+            },
             "chordAnchors": [
               {
                 "from": 8,
@@ -1574,9 +2412,17 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 124,
-            "endBeat": 130,
+            "startBeat": 120.6896551724138,
+            "endBeat": 129.33333333333334,
+            "scoreWindow": {
+              "startBeat": 124,
+              "endBeat": 130
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 124
+              },
               {
                 "from": 11,
                 "beat": 128
@@ -1585,13 +2431,21 @@
           },
           {
             "text": "Pra sempre",
-            "startBeat": 130,
-            "endBeat": 132
+            "startBeat": 129.33333333333334,
+            "endBeat": 132,
+            "scoreWindow": {
+              "startBeat": 130,
+              "endBeat": 132
+            }
           },
           {
             "text": "Amém",
             "startBeat": 132,
-            "endBeat": 136,
+            "endBeat": 135,
+            "scoreWindow": {
+              "startBeat": 132,
+              "endBeat": 136
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -1601,12 +2455,16 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 139,
-            "endBeat": 148,
+            "startBeat": 138,
+            "endBeat": 146,
+            "scoreWindow": {
+              "startBeat": 139,
+              "endBeat": 148
+            },
             "chordAnchors": [
               {
                 "from": 8,
-                "beat": 140
+                "beat": 142
               },
               {
                 "from": 11,
@@ -1616,8 +2474,12 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 148,
-            "endBeat": 156,
+            "startBeat": 146,
+            "endBeat": 152.68965517241378,
+            "scoreWindow": {
+              "startBeat": 148,
+              "endBeat": 156
+            },
             "chordAnchors": [
               {
                 "from": 8,
@@ -1627,9 +2489,17 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 156,
-            "endBeat": 162,
+            "startBeat": 152.68965517241378,
+            "endBeat": 161.33333333333334,
+            "scoreWindow": {
+              "startBeat": 156,
+              "endBeat": 162
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 156
+              },
               {
                 "from": 11,
                 "beat": 160
@@ -1638,13 +2508,21 @@
           },
           {
             "text": "Pra sempre",
-            "startBeat": 162,
-            "endBeat": 164
+            "startBeat": 161.33333333333334,
+            "endBeat": 164,
+            "scoreWindow": {
+              "startBeat": 162,
+              "endBeat": 164
+            }
           },
           {
             "text": "Amém",
             "startBeat": 164,
             "endBeat": 168,
+            "scoreWindow": {
+              "startBeat": 164,
+              "endBeat": 168
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -1654,9 +2532,17 @@
           },
           {
             "text": "Quão profundas riquezas",
-            "startBeat": 181,
-            "endBeat": 188,
+            "startBeat": 180,
+            "endBeat": 187,
+            "scoreWindow": {
+              "startBeat": 181,
+              "endBeat": 188
+            },
             "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 180
+              },
               {
                 "from": 17,
                 "beat": 184
@@ -1665,9 +2551,17 @@
           },
           {
             "text": "O saber e o conhecer de Deus",
-            "startBeat": 188,
-            "endBeat": 195.5,
+            "startBeat": 187,
+            "endBeat": 194.47619047619048,
+            "scoreWindow": {
+              "startBeat": 188,
+              "endBeat": 195.5
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 188
+              },
               {
                 "from": 24,
                 "beat": 192
@@ -1676,8 +2570,12 @@
           },
           {
             "text": "Quão insondáveis",
-            "startBeat": 197,
-            "endBeat": 204,
+            "startBeat": 195.97619047619048,
+            "endBeat": 203.05882352941177,
+            "scoreWindow": {
+              "startBeat": 197,
+              "endBeat": 204
+            },
             "chordAnchors": [
               {
                 "from": 10,
@@ -1687,9 +2585,17 @@
           },
           {
             "text": "Seus juízos e Seus caminhos",
-            "startBeat": 204,
+            "startBeat": 203.05882352941177,
             "endBeat": 211.5,
+            "scoreWindow": {
+              "startBeat": 204,
+              "endBeat": 211.5
+            },
             "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 204
+              },
               {
                 "from": 21,
                 "beat": 208
@@ -1698,24 +2604,66 @@
           },
           {
             "text": "Quão profundas riquezas",
-            "startBeat": 216,
-            "endBeat": 224
+            "startBeat": 211.5,
+            "endBeat": 219,
+            "scoreWindow": {
+              "startBeat": 216,
+              "endBeat": 224
+            },
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 216
+              }
+            ]
           },
           {
             "text": "O saber e o conhecer de Deus",
-            "startBeat": 224,
-            "endBeat": 231.5
+            "startBeat": 219,
+            "endBeat": 226.85714285714286,
+            "scoreWindow": {
+              "startBeat": 224,
+              "endBeat": 231.5
+            },
+            "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 220
+              },
+              {
+                "from": 24,
+                "beat": 224
+              }
+            ]
           },
           {
             "text": "Quão insondáveis",
-            "startBeat": 232,
-            "endBeat": 236
+            "startBeat": 227.35714285714286,
+            "endBeat": 235.05882352941177,
+            "scoreWindow": {
+              "startBeat": 232,
+              "endBeat": 236
+            },
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 232
+              }
+            ]
           },
           {
             "text": "Seus juízos e Seus caminhos",
-            "startBeat": 236,
-            "endBeat": 243,
+            "startBeat": 235.05882352941177,
+            "endBeat": 242.57142857142858,
+            "scoreWindow": {
+              "startBeat": 236,
+              "endBeat": 243
+            },
             "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 236
+              },
               {
                 "from": 21,
                 "beat": 240
@@ -1724,12 +2672,16 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 243,
-            "endBeat": 252,
+            "startBeat": 242.57142857142858,
+            "endBeat": 250,
+            "scoreWindow": {
+              "startBeat": 243,
+              "endBeat": 252
+            },
             "chordAnchors": [
               {
                 "from": 8,
-                "beat": 244
+                "beat": 246
               },
               {
                 "from": 11,
@@ -1739,8 +2691,12 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 252,
-            "endBeat": 260,
+            "startBeat": 250,
+            "endBeat": 256.6896551724138,
+            "scoreWindow": {
+              "startBeat": 252,
+              "endBeat": 260
+            },
             "chordAnchors": [
               {
                 "from": 8,
@@ -1750,9 +2706,17 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 260,
-            "endBeat": 266,
+            "startBeat": 256.6896551724138,
+            "endBeat": 265.3333333333333,
+            "scoreWindow": {
+              "startBeat": 260,
+              "endBeat": 266
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 260
+              },
               {
                 "from": 11,
                 "beat": 264
@@ -1761,13 +2725,21 @@
           },
           {
             "text": "Pra sempre",
-            "startBeat": 266,
-            "endBeat": 268
+            "startBeat": 265.3333333333333,
+            "endBeat": 268,
+            "scoreWindow": {
+              "startBeat": 266,
+              "endBeat": 268
+            }
           },
           {
             "text": "Amém",
             "startBeat": 268,
-            "endBeat": 272,
+            "endBeat": 271,
+            "scoreWindow": {
+              "startBeat": 268,
+              "endBeat": 272
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -1777,12 +2749,16 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 275,
-            "endBeat": 284,
+            "startBeat": 274,
+            "endBeat": 282,
+            "scoreWindow": {
+              "startBeat": 275,
+              "endBeat": 284
+            },
             "chordAnchors": [
               {
                 "from": 8,
-                "beat": 276
+                "beat": 278
               },
               {
                 "from": 11,
@@ -1792,8 +2768,12 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 284,
-            "endBeat": 292,
+            "startBeat": 282,
+            "endBeat": 288.6896551724138,
+            "scoreWindow": {
+              "startBeat": 284,
+              "endBeat": 292
+            },
             "chordAnchors": [
               {
                 "from": 8,
@@ -1803,9 +2783,17 @@
           },
           {
             "text": "A Ele a glória",
-            "startBeat": 292,
-            "endBeat": 298,
+            "startBeat": 288.6896551724138,
+            "endBeat": 297.3333333333333,
+            "scoreWindow": {
+              "startBeat": 292,
+              "endBeat": 298
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 292
+              },
               {
                 "from": 11,
                 "beat": 296
@@ -1814,13 +2802,21 @@
           },
           {
             "text": "Pra sempre",
-            "startBeat": 298,
-            "endBeat": 300
+            "startBeat": 297.3333333333333,
+            "endBeat": 300,
+            "scoreWindow": {
+              "startBeat": 298,
+              "endBeat": 300
+            }
           },
           {
             "text": "Amém",
             "startBeat": 300,
             "endBeat": 304,
+            "scoreWindow": {
+              "startBeat": 300,
+              "endBeat": 304
+            },
             "chordAnchors": [
               {
                 "from": 0,
@@ -1900,14 +2896,32 @@
         "cues": [
           {
             "text": "Te amo, Deus",
-            "startBeat": 16,
-            "endBeat": 20
+            "startBeat": 13,
+            "endBeat": 18,
+            "scoreWindow": {
+              "startBeat": 16,
+              "endBeat": 20
+            },
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 16
+              }
+            ]
           },
           {
             "text": "Tua graça nunca falha",
-            "startBeat": 20,
-            "endBeat": 25,
+            "startBeat": 18,
+            "endBeat": 24.25,
+            "scoreWindow": {
+              "startBeat": 20,
+              "endBeat": 25
+            },
             "chordAnchors": [
+              {
+                "from": 4,
+                "beat": 20
+              },
               {
                 "from": 16,
                 "beat": 22
@@ -1916,9 +2930,17 @@
           },
           {
             "text": "Todos os dias",
-            "startBeat": 25,
-            "endBeat": 28,
+            "startBeat": 24.25,
+            "endBeat": 27.2,
+            "scoreWindow": {
+              "startBeat": 25,
+              "endBeat": 28
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 25
+              },
               {
                 "from": 9,
                 "beat": 26
@@ -1927,9 +2949,17 @@
           },
           {
             "text": "Eu estou em Tuas mãos",
-            "startBeat": 28,
-            "endBeat": 34,
+            "startBeat": 27.2,
+            "endBeat": 31,
+            "scoreWindow": {
+              "startBeat": 28,
+              "endBeat": 34
+            },
             "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 28
+              },
               {
                 "from": 17,
                 "beat": 30
@@ -1938,14 +2968,32 @@
           },
           {
             "text": "Desde quando me levanto",
-            "startBeat": 34,
-            "endBeat": 38
+            "startBeat": 31,
+            "endBeat": 35.92,
+            "scoreWindow": {
+              "startBeat": 34,
+              "endBeat": 38
+            },
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 34
+              }
+            ]
           },
           {
             "text": "Até eu me deitar",
-            "startBeat": 38,
-            "endBeat": 42,
+            "startBeat": 35.92,
+            "endBeat": 40.2,
+            "scoreWindow": {
+              "startBeat": 38,
+              "endBeat": 42
+            },
             "chordAnchors": [
+              {
+                "from": 7,
+                "beat": 38
+              },
               {
                 "from": 13,
                 "beat": 39
@@ -1954,9 +3002,17 @@
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 42,
-            "endBeat": 50,
+            "startBeat": 40.2,
+            "endBeat": 47.93939393939394,
+            "scoreWindow": {
+              "startBeat": 42,
+              "endBeat": 50
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 42
+              },
               {
                 "from": 15,
                 "beat": 44
@@ -1969,8 +3025,12 @@
           },
           {
             "text": "És fiel em todo tempo",
-            "startBeat": 50,
-            "endBeat": 58,
+            "startBeat": 47.93939393939394,
+            "endBeat": 56.34146341463415,
+            "scoreWindow": {
+              "startBeat": 50,
+              "endBeat": 58
+            },
             "chordAnchors": [
               {
                 "from": 16,
@@ -1980,8 +3040,12 @@
           },
           {
             "text": "Em todo tempo Tu és tão, tão bom",
-            "startBeat": 58,
-            "endBeat": 66,
+            "startBeat": 56.34146341463415,
+            "endBeat": 65.29729729729729,
+            "scoreWindow": {
+              "startBeat": 58,
+              "endBeat": 66
+            },
             "chordAnchors": [
               {
                 "from": 20,
@@ -1995,8 +3059,12 @@
           },
           {
             "text": "Com todo fôlego que tenho",
-            "startBeat": 66,
-            "endBeat": 74,
+            "startBeat": 65.29729729729729,
+            "endBeat": 72,
+            "scoreWindow": {
+              "startBeat": 66,
+              "endBeat": 74
+            },
             "chordAnchors": [
               {
                 "from": 20,
@@ -2006,9 +3074,17 @@
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 74,
-            "endBeat": 82,
+            "startBeat": 72,
+            "endBeat": 79.33333333333333,
+            "scoreWindow": {
+              "startBeat": 74,
+              "endBeat": 82
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 74
+              },
               {
                 "from": 15,
                 "beat": 76
@@ -2021,14 +3097,32 @@
           },
           {
             "text": "Tua doce voz",
-            "startBeat": 82,
-            "endBeat": 86
+            "startBeat": 79.33333333333333,
+            "endBeat": 84,
+            "scoreWindow": {
+              "startBeat": 82,
+              "endBeat": 86
+            },
+            "chordAnchors": [
+              {
+                "from": 9,
+                "beat": 82
+              }
+            ]
           },
           {
             "text": "Que me guia em meio ao fogo",
-            "startBeat": 86,
-            "endBeat": 91,
+            "startBeat": 84,
+            "endBeat": 89.8,
+            "scoreWindow": {
+              "startBeat": 86,
+              "endBeat": 91
+            },
             "chordAnchors": [
+              {
+                "from": 7,
+                "beat": 86
+              },
               {
                 "from": 23,
                 "beat": 88
@@ -2037,9 +3131,17 @@
           },
           {
             "text": "Na escuridão",
-            "startBeat": 91,
-            "endBeat": 94,
+            "startBeat": 89.8,
+            "endBeat": 92.8,
+            "scoreWindow": {
+              "startBeat": 91,
+              "endBeat": 94
+            },
             "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 91
+              },
               {
                 "from": 9,
                 "beat": 92
@@ -2048,9 +3150,17 @@
           },
           {
             "text": "Tua presença me conforta",
-            "startBeat": 94,
-            "endBeat": 100,
+            "startBeat": 92.8,
+            "endBeat": 97.65517241379311,
+            "scoreWindow": {
+              "startBeat": 94,
+              "endBeat": 100
+            },
             "chordAnchors": [
+              {
+                "from": 7,
+                "beat": 94
+              },
               {
                 "from": 19,
                 "beat": 96
@@ -2059,14 +3169,32 @@
           },
           {
             "text": "Sei que és meu Pai",
-            "startBeat": 100,
-            "endBeat": 104
+            "startBeat": 97.65517241379311,
+            "endBeat": 102,
+            "scoreWindow": {
+              "startBeat": 100,
+              "endBeat": 104
+            },
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 100
+              }
+            ]
           },
           {
             "text": "Que amigo és",
-            "startBeat": 104,
-            "endBeat": 108,
+            "startBeat": 102,
+            "endBeat": 106.2,
+            "scoreWindow": {
+              "startBeat": 104,
+              "endBeat": 108
+            },
             "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 104
+              },
               {
                 "from": 10,
                 "beat": 105
@@ -2075,9 +3203,17 @@
           },
           {
             "text": "Eu vivo na bondade de Deus",
-            "startBeat": 108,
-            "endBeat": 116,
+            "startBeat": 106.2,
+            "endBeat": 113.93939393939394,
+            "scoreWindow": {
+              "startBeat": 108,
+              "endBeat": 116
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 108
+              },
               {
                 "from": 14,
                 "beat": 110
@@ -2090,8 +3226,12 @@
           },
           {
             "text": "És fiel em todo tempo",
-            "startBeat": 116,
-            "endBeat": 124,
+            "startBeat": 113.93939393939394,
+            "endBeat": 122.34146341463415,
+            "scoreWindow": {
+              "startBeat": 116,
+              "endBeat": 124
+            },
             "chordAnchors": [
               {
                 "from": 16,
@@ -2101,8 +3241,12 @@
           },
           {
             "text": "Em todo tempo Tu és tão, tão bom",
-            "startBeat": 124,
-            "endBeat": 132,
+            "startBeat": 122.34146341463415,
+            "endBeat": 131.2972972972973,
+            "scoreWindow": {
+              "startBeat": 124,
+              "endBeat": 132
+            },
             "chordAnchors": [
               {
                 "from": 20,
@@ -2116,8 +3260,12 @@
           },
           {
             "text": "Com todo fôlego que tenho",
-            "startBeat": 132,
-            "endBeat": 140,
+            "startBeat": 131.2972972972973,
+            "endBeat": 138,
+            "scoreWindow": {
+              "startBeat": 132,
+              "endBeat": 140
+            },
             "chordAnchors": [
               {
                 "from": 20,
@@ -2127,9 +3275,17 @@
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 140,
-            "endBeat": 148,
+            "startBeat": 138,
+            "endBeat": 145.93939393939394,
+            "scoreWindow": {
+              "startBeat": 140,
+              "endBeat": 148
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 140
+              },
               {
                 "from": 15,
                 "beat": 142
@@ -2142,8 +3298,12 @@
           },
           {
             "text": "És fiel em todo tempo",
-            "startBeat": 148,
-            "endBeat": 156,
+            "startBeat": 145.93939393939394,
+            "endBeat": 154.34146341463415,
+            "scoreWindow": {
+              "startBeat": 148,
+              "endBeat": 156
+            },
             "chordAnchors": [
               {
                 "from": 16,
@@ -2153,8 +3313,12 @@
           },
           {
             "text": "Em todo tempo Tu és tão, tão bom",
-            "startBeat": 156,
-            "endBeat": 164,
+            "startBeat": 154.34146341463415,
+            "endBeat": 163.2972972972973,
+            "scoreWindow": {
+              "startBeat": 156,
+              "endBeat": 164
+            },
             "chordAnchors": [
               {
                 "from": 20,
@@ -2168,8 +3332,12 @@
           },
           {
             "text": "Com todo fôlego que tenho",
-            "startBeat": 164,
-            "endBeat": 172,
+            "startBeat": 163.2972972972973,
+            "endBeat": 170,
+            "scoreWindow": {
+              "startBeat": 164,
+              "endBeat": 172
+            },
             "chordAnchors": [
               {
                 "from": 20,
@@ -2179,9 +3347,17 @@
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 172,
+            "startBeat": 170,
             "endBeat": 180,
+            "scoreWindow": {
+              "startBeat": 172,
+              "endBeat": 180
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 172
+              },
               {
                 "from": 15,
                 "beat": 174
@@ -2195,7 +3371,11 @@
           {
             "text": "Tua bondade me seguirá",
             "startBeat": 192,
-            "endBeat": 196,
+            "endBeat": 195.5,
+            "scoreWindow": {
+              "startBeat": 192,
+              "endBeat": 196
+            },
             "chordAnchors": [
               {
                 "from": 17,
@@ -2205,9 +3385,17 @@
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 196,
-            "endBeat": 200,
+            "startBeat": 195.5,
+            "endBeat": 198.88888888888889,
+            "scoreWindow": {
+              "startBeat": 196,
+              "endBeat": 200
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 196
+              },
               {
                 "from": 14,
                 "beat": 198
@@ -2216,8 +3404,12 @@
           },
           {
             "text": "Tua bondade me seguirá",
-            "startBeat": 200,
-            "endBeat": 204,
+            "startBeat": 198.88888888888889,
+            "endBeat": 203.5,
+            "scoreWindow": {
+              "startBeat": 200,
+              "endBeat": 204
+            },
             "chordAnchors": [
               {
                 "from": 17,
@@ -2227,9 +3419,17 @@
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 204,
-            "endBeat": 208,
+            "startBeat": 203.5,
+            "endBeat": 207,
+            "scoreWindow": {
+              "startBeat": 204,
+              "endBeat": 208
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 204
+              },
               {
                 "from": 14,
                 "beat": 206
@@ -2238,9 +3438,17 @@
           },
           {
             "text": "Eu me rendo a Ti, Te dou o meu ser",
-            "startBeat": 208,
-            "endBeat": 212,
+            "startBeat": 207,
+            "endBeat": 211.66666666666666,
+            "scoreWindow": {
+              "startBeat": 208,
+              "endBeat": 212
+            },
             "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 208
+              },
               {
                 "from": 21,
                 "beat": 210
@@ -2249,9 +3457,17 @@
           },
           {
             "text": "Entrego tudo a Ti",
-            "startBeat": 212,
-            "endBeat": 216,
+            "startBeat": 211.66666666666666,
+            "endBeat": 214.88888888888889,
+            "scoreWindow": {
+              "startBeat": 212,
+              "endBeat": 216
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 212
+              },
               {
                 "from": 15,
                 "beat": 214
@@ -2260,8 +3476,12 @@
           },
           {
             "text": "Tua bondade me seguirá",
-            "startBeat": 216,
-            "endBeat": 220,
+            "startBeat": 214.88888888888889,
+            "endBeat": 219.5,
+            "scoreWindow": {
+              "startBeat": 216,
+              "endBeat": 220
+            },
             "chordAnchors": [
               {
                 "from": 17,
@@ -2271,9 +3491,17 @@
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 220,
-            "endBeat": 224,
+            "startBeat": 219.5,
+            "endBeat": 222.88888888888889,
+            "scoreWindow": {
+              "startBeat": 220,
+              "endBeat": 224
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 220
+              },
               {
                 "from": 14,
                 "beat": 222
@@ -2282,8 +3510,12 @@
           },
           {
             "text": "Tua bondade me seguirá",
-            "startBeat": 224,
-            "endBeat": 228,
+            "startBeat": 222.88888888888889,
+            "endBeat": 227.5,
+            "scoreWindow": {
+              "startBeat": 224,
+              "endBeat": 228
+            },
             "chordAnchors": [
               {
                 "from": 17,
@@ -2293,9 +3525,17 @@
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 228,
-            "endBeat": 232,
+            "startBeat": 227.5,
+            "endBeat": 230.88888888888889,
+            "scoreWindow": {
+              "startBeat": 228,
+              "endBeat": 232
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 228
+              },
               {
                 "from": 14,
                 "beat": 230
@@ -2304,8 +3544,12 @@
           },
           {
             "text": "Tua bondade me seguirá",
-            "startBeat": 232,
-            "endBeat": 236,
+            "startBeat": 230.88888888888889,
+            "endBeat": 235.5,
+            "scoreWindow": {
+              "startBeat": 232,
+              "endBeat": 236
+            },
             "chordAnchors": [
               {
                 "from": 17,
@@ -2315,9 +3559,17 @@
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 236,
-            "endBeat": 240,
+            "startBeat": 235.5,
+            "endBeat": 239,
+            "scoreWindow": {
+              "startBeat": 236,
+              "endBeat": 240
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 236
+              },
               {
                 "from": 14,
                 "beat": 238
@@ -2326,9 +3578,17 @@
           },
           {
             "text": "Eu me rendo a Ti, te dou o meu ser",
-            "startBeat": 240,
-            "endBeat": 244,
+            "startBeat": 239,
+            "endBeat": 243.66666666666666,
+            "scoreWindow": {
+              "startBeat": 240,
+              "endBeat": 244
+            },
             "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 240
+              },
               {
                 "from": 21,
                 "beat": 242
@@ -2337,9 +3597,17 @@
           },
           {
             "text": "Entrego tudo a Ti",
-            "startBeat": 244,
-            "endBeat": 248,
+            "startBeat": 243.66666666666666,
+            "endBeat": 246.88888888888889,
+            "scoreWindow": {
+              "startBeat": 244,
+              "endBeat": 248
+            },
             "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 244
+              },
               {
                 "from": 15,
                 "beat": 246
@@ -2348,8 +3616,12 @@
           },
           {
             "text": "Tua bondade me seguirá",
-            "startBeat": 248,
-            "endBeat": 252,
+            "startBeat": 246.88888888888889,
+            "endBeat": 251.5,
+            "scoreWindow": {
+              "startBeat": 248,
+              "endBeat": 252
+            },
             "chordAnchors": [
               {
                 "from": 17,
@@ -2359,9 +3631,17 @@
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 252,
+            "startBeat": 251.5,
             "endBeat": 258,
+            "scoreWindow": {
+              "startBeat": 252,
+              "endBeat": 258
+            },
             "chordAnchors": [
+              {
+                "from": 3,
+                "beat": 252
+              },
               {
                 "from": 14,
                 "beat": 254
@@ -2371,7 +3651,11 @@
           {
             "text": "És fiel em todo tempo",
             "startBeat": 262,
-            "endBeat": 270,
+            "endBeat": 268.3414634146341,
+            "scoreWindow": {
+              "startBeat": 262,
+              "endBeat": 270
+            },
             "chordAnchors": [
               {
                 "from": 16,
@@ -2381,8 +3665,12 @@
           },
           {
             "text": "Em todo tempo Tu és tão, tão bom",
-            "startBeat": 270,
-            "endBeat": 278,
+            "startBeat": 268.3414634146341,
+            "endBeat": 277.2972972972973,
+            "scoreWindow": {
+              "startBeat": 270,
+              "endBeat": 278
+            },
             "chordAnchors": [
               {
                 "from": 20,
@@ -2396,8 +3684,12 @@
           },
           {
             "text": "Com todo fôlego que tenho",
-            "startBeat": 278,
-            "endBeat": 286,
+            "startBeat": 277.2972972972973,
+            "endBeat": 284,
+            "scoreWindow": {
+              "startBeat": 278,
+              "endBeat": 286
+            },
             "chordAnchors": [
               {
                 "from": 20,
@@ -2407,9 +3699,17 @@
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 286,
-            "endBeat": 294,
+            "startBeat": 284,
+            "endBeat": 291.93939393939394,
+            "scoreWindow": {
+              "startBeat": 286,
+              "endBeat": 294
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 286
+              },
               {
                 "from": 15,
                 "beat": 288
@@ -2422,8 +3722,12 @@
           },
           {
             "text": "És fiel em todo tempo",
-            "startBeat": 294,
-            "endBeat": 302,
+            "startBeat": 291.93939393939394,
+            "endBeat": 300.3414634146341,
+            "scoreWindow": {
+              "startBeat": 294,
+              "endBeat": 302
+            },
             "chordAnchors": [
               {
                 "from": 16,
@@ -2433,8 +3737,12 @@
           },
           {
             "text": "Em todo tempo Tu és tão, tão bom",
-            "startBeat": 302,
-            "endBeat": 310,
+            "startBeat": 300.3414634146341,
+            "endBeat": 309.2972972972973,
+            "scoreWindow": {
+              "startBeat": 302,
+              "endBeat": 310
+            },
             "chordAnchors": [
               {
                 "from": 20,
@@ -2448,8 +3756,12 @@
           },
           {
             "text": "Com todo fôlego que tenho",
-            "startBeat": 310,
-            "endBeat": 318,
+            "startBeat": 309.2972972972973,
+            "endBeat": 316,
+            "scoreWindow": {
+              "startBeat": 310,
+              "endBeat": 318
+            },
             "chordAnchors": [
               {
                 "from": 20,
@@ -2459,9 +3771,17 @@
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 318,
+            "startBeat": 316,
             "endBeat": 326,
+            "scoreWindow": {
+              "startBeat": 318,
+              "endBeat": 326
+            },
             "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 318
+              },
               {
                 "from": 15,
                 "beat": 320

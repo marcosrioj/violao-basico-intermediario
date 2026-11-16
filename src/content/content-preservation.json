@@ -22,18 +22,18 @@
     {
       "path": "src/content/tempo-research.json",
       "sha256": "b3e2a26aab29cfd74e16a9ae62811cc83aa2c11d268fac8be0ec4b9e9faa6997"
+    }
+  ],
+  "archivedPdfs": [
+    {
+      "audience": "student",
+      "pages": 130,
+      "originalSha256": "5c0a9d89f3aa2ce70fd48b2e48d95b7e1a1d2cac8febd4ae51c4bf028e8418f3"
     },
     {
-      "path": "materials/Curso_Aluno_Violao_Gospel_v5.pdf",
-      "sha256": "5c0a9d89f3aa2ce70fd48b2e48d95b7e1a1d2cac8febd4ae51c4bf028e8418f3"
-    },
-    {
-      "path": "materials/Manual_Professor_Violao_Gospel_v5.pdf",
-      "sha256": "0d0b13497c5f3c7d177d56c571f0b6110483b5c29b206544f647920b38ddbb8c"
-    },
-    {
-      "path": "materials/Guia_Interativo_Aluno_Violao_v5.html",
-      "sha256": "62bb8d791bd913bd9b32dd5ec7b31fc2420513f7a65b4abbf7c7ae0048b57ff6"
+      "audience": "teacher",
+      "pages": 73,
+      "originalSha256": "0d0b13497c5f3c7d177d56c571f0b6110483b5c29b206544f647920b38ddbb8c"
     }
   ]
 }

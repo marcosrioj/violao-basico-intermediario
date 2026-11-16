@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
-"""Import supplied v5 JSON and PDF text; never execute the source HTML.
+"""Import external v5 JSON and PDF text; never execute or copy the source files.
 Usage: python3 scripts/import-course.py /path/to/source-directory
 Requires Python 3 and Poppler pdftotext, no Python dependencies.
 """
-import hashlib, json, pathlib, re, shutil, subprocess, sys
+import argparse, hashlib, json, pathlib, re, subprocess
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SOURCE = pathlib.Path(sys.argv[1]) if len(sys.argv)>1 else ROOT/'materials'
-MATERIALS = ROOT/'materials'; CONTENT = ROOT/'src/content'
-MATERIALS.mkdir(exist_ok=True); CONTENT.mkdir(parents=True,exist_ok=True)
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('source_directory', type=pathlib.Path, help='Pasta externa com os três arquivos originais v5.')
+SOURCE = parser.parse_args().source_directory.expanduser().resolve()
+CONTENT = ROOT/'src/content'
 NAMES = ['Guia_Interativo_Aluno_Violao_v5.html','Curso_Aluno_Violao_Gospel_v5.pdf','Manual_Professor_Violao_Gospel_v5.pdf']
-for name in NAMES:
-    if SOURCE/name != MATERIALS/name: shutil.copyfile(SOURCE/name, MATERIALS/name)
-html=(MATERIALS/NAMES[0]).read_text()
+missing = [name for name in NAMES if not (SOURCE/name).is_file()]
+if missing:
+    parser.error('Arquivos originais ausentes na pasta informada: ' + ', '.join(missing))
+html=(SOURCE/NAMES[0]).read_text()
 match=re.search(r'(?:const|let|var) DATA\s*=\s*(.*?);\s*\(function',html,re.S)
 assert match, 'No source JSON found'
 data=json.loads(match.group(1))
@@ -35,7 +37,7 @@ for song in data['songs'].values():
         source.setdefault('title', source.get('role', 'Referência do material'))
 
 def pdf_pages(name):
-    output=subprocess.check_output(['pdftotext','-layout',str(MATERIALS/name),'-']).decode()
+    output=subprocess.check_output(['pdftotext','-layout',str(SOURCE/name),'-']).decode()
     pages=output.split('\f')
     if not pages[-1].strip():pages.pop()
     return pages
@@ -79,12 +81,7 @@ teacher_guides=guide_pages(teacher,'teacher',teacher_map)
 
 def write(name,obj):
     (CONTENT/name).write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
-write('course-data.json',data)
-write('chords-data.json',data['chords'])
-write('student-guides.json',student_guides)
-write('teacher-data.json',{'lessons':teacher_lessons,'guides':teacher_guides})
-manifest={'edition':5,'importedOn':'2026-11-14','counts':{'modules':len(data['modules']),'lessons':len(data['lessons']),'songs':len(data['songs']),'chords':len(data['chords']),'theoryReferences':len(data['references']),'studentPages':len(student),'teacherPages':len(teacher)},'sources':[{'file':name,'sha256':hashlib.sha256((MATERIALS/name).read_bytes()).hexdigest()} for name in NAMES]}
-write('provenance.json',manifest)
+manifest={'edition':5,'importedOn':'2026-11-14','counts':{'modules':len(data['modules']),'lessons':len(data['lessons']),'songs':len(data['songs']),'chords':len(data['chords']),'theoryReferences':len(data['references']),'studentPages':len(student),'teacherPages':len(teacher)},'sources':[{'file':name,'sha256':hashlib.sha256((SOURCE/name).read_bytes()).hexdigest()} for name in NAMES]}
 assert manifest['counts']['lessons']==39 and manifest['counts']['modules']==13
 assert len(student)==130 and len(teacher)==73
 assert all(len([l for l in data['lessons'] if l['module']==m])==3 for m in range(1,14))
@@ -105,4 +102,10 @@ for l in data['lessons']:
     if l['n']<=12:assert all(not data['chords'][ch]['barres'] for ch in l['chords'])
 assert 'Bm' in data['lessons'][12]['new_chords']
 assert not re.search(r'thalles|thales',json.dumps(data,ensure_ascii=False),re.I)
+CONTENT.mkdir(parents=True,exist_ok=True)
+write('course-data.json',data)
+write('chords-data.json',data['chords'])
+write('student-guides.json',student_guides)
+write('teacher-data.json',{'lessons':teacher_lessons,'guides':teacher_guides})
+write('provenance.json',manifest)
 print(json.dumps(manifest['counts'],ensure_ascii=False))

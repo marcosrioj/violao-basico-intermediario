@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build both complete Violão Vivo books from the versioned course sources.
 
-Requires reportlab and pypdf. Run from any directory; outputs are relative to
-the repository. The unmodified V5 books are appended as an archival section.
+Requires reportlab and pypdf. Run from any directory; books are published in
+materials. The archival pages are preserved from the current published books.
 The generated page manifest is consumed by the app, so rerun after content edits.
 """
 
@@ -11,10 +11,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import html
+from io import BytesIO
 import json
 from pathlib import Path
 import re
-import shutil
+from tempfile import TemporaryDirectory
 
 from pypdf import PdfReader, PdfWriter
 from reportlab.lib import colors
@@ -43,7 +44,7 @@ from reportlab.platypus.tableofcontents import TableOfContents
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "src/content"
-OUT = ROOT / "output/pdf"
+MATERIALS = ROOT / "materials"
 TMP = ROOT / "tmp/pdfs"
 PAGE_W, PAGE_H = A4
 MARGIN = 18 * mm
@@ -692,12 +693,24 @@ def source_sections(course, technique, teacher_extra, tempo_data):
     return story
 
 
-def archive_intro(audience):
+def load_archive(document):
+    """Reuse the verified archive already embedded in the published book."""
+    source = MATERIALS / document["filename"]
+    data = source.read_bytes()
+    if hashlib.sha256(data).hexdigest() != document["sha256"]:
+        raise RuntimeError(f"Published PDF differs from its manifest: {source.name}")
+    reader = PdfReader(BytesIO(data))
+    start = document["legacyStartPage"] - 1
+    count = document["legacyPages"]
+    if not (start > 0 and count > 0 and start + count == len(reader.pages) == document["pages"]):
+        raise RuntimeError(f"Invalid archive range: {source.name}")
+    return {"reader": reader, "start": start, "count": count, "sha256": document["legacySha256"]}
+
+
+def archive_intro(audience, archive):
     student = audience == "aluno"
-    filename = "Curso_Aluno_Violao_Gospel_v5.pdf" if student else "Manual_Professor_Violao_Gospel_v5.pdf"
-    legacy = PdfReader(ROOT / "materials" / filename)
     return [PageBreak(), heading("Acervo integral da edição 5", anchor="legacy-intro"),
-            p(f"As próximas {len(legacy.pages)} páginas reproduzem integralmente o " + ("material do aluno" if student else "manual do professor") +
+            p(f"As próximas {archive['count']} páginas reproduzem integralmente o " + ("material do aluno" if student else "manual do professor") +
               " da edição 5, incluindo diagramas, cifras, guias, respostas e referências. "
               "A numeração que aparece nessas páginas é a original."),
             p("Os capítulos anteriores reorganizam a prática para o curso ampliado. Este acervo preserva "
@@ -708,16 +721,15 @@ def archive_intro(audience):
               "'página original' indica a numeração impressa no material V5, não a página absoluta deste volume.")]
 
 
-def append_archive(main_path, target, audience, page_map, course, teacher_legacy):
+def append_archive(main_path, target, audience, page_map, course, teacher_legacy, archive):
     student = audience == "aluno"
-    legacy_name = "Curso_Aluno_Violao_Gospel_v5.pdf" if student else "Manual_Professor_Violao_Gospel_v5.pdf"
-    legacy_path = ROOT / "materials" / legacy_name
     main = PdfReader(main_path)
-    legacy = PdfReader(legacy_path)
+    legacy = archive["reader"]
+    archive_start = archive["start"]
     writer = PdfWriter()
     writer.append(main)
     offset = len(writer.pages)
-    writer.append(legacy, import_outline=False)
+    writer.append(legacy, pages=(archive_start, archive_start + archive["count"]), import_outline=False)
     parent = writer.add_outline_item(title="Acervo V5 integral", page_number=offset)
     teacher_by_id = {x["lessonId"]: x for x in teacher_legacy["lessons"]}
     archive_lessons = {}
@@ -736,8 +748,9 @@ def append_archive(main_path, target, audience, page_map, course, teacher_legacy
     with target.open("wb") as stream:
         writer.write(stream)
     check = PdfReader(target)
-    assert len(check.pages) == offset + len(legacy.pages)
-    for index, page in enumerate(legacy.pages):
+    assert len(check.pages) == offset + archive["count"]
+    for index in range(archive["count"]):
+        page = legacy.pages[archive_start + index]
         # Preservation is tested against decoded page streams, not serialization.
         assert check.pages[offset + index].get_contents().get_data() == page.get_contents().get_data(), (audience, index)
     return {
@@ -745,15 +758,15 @@ def append_archive(main_path, target, audience, page_map, course, teacher_legacy
         "pages": len(check.pages),
         "mainPages": offset,
         "legacyStartPage": offset + 1,
-        "legacyPages": len(legacy.pages),
+        "legacyPages": archive["count"],
         "legacyLessons": archive_lessons,
         **page_map,
         "sha256": hashlib.sha256(target.read_bytes()).hexdigest(),
-        "legacySha256": hashlib.sha256(legacy_path.read_bytes()).hexdigest(),
+        "legacySha256": archive["sha256"],
     }
 
 
-def build(audience):
+def build(audience, archive, work_dir):
     course = load("course-data")
     technique = load("technique-data")
     lesson_extra = load("lesson-enrichment")
@@ -787,7 +800,7 @@ def build(audience):
     for lesson in teacher_extra["lessons"]:
         assert sum(x["minutes"] for x in lesson["sequence"]) == 60, lesson["lessonId"]
     filename = "Curso_Aluno_Violao_Gospel_v6.pdf" if audience == "aluno" else "Manual_Professor_Violao_Gospel_v6.pdf"
-    main_path = TMP / f"{audience}-main.pdf"
+    main_path = work_dir / f"{audience}-main.pdf"
     page_refs = {}
     # Printed page references can change wrapping; converge both them and the TOC.
     for _ in range(5):
@@ -798,7 +811,7 @@ def build(audience):
         story += theory_sections(course)
         story += answer_sections(course, lesson_extra, technique)
         story += source_sections(course, technique, teacher_extra, tempo_data)
-        story += archive_intro(audience)
+        story += archive_intro(audience, archive)
         doc = BookTemplate(str(main_path), audience, title=f"Violão Vivo - {audience}", author="Violão Vivo")
         doc.multiBuild(story)
         if doc.page_map == page_refs:
@@ -806,7 +819,7 @@ def build(audience):
         page_refs = doc.page_map
     else:
         raise RuntimeError("Printed page references did not converge.")
-    result = append_archive(main_path, TMP / filename, audience, doc.page_map, course, teacher_legacy)
+    result = append_archive(main_path, work_dir / filename, audience, doc.page_map, course, teacher_legacy, archive)
     assert len(result["lessons"]) == 39
     assert len(result["studies"]) == 27
     assert len(result["charts"]) == sum(len(song["versions"]) for song in course["songs"].values())
@@ -822,7 +835,6 @@ def build(audience):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.parse_args()
-    OUT.mkdir(parents=True, exist_ok=True)
     TMP.mkdir(parents=True, exist_ok=True)
     register_fonts()
     STYLES.update(styles())
@@ -831,23 +843,34 @@ def main():
         for name in SOURCE_NAMES
     }
     manifest_path = CONTENT / "pdf-manifest.json"
-    manifest = {"edition": 6, "generatedOn": "2026-11-15"}
-    for audience in ["aluno", "professor"]:
-        key = "student" if audience == "aluno" else "teacher"
-        manifest[key] = build(audience)
-        print(f"{audience}: {manifest[key]['pages']} pages; V5 begins at {manifest[key]['legacyStartPage']}", flush=True)
-    manifest["sourceHashes"] = {
-        name: hashlib.sha256((CONTENT / f"{name}.json").read_bytes()).hexdigest()
-        for name in SOURCE_NAMES
-    }
-    if manifest["sourceHashes"] != source_hashes:
-        raise RuntimeError("Course sources changed during PDF generation; rerun after editing finishes.")
-    # Publish only after both books have built and passed their structural checks.
-    for key in ["student", "teacher"]:
-        filename = manifest[key]["filename"]
-        shutil.copyfile(TMP / filename, OUT / filename)
-        shutil.copyfile(TMP / filename, ROOT / "materials" / filename)
-    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
+    previous_manifest_bytes = manifest_path.read_bytes()
+    previous_manifest = json.loads(previous_manifest_bytes)
+    archives = {key: load_archive(previous_manifest[key]) for key in ["student", "teacher"]}
+    with TemporaryDirectory(prefix="build-", dir=TMP) as temporary:
+        work_dir = Path(temporary)
+        manifest = {"edition": 6, "generatedOn": "2026-11-15"}
+        for audience in ["aluno", "professor"]:
+            key = "student" if audience == "aluno" else "teacher"
+            manifest[key] = build(audience, archives[key], work_dir)
+            print(f"{audience}: {manifest[key]['pages']} pages; archive begins at {manifest[key]['legacyStartPage']}", flush=True)
+        manifest["sourceHashes"] = {
+            name: hashlib.sha256((CONTENT / f"{name}.json").read_bytes()).hexdigest()
+            for name in SOURCE_NAMES
+        }
+        if manifest["sourceHashes"] != source_hashes:
+            raise RuntimeError("Course sources changed during PDF generation; rerun after editing finishes.")
+        if manifest_path.read_bytes() != previous_manifest_bytes or any(
+            hashlib.sha256((MATERIALS / previous_manifest[key]["filename"]).read_bytes()).hexdigest()
+            != previous_manifest[key]["sha256"] for key in archives
+        ):
+            raise RuntimeError("Published PDFs or manifest changed during generation; rerun after editing finishes.")
+        staged_manifest = work_dir / "pdf-manifest.json"
+        staged_manifest.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
+        # Publish only after both books have built and passed their structural checks.
+        for key in ["student", "teacher"]:
+            filename = manifest[key]["filename"]
+            (work_dir / filename).replace(MATERIALS / filename)
+        staged_manifest.replace(manifest_path)
 
 
 if __name__ == "__main__":

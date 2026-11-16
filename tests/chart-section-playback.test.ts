@@ -57,7 +57,7 @@ function transportButton(html: string): string {
   return button[0];
 }
 
-test('each passage exposes one local action for idle, playing and paused playback', () => {
+test('each passage keeps its contextual action and a restart action in every playback state', () => {
   for (const [playbackState, action] of [
     ['idle', 'Tocar daqui'],
     ['playing', 'Pausar'],
@@ -68,7 +68,9 @@ test('each passage exposes one local action for idle, playing and paused playbac
     assert.ok(button.includes(`aria-label="${action}: Refrão, passagem 2"`), button);
     assert.ok(button.endsWith(`${action}</button>`), button);
     assert.equal((html.match(/class="[^"]*chart-start[^"]*"/g) ?? []).length, 1);
-    assert.ok(!html.includes('Parar'), 'transport remains a single local action');
+    assert.ok(!html.includes('Parar'), 'there is no global stop action');
+    assert.ok(html.includes('aria-label="Reiniciar trecho: Refrão, passagem 2"'));
+    assert.equal((html.match(/class="[^"]*chart-restart[^"]*"/g) ?? []).length, 1);
     assert.ok(html.includes('aria-label="Repetir trecho: Refrão, passagem 2"'));
   }
 });
@@ -97,6 +99,7 @@ test('reference controls keep stable lesson anchors and omit an invented passage
     const button = transportButton(html);
     assert.ok(button.includes(`aria-label="${action}: Refrão"`), button);
     assert.ok(!button.includes('passagem'));
+    assert.ok(html.includes('aria-label="Reiniciar trecho: Refrão"'));
   }
 });
 

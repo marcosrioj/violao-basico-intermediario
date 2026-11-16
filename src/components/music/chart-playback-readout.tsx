@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import type { PlaybackPosition, PlaybackSnapshot } from './chart-transport';
+import type { VisualPlaybackPosition } from './chart-visual-position';
 
 export function formatPlaybackTime(seconds: number) {
   const total = Math.max(0, Math.floor(seconds + 1e-7));
@@ -9,33 +8,14 @@ export function formatPlaybackTime(seconds: number) {
 }
 
 export function ChartPlaybackReadout({
-  status,
-  readPosition,
+  position,
   duration,
   bars,
 }: {
-  status: PlaybackPosition['status'];
-  readPosition: () => PlaybackSnapshot | null;
+  position: VisualPlaybackPosition;
   duration: number;
   bars: number;
 }) {
-  const [position, setPosition] = useState({ seconds: 0, bar: 0 });
-  useEffect(() => {
-    let frame = 0;
-    function update() {
-      const snapshot = readPosition();
-      const next = {
-        seconds: Math.floor(snapshot?.scoreSeconds ?? 0),
-        bar: (snapshot?.bar ?? -1) + 1,
-      };
-      setPosition((previous) =>
-        previous.seconds === next.seconds && previous.bar === next.bar ? previous : next,
-      );
-      if (status === 'playing') frame = requestAnimationFrame(update);
-    }
-    frame = requestAnimationFrame(update);
-    return () => cancelAnimationFrame(frame);
-  }, [status, readPosition, duration, bars]);
   return (
     <div className="chart-playback-readout" aria-live="off">
       <span>
@@ -43,7 +23,7 @@ export function ChartPlaybackReadout({
         {formatPlaybackTime(duration)}
       </span>
       <span>
-        Compasso {position.bar} de {bars}
+        Compasso {position.bar + 1} de {bars}
       </span>
       <progress
         value={Math.min(duration, position.seconds)}

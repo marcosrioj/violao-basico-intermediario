@@ -2996,11 +2996,6 @@ th {
     width: 44px;
     flex: 0 0 44px;
   }
-  .player-controls .chart-transport-actions > .button {
-    width: auto;
-    min-width: 0;
-    flex: 1 1 6rem;
-  }
   .app-footer {
     flex-wrap: wrap;
   }

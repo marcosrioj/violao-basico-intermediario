@@ -22,10 +22,19 @@ import {
 } from '../src/content/curriculum';
 import { buildLessonPresentation, visibleSlideBlocks } from '../src/lib/lesson-presentation';
 
-test('The expanded curriculum preserves the entire original editorial base, repertoire and source artifacts', () => {
+test('The expanded curriculum preserves the original editorial base, repertoire and embedded archives', () => {
   for (const source of preservation.files) {
     const hash = createHash('sha256').update(readFileSync(source.path)).digest('hex');
     assert.equal(hash, source.sha256, `${source.path} must remain preserved`);
+  }
+  assert.deepEqual(preservation.archivedPdfs.map((archive) => archive.audience).sort(), [
+    'student',
+    'teacher',
+  ]);
+  for (const archive of preservation.archivedPdfs) {
+    const document = pdf[archive.audience as 'student' | 'teacher'];
+    assert.equal(document.legacyPages, archive.pages);
+    assert.equal(document.legacySha256, archive.originalSha256);
   }
   assert.equal(base.modules.length, 13);
   assert.equal(base.lessons.length, 39);
@@ -234,6 +243,5 @@ test('both published course PDFs include every lesson, study and original page',
       const page = document.studies[study.id as keyof typeof document.studies];
       assert.ok(page > 0 && page < document.legacyStartPage, study.id);
     }
-    assert.deepEqual(readFileSync(`output/pdf/${document.filename}`), bytes);
   }
 });

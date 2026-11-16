@@ -6,11 +6,11 @@ import { validateLyricCues, totalChartBeats } from '../src/components/music/char
 import { buildChartGroups } from '../src/components/music/chart-layout';
 import { withLyricSyllables } from '../src/components/music/lyric-syllables';
 import {
-  alignLyricCue,
+  alignLyricArrangement,
   existingChordTimeline,
-  normalizeLyric,
   parseChordReference,
 } from './lib/lyric-chord-alignment';
+import { retimeLyricCues } from './lib/retime-lyric-blocks';
 
 const sourcePath = 'materials/references/cifras_13_musicas_vscode.txt';
 const source = readFileSync(sourcePath, 'utf8');
@@ -25,20 +25,19 @@ const report: {
   text: string;
   startBeat: number;
   endBeat: number;
+  scoreWindow: { startBeat: number; endBeat: number };
   sourceLine?: number;
   sourceSection?: string;
-  anchors: ReturnType<typeof alignLyricCue>['anchors'];
-  pending: ReturnType<typeof alignLyricCue>['pending'];
+  anchors: ReturnType<typeof alignLyricArrangement>[number]['anchors'];
+  pending: ReturnType<typeof alignLyricArrangement>[number]['pending'];
 }[] = [];
 const unchangedText: Record<string, string> = {};
 let outOfDate = false;
+const outputs = new Map<string, string>();
+const adjustments: { song: string; version: string; cues: number }[] = [];
 function output(path: string, value: unknown) {
   const serialized = JSON.stringify(value, null, 2) + '\n';
-  if (write) writeFileSync(path, serialized);
-  if (check && readFileSync(path, 'utf8') !== serialized) {
-    console.error(`Desatualizado: ${path}`);
-    outOfDate = true;
-  }
+  outputs.set(path, serialized);
 }
 
 for (let file = 1; file <= 3; file++) {
@@ -50,29 +49,37 @@ for (let file = 1; file <= 3; file++) {
       unchangedText[`${song}/${version}`] = hash(
         JSON.stringify({
           providedLines: lyrics.providedLines,
-          cues: arrangement.cues.map(({ text, startBeat, endBeat }) => ({
-            text,
-            startBeat,
-            endBeat,
+          cues: arrangement.cues.map((cue) => ({
+            text: cue.text,
+            startBeat: (cue.scoreWindow ?? cue).startBeat,
+            endBeat: (cue.scoreWindow ?? cue).endBeat,
           })),
         }),
       );
       const chart = songs[song].versions[version];
       const timeline = existingChordTimeline(chart);
-      const occurrences = new Map<string, number>();
+      const alignments = alignLyricArrangement(arrangement.cues, timeline, lines);
+      if (alignments.length !== arrangement.cues.length)
+        throw new Error(`Alinhamento incompleto: ${song}/${version}`);
       arrangement.cues.forEach((cue, index) => {
-        const key = normalizeLyric(cue.text);
-        const occurrence = occurrences.get(key) ?? 0;
-        occurrences.set(key, occurrence + 1);
-        const alignment = alignLyricCue(cue, timeline, lines, occurrence);
-        // Vocal edits supplied explicitly by a person remain authoritative.
-        if (cue.syllables) {
-          alignment.anchors = [];
-          alignment.pending = [{ reason: 'explicit-syllables-preserved' }];
-        }
+        if (cue.syllables?.some((part) => part.timing === 'manual')) return;
         delete cue.chordAnchors;
-        if (alignment.anchors.length)
-          cue.chordAnchors = alignment.anchors.map(({ from, beat }) => ({ from, beat }));
+        if (alignments[index].anchors.length)
+          cue.chordAnchors = alignments[index].anchors.map(({ from, beat }) => ({ from, beat }));
+      });
+      const beats = totalChartBeats(
+        buildChartGroups(chart).flatMap((g) => g.bars.map(({ bar }) => bar)),
+      );
+      const retimed = (() => {
+        try {
+          return retimeLyricCues(arrangement.cues, beats);
+        } catch (error) {
+          throw new Error(`${song}/${version}: ${String(error)}`);
+        }
+      })();
+      arrangement.cues = retimed.cues;
+      adjustments.push({ song, version, cues: retimed.adjustments.length });
+      arrangement.cues.forEach((cue, index) =>
         report.push({
           song,
           version,
@@ -80,11 +87,9 @@ for (let file = 1; file <= 3; file++) {
           text: cue.text,
           startBeat: cue.startBeat,
           endBeat: cue.endBeat,
-          ...alignment,
-        });
-      });
-      const beats = totalChartBeats(
-        buildChartGroups(chart).flatMap((g) => g.bars.map(({ bar }) => bar)),
+          scoreWindow: cue.scoreWindow!,
+          ...alignments[index],
+        }),
       );
       validateLyricCues(withLyricSyllables(arrangement.cues), beats);
     }
@@ -119,10 +124,19 @@ output('docs/lyric-chord-alignment.json', {
     lyricTextAndWindows: unchangedText,
   },
   policy:
-    'Existing notes, chord events, durations, form and BPM prevail. Only compatible written onsets are anchored. Vocal durations between anchors remain estimated.',
+    'Existing notes, chord events, durations, form and BPM prevail. Source syllables follow compatible existing events in global order; only vocal windows are reflowed, retaining scoreWindow for reproducibility. Vocal durations between anchors remain estimated.',
+  adjustments,
   summary,
   cues: report,
 });
+// Validate every arrangement before touching any generated file.
+for (const [path, serialized] of outputs) {
+  if (write) writeFileSync(path, serialized);
+  if (check && readFileSync(path, 'utf8') !== serialized) {
+    console.error(`Desatualizado: ${path}`);
+    outOfDate = true;
+  }
+}
 console.table(summary);
 console.log(
   `${write ? 'Gravado' : check ? 'Conferido' : 'Prévia (use --write para gravar)'}: ${report.reduce((sum, cue) => sum + cue.anchors.length, 0)} âncoras.`,

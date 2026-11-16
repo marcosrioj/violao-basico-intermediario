@@ -16,6 +16,8 @@ export interface LyricCue {
   text: string;
   startBeat: number;
   endBeat: number;
+  /** Original cell: stable phrase placement, reproducible alignment and legacy estimate migration. */
+  scoreWindow?: { startBeat: number; endBeat: number };
   syllables?: LyricSyllable[];
   /** Syllable onsets anchored to existing chord events; intervening vocal durations remain estimates. */
   chordAnchors?: { from: number; beat: number }[];
@@ -24,9 +26,11 @@ export interface LyricCue {
 export interface ProjectedLyricCue extends LyricCue {
   /** Index in the original cue list, including when a selection clips the line. */
   id: number;
-  /** Inclusive bar indexes in the selected playback sequence. */
+  /** Inclusive display bars in the selected sequence, independent of adjusted vocal times. */
   startBar: number;
   endBar: number;
+  /** Onset bar clamped to the phrase's display range, so a sustained fill never jumps rows. */
+  syllableBars?: number[];
 }
 
 const EPSILON = 1e-7;
@@ -73,6 +77,21 @@ export function validateLyricCues(input: unknown, totalBeats: number): LyricCue[
     const endBeat = Math.min(cue.endBeat, totalBeats);
     previousEnd = endBeat;
     const checked: LyricCue = { text: cue.text.trim(), startBeat: cue.startBeat, endBeat };
+    if (cue.scoreWindow !== undefined) {
+      const window = cue.scoreWindow as Record<string, unknown> | null;
+      if (
+        !window ||
+        typeof window.startBeat !== 'number' ||
+        typeof window.endBeat !== 'number' ||
+        !Number.isFinite(window.startBeat) ||
+        !Number.isFinite(window.endBeat) ||
+        window.startBeat < 0 ||
+        window.endBeat <= window.startBeat ||
+        window.endBeat > totalBeats + EPSILON
+      )
+        throw new RangeError(`${label}: intervalo harmônico de origem inválido.`);
+      checked.scoreWindow = { startBeat: window.startBeat, endBeat: window.endBeat };
+    }
     if (cue.chordAnchors !== undefined) {
       if (cue.text !== checked.text)
         throw new RangeError(`${label}: remova espaços externos antes de marcar âncoras.`);
@@ -230,15 +249,44 @@ export function projectLyricCues(
       }
     });
   }
-  return projected.map(({ id, text, startBeat, endBeat, startBar, endBar, syllables }) => ({
-    id,
-    text,
-    startBeat,
-    endBeat,
-    startBar,
-    endBar,
-    ...(syllables ? { syllables } : {}),
-  }));
+  const playbackBars = spans.flatMap((span) => span.bars);
+  return projected.map(({ id, text, startBeat, endBeat, startBar, endBar, syllables }) => {
+    const window = sourceCues[id].scoreWindow;
+    if (window) {
+      const displayBars = spans.flatMap((span) => {
+        const shift = span.start - span.source.start;
+        return span.bars.filter(
+          (bar) => bar.end > window.startBeat + shift && bar.start < window.endBeat + shift,
+        );
+      });
+      // Preserve the layout from before retiming, even when a pickup starts in the prior bar.
+      // A clipped selection may omit the entire printed phrase while keeping its vocal tail.
+      startBar = displayBars[0]?.index ?? -1;
+      endBar = displayBars.at(-1)?.index ?? -1;
+    }
+    const visibleBars = playbackBars.filter((bar) => bar.index >= startBar && bar.index <= endBar);
+    return {
+      id,
+      text,
+      startBeat,
+      endBeat,
+      startBar,
+      endBar,
+      ...(syllables
+        ? {
+            syllables,
+            // Pickups fill the first printed copy, tails fill the last. No vocal time changes.
+            syllableBars: syllables.map((syllable) =>
+              syllable.endBeat <= startBeat || syllable.startBeat >= endBeat
+                ? -1
+                : (visibleBars.find(
+                    (bar) => Math.max(startBeat, syllable.startBeat) < bar.end - EPSILON,
+                  )?.index ?? endBar),
+            ),
+          }
+        : {}),
+    };
+  });
 }
 
 /** Save per musical arrangement, so lessons at different study tempos share the same cues. */

@@ -20,16 +20,18 @@ python scripts/build-course-pdfs.py
 
 São necessárias as fontes DejaVu em `/usr/share/fonts/truetype/dejavu/`. As versões de ReportLab, pypdf, Pillow e PyMuPDF utilizadas estão fixadas em `scripts/requirements-pdf.txt`. O Poppler fornece `pdftoppm` e `pdfinfo` para inspeção complementar.
 
-O gerador sempre produz os dois livros. Ele verifica a cobertura de 13 módulos, 39 aulas, 27 estudos e os planos docentes de 60 minutos. O mapa canônico `lesson-journey.json` determina a ordem das aplicações. Cada estudo deve ter uma única introdução, aparecer dentro da aula correspondente e preceder suas retomadas. A paginação é repetida até que o sumário e as referências impressas convirjam. O gerador constrói os arquivos temporariamente e só publica as cópias em `output/pdf/` e `materials/` depois que ambos passam pelas verificações estruturais. Se os dados mudarem durante a geração, a publicação é interrompida.
+O gerador sempre produz os dois livros. Ele verifica a cobertura de 13 módulos, 39 aulas, 27 estudos e os planos docentes de 60 minutos. O mapa canônico `lesson-journey.json` determina a ordem das aplicações. Cada estudo deve ter uma única introdução, aparecer dentro da aula correspondente e preceder suas retomadas. A paginação é repetida até que o sumário e as referências impressas convirjam. O gerador lê o acervo incorporado aos PDFs atuais de `materials/`, confere seus hashes e intervalos no manifesto e o preserva na nova geração. Usa uma pasta temporária de diagramação, removida ao terminar, e publica os dois livros somente em `materials/`, depois das verificações estruturais. Se o conteúdo, os PDFs publicados ou o manifesto mudarem durante a geração, a publicação é interrompida.
 
 `src/content/pdf-manifest.json` registra os hashes dos sete arquivos de conteúdo, os hashes dos PDFs e dos originais, os totais e as páginas de cada aula, estudo, consulta e mapa harmônico. O campo `studyLessons` identifica a aula de introdução de cada estudo. Os atalhos do aplicativo usam esse manifesto. Qualquer mudança editorial exige gerar novamente os dois livros e conferir o manifesto.
 
+A geração a partir dos PDFs atuais foi executada em uma cópia isolada do projeto, sem os arquivos antigos separados. As 712 páginas resultantes conservaram texto, pixels renderizados e referências de página idênticos aos livros publicados, incluindo as 203 páginas do acervo. Os hashes publicados foram conferidos e a pasta temporária ficou vazia ao final. Os PDFs atuais não precisaram ser substituídos, pois o conteúdo e a diagramação não mudaram.
+
 ## Preservação e integridade
 
-- Os dois PDFs originais permanecem intactos em `materials/`.
+- As 203 páginas originais permanecem incorporadas aos PDFs atuais em `materials/`; a geração não depende de arquivos antigos separados.
 - Cada página original foi anexada ao livro correspondente. Os fluxos de conteúdo decodificados das 203 páginas foram comparados com os originais e são iguais.
 - Uma comparação raster independente, com PyMuPDF na escala 0,65, também encontrou **zero diferenças** nas 203 páginas anexadas.
-- As cópias finais em `output/pdf/` e `materials/` são idênticas, byte a byte.
+- Os arquivos finais em `materials/` são os mesmos entregues pelas rotas protegidas da aplicação. Seus hashes são conferidos contra o manifesto.
 - O sumário, os marcadores e os vínculos entre aula, estudo, consulta, mapa e resposta foram verificados. Não foram encontrados destinos internos inválidos.
 - A extração do texto confirmou a presença de todos os campos dos 27 estudos, das 86 aplicações com seus focos e das referências impressas aos 27 estudos em cada volume. Nenhum parágrafo explicativo dos estudos foi duplicado. O índice dos nove eixos preserva suas orientações e serve para localizar introduções e retomadas.
 - Os arquivos contêm texto pesquisável e fontes incorporadas. Os diagramas de acordes e mapas harmônicos novos são vetoriais.
@@ -48,8 +50,7 @@ O modelo de sessão de prática é apresentado como parte do roteiro de quatro d
 
 ## Entregáveis
 
-- `output/pdf/Curso_Aluno_Violao_Gospel_v6.pdf`
-- `output/pdf/Manual_Professor_Violao_Gospel_v6.pdf`
-- Cópias homônimas em `materials/`, utilizadas pelas rotas protegidas da aplicação.
+- `materials/Curso_Aluno_Violao_Gospel_v6.pdf`
+- `materials/Manual_Professor_Violao_Gospel_v6.pdf`
 
 Os arquivos intermediários de diagramação e as imagens de inspeção não são entregáveis do curso.

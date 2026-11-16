@@ -102,6 +102,79 @@ test('a phrase crossing section boundaries is preserved in full and clipped for 
   ]);
 });
 
+test('visual syllable ownership follows its onset across sections and clamps only a clipped selection', () => {
+  const chart = fixture();
+  const cues: LyricCue[] = [
+    {
+      text: 'Santo',
+      startBeat: 3.5,
+      endBeat: 4.75,
+      syllables: [
+        { from: 0, to: 3, startBeat: 3.5, endBeat: 4.5, timing: 'manual' },
+        { from: 3, to: 5, startBeat: 4.5, endBeat: 4.75, timing: 'manual' },
+      ],
+    },
+  ];
+  const original = structuredClone(cues);
+  const [full] = projectLyricCues(chart, buildChartGroups(chart), cues);
+  assert.deepEqual(full.syllableBars, [0, 1]);
+  assert.deepEqual(full.syllables, cues[0].syllables, 'ownership does not change vocal times');
+  const [clipped] = projectLyricCues(chart, buildChartGroups(chart, 'B'), cues);
+  assert.deepEqual(clipped.syllableBars, [0, 0]);
+  assert.deepEqual(
+    clipped.syllables!.map(({ startBeat, endBeat }) => [startBeat, endBeat]),
+    [
+      [-0.5, 0.5],
+      [0.5, 0.75],
+    ],
+    'a clipped sustained syllable keeps its original duration and fractional progress',
+  );
+  assert.deepEqual(cues, original);
+});
+
+test('syllable ownership uses actual local meter durations and repeated playback indexes', () => {
+  const chart: SongVersion = {
+    ...fixture(),
+    sections: [
+      {
+        id: 'A',
+        title: 'Verso',
+        bars: [
+          { events: [{ chord: 'D', beats: 4 }] },
+          { meter: '2/4', beats_per_bar: 2, events: [{ chord: 'G', beats: 2 }] },
+          { events: [{ chord: 'A', beats: 4 }] },
+        ],
+      },
+    ],
+    order: [{ section: 'A', repeat: 2 }],
+  };
+  const cues: LyricCue[] = [0, 10].map((offset) => ({
+    text: 'Santo amor',
+    startBeat: offset + 3.5,
+    endBeat: offset + 7,
+    syllables: [
+      { from: 0, to: 3, startBeat: offset + 3.5, endBeat: offset + 4.25, timing: 'manual' },
+      { from: 3, to: 6, startBeat: offset + 4.25, endBeat: offset + 5.75, timing: 'manual' },
+      { from: 6, to: 8, startBeat: offset + 6, endBeat: offset + 6.5, timing: 'manual' },
+      { from: 8, to: 10, startBeat: offset + 6.5, endBeat: offset + 7, timing: 'manual' },
+    ],
+  }));
+  const original = structuredClone({ chart, cues });
+  const groups = buildChartGroups(chart);
+  const full = projectLyricCues(chart, groups, cues);
+  assert.deepEqual(
+    full.map(({ syllableBars }) => syllableBars),
+    [
+      [0, 1, 2, 2],
+      [3, 4, 5, 5],
+    ],
+  );
+  const [secondPass] = projectLyricCues(chart, [groups[1]], cues);
+  assert.deepEqual(secondPass.syllableBars, [3, 4, 5, 5]);
+  assert.deepEqual(secondPass.syllables, cues[0].syllables);
+  assert.deepEqual({ chart, cues }, original);
+});
+
 test('rests stay empty and touching boundaries do not activate the next or preceding bar', () => {
   const chart = fixture();
   const cues = validateLyricCues(
@@ -263,4 +336,24 @@ test('storage identity survives tempo/editorial changes but changes with the mus
     edit(changed);
     assert.notEqual(key, chartLyricsKey(changed, 'teste'));
   }
+});
+
+test('retimed vocal windows preserve their original score cell for reproducible legacy matching', () => {
+  const cue = {
+    text: 'Entrada antes do acorde',
+    startBeat: 3,
+    endBeat: 7.5,
+    scoreWindow: { startBeat: 4, endBeat: 8 },
+  };
+  assert.deepEqual(validateLyricCues([cue], 12), [cue]);
+  for (const scoreWindow of [
+    null,
+    [],
+    { startBeat: -1, endBeat: 8 },
+    { startBeat: 4, endBeat: 4 },
+    { startBeat: 4, endBeat: 13 },
+    { startBeat: NaN, endBeat: 8 },
+    { startBeat: 4, endBeat: Infinity },
+  ])
+    assert.throws(() => validateLyricCues([{ ...cue, scoreWindow }], 12), /origem/);
 });

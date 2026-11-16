@@ -84,8 +84,6 @@ async function run() {
     '/api/sessions',
     '/api/materials/aluno',
     '/api/materials/professor',
-    '/api/materials/aluno-v5',
-    '/api/materials/professor-v5',
     '/api/classes/10000000-0000-4000-8000-000000000001/students/20000000-0000-4000-8000-000000000001/practice',
   ]) {
     const response = await request(path);

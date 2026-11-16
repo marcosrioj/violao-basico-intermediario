@@ -1,5 +1,5 @@
 import { memo, useId, type CSSProperties } from 'react';
-import { Play, Pause, Repeat2 } from 'lucide-react';
+import { Play, Pause, Repeat2, RotateCcw } from 'lucide-react';
 import type { ChartBar, SongVersion } from '@/content/types';
 import { buildChartRows, describeChartBar, type ChartGroup } from './chart-layout';
 import type { ProjectedLyricCue } from './chart-lyrics';
@@ -117,6 +117,16 @@ export const ChartSection = memo(function ChartSection({
                 <Play size={14} aria-hidden="true" />
               )}{' '}
               {action}
+            </button>
+          )}
+          {onStart && group.bars.length > 0 && (
+            <button
+              type="button"
+              className="button small secondary chart-restart"
+              aria-label={`Reiniciar trecho: ${group.title}${!reference && group.passages > 1 ? `, passagem ${group.passage}` : ''}`}
+              onClick={() => onStart(group.bars[0].playbackIndex, group.sectionId)}
+            >
+              <RotateCcw size={14} aria-hidden="true" /> Reiniciar
             </button>
           )}
           {onRepeat && group.bars.length > 0 && (

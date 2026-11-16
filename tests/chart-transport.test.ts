@@ -200,6 +200,30 @@ test('starting from a later occurrence uses its absolute bar index and clears pr
   assert.equal(f.chords().length, 2, 'a later occurrence does not replay the earlier chorus');
 });
 
+test('restarting a paused passage resets its offset and retains repeat until it is disabled', () => {
+  const f = fixture([bar('D'), bar('G'), bar('Am')]);
+  f.transport.setLoopRange({ startBar: 1, endBar: 2 });
+  f.transport.play(1);
+  f.step(2.04);
+  f.transport.pause();
+  close(f.transport.snapshot().scoreSeconds, 6);
+
+  f.time(10);
+  f.transport.play(1);
+  close(f.transport.snapshot().scoreSeconds, 4);
+  close(f.transport.snapshot().elapsedSeconds, 0);
+  close(f.chords().at(-1)!.duration, 4);
+  assert.equal(f.position().status, 'playing');
+
+  f.step(14.05);
+  assert.equal(f.position().bar, 1, 'the restarted passage still repeats');
+  assert.equal(f.chords().at(-1)!.name, 'G');
+  f.transport.setLoopRange(null);
+  f.step(18.05);
+  assert.equal(f.position().bar, 2, 'turning repetition off continues to the next passage');
+  assert.equal(f.chords().at(-1)!.name, 'Am');
+});
+
 test('stop resets the sequence and disposal cancels scheduled voices and prevents revival', () => {
   const f = fixture([bar('D'), bar('G')]);
   f.transport.setMetronome(true);

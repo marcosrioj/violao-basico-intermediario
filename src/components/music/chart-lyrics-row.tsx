@@ -44,7 +44,7 @@ function wordsIn(cue: ProjectedLyricCue) {
   return words;
 }
 
-/** One visible copy; completed syllables persist across lyric and chart line breaks. */
+/** Keep complete phrases under their original chart rows; timing only changes emphasis. */
 export function ChartLyricsRow({
   clock,
   cues,

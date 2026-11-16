@@ -16,13 +16,18 @@ export function splitLyricSyllables(text: string): { from: number; to: number }[
   return starts.map((from, index) => ({ from, to: starts[index + 1] ?? text.length }));
 }
 
+/** Shared by offline vocal-block retiming and the browser's per-phrase interpolation. */
+export function lyricSyllableWeights(text: string, parts = splitLyricSyllables(text)): number[] {
+  return parts.map((part, index) => {
+    const syllable = text.slice(part.from, part.to);
+    return index === parts.length - 1 ? 2 : /[áéíóúâêôãõ]/i.test(syllable) ? 1.25 : 1;
+  });
+}
+
 /** Chord anchors fix compatible written onsets; durations between anchors are still estimates. */
 export function estimateLyricSyllables(cue: LyricCue): LyricSyllable[] {
   const parts = splitLyricSyllables(cue.text);
-  const weights = parts.map((part, index) => {
-    const text = cue.text.slice(part.from, part.to);
-    return index === parts.length - 1 ? 2 : /[áéíóúâêôãõ]/i.test(text) ? 1.25 : 1;
-  });
+  const weights = lyricSyllableWeights(cue.text, parts);
   const knots = [{ index: 0, beat: cue.startBeat }];
   for (const anchor of cue.chordAnchors ?? []) {
     const index = parts.findIndex((part) => part.from === anchor.from);

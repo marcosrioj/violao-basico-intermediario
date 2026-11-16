@@ -12,6 +12,7 @@ import {
   type ExistingChord,
   type ReferenceLine,
 } from '../scripts/lib/lyric-chord-alignment';
+import { retimeLyricCues } from '../scripts/lib/retime-lyric-blocks';
 import { songs } from '../src/content/course';
 import { songLyrics } from '../src/content/song-lyrics';
 import type { SongVersion } from '../src/content/types';
@@ -161,9 +162,11 @@ test('existing event timeline preserves fractional pulses and all written repeat
   assert.deepEqual(chart, original);
 });
 
-test('a pickup outside the phrase window is reported instead of creating zero-duration syllables', () => {
-  const cue: LyricCue = { text: 'Eu canto aqui', startBeat: 0, endBeat: 8 };
-  const result = alignLyricCue(cue, timeline(['G', 0], ['C', 4]), [
+test('a pickup before the old phrase window moves the vocal prefix while preserving its chord onsets', () => {
+  const cue: LyricCue = { text: 'Eu canto aqui', startBeat: 4, endBeat: 12 };
+  const events = timeline(['G', 4], ['C', 8]);
+  const unchangedEvents = structuredClone(events);
+  const result = alignLyricCue(cue, events, [
     reference(cue.text, [
       ['G', 3],
       ['C', 9],
@@ -171,33 +174,52 @@ test('a pickup outside the phrase window is reported instead of creating zero-du
   ]);
   assert.deepEqual(
     result.anchors.map(({ from, beat }) => ({ from, beat })),
-    [{ from: 9, beat: 4 }],
+    [
+      { from: 3, beat: 4 },
+      { from: 9, beat: 8 },
+    ],
   );
-  assert.ok(
-    result.pending.some(
-      ({ chord, reason }) => chord === 'G' && reason === 'pickup-before-phrase-window',
-    ),
-  );
-  const prepared = withLyricSyllables([{ ...cue, chordAnchors: result.anchors }]);
-  validateLyricCues(prepared, 8);
+  assert.deepEqual(result.pending, []);
+  const retimed = retimeLyricCues([{ ...cue, chordAnchors: result.anchors }], 12);
+  const prepared = withLyricSyllables(retimed.cues);
+  validateLyricCues(prepared, 12);
+  assert.ok(prepared[0].startBeat >= 0 && prepared[0].startBeat < cue.startBeat);
+  assert.deepEqual(prepared[0].scoreWindow, { startBeat: 4, endBeat: 12 });
   assert.ok(prepared[0].syllables!.every(({ startBeat, endBeat }) => endBeat > startBeat));
-  assert.equal(prepared[0].syllables!.find(({ from }) => from === 9)!.startBeat, 4);
+  assert.equal(prepared[0].syllables!.find(({ from }) => from === 3)!.startBeat, 4);
+  assert.equal(prepared[0].syllables!.find(({ from }) => from === 9)!.startBeat, 8);
+  assert.deepEqual(events, unchangedEvents);
 });
 
 test('a sustained chord cannot be moved to a later reattack but can match a real harmonic return', () => {
-  const cue: LyricCue = { text: 'Eu canto aqui', startBeat: 0, endBeat: 6 };
-  const source = [reference(cue.text, [['D', 3]])];
-  const sustained = alignLyricCue(cue, timeline(['D', 0], ['D', 2], ['D', 4]), source);
-  assert.deepEqual(sustained.anchors, []);
-  assert.ok(sustained.pending.some(({ reason }) => reason === 'pickup-before-phrase-window'));
-  const returned = alignLyricCue(cue, timeline(['D', 0], ['G', 2], ['D', 4]), source);
+  const cue: LyricCue = { text: 'Eu canto aqui', startBeat: 4, endBeat: 10 };
+  const source = [
+    reference(cue.text, [
+      ['D', 3],
+      ['D', 9],
+    ]),
+  ];
+  const sustained = alignLyricCue(cue, timeline(['D', 4], ['D', 6], ['D', 8]), source);
+  assert.deepEqual(
+    sustained.anchors.map(({ from, beat }) => ({ from, beat })),
+    [{ from: 3, beat: 4 }],
+  );
+  assert.ok(
+    sustained.pending.some(
+      ({ reason }) => reason === 'conflicting-source-order-or-sustained-chord',
+    ),
+  );
+  const returned = alignLyricCue(cue, timeline(['D', 4], ['G', 6], ['D', 8]), source);
   assert.deepEqual(
     returned.anchors.map(({ from, beat }) => ({ from, beat })),
-    [{ from: 3, beat: 4 }],
+    [
+      { from: 3, beat: 4 },
+      { from: 9, beat: 8 },
+    ],
   );
 });
 
-test('an interior chord anchor wins over an equally complete match that would invent a vocal rest', () => {
+test('interior chord anchors move the vocal prefix before the old boundary without delaying fixed harmony', () => {
   const cue: LyricCue = {
     text: 'Eu venho me derramar, dizer que Te amo',
     startBeat: 60,
@@ -211,15 +233,17 @@ test('an interior chord anchor wins over an equally complete match that would in
   const result = alignLyricCue(cue, timeline(['G', 60], ['D', 62]), [source]);
   assert.deepEqual(
     result.anchors.map(({ from, beat, sourceChord }) => ({ from, beat, sourceChord })),
-    [{ from: syllableAtColumn(cue.text, 22), beat: 62, sourceChord: 'D/F#' }],
+    [
+      { from: syllableAtColumn(cue.text, 9), beat: 60, sourceChord: 'G' },
+      { from: syllableAtColumn(cue.text, 22), beat: 62, sourceChord: 'D/F#' },
+    ],
   );
-  const syllables = estimateLyricSyllables({ ...cue, chordAnchors: result.anchors });
-  assert.equal(
-    syllables[0].startBeat,
-    60,
-    'the whole phrase remains available before the interior anchor',
-  );
-  assert.equal(syllables.find(({ from }) => from === result.anchors[0].from)!.startBeat, 62);
+  const [retimed] = retimeLyricCues([{ ...cue, chordAnchors: result.anchors }], 64).cues;
+  const syllables = estimateLyricSyllables(retimed);
+  assert.ok(syllables[0].startBeat < 60, 'the vocal prefix starts before the fixed G onset');
+  assert.equal(syllables.find(({ from }) => from === result.anchors[0].from)!.startBeat, 60);
+  assert.equal(syllables.find(({ from }) => from === result.anchors[1].from)!.startBeat, 62);
+  validateLyricCues([retimed], 64);
 
   const referenceLines = parseChordReference(readFileSync(report.source.path, 'utf8')).filter(
     ({ songId }) => songId === 'me_derramar',
@@ -232,14 +256,20 @@ test('an interior chord anchor wins over an equally complete match that would in
     for (const index of indexes) {
       const actual = songLyrics.me_derramar.versions[version].cues[index];
       const aligned = alignLyricCue(actual, existingChordTimeline(chart), referenceLines);
-      assert.ok(
-        aligned.anchors.some(({ from, beat }) => from > 0 && beat === actual.startBeat + 2),
+      const originalStart = actual.scoreWindow?.startBeat ?? actual.startBeat;
+      assert.deepEqual(
+        aligned.anchors.map(({ from, beat }) => ({ from, beat })),
+        [
+          { from: 0, beat: originalStart - 1 },
+          { from: 9, beat: originalStart },
+          { from: 22, beat: originalStart + 2 },
+        ],
       );
-      assert.ok(aligned.anchors.every(({ from }) => from > 0));
-      assert.equal(
-        estimateLyricSyllables({ ...actual, chordAnchors: aligned.anchors })[0].startBeat,
-        actual.startBeat,
-      );
+      const [prepared] = retimeLyricCues(
+        [{ ...actual, chordAnchors: aligned.anchors }],
+        actual.scoreWindow?.endBeat ?? actual.endBeat,
+      ).cues;
+      assert.equal(estimateLyricSyllables(prepared)[0].startBeat, originalStart - 1);
     }
   }
 });
@@ -318,16 +348,23 @@ test('unmatched, free and out-of-line reference passages remain explicit and do 
   assert.ok(outside.pending.every(({ reason }) => reason === 'outside-lyric'));
 });
 
-test('a phrase inside a held chord keeps verse provenance even when its window contains no new event', () => {
-  const cue: LyricCue = { text: 'Eu canto aqui', startBeat: 1.5, endBeat: 3.5 };
-  const result = alignLyricCue(cue, timeline(['D', 0], ['D', 4]), [
+test('a phrase inside a held chord keeps verse provenance and its existing onset before the old window', () => {
+  const cue: LyricCue = { text: 'Eu canto aqui', startBeat: 5.5, endBeat: 7.5 };
+  const result = alignLyricCue(cue, timeline(['D', 4], ['D', 8]), [
     reference(cue.text, [['D', 3]], 10),
     { ...reference(cue.text, [], 20), section: 'Repetições livres na ministração', free: true },
   ]);
   assert.equal(result.sourceLine, 10);
   assert.equal(result.sourceSection, 'Verso');
-  assert.deepEqual(result.anchors, []);
-  assert.equal(result.pending[0].reason, 'no-compatible-ordered-event');
+  assert.deepEqual(
+    result.anchors.map(({ from, beat }) => ({ from, beat })),
+    [{ from: 3, beat: 4 }],
+  );
+  assert.deepEqual(result.pending, []);
+  const [retimed] = retimeLyricCues([{ ...cue, chordAnchors: result.anchors }], 12).cues;
+  validateLyricCues([retimed], 12);
+  assert.ok(retimed.startBeat < 4);
+  assert.equal(estimateLyricSyllables(retimed).find(({ from }) => from === 3)!.startBeat, 4);
 });
 
 test('anchor validation rejects reversed, duplicate, out-of-window and zero-length pickup constraints', () => {
@@ -408,7 +445,7 @@ test('fractional chord anchors remain exact after interpolation and selecting ei
   }
 });
 
-test('alignment provenance identifies the supplied source and preserves musical data and lyric windows', () => {
+test('alignment provenance identifies the supplied source and preserves musical data and original lyric windows', () => {
   const hash = (contents: string | Buffer) => createHash('sha256').update(contents).digest('hex');
   assert.equal(hash(readFileSync(report.source.path)), report.source.sha256);
   for (const file of report.preserved.files)
@@ -416,10 +453,10 @@ test('alignment provenance identifies the supplied source and preserves musical 
   for (const [key, expected] of Object.entries(report.preserved.lyricTextAndWindows)) {
     const [song, version] = key.split('/');
     const unchanged = songLyrics[song].versions[version].cues.map(
-      ({ text, startBeat, endBeat }) => ({
+      ({ text, startBeat, endBeat, scoreWindow }) => ({
         text,
-        startBeat,
-        endBeat,
+        startBeat: scoreWindow?.startBeat ?? startBeat,
+        endBeat: scoreWindow?.endBeat ?? endBeat,
       }),
     );
     assert.equal(

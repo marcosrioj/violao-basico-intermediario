@@ -495,3 +495,265 @@ test('starting or looping in the middle of a phrase marks the complete prefix re
   assert.equal(clock.rowSnapshot(1, 1), '');
   cleanup();
 });
+
+test('a manual syllable crossing beats 37.6–38.4 keeps its onset row in the Ousado Amor chart at widths 1, 2 and 4', async (t) => {
+  const { songs } = await import('../src/content/course');
+  const { buildChartGroups, buildChartRows } = await import('../src/components/music/chart-layout');
+  const { projectLyricCues, totalChartBeats } =
+    await import('../src/components/music/chart-lyrics');
+  const { withLyricSyllables } = await import('../src/components/music/lyric-syllables');
+  const frame = animationFrames(t);
+  const chart = songs.ousado_amor.versions.base;
+  const groups = buildChartGroups(chart);
+  const prepared = withLyricSyllables([
+    {
+      text: 'Eu vou lá',
+      startBeat: 32,
+      endBeat: 40,
+      syllables: [
+        { from: 0, to: 3, startBeat: 32, endBeat: 37.6, timing: 'manual' },
+        { from: 3, to: 7, startBeat: 37.6, endBeat: 38.4, timing: 'manual' },
+        { from: 7, to: 9, startBeat: 38.4, endBeat: 40, timing: 'manual' },
+      ],
+    },
+  ]);
+  const before = structuredClone(prepared);
+  const cues = projectLyricCues(chart, groups, prepared);
+  const cue = cues.find(({ startBeat }) => startBeat === 32)!;
+  const index = cue.syllables!.findIndex(
+    ({ startBeat, endBeat }) => startBeat < 38 && endBeat > 38,
+  );
+  const part = cue.syllables![index];
+  assert.equal(cue.text.slice(part.from, part.to), 'vou ');
+  assert.ok(Math.abs(part.startBeat - 37.6) < 1e-7);
+  assert.ok(Math.abs(part.endBeat - 38.4) < 1e-7);
+  assert.equal(cue.syllableBars![index], 18);
+  assert.deepEqual(cue.syllables, prepared[cue.id].syllables);
+  const clock = createLyricsClock(cues, 60);
+  let snapshot: PlaybackSnapshot = {
+    status: 'playing',
+    bar: 18,
+    beat: 1.8,
+    tick: -1,
+    scoreSeconds: 37.8,
+    elapsedSeconds: 0.2,
+    passStartSeconds: 36,
+    waitingForAudio: false,
+    durationSeconds: totalChartBeats(groups.flatMap(({ bars }) => bars.map(({ bar }) => bar))),
+  };
+  const cleanup = clock.follow(true, () => snapshot);
+  const properties = new Map<string, string>();
+  const detach = clock.paint(
+    {
+      style: { setProperty: (name: string, value: string) => properties.set(name, value) },
+    } as unknown as HTMLElement,
+    cue.id,
+    index,
+  );
+  frame();
+  assert.ok(Math.abs(parseFloat(properties.get('--karaoke-fill')!) - 25) < 1e-7);
+  snapshot = { ...snapshot, scoreSeconds: 38.2, elapsedSeconds: 0.6, bar: 19, beat: 0.2 };
+  frame();
+  assert.ok(Math.abs(parseFloat(properties.get('--karaoke-fill')!) - 75) < 1e-7);
+  assert.equal(activeSyllable(clock, 18, 18), `${cue.id}:${index}`);
+  assert.equal(
+    activeSyllable(clock, 19, 19),
+    '',
+    'the new bar does not steal a sustained syllable',
+  );
+  for (const width of [1, 2, 4]) {
+    const rows = groups.flatMap((group) => buildChartRows(group.bars, chart, width));
+    const activeRows = rows.filter((row) =>
+      activeSyllable(clock, row[0].playbackIndex, row.at(-1)!.playbackIndex),
+    );
+    assert.equal(activeRows.length, 1, `width ${width}: exactly one copy fills`);
+    assert.ok(activeRows[0].some(({ playbackIndex }) => playbackIndex === 18));
+  }
+  snapshot = { ...snapshot, scoreSeconds: 38.5, elapsedSeconds: 0.9, beat: 0.5 };
+  frame();
+  assert.equal(activeSyllable(clock, 18, 18), '');
+  assert.equal(
+    activeSyllable(clock, 19, 19),
+    `${cue.id}:${index + 1}`,
+    'the next syllable owns the new bar',
+  );
+  assert.ok(state(clock, cue.id)[1] >= index, 'the completed syllable stays bold');
+  assert.deepEqual(
+    prepared,
+    before,
+    'visual ownership never changes notes, anchors or vocal timing',
+  );
+  detach();
+  cleanup();
+});
+
+test('a clipped selection and a direct jump preserve sustained progress without moving its onset', async (t) => {
+  const { projectLyricCues } = await import('../src/components/music/chart-lyrics');
+  const { buildChartGroups } = await import('../src/components/music/chart-layout');
+  const frame = animationFrames(t);
+  const chart = {
+    key: 'D',
+    meter: '4/4',
+    beats_per_bar: 4,
+    beat_unit: 'quarter' as const,
+    adaptations: '',
+    sections: [
+      { id: 'A', title: 'Verso', bars: [{ events: [{ chord: 'D', beats: 4 }] }] },
+      { id: 'B', title: 'Refrão', bars: [{ events: [{ chord: 'G', beats: 4 }] }] },
+    ],
+    order: [
+      { section: 'A', repeat: 1 },
+      { section: 'B', repeat: 1 },
+    ],
+  };
+  const cue = {
+    text: 'Ti',
+    startBeat: 3.5,
+    endBeat: 4.5,
+    syllables: [{ from: 0, to: 2, startBeat: 3.5, endBeat: 4.5, timing: 'manual' as const }],
+  };
+  for (const selected of [false, true]) {
+    const projected = projectLyricCues(chart, buildChartGroups(chart, selected ? 'B' : 'all'), [
+      cue,
+    ]);
+    const clock = createLyricsClock(projected, 60);
+    const snapshot: PlaybackSnapshot = {
+      status: 'playing',
+      bar: selected ? 0 : 1,
+      beat: 0.25,
+      tick: -1,
+      scoreSeconds: selected ? 0.25 : 4.25,
+      elapsedSeconds: 0.25,
+      passStartSeconds: selected ? 0 : 4,
+      durationSeconds: selected ? 4 : 8,
+      waitingForAudio: false,
+    };
+    const cleanup = clock.follow(true, () => snapshot);
+    frame();
+    assert.equal(activeSyllable(clock, 0, 0), '0:0');
+    assert.equal(activeSyllable(clock, 1, 1), '');
+    let fill = '';
+    const detach = clock.paint(
+      {
+        style: {
+          setProperty: (_name: string, value: string) => {
+            fill = value;
+          },
+        },
+      } as unknown as HTMLElement,
+      0,
+      0,
+    );
+    assert.equal(fill, '75%', 'clipping and direct starting preserve fractional vocal progress');
+    detach();
+    cleanup();
+  }
+});
+
+test('frame consumers receive the same snapshot during waiting, instrumental playback and completion', (t) => {
+  const frame = animationFrames(t);
+  const clock = createLyricsClock([], 60);
+  let snapshot: PlaybackSnapshot | null = {
+    status: 'playing',
+    bar: 0,
+    tick: -1,
+    beat: 0,
+    scoreSeconds: 0,
+    durationSeconds: 8,
+    elapsedSeconds: 0,
+    waitingForAudio: true,
+  };
+  const received: (PlaybackSnapshot | null)[] = [];
+  let reads = 0;
+  let notifications = 0;
+  clock.subscribe(() => notifications++);
+  let cleanup = clock.follow(
+    true,
+    () => {
+      reads++;
+      return snapshot;
+    },
+    (value) => received.push(value),
+  );
+  frame();
+  assert.equal(received[0], snapshot, 'the waiting sample is shared unchanged');
+  snapshot = { ...snapshot, waitingForAudio: false, scoreSeconds: 0.25 };
+  frame();
+  const boundaries = notifications;
+  snapshot = { ...snapshot, scoreSeconds: 0.5 };
+  frame();
+  assert.equal(
+    notifications,
+    boundaries,
+    'continuous frame delivery does not notify unchanged lyric state',
+  );
+  snapshot = { ...snapshot, status: 'idle', bar: -1, scoreSeconds: 0 };
+  frame();
+  assert.equal(received.at(-1), snapshot, 'natural completion reaches every visual consumer');
+  assert.equal(reads, received.length, 'all consumers share exactly one read per frame');
+  cleanup();
+  const count = received.length;
+  frame();
+  assert.equal(received.length, count);
+  snapshot = null;
+  cleanup = clock.follow(
+    true,
+    () => snapshot,
+    (value) => {
+      received.push(value);
+      cleanup();
+    },
+  );
+  frame();
+  frame();
+  assert.equal(
+    received.length,
+    count + 1,
+    'disposal inside the frame callback cancels further work',
+  );
+  assert.equal(received.at(-1), null);
+});
+
+test('a retimed pickup fills its original printed phrase before the Am bar without changing rows', async (t) => {
+  const { songs } = await import('../src/content/course');
+  const { songLyrics } = await import('../src/content/song-lyrics');
+  const { buildChartGroups } = await import('../src/components/music/chart-layout');
+  const { projectLyricCues } = await import('../src/components/music/chart-lyrics');
+  const { withLyricSyllables } = await import('../src/components/music/lyric-syllables');
+  const frame = animationFrames(t);
+  const chart = songs.faz_chover_tna.versions.base;
+  const cues = projectLyricCues(
+    chart,
+    buildChartGroups(chart),
+    withLyricSyllables(songLyrics.faz_chover_tna.versions.base.cues),
+  );
+  const cue = cues.find((item) => item.text === 'Faz chover, faz chover')!;
+  const first = cue.syllables![0];
+  const clock = createLyricsClock(cues, 60);
+  let snapshot: PlaybackSnapshot = {
+    status: 'playing',
+    bar: 15,
+    beat: 3,
+    tick: -1,
+    scoreSeconds: (first.startBeat + first.endBeat) / 2,
+    elapsedSeconds: 0,
+    durationSeconds: 196,
+    waitingForAudio: false,
+  };
+  const cleanup = clock.follow(true, () => snapshot);
+  frame();
+  assert.equal(activeSyllable(clock, 15, 15), '', 'no duplicate phrase added to the preceding row');
+  assert.equal(activeSyllable(clock, 16, 16), `${cue.id}:0`, 'pickup fills the original refrain');
+  assert.equal(activeSyllable(clock, 17, 17), '', 'the later full copy does not fill early');
+  snapshot = { ...snapshot, bar: 16, scoreSeconds: 64.1 };
+  frame();
+  const am = cue.syllables!.findIndex((part) => part.from === 7);
+  assert.equal(activeSyllable(clock, 16, 16), `${cue.id}:${am}`);
+  snapshot = { ...snapshot, bar: 17, scoreSeconds: 68.1 };
+  frame();
+  const f = cue.syllables!.findIndex((part) => part.from === 19);
+  assert.equal(activeSyllable(clock, 17, 17), `${cue.id}:${f}`);
+  assert.equal(activeSyllable(clock, 16, 16), '');
+  assert.ok(clock.rowSnapshot(16, 16).includes(`${cue.id}:0:${f - 1}:-1`));
+  cleanup();
+});

@@ -177,17 +177,6 @@ export default async function MaterialsPage() {
           />
         </section>
       )}
-      <details className="section">
-        <summary>Consultar os arquivos originais</summary>
-        <a className="resource-link" href="/api/materials/aluno-v5" download>
-          Apostila original do aluno · 130 páginas
-        </a>
-        {teacher && (
-          <a className="resource-link" href="/api/materials/professor-v5" download>
-            Manual original do professor · 73 páginas
-          </a>
-        )}
-      </details>
     </Shell>
   );
 }

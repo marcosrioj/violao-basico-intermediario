@@ -173,154 +173,329 @@ function sectionKind(section: string): string {
   if (/pré-refrão|preparação/i.test(section)) return 'pre';
   if (/refrão/i.test(section)) return 'chorus';
   if (/ponte/i.test(section)) return 'bridge';
-  if (/estrofe|verso|parte|seja a honra/i.test(section)) return 'verse';
   if (/final|encerramento|coda/i.test(section)) return 'ending';
+  if (/estrofe|verso|parte|seja a honra/i.test(section)) return 'verse';
   return 'other';
 }
 
-/** Only attach written syllables to compatible events already inside this phrase's window. */
+const EPSILON = 1e-7;
+const scoreWindow = (cue: LyricCue) => cue.scoreWindow ?? cue;
+const isManual = (cue: LyricCue) =>
+  cue.syllables?.some((part) => part.timing === 'manual') ?? false;
+
+interface Score {
+  count: number;
+  section: number;
+  sourceOrder: number;
+  delayedStart: number;
+  distance: number;
+  exact: number;
+  occurrence: number;
+}
+function better(a: Score, b: Score): boolean {
+  return a.count !== b.count
+    ? a.count > b.count
+    : a.section !== b.section
+      ? a.section > b.section
+      : a.sourceOrder !== b.sourceOrder
+        ? a.sourceOrder < b.sourceOrder
+        : a.delayedStart !== b.delayedStart
+          ? a.delayedStart < b.delayedStart
+          : Math.abs(a.distance - b.distance) > EPSILON
+            ? a.distance < b.distance
+            : a.exact !== b.exact
+              ? a.exact > b.exact
+              : a.occurrence < b.occurrence;
+}
+interface Route extends Score {
+  lastEvent: number;
+  line?: ReferenceLine;
+  group: string;
+  kind: string;
+  anchors: AlignmentAnchor[];
+  previous?: Route;
+  cueIndex: number;
+  ambiguous: number[];
+}
+const initialRoute: Route = {
+  count: 0,
+  section: 0,
+  sourceOrder: 0,
+  delayedStart: 0,
+  distance: 0,
+  exact: 0,
+  occurrence: 0,
+  lastEvent: -1,
+  group: '',
+  kind: 'other',
+  anchors: [],
+  cueIndex: -1,
+  ambiguous: [],
+};
+
+function retain<T extends Route>(routes: Map<string, T>, key: string, candidate: T): void {
+  const existing = routes.get(key);
+  if (!existing || better(candidate, existing)) {
+    routes.set(key, candidate);
+    return;
+  }
+  if (better(existing, candidate)) return;
+  const ambiguous = new Set([...existing.ambiguous, ...candidate.ambiguous]);
+  let left: Route | undefined = existing,
+    right: Route | undefined = candidate;
+  while (left && right && left.cueIndex >= 0) {
+    if (
+      JSON.stringify(left.anchors.map(({ from, beat }) => [from, beat])) !==
+      JSON.stringify(right.anchors.map(({ from, beat }) => [from, beat]))
+    )
+      ambiguous.add(left.cueIndex);
+    left = left.previous;
+    right = right.previous;
+  }
+  routes.set(key, { ...existing, ambiguous: [...ambiguous] });
+}
+
+/**
+ * Match the written source jointly across each vocal block. Vocal windows may move; the
+ * expanded chord timeline never does. Neighbouring phrases cannot steal or reuse an event.
+ */
+export function alignLyricArrangement(
+  cues: LyricCue[],
+  timeline: ExistingChord[],
+  references: ReferenceLine[],
+  firstOccurrence = 0,
+): AlignmentResult[] {
+  if (!cues.length) return [];
+  const bars = timeline.filter((event, index) => timeline[index - 1]?.bar !== event.bar);
+  const occurrences = new Map<string, number>();
+  const output: AlignmentResult[] = [];
+  let blockStart = 0;
+  while (blockStart < cues.length) {
+    if (isManual(cues[blockStart])) {
+      const key = normalizeLyric(cues[blockStart].text);
+      occurrences.set(key, (occurrences.get(key) ?? firstOccurrence) + 1);
+      output.push({ anchors: [], pending: [{ reason: 'explicit-syllables-preserved' }] });
+      blockStart++;
+      continue;
+    }
+    let blockEnd = blockStart + 1;
+    while (
+      blockEnd < cues.length &&
+      !isManual(cues[blockEnd]) &&
+      scoreWindow(cues[blockEnd]).startBeat - scoreWindow(cues[blockEnd - 1]).endBeat < 4 - EPSILON
+    )
+      blockEnd++;
+    const lowerLimit = blockStart ? scoreWindow(cues[blockStart - 1]).endBeat : 0;
+    const upperLimit = scoreWindow(cues[blockEnd - 1]).endBeat;
+    let routes = new Map<string, Route>([['initial', initialRoute]]);
+    const considered: {
+      events: { event: ExistingChord; index: number }[];
+    }[] = [];
+    for (let cueIndex = blockStart; cueIndex < blockEnd; cueIndex++) {
+      const cue = cues[cueIndex],
+        window = scoreWindow(cue);
+      const current = timeline.findLast((event) => event.beat <= window.startBeat);
+      const group = `${current?.section ?? ''}:${current?.passage ?? 0}`;
+      const kind = sectionKind(current?.section ?? '');
+      const startBar = Math.max(
+        0,
+        bars.findLastIndex((event) => event.beat <= window.startBeat),
+      );
+      const endBar = Math.max(
+        0,
+        bars.findLastIndex((event) => event.beat < window.endBeat - EPSILON),
+      );
+      const lower = Math.max(lowerLimit, bars[Math.max(0, startBar - 1)]?.beat ?? lowerLimit);
+      const upper = Math.min(upperLimit, bars[endBar + 2]?.beat ?? upperLimit);
+      const events = timeline
+        .map((event, index) => ({ event, index }))
+        .filter(({ event }) => event.beat >= lower && event.beat < upper - EPSILON);
+      const key = normalizeLyric(cue.text);
+      const occurrence = occurrences.get(key) ?? firstOccurrence;
+      occurrences.set(key, occurrence + 1);
+      const allLines = references.filter((line) => normalizeLyric(line.text) === key);
+      // Keep distinct harmonic/section patterns; identical printed repetitions differ only in provenance.
+      const patterns = new Map<string, { line: ReferenceLine; ordinal: number }>();
+      allLines.forEach((line, ordinal) => {
+        const signature = JSON.stringify([line.section, line.free, line.chords]);
+        const previous = patterns.get(signature);
+        if (!previous || Math.abs(ordinal - occurrence) < Math.abs(previous.ordinal - occurrence))
+          patterns.set(signature, { line, ordinal });
+      });
+      const candidates = [...patterns.values()];
+      const nominal = estimateLyricSyllables({
+        text: cue.text,
+        startBeat: window.startBeat,
+        endBeat: window.endBeat,
+      });
+      const nextRoutes = new Map<string, Route>();
+      considered.push({ events });
+      const options = candidates.length ? candidates : [{ line: undefined, ordinal: occurrence }];
+      for (const { line, ordinal } of options) {
+        const tokens =
+          line?.chords.map((token) => ({
+            ...token,
+            from: syllableAtColumn(cue.text, token.column),
+          })) ?? [];
+        const firstVocal = tokens.findIndex((token) => token.from !== undefined);
+        type Local = Route & { afterFrom: number };
+        let states = new Map<string, Local>();
+        for (const previous of routes.values()) {
+          const state: Local = {
+            ...previous,
+            previous,
+            group,
+            kind,
+            line,
+            anchors: [],
+            afterFrom: -1,
+            cueIndex,
+            section:
+              previous.section +
+              Number(
+                Boolean(line && sectionKind(line.section) === sectionKind(current?.section ?? '')),
+              ),
+            sourceOrder:
+              previous.sourceOrder +
+              Number(
+                Boolean(
+                  line &&
+                  previous.line &&
+                  (previous.group === group || (kind === 'ending' && previous.kind === kind)) &&
+                  ((previous.line.section === line.section && line.line <= previous.line.line) ||
+                    (previous.line.section !== line.section &&
+                      sectionKind(previous.line.section) === sectionKind(line.section))),
+                ),
+              ),
+            occurrence: previous.occurrence + Math.abs(ordinal - occurrence),
+          };
+          const stateKey = `${state.lastEvent}:-1`;
+          retain(states, stateKey, state);
+        }
+        if (!line?.free)
+          for (const [tokenIndex, token] of tokens.entries()) {
+            if (token.from === undefined) continue;
+            const following = new Map(states);
+            for (const state of states.values()) {
+              if (token.from <= state.afterFrom) continue;
+              for (const { event, index } of events) {
+                if (index <= state.lastEvent) continue;
+                if (cueIndex === blockStart && token.from > 0 && event.beat <= lowerLimit + EPSILON)
+                  continue;
+                const match = chordMatch(token.chord, event.chord);
+                if (!match) continue;
+                // A newly printed lyric line may enter over a repeated strum. An interior token
+                // cannot turn a sustained, unchanged chord into a different harmonic change.
+                if (timeline[index - 1]?.chord === event.chord) {
+                  if (tokenIndex !== firstVocal) continue;
+                  // If this printed entry already has a harmonic onset in its score cell,
+                  // its later strums sustain that entry. Mid-bar lyric pickups may instead
+                  // enter on a reattack when the actual change preceded the score cell.
+                  if (
+                    timeline.some(
+                      (earlier, at) =>
+                        earlier.beat >= window.startBeat &&
+                        earlier.beat < event.beat &&
+                        chordMatch(token.chord, earlier.chord) &&
+                        timeline[at - 1]?.chord !== earlier.chord,
+                    )
+                  )
+                    continue;
+                }
+                const candidate: Local = {
+                  ...state,
+                  lastEvent: index,
+                  afterFrom: token.from,
+                  count: state.count + 1,
+                  delayedStart:
+                    state.delayedStart + Number(token.from === 0 && event.beat > window.startBeat),
+                  distance:
+                    state.distance +
+                    Math.abs(
+                      event.beat - nominal.find((unit) => unit.from === token.from)!.startBeat,
+                    ),
+                  exact: state.exact + Number(match === 'exact'),
+                  anchors: [
+                    ...state.anchors,
+                    {
+                      from: token.from,
+                      beat: event.beat,
+                      column: token.column,
+                      sourceChord: token.chord,
+                      existingChord: event.chord,
+                      bar: event.bar,
+                      event: event.event,
+                      match,
+                    },
+                  ],
+                };
+                const stateKey = `${index}:${token.from}`;
+                retain(following, stateKey, candidate);
+              }
+            }
+            states = following;
+          }
+        for (const state of states.values()) {
+          const stateKey = `${state.lastEvent}:${line?.line ?? 0}`;
+          retain(nextRoutes, stateKey, state);
+        }
+      }
+      routes = nextRoutes;
+    }
+    const finalists = new Map<string, Route>();
+    for (const route of routes.values()) retain(finalists, 'best', route);
+    let best = finalists.get('best');
+    const ambiguous = best?.ambiguous ?? [];
+    const chosen: Route[] = [];
+    while (best?.previous) {
+      chosen.unshift(best);
+      best = best.previous;
+    }
+    chosen.forEach((route, localIndex) => {
+      const cue = cues[blockStart + localIndex],
+        line = route.line;
+      const pending: AlignmentResult['pending'] = [];
+      if (ambiguous.includes(blockStart + localIndex))
+        pending.push({ reason: 'ambiguous-reference-occurrence' });
+      if (!line) pending.push({ reason: 'phrase-not-in-reference' });
+      else if (line.free) pending.push({ reason: 'free-vocal-passage' });
+      else if (!line.chords.length) pending.push({ reason: 'no-written-chord-onset' });
+      else
+        for (const token of line.chords) {
+          if (route.anchors.some((anchor) => anchor.column === token.column)) continue;
+          const from = syllableAtColumn(cue.text, token.column);
+          const compatible = considered[localIndex].events.some(({ event }) =>
+            chordMatch(token.chord, event.chord),
+          );
+          pending.push({
+            ...token,
+            reason:
+              from === undefined
+                ? 'outside-lyric'
+                : route.anchors.some((anchor) => anchor.from === from)
+                  ? 'multiple-chords-on-one-syllable'
+                  : compatible
+                    ? 'conflicting-source-order-or-sustained-chord'
+                    : 'no-compatible-chord-in-context',
+          });
+        }
+      output.push({
+        ...(line ? { sourceLine: line.line, sourceSection: line.section } : {}),
+        anchors: route.anchors,
+        pending,
+      });
+    });
+    blockStart = blockEnd;
+  }
+  return output;
+}
+
+/** Single-phrase inspection; whole-arrangement generation uses the joint matcher above. */
 export function alignLyricCue(
   cue: LyricCue,
   timeline: ExistingChord[],
   references: ReferenceLine[],
   occurrence = 0,
 ): AlignmentResult {
-  // A repeated strum of an unchanged chord is not evidence of a new written harmonic change.
-  const events = timeline.filter(
-    (event, index) =>
-      event.beat >= cue.startBeat &&
-      event.beat < cue.endBeat &&
-      (event.beat === cue.startBeat || timeline[index - 1]?.chord !== event.chord),
-  );
-  const candidates = references.filter(
-    (line) => normalizeLyric(line.text) === normalizeLyric(cue.text),
-  );
-  const currentSection = timeline.findLast((event) => event.beat <= cue.startBeat)?.section ?? '';
-  if (!candidates.length) return { anchors: [], pending: [{ reason: 'phrase-not-in-reference' }] };
-  const estimated = estimateLyricSyllables({
-    text: cue.text,
-    startBeat: cue.startBeat,
-    endBeat: cue.endBeat,
-  });
-  const plans = candidates.map((line, lineIndex) => {
-    const pending: AlignmentResult['pending'] = [];
-    const tokens = line.chords.map((token) => ({
-      ...token,
-      from: syllableAtColumn(line.text, token.column),
-    }));
-    type Path = {
-      anchors: AlignmentAnchor[];
-      delayedStart: number;
-      exact: number;
-      distance: number;
-    };
-    const better = (a: Path, b: Path) =>
-      a.anchors.length !== b.anchors.length
-        ? a.anchors.length > b.anchors.length
-        : a.delayedStart !== b.delayedStart
-          ? a.delayedStart < b.delayedStart
-          : a.exact !== b.exact
-            ? a.exact > b.exact
-            : a.distance < b.distance;
-    const memo = new Map<string, Path>();
-    const solve = (tokenIndex: number, afterEvent: number, afterFrom: number): Path => {
-      const key = `${tokenIndex}:${afterEvent}:${afterFrom}`;
-      if (memo.has(key)) return memo.get(key)!;
-      if (tokenIndex >= tokens.length || line.free)
-        return { anchors: [], delayedStart: 0, exact: 0, distance: 0 };
-      const token = tokens[tokenIndex];
-      let best = solve(tokenIndex + 1, afterEvent, afterFrom);
-      if (token.from !== undefined && token.from > afterFrom) {
-        for (let e = afterEvent + 1; e < events.length; e++) {
-          const event = events[e];
-          const match = chordMatch(token.chord, event.chord);
-          if (!match || (token.from > 0 && event.beat <= cue.startBeat)) continue;
-          const tail = solve(tokenIndex + 1, e, token.from);
-          const path: Path = {
-            anchors: [
-              {
-                from: token.from,
-                beat: event.beat,
-                column: token.column,
-                sourceChord: token.chord,
-                existingChord: event.chord,
-                bar: event.bar,
-                event: event.event,
-                match,
-              },
-              ...tail.anchors,
-            ],
-            // With equally complete matches, a chord under an interior syllable is stronger
-            // evidence than inventing a vocal rest just to match an earlier chord literally.
-            delayedStart:
-              tail.delayedStart + Number(token.from === 0 && event.beat > cue.startBeat),
-            exact: tail.exact + Number(match === 'exact'),
-            distance:
-              tail.distance +
-              Math.abs(event.beat - estimated.find((s) => s.from === token.from)!.startBeat),
-          };
-          if (better(path, best)) best = path;
-        }
-      }
-      memo.set(key, best);
-      return best;
-    };
-    const path = solve(0, -1, -1);
-    if (line.free) pending.push({ reason: 'free-vocal-passage' });
-    else if (!tokens.length) pending.push({ reason: 'no-written-chord-onset' });
-    else
-      for (const token of tokens) {
-        if (path.anchors.some((a) => a.column === token.column)) continue;
-        const atStart = events.find(
-          (event) => event.beat === cue.startBeat && chordMatch(token.chord, event.chord),
-        );
-        pending.push({
-          chord: token.chord,
-          column: token.column,
-          reason:
-            token.from === undefined
-              ? 'outside-lyric'
-              : token.from > 0 && atStart
-                ? 'pickup-before-phrase-window'
-                : 'no-compatible-ordered-event',
-        });
-      }
-    return {
-      line,
-      lineIndex,
-      path,
-      pending,
-      sameSection: Number(sectionKind(line.section) === sectionKind(currentSection)),
-    };
-  });
-  plans.sort(
-    (a, b) =>
-      b.path.anchors.length - a.path.anchors.length ||
-      b.sameSection - a.sameSection ||
-      a.path.delayedStart - b.path.delayedStart ||
-      b.path.exact - a.path.exact ||
-      a.path.distance - b.path.distance ||
-      Math.abs(a.lineIndex - occurrence) - Math.abs(b.lineIndex - occurrence) ||
-      a.line.line - b.line.line,
-  );
-  const chosen = plans[0];
-  // Do not arbitrarily select one of two equally supported, differently timed chord placements.
-  const ambiguous = plans.some(
-    (other) =>
-      other !== chosen &&
-      other.path.anchors.length === chosen.path.anchors.length &&
-      other.sameSection === chosen.sameSection &&
-      other.path.delayedStart === chosen.path.delayedStart &&
-      other.path.exact === chosen.path.exact &&
-      Math.abs(other.path.distance - chosen.path.distance) < 1e-7 &&
-      Math.abs(other.lineIndex - occurrence) === Math.abs(chosen.lineIndex - occurrence) &&
-      JSON.stringify(other.path.anchors.map(({ from, beat }) => ({ from, beat }))) !==
-        JSON.stringify(chosen.path.anchors.map(({ from, beat }) => ({ from, beat }))),
-  );
-  return {
-    sourceLine: chosen.line.line,
-    sourceSection: chosen.line.section,
-    anchors: ambiguous ? [] : chosen.path.anchors,
-    pending: ambiguous ? [{ reason: 'ambiguous-reference-occurrence' }] : chosen.pending,
-  };
+  return alignLyricArrangement([cue], timeline, references, occurrence)[0];
 }

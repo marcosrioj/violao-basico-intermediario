@@ -5,7 +5,12 @@ import { Metronome, Minus, Plus } from 'lucide-react';
 import type { ChartBar, SongVersion } from '@/content/types';
 import { chords } from '@/content/chords';
 import { soundChord, audioContext, playTone } from './audio';
-import { ChartTransport, idlePosition, type LoopRange } from './chart-transport';
+import {
+  ChartTransport,
+  type LoopRange,
+  type PlaybackPosition,
+  type PlaybackSnapshot,
+} from './chart-transport';
 import { buildChartGroups, type ChartGroup } from './chart-layout';
 import { ChartSection } from './chart-section';
 import {
@@ -24,6 +29,7 @@ import { createLyricsClock } from './chart-lyrics-clock';
 import type { LessonLyrics } from '@/content/song-lyrics-types';
 import type { LyricCue } from './chart-lyrics';
 import { withLyricSyllables } from './lyric-syllables';
+import { idleVisualPosition, visualPlaybackPosition } from './chart-visual-position';
 
 const noLyrics: LyricCue[] = [];
 
@@ -52,13 +58,14 @@ export function ChartPlayer({
   const [showLyrics, setShowLyrics] = useState(true);
   const [metronome, setMetronome] = useState(false);
   const [repeatGroup, setRepeatGroup] = useState<string | null>(null);
-  const [playhead, setPlayhead] = useState(idlePosition);
+  const [playhead, setPlayhead] = useState(idleVisualPosition);
+  const [transportStatus, setTransportStatus] = useState<PlaybackPosition['status']>('idle');
   const [barsPerRow, setBarsPerRow] = useState(4);
   const arrangement = useRef<HTMLDivElement>(null);
   const tempoId = useId();
   const transport = useRef<ChartTransport | null>(null);
   const settings = useRef({ metronome: false, range: null as LoopRange | null });
-  const playing = playhead.status === 'playing';
+  const playing = transportStatus === 'playing';
   const groups = useMemo(() => buildChartGroups(chart), [chart]);
   const bars = useMemo(() => groups.flatMap((group) => group.bars.map(({ bar }) => bar)), [groups]);
   const totalBeats = totalChartBeats(bars);
@@ -73,6 +80,9 @@ export function ChartPlayer({
     [chart, groups, syllabicLyrics],
   );
   const readPosition = useCallback(() => transport.current?.snapshot() ?? null, []);
+  const displayFrame = useCallback((snapshot: PlaybackSnapshot | null) => {
+    setPlayhead((previous) => visualPlaybackPosition(previous, snapshot));
+  }, []);
   const lyricsClock = useMemo(
     () => createLyricsClock(projectedLyrics, bpm),
     [projectedLyrics, bpm],
@@ -83,6 +93,7 @@ export function ChartPlayer({
   );
   const stopPlayback = useCallback(() => {
     lyricsClock.reset();
+    setPlayhead(idleVisualPosition);
     transport.current?.stop();
   }, [lyricsClock]);
   const startAt = useCallback(
@@ -94,6 +105,7 @@ export function ChartPlayer({
         transport.current?.setLoopRange(null);
       }
       lyricsClock.reset();
+      setPlayhead(idleVisualPosition);
       void audioContext().resume();
       transport.current?.play(bar);
     },
@@ -105,7 +117,13 @@ export function ChartPlayer({
     transport.current?.setLoopRange(null);
   }
   function startReference(_bar: number, sectionId: string) {
-    const target = groups.find((group) => group.sectionId === sectionId);
+    const currentBar = transport.current?.snapshot().bar ?? -1;
+    const target =
+      groups.find(
+        (group) =>
+          group.sectionId === sectionId &&
+          group.bars.some(({ playbackIndex }) => playbackIndex === currentBar),
+      ) ?? groups.find((group) => group.sectionId === sectionId);
     if (target) startAt(target.bars[0].playbackIndex);
   }
   const pausePlayback = useCallback(() => transport.current?.pause(), []);
@@ -163,7 +181,8 @@ export function ChartPlayer({
           chords[name] ? soundChord(chords[name].frets, duration, at) : () => {},
         click: (frequency, volume, at) => playTone(frequency, 0.045, at, volume),
       },
-      setPlayhead,
+      // Scheduler notifications only start/stop polling; visual positions come from the frame.
+      (position) => setTransportStatus(position.status),
     );
     transport.current = player;
     player.setLoopRange(settings.current.range);
@@ -184,8 +203,8 @@ export function ChartPlayer({
     return () => clearInterval(timer);
   }, [playing]);
   useEffect(
-    () => lyricsClock.follow(playing, readPosition),
-    [playing, playhead.status, lyricsClock, readPosition],
+    () => lyricsClock.follow(playing, readPosition, displayFrame),
+    [playing, transportStatus, lyricsClock, readPosition, displayFrame],
   );
   useEffect(() => {
     const element = arrangement.current?.parentElement;
@@ -208,7 +227,7 @@ export function ChartPlayer({
           <Hint label="Controles da cifra">
             <p>
               Tocar daqui inicia a sequência nessa passagem. Pausar guarda o ponto dentro do
-              compasso; Continuar retoma dali.
+              compasso; Continuar retoma dali. Reiniciar volta ao começo do trecho.
             </p>
             <p>
               Metrônomo e repetição podem mudar enquanto os acordes tocam. Ajustar o andamento ou o
@@ -296,15 +315,18 @@ export function ChartPlayer({
         </label>
       </div>
       <p className="hint" role="status">
-        {playhead.status === 'paused' ? 'Pausado' : playing ? 'Reproduzindo' : 'Pronto para tocar'}
+        {playhead.status === 'paused'
+          ? 'Pausado'
+          : playhead.status === 'playing'
+            ? 'Reproduzindo'
+            : 'Pronto para tocar'}
         {activeGroup &&
           ` · ${activeGroup.title}${activeGroup.passages > 1 ? ` · passagem ${activeGroup.passage} de ${activeGroup.passages}` : ''}`}
         {repeatGroup &&
           ` · Repetição: ${groups.find((group) => group.key === repeatGroup)?.title ?? 'trecho selecionado'}`}
       </p>
       <ChartPlaybackReadout
-        status={playhead.status}
-        readPosition={readPosition}
+        position={playhead}
         duration={(totalChartBeats(bars) * 60) / bpm}
         bars={bars.length}
       />
@@ -397,7 +419,9 @@ export function ChartPlayer({
         <summary>Mapa dos trechos e compassos</summary>
         <Hint label="Mapa de referências">
           Cada trecho aparece uma vez. As referências da aula levam ao compasso correspondente; os
-          controles iniciam ou repetem a primeira passagem disponível.
+          controles iniciam ou repetem a primeira passagem disponível. Reiniciar volta ao começo da
+          passagem em reprodução ou pausada; se o trecho estiver inativo, inicia sua primeira
+          passagem.
         </Hint>
         <div className="chart-arrangement">
           {referenceGroups.map((group) => (

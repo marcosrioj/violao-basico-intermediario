@@ -5,7 +5,7 @@ Verificação realizada em 15/11/2026. A edição permanece a mesma, identificad
 ## Conteúdo e preservação
 
 - Os 13 módulos e as 39 aulas conservam seus IDs, títulos, repertório, versões harmônicas, posições de acordes e andamento pesquisado.
-- Os oito arquivos legados registrados em `src/content/content-preservation.json` conservam seus SHA-256, incluindo os PDFs e o guia interativo originais.
+- Os cinco arquivos de dados originais registrados em `src/content/content-preservation.json` conservam seus SHA-256. O mesmo registro identifica os hashes de origem e as 203 páginas do acervo incorporado aos dois PDFs atuais.
 - Os 27 estudos completos estão integrados às aulas. `lesson-journey.json` define 86 aplicações: 27 introduções únicas e 59 retomadas, cada uma com foco específico.
 - As 39 ampliações de aula, perguntas, exemplos, práticas semanais, critérios e planos docentes de 60 minutos permanecem disponíveis.
 - A primeira pestana completa continua no módulo 5; palheta a partir do módulo 4, articulações a partir do módulo 8, expressão a partir do módulo 9 e CAGED a partir do módulo 10.
@@ -46,6 +46,6 @@ Capturas desktop e móveis de catálogo, estudos dentro da aula, revisão, apres
 
 O livro do aluno tem **371 páginas**: 241 principais e 130 do acervo original. O manual do professor tem **341 páginas**: 268 principais e 73 do acervo original.
 
-Cada estudo completo aparece na primeira aula canônica; as retomadas trazem o foco e a página de referência. O índice técnico mantém os nove eixos. Todos os mapas, diagramas, consultas e páginas originais foram preservados. As cópias para download e entrega são idênticas.
+Cada estudo completo aparece na primeira aula canônica; as retomadas trazem o foco e a página de referência. O índice técnico mantém os nove eixos. Todos os mapas, diagramas, consultas e páginas originais foram preservados. Os arquivos de `materials/` são utilizados diretamente pelos downloads.
 
 As **509 páginas principais** foram renderizadas e revisadas visualmente; as **203 páginas originais** foram comparadas sem diferenças. Cobertura textual dos 27 estudos, 86 focos, referências de páginas, links internos, fontes e hashes foram conferidos. Registro completo em [Verificação dos PDFs](PDF-VERIFICATION.md).

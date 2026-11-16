@@ -7,7 +7,11 @@ export interface LyricsClock {
   rowSnapshot(firstBar: number, lastBar: number): string;
   reset(): void;
   paint(element: HTMLElement, cue: number, syllable: number): () => void;
-  follow(playing: boolean, readPosition: () => PlaybackSnapshot | null): () => void;
+  follow(
+    playing: boolean,
+    readPosition: () => PlaybackSnapshot | null,
+    onFrame?: (position: PlaybackSnapshot | null) => void,
+  ): () => void;
 }
 
 /** One audio clock; React changes on syllable boundaries, the text fill advances every frame. */
@@ -20,6 +24,7 @@ export function createLyricsClock(cues: ProjectedLyricCue[], bpm: number): Lyric
   let completed: { cue: ProjectedLyricCue; first: number; last: number }[] = [];
   let completedKey = '';
   let bar = -1;
+  let syllableBar = -1;
   let progress = 0;
   let previous: PlaybackSnapshot | null = null;
   const notify = () => listeners.forEach((listener) => listener());
@@ -35,12 +40,19 @@ export function createLyricsClock(cues: ProjectedLyricCue[], bpm: number): Lyric
       };
     },
     rowSnapshot(firstBar, lastBar) {
-      // A phrase can be printed under several chart rows; never emphasize its future copy.
-      if (firstBar > bar) return '';
+      // A pickup can start before its printed cell. Only its active copy may light up ahead;
+      // later copies of the same complete phrase remain unaccented until their row is reached.
       return completed
-        .filter(({ cue }) => cue.startBar <= lastBar && cue.endBar >= firstBar)
+        .filter(
+          ({ cue }) =>
+            cue.startBar <= lastBar &&
+            cue.endBar >= firstBar &&
+            (firstBar <= bar ||
+              (cue.id === cueId && syllableBar >= firstBar && syllableBar <= lastBar)),
+        )
         .map(({ cue, first, last }) => {
-          const active = cue.id === cueId && bar >= firstBar && bar <= lastBar ? syllableId : -1;
+          const active =
+            cue.id === cueId && syllableBar >= firstBar && syllableBar <= lastBar ? syllableId : -1;
           return `${cue.id}:${first}:${last}:${active}`;
         })
         .join(';');
@@ -49,7 +61,7 @@ export function createLyricsClock(cues: ProjectedLyricCue[], bpm: number): Lyric
       previous = null;
       completed = [];
       completedKey = '';
-      cueId = syllableId = bar = -1;
+      cueId = syllableId = bar = syllableBar = -1;
       progress = 0;
       fills.forEach(fill);
       notify();
@@ -62,12 +74,14 @@ export function createLyricsClock(cues: ProjectedLyricCue[], bpm: number): Lyric
         fills.delete(target);
       };
     },
-    follow(playing, readPosition) {
+    follow(playing, readPosition, onFrame) {
       let frame = 0;
       let active = true;
       function update() {
         if (!active) return;
         const position = readPosition();
+        onFrame?.(position);
+        if (!active) return;
         let beat = ((position?.scoreSeconds ?? 0) * bpm) / 60;
         let nextBar = position?.bar ?? -1;
         const finished = position?.status === 'idle' && previous && previous.status !== 'idle';
@@ -77,12 +91,13 @@ export function createLyricsClock(cues: ProjectedLyricCue[], bpm: number): Lyric
           nextBar = finalBar;
         } else if (!position || position.status === 'idle') {
           previous = position;
+          if (active && playing) frame = requestAnimationFrame(update);
           return;
         }
         // Preserve the frozen syllable through the short audio scheduling lead-in on resume.
         if (position?.waitingForAudio) {
           previous = position;
-          if (active && playing && cues.length) frame = requestAnimationFrame(update);
+          if (active && playing) frame = requestAnimationFrame(update);
           return;
         }
         const cue =
@@ -104,23 +119,26 @@ export function createLyricsClock(cues: ProjectedLyricCue[], bpm: number): Lyric
           (item) => beat >= item.startBeat && beat < item.endBeat,
         );
         const syllable = parts[nextSyllable];
+        const nextSyllableBar = syllable ? (cue?.syllableBars?.[nextSyllable] ?? nextBar) : -1;
         progress = syllable
           ? (beat - syllable.startBeat) / (syllable.endBeat - syllable.startBeat)
           : 0;
         const changed =
           cueId !== nextId ||
           bar !== nextBar ||
+          syllableBar !== nextSyllableBar ||
           syllableId !== nextSyllable ||
           completedKey !== nextKey;
         cueId = nextId;
         bar = nextBar;
         syllableId = nextSyllable;
+        syllableBar = nextSyllableBar;
         completed = nextCompleted;
         completedKey = nextKey;
         previous = position;
         fills.forEach(fill);
         if (changed) notify();
-        if (active && playing && cues.length) frame = requestAnimationFrame(update);
+        if (active && playing) frame = requestAnimationFrame(update);
       }
       frame = requestAnimationFrame(update);
       return () => {

@@ -1,7 +1,8 @@
 'use client';
 
 import { useMemo, useSyncExternalStore } from 'react';
-import { validateLyricCues, type LyricCue } from './chart-lyrics';
+import type { LyricCue } from './chart-lyrics';
+import { resolveStoredLyricCues } from './chart-lyrics-overrides';
 
 interface LyricsState {
   cues: LyricCue[];
@@ -19,7 +20,7 @@ function createLyricsStore(key: string, totalBeats: number, defaults: LyricCue[]
       const raw = localStorage.getItem(key);
       if (raw !== previous) {
         previous = raw;
-        state = raw ? { cues: validateLyricCues(JSON.parse(raw), totalBeats) } : initial;
+        state = { cues: resolveStoredLyricCues(raw, totalBeats, defaults) };
       }
     } catch {
       state = initial;
