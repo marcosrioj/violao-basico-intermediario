@@ -57,7 +57,13 @@
           {
             "text": "Não há nada igual",
             "startBeat": 16,
-            "endBeat": 24
+            "endBeat": 24,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 16
+              }
+            ]
           },
           {
             "text": "Não há nada melhor",
@@ -82,7 +88,13 @@
           {
             "text": "Eu provei e vi",
             "startBeat": 48,
-            "endBeat": 56
+            "endBeat": 56,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 48
+              }
+            ]
           },
           {
             "text": "O mais doce amor",
@@ -107,52 +119,136 @@
           {
             "text": "Santo Espírito, és bem-vindo aqui",
             "startBeat": 80,
-            "endBeat": 88
+            "endBeat": 88,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 80
+              }
+            ]
           },
           {
             "text": "Vem inundar, encher esse lugar",
             "startBeat": 88,
-            "endBeat": 96
+            "endBeat": 96,
+            "chordAnchors": [
+              {
+                "from": 25,
+                "beat": 92
+              }
+            ]
           },
           {
             "text": "É o desejo do meu coração",
             "startBeat": 96,
-            "endBeat": 104
+            "endBeat": 104,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 96
+              }
+            ]
           },
           {
             "text": "Sermos inundados por Tua glória, Senhor",
             "startBeat": 104,
-            "endBeat": 112
+            "endBeat": 112,
+            "chordAnchors": [
+              {
+                "from": 25,
+                "beat": 108
+              }
+            ]
           },
           {
             "text": "Vamos provar quão real é Tua presença",
             "startBeat": 112,
-            "endBeat": 128
+            "endBeat": 128,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 112
+              },
+              {
+                "from": 9,
+                "beat": 116
+              },
+              {
+                "from": 18,
+                "beat": 120
+              },
+              {
+                "from": 32,
+                "beat": 124
+              }
+            ]
           },
           {
             "text": "Vamos provar a Tua glória e bondade",
             "startBeat": 128,
-            "endBeat": 144
+            "endBeat": 144,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 128
+              },
+              {
+                "from": 9,
+                "beat": 132
+              },
+              {
+                "from": 19,
+                "beat": 136
+              },
+              {
+                "from": 31,
+                "beat": 140
+              }
+            ]
           },
           {
             "text": "Santo Espírito, és bem-vindo aqui",
             "startBeat": 144,
-            "endBeat": 152
+            "endBeat": 152,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 144
+              }
+            ]
           },
           {
             "text": "Vem inundar, encher esse lugar",
             "startBeat": 152,
-            "endBeat": 160
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 25,
+                "beat": 156
+              }
+            ]
           },
           {
             "text": "É o desejo do meu coração",
             "startBeat": 160,
-            "endBeat": 168
+            "endBeat": 168,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 160
+              }
+            ]
           },
           {
             "text": "Sermos inundados por Tua glória, Senhor",
             "startBeat": 168,
-            "endBeat": 176
+            "endBeat": 176,
+            "chordAnchors": [
+              {
+                "from": 25,
+                "beat": 172
+              }
+            ]
           }
         ],
         "alignmentNote": "Rascunho por frases do arranjo didático em D: A1–A2, A3–A4, A5–A6 e A7–A8 acompanham a primeira estrofe; A9–A16, a segunda. A divisão de A5/A6 e A11/A12 segue as quebras do texto fornecido e requer conferência vocal. Cada frase de R usa D–D ou G–Em; a ponte usa um ciclo G–D–Em–D por frase. Introdução e final permanecem instrumentais. A versão existente abrevia a segunda estrofe completa, os refrões e a ponte extensos da letra enviada; todas as 49 linhas, inclusive “Oh, Deus”, continuam preservadas no texto integral. Estrutura harmônica conferida na cifra de Nívea Soares; entradas, saídas, antecipações e sustentações não foram medidas no fonograma. Não é sincronização vocal exata da gravação.",
@@ -269,22 +365,54 @@
           {
             "text": "Faz chover, faz chover",
             "startBeat": 64,
-            "endBeat": 72
+            "endBeat": 72,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 68
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 72,
-            "endBeat": 80
+            "endBeat": 80,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 72
+              },
+              {
+                "from": 22,
+                "beat": 76
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 80,
-            "endBeat": 88
+            "endBeat": 88,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 84
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 88,
-            "endBeat": 96
+            "endBeat": 96,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 88
+              },
+              {
+                "from": 22,
+                "beat": 92
+              }
+            ]
           },
           {
             "text": "Se pedirmos",
@@ -329,22 +457,54 @@
           {
             "text": "Faz chover, faz chover",
             "startBeat": 128,
-            "endBeat": 136
+            "endBeat": 136,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 132
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 136,
-            "endBeat": 144
+            "endBeat": 144,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 136
+              },
+              {
+                "from": 22,
+                "beat": 140
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 144,
-            "endBeat": 152
+            "endBeat": 152,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 148
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 152,
-            "endBeat": 160
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 152
+              },
+              {
+                "from": 22,
+                "beat": 156
+              }
+            ]
           },
           {
             "text": "E faz chover",
@@ -405,22 +565,54 @@
           {
             "text": "Faz chover, faz chover",
             "startBeat": 64,
-            "endBeat": 72
+            "endBeat": 72,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 68
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 72,
-            "endBeat": 80
+            "endBeat": 80,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 72
+              },
+              {
+                "from": 22,
+                "beat": 76
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 80,
-            "endBeat": 88
+            "endBeat": 88,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 84
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 88,
-            "endBeat": 96
+            "endBeat": 96,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 88
+              },
+              {
+                "from": 22,
+                "beat": 92
+              }
+            ]
           },
           {
             "text": "Eu vejo uma pequena nuvem",
@@ -465,42 +657,106 @@
           {
             "text": "Faz chover, faz chover",
             "startBeat": 128,
-            "endBeat": 136
+            "endBeat": 136,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 132
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 136,
-            "endBeat": 144
+            "endBeat": 144,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 136
+              },
+              {
+                "from": 22,
+                "beat": 140
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 144,
-            "endBeat": 152
+            "endBeat": 152,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 148
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 152,
-            "endBeat": 160
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 152
+              },
+              {
+                "from": 22,
+                "beat": 156
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 160,
-            "endBeat": 168
+            "endBeat": 168,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 164
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 168,
-            "endBeat": 176
+            "endBeat": 176,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 168
+              },
+              {
+                "from": 22,
+                "beat": 172
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 176,
-            "endBeat": 184
+            "endBeat": 184,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 180
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 184,
-            "endBeat": 192
+            "endBeat": 192,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 184
+              },
+              {
+                "from": 22,
+                "beat": 188
+              }
+            ]
           },
           {
             "text": "Se pedirmos",
@@ -545,42 +801,106 @@
           {
             "text": "Faz chover, faz chover",
             "startBeat": 240,
-            "endBeat": 248
+            "endBeat": 248,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 244
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 248,
-            "endBeat": 256
+            "endBeat": 256,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 248
+              },
+              {
+                "from": 22,
+                "beat": 252
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 256,
-            "endBeat": 264
+            "endBeat": 264,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 260
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 264,
-            "endBeat": 272
+            "endBeat": 272,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 264
+              },
+              {
+                "from": 22,
+                "beat": 268
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 272,
-            "endBeat": 280
+            "endBeat": 280,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 276
+              }
+            ]
           },
           {
             "text": "Abre as comportas do céu",
             "startBeat": 280,
-            "endBeat": 288
+            "endBeat": 288,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 280
+              },
+              {
+                "from": 21,
+                "beat": 284
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 288,
-            "endBeat": 296
+            "endBeat": 296,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 292
+              }
+            ]
           },
           {
             "text": "Abre as comportas do céu",
             "startBeat": 296,
-            "endBeat": 304
+            "endBeat": 304,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 296
+              },
+              {
+                "from": 21,
+                "beat": 300
+              }
+            ]
           },
           {
             "text": "Se pedirmos",
@@ -625,42 +945,106 @@
           {
             "text": "Faz chover, faz chover",
             "startBeat": 336,
-            "endBeat": 344
+            "endBeat": 344,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 340
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 344,
-            "endBeat": 352
+            "endBeat": 352,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 344
+              },
+              {
+                "from": 22,
+                "beat": 348
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 352,
-            "endBeat": 360
+            "endBeat": 360,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 356
+              }
+            ]
           },
           {
             "text": "Abre as comportas dos céus",
             "startBeat": 360,
-            "endBeat": 368
+            "endBeat": 368,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 360
+              },
+              {
+                "from": 22,
+                "beat": 364
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 368,
-            "endBeat": 376
+            "endBeat": 376,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 372
+              }
+            ]
           },
           {
             "text": "Abre as comportas do céu",
             "startBeat": 376,
-            "endBeat": 384
+            "endBeat": 384,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 376
+              },
+              {
+                "from": 21,
+                "beat": 380
+              }
+            ]
           },
           {
             "text": "E faz chover, faz chover",
             "startBeat": 384,
-            "endBeat": 392
+            "endBeat": 392,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 388
+              }
+            ]
           },
           {
             "text": "Abre as comportas do céu",
             "startBeat": 392,
-            "endBeat": 400
+            "endBeat": 400,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 392
+              },
+              {
+                "from": 21,
+                "beat": 396
+              }
+            ]
           },
           {
             "text": "E faz chover",
@@ -723,82 +1107,214 @@
           {
             "text": "Me derramar, dizer que Te amo",
             "startBeat": 0,
-            "endBeat": 4
+            "endBeat": 4,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 0
+              },
+              {
+                "from": 13,
+                "beat": 2
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer: Te preciso",
             "startBeat": 4,
-            "endBeat": 8
+            "endBeat": 8,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 4
+              },
+              {
+                "from": 13,
+                "beat": 6
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que sou grato",
             "startBeat": 8,
-            "endBeat": 12
+            "endBeat": 12,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 8
+              },
+              {
+                "from": 13,
+                "beat": 10
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que és formoso",
             "startBeat": 12,
-            "endBeat": 16
+            "endBeat": 16,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 12
+              },
+              {
+                "from": 13,
+                "beat": 14
+              }
+            ]
           },
           {
             "text": "Eis-me aqui outra vez",
             "startBeat": 24,
-            "endBeat": 28
+            "endBeat": 28,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 26
+              }
+            ]
           },
           {
             "text": "Diante de Ti abro o meu coração",
             "startBeat": 28,
-            "endBeat": 32
+            "endBeat": 32,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 30
+              }
+            ]
           },
           {
             "text": "Meu clamor Tu escutas",
             "startBeat": 32,
-            "endBeat": 36
+            "endBeat": 36,
+            "chordAnchors": [
+              {
+                "from": 16,
+                "beat": 34
+              }
+            ]
           },
           {
             "text": "E fazes cair as barreiras em mim",
             "startBeat": 36,
-            "endBeat": 40
+            "endBeat": 40,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 38
+              }
+            ]
           },
           {
             "text": "És fiel, Senhor, e dizes",
             "startBeat": 40,
-            "endBeat": 44
+            "endBeat": 44,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 42
+              }
+            ]
           },
           {
             "text": "Palavras de amor e esperança sem fim",
             "startBeat": 44,
-            "endBeat": 48
+            "endBeat": 48,
+            "chordAnchors": [
+              {
+                "from": 23,
+                "beat": 46
+              }
+            ]
           },
           {
             "text": "Ao sentir Teu toque",
             "startBeat": 48,
-            "endBeat": 52
+            "endBeat": 52,
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 50
+              }
+            ]
           },
           {
             "text": "Por Tua bondade, libertas meu ser no calor deste lugar",
             "startBeat": 52,
-            "endBeat": 60
+            "endBeat": 60,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 54
+              },
+              {
+                "from": 37,
+                "beat": 56
+              },
+              {
+                "from": 49,
+                "beat": 58
+              }
+            ]
           },
           {
             "text": "Eu venho me derramar, dizer que Te amo",
             "startBeat": 60,
-            "endBeat": 64
+            "endBeat": 64,
+            "chordAnchors": [
+              {
+                "from": 22,
+                "beat": 62
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer: Te preciso",
             "startBeat": 64,
-            "endBeat": 68
+            "endBeat": 68,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 64
+              },
+              {
+                "from": 13,
+                "beat": 66
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que sou grato",
             "startBeat": 68,
-            "endBeat": 72
+            "endBeat": 72,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 68
+              },
+              {
+                "from": 13,
+                "beat": 70
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que és formoso",
             "startBeat": 72,
-            "endBeat": 76
+            "endBeat": 76,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 72
+              },
+              {
+                "from": 13,
+                "beat": 74
+              }
+            ]
           }
         ],
         "alignmentNote": "Rascunho em pulsos de semínima pontuada: cada frase do refrão ocupa o par G–D ou Em–C, e as linhas de A/B acompanham os mesmos pares de compassos. A linha fornecida “Por Tua bondade, libertas meu ser no calor deste lugar” começa em B7 e atravessa o pré-refrão P, sem cortar ou reescrever o texto. A abertura em R segue a ordem já publicada do master Vineyard, embora o texto enviado comece na estrofe; usa a forma fornecida sem “Eu venho”. J e F são instrumentais. A forma base abrevia as repetições; as 36 linhas enviadas permanecem integralmente disponíveis. As cifras e o mapa MultiTracks apoiam a associação harmônica; pickups e saídas vocais não foram medidos, portanto o sincronismo é provisório.",
@@ -809,202 +1325,546 @@
           {
             "text": "Me derramar, dizer que Te amo",
             "startBeat": 0,
-            "endBeat": 4
+            "endBeat": 4,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 0
+              },
+              {
+                "from": 13,
+                "beat": 2
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer: Te preciso",
             "startBeat": 4,
-            "endBeat": 8
+            "endBeat": 8,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 4
+              },
+              {
+                "from": 13,
+                "beat": 6
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que sou grato",
             "startBeat": 8,
-            "endBeat": 12
+            "endBeat": 12,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 8
+              },
+              {
+                "from": 13,
+                "beat": 10
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que és formoso",
             "startBeat": 12,
-            "endBeat": 16
+            "endBeat": 16,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 12
+              },
+              {
+                "from": 13,
+                "beat": 14
+              }
+            ]
           },
           {
             "text": "Eis-me aqui outra vez",
             "startBeat": 24,
-            "endBeat": 28
+            "endBeat": 28,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 26
+              }
+            ]
           },
           {
             "text": "Diante de Ti abro o meu coração",
             "startBeat": 28,
-            "endBeat": 32
+            "endBeat": 32,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 30
+              }
+            ]
           },
           {
             "text": "Meu clamor Tu escutas",
             "startBeat": 32,
-            "endBeat": 36
+            "endBeat": 36,
+            "chordAnchors": [
+              {
+                "from": 16,
+                "beat": 34
+              }
+            ]
           },
           {
             "text": "E fazes cair as barreiras em mim",
             "startBeat": 36,
-            "endBeat": 40
+            "endBeat": 40,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 38
+              }
+            ]
           },
           {
             "text": "És fiel, Senhor, e dizes",
             "startBeat": 40,
-            "endBeat": 44
+            "endBeat": 44,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 42
+              }
+            ]
           },
           {
             "text": "Palavras de amor e esperança sem fim",
             "startBeat": 44,
-            "endBeat": 48
+            "endBeat": 48,
+            "chordAnchors": [
+              {
+                "from": 23,
+                "beat": 46
+              }
+            ]
           },
           {
             "text": "Ao sentir Teu toque",
             "startBeat": 48,
-            "endBeat": 52
+            "endBeat": 52,
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 50
+              }
+            ]
           },
           {
             "text": "Por Tua bondade, libertas meu ser no calor deste lugar",
             "startBeat": 52,
-            "endBeat": 60
+            "endBeat": 60,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 54
+              },
+              {
+                "from": 37,
+                "beat": 56
+              },
+              {
+                "from": 49,
+                "beat": 58
+              }
+            ]
           },
           {
             "text": "Eu venho me derramar, dizer que Te amo",
             "startBeat": 60,
-            "endBeat": 64
+            "endBeat": 64,
+            "chordAnchors": [
+              {
+                "from": 22,
+                "beat": 62
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer: Te preciso",
             "startBeat": 64,
-            "endBeat": 68
+            "endBeat": 68,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 64
+              },
+              {
+                "from": 13,
+                "beat": 66
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que sou grato",
             "startBeat": 68,
-            "endBeat": 72
+            "endBeat": 72,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 68
+              },
+              {
+                "from": 13,
+                "beat": 70
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que és formoso",
             "startBeat": 72,
-            "endBeat": 76
+            "endBeat": 76,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 72
+              },
+              {
+                "from": 13,
+                "beat": 74
+              }
+            ]
           },
           {
             "text": "Eis-me aqui outra vez",
             "startBeat": 84,
-            "endBeat": 88
+            "endBeat": 88,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 86
+              }
+            ]
           },
           {
             "text": "Diante de Ti abro o meu coração",
             "startBeat": 88,
-            "endBeat": 92
+            "endBeat": 92,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 90
+              }
+            ]
           },
           {
             "text": "Meu clamor Tu escutas",
             "startBeat": 92,
-            "endBeat": 96
+            "endBeat": 96,
+            "chordAnchors": [
+              {
+                "from": 16,
+                "beat": 94
+              }
+            ]
           },
           {
             "text": "E fazes cair as barreiras em mim",
             "startBeat": 96,
-            "endBeat": 100
+            "endBeat": 100,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 98
+              }
+            ]
           },
           {
             "text": "És fiel, Senhor, e dizes",
             "startBeat": 100,
-            "endBeat": 104
+            "endBeat": 104,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 102
+              }
+            ]
           },
           {
             "text": "Palavras de amor e esperança sem fim",
             "startBeat": 104,
-            "endBeat": 108
+            "endBeat": 108,
+            "chordAnchors": [
+              {
+                "from": 23,
+                "beat": 106
+              }
+            ]
           },
           {
             "text": "Ao sentir Teu toque",
             "startBeat": 108,
-            "endBeat": 112
+            "endBeat": 112,
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 110
+              }
+            ]
           },
           {
             "text": "Por Tua bondade, libertas meu ser no calor deste lugar",
             "startBeat": 112,
-            "endBeat": 120
+            "endBeat": 120,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 114
+              },
+              {
+                "from": 37,
+                "beat": 116
+              },
+              {
+                "from": 49,
+                "beat": 118
+              }
+            ]
           },
           {
             "text": "Eu venho me derramar, dizer que Te amo",
             "startBeat": 120,
-            "endBeat": 124
+            "endBeat": 124,
+            "chordAnchors": [
+              {
+                "from": 22,
+                "beat": 122
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer: Te preciso",
             "startBeat": 124,
-            "endBeat": 128
+            "endBeat": 128,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 124
+              },
+              {
+                "from": 13,
+                "beat": 126
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que sou grato",
             "startBeat": 128,
-            "endBeat": 132
+            "endBeat": 132,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 128
+              },
+              {
+                "from": 13,
+                "beat": 130
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que és formoso",
             "startBeat": 132,
-            "endBeat": 136
+            "endBeat": 136,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 132
+              },
+              {
+                "from": 13,
+                "beat": 134
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que Te amo",
             "startBeat": 152,
-            "endBeat": 156
+            "endBeat": 156,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 152
+              },
+              {
+                "from": 13,
+                "beat": 154
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer: Te preciso",
             "startBeat": 156,
-            "endBeat": 160
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 156
+              },
+              {
+                "from": 13,
+                "beat": 158
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que sou grato",
             "startBeat": 160,
-            "endBeat": 164
+            "endBeat": 164,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 160
+              },
+              {
+                "from": 13,
+                "beat": 162
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que és formoso",
             "startBeat": 164,
-            "endBeat": 168
+            "endBeat": 168,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 164
+              },
+              {
+                "from": 13,
+                "beat": 166
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que Te amo",
             "startBeat": 168,
-            "endBeat": 172
+            "endBeat": 172,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 168
+              },
+              {
+                "from": 13,
+                "beat": 170
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer: Te preciso",
             "startBeat": 172,
-            "endBeat": 176
+            "endBeat": 176,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 172
+              },
+              {
+                "from": 13,
+                "beat": 174
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que sou grato",
             "startBeat": 176,
-            "endBeat": 180
+            "endBeat": 180,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 176
+              },
+              {
+                "from": 13,
+                "beat": 178
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que és formoso",
             "startBeat": 180,
-            "endBeat": 184
+            "endBeat": 184,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 180
+              },
+              {
+                "from": 13,
+                "beat": 182
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que Te amo",
             "startBeat": 184,
-            "endBeat": 188
+            "endBeat": 188,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 184
+              },
+              {
+                "from": 13,
+                "beat": 186
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer: Te preciso (preciso de Ti, Senhor)",
             "startBeat": 188,
-            "endBeat": 192
+            "endBeat": 192,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 188
+              },
+              {
+                "from": 13,
+                "beat": 190
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que sou grato",
             "startBeat": 192,
-            "endBeat": 196
+            "endBeat": 196,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 192
+              },
+              {
+                "from": 13,
+                "beat": 194
+              }
+            ]
           },
           {
             "text": "Me derramar, dizer que és formoso",
             "startBeat": 196,
-            "endBeat": 200
+            "endBeat": 200,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 196
+              },
+              {
+                "from": 13,
+                "beat": 198
+              }
+            ]
           }
         ],
         "alignmentNote": "Rascunho seguindo a forma R–J–A–B–P–R–J–A–B–P–R–S–R–R–R–F publicada pelo fornecedor do master e já existente no curso. Cada frase de refrão cobre G–D ou Em–C (quatro pulsos de semínima pontuada); as duas ocorrências das estrofes usam as linhas correspondentes do texto. A última linha de B atravessa P para preservar exatamente “no calor deste lugar” na mesma linha fornecida. Os três refrões depois do solo conservam as variantes sucessivas, incluindo a resposta entre parênteses na última passagem. A abertura usa o refrão sem “Eu venho”, presente no texto fornecido. J, S e F ficam sem canto presumido. Todas as 36 linhas são preservadas. Limites de frase são mapeados ao arranjo regularizado; ataques, respostas e sustentações da gravação não foram medidos.",
@@ -1089,298 +1949,714 @@
         "cues": [
           {
             "text": "Sonda-me, Senhor, e me conhece",
-            "startBeat": 20.0,
-            "endBeat": 28.0
+            "startBeat": 20,
+            "endBeat": 28,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 20
+              },
+              {
+                "from": 12,
+                "beat": 22
+              },
+              {
+                "from": 20,
+                "beat": 24
+              }
+            ]
           },
           {
             "text": "Quebranta o meu coração",
-            "startBeat": 28.0,
-            "endBeat": 36.0
+            "startBeat": 28,
+            "endBeat": 36,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 30
+              },
+              {
+                "from": 20,
+                "beat": 32
+              }
+            ]
           },
           {
             "text": "Transforma-me conforme a Tua palavra",
-            "startBeat": 36.0,
-            "endBeat": 44.0
+            "startBeat": 36,
+            "endBeat": 44,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 38
+              },
+              {
+                "from": 25,
+                "beat": 40
+              }
+            ]
           },
           {
             "text": "E enche-me até que em mim se ache só a Ti",
-            "startBeat": 44.0,
-            "endBeat": 52.0
+            "startBeat": 44,
+            "endBeat": 52,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 46
+              },
+              {
+                "from": 29,
+                "beat": 48
+              },
+              {
+                "from": 39,
+                "beat": 50
+              }
+            ]
           },
           {
             "text": "Então",
-            "startBeat": 52.0,
-            "endBeat": 56.0
+            "startBeat": 52,
+            "endBeat": 56
           },
           {
             "text": "Usa-me, Senhor",
-            "startBeat": 56.0,
-            "endBeat": 64.0
+            "startBeat": 56,
+            "endBeat": 64,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 56
+              },
+              {
+                "from": 10,
+                "beat": 60
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 64.0,
-            "endBeat": 68.0
+            "startBeat": 64,
+            "endBeat": 68,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 64
+              }
+            ]
           },
           {
             "text": "Como um farol que brilha à noite",
-            "startBeat": 68.0,
-            "endBeat": 72.0
+            "startBeat": 68,
+            "endBeat": 72,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 70
+              }
+            ]
           },
           {
             "text": "Como ponte sobre as águas",
-            "startBeat": 72.0,
-            "endBeat": 76.0
+            "startBeat": 72,
+            "endBeat": 76
           },
           {
             "text": "Como abrigo no deserto",
-            "startBeat": 76.0,
-            "endBeat": 80.0
+            "startBeat": 76,
+            "endBeat": 80,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 78
+              }
+            ]
           },
           {
             "text": "Como flecha que acerta o alvo",
-            "startBeat": 80.0,
-            "endBeat": 84.0
+            "startBeat": 80,
+            "endBeat": 84,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 82
+              }
+            ]
           },
           {
             "text": "Eu quero ser usado da maneira que Te agrade",
-            "startBeat": 84.0,
-            "endBeat": 92.0
+            "startBeat": 84,
+            "endBeat": 92,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 86
+              },
+              {
+                "from": 22,
+                "beat": 88
+              }
+            ]
           },
           {
             "text": "Em qualquer hora e em qualquer lugar",
-            "startBeat": 92.0,
-            "endBeat": 96.0
+            "startBeat": 92,
+            "endBeat": 96,
+            "chordAnchors": [
+              {
+                "from": 31,
+                "beat": 94
+              }
+            ]
           },
           {
             "text": "Eis aqui a minha vida, usa-me, Senhor",
-            "startBeat": 96.0,
-            "endBeat": 104.0
+            "startBeat": 96,
+            "endBeat": 104,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 98
+              },
+              {
+                "from": 31,
+                "beat": 100
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 104.0,
-            "endBeat": 108.0
+            "startBeat": 104,
+            "endBeat": 108,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 104
+              }
+            ]
           },
           {
             "text": "Sonda-me, Senhor, e me conhece",
-            "startBeat": 108.0,
-            "endBeat": 116.0
+            "startBeat": 108,
+            "endBeat": 116,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 108
+              },
+              {
+                "from": 12,
+                "beat": 110
+              },
+              {
+                "from": 20,
+                "beat": 112
+              }
+            ]
           },
           {
             "text": "Quebranta o meu coração",
-            "startBeat": 116.0,
-            "endBeat": 124.0
+            "startBeat": 116,
+            "endBeat": 124,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 118
+              },
+              {
+                "from": 20,
+                "beat": 120
+              }
+            ]
           },
           {
             "text": "Transforma-me conforme a Tua palavra",
-            "startBeat": 124.0,
-            "endBeat": 132.0
+            "startBeat": 124,
+            "endBeat": 132,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 126
+              },
+              {
+                "from": 25,
+                "beat": 128
+              }
+            ]
           },
           {
             "text": "E enche-me até que em mim se ache só a Ti",
-            "startBeat": 132.0,
-            "endBeat": 140.0
+            "startBeat": 132,
+            "endBeat": 140,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 134
+              },
+              {
+                "from": 29,
+                "beat": 136
+              },
+              {
+                "from": 39,
+                "beat": 138
+              }
+            ]
           },
           {
             "text": "Então",
-            "startBeat": 140.0,
-            "endBeat": 144.0
+            "startBeat": 140,
+            "endBeat": 144
           },
           {
             "text": "Usa-me, Senhor",
-            "startBeat": 144.0,
-            "endBeat": 152.0
+            "startBeat": 144,
+            "endBeat": 152,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 144
+              },
+              {
+                "from": 10,
+                "beat": 148
+              }
+            ]
           },
           {
             "text": "Usa-me (usa-me)",
-            "startBeat": 152.0,
-            "endBeat": 156.0
+            "startBeat": 152,
+            "endBeat": 156,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 152
+              }
+            ]
           },
           {
             "text": "Como um farol que brilha à noite",
-            "startBeat": 156.0,
-            "endBeat": 160.0
+            "startBeat": 156,
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 158
+              }
+            ]
           },
           {
             "text": "Como ponte sobre as águas",
-            "startBeat": 160.0,
-            "endBeat": 164.0
+            "startBeat": 160,
+            "endBeat": 164
           },
           {
             "text": "Como abrigo no deserto",
-            "startBeat": 164.0,
-            "endBeat": 168.0
+            "startBeat": 164,
+            "endBeat": 168,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 166
+              }
+            ]
           },
           {
             "text": "Como flecha que acerta o alvo",
-            "startBeat": 168.0,
-            "endBeat": 172.0
+            "startBeat": 168,
+            "endBeat": 172,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 170
+              }
+            ]
           },
           {
             "text": "Eu quero ser usado da maneira que Te agrade",
-            "startBeat": 172.0,
-            "endBeat": 180.0
+            "startBeat": 172,
+            "endBeat": 180,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 174
+              },
+              {
+                "from": 22,
+                "beat": 176
+              }
+            ]
           },
           {
             "text": "Em qualquer hora e em qualquer lugar",
-            "startBeat": 180.0,
-            "endBeat": 184.0
+            "startBeat": 180,
+            "endBeat": 184,
+            "chordAnchors": [
+              {
+                "from": 31,
+                "beat": 182
+              }
+            ]
           },
           {
             "text": "Eis aqui a minha vida, usa-me, Senhor",
-            "startBeat": 184.0,
-            "endBeat": 192.0
+            "startBeat": 184,
+            "endBeat": 192,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 186
+              },
+              {
+                "from": 31,
+                "beat": 188
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 192.0,
-            "endBeat": 196.0
+            "startBeat": 192,
+            "endBeat": 196,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 192
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 196.0,
-            "endBeat": 200.0
+            "startBeat": 196,
+            "endBeat": 200,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 196
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 200.0,
-            "endBeat": 204.0
+            "startBeat": 200,
+            "endBeat": 204,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 200
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 204.0,
-            "endBeat": 208.0
+            "startBeat": 204,
+            "endBeat": 208,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 204
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 208.0,
-            "endBeat": 212.0
+            "startBeat": 208,
+            "endBeat": 212,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 208
+              }
+            ]
           },
           {
             "text": "E usa-me",
-            "startBeat": 212.0,
-            "endBeat": 216.0
+            "startBeat": 212,
+            "endBeat": 216,
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 214
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 216.0,
-            "endBeat": 220.0
+            "startBeat": 216,
+            "endBeat": 220,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 216
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 220.0,
-            "endBeat": 224.0
+            "startBeat": 220,
+            "endBeat": 224,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 220
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 224.0,
-            "endBeat": 228.0
+            "startBeat": 224,
+            "endBeat": 228,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 224
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 228.0,
-            "endBeat": 232.0
+            "startBeat": 228,
+            "endBeat": 232,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 228
+              }
+            ]
           },
           {
             "text": "E usa-me, Senhor",
-            "startBeat": 232.0,
-            "endBeat": 240.0
+            "startBeat": 232,
+            "endBeat": 240,
+            "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 236
+              },
+              {
+                "from": 6,
+                "beat": 238
+              }
+            ]
           },
           {
             "text": "Como um farol que brilha à noite",
-            "startBeat": 240.0,
-            "endBeat": 244.0
+            "startBeat": 240,
+            "endBeat": 244,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 242
+              }
+            ]
           },
           {
             "text": "Como ponte sobre as águas",
-            "startBeat": 244.0,
-            "endBeat": 248.0
+            "startBeat": 244,
+            "endBeat": 248
           },
           {
             "text": "Como abrigo no deserto",
-            "startBeat": 248.0,
-            "endBeat": 252.0
+            "startBeat": 248,
+            "endBeat": 252,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 250
+              }
+            ]
           },
           {
             "text": "Como flecha que acerta o alvo",
-            "startBeat": 252.0,
-            "endBeat": 256.0
+            "startBeat": 252,
+            "endBeat": 256,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 254
+              }
+            ]
           },
           {
             "text": "Eu quero ser usado da maneira que Te agrade",
-            "startBeat": 256.0,
-            "endBeat": 264.0
+            "startBeat": 256,
+            "endBeat": 264,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 258
+              },
+              {
+                "from": 22,
+                "beat": 260
+              }
+            ]
           },
           {
             "text": "Em qualquer hora e em qualquer lugar",
-            "startBeat": 264.0,
-            "endBeat": 268.0
+            "startBeat": 264,
+            "endBeat": 268,
+            "chordAnchors": [
+              {
+                "from": 31,
+                "beat": 266
+              }
+            ]
           },
           {
             "text": "Eis aqui a minha vida, usa-me, Senhor",
-            "startBeat": 268.0,
-            "endBeat": 276.0
+            "startBeat": 268,
+            "endBeat": 276,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 270
+              },
+              {
+                "from": 31,
+                "beat": 272
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 276.0,
-            "endBeat": 280.0
+            "startBeat": 276,
+            "endBeat": 280,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 276
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 280.0,
-            "endBeat": 284.0
+            "startBeat": 280,
+            "endBeat": 284,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 280
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 284.0,
-            "endBeat": 288.0
+            "startBeat": 284,
+            "endBeat": 288,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 284
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 288.0,
-            "endBeat": 292.0
+            "startBeat": 288,
+            "endBeat": 292,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 288
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 292.0,
-            "endBeat": 296.0
+            "startBeat": 292,
+            "endBeat": 296,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 292
+              }
+            ]
           },
           {
             "text": "E usa-me",
-            "startBeat": 296.0,
-            "endBeat": 300.0
+            "startBeat": 296,
+            "endBeat": 300,
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 298
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 300.0,
-            "endBeat": 304.0
+            "startBeat": 300,
+            "endBeat": 304,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 300
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 304.0,
-            "endBeat": 308.0
+            "startBeat": 304,
+            "endBeat": 308,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 304
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 308.0,
-            "endBeat": 312.0
+            "startBeat": 308,
+            "endBeat": 312,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 308
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 312.0,
-            "endBeat": 316.0
+            "startBeat": 312,
+            "endBeat": 316,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 312
+              }
+            ]
           },
           {
             "text": "E usa-me, Senhor",
-            "startBeat": 316.0,
-            "endBeat": 320.0
+            "startBeat": 316,
+            "endBeat": 320,
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 318
+              }
+            ]
           },
           {
             "text": "E usa-me, Senhor",
-            "startBeat": 320.0,
-            "endBeat": 332.0
+            "startBeat": 320,
+            "endBeat": 332,
+            "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 324
+              },
+              {
+                "from": 6,
+                "beat": 326
+              },
+              {
+                "from": 12,
+                "beat": 328
+              }
+            ]
           }
         ],
         "alignmentNote": "Rascunho associado às barras da transcrição em C: as duas linhas de A/B ocupam dois compassos cada; C reserva F para “Então”, G–F para “Usa-me, Senhor” e o último G para “Usa-me”. R tem frases de 1, 1, 1, 1, 2, 1, 2 e 1 compassos, respeitando os baixos e as durações 3+1/2+1+1 já escritos. Cada palavra-frase da ponte segue seu acorde C, Am, F, Dm, F–G; a saída da segunda ponte atravessa L. O último chamado acompanha F inteiro. As três versões conservam a mesma forma e os mesmos tempos; só mudam as vozes dos acordes. A primeira sequência de ponte do curso contém dois ciclos, enquanto a letra enviada contém quatro: os dois ciclos extras continuam preservados entre as 69 linhas do texto integral, sem sobreposição artificial. Associação harmônica conferida na transcrição de Gladstone Leon e na cifra; ataques, respirações e sustentações vocais ainda não foram medidos no fonograma.",
@@ -1390,298 +2666,744 @@
         "cues": [
           {
             "text": "Sonda-me, Senhor, e me conhece",
-            "startBeat": 20.0,
-            "endBeat": 28.0
+            "startBeat": 20,
+            "endBeat": 28,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 20
+              },
+              {
+                "from": 12,
+                "beat": 22
+              },
+              {
+                "from": 20,
+                "beat": 24
+              }
+            ]
           },
           {
             "text": "Quebranta o meu coração",
-            "startBeat": 28.0,
-            "endBeat": 36.0
+            "startBeat": 28,
+            "endBeat": 36,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 30
+              },
+              {
+                "from": 20,
+                "beat": 32
+              }
+            ]
           },
           {
             "text": "Transforma-me conforme a Tua palavra",
-            "startBeat": 36.0,
-            "endBeat": 44.0
+            "startBeat": 36,
+            "endBeat": 44,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 38
+              },
+              {
+                "from": 25,
+                "beat": 40
+              }
+            ]
           },
           {
             "text": "E enche-me até que em mim se ache só a Ti",
-            "startBeat": 44.0,
-            "endBeat": 52.0
+            "startBeat": 44,
+            "endBeat": 52,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 46
+              },
+              {
+                "from": 29,
+                "beat": 48
+              },
+              {
+                "from": 39,
+                "beat": 50
+              }
+            ]
           },
           {
             "text": "Então",
-            "startBeat": 52.0,
-            "endBeat": 56.0
+            "startBeat": 52,
+            "endBeat": 56
           },
           {
             "text": "Usa-me, Senhor",
-            "startBeat": 56.0,
-            "endBeat": 64.0
+            "startBeat": 56,
+            "endBeat": 64,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 56
+              },
+              {
+                "from": 10,
+                "beat": 60
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 64.0,
-            "endBeat": 68.0
+            "startBeat": 64,
+            "endBeat": 68,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 64
+              }
+            ]
           },
           {
             "text": "Como um farol que brilha à noite",
-            "startBeat": 68.0,
-            "endBeat": 72.0
+            "startBeat": 68,
+            "endBeat": 72,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 70
+              }
+            ]
           },
           {
             "text": "Como ponte sobre as águas",
-            "startBeat": 72.0,
-            "endBeat": 76.0
+            "startBeat": 72,
+            "endBeat": 76,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 74
+              }
+            ]
           },
           {
             "text": "Como abrigo no deserto",
-            "startBeat": 76.0,
-            "endBeat": 80.0
+            "startBeat": 76,
+            "endBeat": 80,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 78
+              }
+            ]
           },
           {
             "text": "Como flecha que acerta o alvo",
-            "startBeat": 80.0,
-            "endBeat": 84.0
+            "startBeat": 80,
+            "endBeat": 84,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 82
+              }
+            ]
           },
           {
             "text": "Eu quero ser usado da maneira que Te agrade",
-            "startBeat": 84.0,
-            "endBeat": 92.0
+            "startBeat": 84,
+            "endBeat": 92,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 86
+              },
+              {
+                "from": 22,
+                "beat": 88
+              },
+              {
+                "from": 37,
+                "beat": 90
+              }
+            ]
           },
           {
             "text": "Em qualquer hora e em qualquer lugar",
-            "startBeat": 92.0,
-            "endBeat": 96.0
+            "startBeat": 92,
+            "endBeat": 96,
+            "chordAnchors": [
+              {
+                "from": 31,
+                "beat": 94
+              }
+            ]
           },
           {
             "text": "Eis aqui a minha vida, usa-me, Senhor",
-            "startBeat": 96.0,
-            "endBeat": 104.0
+            "startBeat": 96,
+            "endBeat": 104,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 98
+              },
+              {
+                "from": 31,
+                "beat": 100
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 104.0,
-            "endBeat": 108.0
+            "startBeat": 104,
+            "endBeat": 108,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 104
+              }
+            ]
           },
           {
             "text": "Sonda-me, Senhor, e me conhece",
-            "startBeat": 108.0,
-            "endBeat": 116.0
+            "startBeat": 108,
+            "endBeat": 116,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 108
+              },
+              {
+                "from": 12,
+                "beat": 110
+              },
+              {
+                "from": 20,
+                "beat": 112
+              }
+            ]
           },
           {
             "text": "Quebranta o meu coração",
-            "startBeat": 116.0,
-            "endBeat": 124.0
+            "startBeat": 116,
+            "endBeat": 124,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 118
+              },
+              {
+                "from": 20,
+                "beat": 120
+              }
+            ]
           },
           {
             "text": "Transforma-me conforme a Tua palavra",
-            "startBeat": 124.0,
-            "endBeat": 132.0
+            "startBeat": 124,
+            "endBeat": 132,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 126
+              },
+              {
+                "from": 25,
+                "beat": 128
+              }
+            ]
           },
           {
             "text": "E enche-me até que em mim se ache só a Ti",
-            "startBeat": 132.0,
-            "endBeat": 140.0
+            "startBeat": 132,
+            "endBeat": 140,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 134
+              },
+              {
+                "from": 29,
+                "beat": 136
+              },
+              {
+                "from": 39,
+                "beat": 138
+              }
+            ]
           },
           {
             "text": "Então",
-            "startBeat": 140.0,
-            "endBeat": 144.0
+            "startBeat": 140,
+            "endBeat": 144
           },
           {
             "text": "Usa-me, Senhor",
-            "startBeat": 144.0,
-            "endBeat": 152.0
+            "startBeat": 144,
+            "endBeat": 152,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 144
+              },
+              {
+                "from": 10,
+                "beat": 148
+              }
+            ]
           },
           {
             "text": "Usa-me (usa-me)",
-            "startBeat": 152.0,
-            "endBeat": 156.0
+            "startBeat": 152,
+            "endBeat": 156,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 152
+              }
+            ]
           },
           {
             "text": "Como um farol que brilha à noite",
-            "startBeat": 156.0,
-            "endBeat": 160.0
+            "startBeat": 156,
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 158
+              }
+            ]
           },
           {
             "text": "Como ponte sobre as águas",
-            "startBeat": 160.0,
-            "endBeat": 164.0
+            "startBeat": 160,
+            "endBeat": 164,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 162
+              }
+            ]
           },
           {
             "text": "Como abrigo no deserto",
-            "startBeat": 164.0,
-            "endBeat": 168.0
+            "startBeat": 164,
+            "endBeat": 168,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 166
+              }
+            ]
           },
           {
             "text": "Como flecha que acerta o alvo",
-            "startBeat": 168.0,
-            "endBeat": 172.0
+            "startBeat": 168,
+            "endBeat": 172,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 170
+              }
+            ]
           },
           {
             "text": "Eu quero ser usado da maneira que Te agrade",
-            "startBeat": 172.0,
-            "endBeat": 180.0
+            "startBeat": 172,
+            "endBeat": 180,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 174
+              },
+              {
+                "from": 22,
+                "beat": 176
+              },
+              {
+                "from": 37,
+                "beat": 178
+              }
+            ]
           },
           {
             "text": "Em qualquer hora e em qualquer lugar",
-            "startBeat": 180.0,
-            "endBeat": 184.0
+            "startBeat": 180,
+            "endBeat": 184,
+            "chordAnchors": [
+              {
+                "from": 31,
+                "beat": 182
+              }
+            ]
           },
           {
             "text": "Eis aqui a minha vida, usa-me, Senhor",
-            "startBeat": 184.0,
-            "endBeat": 192.0
+            "startBeat": 184,
+            "endBeat": 192,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 186
+              },
+              {
+                "from": 31,
+                "beat": 188
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 192.0,
-            "endBeat": 196.0
+            "startBeat": 192,
+            "endBeat": 196,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 192
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 196.0,
-            "endBeat": 200.0
+            "startBeat": 196,
+            "endBeat": 200,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 196
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 200.0,
-            "endBeat": 204.0
+            "startBeat": 200,
+            "endBeat": 204,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 200
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 204.0,
-            "endBeat": 208.0
+            "startBeat": 204,
+            "endBeat": 208,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 204
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 208.0,
-            "endBeat": 212.0
+            "startBeat": 208,
+            "endBeat": 212,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 208
+              }
+            ]
           },
           {
             "text": "E usa-me",
-            "startBeat": 212.0,
-            "endBeat": 216.0
+            "startBeat": 212,
+            "endBeat": 216,
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 214
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 216.0,
-            "endBeat": 220.0
+            "startBeat": 216,
+            "endBeat": 220,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 216
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 220.0,
-            "endBeat": 224.0
+            "startBeat": 220,
+            "endBeat": 224,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 220
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 224.0,
-            "endBeat": 228.0
+            "startBeat": 224,
+            "endBeat": 228,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 224
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 228.0,
-            "endBeat": 232.0
+            "startBeat": 228,
+            "endBeat": 232,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 228
+              }
+            ]
           },
           {
             "text": "E usa-me, Senhor",
-            "startBeat": 232.0,
-            "endBeat": 240.0
+            "startBeat": 232,
+            "endBeat": 240,
+            "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 236
+              },
+              {
+                "from": 6,
+                "beat": 238
+              }
+            ]
           },
           {
             "text": "Como um farol que brilha à noite",
-            "startBeat": 240.0,
-            "endBeat": 244.0
+            "startBeat": 240,
+            "endBeat": 244,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 242
+              }
+            ]
           },
           {
             "text": "Como ponte sobre as águas",
-            "startBeat": 244.0,
-            "endBeat": 248.0
+            "startBeat": 244,
+            "endBeat": 248,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 246
+              }
+            ]
           },
           {
             "text": "Como abrigo no deserto",
-            "startBeat": 248.0,
-            "endBeat": 252.0
+            "startBeat": 248,
+            "endBeat": 252,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 250
+              }
+            ]
           },
           {
             "text": "Como flecha que acerta o alvo",
-            "startBeat": 252.0,
-            "endBeat": 256.0
+            "startBeat": 252,
+            "endBeat": 256,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 254
+              }
+            ]
           },
           {
             "text": "Eu quero ser usado da maneira que Te agrade",
-            "startBeat": 256.0,
-            "endBeat": 264.0
+            "startBeat": 256,
+            "endBeat": 264,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 258
+              },
+              {
+                "from": 22,
+                "beat": 260
+              },
+              {
+                "from": 37,
+                "beat": 262
+              }
+            ]
           },
           {
             "text": "Em qualquer hora e em qualquer lugar",
-            "startBeat": 264.0,
-            "endBeat": 268.0
+            "startBeat": 264,
+            "endBeat": 268,
+            "chordAnchors": [
+              {
+                "from": 31,
+                "beat": 266
+              }
+            ]
           },
           {
             "text": "Eis aqui a minha vida, usa-me, Senhor",
-            "startBeat": 268.0,
-            "endBeat": 276.0
+            "startBeat": 268,
+            "endBeat": 276,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 270
+              },
+              {
+                "from": 31,
+                "beat": 272
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 276.0,
-            "endBeat": 280.0
+            "startBeat": 276,
+            "endBeat": 280,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 276
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 280.0,
-            "endBeat": 284.0
+            "startBeat": 280,
+            "endBeat": 284,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 280
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 284.0,
-            "endBeat": 288.0
+            "startBeat": 284,
+            "endBeat": 288,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 284
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 288.0,
-            "endBeat": 292.0
+            "startBeat": 288,
+            "endBeat": 292,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 288
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 292.0,
-            "endBeat": 296.0
+            "startBeat": 292,
+            "endBeat": 296,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 292
+              }
+            ]
           },
           {
             "text": "E usa-me",
-            "startBeat": 296.0,
-            "endBeat": 300.0
+            "startBeat": 296,
+            "endBeat": 300,
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 298
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 300.0,
-            "endBeat": 304.0
+            "startBeat": 300,
+            "endBeat": 304,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 300
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 304.0,
-            "endBeat": 308.0
+            "startBeat": 304,
+            "endBeat": 308,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 304
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 308.0,
-            "endBeat": 312.0
+            "startBeat": 308,
+            "endBeat": 312,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 308
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 312.0,
-            "endBeat": 316.0
+            "startBeat": 312,
+            "endBeat": 316,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 312
+              }
+            ]
           },
           {
             "text": "E usa-me, Senhor",
-            "startBeat": 316.0,
-            "endBeat": 320.0
+            "startBeat": 316,
+            "endBeat": 320,
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 318
+              }
+            ]
           },
           {
             "text": "E usa-me, Senhor",
-            "startBeat": 320.0,
-            "endBeat": 332.0
+            "startBeat": 320,
+            "endBeat": 332,
+            "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 324
+              },
+              {
+                "from": 6,
+                "beat": 326
+              },
+              {
+                "from": 12,
+                "beat": 328
+              }
+            ]
           }
         ],
         "alignmentNote": "Rascunho associado às barras da transcrição em C: as duas linhas de A/B ocupam dois compassos cada; C reserva F para “Então”, G–F para “Usa-me, Senhor” e o último G para “Usa-me”. R tem frases de 1, 1, 1, 1, 2, 1, 2 e 1 compassos, respeitando os baixos e as durações 3+1/2+1+1 já escritos. Cada palavra-frase da ponte segue seu acorde C, Am, F, Dm, F–G; a saída da segunda ponte atravessa L. O último chamado acompanha F inteiro. As três versões conservam a mesma forma e os mesmos tempos; só mudam as vozes dos acordes. A primeira sequência de ponte do curso contém dois ciclos, enquanto a letra enviada contém quatro: os dois ciclos extras continuam preservados entre as 69 linhas do texto integral, sem sobreposição artificial. Associação harmônica conferida na transcrição de Gladstone Leon e na cifra; ataques, respirações e sustentações vocais ainda não foram medidos no fonograma.",
@@ -1691,298 +3413,744 @@
         "cues": [
           {
             "text": "Sonda-me, Senhor, e me conhece",
-            "startBeat": 20.0,
-            "endBeat": 28.0
+            "startBeat": 20,
+            "endBeat": 28,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 20
+              },
+              {
+                "from": 12,
+                "beat": 22
+              },
+              {
+                "from": 20,
+                "beat": 24
+              }
+            ]
           },
           {
             "text": "Quebranta o meu coração",
-            "startBeat": 28.0,
-            "endBeat": 36.0
+            "startBeat": 28,
+            "endBeat": 36,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 30
+              },
+              {
+                "from": 20,
+                "beat": 32
+              }
+            ]
           },
           {
             "text": "Transforma-me conforme a Tua palavra",
-            "startBeat": 36.0,
-            "endBeat": 44.0
+            "startBeat": 36,
+            "endBeat": 44,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 38
+              },
+              {
+                "from": 25,
+                "beat": 40
+              }
+            ]
           },
           {
             "text": "E enche-me até que em mim se ache só a Ti",
-            "startBeat": 44.0,
-            "endBeat": 52.0
+            "startBeat": 44,
+            "endBeat": 52,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 46
+              },
+              {
+                "from": 29,
+                "beat": 48
+              },
+              {
+                "from": 39,
+                "beat": 50
+              }
+            ]
           },
           {
             "text": "Então",
-            "startBeat": 52.0,
-            "endBeat": 56.0
+            "startBeat": 52,
+            "endBeat": 56
           },
           {
             "text": "Usa-me, Senhor",
-            "startBeat": 56.0,
-            "endBeat": 64.0
+            "startBeat": 56,
+            "endBeat": 64,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 56
+              },
+              {
+                "from": 10,
+                "beat": 60
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 64.0,
-            "endBeat": 68.0
+            "startBeat": 64,
+            "endBeat": 68,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 64
+              }
+            ]
           },
           {
             "text": "Como um farol que brilha à noite",
-            "startBeat": 68.0,
-            "endBeat": 72.0
+            "startBeat": 68,
+            "endBeat": 72,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 70
+              }
+            ]
           },
           {
             "text": "Como ponte sobre as águas",
-            "startBeat": 72.0,
-            "endBeat": 76.0
+            "startBeat": 72,
+            "endBeat": 76,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 74
+              }
+            ]
           },
           {
             "text": "Como abrigo no deserto",
-            "startBeat": 76.0,
-            "endBeat": 80.0
+            "startBeat": 76,
+            "endBeat": 80,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 78
+              }
+            ]
           },
           {
             "text": "Como flecha que acerta o alvo",
-            "startBeat": 80.0,
-            "endBeat": 84.0
+            "startBeat": 80,
+            "endBeat": 84,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 82
+              }
+            ]
           },
           {
             "text": "Eu quero ser usado da maneira que Te agrade",
-            "startBeat": 84.0,
-            "endBeat": 92.0
+            "startBeat": 84,
+            "endBeat": 92,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 86
+              },
+              {
+                "from": 22,
+                "beat": 88
+              },
+              {
+                "from": 37,
+                "beat": 90
+              }
+            ]
           },
           {
             "text": "Em qualquer hora e em qualquer lugar",
-            "startBeat": 92.0,
-            "endBeat": 96.0
+            "startBeat": 92,
+            "endBeat": 96,
+            "chordAnchors": [
+              {
+                "from": 31,
+                "beat": 94
+              }
+            ]
           },
           {
             "text": "Eis aqui a minha vida, usa-me, Senhor",
-            "startBeat": 96.0,
-            "endBeat": 104.0
+            "startBeat": 96,
+            "endBeat": 104,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 98
+              },
+              {
+                "from": 31,
+                "beat": 100
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 104.0,
-            "endBeat": 108.0
+            "startBeat": 104,
+            "endBeat": 108,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 104
+              }
+            ]
           },
           {
             "text": "Sonda-me, Senhor, e me conhece",
-            "startBeat": 108.0,
-            "endBeat": 116.0
+            "startBeat": 108,
+            "endBeat": 116,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 108
+              },
+              {
+                "from": 12,
+                "beat": 110
+              },
+              {
+                "from": 20,
+                "beat": 112
+              }
+            ]
           },
           {
             "text": "Quebranta o meu coração",
-            "startBeat": 116.0,
-            "endBeat": 124.0
+            "startBeat": 116,
+            "endBeat": 124,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 118
+              },
+              {
+                "from": 20,
+                "beat": 120
+              }
+            ]
           },
           {
             "text": "Transforma-me conforme a Tua palavra",
-            "startBeat": 124.0,
-            "endBeat": 132.0
+            "startBeat": 124,
+            "endBeat": 132,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 126
+              },
+              {
+                "from": 25,
+                "beat": 128
+              }
+            ]
           },
           {
             "text": "E enche-me até que em mim se ache só a Ti",
-            "startBeat": 132.0,
-            "endBeat": 140.0
+            "startBeat": 132,
+            "endBeat": 140,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 134
+              },
+              {
+                "from": 29,
+                "beat": 136
+              },
+              {
+                "from": 39,
+                "beat": 138
+              }
+            ]
           },
           {
             "text": "Então",
-            "startBeat": 140.0,
-            "endBeat": 144.0
+            "startBeat": 140,
+            "endBeat": 144
           },
           {
             "text": "Usa-me, Senhor",
-            "startBeat": 144.0,
-            "endBeat": 152.0
+            "startBeat": 144,
+            "endBeat": 152,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 144
+              },
+              {
+                "from": 10,
+                "beat": 148
+              }
+            ]
           },
           {
             "text": "Usa-me (usa-me)",
-            "startBeat": 152.0,
-            "endBeat": 156.0
+            "startBeat": 152,
+            "endBeat": 156,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 152
+              }
+            ]
           },
           {
             "text": "Como um farol que brilha à noite",
-            "startBeat": 156.0,
-            "endBeat": 160.0
+            "startBeat": 156,
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 158
+              }
+            ]
           },
           {
             "text": "Como ponte sobre as águas",
-            "startBeat": 160.0,
-            "endBeat": 164.0
+            "startBeat": 160,
+            "endBeat": 164,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 162
+              }
+            ]
           },
           {
             "text": "Como abrigo no deserto",
-            "startBeat": 164.0,
-            "endBeat": 168.0
+            "startBeat": 164,
+            "endBeat": 168,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 166
+              }
+            ]
           },
           {
             "text": "Como flecha que acerta o alvo",
-            "startBeat": 168.0,
-            "endBeat": 172.0
+            "startBeat": 168,
+            "endBeat": 172,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 170
+              }
+            ]
           },
           {
             "text": "Eu quero ser usado da maneira que Te agrade",
-            "startBeat": 172.0,
-            "endBeat": 180.0
+            "startBeat": 172,
+            "endBeat": 180,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 174
+              },
+              {
+                "from": 22,
+                "beat": 176
+              },
+              {
+                "from": 37,
+                "beat": 178
+              }
+            ]
           },
           {
             "text": "Em qualquer hora e em qualquer lugar",
-            "startBeat": 180.0,
-            "endBeat": 184.0
+            "startBeat": 180,
+            "endBeat": 184,
+            "chordAnchors": [
+              {
+                "from": 31,
+                "beat": 182
+              }
+            ]
           },
           {
             "text": "Eis aqui a minha vida, usa-me, Senhor",
-            "startBeat": 184.0,
-            "endBeat": 192.0
+            "startBeat": 184,
+            "endBeat": 192,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 186
+              },
+              {
+                "from": 31,
+                "beat": 188
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 192.0,
-            "endBeat": 196.0
+            "startBeat": 192,
+            "endBeat": 196,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 192
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 196.0,
-            "endBeat": 200.0
+            "startBeat": 196,
+            "endBeat": 200,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 196
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 200.0,
-            "endBeat": 204.0
+            "startBeat": 200,
+            "endBeat": 204,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 200
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 204.0,
-            "endBeat": 208.0
+            "startBeat": 204,
+            "endBeat": 208,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 204
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 208.0,
-            "endBeat": 212.0
+            "startBeat": 208,
+            "endBeat": 212,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 208
+              }
+            ]
           },
           {
             "text": "E usa-me",
-            "startBeat": 212.0,
-            "endBeat": 216.0
+            "startBeat": 212,
+            "endBeat": 216,
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 214
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 216.0,
-            "endBeat": 220.0
+            "startBeat": 216,
+            "endBeat": 220,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 216
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 220.0,
-            "endBeat": 224.0
+            "startBeat": 220,
+            "endBeat": 224,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 220
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 224.0,
-            "endBeat": 228.0
+            "startBeat": 224,
+            "endBeat": 228,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 224
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 228.0,
-            "endBeat": 232.0
+            "startBeat": 228,
+            "endBeat": 232,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 228
+              }
+            ]
           },
           {
             "text": "E usa-me, Senhor",
-            "startBeat": 232.0,
-            "endBeat": 240.0
+            "startBeat": 232,
+            "endBeat": 240,
+            "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 236
+              },
+              {
+                "from": 6,
+                "beat": 238
+              }
+            ]
           },
           {
             "text": "Como um farol que brilha à noite",
-            "startBeat": 240.0,
-            "endBeat": 244.0
+            "startBeat": 240,
+            "endBeat": 244,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 242
+              }
+            ]
           },
           {
             "text": "Como ponte sobre as águas",
-            "startBeat": 244.0,
-            "endBeat": 248.0
+            "startBeat": 244,
+            "endBeat": 248,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 246
+              }
+            ]
           },
           {
             "text": "Como abrigo no deserto",
-            "startBeat": 248.0,
-            "endBeat": 252.0
+            "startBeat": 248,
+            "endBeat": 252,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 250
+              }
+            ]
           },
           {
             "text": "Como flecha que acerta o alvo",
-            "startBeat": 252.0,
-            "endBeat": 256.0
+            "startBeat": 252,
+            "endBeat": 256,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 254
+              }
+            ]
           },
           {
             "text": "Eu quero ser usado da maneira que Te agrade",
-            "startBeat": 256.0,
-            "endBeat": 264.0
+            "startBeat": 256,
+            "endBeat": 264,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 258
+              },
+              {
+                "from": 22,
+                "beat": 260
+              },
+              {
+                "from": 37,
+                "beat": 262
+              }
+            ]
           },
           {
             "text": "Em qualquer hora e em qualquer lugar",
-            "startBeat": 264.0,
-            "endBeat": 268.0
+            "startBeat": 264,
+            "endBeat": 268,
+            "chordAnchors": [
+              {
+                "from": 31,
+                "beat": 266
+              }
+            ]
           },
           {
             "text": "Eis aqui a minha vida, usa-me, Senhor",
-            "startBeat": 268.0,
-            "endBeat": 276.0
+            "startBeat": 268,
+            "endBeat": 276,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 270
+              },
+              {
+                "from": 31,
+                "beat": 272
+              }
+            ]
           },
           {
             "text": "Usa-me",
-            "startBeat": 276.0,
-            "endBeat": 280.0
+            "startBeat": 276,
+            "endBeat": 280,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 276
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 280.0,
-            "endBeat": 284.0
+            "startBeat": 280,
+            "endBeat": 284,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 280
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 284.0,
-            "endBeat": 288.0
+            "startBeat": 284,
+            "endBeat": 288,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 284
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 288.0,
-            "endBeat": 292.0
+            "startBeat": 288,
+            "endBeat": 292,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 288
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 292.0,
-            "endBeat": 296.0
+            "startBeat": 292,
+            "endBeat": 296,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 292
+              }
+            ]
           },
           {
             "text": "E usa-me",
-            "startBeat": 296.0,
-            "endBeat": 300.0
+            "startBeat": 296,
+            "endBeat": 300,
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 298
+              }
+            ]
           },
           {
             "text": "Sonda-me",
-            "startBeat": 300.0,
-            "endBeat": 304.0
+            "startBeat": 300,
+            "endBeat": 304,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 300
+              }
+            ]
           },
           {
             "text": "Quebranta-me",
-            "startBeat": 304.0,
-            "endBeat": 308.0
+            "startBeat": 304,
+            "endBeat": 308,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 304
+              }
+            ]
           },
           {
             "text": "Transforma-me",
-            "startBeat": 308.0,
-            "endBeat": 312.0
+            "startBeat": 308,
+            "endBeat": 312,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 308
+              }
+            ]
           },
           {
             "text": "Enche-me",
-            "startBeat": 312.0,
-            "endBeat": 316.0
+            "startBeat": 312,
+            "endBeat": 316,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 312
+              }
+            ]
           },
           {
             "text": "E usa-me, Senhor",
-            "startBeat": 316.0,
-            "endBeat": 320.0
+            "startBeat": 316,
+            "endBeat": 320,
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 318
+              }
+            ]
           },
           {
             "text": "E usa-me, Senhor",
-            "startBeat": 320.0,
-            "endBeat": 332.0
+            "startBeat": 320,
+            "endBeat": 332,
+            "chordAnchors": [
+              {
+                "from": 2,
+                "beat": 324
+              },
+              {
+                "from": 6,
+                "beat": 326
+              },
+              {
+                "from": 12,
+                "beat": 328
+              }
+            ]
           }
         ],
         "alignmentNote": "Rascunho associado às barras da transcrição em C: as duas linhas de A/B ocupam dois compassos cada; C reserva F para “Então”, G–F para “Usa-me, Senhor” e o último G para “Usa-me”. R tem frases de 1, 1, 1, 1, 2, 1, 2 e 1 compassos, respeitando os baixos e as durações 3+1/2+1+1 já escritos. Cada palavra-frase da ponte segue seu acorde C, Am, F, Dm, F–G; a saída da segunda ponte atravessa L. O último chamado acompanha F inteiro. As três versões conservam a mesma forma e os mesmos tempos; só mudam as vozes dos acordes. A primeira sequência de ponte do curso contém dois ciclos, enquanto a letra enviada contém quatro: os dois ciclos extras continuam preservados entre as 69 linhas do texto integral, sem sobreposição artificial. Associação harmônica conferida na transcrição de Gladstone Leon e na cifra; ataques, respirações e sustentações vocais ainda não foram medidos no fonograma.",
@@ -2018,72 +4186,256 @@
           {
             "text": "Renova-me, Senhor Jesus",
             "startBeat": 32,
-            "endBeat": 48
+            "endBeat": 48,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 40
+              },
+              {
+                "from": 18,
+                "beat": 44
+              }
+            ]
           },
           {
             "text": "Já não quero ser igual",
             "startBeat": 48,
-            "endBeat": 64
+            "endBeat": 64,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 48
+              },
+              {
+                "from": 7,
+                "beat": 52
+              },
+              {
+                "from": 17,
+                "beat": 56
+              }
+            ]
           },
           {
             "text": "Renova-me, Senhor Jesus",
             "startBeat": 64,
-            "endBeat": 80
+            "endBeat": 80,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 72
+              },
+              {
+                "from": 18,
+                "beat": 76
+              }
+            ]
           },
           {
             "text": "Põe em mim Teu coração",
             "startBeat": 80,
-            "endBeat": 96
+            "endBeat": 96,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 80
+              },
+              {
+                "from": 7,
+                "beat": 84
+              },
+              {
+                "from": 15,
+                "beat": 88
+              }
+            ]
           },
           {
             "text": "Porque tudo o que há dentro de mim",
             "startBeat": 96,
-            "endBeat": 112
+            "endBeat": 112,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 100
+              },
+              {
+                "from": 24,
+                "beat": 104
+              }
+            ]
           },
           {
             "text": "Necessita ser mudado, Senhor",
             "startBeat": 112,
-            "endBeat": 132
+            "endBeat": 132,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 112
+              },
+              {
+                "from": 7,
+                "beat": 116
+              },
+              {
+                "from": 14,
+                "beat": 120
+              },
+              {
+                "from": 22,
+                "beat": 124
+              }
+            ]
           },
           {
             "text": "Porque tudo o que há dentro do meu coração",
             "startBeat": 132,
-            "endBeat": 148
+            "endBeat": 148,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 136
+              },
+              {
+                "from": 31,
+                "beat": 140
+              }
+            ]
           },
           {
             "text": "Necessita mais de Ti",
             "startBeat": 148,
-            "endBeat": 160
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 148
+              },
+              {
+                "from": 5,
+                "beat": 152
+              },
+              {
+                "from": 10,
+                "beat": 154
+              },
+              {
+                "from": 18,
+                "beat": 156
+              }
+            ]
           },
           {
             "text": "Renova-me, Senhor Jesus",
             "startBeat": 180,
-            "endBeat": 196
+            "endBeat": 196,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 188
+              },
+              {
+                "from": 18,
+                "beat": 192
+              }
+            ]
           },
           {
             "text": "Já não quero ser igual",
             "startBeat": 196,
-            "endBeat": 212
+            "endBeat": 212,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 196
+              },
+              {
+                "from": 7,
+                "beat": 200
+              },
+              {
+                "from": 17,
+                "beat": 204
+              }
+            ]
           },
           {
             "text": "Porque tudo o que há dentro de mim",
             "startBeat": 212,
-            "endBeat": 228
+            "endBeat": 228,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 216
+              },
+              {
+                "from": 24,
+                "beat": 220
+              }
+            ]
           },
           {
             "text": "Necessita ser mudado, Senhor",
             "startBeat": 228,
-            "endBeat": 248
+            "endBeat": 248,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 228
+              },
+              {
+                "from": 7,
+                "beat": 232
+              },
+              {
+                "from": 14,
+                "beat": 236
+              },
+              {
+                "from": 22,
+                "beat": 240
+              }
+            ]
           },
           {
             "text": "Porque tudo o que há dentro do meu coração",
             "startBeat": 248,
-            "endBeat": 264
+            "endBeat": 264,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 252
+              },
+              {
+                "from": 31,
+                "beat": 256
+              }
+            ]
           },
           {
             "text": "Necessita mais de Ti",
             "startBeat": 264,
-            "endBeat": 276
+            "endBeat": 276,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 264
+              },
+              {
+                "from": 5,
+                "beat": 268
+              },
+              {
+                "from": 10,
+                "beat": 270
+              },
+              {
+                "from": 18,
+                "beat": 272
+              }
+            ]
           }
         ],
         "alignmentNote": "Rascunho baseado na cifra da edição ao vivo de 2012 em D. A1–A4 acompanham a invocação e A5–A8 a resposta; as duas primeiras passagens A distinguem “Já não quero ser igual” e “Põe em mim Teu coração”. R1 separa D–A–Bm–A (16 pulsos) de G–D–Em–A–A (20 pulsos). R2 separa a primeira frase em D–A–Bm–A da conclusão em G–Em/A–D, deixando o último A como ligação instrumental. I, J e F não recebem canto presumido. A reprise existente tem só uma passagem A, por isso a segunda resposta e os chamados finais adicionais do texto não cabem integralmente na forma didática; as 19 linhas fornecidas estão preservadas no texto integral. As entradas e saídas são limites harmônicos de estudo, sem medição das antecipações e sustentações da gravação.",

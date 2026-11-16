@@ -17,7 +17,9 @@
     "test:http": "node scripts/smoke-http.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test:http:ci": "node scripts/verify-http.mjs"
+    "test:http:ci": "node scripts/verify-http.mjs",
+    "lyrics:align": "node --import tsx scripts/align-lyrics-from-chords.ts",
+    "lyrics:check": "node --import tsx scripts/align-lyrics-from-chords.ts --check"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.7",

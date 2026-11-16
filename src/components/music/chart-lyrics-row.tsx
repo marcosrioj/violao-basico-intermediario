@@ -44,7 +44,7 @@ function wordsIn(cue: ProjectedLyricCue) {
   return words;
 }
 
-/** One visible copy of the text; cumulative emphasis is limited to the current visual line. */
+/** One visible copy; completed syllables persist across lyric and chart line breaks. */
 export function ChartLyricsRow({
   clock,
   cues,
@@ -56,41 +56,25 @@ export function ChartLyricsRow({
   firstBar: number;
   lastBar: number;
 }) {
-  const row = useRef<HTMLParagraphElement>(null);
   const snapshot = useSyncExternalStore(
     clock.subscribe,
     () => clock.rowSnapshot(firstBar, lastBar),
     () => '',
   );
-  const [cueId, first, last, active] = snapshot
-    ? snapshot.split(':').map(Number)
-    : [-1, -1, -1, -1];
-  useLayoutEffect(() => {
-    const element = row.current;
-    if (!element) return;
-    const updateLine = () => {
-      const candidates = [...element.querySelectorAll<HTMLElement>('.karaoke-syllable')];
-      const completed = candidates.filter((part) => part.hasAttribute('data-completed-syllable'));
-      const anchor =
-        element.querySelector<HTMLElement>('[data-active-syllable]') ?? completed.at(-1);
-      const top = anchor?.getBoundingClientRect().top;
-      // Read layout once per boundary/resize, before writing any emphasis attributes.
-      const currentLine = completed.filter(
-        (part) => top !== undefined && Math.abs(part.getBoundingClientRect().top - top) < 1,
-      );
-      const sung = new Set(currentLine);
-      candidates.forEach((part) => part.toggleAttribute('data-sung-syllable', sung.has(part)));
-    };
-    updateLine();
-    const observer = new ResizeObserver(updateLine);
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, [snapshot]);
+  const states = new Map(
+    snapshot
+      ? snapshot.split(';').map((state) => {
+          const [id, first, last, active] = state.split(':').map(Number);
+          return [id, { first, last, active }] as const;
+        })
+      : [],
+  );
   const visible = cues.filter((cue) => cue.startBar <= lastBar && cue.endBar >= firstBar);
   if (!visible.length) return null;
   return (
-    <p className="karaoke-text" aria-live="off" ref={row}>
+    <p className="karaoke-text" aria-live="off">
       {visible.map((cue, index) => {
+        const state = states.get(cue.id);
         return (
           <Fragment key={cue.id}>
             {index > 0 && ' '}
@@ -101,17 +85,17 @@ export function ChartLyricsRow({
                     <span className="karaoke-word">
                       {word.parts.map((part) => {
                         const done =
-                          cue.id === cueId &&
-                          first >= 0 &&
-                          part.index >= first &&
-                          part.index <= last;
-                        const singing = cue.id === cueId && active === part.index;
+                          state !== undefined &&
+                          state.first >= 0 &&
+                          part.index >= state.first &&
+                          part.index <= state.last;
+                        const singing = state?.active === part.index;
                         return (
                           <span
                             className="karaoke-syllable"
                             key={part.index}
                             data-active-syllable={singing || undefined}
-                            data-completed-syllable={done || undefined}
+                            data-sung-syllable={done || undefined}
                             data-text={part.text}
                           >
                             {singing ? (

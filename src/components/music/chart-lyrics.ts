@@ -1,5 +1,6 @@
 import type { ChartBar, SongVersion } from '@/content/types';
 import { buildChartGroups, type ChartGroup } from './chart-layout';
+import { estimateLyricSyllables, splitLyricSyllables } from './lyric-syllables';
 
 /** Absolute pulses in the full written arrangement; an explicit end preserves vocal rests. */
 export interface LyricSyllable {
@@ -16,6 +17,8 @@ export interface LyricCue {
   startBeat: number;
   endBeat: number;
   syllables?: LyricSyllable[];
+  /** Syllable onsets anchored to existing chord events; intervening vocal durations remain estimates. */
+  chordAnchors?: { from: number; beat: number }[];
 }
 
 export interface ProjectedLyricCue extends LyricCue {
@@ -70,6 +73,36 @@ export function validateLyricCues(input: unknown, totalBeats: number): LyricCue[
     const endBeat = Math.min(cue.endBeat, totalBeats);
     previousEnd = endBeat;
     const checked: LyricCue = { text: cue.text.trim(), startBeat: cue.startBeat, endBeat };
+    if (cue.chordAnchors !== undefined) {
+      if (cue.text !== checked.text)
+        throw new RangeError(`${label}: remova espaços externos antes de marcar âncoras.`);
+      if (!Array.isArray(cue.chordAnchors) || cue.chordAnchors.length > checked.text.length)
+        throw new RangeError(`${label}: âncoras harmônicas inválidas.`);
+      const syllableStarts = new Set(splitLyricSyllables(checked.text).map(({ from }) => from));
+      let previousFrom = -1;
+      let previousAnchorBeat = -Infinity;
+      checked.chordAnchors = cue.chordAnchors.map((anchor: unknown) => {
+        if (!anchor || typeof anchor !== 'object')
+          throw new TypeError(`${label}: âncora inválida.`);
+        const { from, beat } = anchor as Record<string, unknown>;
+        if (
+          typeof from !== 'number' ||
+          !Number.isInteger(from) ||
+          from <= previousFrom ||
+          !syllableStarts.has(from) ||
+          typeof beat !== 'number' ||
+          !Number.isFinite(beat) ||
+          beat <= previousAnchorBeat ||
+          beat < checked.startBeat ||
+          beat >= checked.endBeat ||
+          (from > 0 && beat <= checked.startBeat)
+        )
+          throw new RangeError(`${label}: confira a ordem e os limites das âncoras harmônicas.`);
+        previousFrom = from;
+        previousAnchorBeat = beat;
+        return { from, beat };
+      });
+    }
     if (cue.syllables !== undefined) {
       if (cue.text !== checked.text)
         throw new RangeError(`${label}: remova espaços externos antes de marcar sílabas.`);
@@ -130,6 +163,12 @@ export function projectLyricCues(
   groups: ChartGroup[],
   cues: LyricCue[],
 ): ProjectedLyricCue[] {
+  // Resolve in the full arrangement before clipping; a selected section can start mid-phrase.
+  const sourceCues = cues.map((cue) =>
+    cue.chordAnchors?.length && !cue.syllables
+      ? { ...cue, syllables: estimateLyricSyllables(cue) }
+      : cue,
+  );
   let sourceBeat = 0;
   const sourceGroups = buildChartGroups(chart).map((group) => {
     const start = sourceBeat;
@@ -151,7 +190,7 @@ export function projectLyricCues(
   });
   const projected: (ProjectedLyricCue & { sourceEnd: number })[] = [];
   for (const span of spans) {
-    cues.forEach((cue, id) => {
+    sourceCues.forEach((cue, id) => {
       const sourceStart = Math.max(cue.startBeat, span.source.start);
       const sourceEnd = Math.min(cue.endBeat, span.source.end);
       if (sourceEnd <= sourceStart) return;

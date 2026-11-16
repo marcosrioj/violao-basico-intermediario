@@ -3,7 +3,7 @@ import type { ProjectedLyricCue } from './chart-lyrics';
 
 export interface LyricsClock {
   subscribe(listener: () => void): () => void;
-  /** Current phrase only: cue, first completed syllable, last completed syllable, active syllable. */
+  /** Prefix before the playhead in this row: id:first:last:active, separated by semicolons. */
   rowSnapshot(firstBar: number, lastBar: number): string;
   reset(): void;
   paint(element: HTMLElement, cue: number, syllable: number): () => void;
@@ -14,13 +14,13 @@ export interface LyricsClock {
 export function createLyricsClock(cues: ProjectedLyricCue[], bpm: number): LyricsClock {
   const listeners = new Set<() => void>();
   const fills = new Set<{ element: HTMLElement; cue: number; syllable: number }>();
+  const finalBar = cues.reduce((last, cue) => Math.max(last, cue.endBar), -1);
   let cueId = -1;
   let syllableId = -1;
-  let firstDone = -1;
-  let lastDone = -1;
+  let completed: { cue: ProjectedLyricCue; first: number; last: number }[] = [];
+  let completedKey = '';
   let bar = -1;
   let progress = 0;
-  let fromBeat = Infinity;
   let previous: PlaybackSnapshot | null = null;
   const notify = () => listeners.forEach((listener) => listener());
   const fill = (target: { element: HTMLElement; cue: number; syllable: number }) => {
@@ -35,14 +35,21 @@ export function createLyricsClock(cues: ProjectedLyricCue[], bpm: number): Lyric
       };
     },
     rowSnapshot(firstBar, lastBar) {
-      return cueId >= 0 && bar >= firstBar && bar <= lastBar
-        ? `${cueId}:${firstDone}:${lastDone}:${syllableId}`
-        : '';
+      // A phrase can be printed under several chart rows; never emphasize its future copy.
+      if (firstBar > bar) return '';
+      return completed
+        .filter(({ cue }) => cue.startBar <= lastBar && cue.endBar >= firstBar)
+        .map(({ cue, first, last }) => {
+          const active = cue.id === cueId && bar >= firstBar && bar <= lastBar ? syllableId : -1;
+          return `${cue.id}:${first}:${last}:${active}`;
+        })
+        .join(';');
     },
     reset() {
       previous = null;
-      fromBeat = Infinity;
-      cueId = syllableId = firstDone = lastDone = bar = -1;
+      completed = [];
+      completedKey = '';
+      cueId = syllableId = bar = -1;
       progress = 0;
       fills.forEach(fill);
       notify();
@@ -61,38 +68,38 @@ export function createLyricsClock(cues: ProjectedLyricCue[], bpm: number): Lyric
       function update() {
         if (!active) return;
         const position = readPosition();
-        const beat = ((position?.scoreSeconds ?? 0) * bpm) / 60;
-        if (position && position.status !== 'idle') {
-          // Both clocks distinguish a loop from ordinary progress, even when frames skip.
-          const looped =
-            previous &&
-            previous.status !== 'idle' &&
-            position.elapsedSeconds - previous.elapsedSeconds >
-              position.scoreSeconds - previous.scoreSeconds + 1e-6;
-          if (fromBeat === Infinity || looped) {
-            fromBeat =
-              position.passStartSeconds === undefined
-                ? beat - position.beat
-                : (position.passStartSeconds * bpm) / 60;
-          }
-          // Preserve the frozen syllable through the short audio scheduling lead-in on resume.
-          if (position.waitingForAudio) {
-            previous = position;
-            if (active && playing && cues.length) frame = requestAnimationFrame(update);
-            return;
-          }
+        let beat = ((position?.scoreSeconds ?? 0) * bpm) / 60;
+        let nextBar = position?.bar ?? -1;
+        const finished = position?.status === 'idle' && previous && previous.status !== 'idle';
+        if (finished) {
+          // Explicit stop calls reset first; natural completion keeps the sung text for review.
+          beat = (position.durationSeconds * bpm) / 60;
+          nextBar = finalBar;
+        } else if (!position || position.status === 'idle') {
+          previous = position;
+          return;
+        }
+        // Preserve the frozen syllable through the short audio scheduling lead-in on resume.
+        if (position?.waitingForAudio) {
+          previous = position;
+          if (active && playing && cues.length) frame = requestAnimationFrame(update);
+          return;
         }
         const cue =
           position && position.status !== 'idle'
             ? cues.find((item) => beat >= item.startBeat && beat < item.endBeat)
             : undefined;
         const parts = cue?.syllables ?? [];
-        const isComplete = (part: (typeof parts)[number]) =>
-          part.endBeat > fromBeat + 1e-7 && part.endBeat <= beat + 1e-7;
-        const nextFirst = parts.findIndex(isComplete);
-        const nextLast = parts.findLastIndex(isComplete);
         const nextId = cue?.id ?? -1;
-        const nextBar = position?.bar ?? -1;
+        const nextCompleted = cues.flatMap((candidate) => {
+          const last =
+            candidate.syllables?.findLastIndex((part) => part.endBeat <= beat + 1e-7) ?? -1;
+          const first = last >= 0 ? 0 : -1;
+          return first >= 0 || candidate.id === nextId ? [{ cue: candidate, first, last }] : [];
+        });
+        const nextKey = nextCompleted
+          .map(({ cue, first, last }) => `${cue.id}:${first}:${last}`)
+          .join(';');
         const nextSyllable = parts.findIndex(
           (item) => beat >= item.startBeat && beat < item.endBeat,
         );
@@ -104,13 +111,12 @@ export function createLyricsClock(cues: ProjectedLyricCue[], bpm: number): Lyric
           cueId !== nextId ||
           bar !== nextBar ||
           syllableId !== nextSyllable ||
-          firstDone !== nextFirst ||
-          lastDone !== nextLast;
+          completedKey !== nextKey;
         cueId = nextId;
         bar = nextBar;
         syllableId = nextSyllable;
-        firstDone = nextFirst;
-        lastDone = nextLast;
+        completed = nextCompleted;
+        completedKey = nextKey;
         previous = position;
         fills.forEach(fill);
         if (changed) notify();

@@ -1,5 +1,5 @@
 import { memo, useId, type CSSProperties } from 'react';
-import { Play, Repeat2 } from 'lucide-react';
+import { Play, Pause, Repeat2 } from 'lucide-react';
 import type { ChartBar, SongVersion } from '@/content/types';
 import { buildChartRows, describeChartBar, type ChartGroup } from './chart-layout';
 import type { ProjectedLyricCue } from './chart-lyrics';
@@ -34,7 +34,9 @@ export const ChartSection = memo(function ChartSection({
   reference = false,
   onPreview,
   onStart,
-  paused = false,
+  playbackState = 'idle',
+  onPause,
+  onResume,
   repeating = false,
   onRepeat,
   bpm,
@@ -50,7 +52,9 @@ export const ChartSection = memo(function ChartSection({
   reference?: boolean;
   onPreview?: (bar: ChartBar) => void;
   onStart?: (playbackIndex: number, sectionId: string) => void;
-  paused?: boolean;
+  playbackState?: 'idle' | 'playing' | 'paused';
+  onPause?: () => void;
+  onResume?: () => void;
   repeating?: boolean;
   onRepeat?: (group: ChartGroup, enabled: boolean) => void;
   bpm?: number;
@@ -60,6 +64,18 @@ export const ChartSection = memo(function ChartSection({
 }) {
   const heading = useId();
   const rows = buildChartRows(group.bars, chart, maxBars);
+  const action =
+    playbackState === 'playing' && onPause
+      ? 'Pausar'
+      : playbackState === 'paused' && onResume
+        ? 'Continuar'
+        : 'Tocar daqui';
+  const activate =
+    action === 'Pausar'
+      ? onPause
+      : action === 'Continuar'
+        ? onResume
+        : () => onStart?.(group.bars[0].playbackIndex, group.sectionId);
   return (
     <section
       className={`chart-section${repeating ? ' is-repeating' : ''}`}
@@ -92,10 +108,15 @@ export const ChartSection = memo(function ChartSection({
             <button
               type="button"
               className="button small secondary chart-start"
-              aria-label={`Tocar daqui: ${group.title}${!reference && group.passages > 1 ? `, passagem ${group.passage}` : ''}`}
-              onClick={() => onStart(group.bars[0].playbackIndex, group.sectionId)}
+              aria-label={`${action}: ${group.title}${!reference && group.passages > 1 ? `, passagem ${group.passage}` : ''}`}
+              onClick={activate}
             >
-              <Play size={14} aria-hidden="true" /> Tocar daqui
+              {action === 'Pausar' ? (
+                <Pause size={14} aria-hidden="true" />
+              ) : (
+                <Play size={14} aria-hidden="true" />
+              )}{' '}
+              {action}
             </button>
           )}
           {onRepeat && group.bars.length > 0 && (
@@ -142,7 +163,9 @@ export const ChartSection = memo(function ChartSection({
                       <span className="chart-bar-heading">
                         <span>{label}</span>
                         {current && (
-                          <span className="chart-playing">{paused ? 'Pausado' : 'Tocando'}</span>
+                          <span className="chart-playing">
+                            {playbackState === 'paused' ? 'Pausado' : 'Tocando'}
+                          </span>
                         )}
                       </span>
                       <span

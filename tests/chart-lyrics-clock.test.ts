@@ -8,8 +8,12 @@ function activeSyllable(
   firstBar: number,
   lastBar: number,
 ) {
-  const [cue, , , syllable] = clock.rowSnapshot(firstBar, lastBar).split(':').map(Number);
-  return syllable >= 0 ? `${cue}:${syllable}` : '';
+  const active = clock
+    .rowSnapshot(firstBar, lastBar)
+    .split(';')
+    .map((entry) => entry.split(':').map(Number))
+    .find(([, , , syllable]) => syllable >= 0);
+  return active ? `${active[0]}:${active[3]}` : '';
 }
 
 test('syllabic fill follows the audio clock continuously, respects rests and pauses, and cancels on unmount', (t) => {
@@ -128,11 +132,14 @@ function animationFrames(t: { after(fn: () => void): void }) {
 }
 
 function state(clock: ReturnType<typeof createLyricsClock>, cue: number, lastBar = 10000) {
-  const snapshot = clock.rowSnapshot(0, lastBar);
-  return snapshot.startsWith(`${cue}:`) ? snapshot.split(':').slice(1).map(Number) : [-1, -1, -1];
+  const snapshot = clock
+    .rowSnapshot(0, lastBar)
+    .split(';')
+    .find((entry) => entry.startsWith(`${cue}:`));
+  return snapshot ? snapshot.split(':').slice(1).map(Number) : [-1, -1, -1];
 }
 
-test('bold stays within the current lyric line; rests and pause preserve it, later lines and finish reset it', async (t) => {
+test('the prefix before the playhead stays bold across pauses, natural finish, jumps and loops', async (t) => {
   const { ChartTransport } = await import('../src/components/music/chart-transport');
   const { songs } = await import('../src/content/course');
   const frame = animationFrames(t);
@@ -164,7 +171,7 @@ test('bold stays within the current lyric line; rests and pause preserve it, lat
     })),
     60,
   );
-  const cleanup = clock.follow(true, () => player.snapshot());
+  let cleanup = clock.follow(true, () => player.snapshot());
   function at(time: number) {
     now = time;
     player.tick();
@@ -177,8 +184,8 @@ test('bold stays within the current lyric line; rests and pause preserve it, lat
   at(3.04);
   assert.deepEqual(state(clock, 0), [0, 0, 1], 'previous syllable stays bold while the next fills');
   at(4.54);
-  assert.deepEqual(state(clock, 0), [-1, -1, -1], 'the previous line returns to regular weight');
-  assert.equal(clock.rowSnapshot(0, 0), '', 'inactive chart rows have no emphasis');
+  assert.deepEqual(state(clock, 0), [0, 1, -1], 'the previous line keeps its completed syllables');
+  assert.equal(clock.rowSnapshot(0, 0), '0:0:1:-1', 'an earlier chart row stays bold');
   assert.deepEqual(state(clock, 1), [-1, -1, 0]);
   player.pause();
   frame();
@@ -191,7 +198,8 @@ test('bold stays within the current lyric line; rests and pause preserve it, lat
   at(20.54);
   assert.deepEqual(state(clock, 1), [0, 0, -1]);
   at(24);
-  assert.deepEqual(state(clock, 1), [-1, -1, -1], 'natural finish clears the last line');
+  assert.deepEqual(state(clock, 0), [0, 1, -1], 'natural finish preserves the first line');
+  assert.deepEqual(state(clock, 1), [0, 1, -1], 'natural finish preserves the last line');
   clock.reset();
   player.stop();
   frame();
@@ -200,9 +208,11 @@ test('bold stays within the current lyric line; rests and pause preserve it, lat
   player.setLoopRange({ startBar: 1, endBar: 2 });
   clock.reset();
   player.play(1);
+  cleanup();
+  cleanup = clock.follow(true, () => player.snapshot());
   frame();
   at(27.54);
-  assert.deepEqual(state(clock, 0), [-1, -1, -1], 'Tocar daqui does not mark skipped verses');
+  assert.deepEqual(state(clock, 0), [0, 1, -1], 'starting later marks all earlier text');
   assert.deepEqual(state(clock, 1), [0, 0, 1]);
   at(28.29);
   assert.deepEqual(
@@ -210,6 +220,7 @@ test('bold stays within the current lyric line; rests and pause preserve it, lat
     [-1, -1, 0],
     'loop starts a fresh fill in the repeated passage',
   );
+  assert.deepEqual(state(clock, 0), [0, 1, -1], 'text before the loop stays in the prefix');
   at(37.54);
   assert.deepEqual(
     state(clock, 1),
@@ -220,7 +231,7 @@ test('bold stays within the current lyric line; rests and pause preserve it, lat
   player.dispose();
 });
 
-test('all 19 versions accumulate within each lyric line and clear earlier phrases', async (t) => {
+test('all 19 versions emphasize every phrase before the playhead and clear on reset', async (t) => {
   const { songs } = await import('../src/content/course');
   const { songLyrics } = await import('../src/content/song-lyrics');
   const { buildChartGroups } = await import('../src/components/music/chart-layout');
@@ -271,14 +282,18 @@ test('all 19 versions accumulate within each lyric line and clear earlier phrase
           frame();
           assert.equal(
             state(clock, cue.id)[1],
-            part.endBeat < cue.endBeat ? index : -1,
-            `${label}: completed syllable stays bold only until the line ends`,
+            index,
+            `${label}: completed syllable remains bold after its line ends`,
           );
         }
         phrases++;
       }
       for (const cue of cues)
-        assert.deepEqual(state(clock, cue.id), [-1, -1, -1], `${label}: previous phrases reset`);
+        assert.deepEqual(
+          state(clock, cue.id),
+          [0, cue.syllables!.length - 1, -1],
+          `${label}: earlier phrases remain sung`,
+        );
       clock.reset();
       for (const cue of cues) assert.deepEqual(state(clock, cue.id), [-1, -1, -1]);
       cleanup();
@@ -287,4 +302,196 @@ test('all 19 versions accumulate within each lyric line and clear earlier phrase
   }
   assert.equal(versions, 19);
   assert.equal(phrases, 744);
+});
+
+test('completed text persists across chart rows while future rows and duplicate active fills stay clear', (t) => {
+  const frame = animationFrames(t);
+  const clock = createLyricsClock(
+    [
+      {
+        id: 0,
+        text: 'Santo',
+        startBeat: 0,
+        endBeat: 8,
+        startBar: 0,
+        endBar: 1,
+        syllables: [
+          { from: 0, to: 3, startBeat: 0, endBeat: 2, timing: 'manual' },
+          { from: 3, to: 5, startBeat: 6, endBeat: 8, timing: 'manual' },
+        ],
+      },
+      {
+        id: 1,
+        text: 'Eu',
+        startBeat: 8,
+        endBeat: 10,
+        startBar: 2,
+        endBar: 2,
+        syllables: [{ from: 0, to: 2, startBeat: 8, endBeat: 10, timing: 'manual' }],
+      },
+      {
+        id: 2,
+        text: 'Ti',
+        startBeat: 10,
+        endBeat: 12,
+        startBar: 2,
+        endBar: 2,
+        syllables: [{ from: 0, to: 2, startBeat: 10, endBeat: 12, timing: 'manual' }],
+      },
+    ],
+    60,
+  );
+  let snapshot: PlaybackSnapshot = {
+    status: 'playing',
+    bar: 0,
+    beat: 0,
+    tick: -1,
+    scoreSeconds: 0,
+    elapsedSeconds: 0,
+    passStartSeconds: 0,
+    durationSeconds: 12,
+    waitingForAudio: false,
+  };
+  const cleanup = clock.follow(true, () => snapshot);
+  function at(scoreSeconds: number, bar: number) {
+    snapshot = { ...snapshot, scoreSeconds, elapsedSeconds: scoreSeconds, bar };
+    frame();
+  }
+  at(1, 0);
+  assert.equal(activeSyllable(clock, 0, 0), '0:0');
+  assert.equal(clock.rowSnapshot(1, 1), '', 'a duplicate phrase under a future bar is untouched');
+  at(3, 0);
+  assert.equal(clock.rowSnapshot(0, 0), '0:0:0:-1', 'a vocal rest keeps the sung prefix');
+  assert.equal(clock.rowSnapshot(1, 1), '', 'completed prefix cannot light up a future row');
+  at(7, 1);
+  assert.equal(
+    clock.rowSnapshot(0, 0),
+    '0:0:0:-1',
+    'previous row keeps completion without active fill',
+  );
+  assert.equal(clock.rowSnapshot(1, 1), '0:0:0:1', 'only current row advances the active syllable');
+  at(8.5, 2);
+  assert.equal(clock.rowSnapshot(0, 0), '0:0:1:-1');
+  assert.equal(clock.rowSnapshot(1, 1), '0:0:1:-1');
+  assert.equal(activeSyllable(clock, 2, 2), '1:0');
+  at(10.5, 2);
+  assert.equal(
+    clock.rowSnapshot(2, 2),
+    '1:0:0:-1;2:-1:-1:0',
+    'multiple phrases on the same row retain their own state',
+  );
+  assert.deepEqual(state(clock, 0), [0, 1, -1]);
+  at(1, 0);
+  assert.equal(clock.rowSnapshot(0, 0), '0:-1:-1:0', 'returning earlier recalculates the prefix');
+  assert.equal(clock.rowSnapshot(1, 1), '', 'a previously reached duplicate becomes future again');
+  assert.equal(clock.rowSnapshot(2, 2), '', 'later completed phrases clear on a backward jump');
+  clock.reset();
+  for (let bar = 0; bar < 3; bar++) assert.equal(clock.rowSnapshot(bar, bar), '');
+  cleanup();
+});
+
+test('delayed initial chord anchors introduce a vocal rest without erasing an earlier sung phrase', async (t) => {
+  const { withLyricSyllables } = await import('../src/components/music/lyric-syllables');
+  const frame = animationFrames(t);
+  const cues = withLyricSyllables([
+    { text: 'Eu', startBeat: 0, endBeat: 4, chordAnchors: [{ from: 0, beat: 2 }] },
+    { text: 'Ti', startBeat: 4, endBeat: 8, chordAnchors: [{ from: 0, beat: 6 }] },
+  ]).map((cue, id) => ({ ...cue, id, startBar: id, endBar: id }));
+  const clock = createLyricsClock(cues, 60);
+  let snapshot: PlaybackSnapshot = {
+    status: 'playing',
+    bar: 0,
+    beat: 0,
+    tick: -1,
+    scoreSeconds: 1,
+    elapsedSeconds: 1,
+    passStartSeconds: 0,
+    durationSeconds: 8,
+    waitingForAudio: false,
+  };
+  const cleanup = clock.follow(true, () => snapshot);
+  frame();
+  assert.deepEqual(state(clock, 0), [-1, -1, -1], 'no syllable is marked before its delayed onset');
+  snapshot = { ...snapshot, scoreSeconds: 3, elapsedSeconds: 3 };
+  frame();
+  assert.equal(activeSyllable(clock, 0, 0), '0:0');
+  snapshot = { ...snapshot, scoreSeconds: 5, elapsedSeconds: 5, bar: 1 };
+  frame();
+  assert.equal(
+    clock.rowSnapshot(0, 0),
+    '0:0:0:-1',
+    'the earlier line stays sung during the next initial rest',
+  );
+  assert.deepEqual(state(clock, 1), [-1, -1, -1], 'the second line has not started singing');
+  snapshot = { ...snapshot, scoreSeconds: 7, elapsedSeconds: 7 };
+  frame();
+  assert.equal(activeSyllable(clock, 1, 1), '1:0');
+  assert.deepEqual(state(clock, 0), [0, 0, -1]);
+  cleanup();
+});
+
+test('starting or looping in the middle of a phrase marks the complete prefix regardless of playback history', (t) => {
+  const frame = animationFrames(t);
+  const clock = createLyricsClock(
+    [
+      {
+        id: 0,
+        text: 'Santo',
+        startBeat: 0,
+        endBeat: 8,
+        startBar: 0,
+        endBar: 1,
+        syllables: [
+          { from: 0, to: 3, startBeat: 0, endBeat: 2, timing: 'manual' },
+          { from: 3, to: 5, startBeat: 6, endBeat: 8, timing: 'manual' },
+        ],
+      },
+    ],
+    60,
+  );
+  let snapshot: PlaybackSnapshot = {
+    status: 'playing',
+    bar: 1,
+    beat: 2.5,
+    tick: -1,
+    scoreSeconds: 6.5,
+    elapsedSeconds: 2.5,
+    passStartSeconds: 4,
+    durationSeconds: 8,
+    waitingForAudio: false,
+  };
+  const cleanup = clock.follow(true, () => snapshot);
+  frame();
+  assert.equal(
+    clock.rowSnapshot(0, 0),
+    '0:0:0:-1',
+    'the earlier row is marked even when playback begins in the middle of the phrase',
+  );
+  assert.equal(
+    clock.rowSnapshot(1, 1),
+    '0:0:0:1',
+    'the current syllable advances after the complete prefix',
+  );
+  snapshot = { ...snapshot, scoreSeconds: 4.5, elapsedSeconds: 4.5, beat: 0.5 };
+  frame();
+  assert.equal(clock.rowSnapshot(0, 0), '0:0:0:-1');
+  assert.deepEqual(
+    state(clock, 0),
+    [0, 0, -1],
+    'looping preserves only the prefix before its new position during a vocal rest',
+  );
+  snapshot = { ...snapshot, scoreSeconds: 7, elapsedSeconds: 7, beat: 3 };
+  frame();
+  assert.equal(clock.rowSnapshot(1, 1), '0:0:0:1');
+  snapshot = { ...snapshot, status: 'idle', scoreSeconds: 8, elapsedSeconds: 8, beat: 4 };
+  frame();
+  assert.equal(clock.rowSnapshot(0, 0), '0:0:1:-1');
+  assert.equal(
+    clock.rowSnapshot(1, 1),
+    '0:0:1:-1',
+    'natural completion retains the full prefix, including the skipped beginning',
+  );
+  clock.reset();
+  assert.equal(clock.rowSnapshot(1, 1), '');
+  cleanup();
 });

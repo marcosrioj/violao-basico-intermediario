@@ -129,7 +129,17 @@
           {
             "text": "Minh’alma anseia por Ti",
             "startBeat": 116,
-            "endBeat": 128
+            "endBeat": 128,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 116
+              },
+              {
+                "from": 21,
+                "beat": 120
+              }
+            ]
           },
           {
             "text": "Poderoso Deus",
@@ -149,12 +159,28 @@
           {
             "text": "Minh’alma anseia por Ti",
             "startBeat": 148,
-            "endBeat": 160
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 148
+              },
+              {
+                "from": 21,
+                "beat": 152
+              }
+            ]
           },
           {
             "text": "Minh’alma anseia por Ti",
             "startBeat": 160,
-            "endBeat": 172
+            "endBeat": 172,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 164
+              }
+            ]
           }
         ],
         "alignmentNote": "Mapa inicial por frases sobre os ciclos D–Bm–G–Em–A da cifra de referência. A forma didática usa uma estrofe de louvor, uma de honra e dois refrões, abreviando as repetições; a ministração falada fornecida permanece na letra integral, fora da grade fixa. O final vocal foi adaptado ao fechamento da aula. Entradas e saídas vocais ainda precisam de conferência auditiva.",
@@ -200,133 +226,413 @@
         "cues": [
           {
             "text": "Assim como a corça anseia por águas",
-            "startBeat": 20.0,
-            "endBeat": 28.0
+            "startBeat": 20,
+            "endBeat": 28,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 24
+              },
+              {
+                "from": 30,
+                "beat": 26
+              }
+            ]
           },
           {
             "text": "Como terra seca precisa da chuva",
-            "startBeat": 28.0,
-            "endBeat": 36.0
+            "startBeat": 28,
+            "endBeat": 36,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 28
+              },
+              {
+                "from": 11,
+                "beat": 30
+              },
+              {
+                "from": 27,
+                "beat": 32
+              }
+            ]
           },
           {
             "text": "Meu coração tem sede de Ti",
-            "startBeat": 36.0,
-            "endBeat": 44.0
+            "startBeat": 36,
+            "endBeat": 44,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 38
+              },
+              {
+                "from": 16,
+                "beat": 40
+              },
+              {
+                "from": 24,
+                "beat": 42
+              }
+            ]
           },
           {
             "text": "Rei meu e Deus meu",
-            "startBeat": 44.0,
-            "endBeat": 52.0
+            "startBeat": 44,
+            "endBeat": 52,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 48
+              }
+            ]
           },
           {
             "text": "Faz chover, Senhor Jesus",
-            "startBeat": 52.0,
-            "endBeat": 60.0
+            "startBeat": 52,
+            "endBeat": 60,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 54
+              },
+              {
+                "from": 14,
+                "beat": 56
+              },
+              {
+                "from": 21,
+                "beat": 58
+              }
+            ]
           },
           {
             "text": "Derrama a chuva neste lugar",
-            "startBeat": 60.0,
-            "endBeat": 68.0
+            "startBeat": 60,
+            "endBeat": 68,
+            "chordAnchors": [
+              {
+                "from": 16,
+                "beat": 62
+              },
+              {
+                "from": 24,
+                "beat": 64
+              }
+            ]
           },
           {
             "text": "Vem com o Teu rio, Senhor Jesus",
-            "startBeat": 68.0,
-            "endBeat": 76.0
+            "startBeat": 68,
+            "endBeat": 76,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 70
+              },
+              {
+                "from": 21,
+                "beat": 72
+              },
+              {
+                "from": 28,
+                "beat": 74
+              }
+            ]
           },
           {
             "text": "Inundar o meu coração",
-            "startBeat": 76.0,
-            "endBeat": 84.0
+            "startBeat": 76,
+            "endBeat": 84,
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 78
+              },
+              {
+                "from": 18,
+                "beat": 80
+              }
+            ]
           },
           {
             "text": "(Faz chover) faz chover, Senhor Jesus",
-            "startBeat": 84.0,
-            "endBeat": 92.0
+            "startBeat": 84,
+            "endBeat": 92,
+            "chordAnchors": [
+              {
+                "from": 25,
+                "beat": 86
+              },
+              {
+                "from": 27,
+                "beat": 88
+              },
+              {
+                "from": 34,
+                "beat": 90
+              }
+            ]
           },
           {
             "text": "Derrama chuva neste lugar",
-            "startBeat": 92.0,
-            "endBeat": 100.0
+            "startBeat": 92,
+            "endBeat": 100,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 94
+              },
+              {
+                "from": 22,
+                "beat": 96
+              }
+            ]
           },
           {
             "text": "Vem com o Teu rio, Senhor Jesus",
-            "startBeat": 100.0,
-            "endBeat": 108.0
+            "startBeat": 100,
+            "endBeat": 108,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 102
+              },
+              {
+                "from": 21,
+                "beat": 104
+              },
+              {
+                "from": 28,
+                "beat": 106
+              }
+            ]
           },
           {
             "text": "Inundar o meu coração",
-            "startBeat": 108.0,
-            "endBeat": 116.0
+            "startBeat": 108,
+            "endBeat": 116,
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 109
+              },
+              {
+                "from": 18,
+                "beat": 111
+              }
+            ]
           },
           {
             "text": "Assim como a corça anseia por águas",
-            "startBeat": 116.0,
-            "endBeat": 124.0
+            "startBeat": 116,
+            "endBeat": 124,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 120
+              },
+              {
+                "from": 30,
+                "beat": 122
+              }
+            ]
           },
           {
             "text": "Como terra seca precisa da chuva",
-            "startBeat": 124.0,
-            "endBeat": 132.0
+            "startBeat": 124,
+            "endBeat": 132,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 124
+              },
+              {
+                "from": 11,
+                "beat": 126
+              },
+              {
+                "from": 27,
+                "beat": 128
+              }
+            ]
           },
           {
             "text": "Meu coração tem sede de Ti",
-            "startBeat": 132.0,
-            "endBeat": 140.0
+            "startBeat": 132,
+            "endBeat": 140,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 134
+              },
+              {
+                "from": 16,
+                "beat": 136
+              },
+              {
+                "from": 24,
+                "beat": 138
+              }
+            ]
           },
           {
             "text": "Rei meu e Deus meu",
-            "startBeat": 140.0,
-            "endBeat": 148.0
+            "startBeat": 140,
+            "endBeat": 148,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 144
+              }
+            ]
           },
           {
             "text": "Faz chover, Senhor Jesus",
-            "startBeat": 148.0,
-            "endBeat": 156.0
+            "startBeat": 148,
+            "endBeat": 156,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 150
+              },
+              {
+                "from": 14,
+                "beat": 152
+              },
+              {
+                "from": 21,
+                "beat": 154
+              }
+            ]
           },
           {
             "text": "Derrama chuva neste lugar",
-            "startBeat": 156.0,
-            "endBeat": 164.0
+            "startBeat": 156,
+            "endBeat": 164,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 158
+              },
+              {
+                "from": 22,
+                "beat": 160
+              }
+            ]
           },
           {
             "text": "Vem com o Teu rio, Senhor Jesus",
-            "startBeat": 164.0,
-            "endBeat": 172.0
+            "startBeat": 164,
+            "endBeat": 172,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 166
+              },
+              {
+                "from": 21,
+                "beat": 168
+              },
+              {
+                "from": 28,
+                "beat": 170
+              }
+            ]
           },
           {
             "text": "Inundar o meu coração",
-            "startBeat": 172.0,
-            "endBeat": 180.0
+            "startBeat": 172,
+            "endBeat": 180,
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 174
+              },
+              {
+                "from": 18,
+                "beat": 176
+              }
+            ]
           },
           {
             "text": "(Faz chover) faz chover, Senhor Jesus",
-            "startBeat": 180.0,
-            "endBeat": 188.0
+            "startBeat": 180,
+            "endBeat": 188,
+            "chordAnchors": [
+              {
+                "from": 25,
+                "beat": 182
+              },
+              {
+                "from": 27,
+                "beat": 184
+              },
+              {
+                "from": 34,
+                "beat": 186
+              }
+            ]
           },
           {
             "text": "Derrama chuva neste lugar",
-            "startBeat": 188.0,
-            "endBeat": 196.0
+            "startBeat": 188,
+            "endBeat": 196,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 190
+              },
+              {
+                "from": 22,
+                "beat": 192
+              }
+            ]
           },
           {
             "text": "Vem com o Teu rio, Senhor Jesus",
-            "startBeat": 196.0,
-            "endBeat": 204.0
+            "startBeat": 196,
+            "endBeat": 204,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 198
+              },
+              {
+                "from": 21,
+                "beat": 200
+              },
+              {
+                "from": 28,
+                "beat": 202
+              }
+            ]
           },
           {
             "text": "Inundar o meu coração",
-            "startBeat": 204.0,
-            "endBeat": 212.0
+            "startBeat": 204,
+            "endBeat": 212,
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 205
+              },
+              {
+                "from": 18,
+                "beat": 207
+              }
+            ]
           },
           {
             "text": "Sim, faz chover",
-            "startBeat": 212.0,
-            "endBeat": 220.0
+            "startBeat": 212,
+            "endBeat": 220
           },
           {
             "text": "Faz chover",
-            "startBeat": 220.0,
-            "endBeat": 228.0
+            "startBeat": 220,
+            "endBeat": 228
           }
         ],
         "alignmentNote": "Mapa inicial das frases pelos pares de compassos da estrofe e pelas células de quatro compassos do refrão da transcrição de Gladstone Leon. As seis passagens R alternam a chamada e o rio; S completa cada bloco. A forma e o interlúdio são abreviados, e as variações adicionais fornecidas permanecem na letra integral. Antecipações vocais ainda não foram medidas contra a gravação.",
@@ -408,213 +714,311 @@
         "cues": [
           {
             "text": "Tu és tudo o que eu mais quero",
-            "startBeat": 16.0,
-            "endBeat": 24.0
+            "startBeat": 16,
+            "endBeat": 24,
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 18
+              },
+              {
+                "from": 25,
+                "beat": 20
+              }
+            ]
           },
           {
             "text": "O meu fôlego Tu és",
-            "startBeat": 24.0,
-            "endBeat": 32.0
+            "startBeat": 24,
+            "endBeat": 32,
+            "chordAnchors": [
+              {
+                "from": 6,
+                "beat": 26
+              },
+              {
+                "from": 16,
+                "beat": 28
+              }
+            ]
           },
           {
             "text": "Em Teus braços é o meu lugar",
-            "startBeat": 32.0,
-            "endBeat": 40.0
+            "startBeat": 32,
+            "endBeat": 40,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 34
+              },
+              {
+                "from": 19,
+                "beat": 36
+              }
+            ]
           },
           {
             "text": "Estou aqui, estou aqui",
-            "startBeat": 40.0,
-            "endBeat": 48.0
+            "startBeat": 40,
+            "endBeat": 48,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 42
+              },
+              {
+                "from": 19,
+                "beat": 44
+              }
+            ]
           },
           {
             "text": "Quero ir mais fundo",
-            "startBeat": 48.0,
-            "endBeat": 52.0
+            "startBeat": 48,
+            "endBeat": 52
           },
           {
             "text": "Leva-me mais perto",
-            "startBeat": 52.0,
-            "endBeat": 56.0
+            "startBeat": 52,
+            "endBeat": 56
           },
           {
             "text": "Onde eu Te encontro",
-            "startBeat": 56.0,
-            "endBeat": 60.0
+            "startBeat": 56,
+            "endBeat": 60
           },
           {
             "text": "No lugar secreto",
-            "startBeat": 60.0,
-            "endBeat": 64.0
+            "startBeat": 60,
+            "endBeat": 64
           },
           {
             "text": "Aos Teus pés me rendo",
-            "startBeat": 64.0,
-            "endBeat": 68.0
+            "startBeat": 64,
+            "endBeat": 68
           },
           {
             "text": "Pois a Tua glória quero ver",
-            "startBeat": 68.0,
-            "endBeat": 80.0
+            "startBeat": 68,
+            "endBeat": 80,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 72
+              }
+            ]
           },
           {
             "text": "Pai, eu amo Sua presença",
-            "startBeat": 112.0,
-            "endBeat": 120.0
+            "startBeat": 112,
+            "endBeat": 120,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 114
+              },
+              {
+                "from": 19,
+                "beat": 116
+              }
+            ]
           },
           {
             "text": "Teu sorriso é vida em mim",
-            "startBeat": 120.0,
-            "endBeat": 128.0
+            "startBeat": 120,
+            "endBeat": 128,
+            "chordAnchors": [
+              {
+                "from": 7,
+                "beat": 122
+              },
+              {
+                "from": 22,
+                "beat": 124
+              }
+            ]
           },
           {
             "text": "Eu seguro em Suas mãos",
-            "startBeat": 128.0,
-            "endBeat": 136.0
+            "startBeat": 128,
+            "endBeat": 136,
+            "chordAnchors": [
+              {
+                "from": 5,
+                "beat": 130
+              },
+              {
+                "from": 18,
+                "beat": 132
+              }
+            ]
           },
           {
             "text": "Eu confio em Ti, confio em Ti",
-            "startBeat": 136.0,
-            "endBeat": 144.0
+            "startBeat": 136,
+            "endBeat": 144,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 138
+              },
+              {
+                "from": 27,
+                "beat": 140
+              }
+            ]
           },
           {
             "text": "Quero ir mais fundo",
-            "startBeat": 144.0,
-            "endBeat": 148.0
+            "startBeat": 144,
+            "endBeat": 148
           },
           {
             "text": "Leva-me mais perto",
-            "startBeat": 148.0,
-            "endBeat": 152.0
+            "startBeat": 148,
+            "endBeat": 152
           },
           {
             "text": "Onde eu Te encontro",
-            "startBeat": 152.0,
-            "endBeat": 156.0
+            "startBeat": 152,
+            "endBeat": 156
           },
           {
             "text": "No lugar secreto",
-            "startBeat": 156.0,
-            "endBeat": 160.0
+            "startBeat": 156,
+            "endBeat": 160
           },
           {
             "text": "Aos Teus pés me rendo",
-            "startBeat": 160.0,
-            "endBeat": 164.0
+            "startBeat": 160,
+            "endBeat": 164
           },
           {
             "text": "Pois a Tua glória quero ver",
-            "startBeat": 164.0,
-            "endBeat": 176.0
+            "startBeat": 164,
+            "endBeat": 176,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 168
+              }
+            ]
           },
           {
             "text": "Tudo o que eu mais quero é Te ver",
-            "startBeat": 176.0,
-            "endBeat": 180.0
+            "startBeat": 176,
+            "endBeat": 180
           },
           {
             "text": "Me envolva com Tua glória e poder",
-            "startBeat": 180.0,
-            "endBeat": 184.0
+            "startBeat": 180,
+            "endBeat": 184
           },
           {
             "text": "Tua majestade é real",
-            "startBeat": 184.0,
-            "endBeat": 188.0
+            "startBeat": 184,
+            "endBeat": 188
           },
           {
             "text": "Tua voz ecoa em meu ser",
-            "startBeat": 188.0,
-            "endBeat": 192.0
+            "startBeat": 188,
+            "endBeat": 192
           },
           {
             "text": "Tudo o que eu mais quero é Te ver",
-            "startBeat": 192.0,
-            "endBeat": 196.0
+            "startBeat": 192,
+            "endBeat": 196
           },
           {
             "text": "Me envolva com Tua glória e poder",
-            "startBeat": 196.0,
-            "endBeat": 200.0
+            "startBeat": 196,
+            "endBeat": 200
           },
           {
             "text": "Tua majestade é real",
-            "startBeat": 200.0,
-            "endBeat": 204.0
+            "startBeat": 200,
+            "endBeat": 204
           },
           {
             "text": "Tua voz ecoa em meu ser",
-            "startBeat": 204.0,
-            "endBeat": 208.0
+            "startBeat": 204,
+            "endBeat": 208
           },
           {
             "text": "Quero ir mais fundo",
-            "startBeat": 208.0,
-            "endBeat": 212.0
+            "startBeat": 208,
+            "endBeat": 212
           },
           {
             "text": "Leva-me mais perto",
-            "startBeat": 212.0,
-            "endBeat": 216.0
+            "startBeat": 212,
+            "endBeat": 216
           },
           {
             "text": "Onde eu Te encontro",
-            "startBeat": 216.0,
-            "endBeat": 220.0
+            "startBeat": 216,
+            "endBeat": 220
           },
           {
             "text": "No lugar secreto",
-            "startBeat": 220.0,
-            "endBeat": 224.0
+            "startBeat": 220,
+            "endBeat": 224
           },
           {
             "text": "Aos Teus pés me rendo",
-            "startBeat": 224.0,
-            "endBeat": 228.0
+            "startBeat": 224,
+            "endBeat": 228
           },
           {
             "text": "Pois a Tua glória eu quero ver",
-            "startBeat": 228.0,
-            "endBeat": 240.0
+            "startBeat": 228,
+            "endBeat": 240,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 232
+              }
+            ]
           },
           {
             "text": "Tudo o que eu mais quero é Te ver",
-            "startBeat": 240.0,
-            "endBeat": 244.0
+            "startBeat": 240,
+            "endBeat": 244
           },
           {
             "text": "Me envolva com Tua glória e poder",
-            "startBeat": 244.0,
-            "endBeat": 248.0
+            "startBeat": 244,
+            "endBeat": 248
           },
           {
             "text": "Tua majestade é real",
-            "startBeat": 248.0,
-            "endBeat": 252.0
+            "startBeat": 248,
+            "endBeat": 252
           },
           {
             "text": "Tua voz ecoa em meu ser",
-            "startBeat": 252.0,
-            "endBeat": 256.0
+            "startBeat": 252,
+            "endBeat": 256
           },
           {
             "text": "Tudo o que eu mais quero é Te ver",
-            "startBeat": 256.0,
-            "endBeat": 260.0
+            "startBeat": 256,
+            "endBeat": 260
           },
           {
             "text": "Me envolva com Tua glória e poder",
-            "startBeat": 260.0,
-            "endBeat": 264.0
+            "startBeat": 260,
+            "endBeat": 264
           },
           {
             "text": "Tua majestade é real",
-            "startBeat": 264.0,
-            "endBeat": 268.0
+            "startBeat": 264,
+            "endBeat": 268
           },
           {
             "text": "Tua voz ecoa em meu ser",
-            "startBeat": 268.0,
-            "endBeat": 272.0
+            "startBeat": 268,
+            "endBeat": 272
           }
         ],
         "alignmentNote": "Mapa inicial das frases associado às células Fmaj7–Am7–Gsus4 e aos acordes do refrão e da ponte. O último verso de cada refrão atravessa Dm7–Am7–G; as duas passagens de estrofe usam textos diferentes. A forma didática abrevia estrofes e repetições da gravação, preservadas na letra integral. Os limites vocais por pulso ainda precisam de conferência auditiva.",
@@ -676,198 +1080,464 @@
         "cues": [
           {
             "text": "Cada vez que a minha fé é provada",
-            "startBeat": 20.0,
-            "endBeat": 28.0
+            "startBeat": 20,
+            "endBeat": 28,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 24
+              }
+            ]
           },
           {
             "text": "Tu me dás a chance de crescer um pouco mais",
-            "startBeat": 28.0,
-            "endBeat": 36.0
+            "startBeat": 28,
+            "endBeat": 36,
+            "chordAnchors": [
+              {
+                "from": 33,
+                "beat": 32
+              }
+            ]
           },
           {
             "text": "As montanhas e vales, desertos e mares",
-            "startBeat": 36.0,
-            "endBeat": 44.0
+            "startBeat": 36,
+            "endBeat": 44,
+            "chordAnchors": [
+              {
+                "from": 22,
+                "beat": 40
+              }
+            ]
           },
           {
             "text": "Que atravesso me levam para perto de Ti",
-            "startBeat": 44.0,
-            "endBeat": 52.0
+            "startBeat": 44,
+            "endBeat": 52,
+            "chordAnchors": [
+              {
+                "from": 28,
+                "beat": 48
+              }
+            ]
           },
           {
             "text": "Minhas provações não são maiores do que o meu Deus",
-            "startBeat": 52.0,
-            "endBeat": 60.0
+            "startBeat": 52,
+            "endBeat": 60,
+            "chordAnchors": [
+              {
+                "from": 36,
+                "beat": 56
+              }
+            ]
           },
           {
             "text": "E não vão me impedir de caminhar",
-            "startBeat": 60.0,
-            "endBeat": 68.0
+            "startBeat": 60,
+            "endBeat": 68,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 64
+              }
+            ]
           },
           {
             "text": "Se diante de mim não se abrir o mar",
-            "startBeat": 68.0,
-            "endBeat": 76.0
+            "startBeat": 68,
+            "endBeat": 76,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 70
+              },
+              {
+                "from": 24,
+                "beat": 72
+              },
+              {
+                "from": 32,
+                "beat": 74
+              }
+            ]
           },
           {
             "text": "Deus vai me fazer andar por sobre as águas",
-            "startBeat": 76.0,
-            "endBeat": 84.0
+            "startBeat": 76,
+            "endBeat": 84,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 78
+              },
+              {
+                "from": 37,
+                "beat": 80
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 84.0,
-            "endBeat": 88.0
+            "startBeat": 84,
+            "endBeat": 88
           },
           {
             "text": "Minha vida se revestirá do Teu poder",
-            "startBeat": 88.0,
-            "endBeat": 96.0
+            "startBeat": 88,
+            "endBeat": 96,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 90
+              },
+              {
+                "from": 27,
+                "beat": 92
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 96.0,
-            "endBeat": 100.0
+            "startBeat": 96,
+            "endBeat": 100
           },
           {
             "text": "Com ousadia, vou mover no sobrenatural",
-            "startBeat": 100.0,
-            "endBeat": 108.0
+            "startBeat": 100,
+            "endBeat": 108,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 102
+              },
+              {
+                "from": 26,
+                "beat": 104
+              }
+            ]
           },
           {
             "text": "Vou lutar e vencer",
-            "startBeat": 108.0,
-            "endBeat": 112.0
+            "startBeat": 108,
+            "endBeat": 112,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 110
+              }
+            ]
           },
           {
             "text": "Vou plantar e colher",
-            "startBeat": 112.0,
-            "endBeat": 116.0
+            "startBeat": 112,
+            "endBeat": 116,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 114
+              }
+            ]
           },
           {
             "text": "A cada dia vou viver rompendo em fé",
-            "startBeat": 116.0,
-            "endBeat": 124.0
+            "startBeat": 116,
+            "endBeat": 124,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 118
+              },
+              {
+                "from": 33,
+                "beat": 120
+              }
+            ]
           },
           {
             "text": "Cada vez que a minha fé é provada",
-            "startBeat": 128.0,
-            "endBeat": 136.0
+            "startBeat": 128,
+            "endBeat": 136,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 132
+              }
+            ]
           },
           {
             "text": "Tu me dás a chance de crescer um pouco mais",
-            "startBeat": 136.0,
-            "endBeat": 144.0
+            "startBeat": 136,
+            "endBeat": 144,
+            "chordAnchors": [
+              {
+                "from": 33,
+                "beat": 140
+              }
+            ]
           },
           {
             "text": "As montanhas e vales, desertos e mares",
-            "startBeat": 144.0,
-            "endBeat": 152.0
+            "startBeat": 144,
+            "endBeat": 152,
+            "chordAnchors": [
+              {
+                "from": 22,
+                "beat": 148
+              }
+            ]
           },
           {
             "text": "Que atravesso me levam para perto de Ti",
-            "startBeat": 152.0,
-            "endBeat": 160.0
+            "startBeat": 152,
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 28,
+                "beat": 156
+              }
+            ]
           },
           {
             "text": "Minhas provações não são maiores do que o meu Deus",
-            "startBeat": 160.0,
-            "endBeat": 168.0
+            "startBeat": 160,
+            "endBeat": 168,
+            "chordAnchors": [
+              {
+                "from": 36,
+                "beat": 164
+              }
+            ]
           },
           {
             "text": "E não vão me impedir de caminhar",
-            "startBeat": 168.0,
-            "endBeat": 176.0
+            "startBeat": 168,
+            "endBeat": 176,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 172
+              }
+            ]
           },
           {
             "text": "Se diante de mim não se abrir o mar",
-            "startBeat": 176.0,
-            "endBeat": 184.0
+            "startBeat": 176,
+            "endBeat": 184,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 178
+              },
+              {
+                "from": 24,
+                "beat": 180
+              },
+              {
+                "from": 32,
+                "beat": 182
+              }
+            ]
           },
           {
             "text": "Deus vai me fazer andar por sobre as águas",
-            "startBeat": 184.0,
-            "endBeat": 192.0
+            "startBeat": 184,
+            "endBeat": 192,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 186
+              },
+              {
+                "from": 37,
+                "beat": 188
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 192.0,
-            "endBeat": 196.0
+            "startBeat": 192,
+            "endBeat": 196
           },
           {
             "text": "Minha vida se revestirá do Teu poder",
-            "startBeat": 196.0,
-            "endBeat": 204.0
+            "startBeat": 196,
+            "endBeat": 204,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 198
+              },
+              {
+                "from": 27,
+                "beat": 200
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 204.0,
-            "endBeat": 208.0
+            "startBeat": 204,
+            "endBeat": 208
           },
           {
             "text": "Com ousadia, vou mover no sobrenatural",
-            "startBeat": 208.0,
-            "endBeat": 216.0
+            "startBeat": 208,
+            "endBeat": 216,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 210
+              },
+              {
+                "from": 26,
+                "beat": 212
+              }
+            ]
           },
           {
             "text": "Vou lutar e vencer",
-            "startBeat": 216.0,
-            "endBeat": 220.0
+            "startBeat": 216,
+            "endBeat": 220,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 218
+              }
+            ]
           },
           {
             "text": "Vou plantar e colher",
-            "startBeat": 220.0,
-            "endBeat": 224.0
+            "startBeat": 220,
+            "endBeat": 224,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 222
+              }
+            ]
           },
           {
             "text": "A cada dia vou viver rompendo em fé",
-            "startBeat": 224.0,
-            "endBeat": 232.0
+            "startBeat": 224,
+            "endBeat": 232,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 226
+              },
+              {
+                "from": 33,
+                "beat": 228
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 232.0,
-            "endBeat": 236.0
+            "startBeat": 232,
+            "endBeat": 236
           },
           {
             "text": "Minha vida se revestirá do Teu poder",
-            "startBeat": 236.0,
-            "endBeat": 244.0
+            "startBeat": 236,
+            "endBeat": 244,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 238
+              },
+              {
+                "from": 27,
+                "beat": 240
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 244.0,
-            "endBeat": 248.0
+            "startBeat": 244,
+            "endBeat": 248
           },
           {
             "text": "Com ousadia, vou mover no sobrenatural",
-            "startBeat": 248.0,
-            "endBeat": 256.0
+            "startBeat": 248,
+            "endBeat": 256,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 250
+              },
+              {
+                "from": 26,
+                "beat": 252
+              }
+            ]
           },
           {
             "text": "Vou lutar e vencer",
-            "startBeat": 256.0,
-            "endBeat": 260.0
+            "startBeat": 256,
+            "endBeat": 260,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 258
+              }
+            ]
           },
           {
             "text": "Vou plantar e colher",
-            "startBeat": 260.0,
-            "endBeat": 264.0
+            "startBeat": 260,
+            "endBeat": 264,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 262
+              }
+            ]
           },
           {
             "text": "A cada dia vou viver rompendo em fé",
-            "startBeat": 264.0,
-            "endBeat": 272.0
+            "startBeat": 264,
+            "endBeat": 272,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 266
+              },
+              {
+                "from": 33,
+                "beat": 268
+              }
+            ]
           },
           {
             "text": "A cada dia vou viver rompendo em fé",
-            "startBeat": 272.0,
-            "endBeat": 280.0
+            "startBeat": 272,
+            "endBeat": 280,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 274
+              },
+              {
+                "from": 33,
+                "beat": 276
+              }
+            ]
           },
           {
             "text": "A cada dia vou viver rompendo em fé",
-            "startBeat": 280.0,
-            "endBeat": 288.0
+            "startBeat": 280,
+            "endBeat": 288,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 282
+              },
+              {
+                "from": 33,
+                "beat": 284
+              }
+            ]
           }
         ],
         "alignmentNote": "Mapa inicial por frases conforme os compassos e cadências da transcrição de Gladstone Leon. A última frase de cada refrão atravessa a saída no acorde A; o final retoma essa frase duas vezes. O vamp e um refrão adicionais foram abreviados na forma da aula; todo o texto fornecido está preservado. Antecipações e o rallentando do fonograma não foram medidos.",
@@ -877,198 +1547,482 @@
         "cues": [
           {
             "text": "Cada vez que a minha fé é provada",
-            "startBeat": 20.0,
-            "endBeat": 28.0
+            "startBeat": 20,
+            "endBeat": 28,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 24
+              }
+            ]
           },
           {
             "text": "Tu me dás a chance de crescer um pouco mais",
-            "startBeat": 28.0,
-            "endBeat": 36.0
+            "startBeat": 28,
+            "endBeat": 36,
+            "chordAnchors": [
+              {
+                "from": 33,
+                "beat": 32
+              }
+            ]
           },
           {
             "text": "As montanhas e vales, desertos e mares",
-            "startBeat": 36.0,
-            "endBeat": 44.0
+            "startBeat": 36,
+            "endBeat": 44,
+            "chordAnchors": [
+              {
+                "from": 22,
+                "beat": 40
+              }
+            ]
           },
           {
             "text": "Que atravesso me levam para perto de Ti",
-            "startBeat": 44.0,
-            "endBeat": 52.0
+            "startBeat": 44,
+            "endBeat": 52,
+            "chordAnchors": [
+              {
+                "from": 28,
+                "beat": 48
+              }
+            ]
           },
           {
             "text": "Minhas provações não são maiores do que o meu Deus",
-            "startBeat": 52.0,
-            "endBeat": 60.0
+            "startBeat": 52,
+            "endBeat": 60,
+            "chordAnchors": [
+              {
+                "from": 36,
+                "beat": 56
+              }
+            ]
           },
           {
             "text": "E não vão me impedir de caminhar",
-            "startBeat": 60.0,
-            "endBeat": 68.0
+            "startBeat": 60,
+            "endBeat": 68,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 64
+              }
+            ]
           },
           {
             "text": "Se diante de mim não se abrir o mar",
-            "startBeat": 68.0,
-            "endBeat": 76.0
+            "startBeat": 68,
+            "endBeat": 76,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 70
+              },
+              {
+                "from": 24,
+                "beat": 72
+              },
+              {
+                "from": 32,
+                "beat": 74
+              }
+            ]
           },
           {
             "text": "Deus vai me fazer andar por sobre as águas",
-            "startBeat": 76.0,
-            "endBeat": 84.0
+            "startBeat": 76,
+            "endBeat": 84,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 78
+              },
+              {
+                "from": 37,
+                "beat": 80
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 84.0,
-            "endBeat": 88.0
+            "startBeat": 84,
+            "endBeat": 88,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 86
+              }
+            ]
           },
           {
             "text": "Minha vida se revestirá do Teu poder",
-            "startBeat": 88.0,
-            "endBeat": 96.0
+            "startBeat": 88,
+            "endBeat": 96,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 90
+              },
+              {
+                "from": 27,
+                "beat": 92
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 96.0,
-            "endBeat": 100.0
+            "startBeat": 96,
+            "endBeat": 100
           },
           {
             "text": "Com ousadia, vou mover no sobrenatural",
-            "startBeat": 100.0,
-            "endBeat": 108.0
+            "startBeat": 100,
+            "endBeat": 108,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 102
+              },
+              {
+                "from": 26,
+                "beat": 104
+              }
+            ]
           },
           {
             "text": "Vou lutar e vencer",
-            "startBeat": 108.0,
-            "endBeat": 112.0
+            "startBeat": 108,
+            "endBeat": 112,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 110
+              }
+            ]
           },
           {
             "text": "Vou plantar e colher",
-            "startBeat": 112.0,
-            "endBeat": 116.0
+            "startBeat": 112,
+            "endBeat": 116,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 114
+              }
+            ]
           },
           {
             "text": "A cada dia vou viver rompendo em fé",
-            "startBeat": 116.0,
-            "endBeat": 124.0
+            "startBeat": 116,
+            "endBeat": 124,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 118
+              },
+              {
+                "from": 33,
+                "beat": 120
+              }
+            ]
           },
           {
             "text": "Cada vez que a minha fé é provada",
-            "startBeat": 128.0,
-            "endBeat": 136.0
+            "startBeat": 128,
+            "endBeat": 136,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 132
+              }
+            ]
           },
           {
             "text": "Tu me dás a chance de crescer um pouco mais",
-            "startBeat": 136.0,
-            "endBeat": 144.0
+            "startBeat": 136,
+            "endBeat": 144,
+            "chordAnchors": [
+              {
+                "from": 33,
+                "beat": 140
+              }
+            ]
           },
           {
             "text": "As montanhas e vales, desertos e mares",
-            "startBeat": 144.0,
-            "endBeat": 152.0
+            "startBeat": 144,
+            "endBeat": 152,
+            "chordAnchors": [
+              {
+                "from": 22,
+                "beat": 148
+              }
+            ]
           },
           {
             "text": "Que atravesso me levam para perto de Ti",
-            "startBeat": 152.0,
-            "endBeat": 160.0
+            "startBeat": 152,
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 28,
+                "beat": 156
+              }
+            ]
           },
           {
             "text": "Minhas provações não são maiores do que o meu Deus",
-            "startBeat": 160.0,
-            "endBeat": 168.0
+            "startBeat": 160,
+            "endBeat": 168,
+            "chordAnchors": [
+              {
+                "from": 36,
+                "beat": 164
+              }
+            ]
           },
           {
             "text": "E não vão me impedir de caminhar",
-            "startBeat": 168.0,
-            "endBeat": 176.0
+            "startBeat": 168,
+            "endBeat": 176,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 172
+              }
+            ]
           },
           {
             "text": "Se diante de mim não se abrir o mar",
-            "startBeat": 176.0,
-            "endBeat": 184.0
+            "startBeat": 176,
+            "endBeat": 184,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 178
+              },
+              {
+                "from": 24,
+                "beat": 180
+              },
+              {
+                "from": 32,
+                "beat": 182
+              }
+            ]
           },
           {
             "text": "Deus vai me fazer andar por sobre as águas",
-            "startBeat": 184.0,
-            "endBeat": 192.0
+            "startBeat": 184,
+            "endBeat": 192,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 186
+              },
+              {
+                "from": 37,
+                "beat": 188
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 192.0,
-            "endBeat": 196.0
+            "startBeat": 192,
+            "endBeat": 196,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 194
+              }
+            ]
           },
           {
             "text": "Minha vida se revestirá do Teu poder",
-            "startBeat": 196.0,
-            "endBeat": 204.0
+            "startBeat": 196,
+            "endBeat": 204,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 198
+              },
+              {
+                "from": 27,
+                "beat": 200
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 204.0,
-            "endBeat": 208.0
+            "startBeat": 204,
+            "endBeat": 208
           },
           {
             "text": "Com ousadia, vou mover no sobrenatural",
-            "startBeat": 208.0,
-            "endBeat": 216.0
+            "startBeat": 208,
+            "endBeat": 216,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 210
+              },
+              {
+                "from": 26,
+                "beat": 212
+              }
+            ]
           },
           {
             "text": "Vou lutar e vencer",
-            "startBeat": 216.0,
-            "endBeat": 220.0
+            "startBeat": 216,
+            "endBeat": 220,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 218
+              }
+            ]
           },
           {
             "text": "Vou plantar e colher",
-            "startBeat": 220.0,
-            "endBeat": 224.0
+            "startBeat": 220,
+            "endBeat": 224,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 222
+              }
+            ]
           },
           {
             "text": "A cada dia vou viver rompendo em fé",
-            "startBeat": 224.0,
-            "endBeat": 232.0
+            "startBeat": 224,
+            "endBeat": 232,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 226
+              },
+              {
+                "from": 33,
+                "beat": 228
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 232.0,
-            "endBeat": 236.0
+            "startBeat": 232,
+            "endBeat": 236,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 234
+              }
+            ]
           },
           {
             "text": "Minha vida se revestirá do Teu poder",
-            "startBeat": 236.0,
-            "endBeat": 244.0
+            "startBeat": 236,
+            "endBeat": 244,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 238
+              },
+              {
+                "from": 27,
+                "beat": 240
+              }
+            ]
           },
           {
             "text": "Rompendo em fé",
-            "startBeat": 244.0,
-            "endBeat": 248.0
+            "startBeat": 244,
+            "endBeat": 248
           },
           {
             "text": "Com ousadia, vou mover no sobrenatural",
-            "startBeat": 248.0,
-            "endBeat": 256.0
+            "startBeat": 248,
+            "endBeat": 256,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 250
+              },
+              {
+                "from": 26,
+                "beat": 252
+              }
+            ]
           },
           {
             "text": "Vou lutar e vencer",
-            "startBeat": 256.0,
-            "endBeat": 260.0
+            "startBeat": 256,
+            "endBeat": 260,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 258
+              }
+            ]
           },
           {
             "text": "Vou plantar e colher",
-            "startBeat": 260.0,
-            "endBeat": 264.0
+            "startBeat": 260,
+            "endBeat": 264,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 262
+              }
+            ]
           },
           {
             "text": "A cada dia vou viver rompendo em fé",
-            "startBeat": 264.0,
-            "endBeat": 272.0
+            "startBeat": 264,
+            "endBeat": 272,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 266
+              },
+              {
+                "from": 33,
+                "beat": 268
+              }
+            ]
           },
           {
             "text": "A cada dia vou viver rompendo em fé",
-            "startBeat": 272.0,
-            "endBeat": 280.0
+            "startBeat": 272,
+            "endBeat": 280,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 274
+              },
+              {
+                "from": 33,
+                "beat": 276
+              }
+            ]
           },
           {
             "text": "A cada dia vou viver rompendo em fé",
-            "startBeat": 280.0,
-            "endBeat": 288.0
+            "startBeat": 280,
+            "endBeat": 288,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 282
+              },
+              {
+                "from": 33,
+                "beat": 284
+              }
+            ]
           }
         ],
         "alignmentNote": "Mapa inicial por frases conforme os compassos e cadências da transcrição de Gladstone Leon. A última frase de cada refrão atravessa a saída no acorde A; o final retoma essa frase duas vezes. O vamp e um refrão adicionais foram abreviados na forma da aula; todo o texto fornecido está preservado. Antecipações e o rallentando do fonograma não foram medidos.",
@@ -1125,142 +2079,486 @@
           {
             "text": "Antes de eu falar, Tu cantavas sobre mim",
             "startBeat": 16,
-            "endBeat": 24
+            "endBeat": 24,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 16
+              },
+              {
+                "from": 12,
+                "beat": 18
+              },
+              {
+                "from": 31,
+                "beat": 20
+              }
+            ]
           },
           {
             "text": "Tu tens sido tão, tão bom pra mim",
             "startBeat": 24,
-            "endBeat": 32
+            "endBeat": 32,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 24
+              },
+              {
+                "from": 13,
+                "beat": 26
+              },
+              {
+                "from": 26,
+                "beat": 28
+              }
+            ]
           },
           {
             "text": "Antes de eu respirar, sopraste Tua vida em mim",
             "startBeat": 32,
-            "endBeat": 40
+            "endBeat": 40,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 32
+              },
+              {
+                "from": 12,
+                "beat": 34
+              },
+              {
+                "from": 35,
+                "beat": 36
+              }
+            ]
           },
           {
             "text": "Tu tens sido tão, tão bom pra mim",
             "startBeat": 40,
-            "endBeat": 48
+            "endBeat": 48,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 40
+              },
+              {
+                "from": 13,
+                "beat": 42
+              },
+              {
+                "from": 26,
+                "beat": 44
+              }
+            ]
           },
           {
             "text": "Oh, impressionante, infinito e ousado amor de Deus",
             "startBeat": 48,
-            "endBeat": 56
+            "endBeat": 56,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 50
+              },
+              {
+                "from": 31,
+                "beat": 52
+              },
+              {
+                "from": 46,
+                "beat": 54
+              }
+            ]
           },
           {
             "text": "Oh, que deixa as noventa e nove só pra me encontrar",
             "startBeat": 56,
-            "endBeat": 64
+            "endBeat": 64,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 58
+              },
+              {
+                "from": 32,
+                "beat": 60
+              },
+              {
+                "from": 42,
+                "beat": 62
+              }
+            ]
           },
           {
             "text": "Não posso comprá-lo nem merecê-lo, mesmo assim se entregou",
             "startBeat": 64,
-            "endBeat": 72
+            "endBeat": 72,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 66
+              },
+              {
+                "from": 41,
+                "beat": 68
+              },
+              {
+                "from": 50,
+                "beat": 70
+              }
+            ]
           },
           {
             "text": "Oh, impressionante, infinito e ousado amor de Deus",
             "startBeat": 72,
-            "endBeat": 80
+            "endBeat": 80,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 74
+              },
+              {
+                "from": 31,
+                "beat": 76
+              },
+              {
+                "from": 46,
+                "beat": 78
+              }
+            ]
           },
           {
             "text": "Inimigo eu fui, mas Teu amor lutou por mim",
             "startBeat": 96,
-            "endBeat": 104
+            "endBeat": 104,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 96
+              },
+              {
+                "from": 11,
+                "beat": 98
+              },
+              {
+                "from": 29,
+                "beat": 100
+              }
+            ]
           },
           {
             "text": "Tu tens sido tão, tão bom pra mim",
             "startBeat": 104,
-            "endBeat": 112
+            "endBeat": 112,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 104
+              },
+              {
+                "from": 13,
+                "beat": 106
+              },
+              {
+                "from": 26,
+                "beat": 108
+              }
+            ]
           },
           {
             "text": "Não tinha valor, mas tudo pagou por mim",
             "startBeat": 112,
-            "endBeat": 120
+            "endBeat": 120,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 112
+              },
+              {
+                "from": 10,
+                "beat": 114
+              },
+              {
+                "from": 26,
+                "beat": 116
+              }
+            ]
           },
           {
             "text": "Tu tens sido tão, tão bom pra mim",
             "startBeat": 120,
-            "endBeat": 128
+            "endBeat": 128,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 120
+              },
+              {
+                "from": 13,
+                "beat": 122
+              },
+              {
+                "from": 26,
+                "beat": 124
+              }
+            ]
           },
           {
             "text": "Oh, impressionante, infinito e ousado amor de Deus",
             "startBeat": 128,
-            "endBeat": 136
+            "endBeat": 136,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 130
+              },
+              {
+                "from": 31,
+                "beat": 132
+              },
+              {
+                "from": 46,
+                "beat": 134
+              }
+            ]
           },
           {
             "text": "Oh, que deixa as noventa e nove só pra me encontrar",
             "startBeat": 136,
-            "endBeat": 144
+            "endBeat": 144,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 138
+              },
+              {
+                "from": 32,
+                "beat": 140
+              },
+              {
+                "from": 42,
+                "beat": 142
+              }
+            ]
           },
           {
             "text": "Não posso comprá-lo nem merecê-lo, mesmo assim se entregou",
             "startBeat": 144,
-            "endBeat": 152
+            "endBeat": 152,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 146
+              },
+              {
+                "from": 41,
+                "beat": 148
+              },
+              {
+                "from": 50,
+                "beat": 150
+              }
+            ]
           },
           {
             "text": "Oh, impressionante, infinito e ousado amor de Deus",
             "startBeat": 152,
-            "endBeat": 160
+            "endBeat": 160,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 154
+              },
+              {
+                "from": 31,
+                "beat": 156
+              },
+              {
+                "from": 46,
+                "beat": 158
+              }
+            ]
           },
           {
             "text": "Traz luz para as sombras, escala montanhas",
             "startBeat": 160,
-            "endBeat": 164
+            "endBeat": 164,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 160
+              },
+              {
+                "from": 17,
+                "beat": 162
+              }
+            ]
           },
           {
             "text": "Pra me encontrar",
             "startBeat": 164,
-            "endBeat": 168
+            "endBeat": 168,
+            "chordAnchors": [
+              {
+                "from": 7,
+                "beat": 166
+              }
+            ]
           },
           {
             "text": "Derruba muralhas, destrói as mentiras",
             "startBeat": 168,
-            "endBeat": 172
+            "endBeat": 172,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 168
+              },
+              {
+                "from": 8,
+                "beat": 170
+              }
+            ]
           },
           {
             "text": "Pra me encontrar",
             "startBeat": 172,
-            "endBeat": 176
+            "endBeat": 176,
+            "chordAnchors": [
+              {
+                "from": 7,
+                "beat": 174
+              }
+            ]
           },
           {
             "text": "Traz luz para as sombras, escala montanhas",
             "startBeat": 176,
-            "endBeat": 180
+            "endBeat": 180,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 176
+              },
+              {
+                "from": 17,
+                "beat": 178
+              }
+            ]
           },
           {
             "text": "Pra me encontrar",
             "startBeat": 180,
-            "endBeat": 184
+            "endBeat": 184,
+            "chordAnchors": [
+              {
+                "from": 7,
+                "beat": 182
+              }
+            ]
           },
           {
             "text": "Derruba muralhas, destrói as mentiras",
             "startBeat": 184,
-            "endBeat": 188
+            "endBeat": 188,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 184
+              },
+              {
+                "from": 8,
+                "beat": 186
+              }
+            ]
           },
           {
             "text": "Pra me encontrar",
             "startBeat": 188,
-            "endBeat": 192
+            "endBeat": 192,
+            "chordAnchors": [
+              {
+                "from": 7,
+                "beat": 190
+              }
+            ]
           },
           {
             "text": "Oh, impressionante, infinito e ousado amor de Deus",
             "startBeat": 192,
-            "endBeat": 200
+            "endBeat": 200,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 194
+              },
+              {
+                "from": 31,
+                "beat": 196
+              },
+              {
+                "from": 46,
+                "beat": 198
+              }
+            ]
           },
           {
             "text": "Oh, que deixa as noventa e nove só pra me encontrar",
             "startBeat": 200,
-            "endBeat": 208
+            "endBeat": 208,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 202
+              },
+              {
+                "from": 32,
+                "beat": 204
+              },
+              {
+                "from": 42,
+                "beat": 206
+              }
+            ]
           },
           {
             "text": "Não posso comprá-lo nem merecê-lo, mesmo assim se entregou",
             "startBeat": 208,
-            "endBeat": 216
+            "endBeat": 216,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 210
+              },
+              {
+                "from": 41,
+                "beat": 212
+              },
+              {
+                "from": 50,
+                "beat": 214
+              }
+            ]
           },
           {
             "text": "Oh, impressionante, infinito e ousado amor de Deus",
             "startBeat": 216,
-            "endBeat": 224
+            "endBeat": 224,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 218
+              },
+              {
+                "from": 31,
+                "beat": 220
+              },
+              {
+                "from": 46,
+                "beat": 222
+              }
+            ]
           }
         ],
         "alignmentNote": "Mapa inicial pelas células de quatro compassos em 6/8 publicadas pela Igreja Batista Barcelona. As oito estrofes e os três blocos de refrão têm textos próprios; a ponte mantém os quatro ciclos da aula, com chamada em D#m–C# e resposta em B–F#. A ponte adicional e as interjeições fornecidas permanecem na letra integral. Os limites vocais ainda não são timestamps conferidos da gravação.",

@@ -16,23 +16,37 @@ export function splitLyricSyllables(text: string): { from: number; to: number }[
   return starts.map((from, index) => ({ from, to: starts[index + 1] ?? text.length }));
 }
 
-/** Preview only: phrase boundaries are known, but vocal syllable durations have not been measured. */
+/** Chord anchors fix compatible written onsets; durations between anchors are still estimates. */
 export function estimateLyricSyllables(cue: LyricCue): LyricSyllable[] {
   const parts = splitLyricSyllables(cue.text);
   const weights = parts.map((part, index) => {
     const text = cue.text.slice(part.from, part.to);
     return index === parts.length - 1 ? 2 : /[áéíóúâêôãõ]/i.test(text) ? 1.25 : 1;
   });
-  const total = weights.reduce((sum, value) => sum + value, 0);
-  let position = cue.startBeat;
-  return parts.map((part, index) => {
-    const startBeat = position;
-    position =
-      index === parts.length - 1
-        ? cue.endBeat
-        : position + ((cue.endBeat - cue.startBeat) * weights[index]) / total;
-    return { ...part, startBeat, endBeat: position, timing: 'estimated' };
-  });
+  const knots = [{ index: 0, beat: cue.startBeat }];
+  for (const anchor of cue.chordAnchors ?? []) {
+    const index = parts.findIndex((part) => part.from === anchor.from);
+    if (index < 0) throw new RangeError('A âncora deve coincidir com o início de uma sílaba.');
+    if (index === 0) knots[0] = { index, beat: anchor.beat };
+    else knots.push({ index, beat: anchor.beat });
+  }
+  knots.push({ index: parts.length, beat: cue.endBeat });
+  const result: LyricSyllable[] = [];
+  for (let segment = 0; segment < knots.length - 1; segment++) {
+    const left = knots[segment];
+    const right = knots[segment + 1];
+    const total = weights.slice(left.index, right.index).reduce((sum, value) => sum + value, 0);
+    let position = left.beat;
+    for (let index = left.index; index < right.index; index++) {
+      const startBeat = position;
+      position =
+        index === right.index - 1
+          ? right.beat
+          : position + ((right.beat - left.beat) * weights[index]) / total;
+      result.push({ ...parts[index], startBeat, endBeat: position, timing: 'estimated' });
+    }
+  }
+  return result;
 }
 
 export function withLyricSyllables(cues: LyricCue[]): LyricCue[] {

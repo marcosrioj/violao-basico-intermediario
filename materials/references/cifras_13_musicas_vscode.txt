@@ -1,0 +1,1892 @@
+CIFRAS PARA VIOLÃO — 13 MÚSICAS
+
+Formato: texto simples UTF-8, espaços comuns, sem tabulações.
+Abrir no VS Code com fonte monoespaçada e quebra automática de linha desligada.
+
+COMO LER
+- Letras, ordem e repetições preservadas do arquivo enviado.
+- Acordes escritos em som real, para tocar sem capotraste.
+- Um acorde antes da primeira palavra indica entrada instrumental antes da voz.
+- Acordes à direita da última palavra indicam mudanças na nota sustentada.
+- Uma linha sem novo acorde mantém a harmonia anterior, salvo trechos livres.
+- Ministrações faladas e respostas livres estão identificadas separadamente.
+- Cifras de acompanhamento baseadas nas referências indicadas; não houve
+  transcrição por áudio de uma gravação específica.
+- 7M = sétima maior; m = menor; / indica a nota do baixo.
+
+ÍNDICE
+01. Santo Espírito — Nívea Soares | D
+02. Faz Chover (Let It Rain) — Ministério Apascentar de Louvor (Toque No Altar) | Am
+03. Me Derramar — Ministério Vineyard | G
+04. Sonda-me, Usa-me — Aline Barros | C
+05. Renova-me — Aline Barros | D
+06. Poderoso Deus — Antônio Cirilo | D
+07. Faz Chover — Fernandinho | D -> E
+08. Lugar Secreto — Gabriela Rocha | Am
+09. Rompendo em Fé — Comunidade Evangélica Internacional da Zona Sul | A
+10. Ousado Amor — Isaías Saad | F#
+11. Preciso de Ti — Diante do Trono | A
+12. A Ele a Glória — Diante do Trono | Em
+13. Bondade de Deus — Isaías Saad | D
+
+
+01. SANTO ESPÍRITO
+Nívea Soares
+Tom de referência (som real): D
+Capotraste: sem
+
+[Introdução]
+D9  G6
+
+
+[Verso 1]
+D9
+Não há nada igual
+              G6
+Não há nada melhor
+A que se compara
+            D9
+À esperança viva
+       G6
+Tua presença
+
+[Verso 2]
+D9
+Eu provei e vi
+             G6
+O mais doce amor
+Que liberta o meu ser
+                D9
+E a vergonha desfaz
+       G6
+Tua presença
+
+[Refrão]
+D9
+Santo Espírito, és bem-vindo aqui
+    G6                   Em7
+Vem inundar, encher esse lugar
+D9
+É o desejo do meu coração
+       G6                Em7
+Sermos inundados por Tua glória, Senhor
+
+[Verso 1]
+D9
+Não há nada igual
+              G6
+Não há nada melhor
+A que se compara
+            D9
+À esperança viva
+       G6
+Tua presença
+Oh, Deus
+
+[Verso 2]
+D9
+Eu provei e vi
+             G6
+O mais doce amor
+Que liberta o meu ser
+                D9
+E a vergonha desfaz
+       G6
+Tua presença
+
+[Refrão]
+D9
+Santo Espírito, és bem-vindo aqui
+    G6                   Em7
+Vem inundar, encher esse lugar
+D9
+É o desejo do meu coração
+       G6                Em7
+Sermos inundados por Tua glória, Senhor
+
+[Refrão]
+D9
+Santo Espírito, és bem-vindo aqui
+    G6                   Em7
+Vem inundar, encher esse lugar
+D9
+É o desejo do meu coração
+       G6                Em7
+Sermos inundados por Tua glória, Senhor
+
+[Ponte]
+G6       D9/F#    Em7           D9/F#
+Vamos provar quão real é Tua presença
+G6       D9/F#     Em7         D9/F#
+Vamos provar a Tua glória e bondade
+G6       D9/F#    Em7           D9/F#
+Vamos provar quão real é Tua presença
+G6       D9/F#     Em7         D9/F#
+Vamos provar a Tua glória e bondade
+G6       D9/F#    Em7           D9/F#
+Vamos provar quão real é Tua presença
+G6       D9/F#     Em7         D9/F#
+Vamos provar a Tua glória e bondade
+G6       D9/F#    Em7           D9/F#
+Vamos provar quão real é Tua presença
+G6       D9/F#     Em7         D9/F# G6
+Vamos provar a Tua glória e bondade, Senhor
+
+[Refrão final]
+D9
+Santo Espírito, és bem-vindo aqui
+    G6                   Em7
+Vem inundar, encher esse lugar
+D9
+É o desejo do meu coração
+       G6                Em7
+Sermos inundados por Tua glória, Senhor
+
+[Refrão final]
+D9
+Santo Espírito, és bem-vindo aqui
+    G6                   Em7
+Vem inundar, encher esse lugar
+D9
+É o desejo do meu coração
+       G6                Em7     D9
+Sermos inundados por Tua glória, Senhor
+
+[Observações da referência]
+- Tom e harmonia da cifra principal consultada; a organização conserva as repetições do texto enviado.
+- Linha sem novo acorde mantém o acorde anterior.
+
+[Fontes]
+https://www.cifraclub.com/nivea-soares/santo-espirito/
+https://www.cifraclub.com.br/nivea-soares/santo-espirito/
+
+
+02. FAZ CHOVER (LET IT RAIN)
+Ministério Apascentar de Louvor (Toque No Altar)
+Tom de referência (som real): Am
+Capotraste: sem
+
+[Introdução]
+Am9  F7M  C7M  G4  G
+
+
+[Verso]
+   Am
+Eu vejo uma pequena nuvem
+     F
+Do tamanho da mão de um homem
+    C
+Mas este é o sinal
+          G
+Que a Tua chuva vai descer
+   Am
+Eu vejo uma pequena nuvem
+     F
+Do tamanho da mão de um homem
+    C
+Mas este é o sinal
+          G
+Que a Tua chuva vai descer
+
+[Refrão]
+        Am         F
+Faz chover, faz chover
+C                     G
+Abre as comportas dos céus
+          Am         F
+E faz chover, faz chover
+C                     G
+Abre as comportas dos céus
+
+[Verso]
+   Am
+Eu vejo uma pequena nuvem
+     F
+Do tamanho da mão de um homem
+    C
+Mas este é o sinal
+          G
+Que a Tua chuva vai descer
+   Am
+Eu vejo uma pequena nuvem
+     F
+Do tamanho da mão de um homem
+    C
+Mas este é o sinal
+          G
+Que a Tua chuva vai descer
+
+[Refrão]
+        Am         F
+Faz chover, faz chover
+C                     G
+Abre as comportas dos céus
+          Am         F
+E faz chover, faz chover
+C                     G
+Abre as comportas dos céus
+          Am         F
+E faz chover, faz chover
+C                     G
+Abre as comportas dos céus
+
+[Ponte]
+     Am
+Se pedirmos
+        F
+Jesus virá
+     C
+Como chuva
+     G
+Descerá
+     Am
+Se pedirmos
+        F
+Jesus virá
+      C
+Então clame, então grite
+      G
+Então chame por Ele
+
+[Refrão]
+        Am         F
+Faz chover, faz chover
+C                     G
+Abre as comportas dos céus
+          Am         F
+E faz chover, faz chover
+C                     G
+Abre as comportas dos céus
+          Am         F
+E faz chover, faz chover
+C                    G
+Abre as comportas do céu
+
+[Ponte]
+     Am
+Se pedirmos
+        F
+Jesus virá
+     C
+Como chuva
+     G
+Descerá
+     Am
+Se pedirmos
+        F
+Jesus virá
+      C
+Então clame, então grite
+      G
+Então chame por Ele
+
+[Refrão]
+        Am         F
+Faz chover, faz chover
+C                     G
+Abre as comportas dos céus
+          Am         F
+E faz chover, faz chover
+C                     G
+Abre as comportas dos céus
+          Am         F
+E faz chover, faz chover
+C                    G
+Abre as comportas do céu
+          Am         F
+E faz chover, faz chover
+C                    G
+Abre as comportas do céu
+
+[Final — sustentar Am nas frases sem nova cifra]
+         Am
+E faz chover
+             Am
+Inunda o meu ser
+Faz chover, Senhor
+Sobre essa nação
+
+[Observações da referência]
+- Tom e harmonia da cifra principal consultada; a organização conserva as repetições do texto enviado.
+- A fonte termina com Am em “Inunda meu ser”; as duas últimas frases adicionais do arquivo não têm mudanças verificadas. Mantém-se o Am anterior como sustentação, sem afirmar transcrição da ministração.
+
+[Fontes]
+https://www.cifraclub.com.br/toque-no-altar/faz-chover/
+
+
+03. ME DERRAMAR
+Ministério Vineyard
+Tom de referência (som real): G
+Capotraste: sem
+
+[Introdução]
+G  D/F#  Em  C
+
+
+[Verso]
+       G    D/F#
+Eis-me aqui outra vez
+  Em                    C
+Diante de Ti abro o meu coração
+    G           D/F#
+Meu clamor Tu escutas
+  Em               C
+E fazes cair as barreiras em mim
+
+[Pré-refrão]
+   G               D/F#
+És fiel, Senhor, e dizes
+  Em                   C
+Palavras de amor e esperança sem fim
+   G      D/F#
+Ao sentir Teu toque
+        Em       C                   Am7   Bm7   C7M
+Por Tua bondade, libertas meu ser no calor deste lugar
+
+[Refrão]
+D        G            D/F#
+Eu venho me derramar, dizer que Te amo
+Em           C
+Me derramar, dizer: Te preciso
+G            D/F#
+Me derramar, dizer que sou grato
+Em           C
+Me derramar, dizer que és formoso
+
+[Interlúdio]
+G  D/F#  Em  C
+
+
+[Verso]
+       G    D/F#
+Eis-me aqui outra vez
+  Em                    C
+Diante de Ti abro o meu coração
+    G           D/F#
+Meu clamor Tu escutas
+  Em               C
+E fazes cair as barreiras em mim
+
+[Pré-refrão]
+   G               D/F#
+És fiel, Senhor, e dizes
+  Em                   C
+Palavras de amor e esperança sem fim
+   G      D/F#
+Ao sentir Teu toque
+        Em       C                   Am7   Bm7   C7M
+Por Tua bondade, libertas meu ser no calor deste lugar
+
+[Refrão]
+D        G            D/F#
+Eu venho me derramar, dizer que Te amo
+Em           C
+Me derramar, dizer: Te preciso
+G            D/F#
+Me derramar, dizer que sou grato
+Em           C
+Me derramar, dizer que és formoso
+
+[Base do solo]
+G  D/F#  Em  C  (3x)
+Am7  Bm7  C7M  D
+
+
+[Refrão final]
+G            D/F#
+Me derramar, dizer que Te amo
+Em           C
+Me derramar, dizer: Te preciso
+G            D/F#
+Me derramar, dizer que sou grato
+Em           C
+Me derramar, dizer que és formoso
+
+[Refrão final]
+G            D/F#
+Me derramar, dizer que Te amo
+Em           C
+Me derramar, dizer: Te preciso
+G            D/F#
+Me derramar, dizer que sou grato
+Em           C
+Me derramar, dizer que és formoso
+
+[Refrão final]
+G            D/F#
+Me derramar, dizer que Te amo
+Em           C
+Me derramar, dizer: Te preciso (preciso de Ti, Senhor)
+G            D/F#
+Me derramar, dizer que sou grato
+Em           C                     G
+Me derramar, dizer que és formoso
+
+[Observações da referência]
+- Tom e harmonia da cifra principal consultada; acordes de passagem Am7, Bm7 e C7M preservados.
+- A letra fornecida une o final do verso e o pré-refrão em uma linha; essa divisão foi mantida.
+- A fonte inclui interlúdio G D/F# Em C após o primeiro refrão e um solo (G D/F# Em C, três vezes, seguido de Am7 Bm7 C7M D) antes das repetições finais. A letra enviada não traz essas marcações.
+
+[Fontes]
+https://www.cifraclub.com/vineyard/me-derramar/
+https://www.cifraclub.com.br/vineyard/me-derramar/
+
+
+04. SONDA-ME, USA-ME
+Aline Barros
+Tom de referência (som real): C
+Capotraste: sem
+
+[Introdução]
+C  G/B  F9  G  Em
+Am  Am7/G  F9  G/B  C4  C
+
+
+[Verso]
+ C          G/B     Am         Am7/G
+Sonda-me, Senhor, e me conhece
+   F9       C/E     Dm
+Quebranta o meu coração
+     C           G/B     Am          Am7/G
+Transforma-me conforme a Tua palavra
+
+[Pré-refrão]
+  F9       G/F               Em7       Am
+E enche-me até que em mim se ache só a Ti
+Am7/G  F9
+Então
+G         F/A
+Usa-me, Senhor
+G/B
+Usa-me
+
+[Refrão]
+          C                G/B
+Como um farol que brilha à noite
+     Am             Am7/G
+Como ponte sobre as águas
+     F9          C/E
+Como abrigo no deserto
+     F/A         G/B
+Como flecha que acerta o alvo
+   C         G/B      Am             Am7/G
+Eu quero ser usado da maneira que Te agrade
+            F9                 C/E
+Em qualquer hora e em qualquer lugar
+    F9           G             Am
+Eis aqui a minha vida, usa-me, Senhor
+F      G
+Usa-me
+
+[Verso]
+ C          G/B     Am         Am7/G
+Sonda-me, Senhor, e me conhece
+   F9       C/E     Dm
+Quebranta o meu coração
+     C           G/B     Am          Am7/G
+Transforma-me conforme a Tua palavra
+
+[Pré-refrão]
+  F9       G/F               Em7       Am
+E enche-me até que em mim se ache só a Ti
+Am7/G  F9
+Então
+G         F/A
+Usa-me, Senhor
+G/B
+Usa-me (usa-me)
+
+[Refrão]
+          C                G/B
+Como um farol que brilha à noite
+     Am             Am7/G
+Como ponte sobre as águas
+     F9          C/E
+Como abrigo no deserto
+     F/A         G/B
+Como flecha que acerta o alvo
+   C         G/B      Am             Am7/G
+Eu quero ser usado da maneira que Te agrade
+            F9                 C/E
+Em qualquer hora e em qualquer lugar
+    F9           G             Am
+Eis aqui a minha vida, usa-me, Senhor
+F      G
+Usa-me
+
+[Ponte]
+C
+Sonda-me
+Am
+Quebranta-me
+F9
+Transforma-me
+Dm
+Enche-me
+  F9  G
+E usa-me
+C
+Sonda-me
+Am
+Quebranta-me
+F9
+Transforma-me
+Dm
+Enche-me
+  F9  G
+E usa-me, Senhor
+C
+Sonda-me
+Am
+Quebranta-me
+F9
+Transforma-me
+Dm
+Enche-me
+  F9  G
+E usa-me
+C
+Sonda-me
+Am
+Quebranta-me
+F9
+Transforma-me
+Dm
+Enche-me
+  F9  G         Am  G/B
+E usa-me, Senhor
+
+[Refrão]
+          C                G/B
+Como um farol que brilha à noite
+     Am             Am7/G
+Como ponte sobre as águas
+     F9          C/E
+Como abrigo no deserto
+     F/A         G/B
+Como flecha que acerta o alvo
+   C         G/B      Am             Am7/G
+Eu quero ser usado da maneira que Te agrade
+            F9                 C/E
+Em qualquer hora e em qualquer lugar
+    F9           G             Am
+Eis aqui a minha vida, usa-me, Senhor
+F      G
+Usa-me
+
+[Ponte final]
+C
+Sonda-me
+Am
+Quebranta-me
+F9
+Transforma-me
+Dm
+Enche-me
+  F9  G
+E usa-me
+C
+Sonda-me
+Am
+Quebranta-me
+F9
+Transforma-me
+Dm
+Enche-me
+  F9  G         Am  G
+E usa-me, Senhor
+
+[Encerramento]
+  F9  G     C
+E usa-me, Senhor
+
+[Observações da referência]
+- Usada a cifra principal, em C, e não a simplificada. Há diferenças pontuais entre a principal e a versão “completa” (por exemplo C/E versus C/G).
+- Em “Então”, Am7/G e F9 ocorrem durante a sustentação da palavra; F9 fica à direita do fim da palavra para evitar sobreposição dos símbolos.
+- Acordes que ultrapassam o fim da linha indicam passagens na sustentação ou entre frases.
+
+[Fontes]
+https://www.cifraclub.com.br/aline-barros/sonda-me-usa-me/
+https://www.cifraclub.com/aline-barros/sonda-me-usa-me/
+
+
+05. RENOVA-ME
+Aline Barros
+Tom de referência (som real): D
+Capotraste: sem
+
+[Introdução]
+D  G/D  A/C#  D2 | G  D9/F#  A7(4)  A7
+
+
+[Verso 1]
+  D    G/D  A/C#   D
+Renova-me, Senhor Jesus
+G      D/F#      A7(4)  A7
+Já não quero ser igual
+  D    G/D  A/C#   D2
+Renova-me, Senhor Jesus
+G      D/F#     A7(4)  A7
+Põe em mim Teu coração
+
+[Refrão]
+       D          A/C#    Bm7  D/A
+Porque tudo o que há dentro de mim
+G      D/F#   Em7     A7(4)  A7
+Necessita ser mudado, Senhor
+       D          A/C#          Bm7   D/A
+Porque tudo o que há dentro do meu coração
+G     Em7  A7    D2   A7(4)  A7
+Necessita mais de Ti
+
+[Verso 2]
+  D    G/D  A/C#   D
+Renova-me, Senhor Jesus
+G      D/F#      A7(4)  A7
+Já não quero ser igual
+  D    G/D  A/C#   D2
+Renova-me, Senhor Jesus
+G      D/F#     A7(4)  A7
+Põe em mim Teu coração
+
+[Refrão]
+       D          A/C#    Bm7  D/A
+Porque tudo o que há dentro de mim
+G      D/F#   Em7     A7(4)  A7
+Necessita ser mudado, Senhor
+       D          A/C#          Bm7   D/A
+Porque tudo o que há dentro do meu coração
+G     Em7  A7    D2   Bm7(11)
+Necessita mais de Ti
+
+[Final]
+Em        A7     D2   Bm7(11)
+Necessita mais de Ti
+Em        A7
+Necessita mais
+   D   D4  D
+De Ti
+
+[Observações da referência]
+- Tom de referência D, sem capotraste. Cifra principal da versão de Aline Barros; a ordem e as repetições seguem o texto enviado.
+- As mudanças após a última palavra ocorrem durante a sustentação e a passagem instrumental. D2 é mantido conforme a referência.
+
+[Fontes]
+https://www.cifraclub.com/aline-barros/renova-me/
+https://www.gladstoneleon.com.br/en/_files/ugd/a0a895_ed4f19a61fe240a09e52c097f2d032b5.pdf
+
+
+06. PODEROSO DEUS
+Antônio Cirilo
+Tom de referência (som real): D
+Capotraste: sem
+
+[Introdução]
+D  A/C#  Bm  A | G  D/F#  Em  A  (2x)
+
+
+[Verso 1]
+              D   D9  D5  D  A/C#
+Ao que está sentado
+   Bm7   A/C#  Bm7
+No trono
+A/C#   G5  G7M  D9/F#
+E ao Cordeiro
+Em7       A  A4  A9  A/C#
+Seja o louvor
+
+[Verso 1 - repetição]
+              D   D9  D5  D  A/C#
+Ao que está sentado
+   Bm7   A/C#  Bm7
+No trono
+A/C#   G5  G7M  D9/F#
+E ao Cordeiro
+Em7       A  A4  A9  A/C#
+Seja o louvor
+
+[Seja a honra]
+       D   D9  D5  D  A/C#
+Seja a honra
+       Bm7   A/C#  Bm7
+Seja a glória
+A/C#   G5  G7M  D9/F#
+Seja o domínio
+Em7                A  A4  A9  A/C#
+Pelos séculos dos séculos
+
+[Seja a honra - repetição]
+       D   D9  D5  D  A/C#
+Seja a honra
+       Bm7   A/C#  Bm7
+Seja a glória
+A/C#   G5  G7M  D9/F#
+Seja o domínio
+Em7                A  A4  A9  A/C#
+Pelos séculos dos séculos
+
+[Refrão]
+         D   D9  D5  D  A/C#
+Poderoso Deus
+         Bm7   A/C#  Bm7
+Poderoso Deus
+A/C#     G5  G7M  D9/F#
+Poderoso Deus
+Em7                 A  A4  A9  A/C#
+Minh’alma anseia por Ti
+
+[Refrão - repetição]
+         D   D9  D5  D  A/C#
+Poderoso Deus
+         Bm7   A/C#  Bm7
+Poderoso Deus
+A/C#     G5  G7M  D9/F#
+Poderoso Deus
+Em7                 A  A4  A9  A/C#
+Minh’alma anseia por Ti
+
+[Ministração falada - sem trocas de acordes sincronizadas na referência]
+Oh Deus de majestade, honra e poder
+Quão glorioso é o teu santo nome
+Te exaltamos, enquanto nos prostramos
+Pois não existe outro tão glorioso como tu
+Muitas vezes falhamos em contemplar o teu poder e a tua glória
+Enquanto reinas em teu trono celestial na presença dos serafins
+Querubins e dos santos que já estão diante de ti
+Toda a criação e por toda a eternidade canto os teus louvores
+Quem somos nós para que nos ame tanto assim?
+Quantas vezes falhamos em dar-te reverência e honra
+Temos perdido o temor do senhor
+Ou trocado por um breve abraço
+Ou por um beijinho em tua presença
+Ensina-nos o temor do teu nome
+Ajude-nos a andar em tua santidade
+Para que nós acheguemos a ti, para que te adoremos
+E juntamente com as hostes celestiais
+Cantemos da tua misericórdia, tua bondade e do teu amor sem fim
+Toda honra e glória pertencem a ti
+Só tu és digno, oh Deus, todo-poderoso
+Criador dos confins da terra
+
+[Retomada do verso]
+              D   D9  D5  D  A/C#
+Ao que está sentado
+   Bm7   A/C#  Bm7
+No trono
+A/C#   G5  G7M  D9/F#
+E ao Cordeiro
+Em7       A  A4  A9  A/C#
+Seja o louvor
+
+[Seja a honra]
+       D   D9  D5  D  A/C#
+Seja a honra
+       Bm7   A/C#  Bm7
+Seja a glória
+A/C#   G5  G7M  D9/F#
+Seja o domínio
+Em7                A  A4  A9  A/C#
+Pelos séculos dos séculos
+
+[Seja a honra - repetição]
+       D   D9  D5  D  A/C#
+Seja a honra
+       Bm7   A/C#  Bm7
+Seja a glória
+A/C#   G5  G7M  D9/F#
+Seja o domínio
+Em7                A  A4  A9  A/C#
+Pelos séculos dos séculos
+
+[Refrão]
+         D   D9  D5  D  A/C#
+Poderoso Deus
+         Bm7   A/C#  Bm7
+Poderoso Deus
+A/C#     G5  G7M  D9/F#
+Poderoso Deus
+Em7                 A  A4  A9  A/C#
+Minh’alma anseia por Ti
+
+[Refrão - repetição]
+         D   D9  D5  D  A/C#
+Poderoso Deus
+         Bm7   A/C#  Bm7
+Poderoso Deus
+A/C#     G5  G7M  D9/F#
+Poderoso Deus
+Em7                 A  A4  A9  A/C#
+Minh’alma anseia por Ti
+
+[Final - sustentação]
+Em7                 A9
+Minh’alma anseia por Ti
+
+[Observações da referência]
+- Tom de referência D, sem capotraste. Mantido o texto enviado, incluindo "sentado", embora a cifra consultada escreva "assentado".
+- D-D9-D5-D e A-A4-A9 indicam movimentos ornamentais durante notas sustentadas; por isso algumas linhas de acordes ultrapassam a letra.
+- A ministração falada foi preservada, sem atribuir mudanças fixas a cada palavra. A referência consultada não transcreve a harmonia dessa fala.
+
+[Fontes]
+https://www.cifraclub.com/antonio-cirilo/poderoso-deus/
+https://www.cifraclub.com.br/antonio-cirilo/poderoso-deus-2/
+
+
+07. FAZ CHOVER
+Fernandinho
+Tom de referência (som real): D -> E
+Capotraste: sem
+Modulação: D para E após o solo.
+
+[Introdução]
+Bm  G  D  A9 | Bm  G  D  A9  G9
+
+
+[Verso]
+  D                  A9      Bm
+Assim como a corça anseia por águas
+G          D9/F#  Em       A9
+Como terra seca precisa da chuva
+    G   A9      D9/F#  G
+Meu coração tem sede de Ti
+    D          A9
+Rei meu e Deus meu
+
+[Verso - repetição]
+  D                  A9      Bm
+Assim como a corça anseia por águas
+G          D9/F#  Em       A9
+Como terra seca precisa da chuva
+    G   A9      D9/F#  G
+Meu coração tem sede de Ti
+    D          A9
+Rei meu e Deus meu
+
+[Refrão]
+       Bm  G   D     A9
+Faz chover, Senhor Jesus
+            Bm  G       A9
+Derrama a chuva neste lugar
+              Bm  G   D     A9
+Vem com o Teu rio, Senhor Jesus
+     Bm  G        A9
+Inundar o meu coração
+
+[Refrão - repetição]
+                    Bm  G   D     A9
+(Faz chover) faz chover, Senhor Jesus
+          Bm  G       A9
+Derrama chuva neste lugar
+              Bm  G   D     A9
+Vem com o Teu rio, Senhor Jesus
+     Bm  G        A9
+Inundar o meu coração
+
+[Interlúdio / chamadas livres - base Bm  G  D  A9]
+Faz chover
+Faz chover
+
+[Base do solo antes da modulação]
+Bm  G  D  A9  (2x)
+G  A9  Bm
+
+
+[Refrão após solo - modulação D -> E]
+       C#m A   E     B9
+Faz chover, Senhor Jesus
+          C#m A       B9
+Derrama chuva neste lugar
+              C#m A   E     B9
+Vem com o Teu rio, Senhor Jesus
+     C#m A        B9
+Inundar o meu coração
+
+[Refrão em E - repetição]
+                    C#m A   E     B9
+(Faz chover) faz chover, Senhor Jesus
+          C#m A       B9
+Derrama chuva neste lugar
+              C#m A   E     B9
+Vem com o Teu rio, Senhor Jesus
+     C#m A        B9
+Inundar o meu coração
+
+[Final em E - repetição da mesma harmonia]
+     C#m A        B9
+Inundar o meu coração
+     C#m      A           B9
+Inundar, inundar o meu coração
+
+[Chamadas finais livres - encerramento em C#m]
+            C#m
+Sim, faz chover
+       C#m
+Faz chover
+
+[Observações da referência]
+- Tom inicial D; após o solo, a música sobe um tom para E. Os dois refrões finais usam C#m, A, E e B9, conforme a cifra principal completa.
+- Solo antes da modulação: Bm G D A9 (2x) | G A9 Bm. O refrão seguinte começa em C#m, dentro do novo tom E.
+- As duas chamadas avulsas antes do solo mantêm a base Bm-G-D-A9. A referência não fixa a posição exata dessas interjeições.
+- As repetições extras de Inundar no texto enviado seguem C#m-A-B9. As chamadas finais são livres, com encerramento em C#m, acorde final indicado pela referência.
+
+[Fontes]
+https://www.cifraclub.com/fernandinho/faz-chover/
+https://www.cifraclub.com.br/fernandinho/faz-chover/?autoplay=true
+https://cifrasgospelonline.com.br/cifra/faz-chover-fernandinho
+
+
+08. LUGAR SECRETO
+Gabriela Rocha
+Tom de referência (som real): Am
+Capotraste: sem
+
+[Introdução]
+F7M(9)  Am  G4(6)  (2x)
+
+
+[Verso 1]
+F7M(9)       Am                  G4(6)
+       Tu és tudo o que eu mais quero
+F7M(9)       Am       G4(6)
+       O meu fôlego Tu és
+F7M(9)          Am         G4(6)
+       Em Teus braços é o meu lugar
+        F7M(9) Am    G4(6)
+Estou aqui, estou aqui
+
+[Verso 2]
+F7M(9)        Am          G4(6)
+       Pai, eu amo Sua presença
+F7M(9)        Am             G4(6)
+       Teu sorriso é vida em mim
+F7M(9)      Am           G4(6)
+       Eu seguro em Suas mãos
+          F7M(9) Am    G4(6)
+Confio em Ti, confio em Ti
+
+[Refrão]
+              F7M(9)
+Quero ir mais fundo
+             Dm7(9)
+Leva-me mais perto
+             Am
+Onde eu Te encontro
+            Em7
+No lugar secreto
+                F7M(9)
+Aos Teus pés me rendo
+            Dm7(9)      Am   G4(6)
+Pois a Tua glória quero ver
+
+[Base do solo]
+F7M(9)  Dm7(9)  Am  Em7
+
+
+[Verso 2]
+F7M(9)        Am          G4(6)
+       Pai, eu amo Sua presença
+F7M(9)        Am             G4(6)
+       Teu sorriso é vida em mim
+F7M(9)      Am           G4(6)
+       Eu seguro em Suas mãos
+             F7M(9) Am    G4(6)
+Eu confio em Ti, confio em Ti
+
+[Refrão]
+              F7M(9)
+Quero ir mais fundo
+             Dm7(9)
+Leva-me mais perto
+             Am
+Onde eu Te encontro
+            Em7
+No lugar secreto
+                F7M(9)
+Aos Teus pés me rendo
+            Dm7(9)      Am   G4(6)
+Pois a Tua glória quero ver
+
+[Refrão - repetição]
+              F7M(9)
+Quero ir mais fundo
+             Dm7(9)
+Leva-me mais perto
+             Am
+Onde eu Te encontro
+            Em7
+No lugar secreto
+                F7M(9)
+Aos Teus pés me rendo
+            Dm7(9)      Am   G4(6)
+Pois a Tua glória quero ver
+
+[Ponte]
+                     F7M(9)
+Tudo o que eu mais quero é Te ver
+                     Dm7(9)
+Me envolva com Tua glória e poder
+          Am
+Tua majestade é real
+          Em7
+Tua voz ecoa em meu ser
+
+[Ponte - repetição]
+                     F7M(9)
+Tudo o que eu mais quero é Te ver
+                     Dm7(9)
+Me envolva com Tua glória e poder
+          Am
+Tua majestade é real
+          Em7
+Tua voz ecoa em meu ser
+
+[Ponte - repetição]
+                     F7M(9)
+Tudo o que eu mais quero é Te ver
+                     Dm7(9)
+Me envolva com Tua glória e poder
+          Am
+Tua majestade é real
+          Em7
+Tua voz ecoa em meu ser
+
+[Ponte - repetição / preparação do refrão]
+                     F7M(9)
+Tudo o que eu mais quero é Te ver
+                     Dm7(9)
+Me envolva com Tua glória e poder
+          Am
+Tua majestade é real
+          G4(6)
+Tua voz ecoa em meu ser
+
+[Refrão]
+              F7M(9)
+Quero ir mais fundo
+             Dm7(9)
+Leva-me mais perto
+             Am
+Onde eu Te encontro
+            Em7
+No lugar secreto
+                F7M(9)
+Aos Teus pés me rendo
+            Dm7(9)         Am   G4(6)
+Pois a Tua glória eu quero ver
+
+[Refrão - repetição]
+              F7M(9)
+Quero ir mais fundo
+             Dm7(9)
+Leva-me mais perto
+             Am
+Onde eu Te encontro
+            Em7
+No lugar secreto
+                F7M(9)
+Aos Teus pés me rendo
+            Dm7(9)         Am   G4(6)
+Pois a Tua glória eu quero ver
+
+[Ponte final]
+                     F7M(9)
+Tudo o que eu mais quero é Te ver
+                     Dm7(9)
+Me envolva com Tua glória e poder
+          Am
+Tua majestade é real
+          Em7
+Tua voz ecoa em meu ser
+
+[Ponte final - repetição]
+                     F7M(9)
+Tudo o que eu mais quero é Te ver
+                     Dm7(9)
+Me envolva com Tua glória e poder
+          Am
+Tua majestade é real
+          G4(6)
+Tua voz ecoa em meu ser
+
+[Observações da referência]
+- Tom de referência Am, sem capotraste, conforme a cifra principal revisada do Cifra Club.
+- No verso, F7M(9) antecede a entrada da voz. O recuo de algumas linhas é intencional para representar essa entrada.
+- Mantidas todas as repetições do arquivo fornecido; as repetições finais extras seguem a harmonia da mesma seção.
+
+[Fontes]
+https://www.cifraclub.com.br/gabriela-rocha/lugar-secreto//
+https://www.youtube.com/watch?v=YnrN0o0lubM
+
+
+09. ROMPENDO EM FÉ
+Comunidade Evangélica Internacional da Zona Sul
+Tom de referência (som real): A
+Capotraste: sem
+
+
+[Verso 1]
+     A                    D/A
+Cada vez que a minha fé é provada
+      E                          A
+Tu me dás a chance de crescer um pouco mais
+   F#m                C#m7
+As montanhas e vales, desertos e mares
+    Bm7                     E           E4  E
+Que atravesso me levam para perto de Ti
+       A                 A/C#       Bm7
+Minhas provações não são maiores do que o meu Deus
+      E                 A
+E não vão me impedir de caminhar
+   Bm7       E          C#7     F#m
+Se diante de mim não se abrir o mar
+         Bm7      E                  A
+Deus vai me fazer andar por sobre as águas
+
+[Refrão]
+E           A    A/C#
+Rompendo em fé
+      D       E            A
+Minha vida se revestirá do Teu poder
+E           A    A9(11)
+Rompendo em fé
+    D            E        F#m
+Com ousadia, vou mover no sobrenatural
+ E/G# D     A
+Vou lutar e vencer
+    D         F#m
+Vou plantar e colher
+       Bm7     E                 A  A4  A   E
+A cada dia vou viver rompendo em fé
+
+[Verso 1 - repetição]
+     A                    D/A
+Cada vez que a minha fé é provada
+      E                          A
+Tu me dás a chance de crescer um pouco mais
+   F#m                C#m7
+As montanhas e vales, desertos e mares
+    Bm7                     E           E4  E
+Que atravesso me levam para perto de Ti
+       A                 A/C#       Bm7
+Minhas provações não são maiores do que o meu Deus
+      E                 A
+E não vão me impedir de caminhar
+   Bm7       E          C#7     F#m
+Se diante de mim não se abrir o mar
+         Bm7      E                  A
+Deus vai me fazer andar por sobre as águas
+
+[Refrão]
+E           A    A/C#
+Rompendo em fé
+      D       E            A
+Minha vida se revestirá do Teu poder
+E           A    A9(11)
+Rompendo em fé
+    D            E        F#m
+Com ousadia, vou mover no sobrenatural
+ E/G# D     A
+Vou lutar e vencer
+    D         F#m
+Vou plantar e colher
+       Bm7     E                 A
+A cada dia vou viver rompendo em fé
+
+[Refrão - repetição]
+E           A    A/C#
+Rompendo em fé
+      D       E            A
+Minha vida se revestirá do Teu poder
+E           A    A9(11)
+Rompendo em fé
+    D            E        F#m
+Com ousadia, vou mover no sobrenatural
+ E/G# D     A
+Vou lutar e vencer
+    D         F#m
+Vou plantar e colher
+       Bm7     E                 F#m  D
+A cada dia vou viver rompendo em fé
+
+[Refrão final]
+E           A    A/C#
+Rompendo em fé
+      D       E            A
+Minha vida se revestirá do Teu poder
+E           A    A9(11)
+Rompendo em fé
+    D            E        F#m
+Com ousadia, vou mover no sobrenatural
+ E/G# D     A
+Vou lutar e vencer
+    D         F#m
+Vou plantar e colher
+       Bm7     E                 A  A4
+A cada dia vou viver rompendo em fé
+
+[Final]
+       D       E                 A  A4
+A cada dia vou viver rompendo em fé
+       D       E                 A
+A cada dia vou viver rompendo em fé
+
+[Observações da referência]
+- Referência: cifra principal da Comunidade Evangélica Internacional da Zona Sul, em Lá maior.
+- Alinhamento adaptado à letra fornecida. Mantidas as repetições do arquivo do usuário; não se acrescentou a fala intermediária existente na referência.
+- Não é transcrição de áudio nota por nota; as cifras registram a harmonia principal.
+
+[Fontes]
+https://www.cifraclub.com.br/comunidade-da-zona-sul/rompendo-em-fe/
+
+
+10. OUSADO AMOR
+Isaías Saad
+Tom de referência (som real): F#
+Capotraste: sem
+Acordes em som real: F#. Fonte com formas de E e capo 2, convertida aqui.
+
+[Introdução]
+D#m  C#4  B9  F#  (2x)
+
+
+[Verso 1]
+D#m         C#4                B9
+Antes de eu falar, Tu cantavas sobre mim
+D#m          C#4          B9
+Tu tens sido tão, tão bom pra mim
+D#m         C#4                    B9
+Antes de eu respirar, sopraste Tua vida em mim
+D#m          C#4          B9
+Tu tens sido tão, tão bom pra mim
+
+[Refrão]
+    D#m             C#4        B9             F#
+Oh, impressionante, infinito e ousado amor de Deus
+        D#m      C#4            B9        F#
+Oh, que deixa as noventa e nove só pra me encontrar
+          D#m           C#4              B9       F#
+Não posso comprá-lo nem merecê-lo, mesmo assim se entregou
+    D#m             C#4        B9             F#
+Oh, impressionante, infinito e ousado amor de Deus
+
+[Interlúdio]
+D#m   C#4   B9   F#
+Yeah
+
+[Verso 2]
+D#m        C#4               B9
+Inimigo eu fui, mas Teu amor lutou por mim
+D#m          C#4          B9
+Tu tens sido tão, tão bom pra mim
+D#m       C#4             B9
+Não tinha valor, mas tudo pagou por mim
+D#m          C#4          B9
+Tu tens sido tão, tão bom pra mim
+
+[Refrão]
+    D#m             C#4        B9             F#
+Oh, impressionante, infinito e ousado amor de Deus
+        D#m      C#4            B9        F#
+Oh, que deixa as noventa e nove só pra me encontrar
+          D#m           C#4              B9       F#
+Não posso comprá-lo nem merecê-lo, mesmo assim se entregou
+    D#m             C#4        B9             F#
+Oh, impressionante, infinito e ousado amor de Deus
+
+[Interlúdio]
+D#m   C#4   B9   F#
+Yeah
+
+[Ponte - 1ª vez: sustentar D#m nas quatro linhas]
+D#m
+Traz luz para as sombras, escala montanhas
+Pra me encontrar
+Derruba muralhas, destrói as mentiras
+Pra me encontrar
+
+[Ponte - movimento completo]
+D#m              C#4             B9
+Traz luz para as sombras, escala montanhas
+       F#
+Pra me encontrar
+D#m     C#4                  B9
+Derruba muralhas, destrói as mentiras
+       F#
+Pra me encontrar
+D#m              C#4             B9
+Traz luz para as sombras, escala montanhas
+       F#
+Pra me encontrar
+D#m     C#4                  B9
+Derruba muralhas, destrói as mentiras
+       F#
+Pra me encontrar
+D#m              C#4             B9
+Traz luz para as sombras, escala montanhas
+       F#
+Pra me encontrar
+D#m     C#4                  B9
+Derruba muralhas, destrói as mentiras
+       F#
+Pra me encontrar
+
+[Refrão]
+    D#m             C#4        B9             F#
+Oh, impressionante, infinito e ousado amor de Deus
+        D#m      C#4            B9        F#
+Oh, que deixa as noventa e nove só pra me encontrar
+          D#m           C#4              B9       F#
+Não posso comprá-lo nem merecê-lo, mesmo assim se entregou
+    D#m             C#4        B9             F#
+Oh, impressionante, infinito e ousado amor de Deus
+
+[Final]
+D#m   C#4   B9   F#
+Yeah
+D#m   C#4   B9   F#
+Yeah
+
+[Observações da referência]
+- Tom real: Fá sustenido maior; acordes escritos em som real, sem capotraste.
+- A fonte usa formas de Mi com capotraste na 2ª casa. Aqui foram convertidas: C#m→D#m, B4→C#4, A9→B9, E→F#.
+- Alternativa equivalente: capo 2, tocando C#m, B4, A9 e E.
+- Primeira passagem da ponte sobre um acorde sustentado; o movimento harmônico completo entra nas repetições seguintes.
+- Alinhamento adaptado à letra fornecida; não inclui tablaturas, solos ou análise nota por nota do áudio.
+
+[Fontes]
+https://www.cifraclub.com.br/isaias-saad/ousado-amor/
+
+
+11. PRECISO DE TI
+Diante do Trono
+Tom de referência (som real): A
+Capotraste: sem
+
+[Introdução]
+G  D/F#  A2  E  (2x; frase instrumental não transcrita)
+
+
+[Verso 1]
+           A2
+Preciso de Ti
+           F#m7
+Preciso do Teu perdão
+           A2
+Preciso de Ti
+              F#m7
+Quebranta meu coração
+       D                Bm7                F#m7
+Como a corça anseia por águas, assim tenho sede
+C#m7       D             Bm7
+Como terra seca, assim é minh'alma
+           E4  E
+Preciso de Ti
+
+[Refrão]
+   F#m7    C#m7   D               A/C#  Bm7
+Distante de Ti, Senhor, não posso viver
+           E4           E
+Não vale a pena existir
+  C#m7       D
+Escuta o meu clamor
+                     A/C# Bm7
+Mais que o ar que eu respiro
+  Bm7/A    E/G#  Bm7  A2   E
+Preciso de Ti
+
+[Refrão]
+   F#m7    C#m7   D               A/C#  Bm7
+Distante de Ti, Senhor, não posso viver
+           E4           E
+Não vale a pena existir
+  C#m7       D
+Escuta o meu clamor
+                     A/C# Bm7
+Mais que o ar que eu respiro
+  Bm7/A    G   D/F#   A2   E
+Preciso de Ti
+
+[Verso 2]
+          F#m7
+Não posso esquecer
+      D
+O que fizeste por mim (o que fizeste por mim)
+              C#m7
+Como alto é o céu
+    Bm7
+Tua misericórdia é sem fim (misericórdia sem fim)
+C#m7    D                    Bm7                 F#m7
+Como um pai se compadece dos filhos, assim Tu me amas (me amas)
+C#m7      D      Bm7
+Afasta as minhas transgressões
+           E4  E
+Preciso de Ti (Senhor)
+
+[Refrão]
+   F#m7    C#m7   D               A/C#  Bm7
+Distante de Ti, Senhor, não posso viver
+           E4           E
+Não vale a pena existir
+  C#m7       D
+Escuta o meu clamor
+                     A/C# Bm7
+Mais que o ar que eu respiro
+  Bm7/A    E/G#  Bm7  A2   E
+Preciso de Ti
+
+[Refrão]
+   F#m7    C#m7   D               A/C#  Bm7
+Distante de Ti, Senhor, não posso viver
+           E4           E
+Não vale a pena existir (não vale a pena)
+  C#m7       D
+Escuta o meu clamor
+                     A/C# Bm7
+Mais que o ar que eu respiro
+  Bm7/A    G   D/F#   A2   E
+Preciso de Ti
+
+[Ponte]
+     C#m7                  D
+E as lutas vêm tentando me afastar de Ti
+F#m7    C#m7                  D
+Frieza, escuridão procuram me cegar
+           Bm7 C#m7
+Mas eu não vou desistir
+F#m7  E   D
+Ajuda-me, Senhor
+         Bm7        C#m7          G
+Eu quero permanecer Contigo até o fim
+
+[Passagem instrumental]
+A/G  G  A/G  |  F  G/F  E4  E
+
+
+[Retorno ao refrão - passagem anterior: A/G  G  A/G  F  G/F  E4  E]
+            A/C#  D               A/C#  Bm7
+Distante de Ti, Senhor, não posso viver
+           E4           E
+Não vale a pena existir
+  C#m7       D
+Escuta o meu clamor
+                     A/C# Bm7
+Mais que o ar que eu respiro (mais)
+  Bm7/A    E/G#  Bm7  A2   E
+Preciso de Ti
+
+[Refrão]
+   F#m7    C#m7   D               A/C#  Bm7
+Distante de Ti, Senhor, não posso viver (Senhor)
+           E4           E
+Não vale a pena existir (não vale a pena estar aqui)
+  C#m7       D
+Escuta o meu clamor
+                     A/C# Bm7
+Mais que o ar que eu respiro
+  Bm7/A    G   D/F#   A2   E
+Preciso de Ti
+
+[Coda]
+           G   D/F#
+Preciso de Ti
+           F   G
+Preciso de Ti
+           A2  D/F#
+Preciso de Ti
+
+[Ad lib / início da ministração - sem troca fixa por palavra]
+Preciso, eu preciso tanto
+
+[Ministração falada - harmonia livre, sem sincronização verificada]
+E se o Meu povo
+Que se chama pelo Meu nome
+Se humilhar, e orar, e Me buscar
+E se converter dos seus maus caminhos
+Então, Eu ouvirei dos céus
+Perdoarei os seus pecados
+E sararei a sua terra
+Eu é que sei que pensamentos que tenho sobre vós, diz o Senhor
+Pensamentos de paz, e não de mal
+Para vos dar o fim que desejais
+Então me invocareis
+Passareis a orar a mim e eu vos ouvirei
+Buscar-me-eis
+E me encontrareis quando me buscardes
+De todo o vosso coração
+Serei achado de vós, diz o Senhor
+E farei mudar a vossa sorte
+
+[Ministração com respostas cantadas - harmonia livre]
+Preciso de Ti (precisamos de Ti a cada instante)
+Preciso de Ti (precisamos Senhor)
+Preciso de Ti (ah, Senhor)
+Preciso de Ti (chegai-vos a Deus)
+
+[Ministração falada - continua]
+E ele, ele se chegará a vós outros
+Purificai as mãos, pecadores
+E vós que sois de ânimo dobre
+Limpai o coração
+Afligi-vos, lamentai e chorai
+Converta-se o vosso riso em pranto, e a vossa alegria em tristeza
+Humilhai-vos, humilhai-vos, humilhai-vos na presença de Deus
+E Ele vos exaltará
+
+[Retorno ao refrão]
+   F#m7    C#m7   D               A/C#  Bm7
+Distante de Ti, Senhor, não posso viver
+           E4           E
+Não vale a pena existir
+  C#m7       D
+Escuta o meu clamor (meu clamor)
+                     A/C# Bm7
+Mais que o ar que eu respiro
+            Bm7/A    E/G#  Bm7  A2   E
+(Preciso) preciso de Ti
+
+[Refrão]
+   F#m7    C#m7   D               A/C#  Bm7
+Distante de Ti, Senhor, não posso viver
+                             E4           E
+(Não vale a pena) não vale a pena existir
+  C#m7       D
+Escuta o meu clamor
+                     A/C# Bm7
+Mais que o ar que eu respiro
+  Bm7/A    G   D/F#   A2   E
+Preciso de Ti
+
+[Repetições livres de Preciso de Ti - acompanhar a direção da ministração]
+Preciso de Ti
+Preciso, oh, como eu preciso
+Preciso de Ti
+Preciso de Ti, Senhor
+Preciso de Ti (uh, preciso)
+Preciso de Ti
+
+[Ministração falada - harmonia livre, sem sincronização verificada]
+Você pode levantar as suas mãos aos céus
+E dizer: Senhor, eu preciso de Ti
+Olha pra dentro de mim, ó Deus
+Sonda e conhece o meu coração
+Tu sabes, Senhor, todos os meus caminhos
+Por maiores que sejam as minhas necessidades
+O que eu mais preciso é de Ti, Senhor
+Não são de carros ou de mansões
+Muito dinheiro, fama, não
+Não é nada disso que eu preciso
+Tanto vazio e solidão tenho vivido
+Distante de Ti
+Do que adianta ser conhecido
+Ter uma saúde e uma beleza exterior
+Ter vida cheia de aparências
+Religiosidade e tradições
+Me afastam tanto de Ti, Senhor
+(Ó, Deus)
+Pra que tanta mentira e falsidade
+Máscaras no meu rosto me fazem morrer
+Por dentro, estou vazio
+Fedendo como um sepulcro caiado
+Vem mudar o meu interior
+Arrancar a sujeira
+O vazio, Senhor
+Preenche a minha vida
+
+[Ministração final com respostas cantadas - harmonia livre]
+Preciso de Ti (preciso de Ti)
+Preciso de Ti
+Preciso de Ti (da Tua alegria, da Tua vida)
+Preciso de Ti (da Tua satisfação)
+Preciso de Ti (eu preciso de Ti, mais do que tudo)
+Preciso de Ti (só Tu és a minha fonte de vida)
+Preciso de Ti
+Oh, atrai-me, Senhor, atrai-me ao relacionamento íntimo e sincero Contigo
+Preciso de Ti (atrai-me, atrai-me, Senhor, atrai meu coração para Ti)
+Preciso de Ti (para Ti)
+Preciso de Ti
+Preciso de Ti
+Preciso de Ti
+
+[Observações da referência]
+- Referência: cifra principal de Preciso de Ti, em Lá maior, sem capotraste.
+- A2 é a nomenclatura usada pela fonte para o acorde de Lá com segunda; E4 indica a suspensão da terça pela quarta.
+- As ministrações faladas e as repetições livres da letra fornecida ultrapassam a estrutura da cifra de referência. Foram preservadas sem inventar trocas sincronizadas por palavra.
+- Nos retornos cantados ao refrão usa-se a harmonia do refrão de referência. Isso não comprova cada variação instrumental da gravação longa.
+- Passagem instrumental antes do refrão que segue a ponte: A/G  G  A/G  F  G/F  E4  E.
+
+[Fontes]
+https://www.cifraclub.com.br/diante-do-trono/preciso-de-ti/?autoplay=true
+https://www.cifraclub.com/diante-do-trono/preciso-de-ti/
+
+
+12. A ELE A GLÓRIA
+Diante do Trono
+Tom de referência (som real): Em
+Capotraste: sem
+
+[Introdução]
+Em  C  D9(11)  |  Em  C  D9(11)
+Em  Em7  E7(4/9)  |  Em  Em7  E7(4/9)
+
+
+[Primeira parte]
+Em                C
+Porque Dele e por Ele
+     D9(11)           Em
+Para Ele são todas as coisas
+Em                C
+Porque Dele e por Ele
+     D9(11)           Em
+Para Ele são todas as coisas
+Em                C
+Porque Dele e por Ele
+     D9(11)           Em
+Para Ele são todas as coisas
+Em                C
+Porque Dele e por Ele
+     D9(11)           Em
+Para Ele são todas as coisas
+
+[Refrão]
+        C  D9(11)
+A Ele a glória
+        G D/F#  Em
+A Ele a glória
+        C  Bm7
+A Ele a glória
+Bm7
+Pra sempre
+Em7
+Amém
+
+[Refrão - repetição]
+        C  D9(11)
+A Ele a glória
+        G D/F#  Em
+A Ele a glória
+        C  Bm7
+A Ele a glória
+Bm7
+Pra sempre
+Em
+Amém
+
+[Segunda parte]
+Em               C
+Quão profundas riquezas
+  D9(11)                Em
+O saber e o conhecer de Deus
+          C
+Quão insondáveis
+     D9(11)          Em
+Seus juízos e Seus caminhos
+
+[Segunda parte - repetição]
+Em               C
+Quão profundas riquezas
+  D9(11)                Em
+O saber e o conhecer de Deus
+          C
+Quão insondáveis
+     D9(11)          Em
+Seus juízos e Seus caminhos
+
+[Refrão final]
+        C  D9(11)
+A Ele a glória
+        G D/F#  Em
+A Ele a glória
+        C  Bm7
+A Ele a glória
+Bm7
+Pra sempre
+Em7
+Amém
+
+[Refrão final - repetição]
+        C  D9(11)
+A Ele a glória
+        G D/F#  Em
+A Ele a glória
+        C  Bm7
+A Ele a glória
+Bm7
+Pra sempre
+Em
+Amém
+
+[Observações da referência]
+- Referência: versão em Em que inclui a estrofe "Quão profundas riquezas".
+- As trocas G - D/F# - Em acontecem no prolongamento de "glória".
+- Acrescente Em7 - E7(4/9) nas respostas instrumentais, conforme a referência.
+
+[Fontes]
+https://www.cifraclub.com.br/diante-do-trono/a-ele-gloria/?autoplay=true
+https://cifralia.com.br/cifras/a-ele-a-gloria/
+
+
+13. BONDADE DE DEUS
+Isaías Saad
+Tom de referência (som real): D
+Capotraste: sem
+Acordes em som real: D. Fonte com formas de C e capo 2, convertida aqui.
+
+[Introdução]
+D  D4  D  D4
+
+
+[Primeira parte]
+        D
+Te amo, Deus
+      G7M/D     D
+Tua graça nunca falha
+  A/C#   Bm7
+Todos os dias
+     G7M/D       A6
+Eu estou em Tuas mãos
+                  Bm7   G7M/D
+Desde quando me levanto
+        D     A/C#  Bm7
+Até eu me deitar
+         G7M/D   A6       D
+Eu cantarei da bondade de Deus
+
+[Refrão]
+G7M/D                 D
+      És fiel em todo tempo
+G7M/D                     D        A6
+      Em todo tempo Tu és tão, tão bom
+G7M/D                     Bm7
+      Com todo fôlego que tenho
+         G7M/D   A6       D
+Eu cantarei da bondade de Deus
+
+[Segunda parte]
+         D
+Tua doce voz
+         G7M/D         D
+Que me guia em meio ao fogo
+     A/C# Bm7
+Na escuridão
+       G7M/D       A6
+Tua presença me conforta
+               Bm7  G7M/D
+Sei que és meu Pai
+      D   A/C#  Bm7
+Que amigo és
+         G7M/D A      D
+Eu vivo na bondade de Deus
+
+[Refrão]
+G7M/D                 D
+      És fiel em todo tempo
+G7M/D                     D        A6
+      Em todo tempo Tu és tão, tão bom
+G7M/D                     Bm7
+      Com todo fôlego que tenho
+         G7M/D   A6       D
+Eu cantarei da bondade de Deus
+
+[Refrão - repetição]
+G7M/D                 D
+      És fiel em todo tempo
+G7M/D                     D        A6
+      Em todo tempo Tu és tão, tão bom
+G7M/D                     Bm7
+      Com todo fôlego que tenho
+         G7M/D   A6       D
+Eu cantarei da bondade de Deus
+
+[Passagem instrumental]
+D9  D  D4  |  D  D9  D  D4
+
+
+[Ponte]
+D/F#                 G7M/D
+    Tua bondade me seguirá
+   A6         D
+Me seguirá, Senhor
+D/F#                 G7M/D
+    Tua bondade me seguirá
+   A6         D
+Me seguirá, Senhor
+      D/F#           G7M/D
+Eu me rendo a Ti, Te dou o meu ser
+   A6          Bm7
+Entrego tudo a Ti
+D/F#                 G7M/D
+    Tua bondade me seguirá
+   A6         D
+Me seguirá, Senhor
+
+[Ponte - repetição]
+D/F#                 G7M/D
+    Tua bondade me seguirá
+   A6         D
+Me seguirá, Senhor
+D/F#                 G7M/D
+    Tua bondade me seguirá
+   A6         D
+Me seguirá, Senhor
+      D/F#           G7M/D
+Eu me rendo a Ti, te dou o meu ser
+   A6          Bm7
+Entrego tudo a Ti
+D/F#                 G7M/D
+    Tua bondade me seguirá
+   A6         D
+Me seguirá, Senhor
+
+[Refrão final]
+G7M/D                 D
+      És fiel em todo tempo
+G7M/D                     D        A6
+      Em todo tempo Tu és tão, tão bom
+G7M/D                     Bm7
+      Com todo fôlego que tenho
+         G7M/D   A6       D
+Eu cantarei da bondade de Deus
+
+[Refrão final - repetição]
+G7M/D                 D
+      És fiel em todo tempo
+G7M/D                     D        A6
+      Em todo tempo Tu és tão, tão bom
+G7M/D                     Bm7
+      Com todo fôlego que tenho
+         G7M/D   A6       D
+Eu cantarei da bondade de Deus
+
+[Refrão final - repetição]
+G7M/D                 D
+      És fiel em todo tempo
+G7M/D                     D        A6
+      Em todo tempo Tu és tão, tão bom
+G7M/D                     Bm7
+      Com todo fôlego que tenho, que tenho
+         G7M/D   A6       D
+Eu cantarei da bondade de Deus
+
+[Refrão final - repetição]
+G7M/D                 D
+      És fiel em todo tempo
+G7M/D                     D        A6
+      Em todo tempo Tu és tão, tão bom
+G7M/D                     Bm7
+      Com todo fôlego que tenho
+         G7M/D   A6       D
+Eu cantarei da bondade de Deus
+
+[Observações da referência]
+- Tom sonoro D. A referência usa formas de C com capo na 2ª casa.
+- Aqui os acordes foram transpostos para D: toque sem capotraste.
+- G7M/D equivale a Gmaj7/D; A6 é Lá maior com sexta.
+- Passagem antes da ponte: D9 - D - D4; D - D9 - D - D4.
+
+[Fontes]
+https://www.cifraclub.com.br/isaias-saad/bondade-de-deus/
+
+CONFIGURAÇÃO DO VS CODE
+Extensão do arquivo: .txt; fonte monoespaçada; editor.wordWrap = off.
+Alt+Z alterna a quebra automática de linha no Windows/Linux.
+https://code.visualstudio.com/docs/editing/codebasics#_how-do-i-turn-on-word-wrap

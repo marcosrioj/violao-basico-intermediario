@@ -115,6 +115,7 @@
 
 .chart-section {
   min-width: 0;
+  scroll-margin-top: 6rem;
   padding: var(--space-4);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -203,17 +204,6 @@
 .chart-tempo-adjust input {
   width: 100%;
   min-width: 0;
-}
-
-.chart-transport-actions {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.chart-transport-actions > .button {
-  flex: 1 1 8rem;
 }
 
 .chart-section-heading h3 {

@@ -145,282 +145,642 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 17.5,
-            "endBeat": 24.0
+            "endBeat": 24
           },
           {
             "text": "Preciso do Teu perdão",
             "startBeat": 25.5,
-            "endBeat": 32.0
+            "endBeat": 32
           },
           {
             "text": "Preciso de Ti",
             "startBeat": 33.5,
-            "endBeat": 40.0
+            "endBeat": 40
           },
           {
             "text": "Quebranta meu coração",
             "startBeat": 41.5,
-            "endBeat": 48.0
+            "endBeat": 48
           },
           {
             "text": "Como a corça anseia por águas, assim tenho sede",
-            "startBeat": 48.0,
-            "endBeat": 62.0
+            "startBeat": 48,
+            "endBeat": 62,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 52
+              },
+              {
+                "from": 43,
+                "beat": 56
+              }
+            ]
           },
           {
             "text": "Como terra seca, assim é minh'alma",
-            "startBeat": 62.0,
-            "endBeat": 70.0
+            "startBeat": 62,
+            "endBeat": 70,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 64
+              },
+              {
+                "from": 25,
+                "beat": 68
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 70.0,
-            "endBeat": 78.0
+            "startBeat": 70,
+            "endBeat": 78,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 72
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 78.0,
-            "endBeat": 88.0
+            "startBeat": 78,
+            "endBeat": 88,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 79
+              },
+              {
+                "from": 18,
+                "beat": 80
+              },
+              {
+                "from": 34,
+                "beat": 83
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 88.0,
-            "endBeat": 94.0
+            "startBeat": 88,
+            "endBeat": 94,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 92
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 94.0,
-            "endBeat": 99.0
+            "startBeat": 94,
+            "endBeat": 99,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 96
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 99.0,
-            "endBeat": 102.0
+            "startBeat": 99,
+            "endBeat": 102,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 100
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 102.0,
-            "endBeat": 108.0
+            "startBeat": 102,
+            "endBeat": 108,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 102
+              },
+              {
+                "from": 11,
+                "beat": 104
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 110.0,
-            "endBeat": 120.0
+            "startBeat": 110,
+            "endBeat": 120,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 111
+              },
+              {
+                "from": 18,
+                "beat": 112
+              },
+              {
+                "from": 34,
+                "beat": 115
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 120.0,
-            "endBeat": 126.0
+            "startBeat": 120,
+            "endBeat": 126,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 124
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 126.0,
-            "endBeat": 131.0
+            "startBeat": 126,
+            "endBeat": 131,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 128
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 131.0,
-            "endBeat": 134.0
+            "startBeat": 131,
+            "endBeat": 134,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 132
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 134.0,
-            "endBeat": 140.0
+            "startBeat": 134,
+            "endBeat": 140,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 134
+              },
+              {
+                "from": 11,
+                "beat": 136
+              }
+            ]
           },
           {
             "text": "Não posso esquecer",
             "startBeat": 145.5,
-            "endBeat": 152.0
+            "endBeat": 152
           },
           {
             "text": "O que fizeste por mim (o que fizeste por mim)",
             "startBeat": 153.5,
-            "endBeat": 160.0
+            "endBeat": 160
           },
           {
             "text": "Como alto é o céu",
             "startBeat": 161.5,
-            "endBeat": 168.0
+            "endBeat": 168
           },
           {
             "text": "Tua misericórdia é sem fim (misericórdia sem fim)",
             "startBeat": 169.5,
-            "endBeat": 176.0
+            "endBeat": 176
           },
           {
             "text": "Como um pai se compadece dos filhos, assim Tu me amas (me amas)",
-            "startBeat": 176.0,
-            "endBeat": 190.0
+            "startBeat": 176,
+            "endBeat": 190,
+            "chordAnchors": [
+              {
+                "from": 29,
+                "beat": 180
+              },
+              {
+                "from": 49,
+                "beat": 184
+              }
+            ]
           },
           {
             "text": "Afasta as minhas transgressões",
-            "startBeat": 190.0,
-            "endBeat": 198.0
+            "startBeat": 190,
+            "endBeat": 198,
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 192
+              },
+              {
+                "from": 17,
+                "beat": 196
+              }
+            ]
           },
           {
             "text": "Preciso de Ti (Senhor)",
-            "startBeat": 198.0,
-            "endBeat": 206.0
+            "startBeat": 198,
+            "endBeat": 206,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 200
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 206.0,
-            "endBeat": 216.0
+            "startBeat": 206,
+            "endBeat": 216,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 207
+              },
+              {
+                "from": 18,
+                "beat": 208
+              },
+              {
+                "from": 34,
+                "beat": 211
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 216.0,
-            "endBeat": 222.0
+            "startBeat": 216,
+            "endBeat": 222,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 220
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 222.0,
-            "endBeat": 227.0
+            "startBeat": 222,
+            "endBeat": 227,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 224
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 227.0,
-            "endBeat": 230.0
+            "startBeat": 227,
+            "endBeat": 230,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 228
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 230.0,
-            "endBeat": 236.0
+            "startBeat": 230,
+            "endBeat": 236,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 230
+              },
+              {
+                "from": 11,
+                "beat": 232
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 238.0,
-            "endBeat": 248.0
+            "startBeat": 238,
+            "endBeat": 248,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 239
+              },
+              {
+                "from": 18,
+                "beat": 240
+              },
+              {
+                "from": 34,
+                "beat": 243
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir (não vale a pena)",
-            "startBeat": 248.0,
-            "endBeat": 254.0
+            "startBeat": 248,
+            "endBeat": 254,
+            "chordAnchors": [
+              {
+                "from": 25,
+                "beat": 252
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 254.0,
-            "endBeat": 259.0
+            "startBeat": 254,
+            "endBeat": 259,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 256
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 259.0,
-            "endBeat": 262.0
+            "startBeat": 259,
+            "endBeat": 262,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 260
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 262.0,
-            "endBeat": 268.0
+            "startBeat": 262,
+            "endBeat": 268,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 262
+              },
+              {
+                "from": 11,
+                "beat": 264
+              }
+            ]
           },
           {
             "text": "E as lutas vêm tentando me afastar de Ti",
-            "startBeat": 272.0,
-            "endBeat": 280.0
+            "startBeat": 272,
+            "endBeat": 280,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 276
+              }
+            ]
           },
           {
             "text": "Frieza, escuridão procuram me cegar",
-            "startBeat": 280.0,
-            "endBeat": 288.0
+            "startBeat": 280,
+            "endBeat": 288,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 280
+              },
+              {
+                "from": 8,
+                "beat": 282
+              },
+              {
+                "from": 30,
+                "beat": 284
+              }
+            ]
           },
           {
             "text": "Mas eu não vou desistir",
-            "startBeat": 288.0,
-            "endBeat": 292.0
+            "startBeat": 288,
+            "endBeat": 292,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 289.5
+              }
+            ]
           },
           {
             "text": "Ajuda-me, Senhor",
-            "startBeat": 292.0,
-            "endBeat": 296.0
+            "startBeat": 292,
+            "endBeat": 296,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 292
+              },
+              {
+                "from": 6,
+                "beat": 293
+              },
+              {
+                "from": 10,
+                "beat": 294
+              }
+            ]
           },
           {
             "text": "Eu quero permanecer Contigo até o fim",
-            "startBeat": 296.0,
-            "endBeat": 304.0
+            "startBeat": 296,
+            "endBeat": 304,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 297.5
+              },
+              {
+                "from": 34,
+                "beat": 300
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 330.0,
-            "endBeat": 340.0
+            "startBeat": 330,
+            "endBeat": 340,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 331
+              },
+              {
+                "from": 34,
+                "beat": 335
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 340.0,
-            "endBeat": 346.0
+            "startBeat": 340,
+            "endBeat": 346,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 344
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 346.0,
-            "endBeat": 351.0
+            "startBeat": 346,
+            "endBeat": 351,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 348
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro (mais)",
-            "startBeat": 351.0,
-            "endBeat": 354.0
+            "startBeat": 351,
+            "endBeat": 354,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 352
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 354.0,
-            "endBeat": 360.0
+            "startBeat": 354,
+            "endBeat": 360,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 354
+              },
+              {
+                "from": 11,
+                "beat": 356
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver (Senhor)",
-            "startBeat": 362.0,
-            "endBeat": 372.0
+            "startBeat": 362,
+            "endBeat": 372,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 363
+              },
+              {
+                "from": 18,
+                "beat": 364
+              },
+              {
+                "from": 34,
+                "beat": 367
+              },
+              {
+                "from": 41,
+                "beat": 368
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir (não vale a pena estar aqui)",
-            "startBeat": 372.0,
-            "endBeat": 378.0
+            "startBeat": 372,
+            "endBeat": 378,
+            "chordAnchors": [
+              {
+                "from": 25,
+                "beat": 376
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 378.0,
-            "endBeat": 383.0
+            "startBeat": 378,
+            "endBeat": 383,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 380
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 383.0,
-            "endBeat": 386.0
+            "startBeat": 383,
+            "endBeat": 386,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 384
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 386.0,
-            "endBeat": 392.0
+            "startBeat": 386,
+            "endBeat": 392,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 386
+              },
+              {
+                "from": 11,
+                "beat": 388
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 396.0,
-            "endBeat": 404.0
+            "startBeat": 396,
+            "endBeat": 404
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 404.0,
-            "endBeat": 412.0
+            "startBeat": 404,
+            "endBeat": 412,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 408
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 412.0,
-            "endBeat": 420.0
+            "startBeat": 412,
+            "endBeat": 420
           },
           {
             "text": "Preciso, eu preciso tanto",
-            "startBeat": 420.0,
-            "endBeat": 428.0
+            "startBeat": 420,
+            "endBeat": 428
           },
           {
             "text": "Preciso de Ti (precisamos de Ti a cada instante)",
-            "startBeat": 428.0,
-            "endBeat": 436.0
+            "startBeat": 428,
+            "endBeat": 436
           },
           {
             "text": "Preciso de Ti (precisamos Senhor)",
-            "startBeat": 436.0,
-            "endBeat": 444.0
+            "startBeat": 436,
+            "endBeat": 444
           },
           {
             "text": "Preciso de Ti (ah, Senhor)",
-            "startBeat": 444.0,
-            "endBeat": 448.0
+            "startBeat": 444,
+            "endBeat": 448
           }
         ],
         "alignmentNote": "Mapa de estudo por frases e cadências da cifra de referência: as entradas do refrão começam nos dois pulsos anteriores ao trecho R; suas saídas e a última frase da ponte atravessam a mudança de seção. As duas versões mantêm a mesma forma. O final didático seleciona retomadas do texto fornecido; toda a ministração permanece na letra completa. Entradas vocais e pausas ainda precisam de conferência auditiva na gravação: este mapa não reproduz a mudança de 68 para 71 BPM nem certifica sincronização com o vídeo.",
@@ -431,282 +791,642 @@
           {
             "text": "Preciso de Ti",
             "startBeat": 17.5,
-            "endBeat": 24.0
+            "endBeat": 24
           },
           {
             "text": "Preciso do Teu perdão",
             "startBeat": 25.5,
-            "endBeat": 32.0
+            "endBeat": 32
           },
           {
             "text": "Preciso de Ti",
             "startBeat": 33.5,
-            "endBeat": 40.0
+            "endBeat": 40
           },
           {
             "text": "Quebranta meu coração",
             "startBeat": 41.5,
-            "endBeat": 48.0
+            "endBeat": 48
           },
           {
             "text": "Como a corça anseia por águas, assim tenho sede",
-            "startBeat": 48.0,
-            "endBeat": 62.0
+            "startBeat": 48,
+            "endBeat": 62,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 52
+              },
+              {
+                "from": 43,
+                "beat": 56
+              }
+            ]
           },
           {
             "text": "Como terra seca, assim é minh'alma",
-            "startBeat": 62.0,
-            "endBeat": 70.0
+            "startBeat": 62,
+            "endBeat": 70,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 64
+              },
+              {
+                "from": 25,
+                "beat": 68
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 70.0,
-            "endBeat": 78.0
+            "startBeat": 70,
+            "endBeat": 78,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 72
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 78.0,
-            "endBeat": 88.0
+            "startBeat": 78,
+            "endBeat": 88,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 79
+              },
+              {
+                "from": 18,
+                "beat": 80
+              },
+              {
+                "from": 34,
+                "beat": 83
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 88.0,
-            "endBeat": 94.0
+            "startBeat": 88,
+            "endBeat": 94,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 92
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 94.0,
-            "endBeat": 99.0
+            "startBeat": 94,
+            "endBeat": 99,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 96
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 99.0,
-            "endBeat": 102.0
+            "startBeat": 99,
+            "endBeat": 102,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 100
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 102.0,
-            "endBeat": 108.0
+            "startBeat": 102,
+            "endBeat": 108,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 102
+              },
+              {
+                "from": 11,
+                "beat": 104
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 110.0,
-            "endBeat": 120.0
+            "startBeat": 110,
+            "endBeat": 120,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 111
+              },
+              {
+                "from": 18,
+                "beat": 112
+              },
+              {
+                "from": 34,
+                "beat": 115
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 120.0,
-            "endBeat": 126.0
+            "startBeat": 120,
+            "endBeat": 126,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 124
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 126.0,
-            "endBeat": 131.0
+            "startBeat": 126,
+            "endBeat": 131,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 128
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 131.0,
-            "endBeat": 134.0
+            "startBeat": 131,
+            "endBeat": 134,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 132
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 134.0,
-            "endBeat": 140.0
+            "startBeat": 134,
+            "endBeat": 140,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 134
+              },
+              {
+                "from": 11,
+                "beat": 136
+              }
+            ]
           },
           {
             "text": "Não posso esquecer",
             "startBeat": 145.5,
-            "endBeat": 152.0
+            "endBeat": 152
           },
           {
             "text": "O que fizeste por mim (o que fizeste por mim)",
             "startBeat": 153.5,
-            "endBeat": 160.0
+            "endBeat": 160
           },
           {
             "text": "Como alto é o céu",
             "startBeat": 161.5,
-            "endBeat": 168.0
+            "endBeat": 168
           },
           {
             "text": "Tua misericórdia é sem fim (misericórdia sem fim)",
             "startBeat": 169.5,
-            "endBeat": 176.0
+            "endBeat": 176
           },
           {
             "text": "Como um pai se compadece dos filhos, assim Tu me amas (me amas)",
-            "startBeat": 176.0,
-            "endBeat": 190.0
+            "startBeat": 176,
+            "endBeat": 190,
+            "chordAnchors": [
+              {
+                "from": 29,
+                "beat": 180
+              },
+              {
+                "from": 49,
+                "beat": 184
+              }
+            ]
           },
           {
             "text": "Afasta as minhas transgressões",
-            "startBeat": 190.0,
-            "endBeat": 198.0
+            "startBeat": 190,
+            "endBeat": 198,
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 192
+              },
+              {
+                "from": 17,
+                "beat": 196
+              }
+            ]
           },
           {
             "text": "Preciso de Ti (Senhor)",
-            "startBeat": 198.0,
-            "endBeat": 206.0
+            "startBeat": 198,
+            "endBeat": 206,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 200
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 206.0,
-            "endBeat": 216.0
+            "startBeat": 206,
+            "endBeat": 216,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 207
+              },
+              {
+                "from": 18,
+                "beat": 208
+              },
+              {
+                "from": 34,
+                "beat": 211
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 216.0,
-            "endBeat": 222.0
+            "startBeat": 216,
+            "endBeat": 222,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 220
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 222.0,
-            "endBeat": 227.0
+            "startBeat": 222,
+            "endBeat": 227,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 224
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 227.0,
-            "endBeat": 230.0
+            "startBeat": 227,
+            "endBeat": 230,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 228
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 230.0,
-            "endBeat": 236.0
+            "startBeat": 230,
+            "endBeat": 236,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 230
+              },
+              {
+                "from": 11,
+                "beat": 232
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 238.0,
-            "endBeat": 248.0
+            "startBeat": 238,
+            "endBeat": 248,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 239
+              },
+              {
+                "from": 18,
+                "beat": 240
+              },
+              {
+                "from": 34,
+                "beat": 243
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir (não vale a pena)",
-            "startBeat": 248.0,
-            "endBeat": 254.0
+            "startBeat": 248,
+            "endBeat": 254,
+            "chordAnchors": [
+              {
+                "from": 25,
+                "beat": 252
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 254.0,
-            "endBeat": 259.0
+            "startBeat": 254,
+            "endBeat": 259,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 256
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 259.0,
-            "endBeat": 262.0
+            "startBeat": 259,
+            "endBeat": 262,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 260
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 262.0,
-            "endBeat": 268.0
+            "startBeat": 262,
+            "endBeat": 268,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 262
+              },
+              {
+                "from": 11,
+                "beat": 264
+              }
+            ]
           },
           {
             "text": "E as lutas vêm tentando me afastar de Ti",
-            "startBeat": 272.0,
-            "endBeat": 280.0
+            "startBeat": 272,
+            "endBeat": 280,
+            "chordAnchors": [
+              {
+                "from": 27,
+                "beat": 276
+              }
+            ]
           },
           {
             "text": "Frieza, escuridão procuram me cegar",
-            "startBeat": 280.0,
-            "endBeat": 288.0
+            "startBeat": 280,
+            "endBeat": 288,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 280
+              },
+              {
+                "from": 8,
+                "beat": 282
+              },
+              {
+                "from": 30,
+                "beat": 284
+              }
+            ]
           },
           {
             "text": "Mas eu não vou desistir",
-            "startBeat": 288.0,
-            "endBeat": 292.0
+            "startBeat": 288,
+            "endBeat": 292,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 289.5
+              }
+            ]
           },
           {
             "text": "Ajuda-me, Senhor",
-            "startBeat": 292.0,
-            "endBeat": 296.0
+            "startBeat": 292,
+            "endBeat": 296,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 292
+              },
+              {
+                "from": 6,
+                "beat": 293
+              },
+              {
+                "from": 10,
+                "beat": 294
+              }
+            ]
           },
           {
             "text": "Eu quero permanecer Contigo até o fim",
-            "startBeat": 296.0,
-            "endBeat": 304.0
+            "startBeat": 296,
+            "endBeat": 304,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 297.5
+              },
+              {
+                "from": 34,
+                "beat": 300
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver",
-            "startBeat": 330.0,
-            "endBeat": 340.0
+            "startBeat": 330,
+            "endBeat": 340,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 331
+              },
+              {
+                "from": 34,
+                "beat": 335
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir",
-            "startBeat": 340.0,
-            "endBeat": 346.0
+            "startBeat": 340,
+            "endBeat": 346,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 344
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 346.0,
-            "endBeat": 351.0
+            "startBeat": 346,
+            "endBeat": 351,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 348
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro (mais)",
-            "startBeat": 351.0,
-            "endBeat": 354.0
+            "startBeat": 351,
+            "endBeat": 354,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 352
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 354.0,
-            "endBeat": 360.0
+            "startBeat": 354,
+            "endBeat": 360,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 354
+              },
+              {
+                "from": 11,
+                "beat": 356
+              }
+            ]
           },
           {
             "text": "Distante de Ti, Senhor, não posso viver (Senhor)",
-            "startBeat": 362.0,
-            "endBeat": 372.0
+            "startBeat": 362,
+            "endBeat": 372,
+            "chordAnchors": [
+              {
+                "from": 12,
+                "beat": 363
+              },
+              {
+                "from": 18,
+                "beat": 364
+              },
+              {
+                "from": 34,
+                "beat": 367
+              },
+              {
+                "from": 41,
+                "beat": 368
+              }
+            ]
           },
           {
             "text": "Não vale a pena existir (não vale a pena estar aqui)",
-            "startBeat": 372.0,
-            "endBeat": 378.0
+            "startBeat": 372,
+            "endBeat": 378,
+            "chordAnchors": [
+              {
+                "from": 25,
+                "beat": 376
+              }
+            ]
           },
           {
             "text": "Escuta o meu clamor",
-            "startBeat": 378.0,
-            "endBeat": 383.0
+            "startBeat": 378,
+            "endBeat": 383,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 380
+              }
+            ]
           },
           {
             "text": "Mais que o ar que eu respiro",
-            "startBeat": 383.0,
-            "endBeat": 386.0
+            "startBeat": 383,
+            "endBeat": 386,
+            "chordAnchors": [
+              {
+                "from": 26,
+                "beat": 384
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 386.0,
-            "endBeat": 392.0
+            "startBeat": 386,
+            "endBeat": 392,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 386
+              },
+              {
+                "from": 11,
+                "beat": 388
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 396.0,
-            "endBeat": 404.0
+            "startBeat": 396,
+            "endBeat": 404
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 404.0,
-            "endBeat": 412.0
+            "startBeat": 404,
+            "endBeat": 412,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 408
+              }
+            ]
           },
           {
             "text": "Preciso de Ti",
-            "startBeat": 412.0,
-            "endBeat": 420.0
+            "startBeat": 412,
+            "endBeat": 420
           },
           {
             "text": "Preciso, eu preciso tanto",
-            "startBeat": 420.0,
-            "endBeat": 428.0
+            "startBeat": 420,
+            "endBeat": 428
           },
           {
             "text": "Preciso de Ti (precisamos de Ti a cada instante)",
-            "startBeat": 428.0,
-            "endBeat": 436.0
+            "startBeat": 428,
+            "endBeat": 436
           },
           {
             "text": "Preciso de Ti (precisamos Senhor)",
-            "startBeat": 436.0,
-            "endBeat": 444.0
+            "startBeat": 436,
+            "endBeat": 444
           },
           {
             "text": "Preciso de Ti (ah, Senhor)",
-            "startBeat": 444.0,
-            "endBeat": 448.0
+            "startBeat": 444,
+            "endBeat": 448
           }
         ],
         "alignmentNote": "Mapa de estudo por frases e cadências da cifra de referência: as entradas do refrão começam nos dois pulsos anteriores ao trecho R; suas saídas e a última frase da ponte atravessam a mudança de seção. As duas versões mantêm a mesma forma. O final didático seleciona retomadas do texto fornecido; toda a ministração permanece na letra completa. Entradas vocais e pausas ainda precisam de conferência auditiva na gravação: este mapa não reproduz a mudança de 68 para 71 BPM nem certifica sincronização com o vídeo.",
@@ -759,22 +1479,46 @@
           {
             "text": "Porque Dele e por Ele",
             "startBeat": 45,
-            "endBeat": 52
+            "endBeat": 52,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 48
+              }
+            ]
           },
           {
             "text": "Para Ele são todas as coisas",
             "startBeat": 52,
-            "endBeat": 59.5
+            "endBeat": 59.5,
+            "chordAnchors": [
+              {
+                "from": 22,
+                "beat": 56
+              }
+            ]
           },
           {
             "text": "Porque Dele e por Ele",
             "startBeat": 61,
-            "endBeat": 68
+            "endBeat": 68,
+            "chordAnchors": [
+              {
+                "from": 18,
+                "beat": 64
+              }
+            ]
           },
           {
             "text": "Para Ele são todas as coisas",
             "startBeat": 68,
-            "endBeat": 75.5
+            "endBeat": 75.5,
+            "chordAnchors": [
+              {
+                "from": 22,
+                "beat": 72
+              }
+            ]
           },
           {
             "text": "Porque Dele e por Ele",
@@ -794,22 +1538,50 @@
           {
             "text": "Para Ele são todas as coisas",
             "startBeat": 100,
-            "endBeat": 107
+            "endBeat": 107,
+            "chordAnchors": [
+              {
+                "from": 22,
+                "beat": 104
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 107,
-            "endBeat": 116
+            "endBeat": 116,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 108
+              },
+              {
+                "from": 11,
+                "beat": 112
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 116,
-            "endBeat": 124
+            "endBeat": 124,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 118
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 124,
-            "endBeat": 130
+            "endBeat": 130,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 128
+              }
+            ]
           },
           {
             "text": "Pra sempre",
@@ -819,22 +1591,50 @@
           {
             "text": "Amém",
             "startBeat": 132,
-            "endBeat": 136
+            "endBeat": 136,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 132
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 139,
-            "endBeat": 148
+            "endBeat": 148,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 140
+              },
+              {
+                "from": 11,
+                "beat": 144
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 148,
-            "endBeat": 156
+            "endBeat": 156,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 150
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 156,
-            "endBeat": 162
+            "endBeat": 162,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 160
+              }
+            ]
           },
           {
             "text": "Pra sempre",
@@ -844,27 +1644,57 @@
           {
             "text": "Amém",
             "startBeat": 164,
-            "endBeat": 168
+            "endBeat": 168,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 164
+              }
+            ]
           },
           {
             "text": "Quão profundas riquezas",
             "startBeat": 181,
-            "endBeat": 188
+            "endBeat": 188,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 184
+              }
+            ]
           },
           {
             "text": "O saber e o conhecer de Deus",
             "startBeat": 188,
-            "endBeat": 195.5
+            "endBeat": 195.5,
+            "chordAnchors": [
+              {
+                "from": 24,
+                "beat": 192
+              }
+            ]
           },
           {
             "text": "Quão insondáveis",
             "startBeat": 197,
-            "endBeat": 204
+            "endBeat": 204,
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 200
+              }
+            ]
           },
           {
             "text": "Seus juízos e Seus caminhos",
             "startBeat": 204,
-            "endBeat": 211.5
+            "endBeat": 211.5,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 208
+              }
+            ]
           },
           {
             "text": "Quão profundas riquezas",
@@ -884,22 +1714,50 @@
           {
             "text": "Seus juízos e Seus caminhos",
             "startBeat": 236,
-            "endBeat": 243
+            "endBeat": 243,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 240
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 243,
-            "endBeat": 252
+            "endBeat": 252,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 244
+              },
+              {
+                "from": 11,
+                "beat": 248
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 252,
-            "endBeat": 260
+            "endBeat": 260,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 254
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 260,
-            "endBeat": 266
+            "endBeat": 266,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 264
+              }
+            ]
           },
           {
             "text": "Pra sempre",
@@ -909,22 +1767,50 @@
           {
             "text": "Amém",
             "startBeat": 268,
-            "endBeat": 272
+            "endBeat": 272,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 268
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 275,
-            "endBeat": 284
+            "endBeat": 284,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 276
+              },
+              {
+                "from": 11,
+                "beat": 280
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 284,
-            "endBeat": 292
+            "endBeat": 292,
+            "chordAnchors": [
+              {
+                "from": 8,
+                "beat": 286
+              }
+            ]
           },
           {
             "text": "A Ele a glória",
             "startBeat": 292,
-            "endBeat": 298
+            "endBeat": 298,
+            "chordAnchors": [
+              {
+                "from": 11,
+                "beat": 296
+              }
+            ]
           },
           {
             "text": "Pra sempre",
@@ -934,7 +1820,13 @@
           {
             "text": "Amém",
             "startBeat": 300,
-            "endBeat": 304
+            "endBeat": 304,
+            "chordAnchors": [
+              {
+                "from": 0,
+                "beat": 300
+              }
+            ]
           }
         ],
         "alignmentNote": "As frases seguem os blocos harmônicos de nove e seis compassos da referência, com cadências distintas, estrofes próprias em cada passagem e resolução de Amém no Em7. No refrão curto, essa resolução alcança o primeiro compasso do interlúdio. A introdução, os retornos restantes e o encerramento ficam instrumentais. O texto fornecido foi preservado inteiro; as entradas vocais deste mapa de estudo ainda não foram medidas contra o vídeo, cuja transcrição de referência termina em 4:27.",
@@ -1008,253 +1900,577 @@
         "cues": [
           {
             "text": "Te amo, Deus",
-            "startBeat": 16.0,
-            "endBeat": 20.0
+            "startBeat": 16,
+            "endBeat": 20
           },
           {
             "text": "Tua graça nunca falha",
-            "startBeat": 20.0,
-            "endBeat": 25.0
+            "startBeat": 20,
+            "endBeat": 25,
+            "chordAnchors": [
+              {
+                "from": 16,
+                "beat": 22
+              }
+            ]
           },
           {
             "text": "Todos os dias",
-            "startBeat": 25.0,
-            "endBeat": 28.0
+            "startBeat": 25,
+            "endBeat": 28,
+            "chordAnchors": [
+              {
+                "from": 9,
+                "beat": 26
+              }
+            ]
           },
           {
             "text": "Eu estou em Tuas mãos",
-            "startBeat": 28.0,
-            "endBeat": 34.0
+            "startBeat": 28,
+            "endBeat": 34,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 30
+              }
+            ]
           },
           {
             "text": "Desde quando me levanto",
-            "startBeat": 34.0,
-            "endBeat": 38.0
+            "startBeat": 34,
+            "endBeat": 38
           },
           {
             "text": "Até eu me deitar",
-            "startBeat": 38.0,
-            "endBeat": 42.0
+            "startBeat": 38,
+            "endBeat": 42,
+            "chordAnchors": [
+              {
+                "from": 13,
+                "beat": 39
+              }
+            ]
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 42.0,
-            "endBeat": 50.0
+            "startBeat": 42,
+            "endBeat": 50,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 44
+              },
+              {
+                "from": 26,
+                "beat": 46
+              }
+            ]
           },
           {
             "text": "És fiel em todo tempo",
-            "startBeat": 50.0,
-            "endBeat": 58.0
+            "startBeat": 50,
+            "endBeat": 58,
+            "chordAnchors": [
+              {
+                "from": 16,
+                "beat": 54
+              }
+            ]
           },
           {
             "text": "Em todo tempo Tu és tão, tão bom",
-            "startBeat": 58.0,
-            "endBeat": 66.0
+            "startBeat": 58,
+            "endBeat": 66,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 62
+              },
+              {
+                "from": 29,
+                "beat": 64
+              }
+            ]
           },
           {
             "text": "Com todo fôlego que tenho",
-            "startBeat": 66.0,
-            "endBeat": 74.0
+            "startBeat": 66,
+            "endBeat": 74,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 70
+              }
+            ]
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 74.0,
-            "endBeat": 82.0
+            "startBeat": 74,
+            "endBeat": 82,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 76
+              },
+              {
+                "from": 26,
+                "beat": 78
+              }
+            ]
           },
           {
             "text": "Tua doce voz",
-            "startBeat": 82.0,
-            "endBeat": 86.0
+            "startBeat": 82,
+            "endBeat": 86
           },
           {
             "text": "Que me guia em meio ao fogo",
-            "startBeat": 86.0,
-            "endBeat": 91.0
+            "startBeat": 86,
+            "endBeat": 91,
+            "chordAnchors": [
+              {
+                "from": 23,
+                "beat": 88
+              }
+            ]
           },
           {
             "text": "Na escuridão",
-            "startBeat": 91.0,
-            "endBeat": 94.0
+            "startBeat": 91,
+            "endBeat": 94,
+            "chordAnchors": [
+              {
+                "from": 9,
+                "beat": 92
+              }
+            ]
           },
           {
             "text": "Tua presença me conforta",
-            "startBeat": 94.0,
-            "endBeat": 100.0
+            "startBeat": 94,
+            "endBeat": 100,
+            "chordAnchors": [
+              {
+                "from": 19,
+                "beat": 96
+              }
+            ]
           },
           {
             "text": "Sei que és meu Pai",
-            "startBeat": 100.0,
-            "endBeat": 104.0
+            "startBeat": 100,
+            "endBeat": 104
           },
           {
             "text": "Que amigo és",
-            "startBeat": 104.0,
-            "endBeat": 108.0
+            "startBeat": 104,
+            "endBeat": 108,
+            "chordAnchors": [
+              {
+                "from": 10,
+                "beat": 105
+              }
+            ]
           },
           {
             "text": "Eu vivo na bondade de Deus",
-            "startBeat": 108.0,
-            "endBeat": 116.0
+            "startBeat": 108,
+            "endBeat": 116,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 110
+              },
+              {
+                "from": 22,
+                "beat": 112
+              }
+            ]
           },
           {
             "text": "És fiel em todo tempo",
-            "startBeat": 116.0,
-            "endBeat": 124.0
+            "startBeat": 116,
+            "endBeat": 124,
+            "chordAnchors": [
+              {
+                "from": 16,
+                "beat": 120
+              }
+            ]
           },
           {
             "text": "Em todo tempo Tu és tão, tão bom",
-            "startBeat": 124.0,
-            "endBeat": 132.0
+            "startBeat": 124,
+            "endBeat": 132,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 128
+              },
+              {
+                "from": 29,
+                "beat": 130
+              }
+            ]
           },
           {
             "text": "Com todo fôlego que tenho",
-            "startBeat": 132.0,
-            "endBeat": 140.0
+            "startBeat": 132,
+            "endBeat": 140,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 136
+              }
+            ]
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 140.0,
-            "endBeat": 148.0
+            "startBeat": 140,
+            "endBeat": 148,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 142
+              },
+              {
+                "from": 26,
+                "beat": 144
+              }
+            ]
           },
           {
             "text": "És fiel em todo tempo",
-            "startBeat": 148.0,
-            "endBeat": 156.0
+            "startBeat": 148,
+            "endBeat": 156,
+            "chordAnchors": [
+              {
+                "from": 16,
+                "beat": 152
+              }
+            ]
           },
           {
             "text": "Em todo tempo Tu és tão, tão bom",
-            "startBeat": 156.0,
-            "endBeat": 164.0
+            "startBeat": 156,
+            "endBeat": 164,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 160
+              },
+              {
+                "from": 29,
+                "beat": 162
+              }
+            ]
           },
           {
             "text": "Com todo fôlego que tenho",
-            "startBeat": 164.0,
-            "endBeat": 172.0
+            "startBeat": 164,
+            "endBeat": 172,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 168
+              }
+            ]
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 172.0,
-            "endBeat": 180.0
+            "startBeat": 172,
+            "endBeat": 180,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 174
+              },
+              {
+                "from": 26,
+                "beat": 176
+              }
+            ]
           },
           {
             "text": "Tua bondade me seguirá",
-            "startBeat": 192.0,
-            "endBeat": 196.0
+            "startBeat": 192,
+            "endBeat": 196,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 194
+              }
+            ]
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 196.0,
-            "endBeat": 200.0
+            "startBeat": 196,
+            "endBeat": 200,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 198
+              }
+            ]
           },
           {
             "text": "Tua bondade me seguirá",
-            "startBeat": 200.0,
-            "endBeat": 204.0
+            "startBeat": 200,
+            "endBeat": 204,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 202
+              }
+            ]
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 204.0,
-            "endBeat": 208.0
+            "startBeat": 204,
+            "endBeat": 208,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 206
+              }
+            ]
           },
           {
             "text": "Eu me rendo a Ti, Te dou o meu ser",
-            "startBeat": 208.0,
-            "endBeat": 212.0
+            "startBeat": 208,
+            "endBeat": 212,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 210
+              }
+            ]
           },
           {
             "text": "Entrego tudo a Ti",
-            "startBeat": 212.0,
-            "endBeat": 216.0
+            "startBeat": 212,
+            "endBeat": 216,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 214
+              }
+            ]
           },
           {
             "text": "Tua bondade me seguirá",
-            "startBeat": 216.0,
-            "endBeat": 220.0
+            "startBeat": 216,
+            "endBeat": 220,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 218
+              }
+            ]
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 220.0,
-            "endBeat": 224.0
+            "startBeat": 220,
+            "endBeat": 224,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 222
+              }
+            ]
           },
           {
             "text": "Tua bondade me seguirá",
-            "startBeat": 224.0,
-            "endBeat": 228.0
+            "startBeat": 224,
+            "endBeat": 228,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 226
+              }
+            ]
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 228.0,
-            "endBeat": 232.0
+            "startBeat": 228,
+            "endBeat": 232,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 230
+              }
+            ]
           },
           {
             "text": "Tua bondade me seguirá",
-            "startBeat": 232.0,
-            "endBeat": 236.0
+            "startBeat": 232,
+            "endBeat": 236,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 234
+              }
+            ]
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 236.0,
-            "endBeat": 240.0
+            "startBeat": 236,
+            "endBeat": 240,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 238
+              }
+            ]
           },
           {
             "text": "Eu me rendo a Ti, te dou o meu ser",
-            "startBeat": 240.0,
-            "endBeat": 244.0
+            "startBeat": 240,
+            "endBeat": 244,
+            "chordAnchors": [
+              {
+                "from": 21,
+                "beat": 242
+              }
+            ]
           },
           {
             "text": "Entrego tudo a Ti",
-            "startBeat": 244.0,
-            "endBeat": 248.0
+            "startBeat": 244,
+            "endBeat": 248,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 246
+              }
+            ]
           },
           {
             "text": "Tua bondade me seguirá",
-            "startBeat": 248.0,
-            "endBeat": 252.0
+            "startBeat": 248,
+            "endBeat": 252,
+            "chordAnchors": [
+              {
+                "from": 17,
+                "beat": 250
+              }
+            ]
           },
           {
             "text": "Me seguirá, Senhor",
-            "startBeat": 252.0,
-            "endBeat": 258.0
+            "startBeat": 252,
+            "endBeat": 258,
+            "chordAnchors": [
+              {
+                "from": 14,
+                "beat": 254
+              }
+            ]
           },
           {
             "text": "És fiel em todo tempo",
-            "startBeat": 262.0,
-            "endBeat": 270.0
+            "startBeat": 262,
+            "endBeat": 270,
+            "chordAnchors": [
+              {
+                "from": 16,
+                "beat": 266
+              }
+            ]
           },
           {
             "text": "Em todo tempo Tu és tão, tão bom",
-            "startBeat": 270.0,
-            "endBeat": 278.0
+            "startBeat": 270,
+            "endBeat": 278,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 274
+              },
+              {
+                "from": 29,
+                "beat": 276
+              }
+            ]
           },
           {
             "text": "Com todo fôlego que tenho",
-            "startBeat": 278.0,
-            "endBeat": 286.0
+            "startBeat": 278,
+            "endBeat": 286,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 282
+              }
+            ]
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 286.0,
-            "endBeat": 294.0
+            "startBeat": 286,
+            "endBeat": 294,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 288
+              },
+              {
+                "from": 26,
+                "beat": 290
+              }
+            ]
           },
           {
             "text": "És fiel em todo tempo",
-            "startBeat": 294.0,
-            "endBeat": 302.0
+            "startBeat": 294,
+            "endBeat": 302,
+            "chordAnchors": [
+              {
+                "from": 16,
+                "beat": 298
+              }
+            ]
           },
           {
             "text": "Em todo tempo Tu és tão, tão bom",
-            "startBeat": 302.0,
-            "endBeat": 310.0
+            "startBeat": 302,
+            "endBeat": 310,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 306
+              },
+              {
+                "from": 29,
+                "beat": 308
+              }
+            ]
           },
           {
             "text": "Com todo fôlego que tenho",
-            "startBeat": 310.0,
-            "endBeat": 318.0
+            "startBeat": 310,
+            "endBeat": 318,
+            "chordAnchors": [
+              {
+                "from": 20,
+                "beat": 314
+              }
+            ]
           },
           {
             "text": "Eu cantarei da bondade de Deus",
-            "startBeat": 318.0,
-            "endBeat": 326.0
+            "startBeat": 318,
+            "endBeat": 326,
+            "chordAnchors": [
+              {
+                "from": 15,
+                "beat": 320
+              },
+              {
+                "from": 26,
+                "beat": 322
+              }
+            ]
           }
         ],
         "alignmentNote": "Frases associadas às mudanças harmônicas da cifra e aos compassos escritos, preservando o 2/4 de V2 e P2.8. As duas estrofes usam textos diferentes; a última frase da segunda ponte resolve no D da ligação. A forma da aula contém dois refrões finais; as duas repetições adicionais do texto fornecido permanecem na letra completa. Este é um mapa de estudo ainda sem medição das entradas e pausas vocais contra o fonograma.",

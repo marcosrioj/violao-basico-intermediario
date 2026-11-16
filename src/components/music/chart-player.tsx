@@ -1,7 +1,7 @@
 'use client';
 import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
-import { Play, Pause, Square, Metronome, Minus, Plus } from 'lucide-react';
+import { Metronome, Minus, Plus } from 'lucide-react';
 import type { ChartBar, SongVersion } from '@/content/types';
 import { chords } from '@/content/chords';
 import { soundChord, audioContext, playTone } from './audio';
@@ -58,15 +58,13 @@ export function ChartPlayer({
   const tempoId = useId();
   const transport = useRef<ChartTransport | null>(null);
   const settings = useRef({ metronome: false, range: null as LoopRange | null });
-  const pendingStart = useRef<number | null>(null);
   const playing = playhead.status === 'playing';
-  const groups = useMemo(() => buildChartGroups(chart, section), [chart, section]);
+  const groups = useMemo(() => buildChartGroups(chart), [chart]);
   const bars = useMemo(() => groups.flatMap((group) => group.bars.map(({ bar }) => bar)), [groups]);
-  const fullBars = useMemo(
-    () => buildChartGroups(chart).flatMap((group) => group.bars.map(({ bar }) => bar)),
-    [chart],
+  const totalBeats = totalChartBeats(bars);
+  const activeGroup = groups.find((group) =>
+    group.bars.some(({ playbackIndex }) => playbackIndex === playhead.bar),
   );
-  const totalBeats = totalChartBeats(fullBars);
   const storageKey = useMemo(() => chartLyricsKey(chart, songId), [chart, songId]);
   const lyrics = useChartLyrics(storageKey, totalBeats, lyricsContent?.cues ?? noLyrics);
   const syllabicLyrics = useMemo(() => withLyricSyllables(lyrics.cues), [lyrics.cues]);
@@ -84,7 +82,6 @@ export function ChartPlayer({
     [chart],
   );
   const stopPlayback = useCallback(() => {
-    pendingStart.current = null;
     lyricsClock.reset();
     transport.current?.stop();
   }, [lyricsClock]);
@@ -108,14 +105,24 @@ export function ChartPlayer({
     transport.current?.setLoopRange(null);
   }
   function startReference(_bar: number, sectionId: string) {
+    const target = groups.find((group) => group.sectionId === sectionId);
+    if (target) startAt(target.bars[0].playbackIndex);
+  }
+  const pausePlayback = useCallback(() => transport.current?.pause(), []);
+  const resumePlayback = useCallback(() => {
     void audioContext().resume();
-    const currentGroup = groups.find((group) => group.sectionId === sectionId);
-    if (currentGroup) startAt(currentGroup.bars[0].playbackIndex);
-    else {
-      stopPlayback();
-      clearPassageRepeat();
-      pendingStart.current = 0;
-      setSection(sectionId);
+    transport.current?.play();
+  }, []);
+  function navigateToSection(sectionId: string) {
+    stopPlayback();
+    clearPassageRepeat();
+    setSection(sectionId);
+    const index =
+      sectionId === 'all' ? 0 : groups.findIndex((group) => group.sectionId === sectionId);
+    const target = arrangement.current?.children[index] as HTMLElement | undefined;
+    if (target) {
+      target.scrollIntoView({ block: 'start', behavior: 'instant' });
+      target.querySelector<HTMLButtonElement>('.chart-start')?.focus({ preventScroll: true });
     }
   }
   const toggleGroupRepeat = useCallback(
@@ -137,27 +144,13 @@ export function ChartPlayer({
         settings.current.range = range;
         setRepeatGroup(active.key);
         transport.current?.setLoopRange(range);
-      } else {
-        stopPlayback();
-        settings.current.range = { startBar: 0, endBar: group.bars.length };
-        setRepeatGroup(`selected-${group.sectionId}`);
-        if (playing) pendingStart.current = 0;
-        setSection(group.sectionId);
       }
     },
-    [groups, playing, stopPlayback],
+    [groups],
   );
   function changeBpm(value: number) {
     stopPlayback();
     setBpm(Math.min(180, Math.max(30, value)));
-  }
-  function togglePlayback() {
-    if (playing) transport.current?.pause();
-    else {
-      if (playhead.status === 'idle') lyricsClock.reset();
-      void audioContext().resume();
-      transport.current?.play();
-    }
   }
   useEffect(() => {
     const player = new ChartTransport(
@@ -175,12 +168,6 @@ export function ChartPlayer({
     transport.current = player;
     player.setLoopRange(settings.current.range);
     player.setMetronome(settings.current.metronome);
-    if (pendingStart.current !== null) {
-      const from = pendingStart.current;
-      pendingStart.current = null;
-      void audioContext().resume();
-      player.play(from);
-    }
     const pauseHidden = () => {
       if (document.hidden) player.pause();
     };
@@ -220,12 +207,12 @@ export function ChartPlayer({
           <p className="eyebrow">TOQUE JUNTO</p>
           <Hint label="Controles da cifra">
             <p>
-              Pausar guarda o ponto dentro do compasso; Continuar retoma dali. Parar volta ao
-              início.
+              Tocar daqui inicia a sequência nessa passagem. Pausar guarda o ponto dentro do
+              compasso; Continuar retoma dali.
             </p>
             <p>
               Metrônomo e repetição podem mudar enquanto os acordes tocam. Ajustar o andamento ou o
-              seletor de trecho volta ao início.
+              seletor de trecho interrompe a reprodução.
             </p>
             <p>O áudio é sintético. Toque em um compasso para ouvir seu primeiro acorde.</p>
           </Hint>
@@ -237,16 +224,9 @@ export function ChartPlayer({
       <p>{chart.adaptations}</p>
       <div className="player-controls">
         <label className="chart-section-control">
-          Trecho
-          <select
-            value={section}
-            onChange={(e) => {
-              stopPlayback();
-              clearPassageRepeat();
-              setSection(e.target.value);
-            }}
-          >
-            <option value="all">Arranjo completo</option>
+          Ir para o trecho
+          <select value={section} onChange={(e) => navigateToSection(e.target.value)}>
+            <option value="all">Início da música</option>
             {chart.sections.map((s) => (
               <option value={s.id} key={s.id}>
                 {s.title}
@@ -314,26 +294,11 @@ export function ChartPlayer({
           <Metronome size={16} aria-hidden="true" />
           Metrônomo
         </label>
-        <div className="chart-transport-actions">
-          <button className="button" onClick={togglePlayback}>
-            {playing ? (
-              <Pause size={16} aria-hidden="true" />
-            ) : (
-              <Play size={16} aria-hidden="true" />
-            )}{' '}
-            {playing ? 'Pausar' : playhead.status === 'paused' ? 'Continuar' : 'Ouvir acordes'}
-          </button>
-          <button
-            className="button secondary"
-            disabled={playhead.status === 'idle'}
-            onClick={stopPlayback}
-          >
-            <Square size={16} aria-hidden="true" /> Parar
-          </button>
-        </div>
       </div>
       <p className="hint" role="status">
-        {playhead.status === 'paused' ? 'Pausado' : playing ? 'Reproduzindo.' : 'Pronto para tocar'}
+        {playhead.status === 'paused' ? 'Pausado' : playing ? 'Reproduzindo' : 'Pronto para tocar'}
+        {activeGroup &&
+          ` · ${activeGroup.title}${activeGroup.passages > 1 ? ` · passagem ${activeGroup.passage} de ${activeGroup.passages}` : ''}`}
         {repeatGroup &&
           ` · Repetição: ${groups.find((group) => group.key === repeatGroup)?.title ?? 'trecho selecionado'}`}
       </p>
@@ -366,7 +331,7 @@ export function ChartPlayer({
           : ''}{' '}
       </p>
       <div className="chart-reading-guide label-with-hint">
-        <h3>{section === 'all' ? 'Arranjo completo' : 'Trecho selecionado'}</h3>
+        <h3>Arranjo completo</h3>
         <Hint label="Leitura e repetição dos trechos">
           <p>
             Leia da esquerda para a direita. Cada cartão mantém um compasso inteiro; a grade se
@@ -374,17 +339,19 @@ export function ChartPlayer({
           </p>
           <p>
             Marque Repetir em uma passagem para praticá-la em ciclo. Se ela ainda estiver à frente,
-            a música continua até chegar ali; use Tocar daqui para ir direto a ela. Sem reprodução
-            em andamento, Ouvir acordes começa no trecho marcado.
+            a música continua até chegar ali; use Tocar daqui para ir direto a ela.
           </p>
-          <p>Uma passagem repete por vez. Desmarque para continuar aos próximos trechos.</p>
+          <p>
+            Ao terminar um trecho, o próximo começa automaticamente. Repetir mantém a passagem em
+            ciclo; desmarque para seguir a sequência.
+          </p>
         </Hint>
       </div>
       <div
         className="chart-arrangement"
         ref={arrangement}
         role="region"
-        aria-label={section === 'all' ? 'Arranjo completo por trechos' : 'Trecho para praticar'}
+        aria-label="Arranjo completo por trechos"
       >
         {groups.map((group, index) => (
           <ChartSection
@@ -401,12 +368,14 @@ export function ChartPlayer({
                 ? playhead.tick
                 : -1
             }
-            sequence={section === 'all' ? index + 1 : undefined}
+            sequence={index + 1}
             onPreview={previewFirstChord}
             onStart={startAt}
             repeating={repeatGroup === group.key}
             onRepeat={toggleGroupRepeat}
-            paused={playhead.status === 'paused'}
+            playbackState={activeGroup?.key === group.key ? playhead.status : 'idle'}
+            onPause={pausePlayback}
+            onResume={resumePlayback}
           />
         ))}
       </div>
@@ -440,6 +409,9 @@ export function ChartPlayer({
               maxBars={barsPerRow}
               reference
               onStart={startReference}
+              playbackState={activeGroup?.sectionId === group.sectionId ? playhead.status : 'idle'}
+              onPause={pausePlayback}
+              onResume={resumePlayback}
               repeating={groups.some(
                 (part) => part.key === repeatGroup && part.sectionId === group.sectionId,
               )}
