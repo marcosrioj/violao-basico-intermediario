@@ -29,6 +29,7 @@ export function LessonProgress({
     const controller = new AbortController();
     apiFetch<Progress[]>(`/api/progress?lessonId=${lesson.id}`, { signal: controller.signal })
       .then((data) => {
+        if (controller.signal.aborted) return;
         const current = data.find((p) => p.lesson_id === lesson.id);
         if (current) {
           setNotes(current.notes);
@@ -44,6 +45,7 @@ export function LessonProgress({
     return () => controller.abort();
   }, [demo, lesson]);
   async function save(next: 'in_progress' | 'completed') {
+    if (busy || !loaded) return;
     setBusy(true);
     setError('');
     setMessage('');
@@ -56,7 +58,7 @@ export function LessonProgress({
       setMessage(
         next === 'completed'
           ? 'Aula concluída! Continue praticando e retome quando precisar.'
-          : 'Seu registro foi salvo.',
+          : 'Aula marcada como não concluída.',
       );
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Falha ao salvar.');
@@ -83,6 +85,7 @@ export function LessonProgress({
             <label>
               <input
                 type="checkbox"
+                disabled={!loaded || busy}
                 checked={checked.includes(String(i))}
                 onChange={(e) =>
                   setChecked((c) =>
@@ -98,6 +101,7 @@ export function LessonProgress({
       <label>
         Meu próximo ajuste
         <textarea
+          disabled={!loaded || busy}
           value={notes}
           maxLength={2000}
           onChange={(e) => setNotes(e.target.value)}
@@ -106,7 +110,11 @@ export function LessonProgress({
       </label>
       <label className="section">
         Como está sua confiança?
-        <select value={confidence} onChange={(e) => setConfidence(Number(e.target.value))}>
+        <select
+          disabled={!loaded || busy}
+          value={confidence}
+          onChange={(e) => setConfidence(Number(e.target.value))}
+        >
           {[
             'Preciso de ajuda',
             'Ainda está difícil',
@@ -134,18 +142,21 @@ export function LessonProgress({
       ) : (
         <div className="stack section">
           <button
-            disabled={busy || !loaded || checked.length !== lesson.checks.length}
-            className="button"
-            onClick={() => save('completed')}
+            disabled={
+              busy || !loaded || (status !== 'completed' && checked.length !== lesson.checks.length)
+            }
+            className={status === 'completed' ? 'button secondary' : 'button'}
+            onClick={() => save(status === 'completed' ? 'in_progress' : 'completed')}
           >
-            {busy ? 'Salvando…' : 'Concluir aula'}
-          </button>
-          <button
-            disabled={busy || !loaded}
-            className="button secondary"
-            onClick={() => save('in_progress')}
-          >
-            Salvar e continuar praticando
+            {!loaded
+              ? error
+                ? 'Progresso indisponível'
+                : 'Carregando progresso…'
+              : busy
+                ? 'Salvando…'
+                : status === 'completed'
+                  ? 'Marcar como não concluída'
+                  : 'Concluir aula'}
           </button>
         </div>
       )}
