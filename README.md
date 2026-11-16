@@ -1,4 +1,4 @@
-# Violão Vivo
+# Violão do básico ao intermediário
 
 Curso de violão gospel do básico ao intermediário, **13 módulos e 39 aulas com 27 estudos técnicos integrados**, cifras interativas, laboratório musical e acompanhamento de alunos por turma. Feito com Next.js, TypeScript e Supabase.
 
