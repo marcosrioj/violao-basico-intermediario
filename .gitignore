@@ -19,6 +19,7 @@ supabase/.branches/
 *.log
 tmp/pdfs/
 __pycache__/
+output/
 
 # Local Auth settings must not be synchronized to hosted Supabase projects.
 /supabase/config.toml
