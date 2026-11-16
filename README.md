@@ -143,4 +143,4 @@ Confira a [verificação da atualização do curso](docs/COURSE-VERIFICATION.md)
 | Manter a interface e a identidade                 | [Sistema de design](docs/DESIGN-SYSTEM.md) · [Marca](docs/brand-guidelines.md)                      |
 | Conferir o que foi testado                        | [Verificação](docs/VERIFICATION.md) · [Segurança](docs/VERIFICATION-security.md)                    |
 
-Código e materiais editoriais estão públicos; contas, matrículas e registros pessoais ficam no Supabase de cada instalação. Nenhuma licença de software foi definida no repositório; materiais de terceiros mantêm seus direitos próprios. Detalhes em [Conteúdo](docs/CONTENT.md).
+Código e materiais editoriais estão públicos; contas, matrículas e registros pessoais ficam no Supabase de cada instalação. O projeto, incluindo seu código e materiais autorais, é distribuído sob a [licença MIT](LICENSE). Materiais de terceiros mantêm seus direitos e licenças próprios. Detalhes em [Conteúdo](docs/CONTENT.md).

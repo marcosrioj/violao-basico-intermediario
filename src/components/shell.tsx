@@ -99,6 +99,9 @@ export function Shell({
           27 estudos integrados às aulas
         </small>
         <Link href="/privacidade">Privacidade</Link>
+        <a href="https://github.com/marcosrioj/violao-basico-intermediario">
+          Repositório no GitHub
+        </a>
       </div>
     </>
   );
@@ -125,6 +128,9 @@ export function Shell({
         <footer className="app-footer">
           <span>Violão Vivo · Música que faz parte da vida.</span>
           <Link href="/privacidade">Privacidade e dados</Link>
+          <a href="https://github.com/marcosrioj/violao-basico-intermediario">
+            Repositório no GitHub
+          </a>
         </footer>
       </div>
     </div>

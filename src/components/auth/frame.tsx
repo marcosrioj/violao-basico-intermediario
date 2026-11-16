@@ -36,7 +36,13 @@ export function AuthFrame({ children }: { children: ReactNode }) {
             Seus registros acompanham sua jornada.{' '}
             <Link className="inline-link" href="/privacidade">
               Saiba como cuidamos dos seus dados.
-            </Link>
+            </Link>{' '}
+            <a
+              className="inline-link"
+              href="https://github.com/marcosrioj/violao-basico-intermediario"
+            >
+              Repositório no GitHub
+            </a>
           </p>
         </main>
       </div>
