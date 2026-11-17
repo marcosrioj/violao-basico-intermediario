@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { TheoryExercise } from './theory-exercise';
 import { getLessonTechniqueEntries, techniqueSources } from '@/content/curriculum';
+import { getTechniqueVisuals } from '@/content/technique-visuals';
+import { PracticeVisual } from './practice-visual';
 import type {
   LessonEnrichment,
   ResearchSource,
@@ -108,6 +110,11 @@ export function TechniqueStudyContent({
   return (
     <div className="learning-reading integrated-study-content">
       <p>{study.goal}</p>
+      <div className="technique-visuals">
+        {getTechniqueVisuals(study.id).map((visual, i) => (
+          <PracticeVisual key={`${study.id}-${i}`} visual={visual} />
+        ))}
+      </div>
       <details>
         <summary>O que preparar antes</summary>
         <ul>
@@ -116,14 +123,17 @@ export function TechniqueStudyContent({
           ))}
         </ul>
       </details>
-      {study.explanation.map((paragraph, i) => (
-        <p key={i}>{paragraph}</p>
-      ))}
-      <div className="learning-example section">
-        <p className="eyebrow">EXEMPLO AUTORAL</p>
-        <h4>{study.workedExample.title}</h4>
-        <p>{study.workedExample.text}</p>
-      </div>
+      <details className="section">
+        <summary>Ler a explicação e o exemplo completo</summary>
+        {study.explanation.map((paragraph, i) => (
+          <p key={i}>{paragraph}</p>
+        ))}
+        <div className="learning-example section">
+          <p className="eyebrow">EXEMPLO AUTORAL</p>
+          <h4>{study.workedExample.title}</h4>
+          <p>{study.workedExample.text}</p>
+        </div>
+      </details>
       {study.workedExample.tab && (
         <pre
           className="learning-tab"

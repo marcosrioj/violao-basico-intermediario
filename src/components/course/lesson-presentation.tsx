@@ -5,6 +5,8 @@ import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import { ArrowLeft, ArrowRight, Eye, EyeOff, Presentation, X } from 'lucide-react';
 import type { Lesson } from '@/content/types';
 import type { LessonEnrichment } from '@/content/curriculum-types';
+import type { IllustratedStep } from './practice-visual-types';
+import { PracticeVisual } from './practice-visual';
 import {
   buildLessonPresentation,
   presentationIndex,
@@ -19,10 +21,12 @@ export function LessonPresentation({
   lesson,
   enrichment,
   techniques = [],
+  illustratedSteps = [],
 }: {
   lesson: Lesson;
   enrichment?: LessonEnrichment;
   techniques?: TechniquePresentationEntry[];
+  illustratedSteps?: IllustratedStep[];
 }) {
   const id = useId();
   const [open, setOpen] = useState(false);
@@ -31,7 +35,7 @@ export function LessonPresentation({
   const trigger = useRef<HTMLButtonElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
   const wasOpen = useRef(false);
-  const slides = buildLessonPresentation(lesson, enrichment, techniques);
+  const slides = buildLessonPresentation(lesson, enrichment, techniques, illustratedSteps);
   const slide = slides[index];
 
   useEffect(() => {
@@ -164,6 +168,8 @@ export function LessonPresentation({
                       >
                         <code>{block.text}</code>
                       </pre>
+                    ) : block.kind === 'visual' ? (
+                      <PracticeVisual visual={block.visual} />
                     ) : (
                       <ol>
                         {block.items.map((item, position) => (

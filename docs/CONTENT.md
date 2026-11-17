@@ -4,6 +4,18 @@ O conteúdo do **Violão Vivo** foi aprofundado em 15/11/2026. A base canônica 
 
 ## Conteúdo aprofundado
 
+### Prática ilustrada na aplicação
+
+As 39 aulas têm um roteiro visual para suas 117 instruções de prática, selecionado em `lesson-visuals.ts`. `IllustratedPractice` apresenta um passo por vez, antes da cifra, com botões numerados, anterior/próximo e a leitura conjunta opcional das instruções originais. O atalho em Entender abre esse roteiro. As âncoras de referência continuam na leitura conjunta, sem duplicar IDs no passo selecionado.
+
+`technique-visuals.ts` ilustra os exemplos dos 27 estudos: apoio do instrumento, cordas, digitação, notas no braço, palhetada, dedilhado, duração, ligados, abafamento, vibrato, ornamentos, dinâmica, formas e harmonia. As explicações extensas ficam em uma seção de consulta; os passos, critérios, tablaturas e fontes são preservados. Os exemplos autorais continuam distintos dos arranjos de repertório.
+
+As posições usam `chords-data.json`, incluindo o F parcial. Os recortes de compassos são derivados da versão harmônica da aula com `describeChartBar`, preservando baixos, repetições, durações e mudanças de métrica. A revisão musical verifica notas por corda/casa, os dois grupos ternários de 6/8, a troca no segundo polegar do dedilhado em 4/4 e os compassos curtos. Propostas de dinâmica são identificadas como sugestões.
+
+A apresentação do professor recebe os mesmos diagramas: uma etapa por instrução e etapas de demonstração para os estudos atribuídos àquela aula. Os catálogos editoriais ficam no servidor; somente o material selecionado atravessa a fronteira cliente. Os PDFs existentes não foram regenerados nesta atualização da interface.
+
+### Organização do aprofundamento
+
 A atualização é uma reformulação integrada por associação aos IDs existentes. `lesson-enrichment.json` aprofunda as 39 aulas; `technique-data.json` contém nove eixos e 27 estudos autorais; `teacher-enrichment.json` contém princípios de ensino, rubrica e 39 planos individualizados de 60 minutos. `lesson-journey.json` organiza 86 aplicações, com 27 introduções únicas, retomadas e foco específico por aula. `curriculum.ts` usa esse mapa canônico sem alterar os mapas harmônicos ou chaves de progresso. O carregamento docente permanece em `teacher.ts`, com `server-only`, e só é renderizado após autorização. [Contrato e progressão](INTEGRATED-LEARNING.md).
 
 Os nove eixos cobrem fundamentos, acordes e notação, intervalos/escalas/pestana, palhetada, articulações, expressão, ritmos, CAGED e campos harmônicos/cadências. A ementa pública de Fábio Lima é referência de abrangência; os exercícios, exemplos e planos são autorais. Não há atribuição de aulas privadas ao artista nem reprodução de seu curso. As fontes especializadas consultadas e os limites da pesquisa estão em [pesquisa musical](CURRICULUM-RESEARCH.md) e [pesquisa pedagógica](TEACHING-RESEARCH.md).

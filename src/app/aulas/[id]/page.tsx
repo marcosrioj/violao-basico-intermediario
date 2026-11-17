@@ -2,7 +2,9 @@ import { CollapsibleCard } from '@/components/ui/collapsible-card';
 export const dynamic = 'force-dynamic';
 import { notFound } from 'next/navigation';
 import { requireCourseProfile } from '@/lib/auth';
-import { getLesson } from '@/content/course';
+import { getLesson, getChart } from '@/content/course';
+import { getLessonVisualSteps } from '@/content/lesson-visuals';
+import { getTechniqueVisuals } from '@/content/technique-visuals';
 import {
   getTeacherLesson,
   getTeacherEnrichment,
@@ -39,6 +41,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
               key={lesson.id}
               lesson={lesson}
               enrichment={getLessonEnrichment(lesson.id)}
+              illustratedSteps={getLessonVisualSteps(lesson, getChart(lesson))}
               techniques={techniques.map(({ study, stage, focus }) => ({
                 study: {
                   id: study.id,
@@ -50,6 +53,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
                 },
                 stage,
                 focus,
+                visuals: getTechniqueVisuals(study.id),
               }))}
             />
             <details className="section">

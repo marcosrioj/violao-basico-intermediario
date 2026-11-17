@@ -1,5 +1,17 @@
 # Verificação da trilha integrada
 
+## Prática ilustrada · 17/11/2026
+
+- Cobertura dos 117 passos das 39 aulas e dos exemplos dos 27 estudos técnicos; instruções originais preservadas na leitura conjunta.
+- Diagramas de acordes usam as posições existentes; todos os pontos dos mapas de notas foram conferidos por afinação, corda e casa. Recortes da cifra conservam durações, ordem e métrica.
+- Testes específicos verificam p–i–m / a–m–i em 6/8, p–i–m–a / p–i–m–a em 4/4, 4/4 → 2/4 → 4/4 e entradas de Bm, G e A nos pulsos 1, 2 e 4.
+- Apresentação docente reutiliza os diagramas selecionados; testes conferem conteúdo por etapa e IDs únicos. O grafo cliente não inclui os novos catálogos editoriais completos.
+- `npm run check`: lint, tipos, 239 testes e build de produção aprovados. A primeira execução no sandbox bloqueou `spawnSync` no teste de configuração (`EPERM`); a execução autorizada fora do sandbox passou, sem alterar o teste.
+- SVGs representativos de apoio, abafamento, escala e pestana foram renderizados com Sharp e inspecionados. O navegador não estava disponível na sessão: interação por teclado, layout responsivo e projeção da apresentação ainda precisam de conferência visual em navegador. A renderização estática dos 39 percursos passou nos testes de preservação e âncoras.
+- Esta atualização abrange a aplicação. Os PDFs e materiais originais permanecem na edição anterior.
+
+## Verificação anterior
+
 Verificação realizada em 15/11/2026. A edição permanece a mesma, identificada apenas pelo sufixo dos PDFs.
 
 ## Conteúdo e preservação

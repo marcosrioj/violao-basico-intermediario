@@ -1,15 +1,18 @@
 import type { Lesson } from '../content/types';
 import type { LessonEnrichment, TechniqueStudy } from '../content/curriculum-types';
+import type { IllustratedStep, PracticeVisual } from '../components/course/practice-visual-types';
 
 export interface TechniquePresentationEntry {
   study: Pick<TechniqueStudy, 'id' | 'title' | 'workedExample' | 'steps' | 'checks' | 'retrieval'>;
   stage: 'introducao' | 'retomada';
   focus: string;
+  visuals?: PracticeVisual[];
 }
 
 export type LessonSlideBlock =
   | { id: string; label?: string; kind: 'text'; text: string }
   | { id: string; label?: string; kind: 'tab'; text: string }
+  | { id: string; label?: string; kind: 'visual'; visual: PracticeVisual }
   | { id: string; label?: string; kind: 'list'; items: readonly string[] };
 
 export interface LessonSlide {
@@ -25,6 +28,7 @@ export function buildLessonPresentation(
   lesson: Lesson,
   enrichment?: LessonEnrichment,
   techniques: readonly TechniquePresentationEntry[] = [],
+  illustratedSteps: readonly IllustratedStep[] = [],
 ): readonly LessonSlide[] {
   const review: LessonSlideBlock[] = [];
   if (lesson.review.trim())
@@ -119,52 +123,89 @@ export function buildLessonPresentation(
     });
   }
   // Technical practice happens before applying the same movement to the repertoire.
-  const techniqueSlides: LessonSlide[] = techniques.flatMap(({ study, stage, focus }) => [
-    {
-      id: `technique-${study.id}`,
-      label: stage === 'introducao' ? 'Começar técnica' : 'Retomar técnica',
-      title: study.title,
-      blocks: [
-        { id: `focus-${study.id}`, label: 'Foco nesta aula', kind: 'text', text: focus },
-        {
-          id: `example-${study.id}`,
-          label: study.workedExample.title,
-          kind: 'text',
-          text: study.workedExample.text,
-        },
-        ...(study.workedExample.tab
-          ? [{ id: `tab-${study.id}`, kind: 'tab' as const, text: study.workedExample.tab }]
-          : []),
-      ],
-    },
-    {
-      id: `technique-practice-${study.id}`,
-      label: 'Praticar técnica',
-      title: study.title,
-      blocks: [
-        {
-          id: `steps-${study.id}`,
-          label: 'Escolha os passos adequados ao foco de hoje',
-          kind: 'list',
-          items: [...study.steps],
-        },
-        {
-          id: `checks-${study.id}`,
-          label: 'O que observar',
-          kind: 'list',
-          items: [...study.checks],
-        },
-        {
-          id: `question-${study.id}`,
-          label: 'Tente antes de conferir',
-          kind: 'text',
-          text: study.retrieval.question,
-        },
-      ],
-      answer: study.retrieval.answer,
-    },
-  ]);
+  const techniqueSlides: LessonSlide[] = techniques.flatMap(
+    ({ study, stage, focus, visuals = [] }) => [
+      {
+        id: `technique-${study.id}`,
+        label: stage === 'introducao' ? 'Começar técnica' : 'Retomar técnica',
+        title: study.title,
+        blocks: [
+          { id: `focus-${study.id}`, label: 'Foco nesta aula', kind: 'text', text: focus },
+          {
+            id: `example-${study.id}`,
+            label: study.workedExample.title,
+            kind: 'text',
+            text: study.workedExample.text,
+          },
+          ...(study.workedExample.tab
+            ? [{ id: `tab-${study.id}`, kind: 'tab' as const, text: study.workedExample.tab }]
+            : []),
+        ],
+      },
+      ...visuals.map((visual, i): LessonSlide => ({
+        id: `technique-visual-${study.id}-${i}`,
+        label: 'Demonstrar técnica',
+        title: visual.title,
+        blocks: [
+          { id: `visual-${study.id}-${i}`, kind: 'visual', visual },
+          {
+            id: `visual-focus-${study.id}-${i}`,
+            label: 'Foco nesta aula',
+            kind: 'text',
+            text: focus,
+          },
+        ],
+      })),
+      {
+        id: `technique-practice-${study.id}`,
+        label: 'Praticar técnica',
+        title: study.title,
+        blocks: [
+          {
+            id: `steps-${study.id}`,
+            label: 'Escolha os passos adequados ao foco de hoje',
+            kind: 'list',
+            items: [...study.steps],
+          },
+          {
+            id: `checks-${study.id}`,
+            label: 'O que observar',
+            kind: 'list',
+            items: [...study.checks],
+          },
+          {
+            id: `question-${study.id}`,
+            label: 'Tente antes de conferir',
+            kind: 'text',
+            text: study.retrieval.question,
+          },
+        ],
+        answer: study.retrieval.answer,
+      },
+    ],
+  );
   slides.splice(3, 0, ...techniqueSlides);
+  if (illustratedSteps.length) {
+    const applicationIndex = slides.findIndex((slide) => slide.id === 'steps');
+    slides.splice(
+      applicationIndex,
+      1,
+      ...illustratedSteps.map((step, i): LessonSlide => ({
+        id: i === 0 ? 'steps' : `steps-${i}`,
+        label: `Prática visual ${i + 1}`,
+        title: step.visual.title,
+        blocks: [
+          { id: `step-visual-${i}`, kind: 'visual', visual: step.visual },
+          {
+            id: `step-instruction-${i}`,
+            kind: 'text',
+            label: 'Demonstre e convide o aluno a repetir',
+            text: step.instruction,
+          },
+        ],
+      })),
+    );
+  }
   return slides;
 }
 

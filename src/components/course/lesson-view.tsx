@@ -19,6 +19,8 @@ import { getLessonEnrichment } from '@/content/curriculum';
 import { LessonTechniques, LessonUnderstanding, LessonWeeklyPractice } from './learning-content';
 import { TheoryExercise } from './theory-exercise';
 import { InitialLessonCards } from './initial-lesson-cards';
+import { getLessonVisualSteps } from '@/content/lesson-visuals';
+import { IllustratedPractice } from './illustrated-practice';
 export function LessonView({
   lesson,
   demo = false,
@@ -32,6 +34,7 @@ export function LessonView({
 }) {
   const song = getSong(lesson);
   const chart = getChart(lesson);
+  const visualSteps = getLessonVisualSteps(lesson, chart);
   const defaultBpm = defaultPlaybackBpm(lesson.bpm, song.tempo);
   const enrichment = getLessonEnrichment(lesson.id);
   const prev = lessons[lesson.n - 2];
@@ -98,6 +101,9 @@ export function LessonView({
             <p className="eyebrow section">RETOMADA</p>
             {rich(lesson.review, 'review')}
             {enrichment && !demo && <LessonUnderstanding content={enrichment} />}
+            <a className="resource-link section" href="#pratica-ilustrada">
+              Ver os três passos ilustrados desta aula <ArrowRight size={16} aria-hidden="true" />
+            </a>
           </CollapsibleCard>
           <CollapsibleCard
             id="tecnica"
@@ -127,6 +133,13 @@ export function LessonView({
             description="Toque com a cifra e leve a técnica ao repertório."
           >
             <div className="stack">
+              <div id="pratica-ilustrada">
+                <IllustratedPractice
+                  key={`visual-${lesson.id}`}
+                  steps={visualSteps}
+                  instructions={lesson.steps.map((step, i) => rich(step, `steps-${i}`))}
+                />
+              </div>
               <ChartPlayer
                 key={`chart-${lesson.id}`}
                 chart={chart}
@@ -137,15 +150,9 @@ export function LessonView({
               />
               <CollapsibleCard
                 id="praticar"
-                title="Prática guiada no repertório"
+                title="Aprofundar a prática no repertório"
                 description="Comece por um trecho curto e amplie quando estiver estável."
               >
-                <p className="eyebrow">UM PASSO DE CADA VEZ</p>
-                <ol className="steps">
-                  {lesson.steps.map((s, i) => (
-                    <li key={i}>{rich(s, `steps-${i}`)}</li>
-                  ))}
-                </ol>
                 {enrichment && !demo && (
                   <details className="section">
                     <summary>Experimentar e escutar com mais atenção</summary>
