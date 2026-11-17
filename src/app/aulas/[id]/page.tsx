@@ -14,7 +14,7 @@ import {
 } from '@/content/teacher';
 import { getLessonEnrichment, getLessonTechniqueEntries } from '@/content/curriculum';
 import { TeacherDeepening } from '@/components/course/learning-content';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { LessonView } from '@/components/course/lesson-view';
 import { RichText } from '@/components/course/rich-text';
 import { LessonPresentation } from '@/components/course/lesson-presentation';
@@ -56,7 +56,11 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
               }))}
             />
             {enrichedPlan && <TeacherDeepening content={enrichedPlan} sources={teachingSources} />}
-            <Link className="resource-link section" href="/professor/metodologia">
+            <Link
+              purpose="reference"
+              className="resource-link section"
+              href="/professor/metodologia"
+            >
               Consultar princípios de ensino e rubrica
             </Link>
             <details className="section">

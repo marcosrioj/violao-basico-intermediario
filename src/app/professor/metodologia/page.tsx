@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Shell, PageHeading } from '@/components/shell';
 import { requireProfile } from '@/lib/auth';

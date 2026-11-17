@@ -1,7 +1,7 @@
 'use client';
 import { Hint } from '@/components/ui/hint';
 import { useState, useSyncExternalStore } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { CalendarPlus, MessageSquare, ArrowLeft } from 'lucide-react';
 import { apiFetch } from '@/lib/api-client';
 import type { ClassroomDetail, Profile } from '@/lib/contracts';
@@ -289,6 +289,7 @@ export function ClassroomDashboard({
                                     <Link
                                       className="inline-link dashboard-lesson-link"
                                       href={`/aulas/${entry.lesson_id}#plano-professor`}
+                                      purpose="reference"
                                     >
                                       {lessonName(lessons, entry.lesson_id)}
                                     </Link>
@@ -368,6 +369,7 @@ export function ClassroomDashboard({
                     <Link
                       className="inline-link dashboard-lesson-link"
                       href={`/aulas/${feedbackLesson}#plano-professor`}
+                      purpose="reference"
                     >
                       Consultar plano desta aula
                     </Link>
@@ -432,6 +434,7 @@ export function ClassroomDashboard({
                   <Link
                     className="inline-link dashboard-lesson-link"
                     href={`/aulas/${meetingLesson}#plano-professor`}
+                    purpose="reference"
                   >
                     Preparar esta aula com o plano do professor
                   </Link>

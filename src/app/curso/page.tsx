@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic';
 import { Suspense } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { ArrowRight } from 'lucide-react';
 import { requireCourseProfile } from '@/lib/auth';
 import { Shell, PageHeading } from '@/components/shell';
@@ -31,11 +31,11 @@ export default async function CoursePage() {
         description="Continue sua aula ou escolha um módulo."
       />
       <nav className="learning-paths" aria-label="Consultas complementares">
-        <Link className="button secondary" href="/tecnica">
+        <Link purpose="reference" className="button secondary" href="/tecnica">
           Índice de técnicas <ArrowRight size={16} aria-hidden="true" />
         </Link>
         {profile.role === 'teacher' && (
-          <Link className="button secondary" href="/professor/metodologia">
+          <Link purpose="reference" className="button secondary" href="/professor/metodologia">
             Guia para lecionar <ArrowRight size={16} aria-hidden="true" />
           </Link>
         )}

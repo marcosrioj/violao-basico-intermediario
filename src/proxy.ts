@@ -36,7 +36,9 @@ export async function proxy(request: NextRequest) {
 }
 export const config = {
   matcher: [
-    { source: '/', has: [{ type: 'query', key: 'code' }] },
+    '/',
+    '/laboratorio',
+    '/privacidade',
     '/painel/:path*',
     '/professor/:path*',
     '/aulas/:path*',

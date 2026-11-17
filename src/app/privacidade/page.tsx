@@ -1,7 +1,11 @@
 import { Shell, PageHeading } from '@/components/shell';
-export default function Privacy() {
+import { getPublicViewer } from '@/lib/auth';
+
+export const dynamic = 'force-dynamic';
+export default async function Privacy() {
+  const viewer = await getPublicViewer();
   return (
-    <Shell>
+    <Shell teacher={viewer.profile?.role === 'teacher'} courseAccess={viewer.courseAccess}>
       <PageHeading eyebrow="SUA JORNADA, SEUS DADOS" title="Privacidade e uso responsável" />
       <article className="card prose">
         <h2>Código e materiais públicos</h2>

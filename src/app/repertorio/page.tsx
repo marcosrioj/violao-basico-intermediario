@@ -1,6 +1,6 @@
 import { CollapsibleCard } from '@/components/ui/collapsible-card';
 export const dynamic = 'force-dynamic';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { Music2, ExternalLink } from 'lucide-react';
 import { requireCourseProfile } from '@/lib/auth';
 import { songs, lessons } from '@/content/course';
@@ -35,22 +35,20 @@ export default async function Repertoire() {
               {s.tempo && <TempoReference tempo={s.tempo} />}
             </details>
             <div className="control-row">
-              <a
+              <Link
                 className="button small"
                 href={s.recording_url ?? s.listen_url}
-                target="_blank"
                 rel="noopener noreferrer"
               >
                 Ouvir gravação <ExternalLink size={13} />
-              </a>
-              <a
+              </Link>
+              <Link
                 className="button small secondary"
                 href={s.lyrics_chords_url}
-                target="_blank"
                 rel="noopener noreferrer"
               >
                 Letra e cifra <ExternalLink size={13} />
-              </a>
+              </Link>
             </div>
             <p className="eyebrow">PRATIQUE NAS AULAS</p>
             <div className="lesson-links">

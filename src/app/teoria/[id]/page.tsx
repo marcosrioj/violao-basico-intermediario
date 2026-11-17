@@ -1,6 +1,6 @@
 import { TheoryReading } from '@/components/course/theory-reading';
 import { CollapsibleCard } from '@/components/ui/collapsible-card';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import { Shell, PageHeading } from '@/components/shell';
@@ -82,16 +82,15 @@ export default async function TheoryPage({ params }: { params: Promise<{ id: str
         <CollapsibleCard title="Fontes" name="theory-activities">
           {reference.sources.map((source) =>
             source.url ? (
-              <a
+              <Link
                 className="resource-link"
                 key={source.url}
                 href={source.url}
-                target="_blank"
                 rel="noopener noreferrer"
               >
                 {source.title}
                 <ExternalLink size={15} />
-              </a>
+              </Link>
             ) : (
               <p key={source.title}>{source.title}</p>
             ),

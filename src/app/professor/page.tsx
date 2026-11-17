@@ -3,7 +3,7 @@ import { Shell, PageHeading } from '@/components/shell';
 import { TeacherDashboard } from '@/components/dashboard/teacher-dashboard';
 import { requireProfile } from '@/lib/auth';
 import { lessons } from '@/content/course';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 export default async function TeacherPage() {
   const profile = await requireProfile('teacher');
   const lessonOptions = lessons.map(({ id, display_id, title, goal, module }) => ({

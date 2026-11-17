@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import type { ReactNode } from 'react';
 import { ArrowLeft, AudioLines } from 'lucide-react';
 import { Brand } from '@/components/shell';
@@ -34,15 +34,15 @@ export function AuthFrame({ children }: { children: ReactNode }) {
           {children}
           <p className="auth-privacy muted">
             Seus registros acompanham sua jornada.{' '}
-            <Link className="inline-link" href="/privacidade">
+            <Link purpose="reference" className="inline-link" href="/privacidade">
               Saiba como cuidamos dos seus dados.
             </Link>{' '}
-            <a
+            <Link
               className="inline-link"
               href="https://github.com/marcosrioj/violao-basico-intermediario"
             >
               Repositório no GitHub
-            </a>
+            </Link>
           </p>
         </main>
       </div>

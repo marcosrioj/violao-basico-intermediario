@@ -1,19 +1,18 @@
 import { Shell, PageHeading } from '@/components/shell';
 import { LearningLab } from '@/components/music/learning-lab';
-import { getCurrentProfile, getProfileCourseAccess } from '@/lib/auth';
-import Link from 'next/link';
+import { getPublicViewer } from '@/lib/auth';
+import Link from '@/components/ui/page-link';
 
 export const dynamic = 'force-dynamic';
 export default async function Laboratory() {
   // Authentication only personalizes navigation; the instruments remain public
   // even when an account, enrollment lookup or Supabase is unavailable.
-  const profile = await getCurrentProfile().catch(() => null);
-  const access = profile ? await getProfileCourseAccess(profile).catch(() => null) : null;
+  const viewer = await getPublicViewer();
   return (
     <Shell
       active="/laboratorio"
-      courseAccess={access?.allowed ?? false}
-      teacher={profile?.role === 'teacher'}
+      courseAccess={viewer.courseAccess}
+      teacher={viewer.profile?.role === 'teacher'}
     >
       <PageHeading
         eyebrow="APRENDER FAZENDO"
@@ -21,10 +20,19 @@ export default async function Laboratory() {
         description="Dê som à teoria. Experimente, escute e leve a descoberta para o violão."
       />
       <LearningLab />
-      <Link className="button secondary section" href={access?.allowed ? '/tecnica' : '/entrar'}>
-        {access?.allowed
+      <Link
+        className="button secondary section"
+        href={
+          viewer.courseAccess ? '/tecnica' : viewer.status === 'anonymous' ? '/entrar' : '/painel'
+        }
+      >
+        {viewer.courseAccess
           ? 'Consultar índice de técnicas'
-          : 'Entrar para acessar os estudos do curso'}
+          : viewer.status === 'unavailable'
+            ? 'Verificar meu acesso ao curso'
+            : viewer.profile
+              ? 'Confirmar matrícula para acessar os estudos'
+              : 'Entrar para acessar os estudos do curso'}
       </Link>
       <details className="section">
         <summary>Encontrar um estudo no curso</summary>

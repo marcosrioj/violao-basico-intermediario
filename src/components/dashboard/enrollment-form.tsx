@@ -2,7 +2,7 @@
 
 import { useRef, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { ArrowRight, CheckCircle2, KeyRound, LoaderCircle } from 'lucide-react';
 import { apiFetch } from '@/lib/api-client';
 import { joinInput } from '@/lib/validation';

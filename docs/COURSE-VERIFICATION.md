@@ -2,6 +2,15 @@
 
 Evidências de preservação do conteúdo e funcionamento do curso. Cada registro identifica sua revisão; os testes automatizados e a inspeção visual são resultados distintos.
 
+## Links e sessão inicial · 17/11/2026
+
+Links de navegação interna permanecem na mesma aba, incluindo menus, conta, índices e sequência de aulas. Consultas complementares e referências externas abrem outra aba. A distinção considera o contexto do link, não apenas seu destino. Início, laboratório e privacidade renovam a sessão antes da renderização e mostram a navegação conforme a conta e a matrícula. O início autenticado oferece o painel correspondente, sem repetir os passos de criação de conta.
+
+- `npm run check`: lint, tipos, **255 testes** e build aprovados. Os testes cobrem navegação e consulta para o mesmo destino, menus desktop e móvel, anterior/próximo, teoria e PDF durante a aula, privacidade durante o preenchimento de acesso, aluno, professor, matrícula pendente, isolamento entre visitantes e falhas de consulta.
+- A renovação de cookies expirados foi testada com respostas fictícias do provedor: a primeira renderização e a próxima aba recebem a mesma sessão renovada. Nenhuma conta real foi usada.
+- **36 verificações HTTP** aprovadas no build local, incluindo links e cache privado das páginas públicas, bloqueio de acesso anônimo e redirecionamentos de autenticação.
+- Revisão orientada pela skill `ui-ux-pro-max`. Nenhum navegador estava disponível; abertura efetiva de abas, teclado e anúncio por leitor de tela ainda precisam de conferência no navegador.
+
 ## Ações essenciais acessíveis · 17/11/2026
 
 Conclusão e estado da aula estão fora dos painéis recolhíveis. A conclusão abre os objetivos pendentes sem gravar progresso; o salvamento continua exigindo sua conferência. Busca, controles de prática, agenda, devolutivas e entradas das tarefas docentes foram revistos pelos critérios das skills. A [matriz por página](DESIGN-SYSTEM.md#a%C3%A7%C3%B5es-essenciais--17112026) registra as decisões e as telas mantidas.

@@ -1,5 +1,5 @@
 import { CollapsibleCard } from '@/components/ui/collapsible-card';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { ArrowRight, BookOpen, Download, GraduationCap } from 'lucide-react';
 import { Shell, PageHeading } from '@/components/shell';
 import { RichText } from '@/components/course/rich-text';

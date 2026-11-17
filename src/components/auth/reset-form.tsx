@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState, type FormEvent } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { LoaderCircle } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { Hint } from '@/components/ui/hint';

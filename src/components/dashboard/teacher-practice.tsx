@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { BookOpen } from 'lucide-react';
 import type { Page, Practice } from '@/lib/contracts';
 import { Empty } from '@/components/ui';
@@ -39,6 +39,7 @@ function PracticeHistory({
                   <Link
                     className="inline-link dashboard-lesson-link"
                     href={`/aulas/${item.lesson_id}#plano-professor`}
+                    purpose="reference"
                   >
                     {lessonName(lessons, item.lesson_id)}
                   </Link>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { Ear, Hand, Guitar, SlidersHorizontal } from 'lucide-react';
 import { EarTraining, TuningReference } from './ear-training';
 import { RhythmWorkshop } from './rhythm-workshop';
@@ -125,7 +125,7 @@ export function LearningLab() {
           <Link className="button" href={current.href}>
             {current.lesson}
           </Link>
-          <Link className="button secondary" href={current.theory}>
+          <Link purpose="reference" className="button secondary" href={current.theory}>
             Consultar a teoria
           </Link>
         </div>

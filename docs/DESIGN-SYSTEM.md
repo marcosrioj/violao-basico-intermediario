@@ -2,6 +2,8 @@
 
 Mostre uma tarefa por vez, com títulos curtos e controles claros. Use os tokens existentes e deixe a consulta completa em seções expansíveis. A identidade verde e creme, a legibilidade e o foco de teclado permanecem.
 
+`PageLink` distingue intenção: navegação interna mantém a mesma aba; consultas complementares usam `purpose="reference"` e abrem outra, assim como referências externas. O mesmo destino pode ter papéis diferentes: laboratório no menu é navegação; laboratório como apoio à aula é consulta. Nova aba tem aviso no título e na descrição acessível. Âncoras, filtros e downloads mantêm seu comportamento local. A revisão com UI/UX Pro Max considera previsibilidade do retorno e preservação do estado; a política segue a preferência do usuário.
+
 <details>
 <summary>Ações essenciais e critérios de revisão</summary>
 

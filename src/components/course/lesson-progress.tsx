@@ -1,7 +1,7 @@
 'use client';
 import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import type { Lesson } from '@/content/types';
 import type { Progress } from '@/lib/contracts';
 import { apiFetch } from '@/lib/api-client';

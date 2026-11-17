@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { parseCourseText } from '@/content/navigation';
 import type { Lesson } from '@/content/types';
 
@@ -18,9 +18,19 @@ export function RichText({
 }) {
   return (
     <span className="rich-text">
-      {parseCourseText(text, { lesson, field, theoryId, route: demo ? '/demonstracao' : undefined }).map((token, i) =>
+      {parseCourseText(text, {
+        lesson,
+        field,
+        theoryId,
+        route: demo ? '/demonstracao' : undefined,
+      }).map((token, i) =>
         token.href ? (
-          <Link key={`${token.anchor ?? token.href}-${i}`} id={token.anchor} href={token.href}>
+          <Link
+            purpose="reference"
+            key={`${token.anchor ?? token.href}-${i}`}
+            id={token.anchor}
+            href={token.href}
+          >
             {token.label}
           </Link>
         ) : (

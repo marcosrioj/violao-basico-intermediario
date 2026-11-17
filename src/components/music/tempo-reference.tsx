@@ -1,3 +1,4 @@
+import Link from '@/components/ui/page-link';
 import {
   formatBpm,
   referenceBpm,
@@ -37,9 +38,9 @@ export function TempoReference({ tempo }: { tempo: TempoResearch }) {
         <ul className="tempo-sources">
           {tempo.sources.map((source) => (
             <li key={source.url}>
-              <a href={source.url} target="_blank" rel="noopener noreferrer">
+              <Link href={source.url} rel="noopener noreferrer">
                 {source.title}
-              </a>
+              </Link>
               <p className="hint">{source.evidence}</p>
             </li>
           ))}

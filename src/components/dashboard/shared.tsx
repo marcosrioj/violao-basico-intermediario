@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { LogOut, RefreshCw, ArrowLeft, ArrowRight } from 'lucide-react';
 import { apiFetch } from '@/lib/api-client';
 import { Empty, Loading, Notice } from '@/components/ui';
@@ -291,14 +291,13 @@ export function SessionEntries({
             {lessonName(lessons, item.lesson_id)}
           </Link>
           {item.meeting_url && (
-            <a
+            <Link
               className="button secondary small dashboard-meeting"
               href={item.meeting_url}
-              target="_blank"
               rel="noopener noreferrer"
             >
               Abrir encontro ↗
-            </a>
+            </Link>
           )}
         </article>
       ))}
@@ -330,6 +329,7 @@ export function FeedbackEntries({
             <Link
               className="inline-link dashboard-lesson-link"
               href={`/aulas/${item.lesson_id}#plano-professor`}
+              purpose="reference"
             >
               {lessonName(lessons, item.lesson_id)}
             </Link>

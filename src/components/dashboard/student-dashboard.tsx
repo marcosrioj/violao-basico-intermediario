@@ -1,7 +1,7 @@
 'use client';
 import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import { useRef, useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { useRouter } from 'next/navigation';
 import { EnrollmentForm } from './enrollment-form';
 import { ArrowRight, BookOpen, CheckCircle2, Clock3, Plus } from 'lucide-react';

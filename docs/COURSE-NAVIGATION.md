@@ -9,6 +9,8 @@ O curso conserva os 13 módulos, as 39 aulas e os 27 estudos técnicos. A sequê
 
 ## Entradas e continuidade
 
+- Menus, conta, entrada, índices, seleção de aulas e ações de anterior/próximo/voltar navegam na mesma aba. Consultas durante uma tarefa (teoria no texto, laboratório de apoio, plano docente dentro de um formulário e PDF) abrem outra aba para preservar o trabalho atual. Referências externas também abrem outra aba; âncoras, filtros e downloads mantêm sua ação local. `PageLink` assume navegação interna e usa `purpose="reference"` para consultas complementares, com aviso “Abre em nova aba”.
+- Início, laboratório e privacidade reconhecem a sessão e a matrícula no carregamento inicial. O início oferece continuar os estudos, abrir as turmas ou confirmar a matrícula, conforme a conta. A sessão é renovada antes da renderização; falhas de consulta não são apresentadas como saída da conta.
 - `/curso` apresenta um único próximo passo principal. Com aulas em andamento, abre a atualizada mais recentemente; sem aula em andamento, abre a primeira ainda não concluída. Depois de concluir as 39, oferece escolher uma aula para revisão.
 - Carregamento e falha da consulta de progresso têm mensagens explícitas. Uma falha não impede abrir qualquer aula do catálogo nem mostra um total de conclusão inventado.
 - A busca e o filtro ficam sempre visíveis abaixo da continuação da aula, com opção de limpar filtros. Aceita título da aula, música, objetivo, código e títulos dos estudos associados; ignora diferenças de acentuação e reconhece espaços em nomes internos de músicas.

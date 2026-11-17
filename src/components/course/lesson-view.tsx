@@ -1,5 +1,5 @@
 import { CollapsibleCard } from '@/components/ui/collapsible-card';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { ArrowLeft, ArrowRight, ExternalLink, BookOpen, Music2 } from 'lucide-react';
 import { Shell } from '@/components/shell';
 import { lessons, getChart, getSong } from '@/content/course';
@@ -253,15 +253,14 @@ export function LessonView({
                 url={song.recording_url ?? song.listen_url}
                 title={`${song.title} · ${song.artist}`}
               />
-              <a
+              <Link
                 className="resource-link"
                 href={song.lyrics_chords_url}
-                target="_blank"
                 rel="noopener noreferrer"
               >
                 <Music2 size={17} />
                 Abrir letra e cifra <ExternalLink size={14} />
-              </a>
+              </Link>
               <p className="hint">
                 {song.lyrics_chords_note ??
                   'A referência externa pode usar um arranjo diferente da versão didática.'}
@@ -274,15 +273,10 @@ export function LessonView({
                 {song.sources.map((s, i) => (
                   <span key={i}>
                     {s.url ? (
-                      <a
-                        className="resource-link"
-                        href={s.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <Link className="resource-link" href={s.url} rel="noopener noreferrer">
                         {s.title}
                         <ExternalLink size={12} />
-                      </a>
+                      </Link>
                     ) : (
                       <span className="hint">{s.title}</span>
                     )}
@@ -308,15 +302,15 @@ export function LessonView({
                 Texto integral da base · páginas originais {lesson.studentPages.join(', ')}
               </summary>
               <div className="source-text">{rich(lesson.studentText, 'studentText')}</div>
-              <a
+              <Link
                 className="resource-link"
                 href="/api/materials/aluno"
-                target="_blank"
+                purpose="reference"
                 rel="noopener noreferrer"
               >
                 <BookOpen size={16} />
                 Abrir apostila com acervo integral <ExternalLink size={14} />
-              </a>
+              </Link>
             </details>
           </CollapsibleCard>
           {teacherPlan}

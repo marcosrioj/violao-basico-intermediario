@@ -35,6 +35,25 @@ async function run() {
     assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
     assert.equal(response.headers.get('x-frame-options'), 'DENY');
     assert.match(response.headers.get('content-security-policy') || '', /frame-ancestors 'none'/);
+    privateHeaders(response);
+    for (const [, attributes, href] of body.matchAll(/<a\b([^>]*\bhref="([^"]+)"[^>]*)>/g)) {
+      if (/\bdownload(?:=|\s|$)/.test(attributes)) continue;
+      const destination = new URL(href.replaceAll('&amp;', '&'), new URL(path, base));
+      if (!['http:', 'https:'].includes(destination.protocol)) continue;
+      const supportingReference =
+        (path === '/entrar' && href === '/privacidade') ||
+        (path === '/laboratorio' && href === '/materiais#student-p113');
+      if (destination.origin !== base.origin || supportingReference) {
+        assert.match(attributes, /target="_blank"/, `${path}: ${href} must open a new tab`);
+        assert.match(attributes, /rel="[^"]*noopener/, `${path}: ${href} must isolate its tab`);
+      } else {
+        assert.doesNotMatch(
+          attributes,
+          /target="_blank"/,
+          `${path}: ${href} must stay in this tab`,
+        );
+      }
+    }
     if (path === '/') {
       assert.match(body, /Confirme sua matrícula/);
       assert.doesNotMatch(body, /plano-professor|Material completo da aula|private note A/);
@@ -52,7 +71,7 @@ async function run() {
       assert.match(body, /Seu laboratório musical/);
       assert.doesNotMatch(body, /NEXT_REDIRECT|private note A|plano-professor/);
     }
-    passed(`${path} renders public content and security headers`);
+    passed(`${path} renders public content, private caching and the page-link tab policy`);
   }
   for (const path of [
     '/painel',

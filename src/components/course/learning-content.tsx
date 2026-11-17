@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { TheoryExercise } from './theory-exercise';
 import { getLessonTechniqueEntries, techniqueSources } from '@/content/curriculum';
@@ -19,7 +19,7 @@ export function StudyLinks({
   return (
     <div className="review-list">
       {studies.map((study) => (
-        <Link key={study.id} href={`/tecnica/${study.id}`}>
+        <Link purpose="reference" key={study.id} href={`/tecnica/${study.id}`}>
           <span>
             <strong>{study.title}</strong>
             <small className="learning-link-description">{study.goal}</small>
@@ -38,14 +38,9 @@ export function ResearchSources({ sources }: { sources: ResearchSource[] }) {
       <div className="stack">
         {sources.map((source) => (
           <div key={source.id}>
-            <a
-              className="resource-link"
-              href={source.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link className="resource-link" href={source.url} rel="noopener noreferrer">
               {source.author} · {source.title} <ExternalLink size={15} aria-hidden="true" />
-            </a>
+            </Link>
             <p>{source.scope}</p>
             <p className="hint">{source.limitation}</p>
           </div>
@@ -228,7 +223,7 @@ export function LessonTechniques({ lessonId }: { lessonId: string }) {
           <TechniqueStudyContent study={study} sources={techniqueSources} />
         </details>
       ))}
-      <Link href="/laboratorio" className="resource-link section">
+      <Link purpose="reference" href="/laboratorio" className="resource-link section">
         Explorar sons e ritmo no laboratório <ArrowRight size={16} aria-hidden="true" />
       </Link>
     </div>

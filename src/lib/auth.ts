@@ -5,11 +5,22 @@ import { isSupabaseConfigured } from '@/lib/env';
 import { AppError, databaseError } from '@/lib/errors';
 import type { Profile, Role } from '@/lib/contracts';
 import { assertCourseAccess, evaluateCourseAccess, type CourseAccess } from '@/lib/course-access';
+import { resolvePublicViewer } from '@/lib/public-viewer';
 export async function authContext() {
   if (!isSupabaseConfigured())
     throw new AppError(503, 'SETUP_REQUIRED', 'A autenticação ainda precisa ser configurada.');
   const supabase = await createClient();
   const { data, error } = await supabase.auth.getUser();
+  if (
+    error &&
+    error.name !== 'AuthSessionMissingError' &&
+    ![400, 401, 403].includes(error.status ?? 0)
+  )
+    throw new AppError(
+      503,
+      'AUTH_UNAVAILABLE',
+      'Não foi possível verificar seu acesso. Tente novamente.',
+    );
   if (error || !data.user)
     throw new AppError(401, 'UNAUTHENTICATED', 'Entre na sua conta para continuar.');
   const { data: profile, error: profileError } = await supabase
@@ -34,7 +45,8 @@ export async function getCurrentProfile(): Promise<Profile | null> {
   try {
     return (await authContext()).profile;
   } catch (error) {
-    if (error instanceof AppError && [401, 503].includes(error.status)) return null;
+    if (error instanceof AppError && ['UNAUTHENTICATED', 'SETUP_REQUIRED'].includes(error.code))
+      return null;
     throw error;
   }
 }
@@ -65,6 +77,10 @@ export async function getCourseAccess({
 /** Call only with a profile already obtained through requireProfile/authContext. */
 export async function getProfileCourseAccess(profile: Profile): Promise<CourseAccess> {
   return getCourseAccess({ supabase: await createClient(), profile });
+}
+
+export function getPublicViewer() {
+  return resolvePublicViewer({ getProfile: getCurrentProfile, getAccess: getProfileCourseAccess });
 }
 
 export async function requireCourseAccess(context: AuthContext): Promise<void> {

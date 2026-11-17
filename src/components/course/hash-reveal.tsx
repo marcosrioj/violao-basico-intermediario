@@ -32,7 +32,21 @@ export function HashReveal() {
     reveal();
     window.addEventListener('hashchange', reveal);
     const onClick = (event: MouseEvent) => {
-      if (event.target instanceof Element && event.target.closest('a[href*="#"]'))
+      if (!(event.target instanceof Element)) return;
+      const link = event.target.closest<HTMLAnchorElement>('a[href*="#"]');
+      if (
+        !link ||
+        (link.target && link.target !== '_self') ||
+        link.hasAttribute('download') ||
+        event.button !== 0 ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.shiftKey ||
+        event.altKey
+      )
+        return;
+      const destination = new URL(link.href);
+      if (destination.origin === window.location.origin && destination.pathname === pathname)
         window.setTimeout(reveal, 0);
     };
     document.addEventListener('click', onClick);

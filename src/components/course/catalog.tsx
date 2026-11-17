@@ -1,6 +1,6 @@
 'use client';
 import { CollapsibleCard } from '@/components/ui/collapsible-card';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { ArrowRight, Check } from 'lucide-react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import type { CourseModule, Lesson } from '@/content/types';

@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { ArrowRight, Plus, Users } from 'lucide-react';
 import { apiFetch } from '@/lib/api-client';
 import type { Classroom, Page, Profile } from '@/lib/contracts';

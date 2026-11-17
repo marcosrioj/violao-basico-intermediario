@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/ui/page-link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Shell, PageHeading } from '@/components/shell';
@@ -70,7 +70,7 @@ export default async function TechniqueStudyPage({ params }: { params: Promise<{
           </div>
         </CollapsibleCard>
         <section aria-label="Ferramentas e materiais">
-          <Link className="resource-link" href="/laboratorio">
+          <Link purpose="reference" className="resource-link" href="/laboratorio">
             Abrir laboratório
           </Link>
           <a className="resource-link" href="/api/materials/aluno" download>

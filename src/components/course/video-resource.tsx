@@ -1,4 +1,5 @@
 'use client';
+import Link from '@/components/ui/page-link';
 import { useState } from 'react';
 import { Play, ExternalLink } from 'lucide-react';
 function youtubeId(url: string) {
@@ -37,9 +38,9 @@ export function VideoResource({ url, title }: { url: string; title: string }) {
               Carregar vídeo de referência
             </button>
           ) : (
-            <a className="button cream" href={url} target="_blank" rel="noopener noreferrer">
+            <Link className="button cream" href={url} rel="noopener noreferrer">
               Abrir gravação <ExternalLink size={14} />
-            </a>
+            </Link>
           )}
         </div>
       )}
