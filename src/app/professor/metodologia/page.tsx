@@ -23,6 +23,14 @@ export default async function TeachingPage() {
         title="Guia do professor"
         description="Escolha uma aula, prepare o encontro e acompanhe a execução."
       />
+      <nav className="learning-paths" aria-label="Recursos para lecionar">
+        <a className="button secondary" href="#avaliar">
+          Consultar critérios de avaliação
+        </a>
+        <a className="button secondary" href="/api/materials/professor" download>
+          Baixar manual do professor
+        </a>
+      </nav>
       <CollapsibleCard
         title="Planos das aulas"
         className="section"
@@ -107,9 +115,6 @@ export default async function TeachingPage() {
           </table>
         </div>
       </CollapsibleCard>
-      <a className="button section" href="/api/materials/professor" download>
-        Baixar manual do professor
-      </a>
       <ResearchSources sources={teachingGuide.sources} />
     </Shell>
   );

@@ -30,6 +30,16 @@ export default async function CoursePage() {
         title="Uma música de cada vez"
         description="Continue sua aula ou escolha um módulo."
       />
+      <nav className="learning-paths" aria-label="Consultas complementares">
+        <Link className="button secondary" href="/tecnica">
+          Índice de técnicas <ArrowRight size={16} aria-hidden="true" />
+        </Link>
+        {profile.role === 'teacher' && (
+          <Link className="button secondary" href="/professor/metodologia">
+            Guia para lecionar <ArrowRight size={16} aria-hidden="true" />
+          </Link>
+        )}
+      </nav>
       <div id="repertorio">
         <Suspense fallback={<p>Carregando trilha…</p>}>
           <Catalog modules={courseModules} lessons={catalogLessons} />
@@ -42,16 +52,6 @@ export default async function CoursePage() {
           As técnicas aparecem nas aulas acima e voltam em novos contextos. O índice por assunto
           reúne os mesmos 27 estudos para uma consulta rápida.
         </p>
-        <nav className="learning-paths" aria-label="Consultas complementares">
-          <Link className="text-link" href="/tecnica">
-            Índice de técnicas <ArrowRight size={16} aria-hidden="true" />
-          </Link>
-          {profile.role === 'teacher' && (
-            <Link className="text-link" href="/professor/metodologia">
-              Guia para lecionar <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-          )}
-        </nav>
       </details>
     </Shell>
   );

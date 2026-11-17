@@ -118,7 +118,10 @@ export function Shell({
       <div className="app-main">
         <header className="topbar">
           <span>Do primeiro acorde à liberdade de adorar.</span>
-          <Link className="account-link" href="/painel">
+          <Link
+            className="account-link"
+            href={teacher ? '/professor#minha-conta' : '/painel#minha-conta'}
+          >
             <span className="avatar">
               <Guitar size={18} aria-hidden="true" />
             </span>

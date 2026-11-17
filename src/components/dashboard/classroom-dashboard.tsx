@@ -9,6 +9,7 @@ import { Empty, Notice } from '@/components/ui';
 import {
   FeedbackEntries,
   formatDate,
+  focusDashboardSection,
   LessonSelect,
   lessonName,
   messageOf,
@@ -198,6 +199,31 @@ export function ClassroomDashboard({
                 </div>
                 <Invitation code={data.classroom.invite_code} />
               </div>
+              <div className="dashboard-alert-actions dashboard-section-gap">
+                {data.members.length > 0 && (
+                  <button
+                    type="button"
+                    className="button"
+                    onClick={() => focusDashboardSection('feedback-form', 'select')}
+                  >
+                    Enviar devolutiva
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className="button secondary"
+                  onClick={() => focusDashboardSection('meeting-form', 'input')}
+                >
+                  Agendar encontro
+                </button>
+                <button
+                  type="button"
+                  className="button secondary"
+                  onClick={() => focusDashboardSection('class-agenda')}
+                >
+                  Ver agenda
+                </button>
+              </div>
             </section>
             <div className="stack dashboard-section-gap">
               <section className="card">
@@ -292,15 +318,7 @@ export function ClassroomDashboard({
                           className="button secondary small dashboard-section-gap"
                           onClick={() => {
                             setStudentId(member.student_id);
-                            const form = document.getElementById('feedback-form');
-                            if (form instanceof HTMLDetailsElement) form.open = true;
-                            form?.scrollIntoView({
-                              behavior: window.matchMedia('(prefers-reduced-motion: reduce)')
-                                .matches
-                                ? 'auto'
-                                : 'smooth',
-                              block: 'start',
-                            });
+                            focusDashboardSection('feedback-form', 'textarea');
                           }}
                         >
                           Preparar devolutiva
@@ -387,7 +405,7 @@ export function ClassroomDashboard({
               </details>
             </div>
             <div className="stack">
-              <details className="card">
+              <details className="card" id="meeting-form">
                 <summary>Agendar encontro</summary>
                 <div className="section-title">
                   <span className="badge">60 minutos</span>
@@ -451,7 +469,7 @@ export function ClassroomDashboard({
                   </button>
                 </form>
               </details>
-              <section className="card">
+              <section className="card" id="class-agenda">
                 <div className="section-title">
                   <h2>Agenda da turma</h2>
                   <Hint label="Encontros exibidos">

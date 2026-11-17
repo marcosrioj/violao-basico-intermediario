@@ -66,11 +66,25 @@ export function LessonView({
           </span>
         </div>
       </header>
-      {teacher && (
-        <a className="resource-link lesson-teacher-shortcut" href="#plano-professor">
-          Abrir plano do professor
+      <nav className="lesson-essentials" aria-label="Ações da aula">
+        <a className="button secondary" href="#tocar">
+          Tocar a música
         </a>
-      )}
+        <a className="button secondary" href="#diario-pratica">
+          Registrar prática
+        </a>
+        {teacher && (
+          <a className="button secondary" href="#plano-professor">
+            Preparar e apresentar
+          </a>
+        )}
+      </nav>
+      <LessonProgress
+        key={`progress-${lesson.id}`}
+        lesson={lesson}
+        demo={demo}
+        checkLabels={lesson.checks.map((text, i) => rich(text, `checks-${i}`))}
+      />
       <div className="lesson-layout lesson-focused" key={lesson.id}>
         <div className="lesson-content">
           <CollapsibleCard
@@ -101,7 +115,7 @@ export function LessonView({
             className="lesson-stage"
             leading={<span className="stage-number">2</span>}
           >
-            <details id="acordes" className="lesson-chords">
+            <details id="acordes" className="lesson-chords" open suppressHydrationWarning>
               <summary>
                 <h3>Os acordes desta aula</h3>
               </summary>
@@ -137,6 +151,7 @@ export function LessonView({
                 />
               </div>
               <ChartPlayer
+                defaultOpen
                 key={`chart-${lesson.id}`}
                 chart={chart}
                 initialBpm={lesson.bpm}
@@ -200,6 +215,9 @@ export function LessonView({
             className="lesson-stage"
             leading={<span className="stage-number">4</span>}
           >
+            <a className="resource-link" href="#meu-progresso">
+              Conferir objetivos e concluir aula <ArrowRight size={16} aria-hidden="true" />
+            </a>
             <Quiz
               key={`quiz-${lesson.id}`}
               question={rich(lesson.question, 'question')}
@@ -219,12 +237,6 @@ export function LessonView({
                 <LessonWeeklyPractice content={enrichment} />
               </>
             )}
-            <LessonProgress
-              key={`progress-${lesson.id}`}
-              lesson={lesson}
-              demo={demo}
-              checkLabels={lesson.checks.map((text, i) => rich(text, `checks-${i}`))}
-            />
             <PracticeLog
               key={`practice-${lesson.id}`}
               lessonId={lesson.id}

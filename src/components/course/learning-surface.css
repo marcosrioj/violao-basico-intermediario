@@ -5,6 +5,38 @@ main.learning-surface {
 main.learning-surface:has(.lesson-focused) {
   max-width: 976px;
 }
+.lesson-essentials,
+.completion-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.lesson-essentials {
+  justify-content: flex-start;
+  margin-bottom: var(--space-4);
+}
+.lesson-completion {
+  margin-bottom: var(--space-5);
+  scroll-margin-top: var(--space-6);
+}
+.learning-surface .lesson-completion h2 {
+  font-size: var(--font-size-lg);
+  margin: 0;
+}
+.completion-actions > div {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+.completion-actions .hint {
+  margin-block: var(--space-2) 0;
+}
+.learning-surface .completion-objectives {
+  border: 0;
+  padding: 0;
+  margin-top: var(--space-3);
+}
 .learning-surface .page-heading {
   margin-bottom: var(--space-6);
 }

@@ -85,6 +85,19 @@ export default async function MaterialsPage() {
           </article>
         )}
       </section>
+      <nav className="learning-paths" aria-label="Consultar os estudos e preparar aulas">
+        <Link className="button secondary" href="/tecnica">
+          Consultar o índice de técnicas
+        </Link>
+        <a className="button secondary" href="#theory-index">
+          Consultar teoria musical
+        </a>
+        {teacher && (
+          <Link className="button secondary" href="/professor/metodologia">
+            Guia para lecionar
+          </Link>
+        )}
+      </nav>
       <CollapsibleCard title="Como estudar" className="section learning-reading" name="library">
         {practicePrinciples.map((principle) => (
           <details key={principle.title} className="section">
@@ -92,16 +105,6 @@ export default async function MaterialsPage() {
             <p>{principle.text}</p>
           </details>
         ))}
-        <div className="learning-paths">
-          <Link className="button secondary" href="/tecnica">
-            Consultar o índice de técnicas
-          </Link>
-          {teacher && (
-            <Link className="button secondary" href="/professor/metodologia">
-              Guia para lecionar
-            </Link>
-          )}
-        </div>
       </CollapsibleCard>
       <CollapsibleCard id="technical-library" title="Técnicas" className="section" name="library">
         <div className="learning-module-list section">

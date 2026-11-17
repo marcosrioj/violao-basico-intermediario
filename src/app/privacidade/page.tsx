@@ -17,10 +17,10 @@ export default function Privacy() {
           pelo Supabase. O site usa cookies necessários à sessão.
         </p>
         <p>
-          Letras e marcações de acompanhamento que você adicionar ficam apenas no armazenamento
-          deste navegador, compartilhadas entre as aulas da mesma versão musical neste dispositivo.
-          Elas não são enviadas ao Supabase nem compartilhadas automaticamente com a turma. Você
-          pode removê-las na cifra ou exportar uma cópia antes de limpar os dados do navegador.
+          A aplicação pode ler letras e marcações pessoais de acompanhamento salvas anteriormente
+          neste navegador, usadas entre as aulas da mesma versão musical neste dispositivo. Elas não
+          são enviadas ao Supabase nem compartilhadas automaticamente com a turma. Limpar os dados
+          deste site nas configurações do navegador remove essas marcações locais.
         </p>
         <h2>Quem pode acompanhar</h2>
         <p>

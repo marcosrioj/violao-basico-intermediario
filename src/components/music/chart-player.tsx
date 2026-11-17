@@ -175,13 +175,17 @@ export function ChartPlayer({
   }
   const pausePlayback = useCallback(() => transport.current?.pause(), []);
   useEffect(() => {
-    const stage = expandedChart.current?.closest<HTMLDetailsElement>('details.lesson-stage');
-    if (!stage) return;
-    const pauseClosedStage = () => {
-      if (!stage.open) pausePlayback();
+    const panels: HTMLDetailsElement[] = [];
+    let element = expandedChart.current?.parentElement;
+    while (element) {
+      if (element instanceof HTMLDetailsElement) panels.push(element);
+      element = element.parentElement;
+    }
+    const pauseHiddenPlayer = () => {
+      if (panels.some((panel) => !panel.open)) pausePlayback();
     };
-    stage.addEventListener('toggle', pauseClosedStage);
-    return () => stage.removeEventListener('toggle', pauseClosedStage);
+    panels.forEach((panel) => panel.addEventListener('toggle', pauseHiddenPlayer));
+    return () => panels.forEach((panel) => panel.removeEventListener('toggle', pauseHiddenPlayer));
   }, [pausePlayback]);
   const resumePlayback = useCallback(() => {
     void audioContext().resume();
@@ -419,6 +423,21 @@ export function ChartPlayer({
           duration={(totalChartBeats(bars) * 60) / bpm}
           bars={bars.length}
         />
+        {tempo && researchedBpm !== null && (
+          <div className="chart-tempo">
+            <div className="control-row">
+              <button
+                type="button"
+                className="button small secondary"
+                aria-pressed={bpm === researchedBpm}
+                onClick={() => changeBpm(researchedBpm)}
+              >
+                Usar referência · {formatBpm(researchedBpm)} BPM
+              </button>
+              <TempoReference tempo={tempo} />
+            </div>
+          </div>
+        )}
         <details className="section">
           <summary>Sobre a cifra e o andamento</summary>
           <p>{chart.adaptations}</p>
@@ -429,21 +448,6 @@ export function ChartPlayer({
               ? 'Neste arranjo, cada pulso é uma semínima pontuada (três colcheias).'
               : ''}{' '}
           </p>
-          {tempo && researchedBpm !== null && (
-            <div className="chart-tempo">
-              <div className="control-row">
-                <button
-                  type="button"
-                  className="button small secondary"
-                  aria-pressed={bpm === researchedBpm}
-                  onClick={() => changeBpm(researchedBpm)}
-                >
-                  Usar referência · {formatBpm(researchedBpm)} BPM
-                </button>
-                <TempoReference tempo={tempo} />
-              </div>
-            </div>
-          )}
         </details>
         <div className="chart-reading-guide label-with-hint">
           <h3>Arranjo completo</h3>

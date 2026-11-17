@@ -3,6 +3,35 @@
 Mostre uma tarefa por vez, com títulos curtos e controles claros. Use os tokens existentes e deixe a consulta completa em seções expansíveis. A identidade verde e creme, a legibilidade e o foco de teclado permanecem.
 
 <details>
+<summary>Ações essenciais e critérios de revisão</summary>
+
+## Ações essenciais · 17/11/2026
+
+As ações necessárias à tarefa ficam visíveis ou têm entrada direta. Explicações extensas e configurações secundárias continuam recolhidas. A revisão aplica as regras `primary-action`, `content-priority`, `search-accessible`, `persistent-nav`, `keyboard-nav`, `error-recovery` e `progressive-disclosure` da referência `ui-ux-pro-max/references/quick-reference.md`, além de semântica, foco, rótulos e feedback de `ui-styling/references/shadcn-accessibility.md`. As buscas iniciais sobre visibilidade não trouxeram correspondências pertinentes; os critérios vêm dessas referências explícitas. Skills orientam a revisão, não fornecem certificação automática.
+
+| Página                           | Essencial disponível                                                                         | Consulta secundária                                               |
+| -------------------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Aula                             | Concluir e ver estado no topo; tocar, registrar e abrir plano por atalho                     | Objetivos acessíveis pela conclusão; detalhes e acervo recolhidos |
+| Trilha                           | Continuar, buscar, filtrar e limpar filtros                                                  | Objetivo e técnicas de cada aula                                  |
+| Painel do aluno                  | Continuar, contagem de aulas, próximo encontro, última devolutiva, registrar prática e conta | Histórico, estatísticas e turmas                                  |
+| Painel do professor              | Criar turma, copiar convite, acompanhar e preparar aula; próximo encontro e conta            | Exemplos de preparação e agenda adicional                         |
+| Turma                            | Alunos, convite e atalhos de devolutiva, agendamento e agenda                                | Formulários completos abrem com foco no campo                     |
+| Biblioteca                       | Downloads e acesso a técnicas, teoria e guia docente                                         | Textos de consulta e fontes                                       |
+| Teoria                           | Experimentar, conferir e voltar aos pontos exatos da aula                                    | Leitura por assunto e fontes                                      |
+| Estudo técnico                   | Aplicar na aula, usar/parar metrônomo, laboratório e apostila                                | Explicação, adaptações e demais aplicações                        |
+| Índice técnico e repertório      | Escolher assunto/música revela estudar, ouvir e cifra                                        | Fontes e explicações; estrutura mantida                           |
+| Laboratório                      | Oficinas, controles da ferramenta ativa e acesso aos estudos                                 | Ajuda e textos de aplicação                                       |
+| Guia docente                     | Planos, critérios de avaliação e manual                                                      | Princípios e fontes                                               |
+| Início, login, matrícula e senha | Entrada, cadastro, recuperação e confirmação mantidos visíveis                               | Ajuda contextual; laboratório público identificado no início      |
+| Conta e privacidade              | Minha conta leva ao painel correspondente; saída visível e orientação de dados corrigida     | Edição de perfil sob demanda                                      |
+
+A conclusão preserva a exigência de conferir os objetivos. Se faltarem marcações, o botão abre a lista e foca a primeira pendência; nenhum progresso é gravado nessa ação. Após conferir, a mesma ação salva pelo fluxo existente. O botão vem depois dos campos no DOM e fica fora da expansão. Erro e sucesso permanecem visíveis; falha de carregamento permite tentar novamente.
+
+Cifra, metrônomo e cronômetro param quando seus controles são recolhidos. O player conserva a posição para continuar. O visual usa os mesmos tokens, texto legível e ações secundárias discretas, sem barras fixas cobrindo o conteúdo.
+
+</details>
+
+<details>
 <summary>Tokens, tipografia e composição</summary>
 
 Este documento complementa a arquitetura e os padrões de engenharia existentes. A aplicação continua em Next.js, React, TypeScript e CSS próprio. O refinamento visual não introduz Tailwind, shadcn/ui, bibliotecas de animação ou fontes externas.
@@ -56,7 +85,7 @@ As ferramentas musicais continuam usando Web Audio e os componentes já existent
 
 O componente reutiliza os tokens de card, tipografia, cor, foco e movimento. O foco fica dentro da borda para não ser cortado; títulos quebram naturalmente; os alvos têm pelo menos 44 px e a preferência por movimento reduzido desativa as transições. O CSS é importado uma única vez no layout principal. Não coloque links, botões, campos ou dicas dentro do resumo: essas ações pertencem ao corpo expandido.
 
-Recolher mantém rascunhos, marcações e configurações. Na aula, fechar **Tocar a música** pausa a cifra e conserva a posição para retomar. Ferramentas independentes mantêm seus controles ao reabrir. Uma nova aula começa em **Entender**. `HashReveal` abre os ancestrais de um destino, inclusive a cifra e suas referências internas, antes de rolar e focar; mantenha os IDs dos destinos nos elementos recolhíveis correspondentes.
+Recolher mantém rascunhos, marcações e configurações. Fechar a cifra ou qualquer etapa que a contém pausa o som e conserva a posição. O metrônomo e o cronômetro de prática também param ao recolher seus painéis; as configurações são mantidas. Uma nova aula começa em **Entender**. `HashReveal` abre os ancestrais de um destino, inclusive a cifra e suas referências internas, antes de rolar e focar; mantenha os IDs dos destinos nos elementos recolhíveis correspondentes.
 
 Nesta revisão, `ui-ux-pro-max` orientou teclado, foco e responsividade; `design`, `brand`, `design-system` e `ui-styling` orientaram composição, consistência e reutilização. As skills `banner-design` e `slides` foram conferidas quanto ao escopo: o cabeçalho editorial mantém sua função e a apresentação continua dentro da condução do professor, sem novos banners ou slides. A busca local inicial sobre disclosure retornou um resultado de tipografia fora do foco; a busca refinada sobre navegação por teclado retornou diretrizes aplicáveis. As evidências estão em [VERIFICATION.md](VERIFICATION.md#cards-recolhíveis-na-aula-trilha-e-repertório).
 
@@ -100,7 +129,7 @@ Alterar o andamento ou o seletor de trecho interrompe e reinicia a posição. Oc
 
 `snapshot()` expõe a posição fracionária em pulsos mesmo sem metrônomo, a posição na forma expandida e a duração selecionada. O destaque da letra aguarda o início agendado do áudio. Na síntese, a primeira corda tocável inicia o acorde; todas as cordas terminam no limite musical do evento, evitando que o atraso entre cordas prolongue a harmonia além do compasso. A precisão desse relógio não certifica o alinhamento editorial das frases nem elimina a latência física do dispositivo.
 
-Os controles principais usam uma grade que acompanha a largura da cifra: seletor **Ir para o trecho** amplo, ajuste de BPM, **Mostrar letra** e **Metrônomo**. A reprodução fica nos próprios trechos. O seletor tem altura mínima de 48 px e ocupa a largura disponível no celular. **Sobre a cifra e o andamento** reúne adaptação, contagem e o único botão **Usar referência**, que restaura o andamento pesquisado. Todas as 39 aulas iniciam nesse valor; o ajuste manual continua disponível. A indicação da aula e o diário seguem a mesma referência, arredondada para inteiro apenas no diário. `defaultPlaybackBpm(studyBpm, tempo?)` converte as unidades sem arredondar o áudio e usa o andamento de estudo somente quando não há referência válida.
+Os controles principais usam uma grade que acompanha a largura da cifra: seletor **Ir para o trecho** amplo, ajuste de BPM, **Mostrar letra** e **Metrônomo**. A reprodução fica nos próprios trechos. O seletor tem altura mínima de 48 px e ocupa a largura disponível no celular. **Sobre a cifra e o andamento** reúne adaptação e contagem. O botão **Usar referência** fica visível junto dos controles e restaura o andamento pesquisado. Todas as 39 aulas iniciam nesse valor; o ajuste manual continua disponível. A indicação da aula e o diário seguem a mesma referência, arredondada para inteiro apenas no diário. `defaultPlaybackBpm(studyBpm, tempo?)` converte as unidades sem arredondar o áudio e usa o andamento de estudo somente quando não há referência válida.
 
 Fontes, natureza estimada e limitações ficam em `Hint`. O estado da [auditoria das 13 gravações](TEMPO-RESEARCH.md) continua com sete referências documentadas e seis estimativas; o padrão de reprodução não muda a classificação da pesquisa. **Mostrar letra** começa marcado e controla a letra sincronizada e o texto integral. Alterar essa opção durante a reprodução ou pausa mantém a posição musical; reexibir a letra retoma o destaque no ponto atual.
 
@@ -159,7 +188,7 @@ As referências consultadas das skills incluem arquitetura de tokens, componente
 
 O curso tem uma entrada principal de continuidade e um índice técnico complementar. As aulas usam quatro etapas: **Entender**, **Treinar**, **Tocar a música** e **Revisar e registrar**. A primeira abre inicialmente; acordes, estudos completos, práticas adicionais, consultas e acervo continuam montados em seções expansíveis nativas. Cada estudo apresenta título e indicação textual de começar/retomar; o foco da aplicação aparece ao abrir. Os textos permanecem completos.
 
-As quatro etapas usam `CollapsibleCard` com `name="lesson-stage"`: abrir uma recolhe a anterior. A aula tem uma coluna em todas as larguras, com links para a próxima etapa ao final de cada uma. Progresso e diário ficam na revisão; repertório, teoria e acervo ficam em **Materiais de apoio**. O plano docente vem depois. Links profundos continuam abrindo o destino necessário.
+As quatro etapas usam `CollapsibleCard` com `name="lesson-stage"`: abrir uma recolhe a anterior. A aula tem uma coluna em todas as larguras, com links para a próxima etapa ao final de cada uma. A conclusão fica visível no topo, fora de seções recolhíveis; o diário tem atalho direto e permanece na revisão; repertório, teoria e acervo ficam em **Materiais de apoio**. O plano docente vem depois. Links profundos continuam abrindo o destino necessário.
 
 `learning-surface.css` reúne os ajustes comuns das telas do curso: superfícies sem sombra, títulos menores, listas simples e menos bordas internas. A biblioteca, as consultas, os guias e os painéis de aluno/professor usam a mesma hierarquia. Preparação, fontes, histórico e formulários secundários abrem sob demanda. Rótulos, estados, erros e ações da tarefa em uso permanecem junto dela.
 

@@ -107,9 +107,8 @@ export function Catalog({
           </>
         )}
       </section>
-      <details className="section" open={Boolean(query || selectedModule !== 'all')}>
-        <summary>Encontrar uma aula ou técnica</summary>
-        <div className="filter-bar section">
+      <section className="section" aria-label="Encontrar uma aula ou técnica">
+        <div className="filter-bar">
           <label>
             Buscar por aula, música ou técnica
             <input
@@ -131,7 +130,16 @@ export function Catalog({
             </select>
           </label>
         </div>
-      </details>
+        {Boolean(query || selectedModule !== 'all') && (
+          <button
+            type="button"
+            className="button secondary small"
+            onClick={() => router.replace('/curso', { scroll: false })}
+          >
+            Limpar filtros
+          </button>
+        )}
+      </section>
       <p className="search-count" id="modulos" role="status" aria-atomic="true">
         {filtered.length} aulas {query || selectedModule !== 'all' ? 'encontradas' : 'na trilha'}
       </p>

@@ -12,6 +12,7 @@ export function Metronome({
   const [meter, setMeter] = useState<string>(initialMeter);
   const [running, setRunning] = useState(false);
   const [beat, setBeat] = useState(-1);
+  const instrument = useRef<HTMLElement>(null);
   const tick = useRef(0);
   const compound = meter === '6/8';
   const pulses = compound ? 2 : Number(meter[0]);
@@ -41,16 +42,28 @@ export function Metronome({
     const pause = () => {
       if (document.hidden) setRunning(false);
     };
+    // A collapsed tool must not keep clicking while its Stop control is hidden.
+    const disclosures: HTMLDetailsElement[] = [];
+    let ancestor = instrument.current?.parentElement ?? null;
+    while (ancestor) {
+      if (ancestor instanceof HTMLDetailsElement) disclosures.push(ancestor);
+      ancestor = ancestor.parentElement;
+    }
+    const pauseCollapsed = () => {
+      if (disclosures.some((element) => !element.open)) setRunning(false);
+    };
+    disclosures.forEach((element) => element.addEventListener('toggle', pauseCollapsed));
     document.addEventListener('visibilitychange', pause);
     return () => {
       clearInterval(interval);
       timers.forEach(clearTimeout);
       voices.forEach((stop) => stop());
+      disclosures.forEach((element) => element.removeEventListener('toggle', pauseCollapsed));
       document.removeEventListener('visibilitychange', pause);
     };
   }, [running, bpm, pulses, subdivisions]);
   return (
-    <section className="card instrument">
+    <section ref={instrument} className="card instrument">
       <div className="section-title">
         <div>
           <p className="eyebrow">PULSO CONSTANTE</p>

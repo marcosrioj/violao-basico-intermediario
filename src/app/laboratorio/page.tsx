@@ -21,17 +21,17 @@ export default async function Laboratory() {
         description="Dê som à teoria. Experimente, escute e leve a descoberta para o violão."
       />
       <LearningLab />
+      <Link className="button secondary section" href={access?.allowed ? '/tecnica' : '/entrar'}>
+        {access?.allowed
+          ? 'Consultar índice de técnicas'
+          : 'Entrar para acessar os estudos do curso'}
+      </Link>
       <details className="section">
         <summary>Encontrar um estudo no curso</summary>
         <p>
           Pratique leitura, palhetada, articulações, expressão e harmonia com exemplos graduais
           ligados às músicas das aulas.
         </p>
-        <Link className="button secondary section" href={access?.allowed ? '/tecnica' : '/entrar'}>
-          {access?.allowed
-            ? 'Consultar índice de técnicas'
-            : 'Entrar para acessar os estudos do curso'}
-        </Link>
       </details>
     </Shell>
   );

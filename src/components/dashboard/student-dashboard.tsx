@@ -21,6 +21,7 @@ import {
   AccountPanel,
   FeedbackEntries,
   formatDate,
+  focusDashboardSection,
   LessonSelect,
   lessonName,
   messageOf,
@@ -72,14 +73,15 @@ function PracticeDiary({ lessons, profile }: { lessons: LessonOption[]; profile:
     }
   }
   return (
-    <CollapsibleCard title="Diário de prática">
+    <section className="card" id="diario-painel">
       <div className="section-title">
+        <h2>Diário de prática</h2>
         <Hint label="Registrar uma prática">
           Escolha a aula, informe os minutos e anote o que tocou. O BPM é opcional e deve ser um
           inteiro aproximado: por exemplo, 37,3 vira 37.
         </Hint>
       </div>
-      <details className="dashboard-section-gap">
+      <details className="dashboard-section-gap" id="registrar-pratica">
         <summary>Registrar uma prática</summary>
         <form className="stack" onSubmit={submit} aria-busy={busy}>
           <LessonSelect
@@ -133,39 +135,42 @@ function PracticeDiary({ lessons, profile }: { lessons: LessonOption[]; profile:
         <Notice error message={error} />
         <Notice message={message} />
       </details>
-      <ResourceState {...resource} retry={resource.reload}>
-        {resource.data && (
-          <>
-            {resource.data.items.length ? (
-              resource.data.items.map((item) => (
-                <article className="practice-entry" key={item.id}>
-                  <h3>
-                    <Link href={`/aulas/${item.lesson_id}`}>
-                      {lessonName(lessons, item.lesson_id)}
-                    </Link>
-                  </h3>
-                  <p>
-                    {item.minutes} min{item.bpm ? ` · ${item.bpm} BPM` : ''}
-                  </p>
-                  {item.notes && <p className="dashboard-preserve">{item.notes}</p>}
-                  <small>{formatDate(item.practiced_at, profile.timezone)}</small>
-                </article>
-              ))
-            ) : (
-              <Empty>
-                Seu diário começa na primeira prática. Não precisa ser uma execução perfeita.
-              </Empty>
-            )}
-            <Pagination
-              label="diário de prática"
-              page={page}
-              hasMore={resource.data.hasMore}
-              onChange={setPage}
-            />
-          </>
-        )}
-      </ResourceState>
-    </CollapsibleCard>
+      <details className="dashboard-section-gap">
+        <summary>Práticas registradas</summary>
+        <ResourceState {...resource} retry={resource.reload}>
+          {resource.data && (
+            <>
+              {resource.data.items.length ? (
+                resource.data.items.map((item) => (
+                  <article className="practice-entry" key={item.id}>
+                    <h3>
+                      <Link href={`/aulas/${item.lesson_id}`}>
+                        {lessonName(lessons, item.lesson_id)}
+                      </Link>
+                    </h3>
+                    <p>
+                      {item.minutes} min{item.bpm ? ` · ${item.bpm} BPM` : ''}
+                    </p>
+                    {item.notes && <p className="dashboard-preserve">{item.notes}</p>}
+                    <small>{formatDate(item.practiced_at, profile.timezone)}</small>
+                  </article>
+                ))
+              ) : (
+                <Empty>
+                  Seu diário começa na primeira prática. Não precisa ser uma execução perfeita.
+                </Empty>
+              )}
+              <Pagination
+                label="diário de prática"
+                page={page}
+                hasMore={resource.data.hasMore}
+                onChange={setPage}
+              />
+            </>
+          )}
+        </ResourceState>
+      </details>
+    </section>
   );
 }
 function StudentClasses({ profile, changed }: { profile: Profile; changed: () => void }) {
@@ -266,25 +271,38 @@ export function Agenda({ profile, lessons }: { profile: Profile; lessons: Lesson
   const [page, setPage] = useState(1);
   const resource = useResource<Page<LessonSession>>(`/api/sessions?page=${page}`);
   return (
-    <CollapsibleCard title="Próximos encontros">
+    <section className="card">
+      <h2>Próximos encontros</h2>
       <ResourceState {...resource} retry={resource.reload}>
         {resource.data && (
           <>
             <SessionEntries
-              items={resource.data.items}
+              items={resource.data.items.slice(0, 1)}
               lessons={lessons}
               timezone={profile.timezone}
             />
-            <Pagination
-              label="agenda"
-              page={page}
-              hasMore={resource.data.hasMore}
-              onChange={setPage}
-            />
+            {(resource.data.items.length > 1 || resource.data.hasMore || page > 1) && (
+              <details className="dashboard-section-gap" open={page > 1}>
+                <summary>Ver outros encontros</summary>
+                {resource.data.items.length > 1 && (
+                  <SessionEntries
+                    items={resource.data.items.slice(1)}
+                    lessons={lessons}
+                    timezone={profile.timezone}
+                  />
+                )}
+                <Pagination
+                  label="agenda"
+                  page={page}
+                  hasMore={resource.data.hasMore}
+                  onChange={setPage}
+                />
+              </details>
+            )}
           </>
         )}
       </ResourceState>
-    </CollapsibleCard>
+    </section>
   );
 }
 export function FeedbackHistory({
@@ -297,8 +315,9 @@ export function FeedbackHistory({
   const [page, setPage] = useState(1);
   const resource = useResource<Page<Feedback>>(`/api/feedback?page=${page}`);
   return (
-    <CollapsibleCard title="Devolutivas do professor">
+    <section className="card">
       <div className="section-title">
+        <h2>Devolutivas do professor</h2>
         <Hint label="Entender a validação do professor">
           A validação registra a execução observada pelo professor, separadamente das aulas que você
           marcou como concluídas.
@@ -308,20 +327,32 @@ export function FeedbackHistory({
         {resource.data && (
           <>
             <FeedbackEntries
-              items={resource.data.items}
+              items={resource.data.items.slice(0, 1)}
               lessons={lessons}
               timezone={profile.timezone}
             />
-            <Pagination
-              label="devolutivas"
-              page={page}
-              hasMore={resource.data.hasMore}
-              onChange={setPage}
-            />
+            {(resource.data.items.length > 1 || resource.data.hasMore || page > 1) && (
+              <details className="dashboard-section-gap" open={page > 1}>
+                <summary>Ver outras devolutivas</summary>
+                {resource.data.items.length > 1 && (
+                  <FeedbackEntries
+                    items={resource.data.items.slice(1)}
+                    lessons={lessons}
+                    timezone={profile.timezone}
+                  />
+                )}
+                <Pagination
+                  label="devolutivas"
+                  page={page}
+                  hasMore={resource.data.hasMore}
+                  onChange={setPage}
+                />
+              </details>
+            )}
           </>
         )}
       </ResourceState>
-    </CollapsibleCard>
+    </section>
   );
 }
 export function StudentDashboard({
@@ -368,7 +399,9 @@ export function StudentDashboard({
               </section>
             )}
             <details className="dashboard-section-gap">
-              <summary>Meu progresso</summary>
+              <summary>
+                Meu progresso · {completed.length} de {lessons.length} aulas concluídas
+              </summary>
               <div className="dashboard-stats">
                 <div className="dashboard-stat">
                   <CheckCircle2 size={19} />
@@ -418,6 +451,13 @@ export function StudentDashboard({
           </>
         )}
       </ResourceState>
+      <button
+        type="button"
+        className="button secondary dashboard-section-gap"
+        onClick={() => focusDashboardSection('registrar-pratica', 'select')}
+      >
+        Registrar prática
+      </button>
       <div className="stack dashboard-section-gap">
         <div className="stack">
           <StudentClasses
@@ -433,10 +473,9 @@ export function StudentDashboard({
         </div>
         <PracticeDiary profile={profile} lessons={lessons} />
       </div>
-      <details className="section">
-        <summary>Minha conta</summary>
+      <div className="section">
         <AccountPanel profile={profile} />
-      </details>
+      </div>
     </div>
   );
 }

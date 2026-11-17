@@ -18,6 +18,24 @@ export interface LessonOption {
 export function messageOf(error: unknown) {
   return error instanceof Error ? error.message : 'Não foi possível concluir. Tente novamente.';
 }
+/** Reveal the requested task and move keyboard focus to its heading or first field. */
+export function focusDashboardSection(id: string, field?: string) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  let parent: HTMLElement | null = target;
+  while (parent) {
+    if (parent instanceof HTMLDetailsElement) parent.open = true;
+    parent = parent.parentElement;
+  }
+  target.scrollIntoView({
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    block: 'start',
+  });
+  const focus = (field ? target.querySelector<HTMLElement>(field) : null) ?? target;
+  if (!focus.hasAttribute('tabindex') && !focus.matches('input, select, textarea, button, a[href]'))
+    focus.setAttribute('tabindex', '-1');
+  focus.focus({ preventScroll: true });
+}
 export function lessonName(lessons: LessonOption[], id: string) {
   const lesson = lessons.find((item) => item.id === id);
   return lesson ? `${lesson.display_id} · ${lesson.title}` : id;
@@ -181,7 +199,7 @@ export function AccountPanel({ profile }: { profile: Profile }) {
     }
   }
   return (
-    <section className="dashboard-account">
+    <section className="dashboard-account" id="minha-conta" aria-label="Minha conta" tabIndex={-1}>
       <div className="profile-strip">
         <span className="avatar">{profile.display_name.charAt(0).toUpperCase()}</span>
         <div>

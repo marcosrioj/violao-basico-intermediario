@@ -37,12 +37,23 @@ export default async function TheoryPage({ params }: { params: Promise<{ id: str
         title={reference.title}
         description="Leia uma ideia, experimente no instrumento e volte à sua música."
       />
+      <nav className="learning-paths" aria-label="Ações da consulta musical">
+        <a className="button secondary" href="#laboratorio">
+          Experimentar com som
+        </a>
+        <a className="button secondary" href="#conferir">
+          Conferir a aprendizagem
+        </a>
+        <a className="button secondary" href="#retornar">
+          Voltar à aula
+        </a>
+      </nav>
       <div className="stack">
         <TheoryReading reference={reference} />
         <CollapsibleCard title="Experimentar com som" name="theory-activities">
           <TheoryLab referenceId={reference.id} />
         </CollapsibleCard>
-        <CollapsibleCard title="Conferir a aprendizagem" name="theory-activities">
+        <CollapsibleCard id="conferir" title="Conferir a aprendizagem" name="theory-activities">
           <TheoryExercise
             compact
             exercise={

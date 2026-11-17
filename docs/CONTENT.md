@@ -30,7 +30,7 @@ Cada estudo inclui pré-requisitos, explicação, exemplo trabalhado, prática g
 ### Navegação e acompanhamento
 
 - `/curso`: uma trilha com os 13 módulos, ação de continuar e busca por aula, música ou técnica.
-- `/aulas/[id]`: quatro etapas em uma coluna — **Entender**, **Treinar**, **Tocar a música** e **Revisar e registrar** — com uma aberta por vez. Entender abre inicialmente; progresso e diário ficam na revisão. Estudos completos, foco de introdução/retomada e textos originais continuam disponíveis em seções expansíveis. `#estudo-{id}` abre diretamente o estudo e seus painéis ancestrais. Repertório, teoria e acervo ficam em **Materiais de apoio**.
+- `/aulas/[id]`: quatro etapas em uma coluna — **Entender**, **Treinar**, **Tocar a música** e **Revisar e registrar** — com uma aberta por vez. Entender abre inicialmente; a conclusão fica visível no topo, fora das etapas, e o diário tem atalho direto. A revisão mantém acesso aos registros. Estudos completos, foco de introdução/retomada e textos originais continuam disponíveis em seções expansíveis. `#estudo-{id}` abre diretamente o estudo e seus painéis ancestrais. Repertório, teoria e acervo ficam em **Materiais de apoio**.
 - `/tecnica` e `/tecnica/[id]`: índice complementar e consulta completa, com entrada principal para a introdução do estudo na trilha e retorno às aplicações posteriores.
 - `/professor/metodologia`: princípios, rubrica e acesso aos 39 planos, somente para professores.
 - `/materiais`: PDFs completos atualizados, consultas R1–R8 e guias preservados.

@@ -4,6 +4,7 @@ import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { TeacherDeepening, TechniqueStudyContent } from '../src/components/course/learning-content';
 import { LessonView } from '../src/components/course/lesson-view';
+import { LessonProgress } from '../src/components/course/lesson-progress';
 import { TheoryReading } from '../src/components/course/theory-reading';
 import { lessons, theoryReferences } from '../src/content/course';
 import teacherContent from '../src/content/teacher-enrichment.json';
@@ -17,6 +18,28 @@ import {
 
 // Next supplies the JSX runtime in the app; tsx preserves this project's JSX setting in tests.
 Object.assign(globalThis, { React });
+
+test('the completion action stays outside disclosures and follows its checklist in keyboard order', () => {
+  for (const lesson of lessons) {
+    const html = renderToStaticMarkup(React.createElement(LessonProgress, { lesson }));
+    let depth = 0;
+    let completionActions = 0;
+    for (const [tag] of html.matchAll(/<details\b[^>]*>|<\/details>|<button\b[^>]*>/g)) {
+      if (tag.startsWith('<details')) depth++;
+      else if (tag === '</details>') depth--;
+      else if (tag.includes('aria-controls=')) {
+        completionActions++;
+        assert.equal(depth, 0, `${lesson.id}: completion cannot be hidden in a disclosure`);
+      }
+    }
+    assert.equal(completionActions, 1, `${lesson.id}: one completion action`);
+    assert.ok(
+      html.indexOf('<select') < html.indexOf('aria-controls='),
+      `${lesson.id}: fields precede submission`,
+    );
+    assert.equal((html.match(/type="checkbox"/g) ?? []).length, lesson.checks.length);
+  }
+});
 
 function escapedText(text: string): string {
   return renderToStaticMarkup(React.createElement('span', null, text)).slice(6, -7);
@@ -119,7 +142,20 @@ test('all 39 lessons retain their material and render only their canonical studi
     const initiallyOpen = stagePanels.filter((panel) => panel.includes('open=""'));
     assert.equal(initiallyOpen.length, 1, `${lesson.id}: one initial activity`);
     assert.ok(initiallyOpen[0].includes('id="entender"'));
-    for (const id of ['meu-progresso', 'diario-pratica']) {
+    const completionPosition = html.indexOf('id="meu-progresso"');
+    assert.ok(
+      completionPosition > 0 && completionPosition < stagePositions[0],
+      `${lesson.id}: completion is available before any closed stage`,
+    );
+    assert.ok(
+      html.includes('<section id="meu-progresso"'),
+      `${lesson.id}: progress is not a disclosure`,
+    );
+    assert.ok(
+      html.includes('href="#tocar"') && html.includes('href="#diario-pratica"'),
+      `${lesson.id}: practice actions are directly reachable`,
+    );
+    for (const id of ['diario-pratica']) {
       const position = html.indexOf(`id="${id}"`);
       assert.ok(
         position > stagePositions[3] && position < html.indexOf('id="apoio"'),

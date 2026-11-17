@@ -194,11 +194,13 @@ export default function Home() {
         </span>
         <div>
           <p className="eyebrow">OUÇA. EXPERIMENTE. TOQUE.</p>
-          <h2>Depois da matrícula, pratique no seu ritmo.</h2>
-          <p>Metrônomo, acordes com áudio e braço interativo acompanham sua trilha.</p>
+          <h2>Pratique no seu ritmo.</h2>
+          <p>
+            O laboratório é público: experimente metrônomo, acordes com áudio e braço interativo.
+          </p>
         </div>
-        <Link className="button secondary" href="/painel">
-          Acessar meu espaço <ArrowRight size={17} aria-hidden="true" />
+        <Link className="button secondary" href="/laboratorio">
+          Abrir laboratório <ArrowRight size={17} aria-hidden="true" />
         </Link>
       </section>
       <section className="section">

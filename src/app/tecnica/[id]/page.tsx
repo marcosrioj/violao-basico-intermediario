@@ -40,15 +40,23 @@ export default async function TechniqueStudyPage({ params }: { params: Promise<{
         title={study.title}
         description={study.goal}
       />
-      {firstLesson && introduction && (
-        <Link className="resource-link" href={`/aulas/${firstLesson.id}#estudo-${study.id}`}>
-          Estudar na aula {firstLesson.display_id} <ArrowRight size={16} aria-hidden="true" />
-        </Link>
-      )}
+      <nav className="learning-paths" aria-label="Praticar este estudo">
+        {firstLesson && introduction && (
+          <Link className="button" href={`/aulas/${firstLesson.id}#estudo-${study.id}`}>
+            Estudar na aula {firstLesson.display_id} <ArrowRight size={16} aria-hidden="true" />
+          </Link>
+        )}
+        <a className="button secondary" href="#metronomo-estudo">
+          Usar metrônomo
+        </a>
+      </nav>
       <div className="lesson-focused stack">
         <section className="card">
           <TechniqueStudyContent study={study} sources={techniqueSources} standalone />
         </section>
+        <div id="metronomo-estudo">
+          <Metronome key={study.id} initialMeter={study.id === 't7-e2' ? '6/8' : '4/4'} />
+        </div>
         <CollapsibleCard id="aplicar" title="Aulas de aplicação">
           <div className="review-list">
             {related.map((lesson) => (
@@ -61,8 +69,7 @@ export default async function TechniqueStudyPage({ params }: { params: Promise<{
             ))}
           </div>
         </CollapsibleCard>
-        <CollapsibleCard title="Ferramentas e materiais">
-          <Metronome key={study.id} initialMeter={study.id === 't7-e2' ? '6/8' : '4/4'} />
+        <section aria-label="Ferramentas e materiais">
           <Link className="resource-link" href="/laboratorio">
             Abrir laboratório
           </Link>
@@ -73,7 +80,7 @@ export default async function TechniqueStudyPage({ params }: { params: Promise<{
             Registre sua tentativa no diário da aula, incluindo {study.id.toUpperCase()}, o apoio
             usado e o próximo ajuste.
           </p>
-        </CollapsibleCard>
+        </section>
       </div>
       <nav className="lesson-nav" aria-label="Estudos deste eixo">
         {index > 0 ? (

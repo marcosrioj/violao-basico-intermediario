@@ -1,6 +1,6 @@
 'use client';
 import { CollapsibleCard } from '@/components/ui/collapsible-card';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import type { Lesson } from '@/content/types';
 import type { Progress } from '@/lib/contracts';
@@ -24,6 +24,9 @@ export function LessonProgress({
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [loaded, setLoaded] = useState(demo);
+  const [loadAttempt, setLoadAttempt] = useState(0);
+  const objectives = useRef<HTMLDetailsElement>(null);
+  const objectivesId = useId();
   useEffect(() => {
     if (demo) return;
     const controller = new AbortController();
@@ -43,9 +46,16 @@ export function LessonProgress({
         if (!controller.signal.aborted) setError(err.message);
       });
     return () => controller.abort();
-  }, [demo, lesson]);
+  }, [demo, lesson, loadAttempt]);
   async function save(next: 'in_progress' | 'completed') {
     if (busy || !loaded) return;
+    if (next === 'completed' && checked.length !== lesson.checks.length) {
+      if (objectives.current) {
+        objectives.current.open = true;
+        objectives.current.querySelector<HTMLInputElement>('input:not(:checked)')?.focus();
+      }
+      return;
+    }
     setBusy(true);
     setError('');
     setMessage('');
@@ -67,85 +77,96 @@ export function LessonProgress({
     }
   }
   return (
-    <CollapsibleCard
+    <section
       id="meu-progresso"
-      title={status === 'completed' ? 'Aula concluída' : 'Como foi sua prática?'}
+      className="card lesson-completion"
+      aria-labelledby="completion-title"
     >
-      <div className="section-title">
-        <p className="eyebrow">SEU PRÓXIMO PASSO</p>
-        <Hint label="Registrar o progresso">
-          Marque os objetivos que conseguiu realizar para concluir a aula. Sua conclusão registra o
-          estudo; a validação da execução vem do professor. Ele pode acompanhar estes registros.
-        </Hint>
-      </div>
-      <p className="hint">Confira cada objetivo tocando no instrumento.</p>
-      <ul className="check-list">
-        {lesson.checks.map((check, i) => (
-          <li key={i}>
-            <label>
-              <input
-                type="checkbox"
-                disabled={!loaded || busy}
-                checked={checked.includes(String(i))}
-                onChange={(e) =>
-                  setChecked((c) =>
-                    e.target.checked ? [...c, String(i)] : c.filter((v) => v !== String(i)),
-                  )
-                }
-              />
-              <span>{checkLabels?.[i] ?? check}</span>
-            </label>
-          </li>
-        ))}
-      </ul>
-      <label>
-        Meu próximo ajuste
-        <textarea
-          disabled={!loaded || busy}
-          value={notes}
-          maxLength={2000}
-          onChange={(e) => setNotes(e.target.value)}
-          placeholder="Ex.: deixar a troca de D para G mais fluida."
-        />
-      </label>
-      <label className="section">
-        Como está sua confiança?
-        <select
-          disabled={!loaded || busy}
-          value={confidence}
-          onChange={(e) => setConfidence(Number(e.target.value))}
-        >
-          {[
-            'Preciso de ajuda',
-            'Ainda está difícil',
-            'Estou avançando',
-            'Quase confortável',
-            'Consigo repetir com segurança',
-          ].map((x, i) => (
-            <option key={x} value={i + 1}>
-              {i + 1} · {x}
-            </option>
-          ))}
-        </select>
-      </label>
-      <Notice message={error} error />
-      <Notice message={message} />
-      {demo ? (
-        <>
-          <p className="hint">
-            Esta é uma prévia. Abra a aula na trilha para salvar seu progresso.
+      <div className="completion-actions">
+        <div>
+          <h2 id="completion-title">
+            {status === 'completed' ? 'Aula concluída' : 'Seu progresso'}
+          </h2>
+          <p className="hint" id={`${objectivesId}-help`}>
+            {status === 'completed'
+              ? 'Você pode retomar a prática quando precisar.'
+              : `${checked.length} de ${lesson.checks.length} objetivos conferidos. Confira os objetivos para concluir.`}
           </p>
-          <Link className="button" href="/entrar">
-            Criar minha conta
-          </Link>
-        </>
-      ) : (
-        <div className="stack section">
+        </div>
+      </div>
+      <details
+        ref={objectives}
+        id={objectivesId}
+        className="completion-objectives"
+        suppressHydrationWarning
+      >
+        <summary>Conferir objetivos e anotar meu próximo ajuste</summary>
+        <div className="section-title">
+          <p className="eyebrow">SEU PRÓXIMO PASSO</p>
+          <Hint label="Registrar o progresso">
+            Marque os objetivos que conseguiu realizar para concluir a aula. Sua conclusão registra
+            o estudo; a validação da execução vem do professor. Ele pode acompanhar estes registros.
+          </Hint>
+        </div>
+        <p className="hint">Confira cada objetivo tocando no instrumento.</p>
+        <ul className="check-list">
+          {lesson.checks.map((check, i) => (
+            <li key={i}>
+              <label>
+                <input
+                  type="checkbox"
+                  disabled={!loaded || busy}
+                  checked={checked.includes(String(i))}
+                  onChange={(e) =>
+                    setChecked((c) =>
+                      e.target.checked ? [...c, String(i)] : c.filter((v) => v !== String(i)),
+                    )
+                  }
+                />
+                <span>{checkLabels?.[i] ?? check}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+        <label>
+          Meu próximo ajuste
+          <textarea
+            disabled={!loaded || busy}
+            value={notes}
+            maxLength={2000}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="Ex.: deixar a troca de D para G mais fluida."
+          />
+        </label>
+        <label className="section">
+          Como está sua confiança?
+          <select
+            disabled={!loaded || busy}
+            value={confidence}
+            onChange={(e) => setConfidence(Number(e.target.value))}
+          >
+            {[
+              'Preciso de ajuda',
+              'Ainda está difícil',
+              'Estou avançando',
+              'Quase confortável',
+              'Consigo repetir com segurança',
+            ].map((x, i) => (
+              <option key={x} value={i + 1}>
+                {i + 1} · {x}
+              </option>
+            ))}
+          </select>
+        </label>
+      </details>
+      <div className="completion-actions section">
+        {!demo && (
           <button
-            disabled={
-              busy || !loaded || (status !== 'completed' && checked.length !== lesson.checks.length)
-            }
+            type="button"
+            disabled={busy || !loaded}
             className={status === 'completed' ? 'button secondary' : 'button'}
+            aria-controls={objectivesId}
+            aria-describedby={`${objectivesId}-help`}
             onClick={() => save(status === 'completed' ? 'in_progress' : 'completed')}
           >
             {!loaded
@@ -158,11 +179,32 @@ export function LessonProgress({
                   ? 'Marcar como não concluída'
                   : 'Concluir aula'}
           </button>
-        </div>
+        )}
+      </div>
+      <Notice message={error} error />
+      <Notice message={message} />
+      {!loaded && error && (
+        <button
+          type="button"
+          className="button secondary"
+          onClick={() => {
+            setError('');
+            setLoadAttempt((attempt) => attempt + 1);
+          }}
+        >
+          Tentar carregar novamente
+        </button>
       )}
-    </CollapsibleCard>
+
+      {demo && (
+        <p className="hint">
+          Esta é uma prévia. <Link href="/entrar">Entre na sua conta</Link> para salvar o progresso.
+        </p>
+      )}
+    </section>
   );
 }
+
 export function PracticeLog({
   lessonId,
   initialBpm,
@@ -178,6 +220,7 @@ export function PracticeLog({
   const [running, setRunning] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const started = useRef(0);
+  const timerDisplay = useRef<HTMLDivElement>(null);
   const accumulated = useRef(0);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
@@ -190,7 +233,25 @@ export function PracticeLog({
       () => setElapsed(accumulated.current + Math.floor((Date.now() - started.current) / 1000)),
       500,
     );
-    return () => clearInterval(timer);
+    const panels: HTMLDetailsElement[] = [];
+    let parent = timerDisplay.current?.parentElement;
+    while (parent) {
+      if (parent instanceof HTMLDetailsElement) panels.push(parent);
+      parent = parent.parentElement;
+    }
+    const pauseHiddenTimer = () => {
+      if (!started.current || !panels.some((panel) => !panel.open)) return;
+      accumulated.current += Math.floor((Date.now() - started.current) / 1000);
+      started.current = 0;
+      setElapsed(accumulated.current);
+      setMinutes(Math.max(1, Math.min(240, Math.round(accumulated.current / 60))));
+      setRunning(false);
+    };
+    panels.forEach((panel) => panel.addEventListener('toggle', pauseHiddenTimer));
+    return () => {
+      clearInterval(timer);
+      panels.forEach((panel) => panel.removeEventListener('toggle', pauseHiddenTimer));
+    };
   }, [running]);
   function toggle() {
     if (running) {
@@ -233,7 +294,7 @@ export function PracticeLog({
           não altera o andamento do player. As anotações ficam visíveis ao professor da turma.
         </Hint>
       </div>
-      <div className="bpm-readout" style={{ fontSize: 36 }}>
+      <div ref={timerDisplay} className="bpm-readout" style={{ fontSize: 36 }}>
         {Math.floor(elapsed / 60)
           .toString()
           .padStart(2, '0')}

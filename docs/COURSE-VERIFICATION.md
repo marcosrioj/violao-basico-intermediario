@@ -2,6 +2,15 @@
 
 Evidências de preservação do conteúdo e funcionamento do curso. Cada registro identifica sua revisão; os testes automatizados e a inspeção visual são resultados distintos.
 
+## Ações essenciais acessíveis · 17/11/2026
+
+Conclusão e estado da aula estão fora dos painéis recolhíveis. A conclusão abre os objetivos pendentes sem gravar progresso; o salvamento continua exigindo sua conferência. Busca, controles de prática, agenda, devolutivas e entradas das tarefas docentes foram revistos pelos critérios das skills. A [matriz por página](DESIGN-SYSTEM.md#a%C3%A7%C3%B5es-essenciais--17112026) registra as decisões e as telas mantidas.
+
+- `npm run check`: lint, tipos, **242 testes** e build aprovados. A renderização das 39 aulas verifica preservação do conteúdo, acesso à conclusão fora de expansões e ordem dos campos antes da ação.
+- **36 verificações HTTP** aprovadas no build local, sem contas reais. Servidor temporário encerrado ao final.
+- Cifra, metrônomo e cronômetro receberam pausa ao recolher seus controles. A navegação mantém IDs e conteúdo existentes; dados editoriais, PDFs e permissões foram preservados.
+- Revisão de código baseada em `ui-ux-pro-max` e `ui-styling`, incluindo revisão independente. Nenhum navegador estava disponível: clique, teclado, retorno de foco, pausa por expansão e layout responsivo precisam de validação visual. Os testes estáticos não substituem essa verificação.
+
 ## Leitura simplificada · 17/11/2026
 
 As aulas agora mostram uma etapa por vez, em uma coluna. Progresso e diário ficam na revisão; consultas e acervo ficam em **Materiais de apoio**. Biblioteca, técnicas, teoria, laboratório e painéis seguem a mesma organização. Os **24 documentos Markdown** têm uma entrada curta e detalhes por assunto.

@@ -11,7 +11,7 @@ O curso conserva os 13 módulos, as 39 aulas e os 27 estudos técnicos. A sequê
 
 - `/curso` apresenta um único próximo passo principal. Com aulas em andamento, abre a atualizada mais recentemente; sem aula em andamento, abre a primeira ainda não concluída. Depois de concluir as 39, oferece escolher uma aula para revisão.
 - Carregamento e falha da consulta de progresso têm mensagens explícitas. Uma falha não impede abrir qualquer aula do catálogo nem mostra um total de conclusão inventado.
-- A busca fica em uma expansão identificada como **Encontrar uma aula ou técnica**. Aceita título da aula, música, objetivo, código e títulos dos estudos associados; ignora diferenças de acentuação e reconhece espaços em nomes internos de músicas.
+- A busca e o filtro ficam sempre visíveis abaixo da continuação da aula, com opção de limpar filtros. Aceita título da aula, música, objetivo, código e títulos dos estudos associados; ignora diferenças de acentuação e reconhece espaços em nomes internos de músicas.
 - Os módulos encontrados por uma busca ou filtro abrem para mostrar as aulas. Sem filtro, um módulo abre por vez. Cada linha mostra número e título; **Objetivo e técnicas** reúne o objetivo e distingue introduções, retomadas e aplicações.
 - `#repertorio` continua sendo um destino válido para links existentes.
 
@@ -30,7 +30,7 @@ O curso conserva os 13 módulos, as 39 aulas e os 27 estudos técnicos. A sequê
 
 ## Interface e manutenção
 
-A revisão usa a identidade e os tokens existentes. As skills `ui-ux-pro-max` e `ui-styling` orientam prioridade da tarefa, hierarquia, campos rotulados, foco e navegação previsível. A aula passa a uma coluna, com progresso e diário na revisão e consultas em **Materiais de apoio**. A segmentação usa a expansão nativa já adotada no projeto. Na integração anterior, a busca específica de _progressive disclosure_ não trouxe uma recomendação pertinente; essa busca não é a base da decisão.
+A revisão usa a identidade e os tokens existentes. As skills `ui-ux-pro-max` e `ui-styling` orientam prioridade da tarefa, hierarquia, campos rotulados, foco e navegação previsível. A aula passa a uma coluna, com conclusão visível no topo, atalho para o diário e consultas em **Materiais de apoio**. A segmentação usa a expansão nativa já adotada no projeto. Na integração anterior, a busca específica de _progressive disclosure_ não trouxe uma recomendação pertinente; essa busca não é a base da decisão.
 
 As páginas continuam como componentes de servidor. Somente o catálogo interativo recebe uma seleção pequena dos metadados das aulas, mais identificador, título e etapa dos estudos. Explicações completas, planos e fontes não são importados no grafo cliente. Foram consultados os guias locais instalados do Next.js sobre componentes de servidor/cliente e navegação.
 
