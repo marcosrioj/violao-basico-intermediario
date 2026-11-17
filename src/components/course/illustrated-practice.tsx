@@ -20,31 +20,15 @@ export function IllustratedPractice({
     <section className="illustrated-practice" aria-label="Prática ilustrada da aula">
       <div className="illustrated-practice-heading">
         <div>
-          <p className="eyebrow">VEJA, EXPERIMENTE, REPITA</p>
-          <h3>Uma instrução por vez</h3>
+          <h3>Prática guiada</h3>
         </div>
         <span className="visual-step-count" role="status" aria-atomic="true">
           Passo {index + 1} de {steps.length}
         </span>
       </div>
-      <nav className="visual-step-picker" aria-label="Escolher passo da prática">
-        {steps.map((item, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-pressed={i === index}
-            aria-controls={`${id}-panel`}
-            onClick={() => setIndex(i)}
-          >
-            <span>{i + 1}</span>
-            {item.visual.title}
-          </button>
-        ))}
-      </nav>
       <div id={`${id}-panel`} className="visual-step-panel">
         <PracticeVisual visual={step.visual} />
         <div className="visual-instruction">
-          <span className="eyebrow">AGORA, FAÇA</span>
           <div>{step.instruction}</div>
         </div>
       </div>
@@ -54,6 +38,7 @@ export function IllustratedPractice({
           className="button secondary"
           onClick={() => setIndex((n) => n - 1)}
           disabled={index === 0}
+          aria-controls={`${id}-panel`}
         >
           <ArrowLeft size={17} aria-hidden="true" />
           Anterior
@@ -63,6 +48,7 @@ export function IllustratedPractice({
           className="button"
           onClick={() => setIndex((n) => n + 1)}
           disabled={index === steps.length - 1}
+          aria-controls={`${id}-panel`}
         >
           Próximo passo
           <ArrowRight size={17} aria-hidden="true" />

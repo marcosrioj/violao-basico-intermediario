@@ -1,5 +1,10 @@
 # Sistema de design do Violão Vivo
 
+Mostre uma tarefa por vez, com títulos curtos e controles claros. Use os tokens existentes e deixe a consulta completa em seções expansíveis. A identidade verde e creme, a legibilidade e o foco de teclado permanecem.
+
+<details>
+<summary>Tokens, tipografia e composição</summary>
+
 Este documento complementa a arquitetura e os padrões de engenharia existentes. A aplicação continua em Next.js, React, TypeScript e CSS próprio. O refinamento visual não introduz Tailwind, shadcn/ui, bibliotecas de animação ou fontes externas.
 
 ## Tokens e responsabilidades
@@ -24,6 +29,11 @@ Os aliases anteriores (`--green`, `--deep`, `--muted`, `--line` etc.) são prese
 - O conteúdo cresce com o texto. Grids usam `minmax(0, 1fr)`, itens permitem quebra e a navegação vira grade em telas pequenas. Tabelas e braços de violão extensos têm rolagem local; não devem alargar a página.
 - Há ajustes para larguras pequenas, incluindo 320 px: passos de matrícula em uma coluna, estatísticas empilhadas, afinação em três colunas e graus musicais em três colunas. Esses pontos são critérios de verificação, não uma garantia automática de conformidade.
 
+</details>
+
+<details>
+<summary>Componentes e controles</summary>
+
 ## Contratos dos componentes
 
 | Componente    | Comportamento visual e interação                                                                                                                                                      |
@@ -42,11 +52,11 @@ As ferramentas musicais continuam usando Web Audio e os componentes já existent
 
 ### Cards recolhíveis
 
-`CollapsibleCard` usa `details`/`summary` nativos, começa fechado e mantém o conteúdo montado. Nas aulas, o resumo mostra somente o título; na trilha, número, título e objetivo do módulo; no repertório, ícone, música e intérprete. Cada card abre independentemente pelo cabeçalho inteiro, por clique, Enter ou Espaço. A seta acompanha o estado nativo de expansão, sem substituir seu nome acessível.
+`CollapsibleCard` usa `details`/`summary` nativos e mantém o conteúdo montado. `defaultOpen` define a abertura inicial; `name` opcional reúne seções das quais apenas uma fica aberta. Nas aulas, o resumo mostra número e título; na trilha, número e título do módulo, com objetivo dentro da expansão; no repertório, ícone, música e intérprete. O cabeçalho inteiro responde a clique, Enter ou Espaço. A seta acompanha o estado nativo de expansão, sem substituir seu nome acessível.
 
 O componente reutiliza os tokens de card, tipografia, cor, foco e movimento. O foco fica dentro da borda para não ser cortado; títulos quebram naturalmente; os alvos têm pelo menos 44 px e a preferência por movimento reduzido desativa as transições. O CSS é importado uma única vez no layout principal. Não coloque links, botões, campos ou dicas dentro do resumo: essas ações pertencem ao corpo expandido.
 
-Recolher não apaga rascunhos, marcações ou configurações, nem pausa automaticamente o áudio ou o cronômetro. Seus controles continuam disponíveis ao reabrir. A navegação para outra aula inicia seus cards fechados. `HashReveal` abre os ancestrais de um destino, inclusive a cifra e suas referências internas, antes de rolar e focar; mantenha os IDs dos destinos nos elementos recolhíveis correspondentes.
+Recolher mantém rascunhos, marcações e configurações. Na aula, fechar **Tocar a música** pausa a cifra e conserva a posição para retomar. Ferramentas independentes mantêm seus controles ao reabrir. Uma nova aula começa em **Entender**. `HashReveal` abre os ancestrais de um destino, inclusive a cifra e suas referências internas, antes de rolar e focar; mantenha os IDs dos destinos nos elementos recolhíveis correspondentes.
 
 Nesta revisão, `ui-ux-pro-max` orientou teclado, foco e responsividade; `design`, `brand`, `design-system` e `ui-styling` orientaram composição, consistência e reutilização. As skills `banner-design` e `slides` foram conferidas quanto ao escopo: o cabeçalho editorial mantém sua função e a apresentação continua dentro da condução do professor, sem novos banners ou slides. A busca local inicial sobre disclosure retornou um resultado de tipografia fora do foco; a busca refinada sobre navegação por teclado retornou diretrizes aplicáveis. As evidências estão em [VERIFICATION.md](VERIFICATION.md#cards-recolhíveis-na-aula-trilha-e-repertório).
 
@@ -68,7 +78,7 @@ Botões permitem quebra de linha, preservam contraste ao selecionar/pressionar e
 
 Cada cartão contém um compasso inteiro. Os acordes ocupam uma largura proporcional à duração, e a contagem acompanha a fórmula: quatro pulsos em 4/4, três em 3/4, dois em 2/4 e `1 la li, 2 la li` para os dois pulsos compostos de 6/8. Durações fracionárias preservam suas subdivisões. Mudanças locais de fórmula, como 4/4 → 2/4 → 4/4, começam novas linhas.
 
-As linhas agrupam até quatro compassos, sem misturar trechos. Esse agrupamento é uma escolha de leitura, não significa que a fórmula 4/4 exija quatro compassos por linha. Container queries usam o espaço real da cifra para apresentar uma, duas ou quatro colunas, preservando tamanho legível mesmo quando a aula tem uma coluna lateral. A página usa sua rolagem normal, sem recortar a cifra em uma pequena área com rolagem interna. Estilos ficam em `chart-player.css`, importado pelo layout raiz; regras musicais e ordem de reprodução ficam no helper puro `chart-layout.ts`.
+As linhas agrupam até quatro compassos, sem misturar trechos. Esse agrupamento é uma escolha de leitura, não significa que a fórmula 4/4 exija quatro compassos por linha. Container queries usam o espaço real da cifra para apresentar uma, duas ou quatro colunas. A aula usa uma coluna e sua rolagem normal, sem recortar a cifra em uma pequena área com rolagem interna. Estilos ficam em `chart-player.css`, importado pelo layout raiz; regras musicais e ordem de reprodução ficam no helper puro `chart-layout.ts`.
 
 A letra aparece automaticamente nas 39 aulas como texto corrido logo abaixo de `chart-bars`, sem cartões, rótulos, bordas ou fundos próprios. As frases permanecem completas e nas mesmas linhas de antes do ajuste temporal. `scoreWindow` conserva a posição impressa; os novos tempos só determinam o destaque. Não recortar palavras para acompanhar as viradas de compasso. O espaço do peso 800 é reservado por uma medida CSS invisível; o texto visível usa peso 400 ou 800, sem desenhar uma letra sobre outra. Na sílaba ativa, um gradiente suave avança dentro do próprio texto pelo relógio de áudio. Todas as sílabas anteriores à posição musical atual ficam em negrito, incluindo trechos pulados ao iniciar mais adiante. Mudar de linha ou redimensionar a tela conserva esse prefixo. A sílaba ativa permanece na mesma cópia da frase até terminar, mesmo quando sua sustentação atravessa a virada. Uma antecipação preenche a primeira cópia impressa antes da entrada do acorde; uma sustentação final usa a última. As demais cópias futuras permanecem sem destaque. As quebras responsivas de 1, 2 ou 4 compassos por linha e as quebras por mudança de fórmula de compasso permanecem iguais. Não há medição de coordenadas da letra para limitar o negrito.
 
@@ -90,9 +100,14 @@ Alterar o andamento ou o seletor de trecho interrompe e reinicia a posição. Oc
 
 `snapshot()` expõe a posição fracionária em pulsos mesmo sem metrônomo, a posição na forma expandida e a duração selecionada. O destaque da letra aguarda o início agendado do áudio. Na síntese, a primeira corda tocável inicia o acorde; todas as cordas terminam no limite musical do evento, evitando que o atraso entre cordas prolongue a harmonia além do compasso. A precisão desse relógio não certifica o alinhamento editorial das frases nem elimina a latência física do dispositivo.
 
-Os controles principais usam uma grade que acompanha a largura da cifra: seletor **Ir para o trecho** amplo, ajuste de BPM, **Mostrar letra** e **Metrônomo**. A reprodução fica nos próprios trechos. O seletor tem altura mínima de 48 px e ocupa a largura disponível no celular. Abaixo dos controles há um único botão **Usar referência**, que restaura o andamento pesquisado. Todas as 39 aulas iniciam nesse valor; o ajuste manual continua disponível. A indicação da aula e o diário seguem a mesma referência, arredondada para inteiro apenas no diário. `defaultPlaybackBpm(studyBpm, tempo?)` converte as unidades sem arredondar o áudio e usa o andamento de estudo somente quando não há referência válida.
+Os controles principais usam uma grade que acompanha a largura da cifra: seletor **Ir para o trecho** amplo, ajuste de BPM, **Mostrar letra** e **Metrônomo**. A reprodução fica nos próprios trechos. O seletor tem altura mínima de 48 px e ocupa a largura disponível no celular. **Sobre a cifra e o andamento** reúne adaptação, contagem e o único botão **Usar referência**, que restaura o andamento pesquisado. Todas as 39 aulas iniciam nesse valor; o ajuste manual continua disponível. A indicação da aula e o diário seguem a mesma referência, arredondada para inteiro apenas no diário. `defaultPlaybackBpm(studyBpm, tempo?)` converte as unidades sem arredondar o áudio e usa o andamento de estudo somente quando não há referência válida.
 
 Fontes, natureza estimada e limitações ficam em `Hint`. O estado da [auditoria das 13 gravações](TEMPO-RESEARCH.md) continua com sete referências documentadas e seis estimativas; o padrão de reprodução não muda a classificação da pesquisa. **Mostrar letra** começa marcado e controla a letra sincronizada e o texto integral. Alterar essa opção durante a reprodução ou pausa mantém a posição musical; reexibir a letra retoma o destaque no ponto atual.
+
+</details>
+
+<details>
+<summary>Acessibilidade e referências de design</summary>
 
 ## Acessibilidade e estados
 
@@ -133,13 +148,20 @@ A pesquisa `music education calm editorial` sugeriu uma direção genérica de w
 
 As referências consultadas das skills incluem arquitetura de tokens, componentes acessíveis, consistência de marca e formatos/hierarquia de banners. A documentação local instalada do Next.js sobre CSS global orientou a importação única e a preservação da ordem da cascata.
 
+</details>
+
+<details>
+<summary>Manutenção e navegação móvel</summary>
+
 ## Verificação e manutenção
 
 ### Trilha com técnica integrada
 
-O curso tem uma entrada principal de continuidade e um índice técnico complementar. As aulas usam quatro etapas estáveis: entender, treinar, aplicar e revisar. A primeira abre inicialmente; acordes, estudos completos, práticas adicionais, consultas e acervo continuam montados em disclosures nativos. Cada estudo apresenta título, indicação textual de começar/retomar e foco da aplicação antes de abrir o conteúdo. Isso reduz a exposição inicial sem remover texto ou depender somente de cores.
+O curso tem uma entrada principal de continuidade e um índice técnico complementar. As aulas usam quatro etapas: **Entender**, **Treinar**, **Tocar a música** e **Revisar e registrar**. A primeira abre inicialmente; acordes, estudos completos, práticas adicionais, consultas e acervo continuam montados em seções expansíveis nativas. Cada estudo apresenta título e indicação textual de começar/retomar; o foco da aplicação aparece ao abrir. Os textos permanecem completos.
 
-As quatro etapas usam o mesmo `CollapsibleCard`, incluindo Aplicar, que reúne cifra e prática guiada. Os títulos seguem a numeração e os verbos dos atalhos. Acima de 1000 px (duas colunas), o primeiro cartão de cada coluna começa aberto; até 1000 px, apenas Entender começa aberto. `InitialLessonCards` aplica a abertura inicial do repertório após montar a aula, sem importar conteúdo editorial no cliente. Redimensionar não desfaz escolhas manuais, e links profundos continuam abrindo o destino necessário.
+As quatro etapas usam `CollapsibleCard` com `name="lesson-stage"`: abrir uma recolhe a anterior. A aula tem uma coluna em todas as larguras, com links para a próxima etapa ao final de cada uma. Progresso e diário ficam na revisão; repertório, teoria e acervo ficam em **Materiais de apoio**. O plano docente vem depois. Links profundos continuam abrindo o destino necessário.
+
+`learning-surface.css` reúne os ajustes comuns das telas do curso: superfícies sem sombra, títulos menores, listas simples e menos bordas internas. A biblioteca, as consultas, os guias e os painéis de aluno/professor usam a mesma hierarquia. Preparação, fontes, histórico e formulários secundários abrem sob demanda. Rótulos, estados, erros e ações da tarefa em uso permanecem junto dela.
 
 `HashReveal` expande todos os ancestrais de `/aulas/{id}#estudo-{id}`, rola até o alvo e transfere o foco. Os atalhos legados `#acordes`, `#tocar`, `#praticar` e `#aprofundar` permanecem válidos. Os inputs usam IDs únicos, e as respostas dos estudos continuam ocultas até uma tentativa e uma ação explícita. A cifra, o diário e o progresso permanecem vinculados à aula.
 
@@ -155,9 +177,14 @@ Para próximas alterações, confira landing, login, matrícula pendente, matrí
 
 Até 1000 px, a navegação usa uma barra compacta e um menu lateral sob demanda. O `MobileNavigation` recebe a mesma navegação renderizada no servidor que a sidebar desktop, preservando permissões, rótulos e página atual; os IDs de descrição são distintos. Um `dialog` nativo torna o fundo inerte. Tab/Shift+Tab circulam pelos links, Escape, botão Fechar, toque fora e seleção de destino encerram o menu. A rolagem do fundo é restaurada no fechamento/desmontagem; ampliar para desktop fecha o painel. O drawer tem rolagem própria e considera áreas seguras.
 
-No celular, os campos têm fonte de 16 px, alvos de pelo menos 44 px, cards com menos recuo e ações de reprodução lado a lado quando cabem. Atalhos internos da aula rolam horizontalmente dentro de sua faixa, sem alargar a página. Cabeçalhos aceitam texto ampliado. A marca usa os mesmos tokens, tipografia e ícones existentes, sem nova dependência.
+No celular, os campos têm fonte de 16 px, alvos de pelo menos 44 px, cards com menos recuo e ações de reprodução lado a lado quando cabem. As etapas da aula ocupam uma única coluna; os links de continuidade ficam junto da atividade. Cabeçalhos aceitam texto ampliado. A marca usa os mesmos tokens, tipografia e ícones existentes, sem nova dependência.
 
 Revisão orientada por `ui-ux-pro-max`, `ui-styling`, `design-system`, `design` e `brand`; `banner-design` e `slides` foram consultadas para conferir a hierarquia do hero e a apresentação existente. A revisão inclui retrato, paisagem, teclado, conteúdo ampliado e retorno ao desktop. Não equivale a uma auditoria com leitor de tela ou dispositivos físicos.
+
+</details>
+
+<details>
+<summary>Oficinas e ferramentas musicais</summary>
 
 ## Oficinas do laboratório musical
 
@@ -182,3 +209,5 @@ O capotraste pode ser lido do texto ou definido no formulário, de zero a doze c
 Em “Praticar livremente”, `ChordLibrary` reúne todas as 52 posições do catálogo instrumental, sem importar textos de aulas no cliente. Cinco grupos seguem a progressão: primeiras formas, pestanas/posições, sétimas, suspensões/nonas e baixos alternativos. O primeiro abre inicialmente; filtros abrem os grupos encontrados. Busca aceita cifra, nome da nota e posição; o filtro usa a nota base antes da barra, distinguindo C de C#.
 
 Diagramas, notas por corda e dicas vêm da fonte existente. Um único controle de áudio cancela o acorde anterior, para ao filtrar, sair da oficina ou ocultar a página e oferece “Parar som”. Ajuda operacional fica em `Hint`; a explicação musical permanece visível. `ui-ux-pro-max`, `ui-styling` e `design-system` orientaram teclado, alvos de 44 px, agrupamento e grade responsiva, preservando a identidade existente.
+
+</details>

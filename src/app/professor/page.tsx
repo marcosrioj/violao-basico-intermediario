@@ -17,8 +17,8 @@ export default async function TeacherPage() {
     <Shell active="/professor" teacher>
       <PageHeading
         eyebrow="ÁREA DO PROFESSOR"
-        title="Cada aluno tem seu ritmo."
-        description="Prepare os encontros, acompanhe as turmas e transforme observações em próximos passos."
+        title="Minhas turmas"
+        description="Prepare aulas e acompanhe seus alunos."
       />
       <div className="learning-paths">
         <Link className="button" href="/professor/metodologia">

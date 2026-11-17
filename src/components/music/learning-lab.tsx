@@ -69,11 +69,12 @@ export function LearningLab() {
         <Hint label="Escolher uma oficina">
           As oficinas são independentes. Trocar encerra o áudio e reinicia a rodada; os resultados
           desta sessão não são gravados na conta nem concluem aulas. Escolha um objetivo,
-          experimente e leve a descoberta ao violão.
+          experimente e leve a descoberta ao violão. Ouça, tente, compare e aplique. Retome em outro
+          dia antes de consultar.
         </Hint>
       </div>
       <div className="lab-navigation" role="group" aria-label="Oficinas do laboratório">
-        {workshops.map(({ id, label, description, icon: Icon }) => (
+        {workshops.map(({ id, label, icon: Icon }) => (
           <button
             type="button"
             className="lab-navigation-choice"
@@ -84,14 +85,10 @@ export function LearningLab() {
           >
             <Icon size={22} aria-hidden="true" />
             <strong>{label}</strong>
-            <span>{description}</span>
           </button>
         ))}
       </div>
-      <p className="lab-method">
-        <strong>Ouvir → tentar → comparar → aplicar.</strong> Trabalhe um objetivo de cada vez.
-        Depois de praticar, repita sem consultar e retome em outro dia.
-      </p>
+      <p className="hint">{current.description}</p>
       <div id="lab-workshop" role="region" aria-label={current.label} key={active}>
         {active === 'rhythm' && <RhythmWorkshop />}
         {active === 'ear' && <EarTraining />}
@@ -106,17 +103,23 @@ export function LearningLab() {
         )}
         {active === 'tools' && (
           <>
-            <div className="two-columns">
+            <details open>
+              <summary>Metrônomo</summary>
               <Metronome />
+            </details>
+            <details>
+              <summary>Afinação</summary>
               <TuningReference />
-            </div>
-            <ChordLibrary />
+            </details>
+            <details>
+              <summary>Acordes</summary>
+              <ChordLibrary />
+            </details>
           </>
         )}
       </div>
-      <section className="card lab-transfer" aria-label="Aplicar no violão">
-        <p className="eyebrow">DO LABORATÓRIO PARA A MÚSICA</p>
-        <h2>Agora, no seu violão</h2>
+      <details className="card lab-transfer">
+        <summary>Aplicar na minha música</summary>
         <p>{current.apply}</p>
         <div className="control-row">
           <Link className="button" href={current.href}>
@@ -130,7 +133,7 @@ export function LearningLab() {
           Na próxima prática, tente de novo antes de consultar. No diário da aula, registre o que
           conseguiu e um ponto para retomar com o professor.
         </p>
-      </section>
+      </details>
     </div>
   );
 }

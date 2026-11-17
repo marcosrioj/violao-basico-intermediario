@@ -9,6 +9,7 @@ export function CollapsibleCard({
   id,
   className = '',
   defaultOpen = false,
+  name,
   children,
 }: {
   title: string;
@@ -17,6 +18,8 @@ export function CollapsibleCard({
   id?: string;
   className?: string;
   defaultOpen?: boolean;
+  /** Only one disclosure in the named group is open; children stay mounted. */
+  name?: string;
   children: ReactNode;
 }) {
   return (
@@ -25,6 +28,7 @@ export function CollapsibleCard({
     <details
       className={`card collapsible-card ${className}`}
       id={id}
+      name={name}
       open={defaultOpen}
       suppressHydrationWarning
     >

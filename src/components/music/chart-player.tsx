@@ -174,6 +174,15 @@ export function ChartPlayer({
     if (target?.bars.length) startAt(target.bars[0].playbackIndex);
   }
   const pausePlayback = useCallback(() => transport.current?.pause(), []);
+  useEffect(() => {
+    const stage = expandedChart.current?.closest<HTMLDetailsElement>('details.lesson-stage');
+    if (!stage) return;
+    const pauseClosedStage = () => {
+      if (!stage.open) pausePlayback();
+    };
+    stage.addEventListener('toggle', pauseClosedStage);
+    return () => stage.removeEventListener('toggle', pauseClosedStage);
+  }, [pausePlayback]);
   const resumePlayback = useCallback(() => {
     void audioContext().resume();
     transport.current?.play();
@@ -314,7 +323,6 @@ export function ChartPlayer({
             {chart.key} · {chart.meter}
           </span>
         </div>
-        <p>{chart.adaptations}</p>
         {allowCustomChords && (chart.capo !== undefined || chart.shape_key) && (
           <p className="hint chart-capo">
             {capo > 0 ? `Capotraste na ${capo}ª casa.` : 'Sem capotraste.'}
@@ -411,28 +419,32 @@ export function ChartPlayer({
           duration={(totalChartBeats(bars) * 60) / bpm}
           bars={bars.length}
         />
-        {tempo && researchedBpm !== null && (
-          <div className="chart-tempo">
-            <div className="control-row">
-              <button
-                type="button"
-                className="button small secondary"
-                aria-pressed={bpm === researchedBpm}
-                onClick={() => changeBpm(researchedBpm)}
-              >
-                Usar referência · {formatBpm(researchedBpm)} BPM
-              </button>
-              <TempoReference tempo={tempo} />
+        <details className="section">
+          <summary>Sobre a cifra e o andamento</summary>
+          <p>{chart.adaptations}</p>
+          <p className="hint">
+            {chart.counting ??
+              'Cada bloco é um compasso; o número abaixo do acorde indica sua duração em pulsos.'}{' '}
+            {chart.meter === '6/8'
+              ? 'Neste arranjo, cada pulso é uma semínima pontuada (três colcheias).'
+              : ''}{' '}
+          </p>
+          {tempo && researchedBpm !== null && (
+            <div className="chart-tempo">
+              <div className="control-row">
+                <button
+                  type="button"
+                  className="button small secondary"
+                  aria-pressed={bpm === researchedBpm}
+                  onClick={() => changeBpm(researchedBpm)}
+                >
+                  Usar referência · {formatBpm(researchedBpm)} BPM
+                </button>
+                <TempoReference tempo={tempo} />
+              </div>
             </div>
-          </div>
-        )}
-        <p className="hint">
-          {chart.counting ??
-            'Cada bloco é um compasso; o número abaixo do acorde indica sua duração em pulsos.'}{' '}
-          {chart.meter === '6/8'
-            ? 'Neste arranjo, cada pulso é uma semínima pontuada (três colcheias).'
-            : ''}{' '}
-        </p>
+          )}
+        </details>
         <div className="chart-reading-guide label-with-hint">
           <h3>Arranjo completo</h3>
           <Hint label="Leitura e repetição dos trechos">

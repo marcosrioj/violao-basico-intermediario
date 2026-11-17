@@ -87,7 +87,7 @@ export function LessonPresentation({
       <header className="lesson-slides-header">
         <div>
           <p className="eyebrow">CONDUÇÃO DA AULA</p>
-          <h3 id={`${id}-heading`}>Apresente uma ideia por vez</h3>
+          <h3 id={`${id}-heading`}>Apresentação da aula</h3>
         </div>
         <Hint label="Usar a apresentação">
           Etapas para conduzir o encontro no seu ritmo. Com o foco na apresentação, use ← e → para

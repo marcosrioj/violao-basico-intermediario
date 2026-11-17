@@ -1,5 +1,10 @@
 # Identidade do Violão Vivo
 
+Fale com clareza e acolhimento. Priorize a tarefa musical, com uma instrução por vez, paleta verde e creme e as fontes já usadas no curso.
+
+<details>
+<summary>Voz e conteúdo</summary>
+
 O Violão Vivo acompanha alunos e professores do violão básico ao intermediário, com prática semanal, teoria aplicada e repertório gospel. A interface deve ajudar a entender a próxima ação, reconhecer o próprio progresso e praticar com calma.
 
 ## Voz e conteúdo
@@ -9,6 +14,11 @@ O Violão Vivo acompanha alunos e professores do violão básico ao intermediár
 - Na área do professor, priorize turma, encontro, acompanhamento e devolutiva. Na área do aluno, priorize próxima aula, prática e orientação recebida.
 - Separe conta e matrícula: criar uma conta não libera o curso. O professor cria a turma, entrega o código por um canal externo e o aluno confirma a matrícula no painel. A confirmação deve explicar o resultado e oferecer a próxima ação.
 - Mantenha erros específicos e úteis, sem expor informações privadas. Carregamento, erro, sucesso e ausência de dados precisam de texto; cor ou ícone isolado não são suficientes.
+
+</details>
+
+<details>
+<summary>Identidade visual</summary>
 
 ## Identidade visual preservada
 
@@ -26,6 +36,11 @@ O Violão Vivo acompanha alunos e professores do violão básico ao intermediár
 
 A arte de violão existente é construída em CSS. Sua paleta de madeira e cordas fica nos tokens `illustration-*`, reservados à decoração. Esses valores não substituem as cores semânticas da interface. Não há fonte remota, imagem gerada, foto externa ou nova dependência para sustentar esta identidade.
 
+</details>
+
+<details>
+<summary>Hero e consistência</summary>
+
 ## Hero e banners
 
 O hero mantém título editável em HTML, uma mensagem principal, um único CTA para entrar e confirmar a matrícula e a ilustração decorativa de violão. Informações secundárias podem ser agrupadas abaixo do CTA. A arte perde destaque em telas pequenas para preservar a leitura. Evite texto rasterizado, altura rígida que corte conteúdo, vários botões primários e métricas de resultado sem evidência.
@@ -37,3 +52,5 @@ Avisos operacionais usam o mesmo vocabulário e os tokens de estado. A mensagem 
 Novas páginas devem reutilizar os tokens de [design-tokens.css](../assets/design-tokens.css), os componentes existentes e as regras do [sistema de design](DESIGN-SYSTEM.md). Preserve a legibilidade da teoria e da prática antes de adicionar decoração. Apresentações de aula devem usar o conteúdo real do curso, com uma ideia por tela e controles que o professor também possa operar pelo teclado.
 
 As skills `brand`, `design` e `banner-design` orientaram voz, identidade, hierarquia e composição. As decisões preservam o produto existente; não foram criadas alternativas de marca nem peças de divulgação fora do escopo do aplicativo.
+
+</details>

@@ -1,4 +1,5 @@
 'use client';
+import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -71,9 +72,8 @@ function PracticeDiary({ lessons, profile }: { lessons: LessonOption[]; profile:
     }
   }
   return (
-    <section className="card">
+    <CollapsibleCard title="Diário de prática">
       <div className="section-title">
-        <h2>Seu diário de prática</h2>
         <Hint label="Registrar uma prática">
           Escolha a aula, informe os minutos e anote o que tocou. O BPM é opcional e deve ser um
           inteiro aproximado: por exemplo, 37,3 vira 37.
@@ -165,7 +165,7 @@ function PracticeDiary({ lessons, profile }: { lessons: LessonOption[]; profile:
           </>
         )}
       </ResourceState>
-    </section>
+    </CollapsibleCard>
   );
 }
 function StudentClasses({ profile, changed }: { profile: Profile; changed: () => void }) {
@@ -197,8 +197,7 @@ function StudentClasses({ profile, changed }: { profile: Profile; changed: () =>
     }
   }
   return (
-    <section className="card">
-      <h2>Suas turmas</h2>
+    <CollapsibleCard title="Minhas turmas">
       <details>
         <summary>Tenho um código para outra turma</summary>
         <EnrollmentForm
@@ -260,15 +259,14 @@ function StudentClasses({ profile, changed }: { profile: Profile; changed: () =>
           </>
         )}
       </ResourceState>
-    </section>
+    </CollapsibleCard>
   );
 }
 export function Agenda({ profile, lessons }: { profile: Profile; lessons: LessonOption[] }) {
   const [page, setPage] = useState(1);
   const resource = useResource<Page<LessonSession>>(`/api/sessions?page=${page}`);
   return (
-    <section className="card">
-      <h2>Próximos encontros</h2>
+    <CollapsibleCard title="Próximos encontros">
       <ResourceState {...resource} retry={resource.reload}>
         {resource.data && (
           <>
@@ -286,7 +284,7 @@ export function Agenda({ profile, lessons }: { profile: Profile; lessons: Lesson
           </>
         )}
       </ResourceState>
-    </section>
+    </CollapsibleCard>
   );
 }
 export function FeedbackHistory({
@@ -299,9 +297,8 @@ export function FeedbackHistory({
   const [page, setPage] = useState(1);
   const resource = useResource<Page<Feedback>>(`/api/feedback?page=${page}`);
   return (
-    <section className="card">
+    <CollapsibleCard title="Devolutivas do professor">
       <div className="section-title">
-        <h2>Devolutivas do professor</h2>
         <Hint label="Entender a validação do professor">
           A validação registra a execução observada pelo professor, separadamente das aulas que você
           marcou como concluídas.
@@ -324,7 +321,7 @@ export function FeedbackHistory({
           </>
         )}
       </ResourceState>
-    </section>
+    </CollapsibleCard>
   );
 }
 export function StudentDashboard({
@@ -343,40 +340,9 @@ export function StudentDashboard({
     lessons.find((lesson) => !completed.some((item) => item.lesson_id === lesson.id));
   return (
     <div className="dashboard-surface">
-      <AccountPanel profile={profile} />
       <ResourceState {...progress} retry={progress.reload}>
         {progress.data && (
           <>
-            <div className="dashboard-stats">
-              <div className="dashboard-stat">
-                <CheckCircle2 size={19} />
-                <strong>
-                  {completed.length}
-                  <small> / {lessons.length}</small>
-                </strong>
-                <span>Aulas concluídas por você</span>
-              </div>
-              <div className="dashboard-stat">
-                <BookOpen size={19} />
-                <strong>{Math.round((completed.length / lessons.length) * 100)}%</strong>
-                <span>Da sua trilha percorrida</span>
-              </div>
-              <div className="dashboard-stat">
-                <Clock3 size={19} />
-                <strong>{active.length}</strong>
-                <span>Aulas em prática</span>
-              </div>
-            </div>
-            <div
-              className="progress-track"
-              role="progressbar"
-              aria-label="Progresso declarado no curso"
-              aria-valuenow={completed.length}
-              aria-valuemin={0}
-              aria-valuemax={lessons.length}
-            >
-              <span style={{ width: `${(completed.length / lessons.length) * 100}%` }} />
-            </div>
             {next ? (
               <section className="next-lesson">
                 <p className="eyebrow">SEU PRÓXIMO PASSO · {next.display_id}</p>
@@ -401,6 +367,39 @@ export function StudentDashboard({
                 </Link>
               </section>
             )}
+            <details className="dashboard-section-gap">
+              <summary>Meu progresso</summary>
+              <div className="dashboard-stats">
+                <div className="dashboard-stat">
+                  <CheckCircle2 size={19} />
+                  <strong>
+                    {completed.length}
+                    <small> / {lessons.length}</small>
+                  </strong>
+                  <span>Aulas concluídas por você</span>
+                </div>
+                <div className="dashboard-stat">
+                  <BookOpen size={19} />
+                  <strong>{Math.round((completed.length / lessons.length) * 100)}%</strong>
+                  <span>Da sua trilha percorrida</span>
+                </div>
+                <div className="dashboard-stat">
+                  <Clock3 size={19} />
+                  <strong>{active.length}</strong>
+                  <span>Aulas em prática</span>
+                </div>
+              </div>
+              <div
+                className="progress-track"
+                role="progressbar"
+                aria-label="Progresso declarado no curso"
+                aria-valuenow={completed.length}
+                aria-valuemin={0}
+                aria-valuemax={lessons.length}
+              >
+                <span style={{ width: `${(completed.length / lessons.length) * 100}%` }} />
+              </div>
+            </details>
             {completed.length > 0 && (
               <details className="dashboard-section-gap">
                 <summary>Aulas que você concluiu ({completed.length})</summary>
@@ -419,7 +418,7 @@ export function StudentDashboard({
           </>
         )}
       </ResourceState>
-      <div className="two-columns dashboard-section-gap">
+      <div className="stack dashboard-section-gap">
         <div className="stack">
           <StudentClasses
             profile={profile}
@@ -434,6 +433,10 @@ export function StudentDashboard({
         </div>
         <PracticeDiary profile={profile} lessons={lessons} />
       </div>
+      <details className="section">
+        <summary>Minha conta</summary>
+        <AccountPanel profile={profile} />
+      </details>
     </div>
   );
 }

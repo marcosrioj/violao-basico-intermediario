@@ -13,12 +13,13 @@ export default async function Repertoire() {
       <PageHeading
         eyebrow="MÚSICAS QUE NOS CONECTAM"
         title="Nosso repertório"
-        description="Da primeira troca de acordes à interpretação. Ouça a gravação de referência e pratique o arranjo preparado para cada etapa."
+        description="Escolha uma música para ouvir ou praticar."
       />
-      <div className="theory-grid">
+      <div className="stack">
         {Object.entries(songs).map(([id, s]) => (
           <CollapsibleCard
             className="song-card"
+            name="repertoire"
             key={id}
             title={s.title}
             description={s.artist}
@@ -28,8 +29,11 @@ export default async function Repertoire() {
               </span>
             }
           >
-            <p>{s.tempo?.recording ?? s.recording ?? s.identity_note}</p>
-            {s.tempo && <TempoReference tempo={s.tempo} />}
+            <details>
+              <summary>Gravação e andamento</summary>
+              <p>{s.tempo?.recording ?? s.recording ?? s.identity_note}</p>
+              {s.tempo && <TempoReference tempo={s.tempo} />}
+            </details>
             <div className="control-row">
               <a
                 className="button small"

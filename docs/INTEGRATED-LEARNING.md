@@ -1,5 +1,10 @@
 # Repertório e técnica na mesma trilha
 
+Repertório e técnica seguem a mesma sequência: **39 aulas, 27 estudos, 86 aplicações**. O mapa `lesson-journey.json` define quando introduzir e retomar cada estudo, sem criar uma segunda trilha de progresso.
+
+<details>
+<summary>Mapa canônico e helpers</summary>
+
 A edição atual mantém os 13 módulos, as 39 aulas e os 27 estudos completos. A sequência principal acompanha as aulas do repertório; os nove eixos técnicos permanecem disponíveis como índice de consulta. Nenhum estudo cria uma aula adicional nem uma segunda contagem de progresso.
 
 ## Fonte canônica
@@ -50,6 +55,11 @@ IDs desconhecidos retornam listas vazias, contagem zero ou `undefined`, conforme
 
 Links diretos para uma aplicação usam `/aulas/{lessonId}#estudo-{studyId}`. A introdução canônica permite que o índice técnico leve o aluno à aula em que o estudo começa.
 
+</details>
+
+<details>
+<summary>Progressão dos módulos</summary>
+
 ## Progressão preservada
 
 | Módulo | Introduções técnicas                                                  | Retomadas e aplicação                                                |
@@ -70,6 +80,11 @@ Links diretos para uma aplicação usam `/aulas/{lessonId}#estudo-{studyId}`. A 
 
 A coordenação das mãos foi deslocada da primeira para a segunda aula para reduzir o número de estudos novos no início. Dinâmica, timbre e direção da frase entram na segunda aula do módulo 9 e retornam no módulo 11. Pestana continua a partir do módulo 5; palheta a partir do 4; articulações a partir do 8; expressão a partir do 9; CAGED a partir do 10. Ornamentos seguem os ligados; posições do CAGED seguem o reconhecimento das formas.
 
+</details>
+
+<details>
+<summary>Uso na aula e verificação</summary>
+
 ## Uso pedagógico e docente
 
 Cada aplicação parte do foco da aula, passa por demonstração e tentativa curta e retorna ao trecho do repertório. O estudo completo permite consulta e aprofundamento; o foco evita exigir todas as suas variações na primeira apresentação. O professor decide o apoio e o ritmo de avanço a partir da execução observada, preservando as alternativas mais simples e mais difíceis já disponíveis.
@@ -81,3 +96,5 @@ Nos PDFs, o estudo completo aparece em sua primeira aula canônica. As retomadas
 ## Verificação
 
 `tests/curriculum.test.ts` verifica cobertura e ordem das 39 aulas, correspondência dos dois mapas, 27 introduções únicas, foco por aplicação, retornos dos helpers, pré-requisitos entre estudos e exclusão de backlinks antigos que antecipavam recursos. As verificações existentes continuam cobrindo integridade dos originais, textos e fontes dos estudos, planos docentes e sincronização dos PDFs.
+
+</details>

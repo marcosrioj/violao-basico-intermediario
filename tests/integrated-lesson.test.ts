@@ -2,9 +2,11 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { TechniqueStudyContent } from '../src/components/course/learning-content';
+import { TeacherDeepening, TechniqueStudyContent } from '../src/components/course/learning-content';
 import { LessonView } from '../src/components/course/lesson-view';
-import { lessons } from '../src/content/course';
+import { TheoryReading } from '../src/components/course/theory-reading';
+import { lessons, theoryReferences } from '../src/content/course';
+import teacherContent from '../src/content/teacher-enrichment.json';
 import { parseCourseText } from '../src/content/navigation';
 import {
   getLessonEnrichment,
@@ -110,6 +112,20 @@ test('all 39 lessons retain their material and render only their canonical studi
       stagePositions,
       [...stagePositions].sort((a, b) => a - b),
     );
+    const stagePanels = [...html.matchAll(/<details\b[^>]*name="lesson-stage"[^>]*>/g)].map(
+      (match) => match[0],
+    );
+    assert.equal(stagePanels.length, 4, `${lesson.id}: four exclusive stages`);
+    const initiallyOpen = stagePanels.filter((panel) => panel.includes('open=""'));
+    assert.equal(initiallyOpen.length, 1, `${lesson.id}: one initial activity`);
+    assert.ok(initiallyOpen[0].includes('id="entender"'));
+    for (const id of ['meu-progresso', 'diario-pratica']) {
+      const position = html.indexOf(`id="${id}"`);
+      assert.ok(
+        position > stagePositions[3] && position < html.indexOf('id="apoio"'),
+        `${lesson.id}: ${id} belongs to the review`,
+      );
+    }
     for (const entry of entries) {
       assert.ok(html.includes(escapedText(entry.study.title)), lesson.id);
       assert.ok(html.includes(escapedText(entry.focus)), lesson.id);
@@ -149,6 +165,84 @@ test('all 39 lessons retain their material and render only their canonical studi
     }
     assert.ok(html.includes('id="meu-progresso"'), lesson.id);
     assert.ok(html.includes('id="diario-pratica"'), lesson.id);
+  }
+});
+
+test('all teacher plans retain diagnosis, timing, adaptations and feedback inside their reading groups', () => {
+  for (const content of teacherContent.lessons) {
+    const html = renderToStaticMarkup(
+      React.createElement(TeacherDeepening, {
+        content,
+        sources: teacherContent.sources,
+      }),
+    );
+    const fields = [
+      content.diagnosis,
+      content.demonstration,
+      content.commonDifficulty,
+      content.intervention,
+      content.easier,
+      content.extension,
+      content.observation,
+      content.feedbackPrompt,
+      content.transferCheck,
+      ...content.sequence.flatMap((stage) => [stage.title, stage.action]),
+    ];
+    for (const field of fields) {
+      assert.ok(
+        textContent(html).includes(field.replace(/\s+/g, ' ').trim()),
+        `${content.lessonId}: ${field}`,
+      );
+    }
+    assert.equal(
+      content.sequence.reduce((sum, stage) => sum + stage.minutes, 0),
+      60,
+    );
+    for (const source of teacherContent.sources.filter((item) =>
+      content.sourceIds.includes(item.id),
+    )) {
+      assert.ok(html.includes(escapedText(source.url)), `${content.lessonId}: ${source.id}`);
+    }
+  }
+});
+
+test('all theory reading groups retain paragraphs, tables and exact reference anchors', () => {
+  for (const reference of theoryReferences) {
+    const html = renderToStaticMarkup(React.createElement(TheoryReading, { reference }));
+    const fields = [
+      { text: reference.lead, field: 'lead' },
+      ...reference.blocks.flatMap((block, i) => [
+        { text: block.heading, field: `heading-${i}` },
+        { text: block.text, field: `block-${i}` },
+      ]),
+      ...reference.table.headers.map((text, i) => ({ text, field: `head-${i}` })),
+      ...reference.table.rows.flatMap((row, i) =>
+        row.map((text, j) => ({ text, field: `cell-${i}-${j}` })),
+      ),
+    ];
+    for (const { text, field } of fields) {
+      const tokens = parseCourseText(text, { theoryId: reference.id, field });
+      assert.ok(
+        textContent(html).includes(
+          tokens
+            .map((token) => token.label)
+            .join('')
+            .replace(/\s+/g, ' ')
+            .trim(),
+        ),
+        `${reference.id}: ${field}`,
+      );
+      for (const token of tokens) {
+        if (token.anchor)
+          assert.ok(html.includes(`id="${token.anchor}"`), `${reference.id}: ${token.anchor}`);
+      }
+    }
+    for (const summary of html.matchAll(/<summary>([\s\S]*?)<\/summary>/g)) {
+      assert.ok(
+        !/<(?:a|button|input)\b/.test(summary[1]),
+        'disclosure label cannot contain another control',
+      );
+    }
   }
 });
 

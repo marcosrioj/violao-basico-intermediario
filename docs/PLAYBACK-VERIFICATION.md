@@ -1,5 +1,10 @@
 # Verificação do acompanhamento das aulas
 
+Este registro confere ordem, duração e acompanhamento das aulas. O áudio sintetizado segue o arranjo didático; o alinhamento vocal continua estimado onde não há marcação medida.
+
+<details>
+<summary>Arranjos, repetições e frases</summary>
+
 A revisão cobre **13 músicas, 19 versões de arranjo e 39 aulas**. A fonte harmônica é `src/content/course-data.json`; os andamentos pesquisados continuam separados em `tempo-research.json`. As letras fornecidas pelo usuário têm **712 linhas**, preservadas nos três arquivos `song-lyrics-*.json`, e **744 frases marcadas** distribuídas entre as 19 versões. A conferência valida a execução dos arranjos de estudo existentes. Não equivale a uma transcrição temporal de cada gravação vinculada.
 
 ## Ordem, repetições e duração
@@ -36,6 +41,11 @@ As letras integrais fornecidas pelo usuário estão no catálogo público do cur
 
 O destaque usa um relógio compartilhado e atualiza apenas as linhas afetadas, sem renderizar a cifra inteira a cada quadro. A leitura fracionária independe do metrônomo e aguarda a entrada agendada do áudio. As cordas sintetizadas encerram no limite do acorde, inclusive em retomadas curtas. Essas correções evitam acumular atrasos do agendamento, mas não corrigem automaticamente marcações editoriais nem garantem latência zero em todo navegador, dispositivo de áudio ou conexão Bluetooth.
 
+</details>
+
+<details>
+<summary>Comparação musical e limites</summary>
+
 ## Limites da conferência musical
 
 Os arranjos são pedagógicos. Há abreviação de repetições e ministrações, regularização de durações e finais fixos. Por exemplo, Santo Espírito abrevia a forma e Ousado Amor fixa a ponte em quatro ciclos. Preservar esses dados não comprova que a forma seja idêntica à gravação externa.
@@ -60,6 +70,11 @@ Ousado Amor e Lugar Secreto anunciaram faixas de legenda em português no HTML p
 
 Portanto, as letras estão preenchidas, mas **as entradas e saídas vocais exatas ainda não foram verificadas**. Para afirmar sincronização com cada gravação, é necessário um mapa completo de sua forma, mudanças de andamento e limites vocais, seguido de conferência auditiva. O estado `draft` deve permanecer enquanto essa evidência não existir.
 
+</details>
+
+<details>
+<summary>Validação executada</summary>
+
 ## Validação
 
 A suíte completa passou com **187 testes**, sem falhas. Lint, TypeScript, build de produção e a verificação das 1.439 âncoras também passaram.
@@ -78,3 +93,5 @@ npm run check
 A conferência no Chromium passou nas aulas **m2-a1** (base, 375 px) e **m6-a3** (completa, 1440 px), incluindo dados antigos do navegador: Am no primeiro “ver”, F no segundo, C no início de “Abre” e G em “céus”. “Faz cho…” começa antes do Am, mantendo a frase completa na posição original. Pausa e repetição preservaram o alinhamento, sem erros de página. Reiniciar foi conferido durante execução, pausa e depois do fim, mantendo a segunda ocorrência do refrão e sua repetição, inclusive pelo mapa. Em 375 px, os controles mantiveram alvos de pelo menos 44 px e texto dentro de seus limites com ampliação de 100% e 200%.
 
 O TXT ainda deixa seis ambiguidades declaradas e diferenças de sustentações/acordes incompatíveis com a redução da aula. Esses testes não substituem a conferência dos instantes vocais das gravações; os tempos intermediários continuam interpolados e todas as versões editoriais permanecem `draft`.
+
+</details>

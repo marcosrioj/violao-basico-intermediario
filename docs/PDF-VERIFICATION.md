@@ -1,5 +1,10 @@
 # Verificação dos PDFs do curso
 
+Os livros do aluno e do professor incluem o conteúdo aprofundado e o acervo original integral. Este registro documenta geração, integridade e revisão gráfica da edição publicada.
+
+<details>
+<summary>Escopo e geração reproduzível</summary>
+
 Verificação realizada em 15/11/2026. Os dois livros foram gerados a partir dos mesmos dados usados na aplicação e preservam os 13 módulos e as 39 aulas. Os 27 estudos técnicos agora estão integrados às aulas: a explicação completa aparece uma única vez, na primeira introdução, e as retomadas trazem o foco da aplicação e um vínculo com a página de consulta. O percurso reúne 86 aplicações, sendo 27 introduções e 59 retomadas. As oito consultas teóricas, os 19 mapas harmônicos e o atlas das 52 posições originais permanecem. O manual contém também as explicações e práticas do aluno, além dos planos docentes, intervenções, adaptações e rubrica.
 
 | Material  | Páginas totais | Parte reformulada | Início do acervo integral | Páginas originais preservadas |
@@ -26,6 +31,11 @@ O gerador sempre produz os dois livros. Ele verifica a cobertura de 13 módulos,
 
 A geração a partir dos PDFs atuais foi executada em uma cópia isolada do projeto, sem os arquivos antigos separados. As 712 páginas resultantes conservaram texto, pixels renderizados e referências de página idênticos aos livros publicados, incluindo as 203 páginas do acervo. Os hashes publicados foram conferidos e a pasta temporária ficou vazia ao final. Os PDFs atuais não precisaram ser substituídos, pois o conteúdo e a diagramação não mudaram.
 
+</details>
+
+<details>
+<summary>Integridade e revisão visual</summary>
+
 ## Preservação e integridade
 
 - As 203 páginas originais permanecem incorporadas aos PDFs atuais em `materials/`; a geração não depende de arquivos antigos separados.
@@ -48,9 +58,16 @@ O corpo principal usa DejaVu Sans de 10,2 pontos, com entrelinha de 14,2 pontos.
 
 O modelo de sessão de prática é apresentado como parte do roteiro de quatro dias, com tempos flexíveis; os dois roteiros não devem ser somados como cargas independentes. A numeração impressa no acervo integral continua sendo a da edição original, conforme explicado no início de cada livro e na abertura do acervo.
 
+</details>
+
+<details>
+<summary>Arquivos entregues</summary>
+
 ## Entregáveis
 
 - `materials/Curso_Aluno_Violao_Gospel_v6.pdf`
 - `materials/Manual_Professor_Violao_Gospel_v6.pdf`
 
 Os arquivos intermediários de diagramação e as imagens de inspeção não são entregáveis do curso.
+
+</details>

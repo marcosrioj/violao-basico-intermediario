@@ -1,5 +1,20 @@
 # Verificação da trilha integrada
 
+Evidências de preservação do conteúdo e funcionamento do curso. Cada registro identifica sua revisão; os testes automatizados e a inspeção visual são resultados distintos.
+
+## Leitura simplificada · 17/11/2026
+
+As aulas agora mostram uma etapa por vez, em uma coluna. Progresso e diário ficam na revisão; consultas e acervo ficam em **Materiais de apoio**. Biblioteca, técnicas, teoria, laboratório e painéis seguem a mesma organização. Os **24 documentos Markdown** têm uma entrada curta e detalhes por assunto.
+
+- **241 testes**, lint, tipos e build aprovados. O último ajuste no guia docente foi conferido novamente por lint e build, incluindo TypeScript.
+- **36 verificações HTTP** passaram no servidor local temporário da porta 3008, encerrado ao final. Nenhuma conta real foi usada.
+- Renderização estática confere todos os textos das 39 aulas, os 27 estudos, os 39 planos docentes, tabelas e âncoras das oito consultas teóricas. Também confere uma única etapa inicial e os registros na revisão.
+- Os 24 Markdown conservaram todos os blocos de código, links e títulos existentes. Os destinos locais e fragmentos foram conferidos. Os dados musicais e os PDFs permanecem inalterados.
+- **Limite:** nenhum navegador estava disponível na sessão. Layout em diferentes larguras, teclado e pausa ao trocar de etapa ainda precisam de conferência no navegador. Os registros visuais abaixo pertencem às revisões anteriores.
+
+<details>
+<summary>Prática ilustrada · 17/11/2026</summary>
+
 ## Prática ilustrada · 17/11/2026
 
 - Cobertura dos 117 passos das 39 aulas e dos exemplos dos 27 estudos técnicos; instruções originais preservadas na leitura conjunta.
@@ -9,6 +24,11 @@
 - `npm run check`: lint, tipos, 239 testes e build de produção aprovados. A primeira execução no sandbox bloqueou `spawnSync` no teste de configuração (`EPERM`); a execução autorizada fora do sandbox passou, sem alterar o teste.
 - SVGs representativos de apoio, abafamento, escala e pestana foram renderizados com Sharp e inspecionados. O navegador não estava disponível na sessão: interação por teclado, layout responsivo e projeção da apresentação ainda precisam de conferência visual em navegador. A renderização estática dos 39 percursos passou nos testes de preservação e âncoras.
 - Esta atualização abrange a aplicação. Os PDFs e materiais originais permanecem na edição anterior.
+
+</details>
+
+<details>
+<summary>Histórico: conteúdo e código</summary>
 
 ## Verificação anterior
 
@@ -31,6 +51,11 @@ Verificação realizada em 15/11/2026. A edição permanece a mesma, identificad
 A execução inicial identificou os PDFs ainda em regeneração e a restrição do sandbox ao subprocesso do teste de configuração. Depois da publicação dos PDFs e com a permissão de processo necessária, a verificação completa passou. A configuração de segurança é testada com valores fictícios; nenhum segredo é impresso.
 
 Um servidor exclusivo do build foi iniciado na porta 3008. `SMOKE_BASE_URL=http://127.0.0.1:3008 SMOKE_ORIGIN=http://localhost:3000 npm run test:http` passou em **38 verificações**: cabeçalhos, acesso anônimo negado, materiais novos e originais, origem de mutações e redirecionamentos. O servidor existente na porta 3000 não foi encerrado.
+
+</details>
+
+<details>
+<summary>Histórico: navegação e livros</summary>
 
 ## Navegação e interface
 
@@ -61,3 +86,5 @@ O livro do aluno tem **371 páginas**: 241 principais e 130 do acervo original. 
 Cada estudo completo aparece na primeira aula canônica; as retomadas trazem o foco e a página de referência. O índice técnico mantém os nove eixos. Todos os mapas, diagramas, consultas e páginas originais foram preservados. Os arquivos de `materials/` são utilizados diretamente pelos downloads.
 
 As **509 páginas principais** foram renderizadas e revisadas visualmente; as **203 páginas originais** foram comparadas sem diferenças. Cobertura textual dos 27 estudos, 86 focos, referências de páginas, links internos, fontes e hashes foram conferidos. Registro completo em [Verificação dos PDFs](PDF-VERIFICATION.md).
+
+</details>

@@ -1,3 +1,5 @@
+import { TheoryReading } from '@/components/course/theory-reading';
+import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import { requireCourseProfile } from '@/lib/auth';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -36,56 +38,21 @@ export default async function DemoTheoryPage({ params }: { params: Promise<{ id:
         title={reference.title}
         description="Leia uma ideia, experimente no instrumento e volte à sua primeira música."
       />
-      <nav className="lesson-jumps" aria-label="Nesta consulta">
-        <a href="#laboratorio">Experimentar no laboratório</a>
-        <a href="#retornar">Retornar à música</a>
-      </nav>
       <div className="stack">
-        <section className="card prose">
-          <p className="large-quote">{rich(reference.lead, 'lead')}</p>
-          {reference.blocks.map((block, i) => (
-            <section key={block.heading}>
-              <h2>{rich(block.heading, 'heading-' + i)}</h2>
-              <p>{rich(block.text, 'block-' + i)}</p>
-            </section>
-          ))}
-          <div
-            className="table-scroll"
-            tabIndex={0}
-            role="region"
-            aria-label={'Tabela: ' + reference.title}
-          >
-            <table>
-              <thead>
-                <tr>
-                  {reference.table.headers.map((heading, i) => (
-                    <th scope="col" key={i}>
-                      {rich(heading, 'head-' + i)}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {reference.table.rows.map((row, i) => (
-                  <tr key={i}>
-                    {row.map((cell, j) => (
-                      <td key={j}>{rich(cell, 'cell-' + i + '-' + j)}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-        <TheoryLab referenceId={reference.id} />
-        <TheoryExercise
-          exercise={rich(reference.exercise, 'exercise')}
-          answer={rich(reference.answer, 'answer')}
-        />
-        <section className="card" id="retornar">
-          <p className="eyebrow">DA IDEIA À PRÁTICA</p>
+        <TheoryReading reference={reference} demo />
+        <CollapsibleCard title="Experimentar com som" name="theory-activities">
+          <TheoryLab referenceId={reference.id} />
+        </CollapsibleCard>
+        <CollapsibleCard title="Conferir a aprendizagem" name="theory-activities">
+          <TheoryExercise
+            compact
+            exercise={rich(reference.exercise, 'exercise')}
+            answer={rich(reference.answer, 'answer')}
+          />
+        </CollapsibleCard>
+        <CollapsibleCard id="retornar" title="Voltar à música" name="theory-activities">
           <div className="section-title">
-            <h2>Retornar ao ponto de estudo</h2>
+            <p>Escolha o ponto de estudo para retomar.</p>
             <Hint label="Voltar à aula demonstrativa">
               Cada link volta à menção exata desta teoria na aula demonstrativa.
             </Hint>
@@ -98,10 +65,8 @@ export default async function DemoTheoryPage({ params }: { params: Promise<{ id:
               </Link>
             ))}
           </div>
-        </section>
-        <section className="card">
-          <p className="eyebrow">CONTINUE EXPLORANDO</p>
-          <h2>Fontes desta consulta</h2>
+        </CollapsibleCard>
+        <CollapsibleCard title="Fontes" name="theory-activities">
           {reference.sources.map((source) =>
             source.url ? (
               <a
@@ -118,7 +83,7 @@ export default async function DemoTheoryPage({ params }: { params: Promise<{ id:
               <p key={source.title}>{source.title}</p>
             ),
           )}
-        </section>
+        </CollapsibleCard>
       </div>
     </Shell>
   );

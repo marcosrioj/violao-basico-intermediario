@@ -1,5 +1,10 @@
 # Pesquisa e decisões para ensinar o Violão Vivo
 
+Cada aula reúne demonstração, tentativa, aplicação musical e revisão. O plano de 60 minutos cabe no encontro existente; as adaptações ajudam o professor a ajustar a dificuldade observada.
+
+<details>
+<summary>Evidências e limites</summary>
+
 Consulta às fontes em 15/11/2026. Os conteúdos de `lesson-enrichment.json` e `teacher-enrichment.json` ampliam as 39 aulas existentes, preservando sua ordem, identidade, repertório e objetivos. Os exemplos, exercícios, perguntas, sequências e rubrica foram escritos para este curso. Nenhuma fonte abaixo avaliou o Violão Vivo ou demonstra uma única melhor forma de ensinar todo aluno.
 
 ## Evidências e limites
@@ -12,6 +17,11 @@ Consulta às fontes em 15/11/2026. Os conteúdos de `lesson-enrichment.json` e `
 | [CAST UDL Guidelines 3.0 — Optimize challenge and support](https://udlguidelines.cast.org/engagement/effort-persistence/challenge-support/)                                                         | Diretrizes de desenho inclusivo orientam adequação entre desafio e apoio.                                                                                                                | Contagem, mapa, redução de ataques e andamento são apoios ajustáveis. A decisão depende da tarefa e da pessoa; não é certificação de acessibilidade nem ensaio de eficácia.                                        |
 | [López-Íñiguez e McPherson — Using a music microanalysis protocol to enhance instrumental practice](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2024.1368074/full), 2024 | Estudo qualitativo não comparativo com quatro violoncelistas de mestrado acompanha metas, estratégias e reflexão durante preparação de repertório.                                       | Perguntas antes e depois da tentativa orientam a escolha do próximo ajuste. A aplicação a iniciantes é uma adaptação pedagógica; o estudo não oferece estimativa causal de eficácia para este curso.               |
 | [Sarah Baker / ABRSM — How does the Marking Criteria work?](https://teacherhub.abrsm.org/mod/page/view.php?id=2019), consultado na versão atualizada em agosto de 2026                              | A orientação institucional considera o resultado musical em várias dimensões, incluindo tempo, som, expressão e comunicação.                                                             | A rubrica autoral observa execução, compreensão, autonomia e participação com exemplos concretos. Não copia pontuações oficiais nem declara equivalência a graus ABRSM.                                            |
+
+</details>
+
+<details>
+<summary>Organização e progressão das aulas</summary>
 
 ## Organização das aulas
 
@@ -30,6 +40,11 @@ O professor começa por uma tentativa curta, identifica a dificuldade dominante 
 - Comparações harmônicas e transposições são exercícios identificados. Os arranjos mantêm seus tons; nomes enarmônicos preservam a função explicada, como E# em C#7.
 - A leitura de centro tonal usa contexto. Coleção compartilhada, primeiro acorde e nota externa isolada não resolvem sozinhos uma análise.
 
+</details>
+
+<details>
+<summary>Avaliação formativa</summary>
+
 ## Avaliação formativa
 
 A rubrica possui seis dimensões: pulso e forma, som e coordenação, expressão e escuta, compreensão aplicada, autonomia na prática e participação musical. Cada dimensão descreve início, desenvolvimento e execução segura nas tarefas estudadas. Não se calcula um nível global apenas somando cliques ou minutos.
@@ -37,3 +52,5 @@ A rubrica possui seis dimensões: pulso e forma, som e coordenação, expressão
 O registro inclui trecho, andamento, apoio, ocorrência observada e próximo ajuste. Uma mesma execução pode mostrar avanços diferentes entre dimensões. A apresentação final usa três arranjos preparados, uma explicação contextual e transferência para exercício autoral, seguida de um plano de continuidade. Nova observação em outro dia ajuda a distinguir desempenho momentâneo e retenção.
 
 As adaptações não são punições nem atalhos ocultos: são condições explícitas da tentativa. O professor pode manter mapa, contagem, textura simples e acompanhamento enquanto desenvolve uma habilidade. Uma extensão só entra depois de seus pré-requisitos; não vira exigência surpresa na avaliação.
+
+</details>

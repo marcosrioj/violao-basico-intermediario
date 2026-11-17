@@ -79,8 +79,7 @@ export function TeacherDashboard({
   }
   return (
     <div className="dashboard-surface">
-      <AccountPanel profile={profile} />
-      <div className="two-columns">
+      <div className="stack">
         <section className="card">
           <div className="section-title">
             <h2>Suas turmas</h2>
@@ -89,26 +88,29 @@ export function TeacherDashboard({
               liberar o curso.
             </Hint>
           </div>
-          <form onSubmit={create}>
-            <div className="control-row">
-              <label htmlFor="class-name">
-                Nome da nova turma
-                <input
-                  id="class-name"
-                  required
-                  minLength={3}
-                  maxLength={100}
-                  placeholder="Ex.: Violão · Sábados pela manhã"
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
-                />
-              </label>
-              <button className="button" disabled={busy}>
-                <Plus size={16} />
-                {busy ? 'Criando…' : 'Criar turma'}
-              </button>
-            </div>
-          </form>
+          <details>
+            <summary>Criar turma</summary>
+            <form onSubmit={create}>
+              <div className="control-row">
+                <label htmlFor="class-name">
+                  Nome da nova turma
+                  <input
+                    id="class-name"
+                    required
+                    minLength={3}
+                    maxLength={100}
+                    placeholder="Ex.: Violão · Sábados pela manhã"
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                  />
+                </label>
+                <button className="button" disabled={busy}>
+                  <Plus size={16} />
+                  {busy ? 'Criando…' : 'Criar turma'}
+                </button>
+              </div>
+            </form>
+          </details>
           <Notice error message={error} />
           <Notice message={message} />
           <ResourceState {...resource} retry={resource.reload}>
@@ -122,7 +124,10 @@ export function TeacherDashboard({
                           <h3>{item.name}</h3>
                           <Users size={20} />
                         </div>
-                        <Invitation code={item.invite_code} />
+                        <details>
+                          <summary>Código de matrícula</summary>
+                          <Invitation code={item.invite_code} />
+                        </details>
                         <Link className="button secondary" href={`/professor/turmas/${item.id}`}>
                           Acompanhar turma
                           <ArrowRight size={16} />
@@ -147,10 +152,9 @@ export function TeacherDashboard({
         </section>
         <div className="stack">
           <Agenda profile={profile} lessons={lessons} />
-          <section className="card">
-            <p className="eyebrow">PREPARAÇÃO DO ENCONTRO</p>
+          <details className="card">
+            <summary>Preparar uma aula</summary>
             <div className="section-title">
-              <h2>Ensine com um plano.</h2>
               <Hint label="Encontrar o plano do professor">
                 Cada aula reúne o objetivo, a sequência de 60 minutos, os pontos de observação e o
                 material do aluno. Na turma, registre sua devolutiva e organize a próxima semana.
@@ -172,9 +176,13 @@ export function TeacherDashboard({
                 </Link>
               ))}
             </div>
-          </section>
+          </details>
         </div>
       </div>
+      <details className="section">
+        <summary>Minha conta</summary>
+        <AccountPanel profile={profile} />
+      </details>
     </div>
   );
 }

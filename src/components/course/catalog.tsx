@@ -66,7 +66,7 @@ export function Catalog({
     <>
       <Notice error message={progressError} />
       <section className="card learning-reading" aria-labelledby="next-lesson-title">
-        <p className="eyebrow">SUA TRILHA DE APRENDIZADO</p>
+        <p className="eyebrow">CONTINUAR</p>
         <h2 id="next-lesson-title">
           {progressLoading || progressError
             ? 'Repertório e técnica na mesma aula'
@@ -133,8 +133,7 @@ export function Catalog({
         </div>
       </details>
       <p className="search-count" id="modulos" role="status" aria-atomic="true">
-        {filtered.length} aulas {query || selectedModule !== 'all' ? 'encontradas' : 'na trilha'} ·
-        encontros semanais de 60 minutos, com prática entre as aulas
+        {filtered.length} aulas {query || selectedModule !== 'all' ? 'encontradas' : 'na trilha'}
       </p>
       {modules
         .filter((m) => filtered.some((l) => l.module === m.n))
@@ -145,9 +144,10 @@ export function Catalog({
             key={m.n}
             id={`modulo-${m.n}`}
             title={m.title}
-            description={m.goal}
+            name={query || selectedModule !== 'all' ? undefined : 'course-modules'}
             leading={<span className="module-number">{String(m.n).padStart(2, '0')}</span>}
           >
+            <p className="module-goal">{m.goal}</p>
             {filtered
               .filter((l) => l.module === m.n)
               .map((l) => {
@@ -155,14 +155,20 @@ export function Catalog({
                 const introductions = l.techniques.filter((study) => study.stage === 'introducao');
                 const reviews = l.techniques.filter((study) => study.stage === 'retomada');
                 return (
-                  <Link className="lesson-row" href={`/aulas/${l.id}`} key={l.id}>
-                    <span className="lesson-number">
-                      {completed ? <Check size={16} aria-label="Aula concluída" /> : l.local_n}
-                    </span>
-                    <div>
-                      <h3>
-                        Aula {l.local_n} · {l.title}
-                      </h3>
+                  <article className="catalog-lesson" key={l.id}>
+                    <Link className="lesson-row" href={`/aulas/${l.id}`}>
+                      <span className="lesson-number">
+                        {completed ? <Check size={16} aria-label="Aula concluída" /> : l.local_n}
+                      </span>
+                      <div>
+                        <h3>
+                          Aula {l.local_n} · {l.title}
+                        </h3>
+                      </div>
+                      <ArrowRight className="row-arrow" size={17} aria-hidden="true" />
+                    </Link>
+                    <details className="catalog-lesson-details">
+                      <summary>Objetivo e técnicas</summary>
                       <p>{l.goal}</p>
                       {introductions.length > 0 && (
                         <p>
@@ -176,9 +182,8 @@ export function Catalog({
                           {reviews.map((study) => study.title).join(' · ')}
                         </p>
                       )}
-                    </div>
-                    <ArrowRight className="row-arrow" size={17} aria-hidden="true" />
-                  </Link>
+                    </details>
+                  </article>
                 );
               })}
           </CollapsibleCard>

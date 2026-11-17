@@ -20,24 +20,61 @@ export default async function TeachingPage() {
       </Link>
       <PageHeading
         eyebrow="ORIENTAÇÃO DOCENTE"
-        title="Ensinar a ouvir, tocar e aprender"
-        description={teachingGuide.introduction}
+        title="Guia do professor"
+        description="Escolha uma aula, prepare o encontro e acompanhe a execução."
       />
-      <nav className="lesson-jumps" aria-label="Guia docente">
-        <a href="#principios">Princípios</a>
-        <a href="#avaliar">Avaliação</a>
-        <a href="#planos">Planos das aulas</a>
-      </nav>
-      <div className="stack learning-reading" id="principios">
-        {teachingGuide.teachingPrinciples.map((principle) => (
-          <CollapsibleCard key={principle.title} title={principle.title}>
-            <p>{principle.text}</p>
-          </CollapsibleCard>
-        ))}
-      </div>
-      <section className="card section" id="avaliar">
-        <p className="eyebrow">EVIDÊNCIAS DA EXECUÇÃO</p>
-        <h2>Uma rubrica para orientar a próxima tentativa</h2>
+      <CollapsibleCard
+        title="Planos das aulas"
+        className="section"
+        id="planos"
+        name="teaching-guide"
+        defaultOpen
+      >
+        <div className="stack section">
+          {courseModules.map((module) => (
+            <CollapsibleCard
+              key={module.n}
+              title={`Módulo ${module.n} · ${module.title}`}
+              name="teaching-modules"
+            >
+              <p>{module.goal}</p>
+              <div className="review-list">
+                {lessons
+                  .filter((lesson) => lesson.module === module.n)
+                  .map((lesson) => (
+                    <Link key={lesson.id} href={`/aulas/${lesson.id}#plano-professor`}>
+                      <span>
+                        {lesson.display_id} · {lesson.title}
+                      </span>
+                      <ArrowRight size={16} />
+                    </Link>
+                  ))}
+              </div>
+            </CollapsibleCard>
+          ))}
+        </div>
+      </CollapsibleCard>
+      <CollapsibleCard
+        title="Princípios de ensino"
+        className="section"
+        id="principios"
+        name="teaching-guide"
+      >
+        <p>{teachingGuide.introduction}</p>
+        <div className="stack learning-reading">
+          {teachingGuide.teachingPrinciples.map((principle) => (
+            <CollapsibleCard key={principle.title} title={principle.title}>
+              <p>{principle.text}</p>
+            </CollapsibleCard>
+          ))}
+        </div>
+      </CollapsibleCard>
+      <CollapsibleCard
+        title="Avaliar a execução"
+        className="section"
+        id="avaliar"
+        name="teaching-guide"
+      >
         <p>
           Registre o trecho, o andamento, o apoio utilizado e uma evidência observável. Use os
           descritores para conversar sobre a aprendizagem e retome a tarefa em outro dia.
@@ -69,33 +106,7 @@ export default async function TeachingPage() {
             </tbody>
           </table>
         </div>
-      </section>
-      <section className="section" id="planos">
-        <p className="eyebrow">39 ENCONTROS CONECTADOS</p>
-        <h2>Prepare a aula do seu módulo</h2>
-        <div className="stack section">
-          {courseModules.map((module) => (
-            <CollapsibleCard
-              key={module.n}
-              title={`Módulo ${module.n} · ${module.title}`}
-              description={module.goal}
-            >
-              <div className="review-list">
-                {lessons
-                  .filter((lesson) => lesson.module === module.n)
-                  .map((lesson) => (
-                    <Link key={lesson.id} href={`/aulas/${lesson.id}#plano-professor`}>
-                      <span>
-                        {lesson.display_id} · {lesson.title}
-                      </span>
-                      <ArrowRight size={16} />
-                    </Link>
-                  ))}
-              </div>
-            </CollapsibleCard>
-          ))}
-        </div>
-      </section>
+      </CollapsibleCard>
       <a className="button section" href="/api/materials/professor" download>
         Baixar manual do professor
       </a>

@@ -1,5 +1,10 @@
 # Criar sua turma no Violão Vivo
 
+Crie sua conta, solicite o acesso de professor e abra uma turma. Para lecionar, escolha uma aula e use sua apresentação; preparação, adaptações e planos completos ficam disponíveis para consulta.
+
+<details>
+<summary>Preparar e ministrar as aulas</summary>
+
 ## Preparar e lecionar
 
 Após entrar como professor, abra **Área do professor → Preparar e lecionar**. O guia reúne princípios de ensino, uma rubrica de observação e links para os 39 planos. Cada aula inclui diagnóstico, demonstração, sequência de 60 minutos, dificuldade frequente, intervenção, simplificação, ampliação e verificação posterior. A apresentação da aula mantém as etapas originais e acrescenta exemplo, prática, recuperação e próximo passo.
@@ -9,6 +14,11 @@ Os nove eixos técnicos têm 27 estudos ligados às aulas; escolha um objetivo p
 O botão **Manual do professor** baixa o livro completo. A apostila do aluno também foi atualizada. Ambos mantêm o respectivo material V5 integral no acervo final. Consulte [conteúdo](CONTENT.md), [fundamentação musical](CURRICULUM-RESEARCH.md) e [fundamentação pedagógica](TEACHING-RESEARCH.md).
 
 Você pode usar gratuitamente a instância compartilhada ou administrar uma instalação própria. Em ambos os casos, a conta começa como aluno e o papel de professor é liberado por um administrador.
+
+</details>
+
+<details>
+<summary>Solicitar acesso na instância compartilhada</summary>
 
 ## Usar a instância compartilhada gratuitamente
 
@@ -38,6 +48,11 @@ Obrigado!
 
 Não envie senhas, tokens ou códigos de confirmação. Se entrar com Google, informe o e-mail dessa conta Google. Se a Área do professor ainda não aparecer após a liberação e um novo login, confira se entrou com o mesmo e-mail informado na solicitação.
 
+</details>
+
+<details>
+<summary>Convidar os alunos</summary>
+
 ## Convidar alunos
 
 1. Crie a turma na Área do professor.
@@ -46,6 +61,11 @@ Não envie senhas, tokens ou códigos de confirmação. Se entrar com Google, in
 4. O Laboratório musical é público. Após a matrícula, ficam disponíveis aulas, materiais e registros de prática. Você acompanha somente alunos vinculados às suas turmas.
 
 Criar uma conta não libera o curso. Remover o último vínculo de turma bloqueia novamente o acesso do aluno, preservando seu histórico pessoal. Remover uma matrícula não invalida o código já compartilhado: o aplicativo ainda não oferece rotação de convites nem suspensão permanente pela interface.
+
+</details>
+
+<details>
+<summary>Instalação própria e outros guias</summary>
 
 ## Usar uma instalação própria
 
@@ -60,3 +80,5 @@ Contas, códigos de turma e progresso pertencem à instância onde foram criados
 - [Metodologia e acompanhamento do aluno](PEDAGOGY.md)
 - [Pesquisa e atividades do laboratório](LABORATORY-RESEARCH.md)
 - [Condições e limites de infraestrutura](FREE-TIER.md)
+
+</details>

@@ -1,5 +1,10 @@
 # Verificação de autenticação e isolamento
 
+Testes locais verificam autenticação, permissões e isolamento de registros. A configuração do Supabase hospedado exige a matriz de contas descrita ao final; os resultados abaixo pertencem à revisão registrada.
+
+<details>
+<summary>Resultados e fronteiras de acesso</summary>
+
 Executada em **14 de novembro de 2026** no checkout local. Não foram usadas contas reais de aluno/professor, SMTP, OAuth ou um projeto remoto do Supabase.
 
 ## Resultados executados
@@ -30,6 +35,11 @@ O teste de banco cria identidades sintéticas e emula somente a fronteira `auth.
 - O parser rejeita JSON inválido, tipo de mídia incorreto, campos não reconhecidos e corpos maiores que 16 KiB em bytes; interrompe a leitura de streams excedentes.
 - Callbacks sem credenciais válidas falham com mensagens genéricas e redirecionamento interno. `safeRedirect` rejeita URLs externas, barras invertidas e caracteres de controle.
 
+</details>
+
+<details>
+<summary>Cookies, cabeçalhos e smoke HTTP</summary>
+
 ## Cookies, cache e cabeçalhos
 
 O cliente oficial `@supabase/ssr` gerencia cookies com `SameSite=Lax`, domínio restrito ao host e `Secure` em produção. A biblioteca precisa permitir que o cliente JavaScript leia a sessão; não se alega uso de cookies `HttpOnly`. As operações protegidas de dados usam `getUser()` para validar a identidade e consultam o perfil no banco. O logout verifica a origem e encerra a sessão SSR local sem depender da leitura do perfil; a fronteira de erro, os cabeçalhos privados e o identificador de requisição são preservados. A renovação pelo Proxy cobre todas as páginas protegidas e APIs.
@@ -48,6 +58,11 @@ npm run test:http
 
 Para outra URL, configure `SMOKE_BASE_URL`; `SMOKE_ORIGIN` deve corresponder exatamente à origem pública autorizada por `NEXT_PUBLIC_SITE_URL`. O script não inicia servidor, não envia cookies, não cria conta, não grava dados e não simula autenticação.
 
+</details>
+
+<details>
+<summary>Regressões e configuração externa</summary>
+
 ## Regressões adicionais
 
 `tests/security-env.test.ts` cobre URLs públicas, configuração parcial, exigência da origem de produção e rejeição de chaves administrativas antes do build. `tests/auth-operations.test.ts` cobre saída sem consulta ao perfil e a recuperação em duas etapas: depois que a senha é atualizada, uma falha ao revogar sessões permite repetir somente a revogação, sem enviar a senha novamente. Esses testes usam portas simuladas; não comprovam o comportamento de um provedor hospedado.
@@ -59,3 +74,5 @@ A CI também executa `npm run test:http:ci`: o wrapper inicia o build de produç
 Depois de aplicar a migration no Supabase escolhido e configurar os provedores, executar o fluxo real com duas contas de aluno e duas de professor: login Google, cadastro confirmado, recuperação, logout, matrícula, gravação e releitura do progresso, diário, feedback, encontros e downloads. Repetir os ataques negativos de acesso direto à API usando os JWTs reais. Confirmar a allowlist de redirects e os templates de e-mail de `DEPLOYMENT.md`.
 
 A revisão e os testes fornecem evidência das fronteiras implementadas; não são uma auditoria externa nem uma garantia de ausência de vulnerabilidades. A navegação e os controles de áudio foram inspecionados posteriormente em navegador desktop, conforme `VERIFICATION.md`. Cookies reais de Supabase, entrega de e-mail, consentimento Google e implantação remota ainda não foram validados.
+
+</details>

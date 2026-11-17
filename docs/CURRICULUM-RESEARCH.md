@@ -1,5 +1,10 @@
 # Pesquisa musical e aprofundamento do currículo
 
+Os nove eixos técnicos acompanham as aulas do repertório. Consulte a cobertura, as decisões de ensino e suas fontes; os exemplos do curso são autorais.
+
+<details>
+<summary>Fontes e limites da pesquisa</summary>
+
 Consulta realizada em 15/11/2026. Este registro distingue o escopo anunciado na página pública de Fábio Lima, os conceitos conferidos em referências reconhecidas e as decisões autorais de ensino do Violão Vivo. Não houve acesso ao conteúdo interno do curso comercial, e nenhum texto ou exercício novo é apresentado como aula daquele professor.
 
 Os 13 módulos, as 39 aulas, seus identificadores, repertório, tons e mapas harmônicos são a base preservada. Nove eixos técnicos acrescentam 27 estudos ligados às tarefas já existentes. O texto integral está em `src/content/technique-data.json`; cada estudo identifica suas referências por `sourceIds`.
@@ -34,6 +39,11 @@ As referências abaixo foram usadas para conferir conceitos e delimitar a cobert
 | BERKLEE-ACORDES | [Guitar Chords 101](https://online.berklee.edu/courses/guitar-chords-101/) — Rick Peckham - Berklee Online                                                                      | Construção por notas, inversões e condução de vozes.                    | Foi consultada a ementa pública, não as aulas restritas do curso.                                                                                               |
 | BERKLEE-INICIO  | [Guitar for Beginners](https://online.berklee.edu/courses/guitar-for-beginners) — Kim Perlak - Berklee Online                                                                   | Integração entre técnica, leitura, acordes e criação.                   | Ementa pública; a organização do curso e seus exercícios não pertencem à Berklee.                                                                               |
 
+</details>
+
+<details>
+<summary>Cobertura e aplicação no curso</summary>
+
 ## Cobertura dos nove eixos
 
 | Eixo                                              | Estudos autorais                                                                                                                         | Integração                         |
@@ -62,6 +72,11 @@ As referências abaixo foram usadas para conferir conceitos e delimitar a cobert
 - **Harmonia com escuta:** campo menor inclui a diferença entre dominante menor e maior, sem converter toda alteração em modulação. Cadência é relacionada a frase e forma; um ciclo de cifras não recebe automaticamente uma classificação cadencial.
 - **Repertório íntegro:** ciclos, frases e variações técnicos são explicitamente autorais e separados dos mapas originais. Uma aplicação ao repertório precisa respeitar sua ordem, métrica, versão e espaço de acompanhamento.
 
+</details>
+
+<details>
+<summary>Orientação docente e conferência musical</summary>
+
 ## Aprendizagem e orientação docente
 
 Cada estudo inclui objetivo observável, pré-requisitos, explicação, exemplo resolvido, tentativa gradual, adaptação mais simples, extensão, diagnóstico de duas dificuldades, critérios de execução, pergunta de recuperação com resposta e sugestões de retomada em dias diferentes. Essa estrutura aplica as diretrizes pedagógicas documentadas no projeto; os intervalos de revisão e os critérios são decisões didáticas ajustáveis. Não há afirmação de uma melhor técnica universal, domínio garantido em prazo fixo ou equivalência entre conclusão digital e desempenho.
@@ -73,3 +88,5 @@ A sequência proposta é: ouvir ou antecipar o resultado, compreender uma relaç
 Foram conferidos os identificadores dos 27 estudos, a existência das 39 referências de aula utilizadas, a correspondência entre `sourceIds` e fontes e os pré-requisitos de entrada. Os códigos de acordes autorais foram convertidos para nomes de notas para conferir tríades e inversões. A leitura do trecho em tablatura e os valores do exemplo de mordente foram comparados com suas instruções por extenso. A pesquisa não revalida versões comerciais, composições ou andamentos das 13 músicas; esses dados seguem os registros do repertório já existente.
 
 Os campos `edition` registram metadados internos de conteúdo; o nome apresentado ao aluno e ao professor permanece Violão Vivo.
+
+</details>

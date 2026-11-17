@@ -1,5 +1,10 @@
 # Administração de dados pessoais
 
+Guia do administrador da instância para exportar ou excluir dados pessoais. Confirme a identidade e o escopo do pedido antes de executar o procedimento correspondente.
+
+<details>
+<summary>Responsabilidade e dados protegidos</summary>
+
 Este guia é executado pelo administrador do Supabase **da instância em uso**. Para criar sua própria instalação, consulte [DEPLOYMENT.md](DEPLOYMENT.md); para pedir acesso de professor na instância compartilhada, consulte [TEACHERS.md](TEACHERS.md). Contas e turmas de instalações distintas são independentes.
 
 Procedimento do responsável pelo curso para as solicitações descritas na página de privacidade. A aplicação não oferece exclusão administrativa por endpoint público e não precisa de `service_role` no frontend ou nas variáveis normais da hospedagem.
@@ -9,6 +14,11 @@ Procedimento do responsável pelo curso para as solicitações descritas na pág
 O código, os PDFs, o guia HTML e os planos editoriais do professor são públicos no GitHub por decisão do proprietário. Essa publicidade não inclui contas Auth, nomes de alunos, matrículas, progresso, confiança, anotações, diário, feedback ou agenda de turmas. Esses registros ficam no Supabase, com as políticas da migration.
 
 O operador deve informar aos participantes quem é o responsável pelo curso e qual canal já utilizado por eles recebe solicitações. Nenhum endereço de contato foi inventado no projeto. Os pedidos são tratados administrativamente, sem exigir que o aluno publique dados em uma issue do GitHub.
+
+</details>
+
+<details>
+<summary>Exportar registros</summary>
 
 ## Exportar os registros de uma pessoa
 
@@ -44,6 +54,11 @@ order by created_at;
 
 Para um professor, incluir também as turmas de sua autoria e as devolutivas escritas por ele, selecionando os campos conforme o pedido e evitando exportar dados pessoais desnecessários dos alunos. Informações básicas da conta Auth podem ser consultadas no painel. Nunca entregar `select * from auth.users`: o schema contém campos internos que não pertencem a um arquivo de portabilidade do aluno.
 
+</details>
+
+<details>
+<summary>Excluir conta de aluno</summary>
+
 ## Excluir uma conta de aluno
 
 1. Confirmar a conta e a intenção de excluir permanentemente; oferecer a exportação antes, se solicitada.
@@ -53,6 +68,11 @@ Para um professor, incluir também as turmas de sua autoria e as devolutivas esc
 5. Conferir que a conta não consegue mais renovar sessão ou consultar dados. Tokens já emitidos podem existir até expirar; não afirmar revogação instantânea de todo JWT. O app consulta identidade e perfil no servidor, e as linhas pessoais foram removidas.
 
 A versão atual não armazena arquivos enviados por usuários. Se Storage for adicionado, objetos e propriedade precisam ser tratados antes da exclusão; o Supabase pode bloquear exclusão de usuário proprietário de objetos.
+
+</details>
+
+<details>
+<summary>Excluir conta que é ou foi professor</summary>
 
 ## Excluir uma conta que é ou foi professor
 
@@ -74,8 +94,15 @@ Se a decisão for encerrar as turmas, removê-las administrativamente após conf
 
 A interface permite remover matrículas e cancelar encontros; ela não oferece exclusão de turma ou de conta. Essas ações mais amplas permanecem no painel administrativo do Supabase.
 
+</details>
+
+<details>
+<summary>Backups e restauração</summary>
+
 ## Cópias de segurança e restauração
 
 A exclusão da base ativa não apaga automaticamente exportações antigas, cópias privadas do operador ou registros retidos pelo fornecedor. Inventariar as cópias sob controle do curso, definir prazo de retenção e remover versões quando apropriado. Não prometer um prazo único que não tenha sido configurado.
 
 Ao restaurar um backup, reaplicar exclusões já atendidas antes de abrir o acesso aos usuários. Armazenar esse controle administrativo fora do Git público, com o mínimo de informação necessário. A operação de backup completo está em [DEPLOYMENT.md](DEPLOYMENT.md).
+
+</details>

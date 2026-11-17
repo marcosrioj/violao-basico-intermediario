@@ -1,5 +1,10 @@
 # Pesquisa pedagógica e aplicação no Violão Vivo
 
+Escolha um objetivo, demonstre, deixe o aluno tentar e observe o resultado. Retome o trecho em outro dia. O ritmo de avanço depende da execução, além dos registros de prática.
+
+<details>
+<summary>Estudos integrados e fundamentação</summary>
+
 ## Integração dos estudos técnicos
 
 O curso mantém o repertório e a progressão dos 13 módulos e reformula a condução das 39 aulas com explicações específicas, exemplos trabalhados, tentativa guiada, recuperação antes da resposta e aplicação musical. Os nove eixos técnicos se distribuem pelas aulas conforme os pré-requisitos; não constituem uma sequência obrigatória de nove blocos antes de tocar músicas.
@@ -19,6 +24,11 @@ Fontes consultadas em 14/11/2026. O material v5 define a sequência do curso; a 
 | Carter e Grahn compararam prática em blocos e intercalada com dez clarinetistas avançados. Houve sinais favoráveis à alternância, mas os avaliadores divergiram e vários resultados não foram significativos. [Artigo original, Frontiers in Psychology](https://pmc.ncbi.nlm.nih.gov/articles/PMC4989027/)                | Depois de compreender um trecho, alterná-lo com outro já conhecido e voltar à música inteira; preservar tentativas curtas com objetivo definido. | Amostra pequena e instrumento/nível diferentes. Não impor alternância rápida a iniciantes que ainda não conseguem formar um acorde.                              |
 | CAST UDL 3.0 propõe equilibrar desafio, apoios e autonomia, valorizando processo e progresso. [CAST, consideração 8.2](https://udlguidelines.cast.org/engagement/effort-persistence/challenge-support/)                                                                                                                    | Ajuste de andamento, consulta de diagramas, texto e áudio, apoio do professor e metas pequenas.                                                  | Diretriz de desenho inclusivo; não equivale a ensaio clínico nem certifica acessibilidade do produto.                                                            |
 
+</details>
+
+<details>
+<summary>Ciclo de prática</summary>
+
 ## Ciclo de prática
 
 1. **Escutar:** localizar a gravação identificada, reconhecer a parte e ouvir a demonstração do professor.
@@ -29,6 +39,11 @@ Fontes consultadas em 14/11/2026. O material v5 define a sequência do curso; a 
 6. **Observar:** registrar o que ocorreu e uma única mudança para a próxima tentativa. O professor confirma a evidência de execução.
 
 Esse ciclo organiza a metodologia já presente nos materiais. Um clique em “concluir”, o tempo de prática ou um quiz respondido não comprovam domínio técnico. A aplicação distingue o relato do aluno da devolutiva do professor. O aluno pode revisitar aulas, reduzir o andamento e consolidar sem punição por perder uma sequência de dias.
+
+</details>
+
+<details>
+<summary>Decisões musicais e avaliação</summary>
 
 ## Decisões musicais e de interface
 
@@ -41,3 +56,5 @@ As interações precisam funcionar com teclado e toque, ter nomes acessíveis, i
 ## Avaliar a aprendizagem sem confundir métricas
 
 Na aula final, usar a rubrica do manual: execução de três arranjos preparados, pulso e forma, som e técnica, ouvido e compreensão aplicada, autonomia e participação conforme os critérios fornecidos. Registrar andamento, apoio utilizado, uma evidência observável e o próximo ajuste. As notas de prática ajudam a orientar o professor; não são um placar entre alunos. As 39 semanas são uma organização inicial, com consolidação adicional quando necessária.
+
+</details>

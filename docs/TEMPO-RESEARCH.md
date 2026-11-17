@@ -1,5 +1,10 @@
 # Auditoria dos andamentos do repertório
 
+Use a referência de andamento com sua unidade musical e confira a versão da gravação. O catálogo distingue referências documentadas de estimativas; escolher um BPM padrão não muda essa classificação.
+
+<details>
+<summary>Como usar e consultar os resultados</summary>
+
 Consulta em **14/11/2026**, cobrindo as **13 músicas** cadastradas. Estado atual: **7 referências documentadas e 6 estimativas**. “Documentada” significa que existe uma indicação de andamento vinculada à versão escolhida; a origem pode ser o fornecedor do master ou uma transcrição independente, conforme identificado abaixo. Não significa que a gravação inteira tenha velocidade constante.
 
 A consulta originalmente deixou Santo Espírito, Faz Chover (Toque no Altar) e Poderoso Deus sem referência utilizável. Por decisão posterior do responsável pelo curso, suas hipóteses foram adotadas como estimativas e como padrão de reprodução: **71,5, 67 e 62 BPM por semínima**, respectivamente. A mudança não resulta de uma nova pesquisa nem confirma o andamento das gravações; conserva as evidências e incertezas descritas nesta auditoria.
@@ -36,6 +41,11 @@ Os valores da coluna “Player” são **pulsos por minuto na unidade indicada**
 | [A Ele a Glória — Diante do Trono, Exaltado DVD, 1999](https://www.youtube.com/watch?v=Q_MerFW9qA4)                        | 4/4                   | 75; semínima                          | Documentado; [transcrição de Gladstone Leon](https://www.gladstoneleon.com.br/_files/ugd/a0a895_784fd276efc54ad69efebc04e7ef9e77.pdf)                                                           | A transcrição cobre somente o trecho até 4:27.                                          |
 | [Bondade de Deus — Isaías Saad, 2022](https://www.youtube.com/watch?v=mZ9yZYo9Mmk)                                         | 4/4, com 2/4 locais   | 68; semínima                          | Documentado; [transcrição de Gladstone Leon](https://www.gladstoneleon.com.br/_files/ugd/a0a895_8d41165bd6304292aafb266969382202.pdf)                                                           | Em 2/4, permanecem 68 BPM e passam a ser dois pulsos no compasso.                       |
 
+</details>
+
+<details>
+<summary>Unidades e qualidade das evidências</summary>
+
 ## Unidade e conversão
 
 Um número de BPM sem a figura musical não determina a duração dos compassos. Em 4/4, quatro semínimas a 68 BPM ocupam o mesmo tempo que oito colcheias a 136 BPM. Usar 136 como quatro pulsos na grade atual dobraria a velocidade do acompanhamento.
@@ -57,6 +67,11 @@ Nas partituras de **Rompendo em Fé**, **Preciso de Ti**, **A Ele a Glória** e 
 Para **Sonda-me, Usa-me**, a página 2 da partitura de bateria de Anderson Cleiton Rodrigues identifica o álbum de 2004 e traz explicitamente semínima = 62. A [cifra de Gladstone Leon](https://www.gladstoneleon.com.br/_files/ugd/a0a895_2198813895904e8eb46371c0212d8da0.pdf) complementa a informação com o rallentando final. Os valores automáticos próximos do dobro não substituem a figura escrita.
 
 Para **Lugar Secreto**, os [detalhes do catálogo](https://www.multitracks.com.br/songs/Gabriela-Rocha/C%C3%A9u/Lugar-Secreto/overview/) vinculam o master `mtID 11133`, o EP Céu, o ano **2018** e o mesmo vídeo do curso. O [anúncio do fornecedor](https://www.multitracks.com.br/blog/anunciando-gabriela-rocha) identifica recursos da gravação original. A nova referência editorial usa 2018; a menção legada a 2017 nos materiais v5 permanece nos originais importados para preservar sua proveniência.
+
+</details>
+
+<details>
+<summary>Estimativas, método e manutenção</summary>
 
 ## Estimativas e pendências
 
@@ -94,3 +109,5 @@ Para atualizar uma entrada:
 4. Para as três estimativas adotadas como padrão, buscar validação da unidade e confrontar a contagem dos compassos com a gravação escolhida antes de alterar sua classificação. A adoção de todas as referências como padrão expressa uma decisão de uso no curso, não um grau de certeza. O modelo continua aceitando `unresolved` com `reference: null` para futuras entradas sem hipótese adotada.
 5. Atualizar data, evidências e limites em `tempo-research.json` e nesta tabela. Uma mudança de andamento documentada, como 68 → 71 em Preciso de Ti, continua sendo uma nota para ajuste manual até existir um mapa temporal verificável.
 6. Verificar cobertura das 13 músicas, conversões, valores nulos, os padrões das 39 aulas e o retorno ao andamento de estudo quando a referência estiver ausente, inválida ou não resolvida. Conferir a consistência entre player, indicação da aula e diário arredondado, executar os testes do projeto e conferir as ajudas no player. Alterações pedagógicas em `lesson.bpm` exigem uma revisão própria, independente desta pesquisa.
+
+</details>

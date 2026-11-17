@@ -28,15 +28,16 @@ export default async function CoursePage() {
       <PageHeading
         eyebrow="SEU CAMINHO MUSICAL"
         title="Uma música de cada vez"
-        description="13 módulos, 39 aulas e 27 estudos técnicos integrados. Em cada aula, entenda a música, treine a técnica, aplique no repertório e organize sua revisão."
+        description="Continue sua aula ou escolha um módulo."
       />
       <div id="repertorio">
         <Suspense fallback={<p>Carregando trilha…</p>}>
           <Catalog modules={courseModules} lessons={catalogLessons} />
         </Suspense>
       </div>
-      <section className="section learning-reading" aria-labelledby="technique-title">
-        <h2 id="technique-title">Consulte quando precisar</h2>
+      <details className="section learning-reading">
+        <summary>Consultas e organização do curso</summary>
+        <p>13 módulos · 39 encontros de 60 minutos · 27 estudos técnicos integrados.</p>
         <p>
           As técnicas aparecem nas aulas acima e voltam em novos contextos. O índice por assunto
           reúne os mesmos 27 estudos para uma consulta rápida.
@@ -51,7 +52,7 @@ export default async function CoursePage() {
             </Link>
           )}
         </nav>
-      </section>
+      </details>
     </Shell>
   );
 }

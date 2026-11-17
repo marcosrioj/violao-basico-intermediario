@@ -1,5 +1,10 @@
 # Arquitetura do Violão Vivo
 
+Next.js apresenta o curso; Supabase guarda contas, turmas e registros pessoais. O conteúdo editorial fica versionado no repositório. Para instalar, siga [DEPLOYMENT.md](DEPLOYMENT.md).
+
+<details>
+<summary>Visão geral e organização do código</summary>
+
 Para instalar e operar uma cópia independente, use [DEPLOYMENT.md](DEPLOYMENT.md). Para utilizar a instância compartilhada como professor, veja [TEACHERS.md](TEACHERS.md). Cada instância tem seu próprio Supabase, contas e origem pública.
 
 O projeto reúne o curso gospel básico ao intermediário e o acompanhamento semanal em um monólito modular. O conteúdo editorial é versionado; o progresso e as relações entre pessoas são persistidos no Supabase. O backend pode executar em funções da hospedagem ou em um servidor Next.js contínuo. Não depende de processos de fundo nem de disco local para guardar dados de usuários.
@@ -28,6 +33,11 @@ flowchart LR
 - `supabase/migrations`: esquema, funções e políticas. `supabase/promote-teacher.sql` é operação administrativa separada.
 
 A escolha de Next.js/React e as versões efetivamente instaladas estão no manifesto e lockfile. A linha Next.js 16 recebeu correções relevantes em novembro de 2026; atualizações futuras devem preservar os testes de isolamento e a ausência de cache compartilhado de dados privados. [Release oficial de segurança](https://nextjs.org/blog/november-2026-security-release)
+
+</details>
+
+<details>
+<summary>Acesso e modelo de dados</summary>
 
 ## Autenticação e autorização
 
@@ -61,6 +71,11 @@ O identificador editorial da aula é `m1-a1` até `m13-a3`. Módulo e aula conti
 
 A criação da turma e do convite ocorre em uma transação SQL. Matrícula repetida preserva um único vínculo. O progresso é um upsert por aluno/aula; eventos de prática usam UUID para evitar duplicação em retentativa do mesmo envio. Instantes são `timestamptz`; o perfil mantém o fuso de apresentação.
 
+</details>
+
+<details>
+<summary>API e conteúdo interativo</summary>
+
 ## Contrato HTTP
 
 Operações autenticadas retornam `{ "data": ... }`. Falhas retornam `{ "error": { "code", "message", "requestId" } }` e status HTTP apropriado. Listas de práticas, turmas, feedback e encontros usam `page`, tamanho fixo de 20 e `hasMore`; o progresso retorna no máximo 39 aulas. O cliente não determina uma página ilimitada.
@@ -90,8 +105,15 @@ Diagramas, braço do instrumento, metrônomo, reprodução de sequências e perc
 
 PDFs são materiais editoriais de leitura, fora da pasta `public`, com entrega por rota autorizada no aplicativo. Como o repositório GitHub está público no estado atual, os PDFs em `materials/` e os textos do manual do professor também podem ser consultados diretamente no GitHub. A autorização organiza a experiência do app; não fornece sigilo para conteúdo editorial público. Não há upload de dados pessoais nesta versão; Supabase Storage é dispensável. Adicionar gravações de alunos exigiria bucket privado, políticas, limites de tipo/tamanho e ciclo de vida próprios.
 
+</details>
+
+<details>
+<summary>Verificação e limites</summary>
+
 ## Verificação e limites
 
 `npm run check` é a entrada para checks locais e build da hospedagem. Casos de RLS usam banco de teste com usuários sintéticos. O resultado confirma as políticas naquele ambiente, não a configuração de um projeto Supabase ainda não conectado. Depois da publicação, repetir a matriz de duas contas e professor em [DEPLOYMENT.md](DEPLOYMENT.md).
 
 Sem credenciais, a apresentação pública, a privacidade e o Laboratório musical ficam disponíveis. A sessão opcional no laboratório personaliza somente os links de navegação; falhas nessa consulta não bloqueiam as ferramentas públicas. Não há escrita de usuários em JSON, `localStorage` ou arquivo no servidor. Os dados instrumentais `chords-data.json` são separados dos textos de aulas e planos para os componentes de navegador não importarem o curso completo; o teste da árvore de dependências preserva essa fronteira. Configuração externa e quotas ficam documentadas em [FREE-TIER.md](FREE-TIER.md). O mapa dos padrões recebidos está em [ENGINEERING.md](ENGINEERING.md).
+
+</details>

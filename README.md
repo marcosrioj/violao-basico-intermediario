@@ -1,8 +1,20 @@
 # Violão do básico ao intermediário
 
+Curso de violão gospel com **13 módulos, 39 aulas e 27 estudos técnicos**. Cada aula segue quatro passos: entender, treinar, tocar e revisar.
+
+[Abrir o laboratório](https://violao-basico-intermediario-iota.vercel.app/laboratorio) · [Guia do professor](docs/TEACHERS.md) · [Instalar o projeto](docs/DEPLOYMENT.md)
+
+<details>
+<summary>Conhecer o curso</summary>
+
 Curso de violão gospel do básico ao intermediário, **13 módulos e 39 aulas com 27 estudos técnicos integrados**, cifras interativas, laboratório musical e acompanhamento de alunos por turma. Feito com Next.js, TypeScript e Supabase.
 
 Cada aula segue o percurso **entender, treinar, aplicar e revisar**. Os estudos completos ficam dentro da aula, com foco específico e indicação de introdução ou retomada; os nove eixos permanecem como índice de consulta. O professor dispõe de 39 planos de 60 minutos, diagnóstico, adaptações, apresentação com os estudos da aula e rubrica de execução. Os PDFs do aluno e do professor seguem essa sequência e incluem o acervo original integral. [Mapa da trilha integrada](docs/INTEGRATED-LEARNING.md) · [Conteúdo e geração dos materiais](docs/CONTENT.md) · [Pesquisa musical](docs/CURRICULUM-RESEARCH.md) · [Pesquisa pedagógica](docs/TEACHING-RESEARCH.md).
+
+</details>
+
+<details>
+<summary>Experimentar o laboratório</summary>
 
 ## Quero experimentar o laboratório
 
@@ -13,6 +25,11 @@ Use qualquer título entre colchetes ou terminado em dois-pontos, como `[Primeir
 O acompanhamento é gerado automaticamente e pode apresentar inconsistências nos acordes, tempos, repetições e alinhamento da letra. Confira o resultado antes de tocar; esse aviso também fica visível no formulário.
 
 Cole as seis cordas da tablatura juntas, da mais aguda à mais grave; as notas escritas são exibidas e tocadas. O ritmo é estimado pelos espaços e técnicas como ligados e slides têm reprodução simplificada. O texto `Tom: Db (com forma de C)Capotraste: 1ª casa` é reconhecido, e o seletor permite ajustar o capotraste. As posições escritas são preservadas; o áudio aplica o capotraste uma única vez. As durações vocais também são estimadas, não sincronizadas automaticamente com uma gravação. A cifra fica somente na sessão da página; aulas, materiais e registros pessoais continuam protegidos.
+
+</details>
+
+<details>
+<summary>Usar como professor, sem instalar</summary>
 
 ## Quero usar como professor, sem instalar
 
@@ -39,6 +56,11 @@ Obrigado!
 ```
 
 Substitua os campos entre colchetes. Não envie senha nem código de confirmação. Mais detalhes no [guia do professor](docs/TEACHERS.md).
+
+</details>
+
+<details>
+<summary>Instalar minha própria instância</summary>
 
 ## Quero instalar minha própria instância
 
@@ -122,6 +144,11 @@ npm run test:http:ci # testes HTTP contra o build
 
 Sem Supabase configurado, `npm ci` e `npm run dev` permitem acessar a apresentação pública, a privacidade e o Laboratório musical, sem cadastro. Aulas, materiais e registros pessoais continuam exigindo a configuração do Supabase e matrícula.
 
+</details>
+
+<details>
+<summary>Publicar no meu endereço</summary>
+
 ## Quero publicar no meu endereço
 
 1. Use seu fork/repositório na branch `main` e escolha uma hospedagem com suporte a **Next.js com servidor**.
@@ -136,6 +163,11 @@ Escolha o guia:
 - **[Servidor próprio ou outra hospedagem Node.js](docs/DEPLOYMENT.md#servidor-próprio-ou-outra-hospedagem-nodejs):** `npm ci`, `npm run check` e `npm start`, com HTTPS e processo contínuo.
 
 O endereço da instância compartilhada serve apenas para quem quer usá-la. **Não copie esse endereço para configurar sua instalação.** Consulte [cotas e condições dos serviços gratuitos](docs/FREE-TIER.md).
+
+</details>
+
+<details>
+<summary>Documentação e licença</summary>
 
 ## Documentação
 
@@ -154,3 +186,5 @@ Confira a [verificação da atualização do curso](docs/COURSE-VERIFICATION.md)
 | Conferir o que foi testado                        | [Verificação](docs/VERIFICATION.md) · [Segurança](docs/VERIFICATION-security.md)                    |
 
 Código e materiais editoriais estão públicos; contas, matrículas e registros pessoais ficam no Supabase de cada instalação. O projeto, incluindo seu código e materiais autorais, é distribuído sob a [licença MIT](LICENSE). Materiais de terceiros mantêm seus direitos e licenças próprios. Detalhes em [Conteúdo](docs/CONTENT.md).
+
+</details>

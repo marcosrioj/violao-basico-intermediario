@@ -1,5 +1,10 @@
 # Laboratório musical: pesquisa e decisões pedagógicas
 
+O laboratório oferece prática de ritmo, escuta, notas e exploração livre. Seus resultados ajudam a orientar uma tentativa; a aprendizagem instrumental deve ser observada no violão.
+
+<details>
+<summary>Fontes e limites da evidência</summary>
+
 Consulta em **14/11/2026**. Esta revisão amplia [PEDAGOGY-RESEARCH.md](PEDAGOGY-RESEARCH.md), preservando o currículo v5 e suas músicas. Foram priorizados estudos experimentais e trabalhos originais com métodos e resultados acessíveis. A busca cobriu recuperação de memória, espaçamento, alternância de tarefas, feedback auditivo, discriminação de intervalos e reprodução rítmica. Foram incluídos resultados positivos e nulos; não se trata de revisão sistemática ou comparação exaustiva de aplicativos.
 
 **Conclusão para o produto:** oferecer um ciclo de **ouvir → tentar → comparar → aplicar no violão**, com uma dificuldade por vez e uma próxima ação concreta. A literatura orienta esse desenho; não comprova a eficácia deste aplicativo. Testes automatizados e revisão de interface verificam funcionamento, não aprendizagem humana. A aprovação pedagógica depende de observação de alunos e professores, especialmente de retenção e transferência para o instrumento.
@@ -38,6 +43,11 @@ Georgi, Gingras e Zentner (2023) avaliaram reprodução rítmica em **40 partici
 
 Keitel e colaboradores (2025) estudaram escuta e marcação do pulso em **vinte participantes**, com replicação comportamental recrutando 52 e analisando 49. Usaram a dispersão dos intervalos entre toques; não calcularam a assincronia absoluta planejada porque não puderam recuperar a latência entre gatilho e som do equipamento original. Esse problema também importa em navegadores e dispositivos diferentes. A regularidade observada não permite afirmar com precisão quanto o aluno tocou antes/depois do som. [Artigo original — Annals of the New York Academy of Sciences](https://pmc.ncbi.nlm.nih.gov/articles/PMC11998481/)
 
+</details>
+
+<details>
+<summary>Decisões aplicadas às oficinas</summary>
+
 ## Decisão → evidência → experiência e limite
 
 | Decisão                                          | Base consultada                                                           | Aplicação no laboratório                                                 | Limite a preservar                                                                     |
@@ -51,6 +61,11 @@ Keitel e colaboradores (2025) estudaram escuta e marcação do pulso em **vinte 
 | Alternar atividades depois de entender o exemplo | Carter e Grahn, com população avançada                                    | Escolher entre escuta, ritmo e notas; retomar a dificuldade depois       | Não impor aleatoriedade, agenda ou desbloqueio por pontuação                           |
 | Levar a descoberta a uma aula                    | Luciani; currículo existente                                              | Link para trecho do curso e orientação para tocar no instrumento         | Transferência deve ser observada pelo professor; não é inferida do quiz                |
 | Retomar em outra sessão sem ajuda                | Wiseheart; Telesco                                                        | Sugerir uma tentativa futura antes de ouvir novamente                    | Não prometer benefício de um intervalo temporal específico                             |
+
+</details>
+
+<details>
+<summary>Implementação e observação em aula</summary>
 
 ## Critérios para implementar os exercícios
 
@@ -67,3 +82,5 @@ No braço, esconder respostas também exige escondê-las dos nomes acessíveis e
 A avaliação futura deve separar três resultados: desempenho na tela durante a sessão; retenção em outra sessão antes de receber ajuda; aplicação em um trecho no violão. Um primeiro piloto pode comparar erros recorrentes e estratégias usadas, mantendo objetivos e dificuldade comparáveis. Registrar exemplos concretos como “localizou D na mesma corda em outra posição” ou “manteve o pulso ao trocar de acorde” é mais informativo que somar cliques.
 
 Ainda não foi realizado um estudo pedagógico deste laboratório. Os testes do repositório verificam cálculos, estados, áudio e acesso; um teste de usabilidade observa operação; nenhum deles, isoladamente, autoriza a expressão **eficácia pedagógica comprovada**. Sessões, tolerâncias e sugestões podem ser ajustadas com observações do professor, mantendo essa distinção na documentação.
+
+</details>

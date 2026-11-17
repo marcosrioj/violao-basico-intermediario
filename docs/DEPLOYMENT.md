@@ -1,5 +1,10 @@
 # Instalar e hospedar sua instância do Violão Vivo
 
+Para uma instalação nova, siga as etapas **1 a 4**. Depois, escolha uma hospedagem e valide o acesso. Você usará seu próprio Supabase, suas contas e seu endereço.
+
+<details>
+<summary>Antes de começar</summary>
+
 Este guia é para instalar **sua própria aplicação**, com seu Supabase e seu endereço. Para usar a instância compartilhada gratuitamente, siga o [guia do professor](TEACHERS.md); não é necessário instalar nada nesse caso.
 
 **Convenção dos exemplos:** `https://seu-app.example` representa a URL HTTPS definitiva da **sua** hospedagem. Substitua esse endereço em todos os exemplos; ele não é um site real. No computador, use `http://localhost:3000`. Nunca use a URL da instância compartilhada como configuração de sua instalação.
@@ -14,6 +19,11 @@ Este guia é para instalar **sua própria aplicação**, com seu Supabase e seu 
 O frontend e o backend formam um único projeto Next.js. Contas e dados usam **Supabase Auth + API + PostgreSQL**; não basta apontar para um PostgreSQL isolado. Os PDFs e dados do curso já estão versionados, sem importação adicional, seed de conteúdo ou buckets de Storage. As contas e turmas serão criadas pela interface.
 
 A atualização mantém os IDs das 39 aulas e usa o mesmo esquema de contas, turmas e progresso. Não exige migration de banco. Os downloads ativos são os PDFs completos atualizados em `materials/`; `next.config.ts` inclui esses arquivos no pacote do servidor. Ao editar conteúdo editorial, regenere os PDFs e o manifesto antes do build conforme [Conteúdo](CONTENT.md).
+
+</details>
+
+<details>
+<summary>1. Executar localmente</summary>
 
 ## 1. Executar localmente
 
@@ -60,6 +70,11 @@ Verificação local: pare `npm run dev` com **Ctrl+C** antes dos comandos abaixo
 npm run check        # lint, tipos, testes e build
 npm run test:http:ci # inicia o build local, verifica rotas e encerra
 ```
+
+</details>
+
+<details>
+<summary>2. Preparar o banco</summary>
 
 ## 2. Preparar o banco Supabase
 
@@ -145,6 +160,11 @@ Sem essa migration, o aplicativo já pode negar suas próprias rotas, mas a API 
 
 Remover uma matrícula não invalida o código existente. Quem ainda possui um convite válido pode confirmar uma nova matrícula; esta versão não implementa suspensão permanente de conta nem rotação de convites pela interface.
 
+</details>
+
+<details>
+<summary>3. Configurar o login</summary>
+
 ## 3. Configurar autenticação
 
 No projeto Supabase correspondente a `NEXT_PUBLIC_SUPABASE_URL` da sua instalação, abrir **Authentication → URL Configuration**. Há duas configurações distintas, que precisam ser salvas separadamente. Prefira projetos Supabase separados para desenvolvimento e produção para não misturar contas e retornos de autenticação.
@@ -220,6 +240,11 @@ Não desabilitar confirmação para contornar envio. Usar Google OAuth enquanto 
 4. Gerar um novo e-mail após salvar as configurações; mensagens antigas não são reescritas. Se o e-mail já foi confirmado antes de ocorrer o erro de redirecionamento, tentar entrar normalmente com e-mail e senha.
 5. Confirmar entrada no painel e testar recuperação de senha no mesmo navegador. Não copiar códigos reais para logs, testes ou Git.
 
+</details>
+
+<details>
+<summary>4. Liberar o primeiro professor</summary>
+
 ## 4. Criar o primeiro professor
 
 Este procedimento é para o administrador da **sua instalação**. Para solicitar acesso na instância compartilhada, use o [guia do professor](TEACHERS.md).
@@ -227,6 +252,11 @@ Este procedimento é para o administrador da **sua instalação**. Para solicita
 A conta se cadastra normalmente e recebe papel `student` pelo banco. Depois da confirmação do e-mail/identidade, o administrador executa `supabase/promote-teacher.sql` no SQL Editor, substituindo o e-mail de exemplo pelo e-mail correto. Conferir que uma linha foi retornada com `role = teacher`. Se não retornar nenhuma, confirme o e-mail exato, a confirmação da identidade, o primeiro login e se você abriu o projeto Supabase correto. Não editar `user_metadata`, não aceitar papel enviado pelo cliente e não expor uma chave `service_role` para essa tarefa.
 
 O professor entra novamente, abre sua área, cria uma turma e envia o código de matrícula diretamente aos alunos, fora do aplicativo. O aluno entra com a própria conta e confirma o código no painel; só então o curso é liberado. O professor passa a ver somente os alunos vinculados às próprias turmas. As aulas incluem um modo de apresentação em sete etapas, disponível na seção do professor e controlado por teclado ou botões.
+
+</details>
+
+<details>
+<summary>5. Conectar o GitHub</summary>
 
 ## 5. GitHub e publicação automática na main
 
@@ -252,6 +282,11 @@ git push -u origin main
 Revisar os arquivos antes de adicionar: `.env.local`, tokens, backups e dados reais não devem aparecer. O workflow `.github/workflows/ci.yml` verifica PRs e pushes à `main`, com permissões de leitura e cancelamento de execução anterior.
 
 No repositório público, configurar proteção da `main` e exigir o check do workflow quando disponível no painel. O build da hospedagem também executa os checks antes de publicar. Essas proteções precisam ser habilitadas na conta; não são criadas apenas por versionar o workflow. [Planos do GitHub](https://docs.github.com/en/get-started/learning-about-github/githubs-plans)
+
+</details>
+
+<details>
+<summary>6. Publicar na Vercel</summary>
 
 ## 6. Vercel Hobby
 
@@ -284,11 +319,21 @@ O layout raiz integra `@vercel/analytics/next` e `@vercel/speed-insights/next` e
 
 Na configuração padrão, os scripts e a coleta de produção usam rotas da própria hospedagem Vercel (`/_vercel/insights/*` e `/_vercel/speed-insights/*`). Não é necessário adicionar chaves ao `.env.local`. Em desenvolvimento, os SDKs usam scripts de diagnóstico de `https://va.vercel-scripts.com`, liberados pela CSP apenas nesse ambiente. Outras hospedagens precisam de configuração específica para coletar essas métricas.
 
+</details>
+
+<details>
+<summary>7. Publicar na Netlify</summary>
+
 ## 7. Alternativa Netlify Free
 
 Se o uso for comercial, usar a alternativa Netlify Free e conferir as condições atuais do plano antes de conectar a conta. Importar o mesmo repositório pessoal no painel, confirmar production branch `main`, Node 22 e variáveis iguais; usar a URL `*.netlify.app` em `NEXT_PUBLIC_SITE_URL` e nos redirects Supabase. O `netlify.toml` executa `npm run check`; o adaptador oficial detecta App Router, SSR e Route Handlers. Não fixar uma versão antiga do adaptador. [Suporte Next.js](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/)
 
 O plano atual tem 300 créditos mensais compartilhados e pode pausar os projetos ao esgotar a cota. Conferir [FREE-TIER.md](FREE-TIER.md) antes da migração. Não habilitar recarga automática nem plano de avaliação. Contas antigas podem ter limites diferentes dos planos atuais.
+
+</details>
+
+<details>
+<summary>Usar servidor próprio</summary>
 
 ## Servidor próprio ou outra hospedagem Node.js
 
@@ -322,6 +367,11 @@ Mantenha as variáveis também no processo em execução. Não copie apenas `.ne
 
 Em uma cópia sem alterações locais pendentes, obtenha o novo código da sua `main`, confira novas migrations, faça backup e aplique apenas as migrations pendentes no Supabase. Depois execute `npm ci`, `npm run check` e reinicie o processo de produção. Em hospedagem ligada ao GitHub, o envio à `main` pode iniciar esse build automaticamente; **migrations continuam sendo uma operação separada**. Em VPS sem integração Git, um push não publica sozinho: configure seu pipeline ou atualize manualmente.
 
+</details>
+
+<details>
+<summary>Backup e recuperação</summary>
+
 ## 8. Exportação, recuperação e rollback
 
 O Free não oferece o mesmo backup disponível aos planos pagos. Fazer exportação regular e antes de migrations. Para exportar o esquema e os dados da aplicação em CLI v3 já vinculada:
@@ -336,6 +386,11 @@ Usar uma pasta privada fora do Git e do diretório público do app. Esses arquiv
 Uma pausa por inatividade deve ser retomada no painel Supabase, seguida por teste de login e gravação. O rollback do frontend pode promover o deployment anterior na hospedagem; migrations de banco exigem migration corretiva compatível, não apenas rollback do site.
 
 Exportação individual e exclusão de conta são operações administrativas descritas em [DATA-ADMINISTRATION.md](DATA-ADMINISTRATION.md), com o efeito das chaves estrangeiras e o cuidado com cópias de segurança.
+
+</details>
+
+<details>
+<summary>Validar a instalação e as contas</summary>
 
 ## 9. Validação após conectar as contas
 
@@ -366,6 +421,11 @@ A presença destes arquivos configura o projeto para a publicação; somente o e
 
 O `vercel.json` também fixa `npm ci` e `npm run check`, conforme a [configuração oficial de projetos Vercel](https://vercel.com/docs/project-configuration). A conexão da conta e a branch de produção continuam sendo configuradas no painel.
 
+</details>
+
+<details>
+<summary>Preservar as URLs de login</summary>
+
 ## Preservar as URLs de Auth entre publicações
 
 `supabase/config.toml` não é versionado. Suas URLs locais ficam no modelo `supabase/config.local.toml.example`; cada instalação gera a cópia ignorada pelo Git. As migrations permanecem em `supabase/migrations/`. O workflow de verificação rejeita a reintrodução do arquivo local no Git. Não force sua inclusão com `git add -f` nem execute `supabase config push` contra produção quando as configurações forem administradas no painel.
@@ -375,3 +435,5 @@ A integração do Supabase procura o nome exato `config.toml`. Segundo a [docume
 No Supabase hospedado, Site URL e Redirect URLs são administrados em Authentication → URL Configuration. Use o endereço público do app, correspondente a `NEXT_PUBLIC_SITE_URL`, e os callbacks da seção de autenticação deste guia. Se uma publicação anterior já substituiu esses valores, restaure-os uma vez no painel após enviar a correção ao GitHub: retirar o arquivo não recupera configurações anteriores. Verifique também se outra automação executa `config push` ou altera Auth pela Management API.
 
 Para conferir uma publicação, abra os logs da integração Supabase e verifique que a etapa Configure não aplica `site_url` nem `additional_redirect_urls`. O painel e as configurações remotas exigem acesso administrativo; uma verificação local não confirma os valores efetivos no projeto hospedado.
+
+</details>

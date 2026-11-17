@@ -1,12 +1,17 @@
 # Conteúdo do Violão Vivo
 
+**39 aulas, 27 estudos e todos os materiais originais preservados.** As ilustrações acompanham a prática; explicações, fontes e acervo ficam disponíveis para consulta. Escolha abaixo o conteúdo que precisa manter.
+
+<details>
+<summary>Aulas, ilustrações e PDFs</summary>
+
 O conteúdo do **Violão Vivo** foi aprofundado em 15/11/2026. A base canônica importada continua sendo a edição 5 fornecida pelo proprietário em 14/11/2026. Seus 13 módulos, 39 aulas, músicas, acordes e textos permanecem integralmente preservados; as páginas originais integram o acervo dos PDFs atuais. Instruções operacionais contidas no histórico ou nos documentos não foram tratadas como comandos do sistema.
 
 ## Conteúdo aprofundado
 
 ### Prática ilustrada na aplicação
 
-As 39 aulas têm um roteiro visual para suas 117 instruções de prática, selecionado em `lesson-visuals.ts`. `IllustratedPractice` apresenta um passo por vez, antes da cifra, com botões numerados, anterior/próximo e a leitura conjunta opcional das instruções originais. O atalho em Entender abre esse roteiro. As âncoras de referência continuam na leitura conjunta, sem duplicar IDs no passo selecionado.
+As 39 aulas têm um roteiro visual para suas 117 instruções de prática, selecionado em `lesson-visuals.ts`. `IllustratedPractice` apresenta um passo por vez antes da cifra, com contador, anterior/próximo e leitura conjunta opcional das instruções originais. O roteiro fica na etapa **Tocar a música**. As âncoras de referência continuam na leitura conjunta, sem duplicar IDs no passo selecionado.
 
 `technique-visuals.ts` ilustra os exemplos dos 27 estudos: apoio do instrumento, cordas, digitação, notas no braço, palhetada, dedilhado, duração, ligados, abafamento, vibrato, ornamentos, dinâmica, formas e harmonia. As explicações extensas ficam em uma seção de consulta; os passos, critérios, tablaturas e fontes são preservados. Os exemplos autorais continuam distintos dos arranjos de repertório.
 
@@ -25,7 +30,7 @@ Cada estudo inclui pré-requisitos, explicação, exemplo trabalhado, prática g
 ### Navegação e acompanhamento
 
 - `/curso`: uma trilha com os 13 módulos, ação de continuar e busca por aula, música ou técnica.
-- `/aulas/[id]`: quatro etapas (entender, treinar, aplicar, revisar), com os estudos completos na própria aula. Introduções e retomadas mostram o foco atual; `#estudo-{id}` abre diretamente o estudo e seus painéis ancestrais. Os conteúdos originais e ampliados permanecem disponíveis.
+- `/aulas/[id]`: quatro etapas em uma coluna — **Entender**, **Treinar**, **Tocar a música** e **Revisar e registrar** — com uma aberta por vez. Entender abre inicialmente; progresso e diário ficam na revisão. Estudos completos, foco de introdução/retomada e textos originais continuam disponíveis em seções expansíveis. `#estudo-{id}` abre diretamente o estudo e seus painéis ancestrais. Repertório, teoria e acervo ficam em **Materiais de apoio**.
 - `/tecnica` e `/tecnica/[id]`: índice complementar e consulta completa, com entrada principal para a introdução do estudo na trilha e retorno às aplicações posteriores.
 - `/professor/metodologia`: princípios, rubrica e acesso aos 39 planos, somente para professores.
 - `/materiais`: PDFs completos atualizados, consultas R1–R8 e guias preservados.
@@ -49,11 +54,16 @@ O builder lê os JSONs editoriais, o manifesto e o acervo incorporado aos PDFs a
 
 `content-preservation.json` registra SHA-256 dos cinco arquivos JSON de base e dos livros de origem. O acervo original permanece incorporado aos PDFs atuais; não depende de arquivos antigos separados. O teste de integridade confere esses hashes, a cobertura de 39 aulas, 27 estudos, planos de 60 minutos, referências válidas e os mapas de páginas dos PDFs. O importador abaixo continua importando exclusivamente a base V5 e não sobrescreve os arquivos de aprofundamento.
 
+</details>
+
+<details>
+<summary>Material de origem e importação</summary>
+
 ## Base importada da edição 5
 
-| Fonte                                   | Páginas / conteúdo                                                 | Destino                                                                                             |
-| --------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| `Guia_Interativo_Aluno_Violao_v5.html`  | JSON de 39 aulas, 13 módulos, 13 canções, 52 acordes e 8 consultas | `src/content/course-data.json`                                                                      |
+| Fonte                                   | Páginas / conteúdo                                                 | Destino                                                                                        |
+| --------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| `Guia_Interativo_Aluno_Violao_v5.html`  | JSON de 39 aulas, 13 módulos, 13 canções, 52 acordes e 8 consultas | `src/content/course-data.json`                                                                 |
 | `Curso_Aluno_Violao_Gospel_v5.pdf`      | 130 páginas                                                        | Conteúdo por aula em `studentText`, suplementos em `student-guides.json` e acervo no PDF atual |
 | `Manual_Professor_Violao_Gospel_v5.pdf` | 73 páginas                                                         | Planos das 39 aulas e suplementos em `teacher-data.json`, acervo no PDF atual                  |
 
@@ -74,6 +84,11 @@ A pesquisa de andamentos fica separada em `src/content/tempo-research.json` e é
 
 As 39 aulas iniciam no andamento de referência da música, incluindo as estimativas já adotadas. A indicação da aula e o valor inicial do diário seguem o mesmo padrão; somente o diário arredonda para inteiro. O player oferece um único botão **Usar referência**, com fontes e limitações na ajuda contextual. O seletor manual continua disponível. A adoção como padrão não transforma uma estimativa em medição confirmada.
 
+</details>
+
+<details>
+<summary>Convenções musicais</summary>
+
 ## Convenções musicais que não podem se perder
 
 - Diagramas: arrays de seis posições, da **6ª para a 1ª corda**. `null` significa não tocar; `0`, corda solta. `barres` contém `[casa, índiceInicial, índiceFinal]`, com índices de 0 a 5.
@@ -84,6 +99,11 @@ As 39 aulas iniciam no andamento de referência da música, incluindo as estimat
 - Tons e arranjos permanecem os definidos pela edição 5. Não confundir as duas músicas chamadas “Faz Chover”, de Toque no Altar e de Fernandinho.
 - As instruções de preparação que o usuário pediu para não exibir foram removidas dos dados do app. Nenhuma música de Thalles integra o repertório.
 - `R3` no foco de uma cifra pode ser o terceiro compasso do refrão; **Teoria R3** é uma consulta. `navigation.ts` mantém essa distinção e fornece links para aulas, compassos e referências com âncoras estáveis de retorno.
+
+</details>
+
+<details>
+<summary>Fontes, letras e reprodução</summary>
 
 ## Fontes, letras e vídeos
 
@@ -106,3 +126,5 @@ O texto enviado permanece integral, sem inserir hífens ou separadores na leitur
 Cada marcação pode conter sílabas com offsets no texto, pulsos de entrada/saída e origem `manual` ou `estimated`. Marcas manuais têm precedência e permitem sustentações e pausas. Sem elas, a prévia distribui o intervalo da frase com pesos iniciais (1 por sílaba, 1,25 quando há acento gráfico/nasalização e 2 na última sílaba). Esses pesos são uma aproximação de interface, **não são uma transcrição musical nem ensinam com precisão o ritmo da gravação**. A divisão e os intervalos podem ser revisados nos dados de conteúdo; não há editor na interface.
 
 A animação usa a posição do áudio, sem relógio independente nem transições com duração acumulada. Cada sílaba possui uma única cópia visível, com avanço suave dentro do próprio texto. Toda sílaba anterior à posição atual fica em negrito, inclusive ao iniciar mais adiante ou mudar de frase ou linha. A distribuição dos compassos por linha permanece inalterada. Uma sílaba sustentada mantém sua cópia ativa até terminar. Antecipações são destacadas na frase completa em sua posição original; as demais cópias futuras permanecem sem destaque. Isso vale para as 744 frases das 19 versões, nas 13 músicas. Pausar preserva o destaque e o término natural mantém o prefixo completo. Iniciar outra execução, voltar ou repetir recalcula o negrito pela posição atual: texto anterior fica marcado mesmo que tenha sido pulado; texto posterior permanece normal. Movimento reduzido mantém a sílaba ativa em negrito sem varredura. O texto integral e os PDFs publicados permanecem preservados.
+
+</details>

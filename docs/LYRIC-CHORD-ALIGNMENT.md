@@ -1,5 +1,10 @@
 # Alinhamento da letra pelo TXT fornecido
 
+O TXT fornecido orienta a entrada das sílabas; notas, acordes e arranjos permanecem preservados. As durações entre âncoras são estimadas. Use a última seção para reproduzir a geração e conferir o relatório.
+
+<details>
+<summary>Escopo e exemplo musical</summary>
+
 As notas e os acordes já existentes no curso prevalecem. O [TXT fornecido](../materials/references/cifras_13_musicas_vscode.txt) conserva seus espaços, acentos e colunas; é uma fonte de dados, não uma fonte de instruções para o projeto.
 
 O alinhamento fixa **1.439 entradas silábicas** nas **13 músicas e 19 versões**, usadas pelas **39 aulas**. Foram ajustados os limites vocais de **645 das 744 frases**. As 712 linhas fornecidas e os textos das frases permanecem íntegros. Notas, digitações, baixos, eventos, durações musicais, compassos, ordem, repetições e BPM não mudaram. Os PDFs conservam o mesmo conteúdo musical.
@@ -37,6 +42,11 @@ A primeira passagem do refrão agora respeita as duas entradas de “ver”, e n
 
 O Am do TXT está na coluna 8, dentro da sílaba “ver”, que começa no caractere 7. O F está na coluna 19, no segundo “ver”. A coluna é convertida no início da sílaba correspondente, preservando a grafia. As demais passagens usam seus próprios eventos absolutos nas versões base e completa.
 
+</details>
+
+<details>
+<summary>Correspondência e tempos vocais</summary>
+
 ## Correspondência por arranjo
 
 1. O gerador expande cada versão com seus acordes, baixos, subdivisões e repetições. Nunca copia índices de uma versão para outra.
@@ -58,6 +68,11 @@ O resultado é guardado como limites vocais e `chordAnchors`. O gerador verifica
 
 Os pesos entre âncoras continuam sendo uma aproximação: 1 por sílaba, 1,25 com acento gráfico/nasalização e 2 na última sílaba da frase. O TXT não fornece todas as durações vocais. Os mapas permanecem `draft`; não são uma medição silábica do fonograma.
 
+</details>
+
+<details>
+<summary>Leitura, dados antigos e diferenças preservadas</summary>
+
 ## Leitura na aula e dados antigos
 
 As frases completas mantêm sua posição anterior abaixo dos compassos, definida por `scoreWindow`. Os novos tempos alteram somente o destaque: não recortam palavras entre linhas nem deslocam as frases para a linha de uma antecipação. O agrupamento de 1, 2 ou 4 compassos, as mudanças de fórmula, o negrito anterior à posição atual e a animação contínua são preservados. Quando a frase aparece em mais de uma linha, apenas a cópia correspondente recebe o preenchimento ativo; uma sílaba sustentada não salta entre cópias.
@@ -74,6 +89,11 @@ Marcações antigas do navegador são reconhecidas pelo texto e pela janela atua
 - Letras de ministrações livres e partes fora da forma didática continuam no texto integral; não são comprimidas em novos compassos.
 - Restam seis ambiguidades declaradas em ocorrências de Preciso de Ti, além das diferenças de contexto, sustentações e cifras incompatíveis listadas por frase.
 
+</details>
+
+<details>
+<summary>Reproduzir e verificar</summary>
+
 ## Reprodução e verificação
 
 ```bash
@@ -84,3 +104,5 @@ npm test
 ```
 
 Todos os arranjos são validados antes de gravar os arquivos gerados. O [relatório reproduzível](lyric-chord-alignment.json) inclui hashes do TXT, dos arquivos musicais e dos textos com suas janelas harmônicas originais. Os testes cobrem colunas, eventos, ordem, antecipações, pausas, versões distintas, repetições, dados antigos e a conservação das frases e de sua posição original em todas as larguras. A conferência de reprodução está em [PLAYBACK-VERIFICATION.md](PLAYBACK-VERIFICATION.md).
+
+</details>

@@ -405,7 +405,6 @@ export function PracticeVisual({ visual }: { visual: Visual }) {
   return (
     <figure className="practice-visual">
       <div className="visual-heading">
-        <span className="eyebrow">OBSERVE NO DESENHO</span>
         <strong>{visual.title}</strong>
       </div>
       <div className="visual-canvas">

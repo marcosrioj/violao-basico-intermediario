@@ -1,3 +1,4 @@
+import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Download, GraduationCap } from 'lucide-react';
 import { Shell, PageHeading } from '@/components/shell';
@@ -45,8 +46,8 @@ export default async function MaterialsPage() {
       <HashReveal />
       <PageHeading
         eyebrow="CONSULTE, EXPERIMENTE, VOLTE À MÚSICA"
-        title="Sua biblioteca musical"
-        description="Acompanhe a trilha com as 39 aulas e os 27 estudos técnicos integrados. Consulte também teoria, diagramas e o acervo integral da edição anterior."
+        title="Biblioteca"
+        description="Baixe as apostilas ou escolha um assunto para consultar."
       />
       <section className="material-list section" aria-label="Apostilas para baixar">
         <article className="card material-item">
@@ -84,9 +85,7 @@ export default async function MaterialsPage() {
           </article>
         )}
       </section>
-      <section className="card section learning-reading">
-        <p className="eyebrow">ESTUDAR COM INTENÇÃO</p>
-        <h2>Da explicação para uma tentativa observável</h2>
+      <CollapsibleCard title="Como estudar" className="section learning-reading" name="library">
         {practicePrinciples.map((principle) => (
           <details key={principle.title} className="section">
             <summary>{principle.title}</summary>
@@ -103,10 +102,8 @@ export default async function MaterialsPage() {
             </Link>
           )}
         </div>
-      </section>
-      <section className="section" aria-labelledby="technical-library">
-        <h2 id="technical-library">Consulte as técnicas por assunto</h2>
-        <p>Os mesmos estudos presentes nas aulas, reunidos aqui para revisão.</p>
+      </CollapsibleCard>
+      <CollapsibleCard id="technical-library" title="Técnicas" className="section" name="library">
         <div className="learning-module-list section">
           {techniqueModules.map((module) => (
             <Link className="card" href={`/tecnica#${module.id}`} key={module.id}>
@@ -119,14 +116,8 @@ export default async function MaterialsPage() {
             </Link>
           ))}
         </div>
-      </section>
-      <section className="section" aria-labelledby="theory-index">
-        <div className="section-title">
-          <div>
-            <p className="eyebrow">TEORIA COM SOM E SENTIDO</p>
-            <h2 id="theory-index">Encontre a ideia que precisa</h2>
-          </div>
-        </div>
+      </CollapsibleCard>
+      <CollapsibleCard id="theory-index" title="Teoria musical" className="section" name="library">
         <div className="theory-grid">
           {theoryReferences.map((reference) => (
             <Link className="card" href={`/teoria/${reference.id}`} key={reference.id}>
@@ -139,12 +130,12 @@ export default async function MaterialsPage() {
             </Link>
           ))}
         </div>
-      </section>
-      <section className="section" aria-labelledby="student-guides">
+      </CollapsibleCard>
+      <CollapsibleCard title="Guias do aluno" className="section" name="library">
         <div className="section-title">
           <div>
             <p className="eyebrow">ANTES, DURANTE E DEPOIS DA AULA</p>
-            <h2 id="student-guides">Guias do aluno</h2>
+            <h3 id="student-guides">Textos de consulta</h3>
           </div>
           <Hint label="Consultar os materiais do aluno">
             Os textos completos estão abaixo. As páginas de cada aula estão na trilha; os diagramas
@@ -155,13 +146,13 @@ export default async function MaterialsPage() {
           guides={studentGuides}
           legacyStartPage={pdfManifest.student.legacyStartPage}
         />
-      </section>
+      </CollapsibleCard>
       {teacher && (
-        <section className="section" aria-labelledby="teacher-guides">
+        <CollapsibleCard title="Guias do professor" className="section" name="library">
           <div className="section-title">
             <div>
               <p className="eyebrow">PARA QUEM ENSINA</p>
-              <h2 id="teacher-guides">Orientação e recursos docentes</h2>
+              <h3 id="teacher-guides">Orientação docente</h3>
             </div>
             <Hint label="Encontrar os materiais do professor">
               Os 39 planos específicos acompanham as aulas. Aqui estão a orientação docente, a
@@ -175,7 +166,7 @@ export default async function MaterialsPage() {
             guides={teacherGuides}
             legacyStartPage={pdfManifest.teacher.legacyStartPage}
           />
-        </section>
+        </CollapsibleCard>
       )}
     </Shell>
   );

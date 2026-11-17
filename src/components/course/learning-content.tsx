@@ -103,28 +103,36 @@ export function LessonWeeklyPractice({ content }: { content: LessonEnrichment })
 export function TechniqueStudyContent({
   study,
   sources,
+  standalone = false,
 }: {
   study: TechniqueStudy;
   sources: ResearchSource[];
+  standalone?: boolean;
 }) {
   return (
     <div className="learning-reading integrated-study-content">
-      <p>{study.goal}</p>
-      <div className="technique-visuals">
-        {getTechniqueVisuals(study.id).map((visual, i) => (
-          <PracticeVisual key={`${study.id}-${i}`} visual={visual} />
-        ))}
+      <div className="technique-visuals" id={standalone ? 'compreender' : undefined}>
+        {getTechniqueVisuals(study.id).map((visual, i) =>
+          i === 0 ? (
+            <PracticeVisual key={`${study.id}-${i}`} visual={visual} />
+          ) : (
+            <details key={`${study.id}-${i}`}>
+              <summary>{visual.title}</summary>
+              <PracticeVisual visual={visual} />
+            </details>
+          ),
+        )}
       </div>
       <details>
-        <summary>O que preparar antes</summary>
+        <summary>Preparação e explicação completa</summary>
+        <p>{study.goal}</p>
+        <h4>Antes de começar</h4>
         <ul>
           {study.prerequisites.map((item, i) => (
             <li key={i}>{item}</li>
           ))}
         </ul>
-      </details>
-      <details className="section">
-        <summary>Ler a explicação e o exemplo completo</summary>
+
         {study.explanation.map((paragraph, i) => (
           <p key={i}>{paragraph}</p>
         ))}
@@ -144,7 +152,9 @@ export function TechniqueStudyContent({
           <code>{study.workedExample.tab}</code>
         </pre>
       )}
-      <h4 className="section">Experimente no violão</h4>
+      <h4 className="section" id={standalone ? 'experimentar' : undefined}>
+        Pratique
+      </h4>
       <ol className="steps">
         {study.steps.map((step, i) => (
           <li key={i}>{step}</li>
@@ -163,14 +173,19 @@ export function TechniqueStudyContent({
           </div>
         ))}
       </details>
-      <h4 className="section">O que observar</h4>
-      <ul>
-        {study.checks.map((check, i) => (
-          <li key={i}>{check}</li>
-        ))}
-      </ul>
-      <details className="section">
-        <summary>Testar o que aprendi e planejar a retomada</summary>
+      <details
+        className="section"
+        id={standalone ? 'recuperar' : undefined}
+        suppressHydrationWarning
+      >
+        <summary>Conferir o resultado e revisar</summary>
+        <h4 className="section">O que observar</h4>
+        <ul>
+          {study.checks.map((check, i) => (
+            <li key={i}>{check}</li>
+          ))}
+        </ul>
+
         <TheoryExercise
           exercise={study.retrieval.question}
           answer={study.retrieval.answer}
@@ -193,15 +208,12 @@ export function LessonTechniques({ lessonId }: { lessonId: string }) {
   const entries = getLessonTechniqueEntries(lessonId);
   return (
     <div className="integrated-studies">
-      <p className="hint">
-        Siga o foco de cada estudo nesta aula. As explicações completas ficam disponíveis para
-        consultar e retomar.
-      </p>
       {entries.map(({ study, stage, focus }) => (
         <details
           className="integrated-study"
           id={`estudo-${study.id}`}
           key={study.id}
+          name={`techniques-${lessonId}`}
           suppressHydrationWarning
         >
           <summary>
@@ -210,9 +222,9 @@ export function LessonTechniques({ lessonId }: { lessonId: string }) {
                 {stage === 'introducao' ? 'Começar' : 'Retomar'}
               </span>
               <span className="integrated-study-title">{study.title}</span>
-              <span className="integrated-study-focus">{focus}</span>
             </h3>
           </summary>
+          <p className="integrated-study-focus">{focus}</p>
           <TechniqueStudyContent study={study} sources={techniqueSources} />
         </details>
       ))}
@@ -233,16 +245,15 @@ export function TeacherDeepening({
 }) {
   return (
     <div className="stack learning-reading">
-      <div>
+      <details>
+        <summary>Preparar e demonstrar</summary>
         <h3>Escuta diagnóstica</h3>
         <p>{content.diagnosis}</p>
-      </div>
-      <div>
-        <h3>Demonstre e convide à tentativa</h3>
+        <h3 className="section">Demonstração</h3>
         <p>{content.demonstration}</p>
-      </div>
-      <details open>
-        <summary>Plano integrado de 60 minutos</summary>
+      </details>
+      <details>
+        <summary>Roteiro de 60 minutos</summary>
         <ol className="learning-week">
           {content.sequence.map((stage, i) => (
             <li key={i}>
@@ -254,28 +265,23 @@ export function TeacherDeepening({
           ))}
         </ol>
       </details>
-      <div className="learning-example">
+      <details>
+        <summary>Adaptar à dificuldade do aluno</summary>
         <h3>Se a dificuldade aparecer</h3>
         <p>{content.commonDifficulty}</p>
         <p>{content.intervention}</p>
-      </div>
-      <div>
-        <h3>Reduzir o desafio</h3>
+        <h3 className="section">Reduzir o desafio</h3>
         <p>{content.easier}</p>
-      </div>
-      <div>
-        <h3>Ampliar quando estiver pronto</h3>
+        <h3 className="section">Ampliar o desafio</h3>
         <p>{content.extension}</p>
-      </div>
-      <div>
-        <h3>Observar e devolver</h3>
+      </details>
+      <details>
+        <summary>Observar e dar retorno</summary>
         <p>{content.observation}</p>
         <p>{content.feedbackPrompt}</p>
-      </div>
-      <div>
-        <h3>Conferir retenção e transferência</h3>
+        <h3 className="section">Conferir retenção e transferência</h3>
         <p>{content.transferCheck}</p>
-      </div>
+      </details>
       <ResearchSources
         sources={sources.filter((source) => content.sourceIds.includes(source.id))}
       />

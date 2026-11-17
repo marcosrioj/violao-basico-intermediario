@@ -199,7 +199,7 @@ export function ClassroomDashboard({
                 <Invitation code={data.classroom.invite_code} />
               </div>
             </section>
-            <div className="two-columns dashboard-section-gap">
+            <div className="stack dashboard-section-gap">
               <section className="card">
                 <div className="section-title">
                   <h2>Alunos e progresso</h2>
@@ -292,7 +292,9 @@ export function ClassroomDashboard({
                           className="button secondary small dashboard-section-gap"
                           onClick={() => {
                             setStudentId(member.student_id);
-                            document.getElementById('feedback-form')?.scrollIntoView({
+                            const form = document.getElementById('feedback-form');
+                            if (form instanceof HTMLDetailsElement) form.open = true;
+                            form?.scrollIntoView({
                               behavior: window.matchMedia('(prefers-reduced-motion: reduce)')
                                 .matches
                                 ? 'auto'
@@ -314,9 +316,9 @@ export function ClassroomDashboard({
                 )}
                 <Pagination page={page} hasMore={data.hasMore} onChange={setPage} label="alunos" />
               </section>
-              <section className="card" id="feedback-form">
+              <details className="card" id="feedback-form">
+                <summary>Enviar devolutiva</summary>
                 <div className="section-title">
-                  <h2>Uma orientação para avançar</h2>
                   <Hint label="Selecionar o aluno da devolutiva">
                     O formulário mostra os alunos da página atual. Para selecionar outros alunos,
                     avance a paginação da lista da turma.
@@ -382,12 +384,12 @@ export function ClassroomDashboard({
                     Depois da primeira matrícula, você poderá enviar orientações individuais.
                   </Empty>
                 )}
-              </section>
+              </details>
             </div>
-            <div className="two-columns">
-              <section className="card">
+            <div className="stack">
+              <details className="card">
+                <summary>Agendar encontro</summary>
                 <div className="section-title">
-                  <h2>Agendar o próximo encontro</h2>
                   <span className="badge">60 minutos</span>
                 </div>
                 <form className="stack" onSubmit={schedule} aria-busy={busy === 'session'}>
@@ -448,7 +450,7 @@ export function ClassroomDashboard({
                     {busy === 'session' ? 'Agendando…' : 'Agendar encontro'}
                   </button>
                 </form>
-              </section>
+              </details>
               <section className="card">
                 <div className="section-title">
                   <h2>Agenda da turma</h2>
@@ -468,9 +470,9 @@ export function ClassroomDashboard({
                 />
               </section>
             </div>
-            <section className="card">
+            <details className="card">
+              <summary>Devolutivas recentes</summary>
               <div className="section-title">
-                <h2>Devolutivas recentes</h2>
                 <Hint label="Devolutivas exibidas">
                   As 20 devolutivas mais recentes para os alunos desta página.
                 </Hint>
@@ -486,7 +488,7 @@ export function ClassroomDashboard({
                   ]),
                 )}
               />
-            </section>
+            </details>
           </>
         )}
       </ResourceState>

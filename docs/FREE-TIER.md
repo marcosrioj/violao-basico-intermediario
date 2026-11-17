@@ -1,5 +1,10 @@
 # Infraestrutura sem custo inicial
 
+Para usar o curso sem administrar hospedagem, veja o [guia do professor](TEACHERS.md). Uma instalação própria depende das cotas de cada serviço; os valores abaixo registram a consulta de **14/11/2026**.
+
+<details>
+<summary>Planos, cotas e fontes consultadas</summary>
+
 Consulta às fontes oficiais em **14 de novembro de 2026**, para uso **pessoal e não comercial**. A opção principal é GitHub Free + Vercel Hobby + Supabase Free. Os números são cotas do fornecedor, não uma promessa de capacidade ou disponibilidade deste aplicativo. A conta pode compartilhar limites com outros projetos.
 
 | Serviço e função                                       | Plano recorrente         | Cotas relevantes consultadas                                                                                                                                                                                              | Ao atingir limite / condição                                                                                                                                                               | Fonte oficial                                                                                                                                                                                                                    |
@@ -11,6 +16,11 @@ Consulta às fontes oficiais em **14 de novembro de 2026**, para uso **pessoal e
 | Supabase Storage — reservado, sem uploads nesta versão | Free                     | 1 GB de objetos; usa cota de saída acima                                                                                                                                                                                  | Não é necessário habilitar buckets para este aplicativo. Materiais editoriais versionados são entregues pelo app.                                                                          | [Preços](https://supabase.com/pricing)                                                                                                                                                                                           |
 | Supabase — envio de e-mail                             | SMTP padrão de testes    | Apenas destinatários autorizados da equipe do projeto; 2 mensagens/hora, sem SLA                                                                                                                                          | Não atende cadastro/recuperação de todos os alunos. Usar OAuth Google para começar; e-mail requer SMTP próprio.                                                                            | [SMTP](https://supabase.com/docs/guides/auth/auth-smtp)                                                                                                                                                                          |
 | Netlify — alternativa frontend/API para uso comercial  | Free, modelo de créditos | 300 créditos/mês compartilhados: deploy produção 15; tráfego 20/GB; compute 10/GB-h; 2 por 10 mil requisições; 1 build concorrente                                                                                        | Ao esgotar, projetos da conta podem pausar até o próximo ciclo. Free tem teto rígido sem excedente cobrado.                                                                                | [Preços](https://www.netlify.com/pricing/), [uso comercial permitido](https://www.netlify.com/blog/introducing-netlify-free-plan/), [Next.js](https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/) |
+
+</details>
+
+<details>
+<summary>Instância compartilhada e regras de operação</summary>
 
 ## Usar sem administrar hospedagem
 
@@ -27,6 +37,11 @@ Quem instala uma cópia administra suas próprias contas e cotas; siga [DEPLOYME
 - As respostas privadas não usam cache público. Conteúdo editorial pode ser estático. Limitar páginas de dados e tamanho de texto evita transferências desnecessárias.
 - No Netlify, 20 publicações já consumiriam os 300 créditos se nenhum outro consumo existisse. Essa conta é ilustrativa: tráfego, compute e requisições usam o mesmo saldo.
 
+</details>
+
+<details>
+<summary>Limites do banco e envio de e-mail</summary>
+
 ## Quando a cota do Supabase acaba
 
 Ao exceder saída no Free, a documentação prevê aviso e período de tolerância, seguido de possível restrição. A saída já consumida não diminui ao apagar dados; uma restrição por saída pode terminar no próximo ciclo. A alternativa sem custo é reduzir uso e aguardar a renovação, preservando os dados. [Gestão de saída](https://supabase.com/docs/guides/platform/manage-your-usage/egress)
@@ -38,3 +53,5 @@ O banco não cresce sem limite no Free. A política de tamanho considera o consu
 A integração Google usa o fluxo OAuth e não exige SMTP para cada login. A compra de domínio não é requisito dessa arquitetura. O consentimento mostrará o domínio Supabase do projeto; configure nome e suporte corretamente. O cadastro com e-mail deve manter confirmação habilitada. Para liberar esse método a todos, configurar SMTP no Supabase e verificar cotas/condições do provedor escolhido, incluindo eventual necessidade de domínio próprio. Não há provedor SMTP contratado nem garantia de e-mail de produção gratuito nesta entrega.
 
 Uma aplicação gratuita pode ficar indisponível por cota ou inatividade. Os procedimentos de retomada e backup estão em [DEPLOYMENT.md](DEPLOYMENT.md).
+
+</details>

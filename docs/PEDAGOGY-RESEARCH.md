@@ -1,5 +1,10 @@
 # Aprendizagem, interação e limites da evidência
 
+A prática combina exemplo, tentativa, recuperação e revisão. As fontes orientam essas escolhas, com limites explícitos; os resultados precisam ser observados nas tarefas reais do curso.
+
+<details>
+<summary>Decisões e evidências</summary>
+
 Pesquisa consultada em 14/11/2026. O currículo v5 continua sendo a fonte para as 39 aulas. As referências abaixo orientam a apresentação, a prática e a avaliação; não substituem o professor nem demonstram que este aplicativo produz um resultado clínico ou pedagógico específico.
 
 ## Decisões aplicadas ao curso
@@ -31,6 +36,11 @@ Um estudo com 115 estudantes, incluindo 56 violonistas, comparou prática com so
 
 Em um experimento com 84 futuros professores, o treino de feedback musical melhorou medidas de metacognição, mas o resultado para prontidão à aprendizagem autodirigida foi inconclusivo. A decisão de combinar diário e devolutiva humana é compatível com a importância de refletir sobre a prática, sem afirmar que o diário por si só gera autonomia. [Li et al. — Musical feedback training](https://pmc.ncbi.nlm.nih.gov/articles/PMC10764022/)
 
+</details>
+
+<details>
+<summary>Rotina de estudo e acompanhamento</summary>
+
 ## Roteiro de uma semana
 
 1. No encontro: ouvir um exemplo, identificar a meta, praticar com orientação e terminar com execução curta sem ajuda.
@@ -43,6 +53,11 @@ Intervalos como 1, 3 e 7 dias, quando usados pelo professor, são sugestões ope
 ## Critérios para o professor
 
 Observar separadamente: clareza das cordas previstas; manutenção do pulso; trocas sem interrupções longas; reconhecimento da forma; explicação do conceito; capacidade de retomar depois de um erro. Escrever feedback em formato concreto: “o acorde soou claro; na passagem G → D o pulso parou; pratique dois compassos a um andamento confortável e volte à sequência”. A devolutiva deve caber em uma próxima ação realizável.
+
+</details>
+
+<details>
+<summary>Acessibilidade, direitos e laboratório</summary>
 
 ## Acessibilidade como apoio à aprendizagem
 
@@ -57,3 +72,5 @@ Os materiais fornecidos são transformados em conteúdo navegável. Links de gra
 ## Oficinas do laboratório
 
 A revisão do laboratório está detalhada em [LABORATORY-RESEARCH.md](LABORATORY-RESEARCH.md), com oito estudos primários, resultados positivos e nulos, decisões de interface e limites. As oficinas conectam tentativa, comparação e aplicação nas aulas. Os resultados são locais à rodada, sem gravação na conta ou conclusão automática.
+
+</details>

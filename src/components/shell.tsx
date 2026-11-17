@@ -76,7 +76,8 @@ export function Shell({
           </Link>
         )}
       </nav>
-      <div className="sidebar-note">
+      <details className="sidebar-note">
+        <summary>Sobre o curso</summary>
         <span className="tiny-label">
           {unlocked ? 'UM POUCO, TODOS OS DIAS' : 'SEU PRÓXIMO PASSO'}
         </span>
@@ -90,7 +91,7 @@ export function Shell({
           {unlocked ? 'Começar a praticar' : 'Confirmar matrícula'}{' '}
           <ArrowUpRight size={15} aria-hidden="true" />
         </Link>
-      </div>
+      </details>
       <div className="sidebar-bottom">
         <span className="status-dot" /> Do básico ao intermediário
         <small>
@@ -124,7 +125,9 @@ export function Shell({
             Minha conta
           </Link>
         </header>
-        <main id="conteudo">{children}</main>
+        <main id="conteudo" className={active ? 'learning-surface' : undefined}>
+          {children}
+        </main>
         <footer className="app-footer">
           <span>Violão Vivo · Música que faz parte da vida.</span>
           <Link href="/privacidade">Privacidade e dados</Link>

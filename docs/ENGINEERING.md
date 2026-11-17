@@ -1,5 +1,10 @@
 # Aplicação dos padrões de engenharia fornecidos
 
+Mantenha responsabilidades pequenas, autorização no servidor e validação no banco. Uma mudança deve declarar seus dados, efeitos, erros e verificação; use os padrões abaixo conforme a necessidade.
+
+<details>
+<summary>Padrões aplicados e limites</summary>
+
 O catálogo “Padrões de engenharia reutilizáveis”, incluído no texto anexado, foi tratado como referência de arquitetura. Os caminhos .NET do documento são evidências de outro projeto, não arquivos existentes neste repositório. A adaptação usa TypeScript e PostgreSQL, com uma aplicação modular única.
 
 | Família do catálogo          | Aplicação neste projeto                                                                                                                       | Limite explícito                                                                     |
@@ -27,6 +32,11 @@ Inbox/outbox, filas, workers contínuos, notificações em tempo real, upload de
 
 Não existe rastreamento distribuído entre fornecedores, auditoria inviolável, antivírus, detecção de desempenho musical por IA ou sincronização offline. Os registros pedagógicos possuem autoria e instante; isso não os transforma em trilha de auditoria imutável.
 
+</details>
+
+<details>
+<summary>Como evoluir o projeto</summary>
+
 ## Regra de evolução
 
 Uma funcionalidade nova deve declarar entrada, papel autorizado, dados consultados, efeito persistido, erros esperados e teste negativo de acesso. Uma tabela nova exposta deve trazer RLS e privilégios explícitos na mesma migration. Qualquer cache com dados pessoais precisa justificar chave, contexto e invalidação; o padrão inicial é não armazená-los em cache compartilhado.
@@ -37,6 +47,13 @@ A liberação do curso é centralizada em `requireCourseProfile` para páginas e
 
 Identidade e padrões visuais são mantidos em [brand-guidelines.md](brand-guidelines.md) e [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md). Os tokens compartilham a mesma paleta e escala em todas as folhas de estilo; o modo de apresentação reutiliza os dados da aula, sem duplicar o currículo ou introduzir dependências de execução. Alterações visuais preservam os controles de áudio explícitos e a autorização aplicada no servidor.
 
+</details>
+
+<details>
+<summary>Dependências de desenvolvimento</summary>
+
 ## Dependências de desenvolvimento
 
 O override de `minimatch` 11.0.8 aplica-se somente ao parser do ESLint, para corrigir o advisory GHSA-g3hv-75wg-m249. Lint, tipos e testes foram executados com essa versão. Reavaliar o override quando `typescript-eslint` incorporar a correção no próprio intervalo de dependências. O lockfile fixa as versões resolvidas e `npm ci` garante instalações reproduzíveis.
+
+</details>

@@ -18,7 +18,6 @@ import { Hint } from '@/components/ui/hint';
 import { getLessonEnrichment } from '@/content/curriculum';
 import { LessonTechniques, LessonUnderstanding, LessonWeeklyPractice } from './learning-content';
 import { TheoryExercise } from './theory-exercise';
-import { InitialLessonCards } from './initial-lesson-cards';
 import { getLessonVisualSteps } from '@/content/lesson-visuals';
 import { IllustratedPractice } from './illustrated-practice';
 export function LessonView({
@@ -62,53 +61,45 @@ export function LessonView({
         <div>{rich(lesson.goal, 'goal')}</div>
         <div className="lesson-meta">
           <span className="badge">{song.title}</span>
-          <span className="badge">Tom {chart.key}</span>
-          <span className="badge">{formatBpm(defaultBpm)} BPM para praticar</span>
-          <span className="badge">Encontro de 60 min</span>
+          <span>
+            Tom {chart.key} · {formatBpm(defaultBpm)} BPM · 60 min
+          </span>
         </div>
       </header>
-      <nav className="lesson-jumps lesson-journey" aria-label="Percurso desta aula">
-        <a href="#entender">
-          <span aria-hidden="true">1</span> Entender
-        </a>
-        <a href="#tecnica">
-          <span aria-hidden="true">2</span> Treinar
-        </a>
-        <a href="#aplicar">
-          <span aria-hidden="true">3</span> Aplicar
-        </a>
-        <a href="#revisar">
-          <span aria-hidden="true">4</span> Revisar
-        </a>
-      </nav>
       {teacher && (
         <a className="resource-link lesson-teacher-shortcut" href="#plano-professor">
           Abrir plano do professor
         </a>
       )}
-      <div className="lesson-layout" key={lesson.id}>
+      <div className="lesson-layout lesson-focused" key={lesson.id}>
         <div className="lesson-content">
           <CollapsibleCard
             id="entender"
-            title="1. Entender a música"
-            description="Retome o que já sabe e conheça o foco de hoje."
+            title="Entender"
+            name="lesson-stage"
+            className="lesson-stage"
+            leading={<span className="stage-number">1</span>}
             defaultOpen
           >
-            <p className="eyebrow">PRIMEIRO, ENTENDA</p>
             {rich(lesson.explain, 'explain')}
-            <p className="eyebrow section">NOSSO FOCO</p>
-            {rich(lesson.focus, 'focus')}
-            <p className="eyebrow section">RETOMADA</p>
-            {rich(lesson.review, 'review')}
+            <details className="section">
+              <summary>Foco e retomada</summary>
+              <h3>Foco</h3>
+              {rich(lesson.focus, 'focus')}
+              <h3 className="section">Retomada</h3>
+              {rich(lesson.review, 'review')}
+            </details>
             {enrichment && !demo && <LessonUnderstanding content={enrichment} />}
-            <a className="resource-link section" href="#pratica-ilustrada">
-              Ver os três passos ilustrados desta aula <ArrowRight size={16} aria-hidden="true" />
+            <a className="resource-link section" href="#tecnica">
+              Seguir para a técnica <ArrowRight size={16} aria-hidden="true" />
             </a>
           </CollapsibleCard>
           <CollapsibleCard
             id="tecnica"
-            title="2. Treinar a técnica"
-            description="Acordes e estudos técnicos aplicados ao objetivo desta aula."
+            title="Treinar"
+            name="lesson-stage"
+            className="lesson-stage"
+            leading={<span className="stage-number">2</span>}
           >
             <details id="acordes" className="lesson-chords">
               <summary>
@@ -126,11 +117,16 @@ export function LessonView({
               </div>
             </details>
             {!demo && <LessonTechniques lessonId={lesson.id} />}
+            <a className="resource-link section" href="#aplicar">
+              Seguir para a música <ArrowRight size={16} aria-hidden="true" />
+            </a>
           </CollapsibleCard>
           <CollapsibleCard
             id="aplicar"
-            title="3. Aplicar na música"
-            description="Toque com a cifra e leve a técnica ao repertório."
+            title="Tocar a música"
+            name="lesson-stage"
+            className="lesson-stage"
+            leading={<span className="stage-number">3</span>}
           >
             <div className="stack">
               <div id="pratica-ilustrada">
@@ -192,12 +188,17 @@ export function LessonView({
                   )[lesson.pattern] ?? lesson.pattern}
                 </p>
               </CollapsibleCard>
+              <a className="resource-link" href="#revisar">
+                Revisar e registrar <ArrowRight size={16} aria-hidden="true" />
+              </a>
             </div>
           </CollapsibleCard>
           <CollapsibleCard
             id="revisar"
-            title="4. Revisar a aprendizagem"
-            description="Explique o que aprendeu, observe sua execução e planeje a próxima prática."
+            title="Revisar e registrar"
+            name="lesson-stage"
+            className="lesson-stage"
+            leading={<span className="stage-number">4</span>}
           >
             <Quiz
               key={`quiz-${lesson.id}`}
@@ -218,42 +219,94 @@ export function LessonView({
                 <LessonWeeklyPractice content={enrichment} />
               </>
             )}
-            <a className="resource-link section" href="#meu-progresso">
-              Conferir objetivos e registrar meu progresso{' '}
-              <ArrowRight size={16} aria-hidden="true" />
-            </a>
-            <a className="resource-link" href="#diario-pratica">
-              Anotar no diário de prática <ArrowRight size={16} aria-hidden="true" />
-            </a>
+            <LessonProgress
+              key={`progress-${lesson.id}`}
+              lesson={lesson}
+              demo={demo}
+              checkLabels={lesson.checks.map((text, i) => rich(text, `checks-${i}`))}
+            />
+            <PracticeLog
+              key={`practice-${lesson.id}`}
+              lessonId={lesson.id}
+              initialBpm={Math.round(defaultBpm)}
+              demo={demo}
+            />
           </CollapsibleCard>
-          <CollapsibleCard id="consulta" title="Consultas teóricas">
-            <div className="section-title">
-              <p className="eyebrow">CONECTE AS IDEIAS</p>
-              <Hint label="Navegar pelas consultas">
-                Cada consulta oferece links para retornar ao ponto em que ela aparece nesta aula.
-              </Hint>
-            </div>
-            <div className="stack">
-              {lesson.theory_refs.map((ref, i) => (
-                <div key={i}>{rich(ref, `theory_refs-${i}`)}</div>
-              ))}
-            </div>
+          <CollapsibleCard id="apoio" title="Materiais de apoio" className="lesson-support">
+            <CollapsibleCard id="repertorio-aula" title={song.title}>
+              <p className="eyebrow">NOSSO REPERTÓRIO</p>
+              <p>{song.artist}</p>
+              <VideoResource
+                key={lesson.id}
+                url={song.recording_url ?? song.listen_url}
+                title={`${song.title} · ${song.artist}`}
+              />
+              <a
+                className="resource-link"
+                href={song.lyrics_chords_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Music2 size={17} />
+                Abrir letra e cifra <ExternalLink size={14} />
+              </a>
+              <p className="hint">
+                {song.lyrics_chords_note ??
+                  'A referência externa pode usar um arranjo diferente da versão didática.'}
+              </p>
+              <details>
+                <summary>Fontes e versão</summary>
+                <p className="hint">
+                  {song.tempo?.recording ?? song.recording ?? song.identity_note}
+                </p>
+                {song.sources.map((s, i) => (
+                  <span key={i}>
+                    {s.url ? (
+                      <a
+                        className="resource-link"
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {s.title}
+                        <ExternalLink size={12} />
+                      </a>
+                    ) : (
+                      <span className="hint">{s.title}</span>
+                    )}
+                  </span>
+                ))}
+              </details>
+            </CollapsibleCard>
+            <CollapsibleCard id="consulta" title="Consultas teóricas">
+              <div className="section-title">
+                <p className="eyebrow">CONECTE AS IDEIAS</p>
+                <Hint label="Navegar pelas consultas">
+                  Cada consulta oferece links para retornar ao ponto em que ela aparece nesta aula.
+                </Hint>
+              </div>
+              <div className="stack">
+                {lesson.theory_refs.map((ref, i) => (
+                  <div key={i}>{rich(ref, `theory_refs-${i}`)}</div>
+                ))}
+              </div>
+            </CollapsibleCard>
+            <details>
+              <summary>
+                Texto integral da base · páginas originais {lesson.studentPages.join(', ')}
+              </summary>
+              <div className="source-text">{rich(lesson.studentText, 'studentText')}</div>
+              <a
+                className="resource-link"
+                href="/api/materials/aluno"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BookOpen size={16} />
+                Abrir apostila com acervo integral <ExternalLink size={14} />
+              </a>
+            </details>
           </CollapsibleCard>
-          <details>
-            <summary>
-              Texto integral da base · páginas originais {lesson.studentPages.join(', ')}
-            </summary>
-            <div className="source-text">{rich(lesson.studentText, 'studentText')}</div>
-            <a
-              className="resource-link"
-              href="/api/materials/aluno"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BookOpen size={16} />
-              Abrir apostila com acervo integral <ExternalLink size={14} />
-            </a>
-          </details>
           {teacherPlan}
           <div className="lesson-nav">
             {prev ? (
@@ -273,66 +326,6 @@ export function LessonView({
             )}
           </div>
         </div>
-        <aside className="lesson-aside">
-          <InitialLessonCards key={lesson.id} />
-          <CollapsibleCard id="repertorio-aula" title={song.title}>
-            <p className="eyebrow">NOSSO REPERTÓRIO</p>
-            <p>{song.artist}</p>
-            <VideoResource
-              key={lesson.id}
-              url={song.recording_url ?? song.listen_url}
-              title={`${song.title} · ${song.artist}`}
-            />
-            <a
-              className="resource-link"
-              href={song.lyrics_chords_url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Music2 size={17} />
-              Abrir letra e cifra <ExternalLink size={14} />
-            </a>
-            <p className="hint">
-              {song.lyrics_chords_note ??
-                'A referência externa pode usar um arranjo diferente da versão didática.'}
-            </p>
-            <details>
-              <summary>Fontes e versão</summary>
-              <p className="hint">
-                {song.tempo?.recording ?? song.recording ?? song.identity_note}
-              </p>
-              {song.sources.map((s, i) => (
-                <span key={i}>
-                  {s.url ? (
-                    <a
-                      className="resource-link"
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {s.title}
-                      <ExternalLink size={12} />
-                    </a>
-                  ) : (
-                    <span className="hint">{s.title}</span>
-                  )}
-                </span>
-              ))}
-            </details>
-          </CollapsibleCard>
-          <LessonProgress
-            key={`progress-${lesson.id}`}
-            lesson={lesson}
-            demo={demo}
-            checkLabels={lesson.checks.map((text, i) => rich(text, `checks-${i}`))}
-          />
-          <PracticeLog
-            key={`practice-${lesson.id}`}
-            lessonId={lesson.id}
-            initialBpm={Math.round(defaultBpm)}
-            demo={demo}
-          />
-        </aside>
       </div>
     </Shell>
   );

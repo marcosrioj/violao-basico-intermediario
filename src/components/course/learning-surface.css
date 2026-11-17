@@ -1,0 +1,247 @@
+/* Quiet shared reading layout. The landing page keeps its own composition. */
+main.learning-surface {
+  max-width: 1120px;
+}
+main.learning-surface:has(.lesson-focused) {
+  max-width: 976px;
+}
+.learning-surface .page-heading {
+  margin-bottom: var(--space-6);
+}
+.learning-surface .page-heading .eyebrow {
+  margin-bottom: var(--space-2);
+}
+.learning-surface .page-heading .muted {
+  max-width: 65ch;
+  margin-top: var(--space-2);
+}
+.learning-surface .card {
+  box-shadow: none;
+}
+.learning-surface .collapsible-card-heading {
+  font-size: var(--font-size-lg);
+}
+.learning-surface .collapsible-card > .collapsible-card-summary {
+  padding: var(--space-3) var(--space-5);
+}
+.learning-surface .collapsible-card > .collapsible-card-body {
+  padding: var(--space-5);
+}
+.learning-surface .course-module > .collapsible-card-body {
+  padding: 0;
+}
+.learning-surface .collapsible-card .collapsible-card {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+}
+.learning-surface .collapsible-card .collapsible-card > summary {
+  padding-inline: 0;
+}
+.learning-surface .collapsible-card .collapsible-card > .collapsible-card-body {
+  padding-inline: 0;
+}
+.learning-surface .lesson-hero {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  margin: var(--space-4) 0 var(--space-6);
+}
+.learning-surface .lesson-hero h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  max-width: 27ch;
+}
+.learning-surface .lesson-hero > div:not(.lesson-meta) {
+  max-width: 65ch;
+}
+.learning-surface .lesson-meta {
+  gap: var(--space-3);
+  align-items: center;
+  margin-top: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-muted-foreground);
+}
+.learning-surface .lesson-focused {
+  display: block;
+  max-width: 880px;
+  margin-inline: auto;
+}
+.learning-surface .lesson-focused.stack {
+  display: grid;
+  margin-top: var(--space-5);
+}
+.learning-surface .lesson-content {
+  gap: var(--space-3);
+}
+.lesson-stage[open] {
+  border-color: var(--color-border-strong);
+}
+.stage-number {
+  display: grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-muted);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+}
+.lesson-stage[open] .stage-number {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.learning-surface .lesson-support {
+  margin-top: var(--space-4);
+}
+.learning-surface .lesson-nav {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-5);
+  margin-top: var(--space-5);
+}
+.learning-surface .practice-visual {
+  border: 0;
+  border-radius: var(--radius-sm);
+}
+.learning-surface .visual-heading {
+  padding: 0 0 var(--space-3);
+  border: 0;
+}
+.learning-surface .visual-heading strong {
+  font-weight: 600;
+}
+.learning-surface .practice-visual figcaption {
+  padding-inline: 0;
+}
+.learning-surface .visual-canvas {
+  border-radius: var(--radius-sm);
+}
+.learning-surface .visual-instruction {
+  margin: 0;
+  padding: var(--space-3) 0;
+  border: 0;
+  background: none;
+}
+.learning-surface .visual-instruction > div {
+  margin: 0;
+}
+.learning-surface .illustrated-practice-heading {
+  margin-bottom: var(--space-5);
+}
+.learning-surface .technique-visuals {
+  margin-top: var(--space-2);
+}
+.learning-surface .integrated-study-focus {
+  margin-block: var(--space-3);
+}
+.learning-surface .learning-example {
+  border: 0;
+  padding: var(--space-4);
+}
+.learning-surface .module-goal {
+  padding: var(--space-4) var(--space-5);
+}
+.learning-surface .catalog-lesson {
+  padding-bottom: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+.learning-surface .catalog-lesson .lesson-row {
+  border: 0;
+  padding-block: var(--space-4) var(--space-2);
+}
+.learning-surface .catalog-lesson h3 {
+  font-size: var(--font-size-base);
+}
+.learning-surface .catalog-lesson-details {
+  margin: 0 var(--space-5) 0 4.5rem;
+  border: 0;
+  padding: 0;
+  background: none;
+}
+.learning-surface .catalog-lesson-details > summary {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted-foreground);
+  padding-block: var(--space-2);
+  min-height: var(--touch-target);
+}
+.learning-surface .theory-reading > details {
+  margin-top: var(--space-3);
+}
+.learning-surface .reading-lead {
+  margin-bottom: var(--space-5);
+  max-width: 65ch;
+}
+.learning-surface .theory-reading summary .rich-text {
+  display: inline;
+  color: inherit;
+}
+.learning-surface .material-item .eyebrow {
+  font-size: var(--font-size-sm);
+  letter-spacing: 0;
+}
+.learning-surface .material-item h2 {
+  font-size: var(--font-size-lg);
+}
+.learning-surface .learning-module-list,
+.learning-surface .theory-grid {
+  grid-template-columns: 1fr;
+}
+.learning-surface .learning-module-list .card,
+.learning-surface .theory-grid > a.card {
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: var(--space-4) 0;
+}
+.learning-surface .lab-navigation-choice {
+  display: flex;
+  align-items: center;
+  padding: var(--space-3);
+}
+.learning-surface .lesson-slides {
+  background: transparent;
+  padding: 0;
+  border: 0;
+  margin-block: 0 var(--space-5);
+}
+.learning-surface .lesson-slides-header h3 {
+  font-size: var(--font-size-base);
+}
+.learning-surface .lesson-slides-header .eyebrow {
+  display: none;
+}
+.learning-surface .lesson-slides-page .visual-heading {
+  display: none;
+}
+.learning-surface .lesson-slides-page {
+  padding: clamp(var(--space-4), 3vw, var(--space-8));
+}
+@media (max-width: 600px) {
+  .learning-surface .collapsible-card > .collapsible-card-summary {
+    padding: var(--space-2) var(--space-4);
+  }
+  .learning-surface .collapsible-card > .collapsible-card-body {
+    padding: var(--space-4);
+  }
+  .learning-surface .lesson-content {
+    gap: var(--space-2);
+  }
+  .learning-surface .catalog-lesson-details {
+    margin-left: var(--space-4);
+  }
+  .learning-surface .lab-navigation-choice {
+    font-size: var(--font-size-sm);
+  }
+  .learning-surface .lab-navigation-choice strong {
+    font-size: inherit;
+  }
+}
+@media print {
+  .learning-surface details > :not(summary) {
+    display: block !important;
+  }
+  .learning-surface details {
+    break-inside: auto;
+  }
+}

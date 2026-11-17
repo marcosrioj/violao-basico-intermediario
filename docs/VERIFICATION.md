@@ -1,5 +1,10 @@
 # Entrega e evidências de verificação
 
+Histórico de entregas e verificações. As contagens e inspeções visuais pertencem a cada revisão. Para a reorganização atual, consulte a [verificação do curso](COURSE-VERIFICATION.md).
+
+<details>
+<summary>Biblioteca, aulas e documentação</summary>
+
 Registro de **14 de novembro de 2026**. O projeto está na branch `main`. Este documento distingue o código entregue, os testes executados e as configurações que dependem de contas externas.
 
 Os registros abaixo são históricos de versões e ambientes específicos. URLs e execuções do GitHub citadas como evidência pertencem à instância/repositório do mantenedor; não são valores para copiar em sua instalação. Para instalar do zero, siga o [README](../README.md) e [DEPLOYMENT.md](DEPLOYMENT.md). Para usar a instância compartilhada, veja [TEACHERS.md](TEACHERS.md).
@@ -25,6 +30,11 @@ As capturas de aula, trilha e repertório foram inspecionadas em celular e deskt
 README e guia de instalação foram revisados para usar o Supabase e a origem de cada administrador. O endereço da instância compartilhada aparece como opção de uso gratuito e nos registros históricos, não nos exemplos de configuração. O guia do professor inclui cadastro prévio, solicitação por e-mail com identificação da conta e liberação administrativa.
 
 Foram conferidos os comandos do projeto, nomes das três variáveis, ordem das duas migrations, SQL de promoção, caminhos de arquivos, links e âncoras Markdown. Prettier e `git diff --check` passaram. A revisão cobre Supabase hospedado/local, Vercel, Netlify e servidor Node; fontes oficiais estão no guia. Não foram criadas contas, enviado e-mail, executadas migrations remotas ou publicadas novas instâncias para esta alteração documental.
+
+</details>
+
+<details>
+<summary>Oficinas, mobile e controles de áudio</summary>
 
 ## Oficinas de aprendizagem musical
 
@@ -80,6 +90,11 @@ A revisão da cifra passou localmente em lint, tipos, **59 testes** e build. Os 
 
 No navegador com backend sintético local, a aula M1-A1 manteve seis passagens e 46 compassos; foram verificados seleção de trecho, início/parada pelo seletor, indicação do compasso em reprodução, nomes dos refrãos repetidos, âncora `bar-R-2` abrindo o mapa e ausência de IDs duplicados. Aulas M3-A1 e M13-A1 confirmaram a contagem de 6/8 e o compasso local em 2/4. Foram inspecionadas capturas de celular e desktop; testes em 320, 375, 768, 1440 e 1920 px confirmaram ausência de overflow e adaptação de uma a quatro colunas conforme a largura real da cifra. Não houve exceções de página. Estas são verificações locais e não representam publicação na Vercel.
 
+</details>
+
+<details>
+<summary>Matrícula e versões anteriores</summary>
+
 ## Matrícula obrigatória e refinamento da interface
 
 A revisão de matrícula passou localmente em `npm run check`: ESLint, geração de tipos, TypeScript, **55 testes** e build Next.js de produção. Contra esse build, `npm run test:http` passou em **33 verificações**, incluindo negação de acesso anônimo a aulas, demonstração, teoria e laboratório, cabeçalhos privados, validação de origem e regressões dos callbacks de autenticação.
@@ -120,6 +135,11 @@ O commit `c8402aa8c206d3e15122a03ea73e38a88f4f6304` passou na [execução 436095
 | Smoke HTTP contra o build     | **29 verificações passaram**                                             |
 
 A execução inclui os arquivos recuperados e os oito laboratórios teóricos. Os testes cobrem navegação e conteúdo, regras musicais, autenticação, configuração pública e isolamento em banco. O smoke confirma o comportamento sem sessão e sem Supabase configurado; não equivale a login real com contas hospedadas. Alterações posteriores exclusivamente neste relatório não alteram o código testado; cada novo commit continua acionando o mesmo workflow.
+
+</details>
+
+<details>
+<summary>Evidências da implementação e navegador</summary>
 
 ## Evidência da implementação-base
 
@@ -162,6 +182,11 @@ A revisão encontrou e corrigiu chaves React duplicadas, navegação da consulta
 
 A revisão desktop não cobre auditoria integral WCAG, leitor de tela, zoom, dispositivos móveis ou tablets. A interação completa dos oito laboratórios ampliados não foi revalidada visualmente depois da recuperação. Os testes automatizados correspondentes cobrem suas regras musicais, mas não substituem essa inspeção.
 
+</details>
+
+<details>
+<summary>Reproduzir os checks e configurar as contas</summary>
+
 ## Comandos reproduzíveis
 
 ```bash
@@ -187,6 +212,11 @@ Após conectar as contas, verificar: login, renovação, recuperação e logout;
 
 O passo a passo está em [DEPLOYMENT.md](DEPLOYMENT.md), incluindo publicação automática por commit e validação do SHA publicado.
 
+</details>
+
+<details>
+<summary>Controles da cifra e referência de andamento</summary>
+
 ## Controles da cifra e referência como padrão
 
 A cifra inicia no BPM de referência em todas as 39 aulas, com conversão exata para semínimas pontuadas em 6/8 e fallback para o BPM de estudo quando não há referência válida. O seletor Trecho ocupa metade da grade ampla ou toda a largura no celular. Mostrar letra controla a letra sincronizada e o texto integral; alternar sua visibilidade mantém reprodução, pausa e repetição por passagem. O único preset de andamento restaura a referência da música.
@@ -194,3 +224,5 @@ A cifra inicia no BPM de referência em todas as 39 aulas, com conversão exata 
 Passaram lint, tipos, **131 testes** e build. Os testes cobrem os padrões das 13 músicas em todas as aulas, conversões, referências inválidas e a execução das repetições. Os arquivos de conteúdo preservados e os PDFs mantiveram seus hashes.
 
 No Chromium com dados fictícios locais, passaram **11 verificações**: três padrões representativos (incluindo 37,3 e 71,5 BPM), alteração e retorno exato à referência; controles e seletor em 320, 375, 768, 844 e 1440 px; visibilidade da letra durante reprodução e pausa; seleção e repetição por passagem. Nenhum erro de página ou console foi observado. Evidências locais em `/tmp/violao-controls-qa/results.json` e `controls-*.png`.
+
+</details>

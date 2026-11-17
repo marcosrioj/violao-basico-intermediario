@@ -21,9 +21,8 @@ export default async function Laboratory() {
         description="Dê som à teoria. Experimente, escute e leve a descoberta para o violão."
       />
       <LearningLab />
-      <section className="card section">
-        <p className="eyebrow">APLICAR COM UM OBJETIVO</p>
-        <h2>Encontre um estudo para sua técnica</h2>
+      <details className="section">
+        <summary>Encontrar um estudo no curso</summary>
         <p>
           Pratique leitura, palhetada, articulações, expressão e harmonia com exemplos graduais
           ligados às músicas das aulas.
@@ -33,7 +32,7 @@ export default async function Laboratory() {
             ? 'Consultar índice de técnicas'
             : 'Entrar para acessar os estudos do curso'}
         </Link>
-      </section>
+      </details>
     </Shell>
   );
 }
