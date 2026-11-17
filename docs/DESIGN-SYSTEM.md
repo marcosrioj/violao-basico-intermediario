@@ -62,6 +62,8 @@ Botões permitem quebra de linha, preservam contraste ao selecionar/pressionar e
 
 ### Cifra por trechos e contagem
 
+**Expandir cifra** abre toda a Cifra de acompanhamento em um diálogo que ocupa a tela, incluindo andamento, opções, arranjo completo, letra integral e mapa de referências. **Voltar à aula** ou Esc fecha a expansão e devolve o foco ao botão. A mesma árvore de conteúdo permanece montada, preservando posição, pausa, repetição e letras. O fundo fica inativo e sem rolagem durante a expansão; o cabeçalho permanece acessível ao percorrer os trechos.
+
 `ChartSection` apresenta o arranjo completo e o mapa de referências com a mesma estrutura. O seletor **Ir para o trecho** localiza e foca a primeira ocorrência, mantendo a sequência completa disponível. O arranjo mantém todas as passagens na ordem da música, com título, identificação e número da repetição. O mapa mantém uma única ocorrência de cada trecho e as âncoras `section-*`/`bar-*` usadas pelo conteúdo da aula.
 
 Cada cartão contém um compasso inteiro. Os acordes ocupam uma largura proporcional à duração, e a contagem acompanha a fórmula: quatro pulsos em 4/4, três em 3/4, dois em 2/4 e `1 la li, 2 la li` para os dois pulsos compostos de 6/8. Durações fracionárias preservam suas subdivisões. Mudanças locais de fórmula, como 4/4 → 2/4 → 4/4, começam novas linhas.

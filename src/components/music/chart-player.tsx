@@ -1,7 +1,7 @@
 'use client';
 import { CollapsibleCard } from '@/components/ui/collapsible-card';
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
-import { Metronome, Minus, Plus } from 'lucide-react';
+import { Metronome, Minus, Plus, Maximize2, Minimize2 } from 'lucide-react';
 import type { ChartBar, SongVersion } from '@/content/types';
 import { chords } from '@/content/chords';
 import { soundChord, audioContext, playTone } from './audio';
@@ -62,6 +62,25 @@ export function ChartPlayer({
   const [transportStatus, setTransportStatus] = useState<PlaybackPosition['status']>('idle');
   const [barsPerRow, setBarsPerRow] = useState(4);
   const arrangement = useRef<HTMLDivElement>(null);
+  const expandedChart = useRef<HTMLDialogElement>(null);
+  const [expanded, setExpanded] = useState(false);
+  useEffect(() => {
+    if (!expanded) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [expanded]);
+  function toggleChart() {
+    const element = expandedChart.current;
+    if (!element) return;
+    if (element.open) element.close();
+    else {
+      element.showModal();
+      setExpanded(true);
+    }
+  }
   const tempoId = useId();
   const transport = useRef<ChartTransport | null>(null);
   const settings = useRef({ metronome: false, range: null as LoopRange | null });
@@ -221,229 +240,255 @@ export function ChartPlayer({
   }, []);
   return (
     <CollapsibleCard className="chart-player" id="tocar" title="Cifra de acompanhamento">
-      <div className="section-title">
-        <div className="label-with-hint">
-          <p className="eyebrow">TOQUE JUNTO</p>
-          <Hint label="Controles da cifra">
-            <p>
-              Tocar daqui inicia a sequência nessa passagem. Pausar guarda o ponto dentro do
-              compasso; Continuar retoma dali. Reiniciar volta ao começo do trecho.
-            </p>
-            <p>
-              Metrônomo e repetição podem mudar enquanto os acordes tocam. Ajustar o andamento ou o
-              seletor de trecho interrompe a reprodução.
-            </p>
-            <p>O áudio é sintético. Toque em um compasso para ouvir seu primeiro acorde.</p>
-          </Hint>
+      <dialog
+        ref={expandedChart}
+        className="chart-expanded-player"
+        role={expanded ? 'dialog' : 'region'}
+        aria-label="Cifra de acompanhamento"
+        onClose={() => setExpanded(false)}
+      >
+        <div className="chart-expansion-header">
+          {expanded && <h3>Cifra de acompanhamento</h3>}
+          <button
+            type="button"
+            className="button small secondary chart-expand-toggle"
+            aria-expanded={expanded}
+            onClick={toggleChart}
+          >
+            {expanded ? (
+              <Minimize2 size={16} aria-hidden="true" />
+            ) : (
+              <Maximize2 size={16} aria-hidden="true" />
+            )}
+            {expanded ? 'Voltar à aula' : 'Expandir cifra'}
+          </button>
         </div>
-        <span className="badge">
-          {chart.key} · {chart.meter}
-        </span>
-      </div>
-      <p>{chart.adaptations}</p>
-      <div className="player-controls">
-        <label className="chart-section-control">
-          Ir para o trecho
-          <select value={section} onChange={(e) => navigateToSection(e.target.value)}>
-            <option value="all">Início da música</option>
-            {chart.sections.map((s) => (
-              <option value={s.id} key={s.id}>
-                {s.title}
-              </option>
-            ))}
-          </select>
-        </label>
-        <div className="chart-tempo-control">
-          <label htmlFor={tempoId}>Andamento · {formatBpm(bpm)} BPM</label>
-          <small className="muted">
-            por {tempoUnitLabel(chart.meter === '6/8' ? 'dotted-quarter' : 'quarter')}
-          </small>
-          <div className="chart-tempo-adjust">
-            <button
-              type="button"
-              className="button secondary icon"
-              aria-label="Diminuir andamento em 1 BPM"
-              disabled={bpm <= 30}
-              onClick={() => changeBpm(bpm - 1)}
-            >
-              <Minus size={18} aria-hidden="true" />
-            </button>
+        <div className="section-title">
+          <div className="label-with-hint">
+            <p className="eyebrow">TOQUE JUNTO</p>
+            <Hint label="Controles da cifra">
+              <p>
+                Tocar daqui inicia a sequência nessa passagem. Pausar guarda o ponto dentro do
+                compasso; Continuar retoma dali. Reiniciar volta ao começo do trecho.
+              </p>
+              <p>
+                Metrônomo e repetição podem mudar enquanto os acordes tocam. Ajustar o andamento ou
+                o seletor de trecho interrompe a reprodução.
+              </p>
+              <p>O áudio é sintético. Toque em um compasso para ouvir seu primeiro acorde.</p>
+            </Hint>
+          </div>
+          <span className="badge">
+            {chart.key} · {chart.meter}
+          </span>
+        </div>
+        <p>{chart.adaptations}</p>
+        <div className="player-controls">
+          <label className="chart-section-control">
+            Ir para o trecho
+            <select value={section} onChange={(e) => navigateToSection(e.target.value)}>
+              <option value="all">Início da música</option>
+              {chart.sections.map((s) => (
+                <option value={s.id} key={s.id}>
+                  {s.title}
+                </option>
+              ))}
+            </select>
+          </label>
+          <div className="chart-tempo-control">
+            <label htmlFor={tempoId}>Andamento · {formatBpm(bpm)} BPM</label>
+            <small className="muted">
+              por {tempoUnitLabel(chart.meter === '6/8' ? 'dotted-quarter' : 'quarter')}
+            </small>
+            <div className="chart-tempo-adjust">
+              <button
+                type="button"
+                className="button secondary icon"
+                aria-label="Diminuir andamento em 1 BPM"
+                disabled={bpm <= 30}
+                onClick={() => changeBpm(bpm - 1)}
+              >
+                <Minus size={18} aria-hidden="true" />
+              </button>
+              <input
+                id={tempoId}
+                aria-label="Andamento da cifra"
+                type="range"
+                min="30"
+                max="180"
+                step="any"
+                aria-valuetext={`${formatBpm(bpm)} BPM`}
+                value={bpm}
+                onChange={(e) => {
+                  changeBpm(Number(e.target.value));
+                }}
+              />
+              <button
+                type="button"
+                className="button secondary icon"
+                aria-label="Aumentar andamento em 1 BPM"
+                disabled={bpm >= 180}
+                onClick={() => changeBpm(bpm + 1)}
+              >
+                <Plus size={18} aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+          <label className="checkbox-label">
             <input
-              id={tempoId}
-              aria-label="Andamento da cifra"
-              type="range"
-              min="30"
-              max="180"
-              step="any"
-              aria-valuetext={`${formatBpm(bpm)} BPM`}
-              value={bpm}
+              type="checkbox"
+              checked={showLyrics}
+              onChange={(event) => setShowLyrics(event.target.checked)}
+            />
+            Mostrar letra
+          </label>
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={metronome}
               onChange={(e) => {
-                changeBpm(Number(e.target.value));
+                settings.current.metronome = e.target.checked;
+                transport.current?.setMetronome(e.target.checked);
+                setMetronome(e.target.checked);
               }}
             />
-            <button
-              type="button"
-              className="button secondary icon"
-              aria-label="Aumentar andamento em 1 BPM"
-              disabled={bpm >= 180}
-              onClick={() => changeBpm(bpm + 1)}
-            >
-              <Plus size={18} aria-hidden="true" />
-            </button>
-          </div>
+            <Metronome size={16} aria-hidden="true" />
+            Metrônomo
+          </label>
         </div>
-        <label className="checkbox-label">
-          <input
-            type="checkbox"
-            checked={showLyrics}
-            onChange={(event) => setShowLyrics(event.target.checked)}
-          />
-          Mostrar letra
-        </label>
-        <label className="checkbox-label">
-          <input
-            type="checkbox"
-            checked={metronome}
-            onChange={(e) => {
-              settings.current.metronome = e.target.checked;
-              transport.current?.setMetronome(e.target.checked);
-              setMetronome(e.target.checked);
-            }}
-          />
-          <Metronome size={16} aria-hidden="true" />
-          Metrônomo
-        </label>
-      </div>
-      <p className="hint" role="status">
-        {playhead.status === 'paused'
-          ? 'Pausado'
-          : playhead.status === 'playing'
-            ? 'Reproduzindo'
-            : 'Pronto para tocar'}
-        {activeGroup &&
-          ` · ${activeGroup.title}${activeGroup.passages > 1 ? ` · passagem ${activeGroup.passage} de ${activeGroup.passages}` : ''}`}
-        {repeatGroup &&
-          ` · Repetição: ${groups.find((group) => group.key === repeatGroup)?.title ?? 'trecho selecionado'}`}
-      </p>
-      <ChartPlaybackReadout
-        position={playhead}
-        duration={(totalChartBeats(bars) * 60) / bpm}
-        bars={bars.length}
-      />
-      {tempo && researchedBpm !== null && (
-        <div className="chart-tempo">
-          <div className="control-row">
-            <button
-              type="button"
-              className="button small secondary"
-              aria-pressed={bpm === researchedBpm}
-              onClick={() => changeBpm(researchedBpm)}
-            >
-              Usar referência · {formatBpm(researchedBpm)} BPM
-            </button>
-            <TempoReference tempo={tempo} />
+        <p className="hint" role="status">
+          {playhead.status === 'paused'
+            ? 'Pausado'
+            : playhead.status === 'playing'
+              ? 'Reproduzindo'
+              : 'Pronto para tocar'}
+          {activeGroup &&
+            ` · ${activeGroup.title}${activeGroup.passages > 1 ? ` · passagem ${activeGroup.passage} de ${activeGroup.passages}` : ''}`}
+          {repeatGroup &&
+            ` · Repetição: ${groups.find((group) => group.key === repeatGroup)?.title ?? 'trecho selecionado'}`}
+        </p>
+        <ChartPlaybackReadout
+          position={playhead}
+          duration={(totalChartBeats(bars) * 60) / bpm}
+          bars={bars.length}
+        />
+        {tempo && researchedBpm !== null && (
+          <div className="chart-tempo">
+            <div className="control-row">
+              <button
+                type="button"
+                className="button small secondary"
+                aria-pressed={bpm === researchedBpm}
+                onClick={() => changeBpm(researchedBpm)}
+              >
+                Usar referência · {formatBpm(researchedBpm)} BPM
+              </button>
+              <TempoReference tempo={tempo} />
+            </div>
           </div>
+        )}
+        <p className="hint">
+          {chart.counting ??
+            'Cada bloco é um compasso; o número abaixo do acorde indica sua duração em pulsos.'}{' '}
+          {chart.meter === '6/8'
+            ? 'Neste arranjo, cada pulso é uma semínima pontuada (três colcheias).'
+            : ''}{' '}
+        </p>
+        <div className="chart-reading-guide label-with-hint">
+          <h3>Arranjo completo</h3>
+          <Hint label="Leitura e repetição dos trechos">
+            <p>
+              Leia da esquerda para a direita. Cada cartão mantém um compasso inteiro; a grade se
+              adapta à largura da tela.
+            </p>
+            <p>
+              Marque Repetir em uma passagem para praticá-la em ciclo. Se ela ainda estiver à
+              frente, a música continua até chegar ali; use Tocar daqui para ir direto a ela.
+            </p>
+            <p>
+              Ao terminar um trecho, o próximo começa automaticamente. Repetir mantém a passagem em
+              ciclo; desmarque para seguir a sequência.
+            </p>
+          </Hint>
         </div>
-      )}
-      <p className="hint">
-        {chart.counting ??
-          'Cada bloco é um compasso; o número abaixo do acorde indica sua duração em pulsos.'}{' '}
-        {chart.meter === '6/8'
-          ? 'Neste arranjo, cada pulso é uma semínima pontuada (três colcheias).'
-          : ''}{' '}
-      </p>
-      <div className="chart-reading-guide label-with-hint">
-        <h3>Arranjo completo</h3>
-        <Hint label="Leitura e repetição dos trechos">
-          <p>
-            Leia da esquerda para a direita. Cada cartão mantém um compasso inteiro; a grade se
-            adapta à largura da tela.
-          </p>
-          <p>
-            Marque Repetir em uma passagem para praticá-la em ciclo. Se ela ainda estiver à frente,
-            a música continua até chegar ali; use Tocar daqui para ir direto a ela.
-          </p>
-          <p>
-            Ao terminar um trecho, o próximo começa automaticamente. Repetir mantém a passagem em
-            ciclo; desmarque para seguir a sequência.
-          </p>
-        </Hint>
-      </div>
-      <div
-        className="chart-arrangement"
-        ref={arrangement}
-        role="region"
-        aria-label="Arranjo completo por trechos"
-      >
-        {groups.map((group, index) => (
-          <ChartSection
-            key={group.key}
-            group={group}
-            chart={chart}
-            bpm={bpm}
-            maxBars={barsPerRow}
-            lyrics={projectedLyrics}
-            lyricsClock={showLyrics ? lyricsClock : undefined}
-            position={playhead.bar}
-            activeTick={
-              metronome && group.bars.some((bar) => bar.playbackIndex === playhead.bar)
-                ? playhead.tick
-                : -1
-            }
-            sequence={index + 1}
-            onPreview={previewFirstChord}
-            onStart={startAt}
-            repeating={repeatGroup === group.key}
-            onRepeat={toggleGroupRepeat}
-            playbackState={activeGroup?.key === group.key ? playhead.status : 'idle'}
-            onPause={pausePlayback}
-            onResume={resumePlayback}
-          />
-        ))}
-      </div>
-      {showLyrics && lyricsContent && (
-        <details className="section chart-full-lyrics">
-          <summary>Letra completa fornecida</summary>
-          <p className="hint">
-            Texto integral, incluindo repetições e falas que podem não fazer parte do arranjo
-            abreviado desta aula.
-          </p>
-          <div className="chart-provided-lyrics">
-            {lyricsContent.providedLines.map((line, index) => (
-              <p key={index}>{line}</p>
-            ))}
-          </div>
-        </details>
-      )}
-      <details className="section chart-reference">
-        <summary>Mapa dos trechos e compassos</summary>
-        <Hint label="Mapa de referências">
-          Cada trecho aparece uma vez. As referências da aula levam ao compasso correspondente; os
-          controles iniciam ou repetem a primeira passagem disponível. Reiniciar volta ao começo da
-          passagem em reprodução ou pausada; se o trecho estiver inativo, inicia sua primeira
-          passagem.
-        </Hint>
-        <div className="chart-arrangement">
-          {referenceGroups.map((group) => (
+        <div
+          className="chart-arrangement"
+          ref={arrangement}
+          role="region"
+          aria-label="Arranjo completo por trechos"
+        >
+          {groups.map((group, index) => (
             <ChartSection
-              key={group.sectionId}
+              key={group.key}
               group={group}
               chart={chart}
               bpm={bpm}
               maxBars={barsPerRow}
-              reference
-              onStart={startReference}
-              playbackState={activeGroup?.sectionId === group.sectionId ? playhead.status : 'idle'}
+              lyrics={projectedLyrics}
+              lyricsClock={showLyrics ? lyricsClock : undefined}
+              position={playhead.bar}
+              activeTick={
+                metronome && group.bars.some((bar) => bar.playbackIndex === playhead.bar)
+                  ? playhead.tick
+                  : -1
+              }
+              sequence={index + 1}
+              onPreview={previewFirstChord}
+              onStart={startAt}
+              repeating={repeatGroup === group.key}
+              onRepeat={toggleGroupRepeat}
+              playbackState={activeGroup?.key === group.key ? playhead.status : 'idle'}
               onPause={pausePlayback}
               onResume={resumePlayback}
-              repeating={groups.some(
-                (part) => part.key === repeatGroup && part.sectionId === group.sectionId,
-              )}
-              onRepeat={toggleGroupRepeat}
             />
           ))}
         </div>
-      </details>
+        {showLyrics && lyricsContent && (
+          <details className="section chart-full-lyrics">
+            <summary>Letra completa fornecida</summary>
+            <p className="hint">
+              Texto integral, incluindo repetições e falas que podem não fazer parte do arranjo
+              abreviado desta aula.
+            </p>
+            <div className="chart-provided-lyrics">
+              {lyricsContent.providedLines.map((line, index) => (
+                <p key={index}>{line}</p>
+              ))}
+            </div>
+          </details>
+        )}
+        <details className="section chart-reference">
+          <summary>Mapa dos trechos e compassos</summary>
+          <Hint label="Mapa de referências">
+            Cada trecho aparece uma vez. As referências da aula levam ao compasso correspondente; os
+            controles iniciam ou repetem a primeira passagem disponível. Reiniciar volta ao começo
+            da passagem em reprodução ou pausada; se o trecho estiver inativo, inicia sua primeira
+            passagem.
+          </Hint>
+          <div className="chart-arrangement">
+            {referenceGroups.map((group) => (
+              <ChartSection
+                key={group.sectionId}
+                group={group}
+                chart={chart}
+                bpm={bpm}
+                maxBars={barsPerRow}
+                reference
+                onStart={startReference}
+                playbackState={
+                  activeGroup?.sectionId === group.sectionId ? playhead.status : 'idle'
+                }
+                onPause={pausePlayback}
+                onResume={resumePlayback}
+                repeating={groups.some(
+                  (part) => part.key === repeatGroup && part.sectionId === group.sectionId,
+                )}
+                onRepeat={toggleGroupRepeat}
+              />
+            ))}
+          </div>
+        </details>
+      </dialog>
     </CollapsibleCard>
   );
 }
