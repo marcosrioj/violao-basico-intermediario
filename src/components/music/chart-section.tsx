@@ -178,26 +178,43 @@ export const ChartSection = memo(function ChartSection({
                           </span>
                         )}
                       </span>
+                      {bar.tablature && (
+                        <>
+                          <span className="chart-tab-label">
+                            {[...new Set(bar.events.map((event) => event.chord))]
+                              .filter((name) => !['Tablatura', 'Pausa', 'N.C.'].includes(name))
+                              .join(' · ') || 'Tablatura'}
+                          </span>
+                          <pre
+                            className="chart-tab-source"
+                            tabIndex={0}
+                            aria-label={`Tablatura do compasso ${label}, cordas da mais aguda à mais grave`}
+                          >
+                            {bar.tablature.join('\n')}
+                          </pre>
+                        </>
+                      )}
                       <span
                         className="chart-pulses"
                         style={{ '--chart-ticks': rhythm.ticks.length } as CSSProperties}
                         aria-hidden="true"
                       >
-                        {rhythm.events.map((event, index) => (
-                          <span
-                            className="chart-event"
-                            style={{ gridColumn: `${event.start} / span ${event.span}` }}
-                            key={index}
-                          >
-                            <strong>
-                              <ChordName value={event.chord} />
-                            </strong>
-                            <span className="chart-duration">
-                              {event.beats.toLocaleString('pt-BR')}{' '}
-                              {event.beats === 1 ? 'pulso' : 'pulsos'}
+                        {!bar.tablature &&
+                          rhythm.events.map((event, index) => (
+                            <span
+                              className="chart-event"
+                              style={{ gridColumn: `${event.start} / span ${event.span}` }}
+                              key={index}
+                            >
+                              <strong>
+                                <ChordName value={event.chord} />
+                              </strong>
+                              <span className="chart-duration">
+                                {event.beats.toLocaleString('pt-BR')}{' '}
+                                {event.beats === 1 ? 'pulso' : 'pulsos'}
+                              </span>
                             </span>
-                          </span>
-                        ))}
+                          ))}
                         {rhythm.ticks.map((tick, index) => (
                           <span
                             className={`chart-tick${tick.strong ? ' strong' : ''}${current && activeTick === index ? ' active' : ''}`}
@@ -210,6 +227,29 @@ export const ChartSection = memo(function ChartSection({
                       </span>
                     </>
                   );
+                  if (bar.tablature)
+                    return (
+                      <div
+                        className={`chart-bar chart-tab-bar${current ? ' current' : ''}`}
+                        key={barIndex}
+                        role="group"
+                        aria-label={`Compasso ${label}, tablatura, ${rhythm.meter}`}
+                        aria-current={current ? 'step' : undefined}
+                        id={reference ? `bar-${group.sectionId}-${barIndex}` : undefined}
+                      >
+                        {content}
+                        {onPreview && (
+                          <button
+                            type="button"
+                            className="button small secondary"
+                            onClick={() => onPreview(bar)}
+                            aria-label={`Ouvir início da tablatura: ${label}`}
+                          >
+                            <Play size={14} aria-hidden="true" /> Ouvir início
+                          </button>
+                        )}
+                      </div>
+                    );
                   return onPreview ? (
                     <button
                       type="button"

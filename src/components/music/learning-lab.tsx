@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Ear, Hand, Guitar, SlidersHorizontal } from 'lucide-react';
 import { EarTraining, TuningReference } from './ear-training';
-import { RhythmPractice } from './rhythm-practice';
+import { RhythmWorkshop } from './rhythm-workshop';
 import { Fretboard } from './fretboard';
 import { FretboardRecall } from './fretboard-recall';
 import { Metronome } from './metronome';
@@ -15,8 +15,8 @@ import './learning-lab.css';
 const workshops = [
   {
     id: 'rhythm',
-    label: 'Sentir o ritmo',
-    description: 'Ouça e reproduza um padrão.',
+    label: 'Seguir o ritmo',
+    description: 'Treine o pulso ou toque uma cifra.',
     icon: Hand,
     apply:
       'Conte quatro pulsos em voz alta. Depois toque D no primeiro pulso de cada compasso, mantendo a contagem nos demais.',
@@ -93,7 +93,7 @@ export function LearningLab() {
         Depois de praticar, repita sem consultar e retome em outro dia.
       </p>
       <div id="lab-workshop" role="region" aria-label={current.label} key={active}>
-        {active === 'rhythm' && <RhythmPractice />}
+        {active === 'rhythm' && <RhythmWorkshop />}
         {active === 'ear' && <EarTraining />}
         {active === 'notes' && (
           <>

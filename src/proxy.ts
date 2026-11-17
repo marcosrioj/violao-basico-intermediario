@@ -41,7 +41,6 @@ export const config = {
     '/professor/:path*',
     '/aulas/:path*',
     '/curso/:path*',
-    '/laboratorio/:path*',
     '/demonstracao/:path*',
     '/repertorio/:path*',
     '/materiais/:path*',

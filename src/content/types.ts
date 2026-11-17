@@ -18,9 +18,13 @@ export interface Chord {
 export interface ChartEvent {
   chord: string;
   beats: number;
+  /** Explicit MIDI pitches from tablature, before the chart's capo offset. Empty means rest. */
+  notes?: number[];
 }
 export interface ChartBar {
   events: ChartEvent[];
+  /** Six aligned source strings, high to low, retained for reading imported tablature. */
+  tablature?: string[];
   beats_per_bar?: number;
   meter?: string;
 }
@@ -31,6 +35,9 @@ export interface ChartSection {
 }
 export interface SongVersion {
   key: string;
+  /** Imported charts keep their written shapes; audio applies this offset exactly once. */
+  capo?: number;
+  shape_key?: string;
   key_label?: string;
   meter: string;
   beats_per_bar: number;

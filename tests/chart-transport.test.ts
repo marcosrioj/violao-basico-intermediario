@@ -754,3 +754,58 @@ test('every course arrangement plays each written repeat in order and ends witho
     }
   }
 });
+
+test('tablature keeps explicit pitches and rests through scheduling, pause, restart and repetition', () => {
+  let now = 0;
+  const calls: { notes?: number[]; at: number; duration: number; stopped: boolean }[] = [];
+  const bars: ChartBar[] = [
+    {
+      tablature: ['e|0--1--|', 'B|------|', 'G|------|', 'D|------|', 'A|------|', 'E|------|'],
+      events: [
+        { chord: 'C', notes: [64], beats: 1 },
+        { chord: 'C', notes: [], beats: 1 },
+        { chord: 'F', notes: [65, 57], beats: 2 },
+      ],
+    },
+  ];
+  const player = new ChartTransport(
+    bars,
+    chart(bars),
+    60,
+    {
+      now: () => now,
+      chord: (_name, duration, at, notes) => {
+        const call = { notes, at, duration, stopped: false };
+        calls.push(call);
+        return () => {
+          call.stopped = true;
+        };
+      },
+      click: () => () => {},
+    },
+    () => {},
+  );
+  player.setLoopRange({ startBar: 0, endBar: 1 });
+  player.play(0);
+  assert.deepEqual(calls[0].notes, [64]);
+  now = 1.04;
+  player.tick();
+  assert.deepEqual(calls.at(-1)!.notes, [], 'a tab rest cannot fall back to its chord label');
+  now = 2.54;
+  player.tick();
+  assert.deepEqual(calls.at(-1)!.notes, [65, 57]);
+  assert.ok(Math.abs(calls.at(-1)!.duration - 1.5) < 1e-7);
+  player.pause();
+  assert.ok(calls.at(-1)!.stopped);
+  now = 5;
+  player.play();
+  assert.deepEqual(calls.at(-1)!.notes, [65, 57]);
+  assert.ok(Math.abs(calls.at(-1)!.duration - 1.5) < 1e-7);
+  now = 6.6;
+  player.tick();
+  assert.deepEqual(calls.at(-1)!.notes, [64], 'loop repeats exact tab pitches');
+  player.play(0);
+  assert.deepEqual(calls.at(-1)!.notes, [64]);
+  player.dispose();
+  assert.ok(calls.at(-1)!.stopped);
+});

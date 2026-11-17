@@ -106,13 +106,17 @@ export function describeChartBar(bar: ChartBar, chart: SongVersion): ChartBarDes
   const { meter, pulses, compound } = barSignature(bar, chart);
   const baseDivision = compound ? 3 : 1;
   const durations = [pulses, ...bar.events.map((event) => event.beats)];
-  const division = [1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48].find(
-    (candidate) =>
-      candidate % baseDivision === 0 &&
-      durations.every(
-        (beats) => Math.abs(beats * candidate - Math.round(beats * candidate)) < 1e-8,
-      ),
-  );
+  // Tab spacing is an estimated timeline, not a written rhythmic subdivision.
+  // Keep its pulse grid readable without quantizing the notes to a different time.
+  const division = bar.tablature
+    ? baseDivision
+    : Array.from({ length: 48 }, (_, index) => index + 1).find(
+        (candidate) =>
+          candidate % baseDivision === 0 &&
+          durations.every(
+            (beats) => Math.abs(beats * candidate - Math.round(beats * candidate)) < 1e-8,
+          ),
+      );
   if (division === undefined) throw new RangeError('Subdivisão musical não suportada.');
   const ticks = Array.from({ length: Math.round(pulses * division) }, (_, index) => {
     const withinPulse = index % division;

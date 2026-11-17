@@ -137,7 +137,7 @@ Se a operação for feita pelo SQL Editor, executar o conteúdo completo de `202
 
 Sem essa migration, o aplicativo já pode negar suas próprias rotas, mas a API direta do Supabase ainda usará as políticas antigas. A existência do arquivo no Git não comprova sua aplicação remota. Após aplicar e publicar, conferir com contas reais:
 
-- Conta recém-criada vê o painel de matrícula, sem aulas; `/curso`, `/laboratorio`, `/demonstracao` e `/api/materials/aluno` não liberam conteúdo.
+- Conta recém-criada vê o painel de matrícula, sem aulas; `/curso`, `/demonstracao` e `/api/materials/aluno` não liberam conteúdo. `/laboratorio` deve abrir sem conta ou matrícula.
 - Professor cria turma e envia o código fora do app. Código incorreto não cria vínculo; código correto confirmado pelo aluno libera o curso.
 - Aluno sem matrícula não lê nem grava progresso/prática pela API direta do Supabase.
 - Sair da última turma ou ter o vínculo removido revoga o acesso; registros pessoais permanecem no banco e voltam a ser acessíveis após nova matrícula válida.

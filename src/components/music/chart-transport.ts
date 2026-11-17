@@ -29,7 +29,7 @@ export interface LoopRange {
 }
 interface AudioPort {
   now(): number;
-  chord(name: string, duration: number, at: number): () => void;
+  chord(name: string, duration: number, at: number, notes?: number[]): () => void;
   click(frequency: number, volume: number, at: number): () => void;
 }
 interface Voice {
@@ -290,7 +290,7 @@ export class ChartTransport {
             kind: 'chord',
             at,
             end,
-            stop: this.audio.chord(event.chord, end - start, when),
+            stop: this.audio.chord(event.chord, end - start, when, event.notes),
           });
         });
         if (!this.metronome) return;

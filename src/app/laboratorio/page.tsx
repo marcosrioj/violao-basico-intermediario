@@ -1,13 +1,20 @@
 import { Shell, PageHeading } from '@/components/shell';
 import { LearningLab } from '@/components/music/learning-lab';
-import { requireCourseProfile } from '@/lib/auth';
+import { getCurrentProfile, getProfileCourseAccess } from '@/lib/auth';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 export default async function Laboratory() {
-  const profile = await requireCourseProfile();
+  // Authentication only personalizes navigation; the instruments remain public
+  // even when an account, enrollment lookup or Supabase is unavailable.
+  const profile = await getCurrentProfile().catch(() => null);
+  const access = profile ? await getProfileCourseAccess(profile).catch(() => null) : null;
   return (
-    <Shell active="/laboratorio" courseAccess teacher={profile.role === 'teacher'}>
+    <Shell
+      active="/laboratorio"
+      courseAccess={access?.allowed ?? false}
+      teacher={profile?.role === 'teacher'}
+    >
       <PageHeading
         eyebrow="APRENDER FAZENDO"
         title="Seu laboratório musical"
@@ -21,8 +28,10 @@ export default async function Laboratory() {
           Pratique leitura, palhetada, articulações, expressão e harmonia com exemplos graduais
           ligados às músicas das aulas.
         </p>
-        <Link className="button secondary section" href="/tecnica">
-          Consultar índice de técnicas
+        <Link className="button secondary section" href={access?.allowed ? '/tecnica' : '/entrar'}>
+          {access?.allowed
+            ? 'Consultar índice de técnicas'
+            : 'Entrar para acessar os estudos do curso'}
         </Link>
       </section>
     </Shell>

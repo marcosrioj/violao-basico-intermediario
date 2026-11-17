@@ -50,7 +50,7 @@ export function Shell({
       <div className="nav-caption">SEU APRENDIZADO</div>
       <nav aria-label="Principal">
         {links.map(({ href, label, icon: Icon }) => {
-          const locked = !unlocked && href !== '/painel';
+          const locked = !unlocked && href !== '/painel' && href !== '/laboratorio';
           return (
             <Link
               key={href}

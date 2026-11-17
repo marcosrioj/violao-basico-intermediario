@@ -27,7 +27,7 @@ function privateHeaders(response) {
   assert.match(response.headers.get('cache-control') || '', /no-store/);
 }
 async function run() {
-  for (const path of ['/', '/entrar', '/privacidade']) {
+  for (const path of ['/', '/entrar', '/privacidade', '/laboratorio']) {
     const response = await request(path);
     assert.equal(response.status, 200, `${path}: status`);
     const body = await response.text();
@@ -48,6 +48,10 @@ async function run() {
       assert.match(body, /Continuar com Google/);
       assert.match(body, /type="password"/);
     }
+    if (path === '/laboratorio') {
+      assert.match(body, /Seu laboratório musical/);
+      assert.doesNotMatch(body, /NEXT_REDIRECT|private note A|plano-professor/);
+    }
     passed(`${path} renders public content and security headers`);
   }
   for (const path of [
@@ -62,7 +66,6 @@ async function run() {
     '/materiais',
     '/repertorio',
     '/teoria/R1',
-    '/laboratorio',
     '/demonstracao',
     '/demonstracao/teoria/R1',
   ]) {

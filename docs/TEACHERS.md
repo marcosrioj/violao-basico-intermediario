@@ -43,7 +43,7 @@ Não envie senhas, tokens ou códigos de confirmação. Se entrar com Google, in
 1. Crie a turma na Área do professor.
 2. Copie o código de matrícula e entregue aos alunos pelo canal combinado, fora do aplicativo.
 3. Cada aluno acessa **a mesma instância**, cria a própria conta e confirma o código no painel.
-4. Após a matrícula, ficam disponíveis aulas, laboratório, materiais e registros de prática. Você acompanha somente alunos vinculados às suas turmas.
+4. O Laboratório musical é público. Após a matrícula, ficam disponíveis aulas, materiais e registros de prática. Você acompanha somente alunos vinculados às suas turmas.
 
 Criar uma conta não libera o curso. Remover o último vínculo de turma bloqueia novamente o acesso do aluno, preservando seu histórico pessoal. Remover uma matrícula não invalida o código já compartilhado: o aplicativo ainda não oferece rotação de convites nem suspensão permanente pela interface.
 

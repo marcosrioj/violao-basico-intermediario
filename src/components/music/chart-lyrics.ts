@@ -293,6 +293,7 @@ export function projectLyricCues(
 export function chartLyricsKey(chart: SongVersion, songId: string): string {
   const definition = JSON.stringify({
     key: chart.key,
+    ...(chart.capo !== undefined ? { capo: chart.capo } : {}),
     meter: chart.meter,
     beatsPerBar: chart.beats_per_bar,
     beatUnit: chart.beat_unit,
@@ -303,7 +304,11 @@ export function chartLyricsKey(chart: SongVersion, songId: string): string {
       bars: bars.map((bar) => ({
         meter: bar.meter,
         beatsPerBar: bar.beats_per_bar,
-        events: bar.events.map(({ chord, beats }) => ({ chord, beats })),
+        events: bar.events.map(({ chord, beats, notes }) => ({
+          chord,
+          beats,
+          ...(notes !== undefined ? { notes } : {}),
+        })),
       })),
     })),
   });

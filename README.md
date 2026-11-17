@@ -4,6 +4,16 @@ Curso de violão gospel do básico ao intermediário, **13 módulos e 39 aulas c
 
 Cada aula segue o percurso **entender, treinar, aplicar e revisar**. Os estudos completos ficam dentro da aula, com foco específico e indicação de introdução ou retomada; os nove eixos permanecem como índice de consulta. O professor dispõe de 39 planos de 60 minutos, diagnóstico, adaptações, apresentação com os estudos da aula e rubrica de execução. Os PDFs do aluno e do professor seguem essa sequência e incluem o acervo original integral. [Mapa da trilha integrada](docs/INTEGRATED-LEARNING.md) · [Conteúdo e geração dos materiais](docs/CONTENT.md) · [Pesquisa musical](docs/CURRICULUM-RESEARCH.md) · [Pesquisa pedagógica](docs/TEACHING-RESEARCH.md).
 
+## Quero experimentar o laboratório
+
+O **[Laboratório musical](https://violao-basico-intermediario-iota.vercel.app/laboratorio)** é público e não exige conta. Em **Seguir o ritmo → Tocar uma cifra**, cole acordes, letras ou tablaturas de seis cordas, escolha compasso e BPM e carregue o acompanhamento. Ele oferece pausa, reinício, repetição por trecho, metrônomo e expansão da cifra. O treino de pulso e as outras oficinas continuam disponíveis.
+
+Use qualquer título entre colchetes ou terminado em dois-pontos, como `[Primeira Parte]`, `Dedilhado Intro:` e `Refrão x2:`. Os acordes podem vir abaixo ou na mesma linha, como `Intro: G D/F# Em`. Sem barras, cada acorde ocupa um compasso; em `| C G | Am F |`, os acordes dividem cada compasso igualmente. Acordes podem ficar acima da letra ou no formato `[C]Minha [G]letra`. São aceitos sustenidos, bemóis, extensões e baixos alternativos.
+
+O acompanhamento é gerado automaticamente e pode apresentar inconsistências nos acordes, tempos, repetições e alinhamento da letra. Confira o resultado antes de tocar; esse aviso também fica visível no formulário.
+
+Cole as seis cordas da tablatura juntas, da mais aguda à mais grave; as notas escritas são exibidas e tocadas. O ritmo é estimado pelos espaços e técnicas como ligados e slides têm reprodução simplificada. O texto `Tom: Db (com forma de C)Capotraste: 1ª casa` é reconhecido, e o seletor permite ajustar o capotraste. As posições escritas são preservadas; o áudio aplica o capotraste uma única vez. As durações vocais também são estimadas, não sincronizadas automaticamente com uma gravação. A cifra fica somente na sessão da página; aulas, materiais e registros pessoais continuam protegidos.
+
 ## Quero usar como professor, sem instalar
 
 Você pode **criar sua turma gratuitamente** na [instância compartilhada do Violão Vivo](https://violao-basico-intermediario-iota.vercel.app).
@@ -110,7 +120,7 @@ npm run check       # lint, tipos, testes e build
 npm run test:http:ci # testes HTTP contra o build
 ```
 
-Sem Supabase configurado, `npm ci` e `npm run dev` permitem ver apenas a apresentação pública e a privacidade; não é uma instalação completa do curso.
+Sem Supabase configurado, `npm ci` e `npm run dev` permitem acessar a apresentação pública, a privacidade e o Laboratório musical, sem cadastro. Aulas, materiais e registros pessoais continuam exigindo a configuração do Supabase e matrícula.
 
 ## Quero publicar no meu endereço
 

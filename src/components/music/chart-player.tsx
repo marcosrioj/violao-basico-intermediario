@@ -5,6 +5,7 @@ import { Metronome, Minus, Plus, Maximize2, Minimize2 } from 'lucide-react';
 import type { ChartBar, SongVersion } from '@/content/types';
 import { chords } from '@/content/chords';
 import { soundChord, audioContext, playTone } from './audio';
+import { soundChordSymbol, soundPitches } from './custom-chord-audio';
 import {
   ChartTransport,
   type LoopRange,
@@ -33,24 +34,51 @@ import { idleVisualPosition, visualPlaybackPosition } from './chart-visual-posit
 
 const noLyrics: LyricCue[] = [];
 
-function previewFirstChord(bar: ChartBar) {
-  const chord = chords[bar.events[0]?.chord];
-  if (chord) soundChord(chord.frets);
-}
-
 export function ChartPlayer({
   chart,
   initialBpm,
   tempo,
   songId,
   lyricsContent,
+  defaultOpen = false,
+  returnLabel = 'Voltar à aula',
+  allowCustomChords = false,
 }: {
   chart: SongVersion;
   initialBpm: number;
   tempo?: TempoResearch;
   songId: string;
   lyricsContent?: LessonLyrics;
+  defaultOpen?: boolean;
+  returnLabel?: string;
+  allowCustomChords?: boolean;
 }) {
+  const capo =
+    allowCustomChords && Number.isInteger(chart.capo) && chart.capo! >= 0 && chart.capo! <= 12
+      ? chart.capo!
+      : 0;
+  const playChord = useCallback(
+    (name: string, duration = 1, at?: number, notes?: number[]) =>
+      allowCustomChords && notes !== undefined
+        ? soundPitches(notes, duration, at, capo)
+        : chords[name]
+          ? soundChord(
+              chords[name].frets.map((fret) => (fret === null ? null : fret + capo)),
+              duration,
+              at,
+            )
+          : allowCustomChords
+            ? soundChordSymbol(name, duration, at, capo)
+            : () => {},
+    [allowCustomChords, capo],
+  );
+  const previewFirstChord = useCallback(
+    (bar: ChartBar) => {
+      const first = bar.events.find((event) => event.notes === undefined || event.notes.length > 0);
+      if (first) playChord(first.chord, 1, undefined, first.notes);
+    },
+    [playChord],
+  );
   const defaultBpm = defaultPlaybackBpm(initialBpm, tempo);
   const researchedBpm = tempo ? referenceBpm(tempo) : null;
   const [section, setSection] = useState('all');
@@ -143,7 +171,7 @@ export function ChartPlayer({
           group.sectionId === sectionId &&
           group.bars.some(({ playbackIndex }) => playbackIndex === currentBar),
       ) ?? groups.find((group) => group.sectionId === sectionId);
-    if (target) startAt(target.bars[0].playbackIndex);
+    if (target?.bars.length) startAt(target.bars[0].playbackIndex);
   }
   const pausePlayback = useCallback(() => transport.current?.pause(), []);
   const resumePlayback = useCallback(() => {
@@ -196,8 +224,7 @@ export function ChartPlayer({
       bpm,
       {
         now: () => audioContext().currentTime,
-        chord: (name, duration, at) =>
-          chords[name] ? soundChord(chords[name].frets, duration, at) : () => {},
+        chord: playChord,
         click: (frequency, volume, at) => playTone(frequency, 0.045, at, volume),
       },
       // Scheduler notifications only start/stop polling; visual positions come from the frame.
@@ -215,7 +242,7 @@ export function ChartPlayer({
       document.removeEventListener('visibilitychange', pauseHidden);
       transport.current = null;
     };
-  }, [bars, chart, bpm]);
+  }, [bars, chart, bpm, playChord]);
   useEffect(() => {
     if (!playing) return;
     const timer = setInterval(() => transport.current?.tick(), 25);
@@ -239,7 +266,12 @@ export function ChartPlayer({
     return () => observer.disconnect();
   }, []);
   return (
-    <CollapsibleCard className="chart-player" id="tocar" title="Cifra de acompanhamento">
+    <CollapsibleCard
+      className="chart-player"
+      id="tocar"
+      title="Cifra de acompanhamento"
+      defaultOpen={defaultOpen}
+    >
       <dialog
         ref={expandedChart}
         className="chart-expanded-player"
@@ -260,7 +292,7 @@ export function ChartPlayer({
             ) : (
               <Maximize2 size={16} aria-hidden="true" />
             )}
-            {expanded ? 'Voltar à aula' : 'Expandir cifra'}
+            {expanded ? returnLabel : 'Expandir cifra'}
           </button>
         </div>
         <div className="section-title">
@@ -283,6 +315,13 @@ export function ChartPlayer({
           </span>
         </div>
         <p>{chart.adaptations}</p>
+        {allowCustomChords && (chart.capo !== undefined || chart.shape_key) && (
+          <p className="hint chart-capo">
+            {capo > 0 ? `Capotraste na ${capo}ª casa.` : 'Sem capotraste.'}
+            {chart.shape_key && ` Forma de ${chart.shape_key}.`} As cifras e casas da tablatura
+            mantêm as posições escritas; o áudio aplica o capotraste.
+          </p>
+        )}
         <div className="player-controls">
           <label className="chart-section-control">
             Ir para o trecho

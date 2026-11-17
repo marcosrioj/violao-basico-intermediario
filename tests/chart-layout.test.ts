@@ -191,3 +191,25 @@ test('meter counting and fractional chord durations occupy the correct visual su
     [1.5, 2.5],
   );
 });
+
+test('tablature column timing uses a readable pulse grid without rounding its notes', () => {
+  const chart = songs.santo_espirito.versions.base;
+  const bar = {
+    tablature: [
+      'e|--0----1--|',
+      'B|---------|',
+      'G|---------|',
+      'D|---------|',
+      'A|---------|',
+      'E|---------|',
+    ],
+    events: [
+      { chord: 'Pausa', notes: [], beats: 8 / 9 },
+      { chord: 'Tablatura', notes: [64], beats: 20 / 9 },
+      { chord: 'Tablatura', notes: [65], beats: 8 / 9 },
+    ],
+  };
+  const before = structuredClone(bar);
+  assert.equal(describeChartBar(bar, chart).ticks.length, 4);
+  assert.deepEqual(bar, before);
+});

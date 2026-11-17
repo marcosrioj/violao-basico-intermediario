@@ -6,7 +6,12 @@ export function scheduleChartBar(bar: ChartBar, startAt: number, bpm: number) {
   let nextAt = startAt;
   const events = bar.events.map((event) => {
     const duration = (event.beats * 60) / bpm;
-    const scheduled = { chord: event.chord, at: nextAt, duration };
+    const scheduled = {
+      chord: event.chord,
+      at: nextAt,
+      duration,
+      ...(event.notes !== undefined ? { notes: event.notes } : {}),
+    };
     nextAt += duration;
     return scheduled;
   });
