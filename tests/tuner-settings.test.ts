@@ -31,7 +31,18 @@ test('invalid preference fields do not discard valid independent settings', () =
     capo: 0,
     tolerance: 1,
     mode: 'chromatic',
+    sensitivity: 'balanced',
   });
+});
+
+test('capture preferences migrate existing settings and reject unknown profiles', () => {
+  assert.equal(parseTunerSettings('{"concertA":442}').sensitivity, 'balanced');
+  for (const sensitivity of ['balanced', 'soft', 'noisy'] as const) {
+    assert.equal(parseTunerSettings(JSON.stringify({ sensitivity })).sensitivity, sensitivity);
+  }
+  for (const sensitivity of ['boost', 1, null, true]) {
+    assert.equal(parseTunerSettings(JSON.stringify({ sensitivity })).sensitivity, 'balanced');
+  }
 });
 
 test('calibration and capo accept their inclusive limits but reject strings and out-of-range values', () => {

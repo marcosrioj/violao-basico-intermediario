@@ -2,6 +2,8 @@
 
 Pesquisa consultada em 18 de novembro de 2026. Este documento fundamenta a oficina **Afinar o violão** e registra a estratégia e os resultados de validação. Não é uma certificação de precisão acústica.
 
+A evolução de captação, sinais fracos, filtros e redundâncias está em [TUNER-SIGNAL-RESEARCH.md](TUNER-SIGNAL-RESEARCH.md), com fontes adicionais e a validação mais recente. Os resultados abaixo documentam a primeira versão.
+
 ## Necessidades e aplicação
 
 | Necessidade                                    | Evidência primária                                                                                                                                                                                                                                                                                       | Decisão para o laboratório                                                                                                                                                                                            |
@@ -68,7 +70,7 @@ O plano abaixo orientou a implementação. Os resultados executados estão regis
 6. **Interface:** celular e desktop, teclado, rótulos e estados acessíveis, movimento reduzido, persistência das preferências e controles sem transbordamento horizontal.
 7. **Qualidade do projeto:** executar lint, verificação de tipos, testes pertinentes e build. Ensaios com violão físico, diferentes microfones e afinador externo permanecem necessários antes de publicar qualquer especificação de precisão acústica.
 
-## Verificação executada · 18/11/2026
+## Verificação inicial · 18/11/2026
 
 | Verificação          | Resultado                                                                                                                                                                                                                                   |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

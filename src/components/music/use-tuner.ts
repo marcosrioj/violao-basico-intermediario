@@ -2,6 +2,20 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { detectPitch } from './tuner-engine';
+import {
+  effectiveSignalFloor,
+  estimateNoiseFloor,
+  measureSignal,
+  signalDb,
+  signalLevel,
+  trackPitch,
+  tunerFftSize,
+  TUNER_SENSITIVITY_PROFILES,
+  type NoiseCalibration,
+  type SignalMeasurement,
+  type TunerSensitivity,
+  type TunerSignal,
+} from './tuner-signal';
 
 export type TunerStatus = 'idle' | 'requesting' | 'listening' | 'error';
 export type TunerReading = {
@@ -16,21 +30,21 @@ type TunerInput = { deviceId: string; label: string };
 type CaptureSession = {
   context: AudioContext;
   stream?: MediaStream;
-  source?: MediaStreamAudioSourceNode;
   analyser?: AnalyserNode;
+  nodes: AudioNode[];
   timer?: ReturnType<typeof setTimeout>;
   detach: (() => void)[];
 };
 
 const POLL_MS = 72;
-const STALE_MS = 250;
+const CALIBRATION_SETTLE_MS = 250;
+const CALIBRATION_SAMPLE_MS = 2000;
 
 function disposeCapture(session: CaptureSession | null) {
   if (!session) return;
   if (session.timer) clearTimeout(session.timer);
   session.detach.forEach((detach) => detach());
-  session.source?.disconnect();
-  session.analyser?.disconnect();
+  session.nodes.forEach((node) => node.disconnect());
   session.stream?.getTracks().forEach((track) => track.stop());
   if (session.context.state !== 'closed') void session.context.close().catch(() => {});
 }
@@ -58,7 +72,7 @@ function microphoneError(cause: unknown) {
 }
 
 /** Audio stays in this tab: no recording, uploads, or microphone monitoring. */
-export function useTuner() {
+export function useTuner(sensitivity: TunerSensitivity = 'balanced') {
   const [status, setStatus] = useState<TunerStatus>('idle');
   const [reading, setReading] = useState<TunerReading | null>(null);
   const [level, setLevel] = useState(0);
@@ -67,13 +81,28 @@ export function useTuner() {
   const [deviceId, setDeviceId] = useState('');
   const [inputName, setInputName] = useState('Microfone padrão');
   const [error, setError] = useState('');
+  const [signal, setSignal] = useState<TunerSignal>('quiet');
+  const [inputDb, setInputDb] = useState<number | null>(null);
+  const [noiseFloorDb, setNoiseFloorDb] = useState<number | null>(null);
+  const [noiseCalibration, setNoiseCalibration] = useState<NoiseCalibration>('idle');
+  const [processingWarning, setProcessingWarning] = useState('');
   const mounted = useRef(false);
   const generation = useRef(0);
   const session = useRef<CaptureSession | null>(null);
   const permitted = useRef(false);
   const enumeration = useRef(0);
   const history = useRef<number[]>([]);
-  const lastValid = useRef(0);
+  const profile = useRef(TUNER_SENSITIVITY_PROFILES[sensitivity]);
+  const noiseFloor = useRef<number | null>(null);
+  const calibration = useRef<{ startedAt: number; frames: SignalMeasurement[] } | null>(null);
+
+  useEffect(() => {
+    const nextProfile = TUNER_SENSITIVITY_PROFILES[sensitivity];
+    if (profile.current !== nextProfile) {
+      history.current = [];
+      profile.current = nextProfile;
+    }
+  }, [sensitivity]);
 
   const release = useCallback(() => {
     generation.current++;
@@ -82,14 +111,41 @@ export function useTuner() {
     session.current = null;
     disposeCapture(previous);
     history.current = [];
-    lastValid.current = 0;
+    noiseFloor.current = null;
+    calibration.current = null;
   }, []);
 
   const resetReading = useCallback(() => {
     history.current = [];
-    lastValid.current = 0;
-    if (mounted.current) setReading(null);
+    if (mounted.current) {
+      setReading(null);
+      setSignal(calibration.current ? 'calibrating' : 'quiet');
+    }
   }, []);
+
+  const clearNoiseCalibration = useCallback(() => {
+    calibration.current = null;
+    noiseFloor.current = null;
+    if (!mounted.current) return;
+    setNoiseCalibration('idle');
+    setNoiseFloorDb(null);
+    resetReading();
+  }, [resetReading]);
+
+  const calibrateNoise = useCallback(() => {
+    if (
+      !mounted.current ||
+      !session.current?.analyser ||
+      session.current.context.state !== 'running'
+    )
+      return;
+    noiseFloor.current = null;
+    calibration.current = { startedAt: performance.now(), frames: [] };
+    resetReading();
+    setNoiseFloorDb(null);
+    setNoiseCalibration('sampling');
+    setSignal('calibrating');
+  }, [resetReading]);
 
   const stop = useCallback(() => {
     release();
@@ -99,6 +155,11 @@ export function useTuner() {
     setLevel(0);
     setClipped(false);
     setError('');
+    setSignal('quiet');
+    setInputDb(null);
+    setNoiseFloorDb(null);
+    setNoiseCalibration('idle');
+    setProcessingWarning('');
   }, [release]);
 
   const fail = useCallback(
@@ -110,6 +171,11 @@ export function useTuner() {
       setLevel(0);
       setClipped(false);
       setError(message);
+      setSignal('quiet');
+      setInputDb(null);
+      setNoiseFloorDb(null);
+      setNoiseCalibration('idle');
+      setProcessingWarning('');
     },
     [release],
   );
@@ -159,7 +225,7 @@ export function useTuner() {
       try {
         // Creation and resume happen before the first await, within the user's gesture.
         const context = new Context({ latencyHint: 'interactive' });
-        const current: CaptureSession = { context, detach: [] };
+        const current: CaptureSession = { context, nodes: [], detach: [] };
         session.current = current;
         // Handle rejection immediately, even if a browser throws while opening capture.
         const resume = context.resume().then(
@@ -201,16 +267,42 @@ export function useTuner() {
         }
         permitted.current = true;
         setInputName(track.label || 'Microfone padrão');
+        const settings = track.getSettings();
+        setProcessingWarning(
+          settings.echoCancellation || settings.noiseSuppression || settings.autoGainControl
+            ? 'Esta entrada mantém processamento automático de áudio, que pode alterar a leitura de notas fracas. Se possível, use outra entrada ou uma interface de áudio.'
+            : '',
+        );
         void refreshDevices();
-        const analyser = context.createAnalyser();
-        analyser.fftSize = 8192;
-        analyser.smoothingTimeConstant = 0;
         const source = context.createMediaStreamSource(stream);
-        source.connect(analyser);
+        current.nodes.push(source);
+        const rawAnalyser = context.createAnalyser();
+        current.nodes.push(rawAnalyser);
+        rawAnalyser.fftSize = tunerFftSize(context.sampleRate);
+        rawAnalyser.smoothingTimeConstant = 0;
+        const highpass = context.createBiquadFilter();
+        current.nodes.push(highpass);
+        highpass.type = 'highpass';
+        highpass.frequency.value = 30;
+        // Web Audio expresses low/high-pass Q in dB, unlike the linear textbook Q.
+        highpass.Q.value = 20 * Math.log10(Math.SQRT1_2);
+        const lowpass = context.createBiquadFilter();
+        current.nodes.push(lowpass);
+        lowpass.type = 'lowpass';
+        lowpass.frequency.value = 2000;
+        lowpass.Q.value = 20 * Math.log10(Math.SQRT1_2);
+        const analyser = context.createAnalyser();
+        current.nodes.push(analyser);
+        analyser.fftSize = tunerFftSize(context.sampleRate);
+        analyser.smoothingTimeConstant = 0;
+        source.connect(rawAnalyser);
+        source.connect(highpass);
+        highpass.connect(lowpass);
+        lowpass.connect(analyser);
         // Deliberately do not connect to destination: there is no audible feedback loop.
-        current.source = source;
         current.analyser = analyser;
         const samples = new Float32Array(analyser.fftSize);
+        const rawSamples = new Float32Array(rawAnalyser.fftSize);
         let previousRms = 0;
         const interrupted = () => {
           if (!isCurrent()) return;
@@ -238,47 +330,61 @@ export function useTuner() {
           if (!isCurrent()) return;
           try {
             analyser.getFloatTimeDomainData(samples);
+            rawAnalyser.getFloatTimeDomainData(rawSamples);
             const now = performance.now();
-            let sum = 0;
-            let squareSum = 0;
-            let clippedSamples = 0;
-            for (const sample of samples) {
-              sum += sample;
-              squareSum += sample * sample;
-              if (Math.abs(sample) >= 0.985) clippedSamples++;
-            }
-            const mean = sum / samples.length;
-            const rms = Math.sqrt(Math.max(0, squareSum / samples.length - mean * mean));
-            const overload = clippedSamples / samples.length > 0.005;
-            const attack = rms > 0.015 && rms > previousRms * 3;
+            const raw = measureSignal(rawSamples);
+            const { rms } = measureSignal(samples);
+            const activeProfile = profile.current;
+            const gate = effectiveSignalFloor(activeProfile, noiseFloor.current);
+            const attack = rms > activeProfile.minRms * 4 && rms > previousRms * 3;
             previousRms = rms;
-            setClipped(overload);
-            // Logarithmic input meter, roughly -60 to -6 dBFS. It is not a dB SPL meter.
-            setLevel(
-              Math.max(0, Math.min(1, (20 * Math.log10(Math.max(rms, 0.000001)) + 60) / 54)),
-            );
-            const estimate =
-              overload || attack || track.muted ? null : detectPitch(samples, context.sampleRate);
-            if (estimate) {
-              const recent = history.current;
-              const previous = recent.at(-1);
-              if (previous && Math.abs(1200 * Math.log2(estimate.frequency / previous)) > 70) {
-                recent.length = 0;
-                setReading(null);
+            setClipped(raw.clipped);
+            setInputDb(signalDb(raw.rms));
+            setLevel(signalLevel(raw.rms));
+            const measurement = calibration.current;
+            let nextSignal: TunerSignal;
+            let estimate = null;
+            if (measurement) {
+              const elapsed = now - measurement.startedAt;
+              // Discard the opening window, then invalidate interrupted or overloaded input.
+              if (elapsed >= CALIBRATION_SETTLE_MS)
+                measurement.frames.push({ rms, clipped: track.muted || raw.clipped });
+              if (elapsed >= CALIBRATION_SETTLE_MS + CALIBRATION_SAMPLE_MS) {
+                const measuredFloor = estimateNoiseFloor(measurement.frames);
+                calibration.current = null;
+                noiseFloor.current = measuredFloor;
+                setNoiseFloorDb(measuredFloor === null ? null : signalDb(measuredFloor));
+                setNoiseCalibration(measuredFloor === null ? 'rejected' : 'ready');
               }
-              recent.push(estimate.frequency);
-              if (recent.length > 3) recent.shift();
-              if (recent.length === 3) {
-                const frequency = [...recent].sort((a, b) => a - b)[1];
-                lastValid.current = now;
-                setReading({ frequency, clarity: estimate.clarity, rms, at: now });
-              }
+              nextSignal = calibration.current ? 'calibrating' : 'quiet';
+            } else if (track.muted) {
+              nextSignal = 'muted';
+            } else if (raw.clipped) {
+              nextSignal = 'clipped';
+            } else if (rms < gate) {
+              nextSignal = noiseFloor.current !== null ? 'below-noise' : 'quiet';
+            } else if (attack) {
+              nextSignal = 'unstable';
             } else {
-              history.current = [];
+              estimate = detectPitch(samples, context.sampleRate, {
+                minRms: gate,
+                minClarity: activeProfile.minClarity,
+              });
+              nextSignal = 'unstable';
             }
-            if (overload || attack || track.muted || now - lastValid.current >= STALE_MS) {
+            const frequency = trackPitch(
+              history.current,
+              estimate?.frequency ?? null,
+              activeProfile,
+            );
+            if (estimate && frequency !== null) {
+              setReading({ frequency, clarity: estimate.clarity, rms, at: now });
+              nextSignal = 'tracking';
+            } else {
+              // Do not hold a green reading when the current signal stops agreeing with it.
               setReading(null);
             }
+            setSignal(nextSignal);
             current.timer = setTimeout(poll, POLL_MS);
           } catch {
             if (isCurrent())
@@ -308,7 +414,10 @@ export function useTuner() {
     const hide = () => {
       if (document.hidden) stop();
     };
-    const devicesChanged = () => void refreshDevices();
+    const devicesChanged = () => {
+      clearNoiseCalibration();
+      void refreshDevices();
+    };
     document.addEventListener('visibilitychange', hide);
     window.addEventListener('pagehide', stop);
     navigator.mediaDevices?.addEventListener('devicechange', devicesChanged);
@@ -319,7 +428,7 @@ export function useTuner() {
       window.removeEventListener('pagehide', stop);
       navigator.mediaDevices?.removeEventListener('devicechange', devicesChanged);
     };
-  }, [refreshDevices, release, stop]);
+  }, [clearNoiseCalibration, refreshDevices, release, stop]);
 
   return {
     status,
@@ -330,9 +439,16 @@ export function useTuner() {
     deviceId,
     inputName,
     error,
+    signal,
+    inputDb,
+    noiseFloorDb,
+    noiseCalibration,
+    processingWarning,
     start,
     stop,
     selectDevice,
     resetReading,
+    calibrateNoise,
+    clearNoiseCalibration,
   };
 }

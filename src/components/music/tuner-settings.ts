@@ -1,3 +1,5 @@
+import type { TunerSensitivity } from './tuner-signal';
+
 export const TUNINGS = [
   { id: 'standard', name: 'Padrão', notes: [40, 45, 50, 55, 59, 64] },
   { id: 'drop-d', name: 'Drop D', notes: [38, 45, 50, 55, 59, 64] },
@@ -16,6 +18,7 @@ export type TunerSettings = {
   capo: number;
   tolerance: 1 | 3;
   mode: 'strings' | 'chromatic';
+  sensitivity: TunerSensitivity;
 };
 
 export const DEFAULT_TUNER_SETTINGS: TunerSettings = {
@@ -24,6 +27,7 @@ export const DEFAULT_TUNER_SETTINGS: TunerSettings = {
   capo: 0,
   tolerance: 3,
   mode: 'strings',
+  sensitivity: 'balanced',
 };
 export const TUNER_STORAGE_KEY = 'violao-vivo:tuner:v1';
 export const DEFAULT_TUNER_SNAPSHOT = JSON.stringify(DEFAULT_TUNER_SETTINGS);
@@ -41,6 +45,10 @@ export function parseTunerSettings(raw: string): TunerSettings {
       capo: Number.isInteger(value.capo) && value.capo >= 0 && value.capo <= 7 ? value.capo : 0,
       tolerance: value.tolerance === 1 ? 1 : 3,
       mode: value.mode === 'chromatic' ? 'chromatic' : 'strings',
+      sensitivity:
+        value.sensitivity === 'soft' || value.sensitivity === 'noisy'
+          ? value.sensitivity
+          : 'balanced',
     };
   } catch {
     return DEFAULT_TUNER_SETTINGS;

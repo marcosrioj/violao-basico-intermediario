@@ -46,6 +46,7 @@ async function guitarFixture() {
 
 async function open(mode = 'signal') {
   const context = await browser.newContext();
+  context.setDefaultTimeout(15000);
   const page = await context.newPage();
   page.on('pageerror', (error) => errors.push(error.message));
   await page.addInitScript((captureMode) => {
@@ -70,12 +71,31 @@ async function open(mode = 'signal') {
       const oscillator = context.createOscillator();
       const gain = context.createGain();
       const destination = context.createMediaStreamDestination();
+      const noise = context.createBufferSource();
+      const noiseGain = context.createGain();
+      const buffer = context.createBuffer(1, context.sampleRate, context.sampleRate);
+      const data = buffer.getChannelData(0);
+      let seed = 12345;
+      for (let i = 0; i < data.length; i++) {
+        seed = (1664525 * seed + 1013904223) >>> 0;
+        data[i] = (seed / 0xffffffff) * 2 - 1;
+      }
+      noise.buffer = buffer;
+      noise.loop = true;
+      noiseGain.gain.value = 0;
+      noise.connect(noiseGain).connect(destination);
+      noise.start();
       oscillator.frequency.value = 440 * 2 ** ((40 - 69) / 12);
       gain.gain.value = 0.12;
       oscillator.connect(gain).connect(destination);
       oscillator.start();
       await context.resume();
-      state.generators.push({ context, oscillator, gain });
+      state.generators.push({ context, oscillator, gain, noiseGain });
+      if (state.mode === 'processed') {
+        const track = destination.stream.getAudioTracks()[0];
+        const nativeSettings = track.getSettings.bind(track);
+        track.getSettings = () => ({ ...nativeSettings(), autoGainControl: true });
+      }
       state.streams.push(destination.stream);
       return destination.stream;
     };
@@ -96,7 +116,8 @@ async function open(mode = 'signal') {
       { kind: 'audioinput', deviceId: 'synthetic-2', label: 'Entrada sintética 2' },
     ];
   }, mode);
-  const response = await page.goto(`${base}/laboratorio`, { waitUntil: 'load' });
+  // Await local client chunks as well as HTML before the first microphone gesture.
+  const response = await page.goto(`${base}/laboratorio`, { waitUntil: 'networkidle' });
   assert.match(response.headers()['permissions-policy'], /microphone=\(self\)/);
   await page.getByRole('button', { name: 'Ativar microfone', exact: true }).waitFor();
   return { page, context };
@@ -110,8 +131,18 @@ const allStopped = (page) =>
         stream.getTracks().every((track) => track.readyState === 'ended'),
       ) && window.__tunerTest.contexts.every((context) => context.state === 'closed'),
   );
-const guidance = (page, text) =>
-  page.locator('.tuner-guidance strong').filter({ hasText: text }).waitFor();
+const guidance = async (page, text) => {
+  try {
+    await page.locator('.tuner-guidance strong').filter({ hasText: text }).waitFor();
+  } catch (error) {
+    console.error(
+      'Expected guidance:',
+      String(text),
+      await page.locator('.tuner-main').innerText(),
+    );
+    throw error;
+  }
+};
 
 try {
   const { page, context } = await open();
@@ -241,6 +272,139 @@ try {
   passed.push('A short in-range note cannot become confirmed from a stale held reading');
   await unstable.context.close();
 
+  const signal = await open('processed');
+  await start(signal.page);
+  await guidance(signal.page, /^Afinada$/);
+  await signal.page.locator('.tuner-settings summary').click();
+  await signal.page.locator('.tuner-processing-warning').waitFor();
+  await signal.page.evaluate(() => {
+    const key = 'violao-vivo:tuner:v1';
+    const value = JSON.stringify({ sensitivity: 'noisy' });
+    localStorage.setItem(key, value);
+    window.dispatchEvent(new StorageEvent('storage', { key, newValue: value }));
+  });
+  assert.equal(await signal.page.getByLabel('Sensibilidade da captação').inputValue(), 'noisy');
+  assert.equal(await signal.page.locator('.tuner-display').getAttribute('data-tuned'), 'false');
+  await guidance(signal.page, /^Afinada$/);
+  passed.push(
+    'An external profile change reacquires pitch and cannot inherit the previous confirmation',
+  );
+  await signal.page.evaluate(() => {
+    window.__tunerTest.generators.at(-1).gain.gain.value = 0.00025;
+  });
+  await guidance(signal.page, /^Toque uma corda$/);
+  await signal.page
+    .getByRole('button', { name: '6ª corda, Mi, oitava 2. Fixar alvo.', exact: true })
+    .click();
+  await signal.page.getByLabel('Sensibilidade da captação').selectOption('soft');
+  assert.equal(
+    await signal.page
+      .getByRole('button', { name: '6ª corda, Mi, oitava 2. Fixar alvo.', exact: true })
+      .getAttribute('aria-pressed'),
+    'true',
+  );
+  await guidance(signal.page, /^Afinada$/);
+  assert.equal(await signal.page.locator('.tuner-note').innerText(), 'E2');
+  passed.push('Soft capture detects a clean −75 dBFS E2 rejected by the balanced floor');
+  passed.push('Reported browser voice processing is surfaced as actionable input feedback');
+
+  await signal.page.evaluate(() => {
+    const generator = window.__tunerTest.generators.at(-1);
+    generator.gain.gain.value = 0;
+    generator.noiseGain.gain.value = 0.03;
+  });
+  await guidance(signal.page, /^Buscando uma nota estável$/);
+  await signal.page.waitForTimeout(1000);
+  assert.equal(await signal.page.locator('.tuner-display').getAttribute('data-tuned'), 'false');
+  assert.equal(await signal.page.locator('.tuner-note').innerText(), '—');
+  passed.push('Broadband noise alone clears note and confirmation even in soft mode');
+
+  await signal.page.getByRole('button', { name: 'Medir ruído do ambiente', exact: true }).click();
+  await signal.page
+    .locator('.tuner-noise-status')
+    .filter({ hasText: 'Medição aplicada' })
+    .waitFor();
+  await guidance(signal.page, /^Som próximo do ruído$/);
+  await signal.page.evaluate(() => {
+    window.__tunerTest.generators.at(-1).gain.gain.value = 0.06;
+  });
+  await guidance(signal.page, /^Afinada$/);
+  await signal.page
+    .getByRole('button', { name: '5ª corda, Lá, oitava 2. Fixar alvo.', exact: true })
+    .click();
+  await signal.page.evaluate(() => {
+    window.__tunerTest.generators.at(-1).oscillator.frequency.value = 110;
+  });
+  await guidance(signal.page, /^Afinada$/);
+  assert.equal(await signal.page.locator('.tuner-note').innerText(), 'A2');
+  passed.push(
+    'A2 mixed with broadband noise remains in the correct octave and reaches stable confirmation',
+  );
+  await signal.page.evaluate(() => {
+    window.__tunerTest.generators.at(-1).gain.gain.value = 0;
+  });
+  await guidance(signal.page, /^Som próximo do ruído$/);
+  passed.push(
+    'Ambient calibration rejects measured noise, admits a louder note, and clears it on decay',
+  );
+  await signal.page.getByRole('button', { name: 'Limpar medição', exact: true }).click();
+  await signal.page.getByRole('button', { name: 'Medir ruído do ambiente', exact: true }).click();
+  await signal.page.getByRole('button', { name: 'Cancelar medição', exact: true }).click();
+  assert.equal(
+    await signal.page.getByRole('button', { name: 'Parar microfone', exact: true }).count(),
+    1,
+  );
+  passed.push(
+    'Ambient measurement can be cancelled without closing capture or retaining its floor',
+  );
+
+  await signal.page.evaluate(() => {
+    const generator = window.__tunerTest.generators.at(-1);
+    generator.noiseGain.gain.value = 0;
+    generator.oscillator.frequency.value = 5;
+    generator.gain.gain.value = 1.6;
+  });
+  await guidance(signal.page, /^Sinal muito forte$/);
+  assert.equal(await signal.page.locator('.tuner-display').getAttribute('data-tuned'), 'false');
+  passed.push('Raw input clipping remains visible even when the high-pass filter attenuates it');
+  await signal.page.getByRole('button', { name: 'Medir ruído do ambiente', exact: true }).click();
+  await signal.page.locator('.tuner-noise-status').filter({ hasText: 'saturou' }).waitFor();
+  assert.equal(
+    await signal.page.getByRole('button', { name: 'Limpar medição', exact: true }).count(),
+    0,
+  );
+  passed.push(
+    'Clipped input rejects ambient calibration instead of learning an unusable threshold',
+  );
+
+  await signal.page.getByRole('button', { name: 'Cromático', exact: true }).click();
+  for (const frequency of [45, 61.735, 1400]) {
+    await signal.page.evaluate((frequency) => {
+      const generator = window.__tunerTest.generators.at(-1);
+      generator.oscillator.frequency.value = frequency;
+      generator.gain.gain.value = 0.03;
+    }, frequency);
+    await signal.page.waitForFunction((expected) => {
+      const label = document.querySelector('.tuner-note-name')?.textContent ?? '';
+      const match = label.match(/([\d.,]+) Hz/);
+      return (
+        match && Math.abs(Number(match[1].replace('.', '').replace(',', '.')) - expected) < 0.3
+      );
+    }, frequency);
+  }
+  passed.push('The filtered Web Audio path preserves 45 Hz, seven-string B1, and 1400 Hz');
+  await signal.page.getByRole('button', { name: 'Parar microfone', exact: true }).click();
+  await allStopped(signal.page);
+  await signal.page.reload({ waitUntil: 'load' });
+  await signal.page.locator('.tuner-settings summary').click();
+  assert.equal(await signal.page.getByLabel('Sensibilidade da captação').inputValue(), 'soft');
+  assert.equal(
+    await signal.page.getByRole('button', { name: 'Limpar medição', exact: true }).count(),
+    0,
+  );
+  passed.push('Sensitivity persists across reload while ambient measurements do not');
+  await signal.context.close();
+
   // This second browser exercises native getUserMedia, including Permissions-Policy,
   // browser media constraints, and device capture. Only the physical device is fake.
   const audioFile = await guitarFixture();
@@ -254,6 +418,7 @@ try {
     ],
   });
   const nativePage = await nativeBrowser.newPage();
+  nativePage.setDefaultTimeout(15000);
   nativePage.on('pageerror', (error) => errors.push(error.message));
   await nativePage.addInitScript(() => {
     const capture = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
@@ -265,7 +430,7 @@ try {
     };
   });
   const nativeResponse = await nativePage.goto(`${base}/laboratorio`, {
-    waitUntil: 'load',
+    waitUntil: 'networkidle',
   });
   assert.match(nativeResponse.headers()['permissions-policy'], /microphone=\(self\)/);
   await start(nativePage);
@@ -291,6 +456,9 @@ try {
 
   assert.deepEqual(errors, [], 'No browser runtime errors');
   console.log(JSON.stringify({ passed: passed.length, checks: passed }, null, 2));
+} catch (error) {
+  console.error(JSON.stringify({ passed: passed.length, checks: passed }, null, 2));
+  throw error;
 } finally {
   await nativeBrowser?.close();
   await browser.close();

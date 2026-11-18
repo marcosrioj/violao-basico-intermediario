@@ -32,6 +32,11 @@ function GuideSection({
           <div className="source-text">
             <RichText text={guide.text} field={guide.id} />
           </div>
+          {(guide.id === 'student-p4' || guide.id === 'teacher-p3') && (
+            <Link purpose="reference" href="/laboratorio#afinador" className="resource-link">
+              Afinar o violão no laboratório <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          )}
         </details>
       ))}
     </div>

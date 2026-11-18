@@ -45,7 +45,7 @@
       "url": "https://www.thisisclassicalguitar.com/tuning-the-classical-guitar/",
       "accessed": "2026-11-15",
       "scope": "Afinação padrão e uso de referências sonoras.",
-      "limitation": "O curso não mede afinação automaticamente; a conferência depende de escuta, afinador e orientação."
+      "limitation": "A leitura pelo microfone depende do sinal e do equipamento e não avalia a execução musical. Os tons de referência servem para comparação de ouvido."
     },
     {
       "id": "BW-PESTANA",
@@ -293,7 +293,7 @@
           ],
           "explanation": [
             "As cordas são numeradas da mais aguda para a mais grave. Na afinação padrão, da 6ª à 1ª, os nomes são E, A, D, G, B, E: mi, lá, ré, sol, si, mi. Os dois E pertencem a registros diferentes. Antes de girar uma tarraxa, identifique qual corda ela movimenta e escute uma nota de cada vez.",
-            "Com afinador, observe a letra e depois o desvio de altura: uma leitura de outra nota não se resolve apenas centralizando o ponteiro. Ajuste em movimentos pequenos e confira novamente. Sem afinador, compare uma referência confiável com ajuda do professor; o áudio do aplicativo é referência sonora, não uma medição do instrumento.",
+            "No laboratório musical, abra Afinar o violão e escolha Padrão, sem capotraste e Lá4 em 440 Hz. Ative o microfone e toque uma corda solta por vez. Confira a letra, a oitava e o desvio em cents (1/100 de semitom); ajuste a tarraxa aos poucos e espere a leitura estável. Centralizar o ponteiro só basta se a nota e a oitava corresponderem à corda. Sem microfone, use Ouvir para comparar de ouvido com ajuda do professor.",
             "Na mesma corda, uma casa corresponde a um semitom e duas a um tom. Entre E e F e entre B e C há um semitom. Sustenidos e bemóis nomeiam alterações; o contexto musical determina a grafia, mesmo quando duas grafias correspondem à mesma altura no instrumento temperado."
           ],
           "workedExample": {

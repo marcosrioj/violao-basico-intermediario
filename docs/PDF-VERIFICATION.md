@@ -2,14 +2,27 @@
 
 Os livros do aluno e do professor incluem o conteúdo aprofundado e o acervo original integral. Este registro documenta geração, integridade e revisão gráfica da edição publicada.
 
+## Afinador integrado ao estudo · 18/11/2026
+
+Os dois livros foram regenerados após atualizar a orientação de T1-E2 e o limite da fonte BW-AFINACAO em `technique-data.json`. A explicação de como usar **Laboratório musical → Afinar o violão** aparece uma única vez em cada livro: página 13 do aluno e página 16 do professor. As retomadas continuam apontando para o estudo, sem repetir a apresentação da ferramenta. O texto distingue a leitura pelo microfone da comparação com tons de referência e orienta conferir nota, oitava e desvio antes de ajustar.
+
+Os totais permanecem em 371 páginas para o aluno e 310 para o professor, com acervos começando nas páginas 242 e 238, respectivamente. A alteração textual ficou restrita à página do estudo e às páginas de fontes: 13 e 232–236 no aluno; 16 e 228–232 no professor.
+
+Verificações executadas:
+
+- Hashes das oito fontes e dos dois PDFs conferidos com o manifesto atualizado; nenhum destino interno inválido.
+- As 130 páginas originais do aluno e as 73 do professor mantêm fluxos de conteúdo decodificados e pixels renderizados na escala 0,5 idênticos aos dos arquivos anteriores.
+- As 12 páginas com texto alterado foram renderizadas e inspecionadas em folhas de contato; as páginas do estudo e a transição das fontes foram também examinadas em ampliação com Poppler. Não foram identificados cortes, sobreposições ou glifos ausentes.
+- A checagem geométrica de todas as páginas principais não encontrou texto fora dos limites adotados nem páginas vazias. As páginas sem alteração textual mantêm o conteúdo anterior.
+
 ## Condução simplificada · 18/11/2026
 
 O manual do professor apresenta uma folha de condução por aula: cinco etapas que totalizam 60 minutos, o que observar, como ajustar a dificuldade e o que retomar. Um recorte visual de até quatro compassos usa os acordes, as durações e as métricas do mapa musical da própria aula. Na avaliação final, esse recorte é identificado como referência para observar.
 
-| Material | Páginas totais | Parte reformulada | Início do acervo integral | Páginas originais preservadas |
-| -------- | -------------: | ----------------: | ------------------------: | ----------------------------: |
-| Aluno | 371 | 241 | 242 | 130 |
-| Professor | 310 | 237 | 238 | 73 |
+| Material  | Páginas totais | Parte reformulada | Início do acervo integral | Páginas originais preservadas |
+| --------- | -------------: | ----------------: | ------------------------: | ----------------------------: |
+| Aluno     |            371 |               241 |                       242 |                           130 |
+| Professor |            310 |               237 |                       238 |                            73 |
 
 O manual passou de 341 para 310 páginas. As instruções e práticas do aluno ficam na apostila, indicada por aula e página, e os roteiros docentes repetidos deram lugar a uma única sequência principal. Diagnóstico, demonstração, intervenções, adaptações, avaliação e respostas continuam disponíveis na seção de preparação. Os 27 estudos técnicos completos, suas 86 aplicações, as consultas, os mapas, o atlas e o acervo original permanecem. A apostila do aluno não foi alterada.
 

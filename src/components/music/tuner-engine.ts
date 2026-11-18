@@ -5,6 +5,7 @@
  * choices, not a guarantee of a microphone's physical measurement accuracy.
  */
 export type PitchEstimate = { frequency: number; clarity: number; rms: number };
+export type PitchDetectionOptions = { minRms?: number; minClarity?: number };
 
 export const frequencyForMidi = (midi: number, concertA = 440) =>
   concertA * 2 ** ((midi - 69) / 12);
@@ -18,8 +19,10 @@ export const nearestMidi = (frequency: number, concertA = 440) =>
 // Leave room below a seven-string B1 at A4 = 400 Hz for an initially flat string.
 const MIN_FREQUENCY = 45;
 const MAX_FREQUENCY = 1400;
-const MIN_RMS = 0.0025;
-const MAX_DIFFERENCE = 0.15;
+// Cubic interpolation can move an exact endpoint by a fraction of one cent.
+const RANGE_ROUNDING = 2 ** (0.25 / 1200);
+const MIN_RMS = 0.00035;
+const MIN_CLARITY = 0.9;
 const filterCache = new Map<number, Float64Array>();
 
 /** Windowed-sinc low-pass filter prevents high partials aliasing on decimation. */
@@ -86,25 +89,128 @@ function fractionalDifference(
   return difference;
 }
 
+/** Gain-normalized, mean-removed correlation for one local period candidate. */
+function periodCorrelation(buffer: Float32Array, start: number, size: number, period: number) {
+  const lag = Math.floor(period);
+  const t = period - lag;
+  const square = t * t;
+  const cube = square * t;
+  const a = -0.5 * t + square - 0.5 * cube;
+  const b = 1 - 2.5 * square + 1.5 * cube;
+  const c = 0.5 * t + 2 * square - 1.5 * cube;
+  const d = -0.5 * square + 0.5 * cube;
+  let x = 0;
+  let y = 0;
+  let xx = 0;
+  let yy = 0;
+  let xy = 0;
+  for (let i = start; i < start + size; i++) {
+    const k = i + lag;
+    const first = buffer[i];
+    const shifted = a * buffer[k - 1] + b * buffer[k] + c * buffer[k + 1] + d * buffer[k + 2];
+    x += first;
+    y += shifted;
+    xx += first * first;
+    yy += shifted * shifted;
+    xy += first * shifted;
+  }
+  const varianceX = Math.max(0, xx - (x * x) / size);
+  const varianceY = Math.max(0, yy - (y * y) / size);
+  const denominator = Math.sqrt(varianceX * varianceY);
+  return denominator > 0 ? (xy - (x * y) / size) / denominator : 0;
+}
+
 /**
- * Analyze an unmodified microphone frame (8192 samples is recommended).
+ * Check the candidate against two time regions, including earlier audio that
+ * was not used for YIN's local valley selection. Agreement rejects many note
+ * changes and isolated transients; these are related periodicity checks, not
+ * two statistically independent detectors or proof that a sound is a guitar.
+ */
+function validatePeriod(buffer: Float32Array, rate: number, period: number, minClarity: number) {
+  // Reserve room for the longest probe and cubic interpolation's neighbors.
+  const available = buffer.length - Math.ceil(period * 1.01) - 4;
+  const size = Math.min(Math.floor(available / 2), Math.floor(rate * 0.035));
+  if (size < period) return null;
+  const step = period * 0.01;
+  const periods: number[] = [];
+  const shorterPeriods: boolean[][] = [];
+  let clarity = 1;
+  for (const start of [1, available - size]) {
+    const before = periodCorrelation(buffer, start, size, period - step);
+    const center = periodCorrelation(buffer, start, size, period);
+    const after = periodCorrelation(buffer, start, size, period + step);
+    if (center < minClarity) return null;
+    const curvature = before - 2 * center + after;
+    if (curvature >= 0) return null;
+    const correction = ((before - after) * step) / (2 * curvature);
+    const localPeriod = period + correction;
+    if (!Number.isFinite(localPeriod) || Math.abs(1200 * Math.log2(localPeriod / period)) > 12) {
+      return null;
+    }
+    periods.push(localPeriod);
+    // A high note also repeats at a lower note's period. Check that evidence
+    // for half/third periods agrees across regions instead of hiding a jump.
+    shorterPeriods.push(
+      [2, 3].map(
+        (divisor) => periodCorrelation(buffer, start, size, localPeriod / divisor) >= center - 0.01,
+      ),
+    );
+    clarity = Math.min(clarity, center);
+  }
+  if (Math.abs(1200 * Math.log2(periods[0] / periods[1])) > 12) return null;
+  if (shorterPeriods[0].some((present, index) => present !== shorterPeriods[1][index])) return null;
+  return clarity;
+}
+
+/**
+ * Refine an already validated candidate over the audio we have, without adding
+ * another capture window. More cycles reduce low-note jitter in broadband noise.
+ * A bounded correction cannot replace the candidate with a different note.
+ */
+function refinePeriod(buffer: Float32Array, period: number): number {
+  const step = period * 0.01;
+  const size = buffer.length - Math.ceil(period + step) - 5;
+  const before = periodCorrelation(buffer, 1, size, period - step);
+  const center = periodCorrelation(buffer, 1, size, period);
+  const after = periodCorrelation(buffer, 1, size, period + step);
+  const curvature = before - 2 * center + after;
+  if (curvature >= 0) return period;
+  const refined = period + ((before - after) * step) / (2 * curvature);
+  return Number.isFinite(refined) && Math.abs(1200 * Math.log2(refined / period)) <= 12
+    ? refined
+    : period;
+}
+
+/**
+ * Analyze a microphone frame (8192 samples through 96 kHz, 16384 at 192 kHz).
  * Returns null for silence, insufficient periodicity or an unsupported frame.
  * The input is never mutated. Its actual sample rate must be supplied.
  */
-export function detectPitch(samples: Float32Array, sampleRate: number): PitchEstimate | null {
+export function detectPitch(
+  samples: Float32Array,
+  sampleRate: number,
+  options: PitchDetectionOptions = {},
+): PitchEstimate | null {
+  const minRms = options.minRms ?? MIN_RMS;
+  const minClarity = options.minClarity ?? MIN_CLARITY;
+  if (!Number.isFinite(minRms) || minRms <= 0 || minRms > 1) return null;
+  if (!Number.isFinite(minClarity) || minClarity < 0.8 || minClarity >= 1) return null;
+  const maxDifference = 1 - minClarity;
   if (!Number.isFinite(sampleRate) || sampleRate < 8000 || sampleRate > 192000) return null;
   if (samples.length < (sampleRate / MIN_FREQUENCY) * 3) return null;
   let sum = 0;
   let squareSum = 0;
+  let clippedSamples = 0;
   for (let i = 0; i < samples.length; i++) {
     const value = samples[i];
     if (!Number.isFinite(value)) return null;
     sum += value;
     squareSum += value * value;
+    if (Math.abs(value) >= 0.985) clippedSamples++;
   }
   const mean = sum / samples.length;
   const rms = Math.sqrt(Math.max(0, squareSum / samples.length - mean * mean));
-  if (rms < MIN_RMS) return null;
+  if (rms < minRms || clippedSamples / samples.length > 0.005) return null;
 
   // About 24 kHz preserves interpolation accuracy for upper guitar notes while
   // keeping the quadratic difference calculation small on mobile devices.
@@ -135,11 +241,11 @@ export function detectPitch(samples: Float32Array, sampleRate: number): PitchEst
 
   // Compare all valleys before choosing the earliest good one. A loud second
   // harmonic can otherwise make the half-period cross YIN's threshold first.
-  const valleys: { lag: number; difference: number; correction: number }[] = [];
+  const valleys: { lag: number; difference: number; correction: number; score: number }[] = [];
   let best = Infinity;
   for (let lag = minLag; lag < maxLag; lag++) {
     const value = normalized[lag];
-    if (value <= MAX_DIFFERENCE && value <= normalized[lag - 1] && value < normalized[lag + 1]) {
+    if (value <= maxDifference && value <= normalized[lag - 1] && value < normalized[lag + 1]) {
       const left = normalized[lag - 1];
       const right = normalized[lag + 1];
       const curvature = left - 2 * value + right;
@@ -157,17 +263,38 @@ export function detectPitch(samples: Float32Array, sampleRate: number): PitchEst
       }
       const difference =
         fractionalDifference(buffer, start, windowSize, lag + correction) / meanDifferences[lag];
-      valleys.push({ lag, difference, correction });
-      best = Math.min(best, difference);
+      // Rank candidates over the same longer stretch. A short noisy window can
+      // randomly favor twice the period and turn A2 into A1; using more cycles
+      // reduces that variance without preferring a weak fundamental's harmonic.
+      const score = 1 - periodCorrelation(buffer, 1, buffer.length - maxLag - 4, lag + correction);
+      valleys.push({ lag, difference, correction, score });
+      best = Math.min(best, score);
     }
   }
-  if (best > MAX_DIFFERENCE) return null;
-  const acceptance = Math.min(MAX_DIFFERENCE, best + Math.max(0.002, best * 0.15));
-  const candidate = valleys.find((valley) => valley.difference <= acceptance);
+  if (best > maxDifference) return null;
+  const acceptance = Math.min(maxDifference, best + Math.max(0.002, best * 0.15));
+  const candidate = valleys.find(
+    (valley) => valley.difference <= maxDifference && valley.score <= acceptance,
+  );
   if (!candidate) return null;
   const { lag, correction, difference } = candidate;
   const period = lag + Math.max(-1, Math.min(1, correction));
   const frequency = rate / period;
-  if (frequency < MIN_FREQUENCY || frequency > MAX_FREQUENCY) return null;
-  return { frequency, clarity: Math.max(0, Math.min(1, 1 - difference)), rms };
+  if (frequency < MIN_FREQUENCY / RANGE_ROUNDING || frequency > MAX_FREQUENCY * RANGE_ROUNDING) {
+    return null;
+  }
+  const temporalClarity = validatePeriod(buffer, rate, period, minClarity);
+  if (temporalClarity === null) return null;
+  const refinedFrequency = rate / refinePeriod(buffer, period);
+  if (
+    refinedFrequency < MIN_FREQUENCY / RANGE_ROUNDING ||
+    refinedFrequency > MAX_FREQUENCY * RANGE_ROUNDING
+  ) {
+    return null;
+  }
+  return {
+    frequency: refinedFrequency,
+    clarity: Math.max(0, Math.min(1, 1 - difference, temporalClarity)),
+    rms,
+  };
 }

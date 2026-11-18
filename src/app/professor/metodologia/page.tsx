@@ -35,6 +35,9 @@ export default async function TeachingPage() {
         Em cada plano: retome, demonstre, deixe praticar, toque a música e combine o próximo passo.
         Observe uma dificuldade por vez.
       </p>
+      <Link purpose="reference" href="/laboratorio#afinador" className="resource-link">
+        Preparar a afinação no laboratório <ArrowRight size={16} aria-hidden="true" />
+      </Link>
       <CollapsibleCard
         title="Planos das aulas"
         className="section"

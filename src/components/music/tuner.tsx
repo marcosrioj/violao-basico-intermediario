@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import Link from '@/components/ui/page-link';
 import { useTuner } from './use-tuner';
+import type { TunerSignal } from './tuner-signal';
 import { centsBetween, frequencyForMidi, nearestMidi } from './tuner-engine';
 import {
   closestTunerString,
@@ -63,6 +64,8 @@ function TunerDisplay({
   requesting,
   clipped,
   level,
+  signal,
+  sensitivity,
   previewing,
 }: {
   frequency: number | null;
@@ -75,13 +78,16 @@ function TunerDisplay({
   requesting: boolean;
   clipped: boolean;
   level: number;
+  signal: TunerSignal;
+  sensitivity: TunerSettings['sensitivity'];
   previewing: boolean;
 }) {
   const detectedMidi = frequency ? nearestMidi(frequency, concertA) : null;
   const note = detectedMidi !== null ? tunerNote(detectedMidi) : null;
   const targetHz = targetMidi !== null ? frequencyForMidi(targetMidi, concertA) : null;
   const cents = frequency && targetHz ? centsBetween(frequency, targetHz) : null;
-  const withinRange = cents !== null && Math.abs(cents) <= tolerance && !clipped;
+  const withinRange =
+    cents !== null && Math.abs(cents) <= tolerance && !clipped && signal === 'tracking';
   const confirmationKey = withinRange ? `${targetMidi}:${concertA}:${tolerance}` : null;
   const [confirmation, setConfirmation] = useState({ key: confirmationKey, since: readingAt });
   if (confirmation.key !== confirmationKey) {
@@ -107,12 +113,23 @@ function TunerDisplay({
     if (clipped) {
       status = 'Sinal muito forte';
       instruction = 'Afaste o microfone ou reduza o ganho da entrada.';
+    } else if (signal === 'calibrating') {
+      status = 'Medindo o ambiente';
+      instruction = 'Abafe as cordas e aguarde cerca de 2 segundos.';
+    } else if (signal === 'muted') {
+      status = 'Entrada sem áudio';
+      instruction = 'Confira se o microfone está silenciado ou desconectado.';
+    } else if (signal === 'below-noise') {
+      status = 'Som próximo do ruído';
+      instruction = 'Aproxime o microfone ou reduza o ruído ao redor.';
     } else if (frequency === null) {
-      status = level < 0.08 ? 'Toque uma corda' : 'Buscando uma nota estável';
+      status = signal === 'quiet' ? 'Toque uma corda' : 'Buscando uma nota estável';
       instruction =
-        level < 0.08
-          ? 'Deixe a corda soar e aproxime o microfone, se necessário.'
-          : 'Abafe as outras cordas e toque com suavidade.';
+        signal === 'quiet'
+          ? sensitivity === 'soft'
+            ? 'Aproxime o microfone ou confira o ganho da entrada.'
+            : 'Aproxime o microfone. Para tocar baixo, escolha Sons suaves nos ajustes.'
+          : 'Abafe as outras cordas e deixe uma nota soar.';
     } else if (targetMidi === null) {
       status = 'Nota fora das cordas-alvo';
       instruction = 'Selecione a corda ou use o modo cromático.';
@@ -130,7 +147,7 @@ function TunerDisplay({
       instruction = 'Ajuste a tarraxa aos poucos e toque novamente.';
     }
   }
-  const showReading = frequency !== null && !clipped;
+  const showReading = frequency !== null && !clipped && signal === 'tracking';
   const roundedCents = cents === null ? null : Math.round(cents * 10) / 10;
   const position = Math.max(0, Math.min(100, 50 + (cents ?? 0)));
   const StatusIcon = inTune
@@ -224,7 +241,15 @@ function TunerDisplay({
           <span style={{ transform: `scaleX(${level})` }} />
         </div>
         <span>
-          {!listening ? 'Inativo' : clipped ? 'Alto demais' : level < 0.08 ? 'Baixo' : 'Presente'}
+          {!listening
+            ? 'Inativo'
+            : clipped
+              ? 'Alto demais'
+              : signal === 'muted'
+                ? 'Sem áudio'
+                : signal === 'quiet'
+                  ? 'Baixo'
+                  : 'Presente'}
         </span>
       </div>
     </div>
@@ -235,8 +260,8 @@ export function Tuner() {
   const saved = useSyncExternalStore(subscribeSettings, readSettings, () => DEFAULT_TUNER_SNAPSHOT);
   const [sessionSettings, setSessionSettings] = useState<TunerSettings | null>(null);
   const settings = sessionSettings ?? parseTunerSettings(saved);
-  const { tuning, concertA, capo, tolerance, mode } = settings;
-  const capture = useTuner();
+  const { tuning, concertA, capo, tolerance, mode, sensitivity } = settings;
+  const capture = useTuner(sensitivity);
   const { stop, resetReading } = capture;
   const [lockedString, setLockedString] = useState<number | null>(null);
   const [previewMidi, setPreviewMidi] = useState<number | null>(null);
@@ -296,7 +321,7 @@ export function Tuner() {
     const next = { ...settings, ...patch };
     stopPreview();
     resetReading();
-    setLockedString(null);
+    if ('tuning' in patch || 'mode' in patch || 'capo' in patch) setLockedString(null);
     setSessionSettings(next);
     setCalibrationError('');
     try {
@@ -339,7 +364,7 @@ export function Tuner() {
   }
   const active = capture.status === 'listening' || capture.status === 'requesting';
   return (
-    <section className="tuner" aria-labelledby="tuner-heading">
+    <section id="afinador" className="tuner" aria-labelledby="tuner-heading">
       <header className="tuner-heading">
         <div>
           <p className="eyebrow">ANTES DA PRIMEIRA NOTA</p>
@@ -430,7 +455,7 @@ export function Tuner() {
             </p>
           )}
           <TunerDisplay
-            key={`${mode}:${tuning}:${selectedString}:${capo}:${concertA}:${tolerance}`}
+            key={`${mode}:${tuning}:${selectedString}:${capo}:${concertA}:${tolerance}:${sensitivity}`}
             frequency={measured}
             readingAt={capture.reading?.at ?? null}
             targetMidi={targetMidi}
@@ -441,6 +466,8 @@ export function Tuner() {
             requesting={capture.status === 'requesting'}
             clipped={capture.clipped}
             level={capture.level}
+            signal={capture.signal}
+            sensitivity={sensitivity}
             previewing={previewMidi !== null}
           />
         </div>
@@ -639,12 +666,105 @@ export function Tuner() {
               </span>
             </label>
           </div>
+          <div className="tuner-capture-settings">
+            <h3>Captação do som</h3>
+            <div className="tuner-settings-grid">
+              <label>
+                Sensibilidade da captação
+                <select
+                  value={sensitivity}
+                  aria-describedby="tuner-sensitivity-help"
+                  onChange={(event) =>
+                    updateSettings({
+                      sensitivity: event.target.value as TunerSettings['sensitivity'],
+                    })
+                  }
+                >
+                  <option value="balanced">Equilibrada</option>
+                  <option value="soft">Sons suaves</option>
+                  <option value="noisy">Ambiente ruidoso</option>
+                </select>
+                <span id="tuner-sensitivity-help">
+                  {sensitivity === 'soft'
+                    ? 'Reconhece sinais mais fracos e exige maior estabilidade. Use em um local silencioso.'
+                    : sensitivity === 'noisy'
+                      ? 'Exige um sinal mais forte e estável. Aproxime o microfone ou use uma entrada direta.'
+                      : 'Equilíbrio entre sensibilidade e rapidez para a prática diária.'}
+                </span>
+              </label>
+              <div className="tuner-noise-settings">
+                <h4>
+                  Ruído do ambiente <span>Opcional</span>
+                </h4>
+                <p id="tuner-noise-help">
+                  Com o microfone ativo, abafe as cordas e fique em silêncio durante a medição.
+                  Leituras próximas desse nível serão ignoradas.
+                </p>
+                <div className="tuner-noise-actions">
+                  <button
+                    className="button secondary"
+                    type="button"
+                    disabled={capture.status !== 'listening'}
+                    aria-describedby="tuner-noise-help"
+                    onClick={
+                      capture.noiseCalibration === 'sampling'
+                        ? capture.clearNoiseCalibration
+                        : capture.calibrateNoise
+                    }
+                  >
+                    {capture.noiseCalibration === 'sampling'
+                      ? 'Cancelar medição'
+                      : capture.noiseCalibration === 'ready'
+                        ? 'Medir novamente'
+                        : 'Medir ruído do ambiente'}
+                  </button>
+                  {capture.noiseFloorDb !== null && capture.noiseCalibration !== 'sampling' && (
+                    <button
+                      className="button secondary"
+                      type="button"
+                      onClick={capture.clearNoiseCalibration}
+                    >
+                      Limpar medição
+                    </button>
+                  )}
+                </div>
+                <p
+                  className="tuner-noise-status"
+                  role="status"
+                  aria-live={capture.noiseCalibration === 'sampling' ? 'off' : 'polite'}
+                >
+                  {capture.noiseCalibration === 'sampling'
+                    ? 'Medindo… mantenha as cordas abafadas por cerca de 2 segundos.'
+                    : capture.noiseCalibration === 'ready'
+                      ? 'Medição aplicada. Já pode tocar. Meça novamente se o ambiente mudar.'
+                      : capture.noiseCalibration === 'rejected'
+                        ? 'O som variou demais ou saturou. Abafe as cordas e tente novamente.'
+                        : 'A medição vale apenas para esta sessão de escuta.'}
+                </p>
+              </div>
+            </div>
+            {capture.processingWarning && (
+              <p className="tuner-processing-warning" role="status">
+                {capture.processingWarning}
+              </p>
+            )}
+            {capture.status === 'listening' && (
+              <p className="tuner-input-level">
+                Nível da entrada:{' '}
+                {capture.inputDb === null ? 'sem sinal' : `${Math.round(capture.inputDb)} dBFS`}.{' '}
+                Mede o sinal digital; valores próximos de 0 indicam risco de saturação.
+              </p>
+            )}
+          </div>
           <div className="tuner-settings-footer">
-            <p>Os ajustes ficam salvos neste navegador, quando disponível.</p>
+            <p>As preferências ficam salvas neste navegador, quando disponível.</p>
             <button
               type="button"
               className="button secondary"
-              onClick={() => updateSettings(DEFAULT_TUNER_SETTINGS)}
+              onClick={() => {
+                capture.clearNoiseCalibration();
+                updateSettings(DEFAULT_TUNER_SETTINGS);
+              }}
             >
               <RotateCcw size={16} aria-hidden="true" />
               Restaurar padrão
@@ -657,6 +777,10 @@ export function Tuner() {
             Como conseguir uma boa leitura
           </summary>
           <ol>
+            <li>
+              Escolha um lugar tranquilo e aproxime o microfone do violão, sem encostar nele. Se o
+              sinal ficar forte demais, afaste um pouco ou reduza o ganho da entrada.
+            </li>
             <li>
               Toque uma corda solta com suavidade e abafe as demais. Não use harmônicos para esta
               conferência.
@@ -682,12 +806,24 @@ export function Tuner() {
             leitura.
           </p>
           <p>
+            Para notas suaves, use Sons suaves nos ajustes. A medição de ruído ajuda a ignorar
+            sinais próximos do ambiente; não separa o violão de vozes ou outros instrumentos. Em
+            locais barulhentos, prefira um captador de contato compatível ou uma interface de áudio.
+          </p>
+          <p>
             Afinação usa temperamento igual. Esta ferramenta não mede a regulagem de entonação do
             instrumento e não substitui um afinador dedicado em ambientes ruidosos. A faixa de
             detecção vai de 45 a 1.400 Hz.
           </p>
           <p className="tuner-sources">
             Saiba mais:{' '}
+            <Link
+              href="https://www.petersontuners.com/media/pdf/iStroboSoft_UG.pdf"
+              purpose="reference"
+            >
+              Captação e ruído · Peterson ↗
+            </Link>{' '}
+            ·{' '}
             <Link href="https://www.boss.info/GLOBAL/products/tu-3/" purpose="reference">
               BOSS TU-3 ↗
             </Link>{' '}

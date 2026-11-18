@@ -150,6 +150,11 @@ export function TechniqueStudyContent({
       <h4 className="section" id={standalone ? 'experimentar' : undefined}>
         Pratique
       </h4>
+      {standalone && study.id === 't1-e2' && (
+        <Link purpose="reference" href="/laboratorio#afinador" className="resource-link">
+          Abrir afinador do laboratório <ArrowRight size={16} aria-hidden="true" />
+        </Link>
+      )}
       <ol className="steps">
         {study.steps.map((step, i) => (
           <li key={i}>{step}</li>

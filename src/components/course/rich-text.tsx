@@ -16,15 +16,38 @@ export function RichText({
   theoryId?: string;
   demo?: boolean;
 }) {
+  const tokens = parseCourseText(text, {
+    lesson,
+    field,
+    theoryId,
+    route: demo ? '/demonstracao' : undefined,
+  });
+  // Link the existing preparation action, not every mention of tuning in the course.
+  const tunerToken =
+    lesson && field === 'practice-0' && !theoryId
+      ? tokens.findIndex((token) => !token.href && /\bafine\b/i.test(token.label))
+      : -1;
   return (
     <span className="rich-text">
-      {parseCourseText(text, {
-        lesson,
-        field,
-        theoryId,
-        route: demo ? '/demonstracao' : undefined,
-      }).map((token, i) =>
-        token.href ? (
+      {tokens.map((token, i) => {
+        if (i === tunerToken) {
+          const match = /\bafine\b/i.exec(token.label)!;
+          return (
+            <Fragment key={i}>
+              {token.label.slice(0, match.index)}
+              <Link
+                purpose="reference"
+                href="/laboratorio#afinador"
+                title="Afinar o violão no laboratório"
+                aria-label={`${match[0]} com o afinador do laboratório`}
+              >
+                {match[0]}
+              </Link>
+              {token.label.slice(match.index + match[0].length)}
+            </Fragment>
+          );
+        }
+        return token.href ? (
           <Link
             purpose="reference"
             key={`${token.anchor ?? token.href}-${i}`}
@@ -35,8 +58,8 @@ export function RichText({
           </Link>
         ) : (
           <Fragment key={i}>{token.label}</Fragment>
-        ),
-      )}
+        );
+      })}
     </span>
   );
 }

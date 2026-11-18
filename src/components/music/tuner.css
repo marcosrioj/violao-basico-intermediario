@@ -476,6 +476,50 @@
   gap: var(--space-3);
   margin-block: var(--space-5) var(--space-2);
 }
+.tuner-capture-settings {
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+}
+.tuner-capture-settings h3 {
+  font-size: var(--font-size-base);
+  margin-bottom: var(--space-4);
+}
+.tuner-noise-settings h4 {
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+.tuner-noise-settings h4 span {
+  color: var(--color-muted-foreground);
+  font-weight: 400;
+  margin-left: var(--space-2);
+}
+.tuner-noise-settings p,
+.tuner-input-level,
+.tuner-processing-warning {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  color: var(--color-muted-foreground);
+  margin-block: var(--space-2);
+}
+.tuner-noise-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+.tuner-noise-actions .button {
+  min-height: 44px;
+}
+.tuner-processing-warning {
+  color: var(--color-foreground);
+  border-left: 3px solid var(--color-border-strong);
+  padding-left: var(--space-3);
+}
+.tuner-input-level {
+  font-variant-numeric: tabular-nums;
+  margin-top: var(--space-4);
+}
 .tuner-settings-footer p {
   font-size: var(--font-size-sm);
   color: var(--color-muted-foreground);

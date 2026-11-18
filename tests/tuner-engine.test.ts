@@ -10,11 +10,17 @@ import {
 function signal(
   frequency: number,
   sampleRate = 48000,
-  options: { harmonics?: number[]; offset?: number; noise?: number; decay?: number } = {},
+  options: {
+    harmonics?: number[];
+    offset?: number;
+    noise?: number;
+    decay?: number;
+    length?: number;
+  } = {},
 ) {
-  const { harmonics = [0.4], offset = 0, noise = 0, decay = 0 } = options;
+  const { harmonics = [0.4], offset = 0, noise = 0, decay = 0, length = 8192 } = options;
   let seed = 1001;
-  return Float32Array.from({ length: 8192 }, (_, i) => {
+  return Float32Array.from({ length }, (_, i) => {
     seed = (Math.imul(1664525, seed) + 1013904223) >>> 0;
     let value = 0;
     for (let h = 0; h < harmonics.length; h++) {
@@ -145,6 +151,20 @@ test('out-of-range tones do not masquerade as an in-range harmonic', () => {
   }
 });
 
+test('exact range endpoints survive subcent interpolation without accepting outside notes', () => {
+  for (const sampleRate of [44100, 48000, 96000, 192000]) {
+    const length = sampleRate > 96000 ? 16384 : 8192;
+    for (const frequency of [45, 1400]) {
+      const result = detectPitch(signal(frequency, sampleRate, { length }), sampleRate);
+      assert.ok(result, `${frequency} Hz at ${sampleRate}`);
+      assert.ok(Math.abs(centsBetween(result.frequency, frequency)) < 0.25);
+    }
+    for (const frequency of [45 * 2 ** (-1 / 1200), 1400 * 2 ** (1 / 1200)]) {
+      assert.equal(detectPitch(signal(frequency, sampleRate, { length }), sampleRate), null);
+    }
+  }
+});
+
 test('rejects invalid frames without mutating the audio samples', () => {
   for (const sampleRate of [NaN, Infinity, 0, -48000, 1000]) {
     assert.equal(detectPitch(signal(110), sampleRate), null);
@@ -170,4 +190,147 @@ test('concert pitch and octave calculations use equal temperament', () => {
   assert.equal(nearestMidi(frequencyForMidi(40)), 40);
   assert.equal(centsBetween(440, 220), 1200);
   assert.equal(centsBetween(220, 440), -1200);
+});
+
+test('balanced and sensitive input floors recover quiet high-SNR notes without inflating amplitude', () => {
+  for (const sampleRate of [44100, 48000, 96000, 192000]) {
+    const length = sampleRate > 96000 ? 16384 : 8192;
+    for (const midi of [35, 40, 45, 50, 55, 59, 64]) {
+      const frequency = frequencyForMidi(midi);
+      for (const dbfs of [-40, -55, -65, -75]) {
+        const rms = 10 ** (dbfs / 20);
+        const frame = signal(frequency, sampleRate, {
+          harmonics: [Math.SQRT2 * rms],
+          noise: rms * 0.03,
+          length,
+        });
+        const result = detectPitch(frame, sampleRate, dbfs < -65 ? { minRms: 0.00008 } : {});
+        assert.ok(result, `${midi}, ${dbfs} dBFS, ${sampleRate}`);
+        assert.ok(Math.abs(centsBetween(result.frequency, frequency)) < 2);
+        assert.ok(
+          Math.abs(20 * Math.log10(result.rms / rms)) < 0.25,
+          'report real input amplitude',
+        );
+      }
+    }
+  }
+});
+
+test('the sensitive profile still rejects broadband, colored and buried-note noise', () => {
+  for (const sampleRate of [44100, 48000, 96000, 192000]) {
+    const length = sampleRate > 96000 ? 16384 : 8192;
+    const white = signal(110, sampleRate, { harmonics: [], noise: 0.003, length });
+    let previous = 0;
+    const colored = white.map((value) => (previous = 0.94 * previous + value));
+    const buried = signal(110, sampleRate, { harmonics: [0.0003], noise: 0.005, length });
+    for (const frame of [white, colored, buried]) {
+      assert.equal(detectPitch(frame, sampleRate, { minRms: 0.00008, minClarity: 0.92 }), null);
+    }
+  }
+});
+
+test('E2 and A2 retain cent precision and octave across changing frames of band-limited noise', () => {
+  for (const midi of [40, 45]) {
+    const frequency = frequencyForMidi(midi);
+    for (const sampleRate of [44100, 48000, 96000]) {
+      const noisy = signal(frequency, sampleRate, {
+        harmonics: [0.06],
+        noise: 0.03,
+        length: sampleRate * 6,
+      });
+      // A deterministic low-pass fixture models noise within a microphone's band.
+      const window = Math.round(sampleRate / 4000);
+      let sum = 0;
+      const samples = noisy.map((value, i) => {
+        sum += value - (i >= window ? noisy[i - window] : 0);
+        return sum / window;
+      });
+      const errors: number[] = [];
+      let frames = 0;
+      for (
+        let start = sampleRate;
+        start + 8192 < samples.length;
+        start += Math.round(sampleRate * 0.072)
+      ) {
+        frames++;
+        const result = detectPitch(samples.slice(start, start + 8192), sampleRate, {
+          minRms: 0.00008,
+          minClarity: 0.94,
+        });
+        if (result) errors.push(Math.abs(centsBetween(result.frequency, frequency)));
+      }
+      assert.ok(errors.length > frames * 0.8, 'uncertain frames may still be rejected');
+      errors.sort((a, b) => a - b);
+      assert.ok(errors.reduce((sum, error) => sum + error, 0) / errors.length < 1.5);
+      assert.ok(errors[Math.floor(errors.length * 0.95)] < 3.5);
+      assert.ok(errors.at(-1)! < 5, 'no octave slips or large jumps');
+    }
+  }
+});
+
+test('two temporal regions reject a new pitch following a different note in the same frame', () => {
+  for (const [from, to] of [
+    [82.4069, 110],
+    [110, 220],
+    [329.6276, 164.8138],
+  ]) {
+    const previous = signal(from);
+    const next = signal(to);
+    const transition = Float32Array.from(previous, (value, i) => (i < 4096 ? value : next[i]));
+    assert.equal(detectPitch(transition, 48000), null, `${from} to ${to}`);
+    const settled = detectPitch(next, 48000);
+    assert.ok(settled, 'the subsequent sustained note is accepted');
+    assert.ok(Math.abs(centsBetween(settled.frequency, to)) < 1);
+  }
+});
+
+test('impulses, brief tone bursts and clipped waveforms are not confirmed as stable notes', () => {
+  const click = new Float32Array(8192);
+  click[6000] = 0.8;
+  const shortBurst = signal(110).map((value, i) => (i > 6500 ? value : 0));
+  const clipped = signal(110, 48000, { harmonics: [2] }).map((value) =>
+    Math.max(-1, Math.min(1, value)),
+  );
+  for (const frame of [click, shortBurst, clipped]) {
+    assert.equal(detectPitch(frame, 48000, { minRms: 0.00008 }), null);
+  }
+});
+
+test('exponential and linear decays retain pitch as the same string becomes quieter', () => {
+  for (const frequency of [61.735, 82.4069, 110, 329.6276]) {
+    for (const decay of [2, 6, 10]) {
+      const frame = signal(frequency, 48000, {
+        harmonics: [0.12, 0.4, 0.05],
+        decay,
+        noise: 0.0002,
+      });
+      const result = detectPitch(frame, 48000);
+      assert.ok(result, `${frequency}, decay ${decay}`);
+      assert.ok(Math.abs(centsBetween(result.frequency, frequency)) < 2);
+    }
+    const linearFade = signal(frequency, 48000, {
+      harmonics: [0.12, 0.4, 0.05],
+    }).map((value, i, frame) => value * (1 - (0.999 * i) / (frame.length - 1)));
+    const faded = detectPitch(linearFade, 48000);
+    assert.ok(faded, `${frequency}, linear amplitude fade to 0.1%`);
+    assert.ok(Math.abs(centsBetween(faded.frequency, frequency)) < 2);
+  }
+});
+
+test('configurable floors and confidence thresholds fail closed on invalid input', () => {
+  const frame = signal(110);
+  for (const minRms of [NaN, Infinity, -1, 0, 2]) {
+    assert.equal(detectPitch(frame, 48000, { minRms }), null);
+  }
+  for (const minClarity of [NaN, Infinity, -1, 0.5, 1, 2]) {
+    assert.equal(detectPitch(frame, 48000, { minClarity }), null);
+  }
+  const quiet = signal(110, 48000, { harmonics: [0.0005] });
+  assert.equal(detectPitch(quiet, 48000, { minRms: 0.001 }), null);
+  assert.ok(detectPitch(quiet, 48000, { minRms: 0.00008, minClarity: 0.97 }));
+  assert.equal(
+    detectPitch(signal(110, 192000), 192000),
+    null,
+    'short high-rate frames need more samples',
+  );
 });

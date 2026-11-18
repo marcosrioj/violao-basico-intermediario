@@ -164,7 +164,7 @@
       "R7": 216,
       "R8": 217
     },
-    "sha256": "be42891f2c22fd30bd7b1ee72c9d325c51ab4ebc68dbbf99e4d88a63510a7bc3",
+    "sha256": "c5e8f4ab0fb7cf9e307b998263710d1513cd48fc5f2072de1845445c4e1b419f",
     "legacySha256": "5c0a9d89f3aa2ce70fd48b2e48d95b7e1a1d2cac8febd4ae51c4bf028e8418f3",
     "studyLessons": {
       "t1-e1": "m1-a1",
@@ -359,7 +359,7 @@
       "R7": 212,
       "R8": 213
     },
-    "sha256": "2b0c55ace0cf4efed75f5b49a2ac50db4e9ad9e8ad86c432bb3d3609de18bcb7",
+    "sha256": "810a4f5bbc7a3493d1820291fce56880dff511ee77b1f3a547b51ba936c35a05",
     "legacySha256": "0d0b13497c5f3c7d177d56c571f0b6110483b5c29b206544f647920b38ddbb8c",
     "studyLessons": {
       "t1-e1": "m1-a1",
@@ -395,7 +395,7 @@
     "course-data": "59f81c9006218d804821ac5cf933dd4a6dbeaf1e06de78b5fe924b88ebe7d331",
     "teacher-data": "dc23e4823956d50987459c922d1a27496962c1338cc38e965c417b4261a1c562",
     "tempo-research": "b3e2a26aab29cfd74e16a9ae62811cc83aa2c11d268fac8be0ec4b9e9faa6997",
-    "technique-data": "e5c5eaeb21633da414f089cce8ce68ee0fb57c8f90363c4b91637e9e0f91a0f8",
+    "technique-data": "4ba1ed14c5b9ffe5f53545d6434c91638a5072ccd43d6d5d12d2cc14bc233c8c",
     "lesson-enrichment": "e56c1a47c7f11ecb07e079da4413c21f930649469227fdf9bd083e6fd98b592d",
     "teacher-enrichment": "80d464fc09875748329b3b14be84e1f1646d79544c773e3afaa2596182352875",
     "lesson-journey": "0664592b2a5070e58357a574b9eb51f6e686ade8ed8bbefde00d173ccb461d90",
