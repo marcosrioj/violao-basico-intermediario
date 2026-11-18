@@ -87,10 +87,6 @@
   margin: 0;
 }
 
-.chart-player > .collapsible-card-body {
-  container: chord-chart / inline-size;
-}
-
 .chart-player > .collapsible-card-body > .section-title {
   flex-wrap: wrap;
   align-items: start;
@@ -271,7 +267,7 @@
 
 .chart-bars {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
 }
 
@@ -412,10 +408,6 @@ button.chart-bar:hover {
   .chart-player .player-controls {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
-
-  .chart-bars {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @container chord-chart (min-width: 56rem) {
@@ -434,6 +426,22 @@ button.chart-bar:hover {
   .chart-section-actions {
     flex: 1 1 100%;
   }
+
+  .chart-bars {
+    gap: var(--space-2);
+  }
+
+  .chart-bar {
+    padding: var(--space-2);
+  }
+
+  .chart-event {
+    padding-inline: 2px;
+  }
+
+  .chart-event strong {
+    overflow-wrap: anywhere;
+  }
 }
 
 .chart-expanded-player {
@@ -447,7 +455,7 @@ button.chart-bar:hover {
   border: 0;
   color: var(--color-text);
   background: var(--color-surface);
-  container-type: inline-size;
+  container: chord-chart / inline-size;
 }
 .chart-expanded-player:modal {
   position: fixed;

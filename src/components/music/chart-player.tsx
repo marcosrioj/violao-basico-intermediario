@@ -271,9 +271,7 @@ export function ChartPlayer({
     // Match the chart's container breakpoints so phrases stay beside their bars on phones.
     const observer = new ResizeObserver(([entry]) => {
       const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
-      setBarsPerRow(
-        entry.contentRect.width >= 56 * rem ? 4 : entry.contentRect.width >= 30 * rem ? 2 : 1,
-      );
+      setBarsPerRow(entry.contentRect.width >= 56 * rem ? 4 : 2);
     });
     observer.observe(element);
     return () => observer.disconnect();
