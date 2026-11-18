@@ -1,10 +1,4 @@
 /* Quiet shared reading layout. The landing page keeps its own composition. */
-main.learning-surface {
-  max-width: 1120px;
-}
-main.learning-surface:has(.lesson-focused) {
-  max-width: 976px;
-}
 .lesson-essentials,
 .completion-actions {
   display: flex;
@@ -96,8 +90,6 @@ main.learning-surface:has(.lesson-focused) {
 }
 .learning-surface .lesson-focused {
   display: block;
-  max-width: 880px;
-  margin-inline: auto;
 }
 .learning-surface .lesson-focused.stack {
   display: grid;

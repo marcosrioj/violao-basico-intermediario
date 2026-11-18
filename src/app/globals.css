@@ -277,6 +277,10 @@ main {
   margin: 0 auto;
   padding: 40px 48px 35px;
 }
+main#conteudo {
+  width: auto;
+  max-width: none;
+}
 .app-footer {
   padding: 28px 48px;
   font-size: var(--font-size-sm);
