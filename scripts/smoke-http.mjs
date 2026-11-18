@@ -42,7 +42,8 @@ async function run() {
       if (!['http:', 'https:'].includes(destination.protocol)) continue;
       const supportingReference =
         (path === '/entrar' && href === '/privacidade') ||
-        (path === '/laboratorio' && href === '/materiais#student-p113');
+        // The tuner is the initial workshop; its theory link preserves the practice tab.
+        (path === '/laboratorio' && href === '/teoria/R1');
       if (destination.origin !== base.origin || supportingReference) {
         assert.match(attributes, /target="_blank"/, `${path}: ${href} must open a new tab`);
         assert.match(attributes, /rel="[^"]*noopener/, `${path}: ${href} must isolate its tab`);
@@ -70,6 +71,9 @@ async function run() {
     if (path === '/laboratorio') {
       assert.match(body, /Seu laboratório musical/);
       assert.doesNotMatch(body, /NEXT_REDIRECT|private note A|plano-professor/);
+      // Ensure the loop above actually checked both supporting theory and lesson navigation.
+      assert.match(body, /<a\b[^>]*href="\/teoria\/R1"/);
+      assert.match(body, /<a\b[^>]*href="\/aulas\/m1-a1#tocar"/);
     }
     passed(`${path} renders public content, private caching and the page-link tab policy`);
   }
