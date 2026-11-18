@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import Link from '@/components/ui/page-link';
-import { Ear, Hand, Guitar, SlidersHorizontal } from 'lucide-react';
-import { EarTraining, TuningReference } from './ear-training';
+import { Ear, Hand, Guitar, SlidersHorizontal, AudioLines } from 'lucide-react';
+import { EarTraining } from './ear-training';
+import { Tuner } from './tuner';
 import { RhythmWorkshop } from './rhythm-workshop';
 import { Fretboard } from './fretboard';
 import { FretboardRecall } from './fretboard-recall';
@@ -13,6 +14,17 @@ import { Hint } from '@/components/ui/hint';
 import './learning-lab.css';
 
 const workshops = [
+  {
+    id: 'tuner',
+    label: 'Afinar o violão',
+    description: 'Prepare o som antes de praticar.',
+    icon: AudioLines,
+    apply:
+      'Confira a afinação das cordas soltas. Depois toque um acorde conhecido, escute o conjunto e confira novamente se necessário.',
+    href: '/aulas/m1-a1#tocar',
+    lesson: 'Começar a tocar',
+    theory: '/teoria/R1',
+  },
   {
     id: 'rhythm',
     label: 'Seguir o ritmo',
@@ -49,7 +61,7 @@ const workshops = [
   {
     id: 'tools',
     label: 'Praticar livremente',
-    description: 'Afinação, pulso e acordes.',
+    description: 'Metrônomo e biblioteca de acordes.',
     icon: SlidersHorizontal,
     apply:
       'Escolha um trecho curto da sua aula. Toque lentamente, observe uma dificuldade e registre o próximo ajuste no diário.',
@@ -60,7 +72,7 @@ const workshops = [
 ] as const;
 
 export function LearningLab() {
-  const [active, setActive] = useState<(typeof workshops)[number]['id']>('rhythm');
+  const [active, setActive] = useState<(typeof workshops)[number]['id']>('tuner');
   const current = workshops.find((workshop) => workshop.id === active)!;
   return (
     <div className="learning-lab">
@@ -90,6 +102,7 @@ export function LearningLab() {
       </div>
       <p className="hint">{current.description}</p>
       <div id="lab-workshop" role="region" aria-label={current.label} key={active}>
+        {active === 'tuner' && <Tuner />}
         {active === 'rhythm' && <RhythmWorkshop />}
         {active === 'ear' && <EarTraining />}
         {active === 'notes' && (
@@ -106,10 +119,6 @@ export function LearningLab() {
             <details open>
               <summary>Metrônomo</summary>
               <Metronome />
-            </details>
-            <details>
-              <summary>Afinação</summary>
-              <TuningReference />
             </details>
             <details>
               <summary>Acordes</summary>

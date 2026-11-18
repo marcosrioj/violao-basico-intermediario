@@ -26,6 +26,13 @@ export default async function Privacy() {
           são enviadas ao Supabase nem compartilhadas automaticamente com a turma. Limpar os dados
           deste site nas configurações do navegador remove essas marcações locais.
         </p>
+        <h2>Microfone do afinador</h2>
+        <p>
+          O afinador do laboratório acessa o microfone somente quando você ativa a escuta e autoriza
+          o navegador. O áudio é analisado no dispositivo, sem gravação ou envio ao servidor. A
+          escuta termina ao parar, trocar de oficina ou ocultar a página. As preferências de
+          afinação ficam salvas neste navegador e podem ser restauradas nos ajustes do afinador.
+        </p>
         <h2>Quem pode acompanhar</h2>
         <p>
           Você acessa seus próprios registros. Ao ingressar em uma turma pelo código do professor,
