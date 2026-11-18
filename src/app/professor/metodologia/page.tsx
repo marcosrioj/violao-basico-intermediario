@@ -31,6 +31,10 @@ export default async function TeachingPage() {
           Baixar manual do professor
         </a>
       </nav>
+      <p className="hint">
+        Em cada plano: retome, demonstre, deixe praticar, toque a música e combine o próximo passo.
+        Observe uma dificuldade por vez.
+      </p>
       <CollapsibleCard
         title="Planos das aulas"
         className="section"

@@ -4,13 +4,13 @@ import { notFound } from 'next/navigation';
 import { requireCourseProfile } from '@/lib/auth';
 import { getLesson, getChart } from '@/content/course';
 import { getLessonVisualSteps } from '@/content/lesson-visuals';
+import { getTeacherDemoVisual } from '@/content/teacher-visuals';
 import { getTechniqueVisuals } from '@/content/technique-visuals';
 import {
   getTeacherLesson,
   getTeacherEnrichment,
   teachingSources,
-  weeklyPlan,
-  finalPlan,
+  getTeacherCue,
 } from '@/content/teacher';
 import { getLessonEnrichment, getLessonTechniqueEntries } from '@/content/curriculum';
 import { TeacherDeepening } from '@/components/course/learning-content';
@@ -18,6 +18,7 @@ import Link from '@/components/ui/page-link';
 import { LessonView } from '@/components/course/lesson-view';
 import { RichText } from '@/components/course/rich-text';
 import { LessonPresentation } from '@/components/course/lesson-presentation';
+import { TeacherMeeting } from '@/components/course/teacher-meeting';
 
 export default async function LessonPage({ params }: { params: Promise<{ id: string }> }) {
   const profile = await requireCourseProfile();
@@ -27,7 +28,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
   const teacher = profile.role === 'teacher';
   const plan = teacher ? getTeacherLesson(lesson.id) : undefined;
   const enrichedPlan = teacher ? getTeacherEnrichment(lesson.id) : undefined;
-  const schedule = lesson.n === 39 ? finalPlan : weeklyPlan;
+  const cue = teacher ? getTeacherCue(lesson.id) : undefined;
   const techniques = teacher ? getLessonTechniqueEntries(lesson.id) : [];
   return (
     <LessonView
@@ -36,6 +37,13 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
       teacherPlan={
         plan ? (
           <CollapsibleCard id="plano-professor" title="Condução do encontro">
+            {cue && (
+              <TeacherMeeting
+                cue={cue}
+                goal={lesson.goal}
+                visual={getTeacherDemoVisual(lesson, getChart(lesson))}
+              />
+            )}
             <LessonPresentation
               key={lesson.id}
               lesson={lesson}
@@ -55,16 +63,19 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
                 visuals: getTechniqueVisuals(study.id),
               }))}
             />
-            {enrichedPlan && <TeacherDeepening content={enrichedPlan} sources={teachingSources} />}
-            <Link
-              purpose="reference"
-              className="resource-link section"
-              href="/professor/metodologia"
-            >
-              Consultar princípios de ensino e rubrica
-            </Link>
+
             <details className="section">
-              <summary>Planos e referências completos</summary>
+              <summary>Preparação e referências completas</summary>
+              {enrichedPlan && (
+                <TeacherDeepening content={enrichedPlan} sources={teachingSources} />
+              )}
+              <Link
+                purpose="reference"
+                className="resource-link section"
+                href="/professor/metodologia"
+              >
+                Consultar princípios de ensino e rubrica
+              </Link>
               <details className="section">
                 <summary>Foco técnico deste encontro</summary>
                 <p>
@@ -93,42 +104,6 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
                 <div className="source-text">
                   <RichText text={plan.teacherText} lesson={lesson} field="teacherText" />
                 </div>
-              </details>
-              <details className="section">
-                <summary>Roteiro original de referência · 60 minutos</summary>
-                <div className="table-scroll">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th scope="col">Duração</th>
-                        <th scope="col">Atividade</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {schedule.map((activity, i) => (
-                        <tr key={activity.title}>
-                          <td>{activity.minutes} min</td>
-                          <td>
-                            <RichText
-                              text={activity.title}
-                              lesson={lesson}
-                              field={`schedule-${i}`}
-                            />
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <th scope="row">60 min</th>
-                        <td>Tempo total planejado</td>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div>
-                <p className="hint">
-                  Adapte o apoio à execução observada. Reserve tempo para a forma inteira da música.
-                </p>
               </details>
             </details>
           </CollapsibleCard>

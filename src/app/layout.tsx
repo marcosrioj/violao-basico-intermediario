@@ -7,6 +7,7 @@ import '@/components/ui/collapsible-card.css';
 import '@/components/course/learning-content.css';
 import '@/components/course/practice-visual.css';
 import '@/components/course/learning-surface.css';
+import '@/components/course/teacher-meeting.css';
 export const metadata: Metadata = {
   title: { default: 'Violão Vivo — Música com propósito', template: '%s | Violão Vivo' },
   description:

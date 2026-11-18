@@ -1,0 +1,86 @@
+.teacher-meeting {
+  margin-block: var(--space-5);
+  min-width: 0;
+}
+.teacher-meeting p {
+  max-width: 72ch;
+}
+.teacher-meeting-goal,
+.teacher-meeting-followup {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-soft);
+}
+.teacher-meeting-goal h3,
+.teacher-meeting-followup h4 {
+  margin-bottom: var(--space-2);
+}
+.teacher-meeting-flow {
+  list-style: none;
+  padding: 0;
+  margin-block: var(--space-5);
+}
+.teacher-meeting-flow > li {
+  display: grid;
+  grid-template-columns: var(--space-8) minmax(0, 1fr);
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.teacher-meeting-number {
+  display: grid;
+  place-content: center;
+  height: var(--space-8);
+  border-radius: 50%;
+  background: var(--color-surface-soft);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+.teacher-meeting-flow h4 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  align-items: baseline;
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-base);
+}
+.teacher-meeting-flow h4 span {
+  color: var(--color-muted-foreground);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+}
+.teacher-meeting-decisions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: var(--space-4);
+  margin-block: var(--space-5);
+}
+.teacher-meeting-decisions dt {
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+.teacher-meeting-decisions dd {
+  margin: 0;
+  line-height: 1.6;
+}
+.teacher-meeting-visual,
+.teacher-meeting-extension {
+  margin-block: var(--space-3);
+}
+.teacher-meeting-visual summary,
+.teacher-meeting-extension summary {
+  cursor: pointer;
+  min-height: var(--touch-target);
+  padding-block: var(--space-3);
+}
+.teacher-meeting-visual .practice-visual {
+  margin-block: var(--space-3);
+}
+.teacher-meeting-followup {
+  margin-block: var(--space-4);
+}
+@media print {
+  .teacher-meeting-flow > li {
+    break-inside: avoid;
+  }
+}

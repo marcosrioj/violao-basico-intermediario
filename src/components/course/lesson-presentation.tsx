@@ -9,6 +9,7 @@ import type { IllustratedStep } from './practice-visual-types';
 import { PracticeVisual } from './practice-visual';
 import {
   buildLessonPresentation,
+  buildEssentialPresentation,
   presentationIndex,
   visibleSlideBlocks,
   type PresentationMove,
@@ -30,12 +31,16 @@ export function LessonPresentation({
 }) {
   const id = useId();
   const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState<'essential' | 'complete'>('essential');
   const [index, setIndex] = useState(0);
   const [answerRevealed, setAnswerRevealed] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
   const wasOpen = useRef(false);
-  const slides = buildLessonPresentation(lesson, enrichment, techniques, illustratedSteps);
+  const slides =
+    mode === 'essential'
+      ? buildEssentialPresentation(lesson, illustratedSteps)
+      : buildLessonPresentation(lesson, enrichment, techniques, illustratedSteps);
   const slide = slides[index];
 
   useEffect(() => {
@@ -86,11 +91,11 @@ export function LessonPresentation({
     <section className="lesson-slides" aria-labelledby={`${id}-heading`}>
       <header className="lesson-slides-header">
         <div>
-          <p className="eyebrow">CONDUÇÃO DA AULA</p>
-          <h3 id={`${id}-heading`}>Apresentação da aula</h3>
+          <h3 id={`${id}-heading`}>Para mostrar ao aluno</h3>
         </div>
         <Hint label="Usar a apresentação">
-          Etapas para conduzir o encontro no seu ritmo. Com o foco na apresentação, use ← e → para
+          A versão essencial mostra objetivo, prática visual, pergunta e conferência. A versão
+          completa inclui explicações e estudos técnicos. Com o foco na apresentação, use ← e → para
           navegar, Home/End para ir ao início/fim e Esc para encerrar. Role o conteúdo quando
           precisar. Nenhuma etapa avança sozinha.
         </Hint>
@@ -115,6 +120,22 @@ export function LessonPresentation({
       {open && (
         <div id={`${id}-deck`} className="lesson-slides-deck" onKeyDown={keyboard}>
           <div className="lesson-slides-toolbar">
+            <label htmlFor={`${id}-mode`}>
+              Apresentação
+              <select
+                id={`${id}-mode`}
+                value={mode}
+                onChange={(event) => {
+                  setMode(event.target.value === 'complete' ? 'complete' : 'essential');
+                  setIndex(0);
+                  setAnswerRevealed(false);
+                  viewport.current?.scrollTo({ top: 0, behavior: 'instant' });
+                }}
+              >
+                <option value="essential">Essencial</option>
+                <option value="complete">Completa, com consultas</option>
+              </select>
+            </label>
             <label htmlFor={`${id}-index`}>
               Ir para a etapa
               <select

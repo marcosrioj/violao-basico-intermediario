@@ -1,8 +1,13 @@
 import 'server-only';
 import data from './teacher-data.json';
 import enrichment from './teacher-enrichment.json';
+import cues from './teacher-cues.json';
 import type { TeacherLesson, GuidePage } from './types';
-import type { TeacherEnrichment, ResearchSource } from './curriculum-types';
+import type { TeacherCue, TeacherEnrichment, ResearchSource } from './curriculum-types';
+
+export function getTeacherCue(lessonId: string): TeacherCue | undefined {
+  return cues.lessons.find((lesson) => lesson.lessonId === lessonId);
+}
 
 export const teachingGuide = enrichment;
 export const teachingSources: ResearchSource[] = enrichment.sources;

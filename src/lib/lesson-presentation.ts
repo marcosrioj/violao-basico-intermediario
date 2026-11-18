@@ -23,6 +23,17 @@ export interface LessonSlide {
   answer?: string;
 }
 
+/** Projection keeps one task per slide; the complete deck stays available for preparation. */
+export function buildEssentialPresentation(
+  lesson: Lesson,
+  illustratedSteps: readonly IllustratedStep[] = [],
+): readonly LessonSlide[] {
+  return buildLessonPresentation(lesson, undefined, [], illustratedSteps).filter(
+    (slide) =>
+      ['goal', 'question', 'checks', 'steps'].includes(slide.id) || slide.id.startsWith('steps-'),
+  );
+}
+
 /** Derive the presentation from the authorized lesson; never import the course catalog here. */
 export function buildLessonPresentation(
   lesson: Lesson,

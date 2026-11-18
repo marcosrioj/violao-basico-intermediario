@@ -1,17 +1,29 @@
 # Criar sua turma no Violão Vivo
 
-Crie sua conta, solicite o acesso de professor e abra uma turma. Para lecionar, escolha uma aula e use sua apresentação; preparação, adaptações e planos completos ficam disponíveis para consulta.
+Para lecionar, escolha uma aula e abra **Condução do encontro**. Siga o roteiro curto, observe uma dificuldade e proponha um ajuste. Abaixo estão a preparação e os passos para criar sua turma.
 
 <details>
 <summary>Preparar e ministrar as aulas</summary>
 
 ## Preparar e lecionar
 
-Após entrar como professor, abra **Área do professor → Preparar e lecionar**. O guia reúne princípios de ensino, uma rubrica de observação e links para os 39 planos. Cada aula inclui diagnóstico, demonstração, sequência de 60 minutos, dificuldade frequente, intervenção, simplificação, ampliação e verificação posterior. A apresentação da aula mantém as etapas originais e acrescenta exemplo, prática, recuperação e próximo passo.
+Após entrar como professor, abra **Área do professor → Preparar e lecionar** e escolha a aula. Cada um dos 39 encontros tem uma síntese própria, ligada à música e ao trecho que será praticado.
 
-Os nove eixos técnicos têm 27 estudos ligados às aulas; escolha um objetivo por tentativa e ajuste o apoio à execução observada. Use os quatro momentos de prática como proposta flexível. Registre trecho, andamento, apoio, evidência e próximo ajuste; confira novamente em outro dia. A conclusão de uma aula na conta do aluno não comprova domínio instrumental.
+| Momento | Tempo sugerido | Ação do professor |
+| --- | --- | --- |
+| Retomar | 10 min | Afinar, ouvir uma tentativa e localizar o trecho. |
+| Demonstrar | 8 min | Mostrar uma decisão musical com o apoio visual da aula. |
+| Praticar | 12 min | Deixar o aluno tentar; corrigir uma dificuldade por vez. |
+| Tocar a música | 22 min | Aplicar na forma completa, com apoio quando necessário. |
+| Fechar | 8 min | Nomear uma conquista, escolher um ajuste e combinar a retomada. |
 
-O botão **Manual do professor** baixa o livro completo. A apostila do aluno também foi atualizada. Ambos mantêm o respectivo material V5 integral no acervo final. Consulte [conteúdo](CONTENT.md), [fundamentação musical](CURRICULUM-RESEARCH.md) e [fundamentação pedagógica](TEACHING-RESEARCH.md).
+Os tempos cabem em **um encontro de 60 minutos** e podem ser redistribuídos. A aula final tem roteiro próprio: preparar (5), apresentar três arranjos (24), transferir para exercício autoral (8), ouvir e explicar (8), avaliar e combinar continuidade (15).
+
+Use **Observar** para escolher a evidência; **Ajustar** se a tentativa ainda precisa de apoio; **Ampliar** apenas com prontidão; **Retomar** para combinar a próxima prática. A apresentação visual serve ao aluno: mostre o diagrama ou trecho da tarefa atual e deixe a resposta oculta até a tentativa. Os planos completos e a fundamentação ficam para consulta durante a preparação.
+
+Os 27 estudos técnicos entram conforme os pré-requisitos e o foco da aula. Não é necessário percorrer toda a consulta em cada encontro. Registre trecho, andamento, apoio, evidência e próximo ajuste; confira novamente em outro dia. Os quatro momentos de prática são uma proposta flexível. Concluir a aula na conta não comprova domínio instrumental.
+
+O botão **Manual do professor** baixa o livro completo. Manual e apostila mantêm o respectivo material V5 integral no acervo final. Consulte [conteúdo](CONTENT.md), [fundamentação musical](CURRICULUM-RESEARCH.md) e [fundamentação pedagógica](TEACHING-RESEARCH.md).
 
 Você pode usar gratuitamente a instância compartilhada ou administrar uma instalação própria. Em ambos os casos, a conta começa como aluno e o papel de professor é liberado por um administrador.
 

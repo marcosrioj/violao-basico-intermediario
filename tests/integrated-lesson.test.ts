@@ -204,7 +204,7 @@ test('all 39 lessons retain their material and render only their canonical studi
   }
 });
 
-test('all teacher plans retain diagnosis, timing, adaptations and feedback inside their reading groups', () => {
+test('all teacher preparation notes retain diagnosis, adaptations and feedback without a second timeline', () => {
   for (const content of teacherContent.lessons) {
     const html = renderToStaticMarkup(
       React.createElement(TeacherDeepening, {
@@ -222,7 +222,6 @@ test('all teacher plans retain diagnosis, timing, adaptations and feedback insid
       content.observation,
       content.feedbackPrompt,
       content.transferCheck,
-      ...content.sequence.flatMap((stage) => [stage.title, stage.action]),
     ];
     for (const field of fields) {
       assert.ok(
@@ -230,6 +229,7 @@ test('all teacher plans retain diagnosis, timing, adaptations and feedback insid
         `${content.lessonId}: ${field}`,
       );
     }
+    assert.doesNotMatch(html, /Roteiro de 60 minutos/);
     assert.equal(
       content.sequence.reduce((sum, stage) => sum + stage.minutes, 0),
       60,

@@ -2,8 +2,28 @@
 
 Os livros do aluno e do professor incluem o conteúdo aprofundado e o acervo original integral. Este registro documenta geração, integridade e revisão gráfica da edição publicada.
 
+## Condução simplificada · 18/11/2026
+
+O manual do professor apresenta uma folha de condução por aula: cinco etapas que totalizam 60 minutos, o que observar, como ajustar a dificuldade e o que retomar. Um recorte visual de até quatro compassos usa os acordes, as durações e as métricas do mapa musical da própria aula. Na avaliação final, esse recorte é identificado como referência para observar.
+
+| Material | Páginas totais | Parte reformulada | Início do acervo integral | Páginas originais preservadas |
+| -------- | -------------: | ----------------: | ------------------------: | ----------------------------: |
+| Aluno | 371 | 241 | 242 | 130 |
+| Professor | 310 | 237 | 238 | 73 |
+
+O manual passou de 341 para 310 páginas. As instruções e práticas do aluno ficam na apostila, indicada por aula e página, e os roteiros docentes repetidos deram lugar a uma única sequência principal. Diagnóstico, demonstração, intervenções, adaptações, avaliação e respostas continuam disponíveis na seção de preparação. Os 27 estudos técnicos completos, suas 86 aplicações, as consultas, os mapas, o atlas e o acervo original permanecem. A apostila do aluno não foi alterada.
+
+A validação desta edição confirmou:
+
+- As 39 folhas de condução cabem em uma página cada, contêm todos os campos de `teacher-cues.json` e totalizam 60 minutos por encontro.
+- Os hashes dos oito arquivos de conteúdo e dos dois PDFs correspondem ao manifesto; os destinos internos e as referências impressas foram verificados.
+- As 237 páginas principais foram renderizadas e examinadas em folhas de contato, com inspeção ampliada de aulas iniciais, métricas variadas, retomadas e avaliação final. A checagem geométrica não encontrou texto fora dos limites adotados; a revisão visual não identificou cortes ou sobreposições.
+- Os fluxos de conteúdo decodificados e os pixels renderizados na escala 0,5 das 73 páginas do acervo docente são idênticos aos da edição anterior. O PDF do aluno conserva o mesmo hash, incluindo suas 130 páginas de acervo.
+
+As imagens de inspeção são artefatos temporários; os livros publicados e o manifesto são os entregáveis mantidos no repositório.
+
 <details>
-<summary>Escopo e geração reproduzível</summary>
+<summary>Histórico de 15/11/2026 e instruções de geração</summary>
 
 Verificação realizada em 15/11/2026. Os dois livros foram gerados a partir dos mesmos dados usados na aplicação e preservam os 13 módulos e as 39 aulas. Os 27 estudos técnicos agora estão integrados às aulas: a explicação completa aparece uma única vez, na primeira introdução, e as retomadas trazem o foco da aplicação e um vínculo com a página de consulta. O percurso reúne 86 aplicações, sendo 27 introduções e 59 retomadas. As oito consultas teóricas, os 19 mapas harmônicos e o atlas das 52 posições originais permanecem. O manual contém também as explicações e práticas do aluno, além dos planos docentes, intervenções, adaptações e rubrica.
 
@@ -25,16 +45,16 @@ python scripts/build-course-pdfs.py
 
 São necessárias as fontes DejaVu em `/usr/share/fonts/truetype/dejavu/`. As versões de ReportLab, pypdf, Pillow e PyMuPDF utilizadas estão fixadas em `scripts/requirements-pdf.txt`. O Poppler fornece `pdftoppm` e `pdfinfo` para inspeção complementar.
 
-O gerador sempre produz os dois livros. Ele verifica a cobertura de 13 módulos, 39 aulas, 27 estudos e os planos docentes de 60 minutos. O mapa canônico `lesson-journey.json` determina a ordem das aplicações. Cada estudo deve ter uma única introdução, aparecer dentro da aula correspondente e preceder suas retomadas. A paginação é repetida até que o sumário e as referências impressas convirjam. O gerador lê o acervo incorporado aos PDFs atuais de `materials/`, confere seus hashes e intervalos no manifesto e o preserva na nova geração. Usa uma pasta temporária de diagramação, removida ao terminar, e publica os dois livros somente em `materials/`, depois das verificações estruturais. Se o conteúdo, os PDFs publicados ou o manifesto mudarem durante a geração, a publicação é interrompida.
+Por padrão, o gerador produz os dois livros. Para alterações exclusivas na condução docente, execute `python scripts/build-course-pdfs.py --audience professor`. A geração parcial exige que as fontes compartilhadas não tenham mudado e preserva o livro não selecionado. O gerador verifica a cobertura de 13 módulos, 39 aulas, 27 estudos e os planos docentes de 60 minutos. O mapa canônico `lesson-journey.json` determina a ordem das aplicações. Cada estudo deve ter uma única introdução, aparecer dentro da aula correspondente e preceder suas retomadas. A paginação é repetida até que o sumário e as referências impressas convirjam. O gerador lê o acervo incorporado aos PDFs atuais de `materials/`, confere seus hashes e intervalos no manifesto e o preserva na nova geração. Usa uma pasta temporária de diagramação, removida ao terminar, e publica os livros selecionados somente em `materials/`, depois das verificações estruturais. Se o conteúdo, os PDFs publicados ou o manifesto mudarem durante a geração, a publicação é interrompida.
 
-`src/content/pdf-manifest.json` registra os hashes dos sete arquivos de conteúdo, os hashes dos PDFs e dos originais, os totais e as páginas de cada aula, estudo, consulta e mapa harmônico. O campo `studyLessons` identifica a aula de introdução de cada estudo. Os atalhos do aplicativo usam esse manifesto. Qualquer mudança editorial exige gerar novamente os dois livros e conferir o manifesto.
+`src/content/pdf-manifest.json` registra os hashes dos oito arquivos de conteúdo, os hashes dos PDFs e dos originais, os totais e as páginas de cada aula, estudo, consulta e mapa harmônico. A fonte `teacher-cues.json` é usada somente pelo manual do professor. O campo `studyLessons` identifica a aula de introdução de cada estudo. Os atalhos do aplicativo usam esse manifesto. Mudanças nas fontes compartilhadas exigem gerar novamente os dois livros; mudanças exclusivas em `teacher-cues.json` permitem gerar apenas o manual. Confira o manifesto após cada geração.
 
 A geração a partir dos PDFs atuais foi executada em uma cópia isolada do projeto, sem os arquivos antigos separados. As 712 páginas resultantes conservaram texto, pixels renderizados e referências de página idênticos aos livros publicados, incluindo as 203 páginas do acervo. Os hashes publicados foram conferidos e a pasta temporária ficou vazia ao final. Os PDFs atuais não precisaram ser substituídos, pois o conteúdo e a diagramação não mudaram.
 
 </details>
 
 <details>
-<summary>Integridade e revisão visual</summary>
+<summary>Histórico de 15/11/2026 · integridade e revisão visual</summary>
 
 ## Preservação e integridade
 

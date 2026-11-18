@@ -93,3 +93,13 @@ export interface TeacherEnrichment {
   transferCheck: string;
   sourceIds: string[];
 }
+
+/** Short working plan; full preparation remains available separately. */
+export interface TeacherCue {
+  lessonId: string;
+  sequence: { minutes: number; title: string; action: string }[];
+  watchFor: string;
+  adjust: string;
+  extend: string;
+  followUp: string;
+}

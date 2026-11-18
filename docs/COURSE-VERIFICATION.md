@@ -2,6 +2,17 @@
 
 Evidências de preservação do conteúdo e funcionamento do curso. Cada registro identifica sua revisão; os testes automatizados e a inspeção visual são resultados distintos.
 
+## Condução do encontro · 18/11/2026
+
+As 39 aulas têm um roteiro editorial de cinco etapas e 60 minutos, com observação, apoio, ampliação e retomada específicos. A avaliação final mantém sua distribuição própria. Os textos de trabalho somam 5.645 palavras, contra 15.093 no conjunto anterior de orientações e cronograma (incluindo títulos, sem IDs/fontes): cerca de 63% menos. Os dados originais permanecem preservados; o cronograma duplicado deixou de aparecer na preparação.
+
+- A apresentação abre na versão essencial de seis telas: objetivo, três práticas ilustradas, pergunta e conferência. O modo completo permanece disponível e respostas só aparecem por ação do professor.
+- Os apoios da demonstração foram selecionados por conteúdo nas 38 aulas de ensino. M12-A1 ganhou um recorte canônico de I1 (G 1,5 / D 1,5 / A 1); a avaliação final não introduz demonstração nova. A síntese da avaliação usa as seis dimensões da rubrica atual, sem importar a pontuação divergente do acervo antigo.
+- `npm run check`: lint, tipos, **259 testes** e build aprovados. Cobertura das 39 sínteses, duração, instruções essenciais visíveis, visuais, respostas ocultas, conteúdo preservado e separação dos dados docentes do catálogo cliente.
+- **36 verificações HTTP** aprovadas no build local, sem contas reais. O acesso anônimo aos planos e downloads continua bloqueado.
+- Manual atualizado: **310 páginas**, antes 341; cada condução ocupa uma página. A apostila do aluno e as 73 páginas do acervo docente permanecem intactas. Renderização, links e integridade estão em [PDF-VERIFICATION.md](PDF-VERIFICATION.md).
+- Revisão editorial independente e critérios de UI/UX, estilo, design, marca e PDF documentados no [sistema de design](DESIGN-SYSTEM.md). O PDF foi inspecionado visualmente; não houve navegador disponível para conferir interação e layout da aplicação em telas reais. Skills e testes não equivalem a certificação de eficácia pedagógica ou acessibilidade.
+
 ## Links e sessão inicial · 17/11/2026
 
 Links de navegação interna permanecem na mesma aba, incluindo menus, conta, índices e sequência de aulas. Consultas complementares e referências externas abrem outra aba. A distinção considera o contexto do link, não apenas seu destino. Início, laboratório e privacidade renovam a sessão antes da renderização e mostram a navegação conforme a conta e a matrícula. O início autenticado oferece o painel correspondente, sem repetir os passos de criação de conta.

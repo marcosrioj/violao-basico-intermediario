@@ -2,6 +2,17 @@
 
 Mostre uma tarefa por vez, com títulos curtos e controles claros. Use os tokens existentes e deixe a consulta completa em seções expansíveis. A identidade verde e creme, a legibilidade e o foco de teclado permanecem.
 
+<details>
+<summary>Condução do encontro · 18/11/2026</summary>
+
+O professor encontra um roteiro de trabalho de cinco etapas, com intervalos de tempo, uma ação curta por etapa e decisões visíveis: o que observar, como ajudar e o que retomar. Ampliação, preparação detalhada e fontes ficam em consulta. A avaliação final conserva sua distribuição própria; os tempos não são um cronômetro nem uma exigência adicional.
+
+A apresentação abre na versão essencial: objetivo, três instruções ilustradas, pergunta com resposta sob comando e conferência. O modo completo continua disponível. Diagramas são derivados dos acordes, pulsos e trechos existentes; não acrescentam uma segunda tarefa. Notas docentes não entram na projeção nem no catálogo cliente.
+
+Critérios de revisão: `content-priority`, `primary-action`, `progressive-disclosure`, `visual-hierarchy` e `keyboard-nav` da UI/UX Pro Max; semântica, foco e rótulos de `ui-styling`; tokens de `design-system`; voz direta de `brand` e composição de `design`. As buscas por redução de informação não retornaram correspondências específicas suficientes: a revisão usa as referências explícitas das skills, sem atribuir a elas uma certificação. O manual passa também por renderização e inspeção conforme a skill PDF.
+
+</details>
+
 `PageLink` distingue intenção: navegação interna mantém a mesma aba; consultas complementares usam `purpose="reference"` e abrem outra, assim como referências externas. O mesmo destino pode ter papéis diferentes: laboratório no menu é navegação; laboratório como apoio à aula é consulta. Nova aba tem aviso no título e na descrição acessível. Âncoras, filtros e downloads mantêm seu comportamento local. A revisão com UI/UX Pro Max considera previsibilidade do retorno e preservação do estado; a política segue a preferência do usuário.
 
 <details>

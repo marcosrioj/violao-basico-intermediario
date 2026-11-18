@@ -1,0 +1,1330 @@
+{
+  "lessons": [
+    {
+      "lessonId": "m1-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Afine, ajuste o apoio e peça quatro pulsações numa corda solta. Comece pelo Em e confira D e G separadamente."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre D nas cordas 4–1 por oito tempos; prepare G sem interromper a contagem."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Monte Em, D e G; teste uma corda por vez. Una I1–I4 e depois G–Em em R3–R4."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Percorra I → A → R → P → R → F com um ataque por compasso e contagem de apoio."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça outra tentativa de G–Em. Registre uma corda que melhorou e o apoio necessário para a troca."
+        }
+      ],
+      "watchFor": "D começa na 4ª corda; seus dois compassos somam oito tempos. Observe o som antes da velocidade.",
+      "adjust": "Professor conta; aluno toca D e acrescenta G depois. Ajuste um contato por vez; diante de dor, pare e reveja apoio e esforço.",
+      "extend": "Peça ao aluno a contagem inicial e a indicação da primeira corda de D.",
+      "followUp": "Em outro dia, reconstruir Em, D e G antes de conferir o diagrama; retestar G–Em no refrão."
+    },
+    {
+      "lessonId": "m1-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Confira D, G e Em e peça uma troca sem explicar novamente. Identifique em qual direção a contagem para."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Compare Em–D com um tempo extra e com pulso mantido. Peça que o aluno escolha a passagem que permite continuar cantando."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Isole R4–R5 e depois una R1–R8. Prepare os dedos enquanto a contagem continua."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque o roteiro inteiro; use quatro ataques apenas onde a troca estiver estável."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Reteste o trecho difícil após outra passagem. Registre a duração do compasso e uma orientação para a próxima tentativa."
+        }
+      ],
+      "watchFor": "Quatro tempos em cada compasso, D sem as cordas 6 e 5 e retomada após uma falha.",
+      "adjust": "Use um ataque por compasso e diga o próximo acorde. Reduza os ataques antes de aumentar a velocidade.",
+      "extend": "Retire as indicações aos poucos, mantendo somente a contagem inicial.",
+      "followUp": "Retomar G–Em em outra passagem conhecida e conferir se a preparação funciona sem acrescentar tempo."
+    },
+    {
+      "lessonId": "m1-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Peça a ordem I, A, R, P e F com a cifra aberta. Combine uma mudança de intensidade e o gesto de corte."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Toque a ponte suave e mais presente com o mesmo pulso. Mostre P8 → R1 e o preparo do final."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Ensaie a ponte, seu retorno e os dois compassos finais de D. Comece também por uma seção intermediária."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Faça uma passagem completa com menos comandos e intensidade planejada; mantenha um ataque por compasso se necessário."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça ao aluno que descreva o contraste e conduza o corte. Registre uma conquista e um ajuste."
+        }
+      ],
+      "watchFor": "Forma completa, contraste audível sem acelerar e dois compassos de D sustentados antes do corte.",
+      "adjust": "Aponte cada seção e mantenha a cifra visível; retire apenas comandos que o aluno já assume.",
+      "extend": "O aluno anuncia a próxima seção e conduz o final de um duo.",
+      "followUp": "Em outro dia, começar pela ponte e conduzir retorno e final sem nova demonstração."
+    },
+    {
+      "lessonId": "m2-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Retome G e compare os diagramas de C, Am e F parcial. Identifique Faz Chover do Toque no Altar."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre C–Am movendo só o anelar. Toque F nas cordas 4, 3 e 2: xx321x, sem pestana."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Confira as três cordas de F e pratique F–C; depois una Am–F–C–G."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Percorra a forma inteira com um ataque por compasso, mantendo as posições de base."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça F após outro trecho. Registre a seleção de cordas e o movimento que facilitou C–Am."
+        }
+      ],
+      "watchFor": "F sem a 1ª corda solta; C–Am com dois contatos mantidos e quatro tempos por acorde.",
+      "adjust": "Professor toca o ciclo; aluno entra apenas no F durante seus quatro tempos. Acrescente as trocas gradualmente.",
+      "extend": "Peça que explique quais contatos permanecem na troca C–Am, sem exigir outro desenho de acorde.",
+      "followUp": "Retomar o F no meio da forma completa e conferir as cordas antes de aumentar os ataques."
+    },
+    {
+      "lessonId": "m2-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Peça quatro tempos em Am e depois a contagem 1 e 2 e 3 e 4 e."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Compare quatro e oito ataques no mesmo andamento. Mostre a subida curta e leve no F parcial."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Conte oito subdivisões com cordas abafadas; passe a Am e acrescente uma troca do ciclo."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque Am–F–C–G na forma completa; retorne a quatro ataques onde a subdivisão atrapalhar a troca."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Repita um compasso mantendo a duração. Registre se a última subida deixou espaço para a próxima descida."
+        }
+      ],
+      "watchFor": "Oito ataques cabem nos mesmos quatro tempos; a troca não deve chegar antes do compasso seguinte.",
+      "adjust": "Professor marca os números; aluno fala os e. Estabilize um acorde antes de juntar as trocas.",
+      "extend": "Omita um ataque combinado mantendo o movimento e a contagem.",
+      "followUp": "Aplicar o padrão a D para verificar se o ritmo funciona fora do ciclo decorado."
+    },
+    {
+      "lessonId": "m2-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Marque A, R e P na cifra e peça que o aluno antecipe a próxima seção."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Toque o ciclo suave e mais presente com o mesmo metrônomo. Demonstre também a volta à intensidade inicial."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Ensaie a mudança de seção num acorde; depois recoloque Am–F–C–G."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Percorra a música com dinâmica planejada e final escrito. A densidade de ataques deve caber na coordenação atual."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça que identifique onde houve contraste e confira se o andamento se manteve."
+        }
+      ],
+      "watchFor": "Diferença audível entre as partes, sem acelerar nem depender de comandos a cada compasso.",
+      "adjust": "Mantenha quatro ataques nas duas seções e varie apenas a intensidade.",
+      "extend": "Escolha um compasso com menos ataques e peça ao aluno que explique seu lugar na forma.",
+      "followUp": "Retomar a ponte e voltar suavemente à seção seguinte, sem nova demonstração."
+    },
+    {
+      "lessonId": "m3-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Retome os acordes conhecidos e marque com palmas 1-la-li 2-la-li."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre P1: Am no 1 e G no 2. O clique representa a semínima pontuada, com três subdivisões por pulso."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Conte o ciclo principal e depois P1–P2, diferenciando um acorde por compasso das duas mudanças previstas em P."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque a forma essencial de Me Derramar com ataques nas mudanças e dois pulsos por compasso."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça que explique como quatro acordes cabem em dois compassos do pré-refrão."
+        }
+      ],
+      "watchFor": "Dois apoios em 6/8; Am–G muda no segundo pulso, sem transformar as seis subdivisões em seis pulsos principais.",
+      "adjust": "Professor toca a harmonia; aluno marca só os dois apoios e acrescenta la-li depois.",
+      "extend": "O aluno conduz P1–P2 e localiza cada entrada sem indicação verbal.",
+      "followUp": "Retomar o mesmo agrupamento no ciclo principal, comparando a duração dos acordes."
+    },
+    {
+      "lessonId": "m3-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Peça seis subdivisões em Em e confira a corda grave permitida de cada acorde."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre p–i–m / a–m–i. Em P1, prepare G para o a do segundo pulso, sem acrescentar outro baixo."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Dedilhe R1–R4; depois isole P1–P2, separando a ordem dos dedos da troca harmônica."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Percorra o roteiro e mude o acorde após p–i–m nas passagens previstas do pré-refrão."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça novamente a troca após tocar o refrão. Registre uma prioridade: dedos, baixo ou entrada."
+        }
+      ],
+      "watchFor": "Seis colcheias em dois grupos de três; polegar na corda do acorde e troca no a do segundo grupo.",
+      "adjust": "Toque só p e a nos apoios; acrescente os outros dedos gradualmente, mantendo 1-la-li 2-la-li.",
+      "extend": "Toque um baixo incorreto e peça ao aluno que o reconheça e mostre a corda adequada.",
+      "followUp": "Retomar o pré-refrão depois de outra seção para verificar a troca sem depender de repetições seguidas."
+    },
+    {
+      "lessonId": "m3-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Leia a forma e marque P2 → R1. Combine a textura que o aluno consegue sustentar."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Compare batida simples e dedilhado na mesma passagem; mostre a entrada no refrão e o final."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Ensaie a ligação P2–R1 e os quatro compassos finais sem reiniciar por uma nota imperfeita."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Apresente a forma inteira com voz de apoio; preserve os dois pulsos e recupere pequenas falhas."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Registre pulso, forma, cordas e recuperação, incluindo o apoio combinado. Não cobre pestana ou transposição."
+        }
+      ],
+      "watchFor": "Entrada no refrão, final estável e capacidade de continuar após uma falha.",
+      "adjust": "Professor aponta as seções e sustenta a voz; use a textura mais estável para a execução completa.",
+      "extend": "O aluno dá a contagem inicial e conduz o final enquanto alguém acompanha.",
+      "followUp": "No próximo encontro, pedir P2–R1 antes de demonstrar novamente; ajustar o apoio após a tentativa."
+    },
+    {
+      "lessonId": "m4-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Localize F na 1ª corda/casa 1 de Dm. Distinga corda, casa e dedo na tablatura curta."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre o semitom entre casas vizinhas; conte Dm por três tempos e G no quarto em A4."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Alterne F–Dm e pratique Dm(3) G(1). Experimente palheta alternada numa corda em exercício separado."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque Sonda-me na versão de base, mantendo 3+1 e os cinco compassos da ponte, ainda sem inversões."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça outra divisão 3+1 da cifra e uma explicação da nota F em Dm."
+        }
+      ],
+      "watchFor": "G entra no quarto tempo; a leitura da tablatura informa corda e casa, sem inventar durações.",
+      "adjust": "Professor conta; aluno toca só o G do tempo 4 e acrescenta Dm depois.",
+      "extend": "Localize outro par de casas vizinhas na mesma corda e explique o semitom.",
+      "followUp": "Retomar a divisão 3+1 em outro ponto escrito, conferindo a duração antes de aumentar os ataques."
+    },
+    {
+      "lessonId": "m4-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Peça C e Dm e ouça a diferença antes de apresentar os números dos intervalos."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Toque C–E e D–F numa corda; depois C–E–G e D–F–A. Diferencie notas distintas de quantidade de cordas."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Conte deslocamentos: quatro semitons de C a E, três de D a F. Compare os sons e as tríades."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque a forma inteira e localize C em P1 e Dm em P4, mantendo o pulso."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça uma explicação curta acompanhada de som; não considere a resposta verbal como prova de escuta."
+        }
+      ],
+      "watchFor": "Ligação entre fundamental, terça, distância e qualidade maior ou menor.",
+      "adjust": "Marque a casa inicial e conte só os movimentos. Ofereça duas respostas enquanto o professor toca os intervalos.",
+      "extend": "Encontre E–G em Em e compare sua terça com os exemplos da aula.",
+      "followUp": "Retomar Em sem acrescentar acordes à canção. Consultar diminuta e aumentada em R3 como exemplos separados."
+    },
+    {
+      "lessonId": "m4-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Recupere as notas de C maior e peça três notas de C, Dm e G."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Monte D–F–A com notas alternadas da escala. Mostre B–D–F apenas como exemplo teórico, fora da cifra."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Construa uma tríade por vez e leia os graus de P1–P5 enquanto o professor toca."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Execute a canção e peça que o aluno identifique um grau da ponte sem interromper a forma."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça que reconstrua Dm a partir das notas e explique por que pertence ao campo de C."
+        }
+      ],
+      "watchFor": "Notas da escala formam os acordes; T–T–S não se aplica diretamente aos nomes dos acordes.",
+      "adjust": "Restrinja a construção a C, Dm e G e mantenha a tabela visível; não exija desenho de B diminuto.",
+      "extend": "Construa Am com A–C–E e explique sua posição vi.",
+      "followUp": "Localizar Am na ponte em outro dia e reconstruir suas notas antes de conferir a tabela."
+    },
+    {
+      "lessonId": "m5-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Afine, retome A aberto e confira apoio e esforço antes da primeira pestana do curso."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Monte Bm x24432 em etapas; confira as cordas 5 e 1. Mostre como liberar a pressão entre tentativas."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Faça tentativas curtas de A–Bm em R1.2–R1.3, com quatro tempos em cada acorde."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque Renova-me lentamente, com um ataque por mudança e contagem de apoio."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça Bm depois de outra passagem e registre clareza por corda e apoio necessário."
+        }
+      ],
+      "watchFor": "Baixo B e contatos do indicador, sem usar força máxima ou confundir um acerto isolado com domínio.",
+      "adjust": "Professor acompanha e combina entradas só de Bm. Ajuste um contato por vez; diante de dor, interrompa e reveja o apoio.",
+      "extend": "Faça A–Bm com menos comando verbal, no mesmo andamento confortável.",
+      "followUp": "Reconstruir Bm após tocar outro trecho; consolidar a passagem antes de aumentar a velocidade."
+    },
+    {
+      "lessonId": "m5-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Retome Bm e aponte a corda grave permitida dos acordes de Poderoso Deus."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Arpeje D, Bm e G; conte os oito tempos de Bm e mostre a preparação da saída."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Comece no segundo compasso de Bm e emende G; depois acrescente o primeiro compasso e D."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Percorra a forma inteira com ataques leves, baixo correto e pressão relaxada na troca."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Compare Bm isolado e Bm–G no ciclo. Registre a condição em que a saída funcionou."
+        }
+      ],
+      "watchFor": "Baixo na corda certa e dois compassos completos de Bm antes de G.",
+      "adjust": "Conte em voz alta e toque apenas os baixos nas entradas antes de acrescentar os acordes.",
+      "extend": "Separe as notas dos acordes com a técnica já estudada, conservando suas durações.",
+      "followUp": "Retomar A–Bm de Renova-me e comparar a mesma posição nas duas músicas."
+    },
+    {
+      "lessonId": "m5-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Conte os nove compassos de R1 com a cifra aberta. A quantidade de compassos não muda a métrica para 9/8."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre R1 ligado à seção seguinte e Em(2) A(2) em R2.6, chegando a D."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Ensaie a fronteira após o nono compasso e a troca Em–A; localize F# e C# separadamente."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque Renova-me inteira com Bm e final combinado; mantenha o andamento já estável."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Registre a forma e a saída da pestana. Peça uma explicação curta com a cifra à vista."
+        }
+      ],
+      "watchFor": "Nove compassos em R1, Em–A nos tempos escritos e cordas 5 e 1 claras no Bm.",
+      "adjust": "Professor aponta os compassos; aluno toca nas mudanças, com tempo suficiente para preparar Bm.",
+      "extend": "Encontre F# no Bm e explique os acidentes da escala de D.",
+      "followUp": "Em outro dia, tocar R1 e a seção seguinte sem receber antecipadamente a contagem dos compassos."
+    },
+    {
+      "lessonId": "m6-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Retome Sonda-me na versão de base e localize E–F na 4ª corda, casas 2–3."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Toque C–C#/Db–D na 2ª corda, casas 1–3. Mostre o C comum aos acordes C e F."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Percorra notas numa corda e depois escute C–F. Diferencie nome de nota, acorde e grafia no contexto."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Execute a forma de base completa, sem introduzir as inversões das aulas posteriores."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça outra ocorrência de E–F e registre a distância e a nota comum que o aluno encontrou."
+        }
+      ],
+      "watchFor": "Semitom entre casas vizinhas; # eleva e b abaixa um semitom, com grafia dependente do contexto.",
+      "adjust": "Restrinja a tarefa às casas 1–3 da 2ª corda, com nomes visíveis, antes de juntar ao acorde.",
+      "extend": "Após T4-E1, use ataques alternados no percurso, sem exigir aumento de velocidade.",
+      "followUp": "Retomar outra ocorrência de E–F e reconhecer o C comum após tocar uma passagem diferente."
+    },
+    {
+      "lessonId": "m6-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Recupere dois pulsos em 6/8 e marque os retornos da forma ampliada de Me Derramar."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Toque E–F–F# na 1ª corda e localize F# em D. A ampliação muda a forma, não acrescenta acordes."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Construa um percurso curto de G maior e confira seus graus; pratique a leitura dos retornos separadamente."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Execute a forma ampliada com dedilhado, mantendo os dois grupos de três subdivisões."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça a diferença entre C maior e G maior e registre uma prioridade de execução para retestar."
+        }
+      ],
+      "watchFor": "F# dentro de D, pulso pontuado e retornos da forma; corrija um critério por tentativa.",
+      "adjust": "Deixe escala e mapa visíveis; use ataques nas mudanças com contagem do professor.",
+      "extend": "Após T4-E2, toque um percurso curto com alternância entre cordas e volte ao dedilhado da música.",
+      "followUp": "Comparar C maior e G maior pela nota que muda; retomar um retorno da forma sem nova demonstração."
+    },
+    {
+      "lessonId": "m6-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Peça o ciclo e ouça sua chegada antes de escolher um centro. Evite concluir apenas pelo primeiro acorde."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Compare Am e C: mesmas notas, leituras em graus diferentes. Nomear outro centro não altera as alturas tocadas."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Compare escala e campo; justifique uma chegada ouvindo o trecho e olhando as notas."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque o roteiro ampliado nas alturas originais. Transposição, se demonstrada, fica somente no exercício autoral R4."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça uma justificativa curta de centro e uma evidência sonora; aceite dúvida quando o trecho não resolver a análise."
+        }
+      ],
+      "watchFor": "Distinção entre coleção de notas, centro e transposição, sem exigir certeza além da evidência.",
+      "adjust": "Compare apenas as notas comuns e a diferença entre mudar nomes de graus e mudar alturas.",
+      "extend": "Em exercício autoral separado, compare encerramentos em Am e C e descreva a sensação de apoio.",
+      "followUp": "Retomar Me Derramar e justificar G como centro pelo contexto musical estudado."
+    },
+    {
+      "lessonId": "m7-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Retome Bm x24432 e compare acorde isolado e Bm–G em dois tempos cada."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre o Bm longo de Poderoso Deus e o Bm de R1 na canção de Fernandinho; a posição é a mesma."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Pratique a fronteira Bm–G com contagem contínua, liberando a pressão na troca."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque Faz Chover de Fernandinho inteira com ataques nas mudanças e andamento ajustado ao aluno."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Registre separadamente clareza do Bm e momento da saída. Reteste após uma passagem conhecida."
+        }
+      ],
+      "watchFor": "Baixo B na 5ª corda/casa 2 e saída para G após dois tempos, sem exigir força máxima.",
+      "adjust": "Professor sustenta o acompanhamento; aluno toca somente as entradas nos tempos 1 e 3.",
+      "extend": "Retire a indicação verbal de G e deixe o aluno conduzir a troca pela contagem.",
+      "followUp": "Alternar uma passagem de Renova-me e o refrão atual, conservando as diferentes durações de Bm."
+    },
+    {
+      "lessonId": "m7-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Ouça A–Bm e Bm–G separadamente; escolha a direção que precisa de apoio."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre a preparação de G e a ligação A2–A3, sem antecipar a saída de Bm."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Ensaie Bm–G em dois tempos cada; acrescente o compasso anterior quando a fronteira funcionar."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque o roteiro inteiro com ataques leves e quatro pulsações por compasso; continue após uma nota imperfeita."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Registre direção da troca, andamento e apoio que funcionaram; escolha uma condição para repetir."
+        }
+      ],
+      "watchFor": "Entrada e saída da pestana nos tempos escritos, sem aumentar simultaneamente andamento, força e batida.",
+      "adjust": "Use um ataque por acorde e contagem do professor; reduza o andamento do trecho antes de voltar à forma.",
+      "extend": "Retire a ajuda verbal durante um compasso e confira a próxima entrada.",
+      "followUp": "No encontro seguinte, começar pela direção menos praticada para verificar retenção."
+    },
+    {
+      "lessonId": "m7-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Peça a leitura falada de S3 e marque quatro pulsações visíveis."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Aponte Bm no 1, G no 2 e A no 4; G ocupa os tempos 2 e 3. Compare com o 2+2 do refrão."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Estabilize as entradas com palmas; depois toque S3 e emende o A sustentado de S4."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Execute a forma completa com Bm e as três entradas, mantendo o compasso de quatro tempos."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça a soma das durações e registre se S3–S4 continuou sem tempo extra."
+        }
+      ],
+      "watchFor": "Entradas em 1, 2 e 4; o tempo 3 continua mesmo sem outra mudança.",
+      "adjust": "Professor toca os acordes e aluno indica as entradas; acrescente a pestana após estabilizar o ritmo.",
+      "extend": "Compare a adaptação com a antecipação da gravação, identificando qual versão está sendo praticada.",
+      "followUp": "Ler outro compasso de durações diferentes: somar os tempos antes de tocar."
+    },
+    {
+      "lessonId": "m8-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Peça Sonda-me sem revisão prévia e observe o que foi retido na versão de base."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre a ponte de cinco compassos e seu retorno. Cante C–B–A–G apenas como antecipação das próximas inversões."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Pratique A4 com Dm(3) G(1) e P1–P5, sem encurtar a ponte para quatro compassos."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Percorra a forma inteira com os acordes de base e ataques nas mudanças."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça que antecipe uma seção e registre o apoio ainda necessário para conservar a forma."
+        }
+      ],
+      "watchFor": "Retenção do 3+1, cinco compassos da ponte e orientação nos retornos.",
+      "adjust": "Mantenha o mapa aberto e indique as seções; reteste uma fronteira depois de outra passagem.",
+      "extend": "O aluno conduz um colega pela ponte sem dizer todos os acordes.",
+      "followUp": "Voltar à ponte depois de outra música e conferir a entrada antes de demonstrar novamente."
+    },
+    {
+      "lessonId": "m8-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Peça G/B apenas no baixo e confira se a barra indica a nota grave, não uma nova fundamental."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Toque C–B–A–G sozinho e com acordes. Apresente G/B, C/E e Am7/G nos diagramas previstos."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Una R1–R4 começando pelos baixos; acrescente as outras cordas sem interromper a linha."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Execute a versão com baixos, conservando compassos e durações já aprendidos."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça C/E em outra passagem e registre a nota grave correta e a continuidade da descida."
+        }
+      ],
+      "watchFor": "Baixos C–B–A–G audíveis; Am7/G acrescenta G à tríade de Am.",
+      "adjust": "Professor toca os acordes e aluno só os baixos nas entradas corretas; acrescente as outras cordas gradualmente.",
+      "extend": "Após T5-E1, compare sustentação e separação no exercício autoral; preserve as durações ao voltar à cifra.",
+      "followUp": "Reconhecer C/E depois de outra seção e explicar novamente a regra da barra."
+    },
+    {
+      "lessonId": "m8-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Peça as notas de C/E e Am7/G; distinga inversão da tríade e acréscimo da sétima."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Arpeje C/E e G7/F nomeando o baixo. Mostre G7/F, F/A, C/G e Gsus4 a partir dos desenhos conhecidos."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Confira o baixo de A3, R1–R2 e B3; isole qualquer corda grave que soe indevidamente."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque a versão completa, com estrofe suave e refrão mais presente, preservando a cifra."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça a explicação de uma tríade invertida e uma tétrade; registre pulso e clareza dos baixos."
+        }
+      ],
+      "watchFor": "Fundamental e nota mais grave são informações distintas; quantidade de cordas não define quantidade de notas.",
+      "adjust": "Compare só C/E e Am7/G, com mapa aberto. Ajuste ataque ou abafamento sem mudar o acorde.",
+      "extend": "Use o exercício autoral de pizzicato para comparar duração curta e som sustentado.",
+      "followUp": "Retomar G7/F em B3 após outra seção, recuperando as notas e a leitura do baixo."
+    },
+    {
+      "lessonId": "m9-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Compare a tríade de F com Fmaj7. Explique que Fmaj7 é a redução didática adotada, não outro nome para Fadd9."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Acrescente E na 1ª corda solta e mostre V1 como Fmaj7(2) Am7(2)."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Ensaie V1–V2 e depois R1–R4; compare as durações antes de juntar ao dedilhado."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque o mapa completo, identificando Em7 no meio do refrão e G no final."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça a diferença entre maj7 e 7 e registre clareza da nota acrescentada e momento da troca."
+        }
+      ],
+      "watchFor": "E em Fmaj7; mudanças nos tempos 1 e 3 de V1, sem confundir símbolo e ritmo.",
+      "adjust": "Use um ataque por mudança; conte 2+2 e confira as quatro notas do acorde antes de aumentar a textura.",
+      "extend": "Compare Am7 e Em7, nomeando suas sétimas menores e ouvindo a cor dos acordes.",
+      "followUp": "Reconstruir Dm7 como D–F–A–C depois de tocar outra passagem."
+    },
+    {
+      "lessonId": "m9-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Confira o baixo de Fmaj7 e Am7 e peça quatro pulsos com oito subdivisões."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre p–i–m–a / p–i–m–a; o segundo p cai no tempo 3 e já toca Am7."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Toque primeiro os baixos de V1 nos tempos 1 e 3; acrescente os dedos e una V2."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Aplique o padrão à forma completa com uma única mudança de dinâmica; preserve a duração de Fmaj7."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça o mesmo 2+2 em outros dois acordes conhecidos e registre a entrada do segundo polegar."
+        }
+      ],
+      "watchFor": "Oito colcheias em quatro pulsos; troca na quinta colcheia, sem dobrar a duração do acorde.",
+      "adjust": "Use só ataques em 1 e 3; reduza o andamento enquanto estabiliza a troca.",
+      "extend": "Após T4-E3, compare arpejo com palheta e dedilhado em exercício separado, mantendo o padrão da música.",
+      "followUp": "Retomar V1–V2 em outro dia e ouvir se a troca continua no tempo 3."
+    },
+    {
+      "lessonId": "m9-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Toque R1–R4 só com acompanhamento e combine um espaço curto com quem canta."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre uma resposta que chega a D sobre Dm7 e retorna à base. Compare com uma chegada suspensa."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Crie duas ou três notas e uma pausa; fixe a chegada e o retorno antes de experimentar ligado ou vibrato."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Complete a forma, colocando a resposta apenas no espaço combinado e deixando os demais livres."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça que explique a chegada e registre o retorno à base. Demonstre as novidades de M10-A1 sem cobrar domínio antecipado."
+        }
+      ],
+      "watchFor": "Nota de chegada adequada ao acorde, espaço da voz respeitado e retorno no instante combinado.",
+      "adjust": "Use uma nota do acorde, silêncio e retorno à base; ensaie essa unidade antes de ornamentar.",
+      "extend": "Após T5-E2 ou T6-E1, compare duas articulações da mesma frase sem acrescentar notas.",
+      "followUp": "Criar outra chegada sobre Am7, conservando a mesma duração e o espaço da resposta."
+    },
+    {
+      "lessonId": "m10-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Retome Bm e confira as fundamentais das novas famílias de C#m e F#m; monte E aberto."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Compare Bm–C#m e Em–F#m; depois C#m–C#7, destacando E e E#."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Dedique o bloco técnico às formas menores e à troca C#m–C#7–F#m, conferindo cada corda."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque Rompendo em Fé em A com ataques nas mudanças, ainda sem os baixos invertidos de M10-A3."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça que identifique a fundamental e explique uma mudança de forma; registre onde precisa consolidar."
+        }
+      ],
+      "watchFor": "C#7 preservado com C#–E#–G#–B; deslocar uma forma é diferente de alterar sua estrutura.",
+      "adjust": "Professor conduz a forma; aluno trabalha uma entrada móvel por vez, com relaxamento entre tentativas.",
+      "extend": "Após T8-E1, localize outra ocorrência da fundamental sem exigir todas as formas CAGED.",
+      "followUp": "Retomar Bm em repertório anterior e explicar a família usada para chegar a C#m."
+    },
+    {
+      "lessonId": "m10-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Ouça C#7–F#m e peça a nota de chegada antes de apresentar a função harmônica."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Destaque E#–F# e compare com Bm–E–A. Use E# como terça de C#, embora soe como F."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Toque e cante as duas chegadas; diferencie resolução local em F#m e chegada principal em A."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Execute a canção e reconheça B6 sem interromper o pulso."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça o acorde de preparação, seu alvo e uma evidência sonora; registre execução e explicação separadamente."
+        }
+      ],
+      "watchFor": "C#7 prepara F#m; uma tonicização local não comprova mudança permanente de tonalidade.",
+      "adjust": "Professor toca as harmonias e aluno executa somente E#–F# numa corda.",
+      "extend": "Após T6-E2, crie apogiatura em exercício separado e diferencie ornamento melódico de função harmônica.",
+      "followUp": "Comparar novamente ii–V–I de A com C#7–F#m, justificando as duas chegadas."
+    },
+    {
+      "lessonId": "m10-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Retome C#7–F#m e leia D/A e A/C# com os baixos indicados."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre E#–F#; compare A e G/A em R4. Na suspensão Esus4–E, demonstre A–G# em exercício separado."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Confira notas, baixo e destino de cada passagem antes de nomear sua função."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque o arranjo completo com a cifra aberta e explique uma alteração local depois da execução."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Registre uma explicação sustentada pelo som e uma passagem que precisa de apoio."
+        }
+      ],
+      "watchFor": "G/A não é simples inversão de G: A não pertence à tríade G–B–D.",
+      "adjust": "Concentre-se em D/A e A/C# e use ataques nas mudanças; depois acrescente a comparação harmônica.",
+      "extend": "Após T8-E2, confira outra posição do mesmo acorde em exercício separado antes de aplicá-la.",
+      "followUp": "Comparar uma inversão de Sonda-me com a alteração estrutural de C#7."
+    },
+    {
+      "lessonId": "m11-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Recupere dois pulsos em 6/8 e localize B, C#, D# e F# nas cordas graves."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Compare B–C# na mesma família e F# em outra. Destaque o quarto acorde da estrofe e do refrão."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Monte as posições previstas e pratique B–F#; confira baixo, contato e esforço em cada mudança."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque Ousado Amor em F#, com um ataque por compasso e leitura apoiada."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça as duas terminações de ciclo e registre a posição que ainda exige preparação."
+        }
+      ],
+      "watchFor": "Fundamentais e cordas corretas, quarto acorde da seção e dois pulsos mantidos mesmo com textura simples.",
+      "adjust": "Professor acompanha; aluno toca entradas isoladas com pausas de ajuste entre tentativas, sem forçar a pressão.",
+      "extend": "Após T8-E2, localize uma segunda região de um acorde compreendido, usando posição alcançável.",
+      "followUp": "Comparar C#m de Rompendo em Fé com a família menor usada em D#m."
+    },
+    {
+      "lessonId": "m11-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Retome p–i–m–a–m–i de Me Derramar e confira o baixo das posições fechadas."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre B–F# só com baixos e depois com o padrão completo. Demonstre uma textura simples mantendo o 6/8."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Prepare cada pestana em silêncio; toque o baixo e complete o dedilhado, reduzindo gradualmente o tempo de preparação."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Percorra a forma inteira; nas passagens difíceis, preserve os dois pulsos com ataques simples."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Registre primeiro baixo, continuidade e apoio utilizado. Uma nota omitida orienta o próximo recorte, sem interromper toda a música."
+        }
+      ],
+      "watchFor": "Seis colcheias em dois grupos de três, com baixo correto e preparação de F# antes da entrada.",
+      "adjust": "Use um ataque por pulso ou mudança. Evite volume forte quando a mão dos acordes estiver tensa.",
+      "extend": "Compare palheta e dedilhado apenas no estudo T4-E3, preservando o padrão escolhido para a canção.",
+      "followUp": "Retomar o padrão em Me Derramar e comparar a mesma organização com os acordes abertos."
+    },
+    {
+      "lessonId": "m11-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Toque dois ciclos e peça que o aluno identifique estrofe ou refrão pelo quarto acorde."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre o ciclo em duas intensidades e volte ao nível inicial, mantendo o 6/8."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Planeje a dinâmica das repetições da ponte e combine sinais; ensaie também começando pelo refrão."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque a forma inteira em F#, recuperando pequenas falhas e chegando ao final escrito."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Registre reconhecimento das seções, contraste e continuidade; peça uma justificativa baseada no trecho ouvido."
+        }
+      ],
+      "watchFor": "Dinâmica sem mudar o 6/8: B encerra o ciclo da estrofe, F# o do refrão. Um acorde isolado não comprova o centro.",
+      "adjust": "Use duas intensidades contrastantes e indicações do professor na ponte.",
+      "extend": "O aluno conduz a dinâmica de um duo com gestos combinados.",
+      "followUp": "Começar pelo refrão, sem tocar a estrofe antes, e conduzir o final."
+    },
+    {
+      "lessonId": "m12-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Leia a ordem de Preciso de Ti e retome A–F#m e C#m–Bm antes de juntar as seções."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Marque oito colcheias e entradas no 1, e de 2 e 4: durações 1,5 + 1,5 + 1."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Estabilize o ritmo sem acordes; depois una a troca e pratique uma ligação com os compassos anterior e seguinte."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Reserve o bloco de canção para a forma escolar inteira, lenta e com apoio; preserve F e G naturais."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Registre uma entrada entre pulsos e um ponto de retomada. Combine a prática semanal de 18 minutos por dia desta aula."
+        }
+      ],
+      "watchFor": "Entradas e durações corretas, orientação nos retornos e recuperação sem reiniciar toda a música.",
+      "adjust": "Professor conduz a harmonia enquanto o aluno marca as entradas; na música, use ataques nas mudanças.",
+      "extend": "Após T8-E3, identifique notas comuns entre posições conhecidas sem mudar automaticamente o arranjo.",
+      "followUp": "Retomar uma fronteira de seção fora da ordem habitual para conferir a leitura do mapa."
+    },
+    {
+      "lessonId": "m12-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Ouça Em7–Cmaj7–D–Em7 e peça ao aluno que encontre o repouso antes de nomear o modo."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Toque a célula com apoio em E e compare o refrão; só então relacione a célula a E eólio."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Compare as notas de Em7 e Cmaj7. Separe coleção de notas e função do trecho ouvido."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Execute A Ele a Glória inteira e perceba a passagem por G no refrão, sem transpor a canção."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça uma evidência de apoio em E e registre dúvidas; um ciclo não comprova que toda a música é modal."
+        }
+      ],
+      "watchFor": "Distinção entre coleção, centro e chegada local, sustentada pela escuta.",
+      "adjust": "Professor toca; aluno escolhe entre duas notas de apoio e explica sua percepção.",
+      "extend": "Em frase autoral separada, use ornamento preparado em T6-E2 e resolva em E.",
+      "followUp": "Comparar Am e C de M6-A3; consultar R6 para G maior relativo, E maior paralelo e os demais modos."
+    },
+    {
+      "lessonId": "m12-a3",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Retome Preciso de Ti e confira apenas os baixos acrescentados pela versão indicada."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Compare C em F e C# em A; toque F–G–A e relacione bVI–bVII–I às fundamentais."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Ensaie J e as partes F1 e F2 com os baixos selecionados; diferencie acorde emprestado e mudança de tonalidade."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Execute a forma completa em A, preservando F e G naturais e as durações do mapa."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça uma evidência de empréstimo e registre separadamente execução das posições e explicação dos graus."
+        }
+      ],
+      "watchFor": "F e G como bVI e bVII em A; empréstimo não exige uma nova escala permanente.",
+      "adjust": "Professor toca; aluno compara C natural e C# separadamente antes de voltar aos acordes.",
+      "extend": "Após T8-E3, experimente uma ligação curta entre notas em exercício autoral, mantendo a versão principal intacta.",
+      "followUp": "Comparar o empréstimo com C#7 de M10; revisar em R6/R7 C frígio: C–Db–Eb–F–G–Ab–Bb, relativo a Ab maior."
+    },
+    {
+      "lessonId": "m13-a1",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Confira Dadd9, Bm7, D/F#, A/C# e Asus4 nos diagramas de Bondade de Deus em D."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Conte V1–V4 como quatro, dois, quatro, quatro tempos. Mostre V3 como 3+1 e V7 como 1+1+2, preservando os baixos."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Pratique a saída do compasso curto junto do seguinte; some os eventos antes de tocar."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Percorra a forma inteira com ataques nas mudanças, incluindo os dois tempos de V2 e P2.8."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Peça a saída de P2 e uma explicação das durações de V7; registre forma antes de ornamentação."
+        }
+      ],
+      "watchFor": "Compassos 2/4 sem completar quatro tempos e mudanças internas nos lugares indicados.",
+      "adjust": "Professor mantém os acordes; aluno conta e sinaliza cada mudança de compasso.",
+      "extend": "O aluno conduz a contagem de um colega e explica V7 pelas durações dos eventos.",
+      "followUp": "Retomar a saída de P2 sem tocar a estrofe antes, verificando outro compasso curto."
+    },
+    {
+      "lessonId": "m13-a2",
+      "sequence": [
+        {
+          "minutes": 10,
+          "title": "Retomar",
+          "action": "Combine sinais de entrada, repetição e corte; defina o ponto de retomada em caso de falha."
+        },
+        {
+          "minutes": 8,
+          "title": "Demonstrar",
+          "action": "Mostre como reduzir a parte, manter a contagem e voltar na seção combinada, sem parar o conjunto."
+        },
+        {
+          "minutes": 12,
+          "title": "Praticar",
+          "action": "Ensaie P1 → P2 → L → R: P1 chega a D; P2 termina com A por dois tempos antes de L."
+        },
+        {
+          "minutes": 22,
+          "title": "Tocar a música",
+          "action": "Toque a forma completa em D com voz ou outro instrumento e finalize pelo sinal combinado."
+        },
+        {
+          "minutes": 8,
+          "title": "Fechar",
+          "action": "Registre escuta, sinais e recuperação por ações concretas. Combine duas outras canções para o portfólio final."
+        }
+      ],
+      "watchFor": "Saídas distintas de P1 e P2, contraste entre refrões finais e continuidade do conjunto no andamento combinado.",
+      "adjust": "Faça duo com o professor, mapa aberto e ataques nas mudanças; ensaie a retomada sem surpresas punitivas.",
+      "extend": "O aluno assume a contagem inicial e conduz uma repetição previamente combinada.",
+      "followUp": "Trocar quem conduz a entrada na próxima tentativa e verificar se os sinais continuam compreendidos."
+    },
+    {
+      "lessonId": "m13-a3",
+      "sequence": [
+        {
+          "minutes": 5,
+          "title": "Preparar",
+          "action": "Confira afinação, três andamentos, versões, entradas e apoios combinados. Não acrescente exigências novas."
+        },
+        {
+          "minutes": 24,
+          "title": "Apresentar três arranjos",
+          "action": "Ouça três arranjos completos preparados em até 24 minutos, incluindo Bondade de Deus em D; não interrompa falhas recuperáveis."
+        },
+        {
+          "minutes": 8,
+          "title": "Transpor o exercício",
+          "action": "Peça a transposição somente do exercício autoral curto de R4, explicitando notas e graus; mantenha os tons do portfólio."
+        },
+        {
+          "minutes": 8,
+          "title": "Ouvir e explicar",
+          "action": "Peça uma explicação harmônica e um reconhecimento auditivo compatíveis com o que foi estudado."
+        },
+        {
+          "minutes": 15,
+          "title": "Avaliar e continuar",
+          "action": "Use 10 minutos para devolutiva pela rubrica e 5 para escolher uma prioridade e combinar nova tentativa."
+        }
+      ],
+      "watchFor": "Registre evidências de pulso/forma, som/coordenação, expressão/escuta, compreensão, autonomia e participação. Diferencie execução observada de relato de prática; nomes teóricos não comprovam domínio.",
+      "adjust": "Mantenha mapa, andamento de estudo e acompanhamento previamente acordados; registre essas condições e programe consolidação quando necessário.",
+      "extend": "Compare escolhas de posições e expressão já preparadas; nenhuma transposição adicional das músicas do portfólio.",
+      "followUp": "Agendar uma tentativa de retenção em outro dia e retestar um trecho ligado à prioridade registrada."
+    }
+  ]
+}

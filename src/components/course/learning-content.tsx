@@ -248,19 +248,6 @@ export function TeacherDeepening({
         <p>{content.demonstration}</p>
       </details>
       <details>
-        <summary>Roteiro de 60 minutos</summary>
-        <ol className="learning-week">
-          {content.sequence.map((stage, i) => (
-            <li key={i}>
-              <h3>
-                {stage.minutes} min · {stage.title}
-              </h3>
-              <p>{stage.action}</p>
-            </li>
-          ))}
-        </ol>
-      </details>
-      <details>
         <summary>Adaptar à dificuldade do aluno</summary>
         <h3>Se a dificuldade aparecer</h3>
         <p>{content.commonDifficulty}</p>

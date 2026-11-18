@@ -2,6 +2,8 @@
 
 Escolha um objetivo, demonstre, deixe o aluno tentar e observe o resultado. Retome o trecho em outro dia. O ritmo de avanço depende da execução, além dos registros de prática.
 
+Na **Condução do encontro**, o roteiro principal tem cinco etapas: **Retomar → Demonstrar → Praticar → Tocar a música → Fechar**. Uma síntese específica por aula reúne a ação, a evidência a observar e os ajustes possíveis. Textos completos, planos anteriores e fontes continuam disponíveis para preparação; não são etapas adicionais a cumprir.
+
 <details>
 <summary>Estudos integrados e fundamentação</summary>
 
@@ -9,7 +11,11 @@ Escolha um objetivo, demonstre, deixe o aluno tentar e observe o resultado. Reto
 
 O curso mantém o repertório e a progressão dos 13 módulos e reformula a condução das 39 aulas com explicações específicas, exemplos trabalhados, tentativa guiada, recuperação antes da resposta e aplicação musical. Os nove eixos técnicos se distribuem pelas aulas conforme os pré-requisitos; não constituem uma sequência obrigatória de nove blocos antes de tocar músicas.
 
-Cada plano docente oferece diagnóstico, demonstração, intervenção diante de uma dificuldade concreta, redução e ampliação do desafio, observação e nova tentativa em outro dia. O roteiro de 60 minutos substitui a distribuição de tempo daquela aula, sem somar um segundo encontro. O plano original permanece disponível para consulta. A apresentação docente permite mostrar um exemplo ou uma pergunta por vez, com resposta revelada por decisão do professor.
+O roteiro regular distribui 10 + 8 + 12 + 22 + 8 minutos entre retomada, demonstração, tentativa, música e fechamento. Diagnóstico e devolutiva estão dentro dessas etapas. A síntese evita repetir a mesma orientação em várias listas, mantendo **observar, ajustar, ampliar e retomar** próximos da decisão. Se houver dor, interrompa a tentativa e reveja apoio e esforço.
+
+A aula final preserva outra distribuição: 5 + 24 + 8 + 8 + 15 minutos. Mantém três arranjos previamente preparados, transferência apenas para o exercício autoral combinado, escuta, explicação e devolutiva. Não acrescenta exigências técnicas nem muda os tons das músicas durante a avaliação.
+
+A apresentação visual é um apoio separado para o aluno. Mostre uma tarefa por vez: diagrama para escolher cordas e dedos, pulsos para localizar entradas, trecho da cifra para manter duração e ordem. Faça o aluno tocar ou explicar antes de revelar a resposta. Notas de diagnóstico e intervenção são ferramentas de preparação do professor.
 
 As propostas de prática em quatro dias são flexíveis. Regularidade, dificuldade adequada, explicação e feedback orientam a escolha; a literatura não estabelece um único método superior para todo aluno e toda habilidade. Os critérios do curso são rubricas autorais para as tarefas do curso, não testes validados nem equivalência a exames externos. Observe a execução sem ajuda e depois de um intervalo antes de inferir retenção.
 
@@ -31,12 +37,9 @@ Fontes consultadas em 14/11/2026. O material v5 define a sequência do curso; a 
 
 ## Ciclo de prática
 
-1. **Escutar:** localizar a gravação identificada, reconhecer a parte e ouvir a demonstração do professor.
-2. **Preparar:** formar o acorde e conferir as cordas. Comparar texto, diagrama e som.
-3. **Isolar:** escolher dois a quatro compassos; reduzir o andamento até caber uma execução contínua.
-4. **Recuperar:** repetir depois de uma pausa; explicar uma decisão sem abrir imediatamente a resposta.
-5. **Reintegrar:** tocar a forma completa; conservar contagem, entradas e final.
-6. **Observar:** registrar o que ocorreu e uma única mudança para a próxima tentativa. O professor confirma a evidência de execução.
+Dentro do roteiro, use um ciclo curto: **ouvir e ver → tentar → ajustar → voltar à música**. Escolha dois a quatro compassos e um objetivo observável. Compare texto, diagrama e som; reduza o andamento ou os ataques se necessário. Depois, toque a forma completa com entradas e final combinados.
+
+Retome depois de uma pausa e em outro dia. Peça uma explicação antes de abrir a resposta e registre uma ocorrência concreta. Essa retomada verifica se o apoio ainda é necessário; não exige repetir toda a explicação.
 
 Esse ciclo organiza a metodologia já presente nos materiais. Um clique em “concluir”, o tempo de prática ou um quiz respondido não comprovam domínio técnico. A aplicação distingue o relato do aluno da devolutiva do professor. O aluno pode revisitar aulas, reduzir o andamento e consolidar sem punição por perder uma sequência de dias.
 

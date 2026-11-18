@@ -49,6 +49,8 @@ test('client module dependency graph cannot bundle course texts or teacher plans
     'song-lyrics-2.json',
     'song-lyrics-3.json',
     'teacher-enrichment.json',
+    'teacher-cues.json',
+    'teacher-visuals.ts',
   ]);
   const visited = new Set<string>();
   function visit(file: string, chain: string[]) {
